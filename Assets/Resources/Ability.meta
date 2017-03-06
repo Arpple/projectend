@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: e8c991df8c49a3948b338ff65805ac7e
+guid: 29e9f66e716196e4e84b1531cc567dc4
 labels:
+- Ability
 - Resource
+- Sprite
 folderAsset: yes
-timeCreated: 1488792006
+timeCreated: 1488795588
 licenseType: Free
 DefaultImporter:
   userData: 

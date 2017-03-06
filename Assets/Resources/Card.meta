@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: e8c991df8c49a3948b338ff65805ac7e
+guid: bb03a6d9ea263a841ba124915ca76708
 labels:
+- Card
 - Resource
+- Sprite
 folderAsset: yes
-timeCreated: 1488792006
+timeCreated: 1488792040
 licenseType: Free
 DefaultImporter:
   userData: 
