@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d5da80488ebeb7a40a3e39181afe32a5
+labels:
+- Core
+- Script
+- Test
+timeCreated: 1488825694
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
