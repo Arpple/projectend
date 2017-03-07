@@ -76,6 +76,11 @@ namespace End
 			return _rows[y].GetTile(x);
 		}
 
+		public Tile GetTile(MapPositionComponent mapPosition)
+		{
+			return GetTile(mapPosition.X, mapPosition.Y);
+		}
+
 		public Map SetTile(int x, int y, Tile tile)
 		{
 			Assert.IsTrue(
@@ -88,9 +93,9 @@ namespace End
 			return this;
 		}
 
-		public Tile GetTile(MapPositionComponent mapPosition)
+		public Map SetTile(MapPositionComponent mapPosition, Tile tile)
 		{
-			return GetTile(mapPosition.X, mapPosition.Y);
+			return SetTile(mapPosition.X, mapPosition.Y, tile);
 		}
 	}	
 }
