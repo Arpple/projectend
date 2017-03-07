@@ -9,7 +9,8 @@ namespace End
 	{
 		readonly GameContext _context;
 
-		public LoadResourceSystem(Contexts contexts) : base(contexts.game)
+		public LoadResourceSystem(Contexts contexts)
+			: base(contexts.game)
 		{
 			_context = contexts.game;
 		}

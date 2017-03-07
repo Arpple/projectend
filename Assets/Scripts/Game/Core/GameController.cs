@@ -55,7 +55,8 @@ namespace End
 		Systems CreateSystems(Contexts contexts)
 		{
 			return new Feature("Systems")
-				.Add(new LoadResourceSystem(contexts));
+				.Add(new LoadResourceSystem(contexts))
+				.Add(new RenderMapPositionSystem(contexts));
 		}
 	}
 }

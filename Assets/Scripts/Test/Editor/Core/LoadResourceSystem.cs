@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace End.Test
 {
-	public class TestLoadResourceSystem
+	public class LoadResourceSystem
 	{
 		private Contexts _contexts;
 
@@ -19,7 +19,7 @@ namespace End.Test
 		public void LoadSprite()
 		{
 			//given
-			var system = new LoadResourceSystem(_contexts);
+			var system = new End.LoadResourceSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddResource(Resources.Load<Sprite>("Ability/Card_Image/Basic/Basic_Attack"));
