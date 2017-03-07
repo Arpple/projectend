@@ -31,7 +31,6 @@ namespace End
 		protected override void Execute (List<GameEntity> entities)
 		{
 			GameObject viewRoot = GameObject.Find(_setting.ViewRootPath) ?? new GameObject("Tile");
-			CacheList<Tile, Sprite> cache = new CacheList<Tile, Sprite>();
 
 			foreach(var e in entities)
 			{

@@ -36,8 +36,6 @@ namespace End
 				var spriteRenderer = obj.AddComponent<SpriteRenderer>();
 				spriteRenderer.sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
 
-				Debug.Log(spriteRenderer.sprite);
-
 				e.AddView(obj);
 				obj.Link(e, _context);
 			}

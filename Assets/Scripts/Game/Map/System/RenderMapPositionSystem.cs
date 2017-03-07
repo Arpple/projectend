@@ -7,12 +7,10 @@ namespace End
 {
 	public class RenderMapPositionSystem : ReactiveSystem<GameEntity>
 	{
-		private GameContext _context;
 
 		public RenderMapPositionSystem(Contexts contexts)
 			: base(contexts.game)
 		{
-			_context = contexts.game;
 		}
 
 		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)

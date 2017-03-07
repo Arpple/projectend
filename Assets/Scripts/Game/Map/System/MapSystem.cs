@@ -5,18 +5,21 @@ using Entitas.Blueprints;
 
 namespace End
 {
-	public class InitializeMapSystem : IInitializeSystem
+	public class MapSystem : IInitializeSystem
 	{
+		private static MapSystem _instance;
+
 		readonly GameContext _context;
 		readonly MapSetting _setting;
 
 		private Map _map;
 
-		public InitializeMapSystem(Contexts contexts, Map map, MapSetting setting)
+		public MapSystem(Contexts contexts, Map map, MapSetting setting)
 		{
 			_context = contexts.game;
 			_map = map;
 			_setting = setting;
+			_instance = this;
 		}
 
 		public void Initialize ()
@@ -35,5 +38,4 @@ namespace End
 			});
 		}
 	}
-
 }

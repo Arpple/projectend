@@ -11,14 +11,18 @@ public static class GameComponentsLookup {
     public const int MapPosition = 0;
     public const int Resource = 1;
     public const int Tile = 2;
-    public const int View = 3;
+    public const int TileAction = 3;
+    public const int TileBrush = 4;
+    public const int View = 5;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
         "MapPosition",
         "Resource",
         "Tile",
+        "TileAction",
+        "TileBrush",
         "View"
     };
 
@@ -26,6 +30,8 @@ public static class GameComponentsLookup {
         typeof(End.MapPositionComponent),
         typeof(End.ResourceComponent),
         typeof(End.TileComponent),
+        typeof(End.TileActionComponent),
+        typeof(End.MapEditor.TileBrushComponent),
         typeof(End.ViewComponent)
     };
 }

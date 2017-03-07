@@ -14,6 +14,18 @@ namespace End
 		{
 			view.transform.SetParent(ViewContainer.transform, false);
 		}
+			
+		public delegate void TileClickAction();
+
+		public TileClickAction ClickAction;
+
+		void OnMouseDown()
+		{
+			if(ClickAction != null)
+			{
+				ClickAction();
+			}
+		}
 	}
 }
 
