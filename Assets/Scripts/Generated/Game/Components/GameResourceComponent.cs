@@ -11,15 +11,15 @@ public partial class GameEntity {
     public End.ResourceComponent resource { get { return (End.ResourceComponent)GetComponent(GameComponentsLookup.Resource); } }
     public bool hasResource { get { return HasComponent(GameComponentsLookup.Resource); } }
 
-    public void AddResource(UnityEngine.Sprite newSprite) {
+    public void AddResource(string newSpritePath) {
         var component = CreateComponent<End.ResourceComponent>(GameComponentsLookup.Resource);
-        component.Sprite = newSprite;
+        component.SpritePath = newSpritePath;
         AddComponent(GameComponentsLookup.Resource, component);
     }
 
-    public void ReplaceResource(UnityEngine.Sprite newSprite) {
+    public void ReplaceResource(string newSpritePath) {
         var component = CreateComponent<End.ResourceComponent>(GameComponentsLookup.Resource);
-        component.Sprite = newSprite;
+        component.SpritePath = newSpritePath;
         ReplaceComponent(GameComponentsLookup.Resource, component);
     }
 

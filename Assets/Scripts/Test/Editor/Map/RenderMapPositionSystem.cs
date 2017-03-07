@@ -30,17 +30,13 @@ namespace End.Test
 			var worldPosition = transform.position;
 
 			//then
-			Assert.IsTrue(
-				worldPosition == entity.mapPosition.GetWorldPosition()
-			);
+			Assert.AreEqual(worldPosition, entity.mapPosition.GetWorldPosition());
 
 			//update
 			entity.ReplaceMapPosition(1, 2);
 			system.Execute();
 
-			Assert.IsTrue(
-				worldPosition != transform.position
-			);
+			Assert.AreNotEqual(worldPosition, transform.position);
 		}
 	}
 }

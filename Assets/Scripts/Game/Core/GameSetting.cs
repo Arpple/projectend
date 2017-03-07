@@ -9,7 +9,7 @@ namespace End
 	/// </summary>
 	public class GameSetting : ScriptableObject
 	{
-		
+		public MapSetting MapSetting;
 	}
 
 }

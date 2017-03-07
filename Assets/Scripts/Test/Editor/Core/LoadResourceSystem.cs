@@ -22,16 +22,14 @@ namespace End.Test
 			var system = new End.LoadResourceSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
-			entity.AddResource(Resources.Load<Sprite>("Ability/Card_Image/Basic/Basic_Attack"));
+			entity.AddResource("Ability/Card_Image/Basic/Basic_Attack");
 
 			//action
 			system.Execute();
 
 			//then
-			Assert.IsTrue(
-				entity.hasView
-				&& entity.view.GameObject.GetEntityLink().entity == entity
-			);
+			Assert.IsTrue(entity.hasView);
+			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
 		}
 	}
 }

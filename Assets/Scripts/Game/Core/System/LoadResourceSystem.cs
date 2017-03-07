@@ -9,10 +9,13 @@ namespace End
 	{
 		readonly GameContext _context;
 
+		private CacheList<string, Sprite> _cacheSprite;
+
 		public LoadResourceSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
+			_cacheSprite = new CacheList<string, Sprite>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
@@ -29,9 +32,11 @@ namespace End
 		{
 			foreach(var e in entities)
 			{
-				var obj = new GameObject("NewEntityView");
+				var obj = new GameObject("EntityView");
 				var spriteRenderer = obj.AddComponent<SpriteRenderer>();
-				spriteRenderer.sprite = e.resource.Sprite;
+				spriteRenderer.sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
+
+				Debug.Log(spriteRenderer.sprite);
 
 				e.AddView(obj);
 				obj.Link(e, _context);

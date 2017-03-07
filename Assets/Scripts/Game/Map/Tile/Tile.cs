@@ -5,6 +5,10 @@ namespace End
 	{
 		None,
 		Grass,
+		Desert,
+		DeepForest,
+		Water,
+		Mountain,
 	}
 }
 

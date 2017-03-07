@@ -17,15 +17,12 @@ namespace End.Test
 		public void Create()
 		{
 			_map.SetMap(5, 5, Tile.Grass);
+			Assert.AreEqual(Tile.Grass, _map.GetTile(4, 4));
 
 			var pos = new End.MapPositionComponent();
 			pos.X = 4;
 			pos.Y = 4;
-
-			Assert.IsTrue(
-				_map.GetTile(4, 4) == Tile.Grass
-				&& _map.GetTile(pos) == Tile.Grass
-			);
+			Assert.AreEqual(Tile.Grass, _map.GetTile(pos));
 		}
 
 		[Test]
@@ -34,7 +31,7 @@ namespace End.Test
 			_map.SetMap(5, 5, Tile.Grass);
 			_map.SetTile(1, 1, Tile.None);
 
-			Assert.IsTrue(_map.GetTile(1, 1) == Tile.None);
+			Assert.AreEqual(Tile.None, _map.GetTile(1, 1));
 		}
 	}
 }

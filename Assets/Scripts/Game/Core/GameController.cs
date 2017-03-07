@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Networking;
 using Entitas;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace End

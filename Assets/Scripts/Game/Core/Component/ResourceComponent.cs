@@ -7,7 +7,7 @@ namespace End
 	[Game]
 	public class ResourceComponent : IComponent
 	{
-		public Sprite Sprite;
+		public string SpritePath;
 	}
 }
 

@@ -22,7 +22,7 @@ namespace End.Test
 			e.AddMapPosition(1, 1);
 			var worldPos = e.mapPosition.GetWorldPosition();
 
-			Assert.IsTrue(worldPos == new Vector3(1.6f, 1.6f, 0));
+			Assert.AreEqual(new Vector3(1.6f, 1.6f, 0), worldPos);
 		}
 
 		[Test]
@@ -34,7 +34,7 @@ namespace End.Test
 			var e2 = _contexts.game.CreateEntity();
 			e2.AddMapPosition(-2, 2);
 
-			Assert.IsTrue(e1.mapPosition.GetDistance(e2.mapPosition) == 4);
+			Assert.AreEqual(4, e1.mapPosition.GetDistance(e2.mapPosition));
 		}
 
 		[Test]
@@ -48,11 +48,8 @@ namespace End.Test
 			e2.AddMapPosition(1, 1);
 			e3.AddMapPosition(1, 2);
 
-			Assert.IsTrue(
-				e1.mapPosition.IsEqual(e2.mapPosition)
-				&& !e1.mapPosition.IsEqual(e3.mapPosition)
-			);
-
+			Assert.IsTrue(e1.mapPosition.IsEqual(e2.mapPosition));
+			Assert.IsFalse(e1.mapPosition.IsEqual(e3.mapPosition));
 		}
 	}	
 }
