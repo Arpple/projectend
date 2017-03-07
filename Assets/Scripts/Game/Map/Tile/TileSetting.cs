@@ -9,7 +9,8 @@ using UnityEngine.Assertions;
 
 namespace End
 {
-	public class TileSetting : ScriptableObject
+	[Serializable]
+	public class TileSetting
 	{
 		const string BLUEPRINT_PREFIX = "Tile_";
 

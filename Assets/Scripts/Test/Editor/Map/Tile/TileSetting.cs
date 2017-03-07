@@ -1,5 +1,4 @@
-﻿using Entitas;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UnityEngine;
 using System;
 using Entitas.Unity.Blueprints;
@@ -13,7 +12,8 @@ namespace End.Test
 		[SetUp]
 		public void Init()
 		{
-			_setting = Resources.Load<End.TileSetting>("Game/Map/Tiles/Setting/TileSetting");
+			GameSetting setting = Resources.Load<End.GameSetting>("Game/Core/Setting/GameSetting");
+			_setting = setting.MapSetting.TileSetting;
 			Assert.IsNotNull(_setting);
 		}
 
