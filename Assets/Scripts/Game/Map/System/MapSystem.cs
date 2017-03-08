@@ -7,8 +7,6 @@ namespace End
 {
 	public class MapSystem : IInitializeSystem
 	{
-		private static MapSystem _instance;
-
 		readonly GameContext _context;
 		readonly MapSetting _setting;
 
@@ -19,7 +17,6 @@ namespace End
 			_context = contexts.game;
 			_map = map;
 			_setting = setting;
-			_instance = this;
 		}
 
 		public void Initialize ()

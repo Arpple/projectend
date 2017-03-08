@@ -66,6 +66,7 @@ namespace End.MapEditor
 
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, EdittingMap, Setting.MapSetting))
+				.Add(new TileGraphSystem(contexts))
 			
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new RenderTileSystem(contexts, Setting.MapSetting.TileSetting))
