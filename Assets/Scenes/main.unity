@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOfflineMode: 0
-  Setting: {fileID: 0}
+  Setting: {fileID: 11400000, guid: a37d1cb7269f72d489ade8dd032c8a28, type: 2}
 --- !u!4 &1234237937
 Transform:
   m_ObjectHideFlags: 0
