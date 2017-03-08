@@ -15,7 +15,7 @@ namespace End
 
 		public Vector3 GetWorldPosition()
 		{
-			return new Vector3(X, Y, 0) * SIZE;
+			return new Vector3(X * SIZE, Y * SIZE, Y);
 		}
 
 		public int GetDistance(MapPositionComponent otherPosition)
