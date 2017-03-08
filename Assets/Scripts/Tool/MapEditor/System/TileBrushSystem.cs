@@ -8,6 +8,8 @@ namespace End.MapEditor
 {
 	public class TileBrushSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
+		public static TileBrushComponent TileBrush;
+
 		readonly GameContext _context;
 		readonly TileSetting _setting;
 
@@ -31,6 +33,7 @@ namespace End.MapEditor
 		public void Initialize()
 		{
 			_context.SetTileBrush(Tile.DeepForest, BrushAction.Click);
+			TileBrush = _context.tileBrush;
 		}
 
 		protected override void Execute (List<GameEntity> entities)

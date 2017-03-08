@@ -17,10 +17,11 @@ namespace End.MapEditor
 		}
 
 		public static MapEditorController Instance;
+		public static Map EdittingMap;
 
 		[Header("Load Map")]
 		public Map LoadingMap;
-
+		
 		[Header("New Map")]
 		public bool IsCreatingNewMap;
 		public MapInfo CreatingMap;
@@ -61,8 +62,10 @@ namespace End.MapEditor
 
 		Systems CreateSystems(Contexts contexts)
 		{
+			EdittingMap = InitMap();
+
 			return new Feature("Systems")
-				.Add(new MapSystem(contexts, InitMap(), Setting.MapSetting))
+				.Add(new MapSystem(contexts, EdittingMap, Setting.MapSetting))
 			
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new RenderTileSystem(contexts, Setting.MapSetting.TileSetting))
@@ -84,7 +87,7 @@ namespace End.MapEditor
 				if(CreatingMap.Width > 0 && CreatingMap.Heigth > 0)
 				{
 					Debug.Log("Creating New Map w:" + CreatingMap.Width +" h:" + CreatingMap.Heigth + " t:" + CreatingMap.DefaultTileType.ToString());
-					return Map.CreateInstance<Map>().SetMap(CreatingMap.Width, CreatingMap.Heigth, CreatingMap.DefaultTileType);
+					return ScriptableObject.CreateInstance<Map>().SetMap(CreatingMap.Width, CreatingMap.Heigth, CreatingMap.DefaultTileType);
 				}
 				else
 				{
@@ -104,7 +107,7 @@ namespace End.MapEditor
 
 			//default
 			Debug.Log("Create Default Map");
-			return Map.CreateInstance<Map>().SetMap(5, 5, Tile.Grass);
+			return ScriptableObject.CreateInstance<Map>().SetMap(5, 5, Tile.Grass);
 		}
 	}
 
