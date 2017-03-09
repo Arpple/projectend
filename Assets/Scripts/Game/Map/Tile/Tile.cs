@@ -1,5 +1,4 @@
-﻿
-namespace End
+﻿namespace End
 {
 	public enum Tile
 	{

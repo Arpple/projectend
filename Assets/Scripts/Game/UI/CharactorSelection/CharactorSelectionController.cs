@@ -8,6 +8,7 @@ namespace End.UI.CharactorSelection {
     public class CharactorSelectionController : MonoBehaviour{
         public UnitStatus UnitStatus;
         public UnitSkill UnitSkill;
+        //public Text
         //public List<>
         void Start() {
             InitialPrefabs();

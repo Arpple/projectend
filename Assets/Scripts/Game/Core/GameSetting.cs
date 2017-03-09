@@ -10,6 +10,7 @@ namespace End
 	public class GameSetting : ScriptableObject
 	{
 		public MapSetting MapSetting;
+		public UnitSetting UnitSetting;
 	}
 
 }

@@ -12,15 +12,15 @@ namespace End
 	[Serializable]
 	public class TileSetting
 	{
-		const string BLUEPRINT_PREFIX = "Tile_";
+		const string BLUEPRINT_ENUM_PREFIX = "Tile_";
 
-		public Blueprints TileBlueprints;
 		public string ViewRootPath;
+		public Blueprints TileBlueprints;
 		public GameObject BaseTileObject;
 
 		public Blueprint GetTileBlueprint(Tile tile)
 		{
-			return TileBlueprints.GetBlueprint(BLUEPRINT_PREFIX + tile.ToString());
+			return TileBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + tile.ToString());
 		}
 	}
 

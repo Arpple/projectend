@@ -54,8 +54,17 @@ namespace End
 		Systems CreateSystems(Contexts contexts)
 		{
 			return new Feature("Systems")
+				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap, Setting.MapSetting))
+				.Add(new TileGraphSystem(contexts))
+
 				.Add(new LoadResourceSystem(contexts))
-				.Add(new RenderMapPositionSystem(contexts));
+				.Add(new RenderTileSystem(contexts, Setting.MapSetting.TileSetting))
+				.Add(new TileActionSystem(contexts))
+
+				.Add(new RenderMapPositionSystem(contexts))
+
+				.Add(new CameraSystem(contexts))
+				.Add(new CameraKeyboardSystem(contexts));
 		}
 	}
 }
