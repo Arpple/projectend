@@ -55,7 +55,7 @@ namespace End.MapEditor
 
 					e.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
 					e.AddTile(brushTile);
-					e.AddMapPosition(pos.X, pos.Y);
+					e.AddMapPosition(pos.x, pos.y);
 				});
 			}
 		}

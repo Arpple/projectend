@@ -37,7 +37,7 @@ namespace End
 				Assert.IsTrue(e.hasView);
 
 				GameObject baseTile = GameObject.Instantiate(_setting.BaseTileObject);
-				baseTile.name = "Tile (" + e.mapPosition.X + "," + e.mapPosition.Y + ")";
+				baseTile.name = "Tile (" + e.mapPosition.x + "," + e.mapPosition.y + ")";
 
 				TileController con = baseTile.GetComponent<TileController>();
 				Assert.IsNotNull(con);

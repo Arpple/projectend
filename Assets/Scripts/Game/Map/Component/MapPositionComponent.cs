@@ -10,22 +10,22 @@ namespace End
 	{
 		const float SIZE = 1.65f;
 
-		public int X;
-		public int Y;
+		public int x;
+		public int y;
 
 		public Vector3 GetWorldPosition()
 		{
-			return new Vector3(X * SIZE, Y * SIZE, Y);
+			return new Vector3(x * SIZE, y * SIZE, y);
 		}
 
 		public int GetDistance(MapPositionComponent otherPosition)
 		{
-			return Math.Abs(X - otherPosition.X) + Math.Abs(Y - otherPosition.Y);
+			return Math.Abs(x - otherPosition.x) + Math.Abs(y - otherPosition.y);
 		}
 
 		public bool IsEqual(MapPositionComponent otherPosition)
 		{
-			return X == otherPosition.X && Y == otherPosition.Y;
+			return x == otherPosition.x && y == otherPosition.y;
 		}
 	}
 }

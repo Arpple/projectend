@@ -13,15 +13,15 @@ public partial class GameEntity {
 
     public void AddMapPosition(int newX, int newY) {
         var component = CreateComponent<End.MapPositionComponent>(GameComponentsLookup.MapPosition);
-        component.X = newX;
-        component.Y = newY;
+        component.x = newX;
+        component.y = newY;
         AddComponent(GameComponentsLookup.MapPosition, component);
     }
 
     public void ReplaceMapPosition(int newX, int newY) {
         var component = CreateComponent<End.MapPositionComponent>(GameComponentsLookup.MapPosition);
-        component.X = newX;
-        component.Y = newY;
+        component.x = newX;
+        component.y = newY;
         ReplaceComponent(GameComponentsLookup.MapPosition, component);
     }
 

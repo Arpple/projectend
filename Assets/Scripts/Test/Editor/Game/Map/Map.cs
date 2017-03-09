@@ -20,8 +20,8 @@ namespace End.Test
 			Assert.AreEqual(Tile.Grass, _map.GetTile(4, 4));
 
 			var pos = new End.MapPositionComponent();
-			pos.X = 4;
-			pos.Y = 4;
+			pos.x = 4;
+			pos.y = 4;
 			Assert.AreEqual(Tile.Grass, _map.GetTile(pos));
 		}
 

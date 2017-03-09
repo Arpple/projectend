@@ -21,11 +21,11 @@ namespace End
 				originTile.AddTileGraph(null, null, null, null);
 				foreach(var tile in tiles.Where(t => t.mapPosition.GetDistance(originTile.mapPosition) == 1))
 				{
-					if (tile.mapPosition.Y < originTile.mapPosition.Y)
+					if (tile.mapPosition.y < originTile.mapPosition.y)
 						originTile.tileGraph.Down = tile;
-					else if (tile.mapPosition.Y > originTile.mapPosition.Y)
+					else if (tile.mapPosition.y > originTile.mapPosition.y)
 						originTile.tileGraph.Up = tile;
-					else if (tile.mapPosition.X > originTile.mapPosition.X)
+					else if (tile.mapPosition.x > originTile.mapPosition.x)
 						originTile.tileGraph.Right = tile;
 					else
 						originTile.tileGraph.Left = tile;

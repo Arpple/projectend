@@ -38,7 +38,21 @@ namespace End
 			}
 		}
 
+		[Serializable]
+		private class SpawnPoint
+		{
+			public int x;
+			public int y;
+
+			public SpawnPoint(int x, int y)
+			{
+				this.x = x;
+				this.y = y;
+			}
+		}
+
 		private MapRow[] _rows;
+		private Dictionary<int, SpawnPoint> _spawnPoints;
 
 		public int Width
 		{
@@ -63,6 +77,8 @@ namespace End
 				(i) => _rows[i] = new MapRow(width, defaultTile)
 			);
 
+			_spawnPoints = new Dictionary<int, SpawnPoint>();
+
 			return this;
 		}
 
@@ -78,7 +94,7 @@ namespace End
 
 		public Tile GetTile(MapPositionComponent mapPosition)
 		{
-			return GetTile(mapPosition.X, mapPosition.Y);
+			return GetTile(mapPosition.x, mapPosition.y);
 		}
 
 		public Map SetTile(int x, int y, Tile tile)
@@ -95,7 +111,28 @@ namespace End
 
 		public Map SetTile(MapPositionComponent mapPosition, Tile tile)
 		{
-			return SetTile(mapPosition.X, mapPosition.Y, tile);
+			return SetTile(mapPosition.x, mapPosition.y, tile);
+		}
+
+		public Map SetSpawnPoint(int index, int x, int y)
+		{
+			if(_spawnPoints.ContainsKey(index))
+			{
+				var s = _spawnPoints[index];
+				s.x = x;
+				s.y = y;
+			}
+			else
+			{
+				_spawnPoints.Add(index, new SpawnPoint(x, y));
+			}
+
+			return this;
+		}
+
+		public Map SetSpawnPoint(int index, MapPositionComponent pos)
+		{
+			return SetSpawnPoint(index, pos.x, pos.y);
 		}
 	}	
 }
