@@ -8,6 +8,8 @@ namespace End
 	{
 		public static int PlayerCount;
 
+		[SyncVar] public int PlayerId;
+
 		void Start()
 		{
 			PlayerLoader.Instance.LoadPlayer(this);

@@ -31,9 +31,12 @@ namespace End
 		{
 			if(GameController.IsOffline)
 			{
-				foreach(var player in transform.GetComponentsInChildren<Player>())
+				int id = 1;
+				foreach(var player in transform.GetComponentsInChildren<Player>(true))
 				{
 					player.gameObject.SetActive(true);
+					player.PlayerId = id;
+					id++;
 				}
 			}
 		}
