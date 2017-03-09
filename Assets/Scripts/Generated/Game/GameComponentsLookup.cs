@@ -8,17 +8,19 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int MapPosition = 0;
-    public const int Resource = 1;
-    public const int Tile = 2;
-    public const int TileAction = 3;
-    public const int TileBrush = 4;
-    public const int TileGraph = 5;
-    public const int View = 6;
+    public const int Description = 0;
+    public const int MapPosition = 1;
+    public const int Resource = 2;
+    public const int Tile = 3;
+    public const int TileAction = 4;
+    public const int TileBrush = 5;
+    public const int TileGraph = 6;
+    public const int View = 7;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 8;
 
     public static readonly string[] componentNames = {
+        "Description",
         "MapPosition",
         "Resource",
         "Tile",
@@ -29,6 +31,7 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent),
         typeof(End.MapPositionComponent),
         typeof(End.ResourceComponent),
         typeof(End.TileComponent),
