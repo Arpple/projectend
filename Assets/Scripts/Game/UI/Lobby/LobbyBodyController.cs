@@ -1,13 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace End.UI.Lobby {
     public class LobbyBodyController : MonoBehaviour{
         public PlayerLobby PrefabsPlayerLobbyLeft,PrefabsPlayerLobbyRight;
-        public GameObject PrefabsRow,Content;
+        public GameObject PrefabsPlayerRow;
+        public GameObject Content;
 
         private List<PlayerLobby> _playerLobbyList;
         private List<GameObject> _playerLobbyRowList;
@@ -15,6 +17,10 @@ namespace End.UI.Lobby {
         void Awake() {
             this._playerLobbyList = new List<PlayerLobby>();
             this._playerLobbyRowList = new List<GameObject>();
+            
+        }
+
+        void Start() {
             PrepareLobby();
         }
 
@@ -24,9 +30,10 @@ namespace End.UI.Lobby {
 
         private void PrepareLobby() {
             for(int i=1;i<=4;i++) {
+                //Debug.Log("Spanw row ["+i+"] row pref is null ? "+(PrefabsPlayerRow==null));
                 GameObject row = SpawnPlayerLobbyRow();
                 for(int j=1;j<=2;j++) {
-                    PlayerLobby p = SpawnPlayerLobby(row.transform);
+                    SpawnPlayerLobby(row.transform);
                 }
             }
         }
@@ -36,9 +43,10 @@ namespace End.UI.Lobby {
         /// </summary>
         /// <returns></returns>
         private GameObject SpawnPlayerLobbyRow() {
-            GameObject row = Instantiate<GameObject>(PrefabsRow,this.Content.transform,false);
+            //Debug.Log("PrefabsPlayerRow is null ? "+(PrefabsPlayerRow==null)+" at round [ "+this._playerLobbyRowList.Count+" ]");
+            GameObject row = Instantiate<GameObject>(this.PrefabsPlayerRow,this.Content.transform,false);
             row.transform.SetParent(this.Content.transform);
-            row.SetActive(true);
+            row.gameObject.SetActive(true);
             this._playerLobbyRowList.Add(row);
             return row;
         }
@@ -48,9 +56,10 @@ namespace End.UI.Lobby {
         /// </summary>
         /// <returns></returns>
         private PlayerLobby SpawnPlayerLobby(Transform parent=null) {
+            Transform trans = parent.transform;
             PlayerLobby p = Instantiate<PlayerLobby>(
                 _playerLobbyList.Count % 2 == 0 ? PrefabsPlayerLobbyLeft : PrefabsPlayerLobbyRight
-                ,parent,false
+                ,trans,false
                 );
             this._playerLobbyList.Add(p);
             p.RemovePlayerData();

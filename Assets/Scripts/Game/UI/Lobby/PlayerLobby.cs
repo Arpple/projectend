@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using End.Game.UI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ namespace End.UI.Lobby {
         public enum PlayerStaus {
             Waiting,Ready
         }
-        public Image PlayerIcon;
+        public Icon PlayerIcon;
         public Text PlayerName,PlayerStatus;
         public PlayerStaus Status;
         public bool onAllocate;
@@ -71,7 +72,8 @@ namespace End.UI.Lobby {
         /// <param name=""></param>
         public void SetPlayerData(string name) {
             this.PlayerName.text = name;
-            this.PlayerIcon.sprite = Resources.Load<Sprite>("Unit/Charactor/LastBoss/Icon");
+            //this.PlayerIcon.sprite = Resources.Load<Sprite>("Unit/Charactor/LastBoss/Icon");
+            this.PlayerIcon.SetImage(Resources.Load<Sprite>("Unit/Charactor/LastBoss/Icon"));
             onAllocate = true;
         }
 
@@ -80,7 +82,7 @@ namespace End.UI.Lobby {
         /// </summary>
         public void RemovePlayerData() {
             this.PlayerName.text = "<NO PLAYER>";
-            this.PlayerIcon.sprite = null;
+            this.PlayerIcon.SetImage(null);
             this.onAllocate = false;
         }
     }
