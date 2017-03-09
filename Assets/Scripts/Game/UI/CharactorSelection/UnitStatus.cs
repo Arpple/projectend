@@ -19,7 +19,7 @@ namespace End.Game.UI.CharactorSelection {
         /// <param name="ar"></param>
         /// <param name="vs"></param>
         /// <param name="ms"></param>
-        public void setCharactorStatus(string charName,Sprite charImage,int hp,int ap,int ar,int vs,int ms) {
+        public void setUnitStatus(string charName,Sprite charImage,int hp,int ap,int ar,int vs,int ms) {
             this.UnitName.text = charName;
             this.HitPoint.text = hp.ToString();
             this.AttackPower.text = ap.ToString();
