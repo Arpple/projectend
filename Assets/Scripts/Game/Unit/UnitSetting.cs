@@ -8,7 +8,7 @@ namespace End
 	[Serializable]
 	public class UnitSetting
 	{
-		public CharactorSetting CharactorSetting;
+		public CharacterSetting CharacterSetting;
 	}
 }
 

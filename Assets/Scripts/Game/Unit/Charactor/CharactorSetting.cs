@@ -5,15 +5,15 @@ using System;
 namespace End
 {
 	[Serializable]
-	public class CharactorSetting
+	public class CharacterSetting
 	{
 		const string BLUEPRINT_ENUM_PREFIX = "Char_";
 
-		public Blueprints CharactorBlueprints;
+		public Blueprints CharacterBlueprints;
 
-		public Blueprint GetCharBlueprint(Charactor cha)
+		public Blueprint GetCharBlueprint(Character cha)
 		{
-			return CharactorBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + cha);
+			return CharacterBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + cha);
 		}
 	}
 

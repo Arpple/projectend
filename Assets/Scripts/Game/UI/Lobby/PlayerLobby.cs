@@ -72,8 +72,8 @@ namespace End.UI.Lobby {
         /// <param name=""></param>
         public void SetPlayerData(string name) {
             this.PlayerName.text = name;
-            //this.PlayerIcon.sprite = Resources.Load<Sprite>("Unit/Charactor/LastBoss/Icon");
-            this.PlayerIcon.SetImage(Resources.Load<Sprite>("Unit/Charactor/LastBoss/Icon"));
+            //this.PlayerIcon.sprite = Resources.Load<Sprite>("Unit/Character/LastBoss/Icon");
+            this.PlayerIcon.SetImage(Resources.Load<Sprite>("Unit/Character/LastBoss/Icon"));
             onAllocate = true;
         }
 

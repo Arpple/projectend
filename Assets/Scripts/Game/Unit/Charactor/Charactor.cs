@@ -1,6 +1,6 @@
 ﻿namespace End
 {
-	public enum Charactor
+	public enum Character
 	{
 		LastBoss,
 	}

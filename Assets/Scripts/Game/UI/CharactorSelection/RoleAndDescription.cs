@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.Game.UI.CharactorSelection {
+namespace End.Game.UI.CharacterSelection {
     public class RoleAndDescription : MonoBehaviour{
         public Text RoleName, RoleDescription;
         public const string GOD_DESCRIPTION="Beat the Aspotle and All Atheist"

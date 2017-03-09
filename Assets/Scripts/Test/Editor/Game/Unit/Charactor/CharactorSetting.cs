@@ -4,24 +4,24 @@ using System;
 
 namespace End.Test
 {
-	public class CharactorSetting
+	public class CharacterSetting
 	{
-		private End.CharactorSetting _setting;
+		private End.CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
 			GameSetting setting = Resources.Load<GameSetting>("Game/Core/Setting/GameSetting");
-			_setting = setting.UnitSetting.CharactorSetting;
+			_setting = setting.UnitSetting.CharacterSetting;
 			Assert.IsNotNull(_setting);
 		}
 
 		[Test]
 		public void CheckEnumBlueprint()
 		{
-			foreach (Charactor c in Enum.GetValues(typeof(Charactor)))
+			foreach (Character c in Enum.GetValues(typeof(Character)))
 			{
-				Assert.IsNotNull(_setting.GetCharBlueprint(c), "Charactor blueprint not fonud for " + c.ToString());
+				Assert.IsNotNull(_setting.GetCharBlueprint(c), "Character blueprint not fonud for " + c.ToString());
 			}
 		}
 	}

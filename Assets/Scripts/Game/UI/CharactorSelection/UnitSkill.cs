@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-namespace End.Game.UI.CharactorSelection {
+namespace End.Game.UI.CharacterSelection {
     public class UnitSkill : MonoBehaviour{
         public Icon[] AbilityIcon;
         public Text TextAbilityName,TextDescription;
-        private List<object> _charactorAbilityList;
+        private List<object> _characterAbilityList;
 
         public void SetAbility(List<object> ability) {
-            this._charactorAbilityList = ability;
+            this._characterAbilityList = ability;
             renderAbility();
         }
 
         private void renderAbility() {
             int len = AbilityIcon.Length;
             for(int i=0;i<len;i++) {
-                if(i<_charactorAbilityList.Count) {
+                if(i<_characterAbilityList.Count) {
                     AbilityIcon[i].gameObject.SetActive(true);
                     //TODO : Set Ability Icon
                     

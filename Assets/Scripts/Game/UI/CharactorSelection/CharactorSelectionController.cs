@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using End.Game.UI.CharactorSelection;
-namespace End.UI.CharactorSelection {
-    public class CharactorSelectionController : MonoBehaviour{
+using End.Game.UI.CharacterSelection;
+namespace End.UI.CharacterSelection {
+    public class CharacterSelectionController : MonoBehaviour{
         public UnitStatus UnitStatus;
         public UnitSkill UnitSkill;
         //public Text
@@ -26,10 +26,10 @@ namespace End.UI.CharactorSelection {
         /// Show Unit Info 
         /// </summary>
         public void ShowUnitInformationUnit(object unit) {
-            //TODO : Set Charactor Status
-            //UnitStatus.setCharactorStatus();
+            //TODO : Set Character Status
+            //UnitStatus.setCharacterStatus();
             
-            //TODO : Set Charactor Ability
+            //TODO : Set Character Ability
             //UnitSkill.SetAbility();
         }
     }

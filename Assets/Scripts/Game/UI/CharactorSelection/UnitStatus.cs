@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-namespace End.Game.UI.CharactorSelection {
+namespace End.Game.UI.CharacterSelection {
     public class UnitStatus : MonoBehaviour{
         public Text HitPoint, AttackPower, AttackRange, VisionRange, MoveSpeed
             ,UnitName;
