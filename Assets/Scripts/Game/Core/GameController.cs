@@ -22,10 +22,12 @@ namespace End
 
 		private Systems _systems;
 		private Contexts _contexts;
+		private bool _isInitialized;
 
 		void Awake()
 		{
 			Instance = this;
+			_isInitialized = false;
 		}
 
 		void Start()
@@ -34,7 +36,7 @@ namespace End
 			Assert.IsNotNull(playerLoader);
 			if(IsOffline)
 			{
-				var players = playerLoader.GetComponentsInChildren<Player>();
+				var players = playerLoader.GetComponentsInChildren<Player>(true);
 				Player.PlayerCount = players.Length;
 			}
 			playerLoader.SetTargetPlayerCount(Player.PlayerCount);
@@ -42,12 +44,21 @@ namespace End
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
-			_systems.Initialize();
 		}
 
 		void Update()
 		{
 			Assert.IsTrue(_systems != null);
+
+			if (!PlayerLoader.Instance.IsComplete) return;
+
+			//initialize once
+			if (!_isInitialized)
+			{
+				Debug.Log("Initialize");
+				_systems.Initialize();
+				_isInitialized = true;
+			}
 
 			_systems.Execute();
 			_systems.Cleanup();

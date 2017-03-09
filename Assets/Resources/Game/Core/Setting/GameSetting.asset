@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: GameSetting
   m_EditorClassIdentifier: 
   MapSetting:
-    GameMap: {fileID: 11400000, guid: b67aea8a79756da4ea0cfab2d14c1a50, type: 2}
+    GameMap: {fileID: 11400000, guid: 4e1a95ec5af76e7489888a0660aba11f, type: 2}
     TileSetting:
       ViewRootPath: View/Tile
       TileBlueprints: {fileID: 11400000, guid: 78849841a2cb8c747931183a864e77c7, type: 2}
       BaseTileObject: {fileID: 1197980941474246, guid: e7d98db282ccf124b8cdf87a1d62d60b,
         type: 2}
   UnitSetting:
-    CharactorSetting:
-      CharactorBlueprints: {fileID: 11400000, guid: fd554e99cf52e0e4aae52587d723cf67,
+    CharacterSetting:
+      CharacterBlueprints: {fileID: 11400000, guid: fd554e99cf52e0e4aae52587d723cf67,
         type: 2}
