@@ -7,6 +7,7 @@ namespace End
 	public class TileController : MonoBehaviour
 	{
 		public GameObject ViewContainer;
+		public SpriteRenderer SelectionBorder;
 
 		private GameObject _tileView;
 
@@ -25,6 +26,16 @@ namespace End
 			{
 				ClickAction();
 			}
+		}
+
+		private void OnMouseEnter()
+		{
+			SelectionBorder.enabled = true;
+		}
+
+		private void OnMouseExit()
+		{
+			SelectionBorder.enabled = false;
 		}
 	}
 }
