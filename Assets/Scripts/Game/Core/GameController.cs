@@ -30,6 +30,15 @@ namespace End
 
 		void Start()
 		{
+			var playerLoader = PlayerLoader.Instance;
+			Assert.IsNotNull(playerLoader);
+			if(IsOffline)
+			{
+				var players = playerLoader.GetComponentsInChildren<Player>();
+				Player.PlayerCount = players.Length;
+			}
+			playerLoader.SetTargetPlayerCount(Player.PlayerCount);
+			
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
