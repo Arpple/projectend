@@ -37,6 +37,7 @@ namespace End.Test
 		{
 			_map.SetMap(5, 5, Tile.Grass);
 			_map.SetSpawnPoint(1, 1, 1);
+			_map.Save();
 			var system = new End.MapSystem(_contexts, _map, _setting);
 			system.Initialize();
 

@@ -41,6 +41,7 @@ namespace End.Test
 		{
 			_map.SetMap(5, 5, Tile.Grass);
 			_map.SetSpawnPoint(1, 2, 2);
+			_map.Save();
 
 			Assert.IsTrue(_map.IsSpawnPoint(2, 2));
 		}

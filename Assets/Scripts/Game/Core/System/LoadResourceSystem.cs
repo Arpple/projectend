@@ -35,6 +35,10 @@ namespace End
 				var obj = new GameObject("EntityView");
 				var spriteRenderer = obj.AddComponent<SpriteRenderer>();
 				spriteRenderer.sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
+				if(spriteRenderer.sprite == null)
+				{
+					throw new MissingReferenceException("Resource " + e.resource.SpritePath);
+				}
 
 				e.AddView(obj);
 				obj.Link(e, _context);

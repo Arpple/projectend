@@ -22,7 +22,7 @@ namespace End.Test
 			var system = new End.LoadResourceSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Ability/Card_Image/Basic/Basic_Attack");
+			entity.AddResource("Game/Ability/CardImage/Basic/Basic_Attack");
 
 			//action
 			system.Execute();

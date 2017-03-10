@@ -18,7 +18,7 @@ namespace End
 			Assert.IsNotNull(map);
 
 			_context = contexts.game;
-			_map = map.Load();
+			_map = map;
 			_setting = setting;
 		}
 

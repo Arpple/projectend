@@ -78,6 +78,7 @@ namespace End
 				.Add(new TileGraphSystem(contexts))
 				.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
 
+				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new RenderTileSystem(contexts, Setting.MapSetting.TileSetting))
 				.Add(new TileActionSystem(contexts))

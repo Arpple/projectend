@@ -81,6 +81,10 @@ namespace End
 			);
 
 			_spawnPoints = new List<SpawnPoint>();
+			_indexedSpawnpoints = new Dictionary<int, SpawnPoint>();
+			_spawnPoints.Count.Loop(
+				(i) => _indexedSpawnpoints.Add(i + 1, _spawnPoints[i])
+			);
 
 			return this;
 		}
@@ -147,16 +151,6 @@ namespace End
 				}
 			}
 			return false;
-		}
-
-		public Map Load()
-		{
-			_indexedSpawnpoints = new Dictionary<int, SpawnPoint>();
-			_spawnPoints.Count.Loop(
-				(i) => _indexedSpawnpoints.Add(i + 1, _spawnPoints[i])
-			);
-
-			return this;
 		}
 
 		public Map Save()
