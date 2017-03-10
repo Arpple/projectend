@@ -1,16 +1,11 @@
-﻿using System.Collections;
+﻿using Entitas;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterComponent : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+namespace End
+{
+	[Game]
+	public class CharacterComponent : IComponent
+	{}
 }

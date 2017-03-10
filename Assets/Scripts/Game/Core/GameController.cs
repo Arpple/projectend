@@ -76,6 +76,7 @@ namespace End
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap, Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
+				.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
 
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new RenderTileSystem(contexts, Setting.MapSetting.TileSetting))
