@@ -8,8 +8,8 @@ namespace End.MapEditor
 {
 	public enum BrushAction
 	{
-		Click,
-		Drag,
+		Tile,
+		Spawnpoint,
 	}
 
 	[Game, Unique]
@@ -17,6 +17,7 @@ namespace End.MapEditor
 	{
 		public Tile TileType;
 		public BrushAction Action;
+		public int SpawnpointIndex;
 	}
 
 }

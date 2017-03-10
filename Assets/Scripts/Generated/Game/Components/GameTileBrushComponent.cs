@@ -11,17 +11,19 @@ public partial class GameEntity {
     public End.MapEditor.TileBrushComponent tileBrush { get { return (End.MapEditor.TileBrushComponent)GetComponent(GameComponentsLookup.TileBrush); } }
     public bool hasTileBrush { get { return HasComponent(GameComponentsLookup.TileBrush); } }
 
-    public void AddTileBrush(End.Tile newTileType, End.MapEditor.BrushAction newAction) {
+    public void AddTileBrush(End.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         var component = CreateComponent<End.MapEditor.TileBrushComponent>(GameComponentsLookup.TileBrush);
         component.TileType = newTileType;
         component.Action = newAction;
+        component.SpawnpointIndex = newSpawnpointIndex;
         AddComponent(GameComponentsLookup.TileBrush, component);
     }
 
-    public void ReplaceTileBrush(End.Tile newTileType, End.MapEditor.BrushAction newAction) {
+    public void ReplaceTileBrush(End.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         var component = CreateComponent<End.MapEditor.TileBrushComponent>(GameComponentsLookup.TileBrush);
         component.TileType = newTileType;
         component.Action = newAction;
+        component.SpawnpointIndex = newSpawnpointIndex;
         ReplaceComponent(GameComponentsLookup.TileBrush, component);
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -51,8 +52,8 @@ namespace End
 			}
 		}
 
-		private MapRow[] _rows;
-		private Dictionary<int, SpawnPoint> _spawnPoints;
+		[SerializeField] private MapRow[] _rows;
+		[SerializeField] private SpawnPoint[] _spawnPoints;
 
 		public int Width
 		{
@@ -77,7 +78,7 @@ namespace End
 				(i) => _rows[i] = new MapRow(width, defaultTile)
 			);
 
-			_spawnPoints = new Dictionary<int, SpawnPoint>();
+			_spawnPoints = new SpawnPoint[Player.MAX_PLAYER];
 
 			return this;
 		}
@@ -116,23 +117,39 @@ namespace End
 
 		public Map SetSpawnPoint(int index, int x, int y)
 		{
-			if(_spawnPoints.ContainsKey(index))
-			{
-				var s = _spawnPoints[index];
-				s.x = x;
-				s.y = y;
-			}
-			else
-			{
-				_spawnPoints.Add(index, new SpawnPoint(x, y));
-			}
-
+			_spawnPoints[index - 1] = new SpawnPoint(x, y);
 			return this;
 		}
 
 		public Map SetSpawnPoint(int index, MapPositionComponent pos)
 		{
 			return SetSpawnPoint(index, pos.x, pos.y);
+		}
+
+		public bool IsSpawnPoint(int x, int y)
+		{
+			foreach (var sp in _spawnPoints)
+			{
+				if(sp.x == x && sp.y == y)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public Map Load()
+		{
+			_spawnPoints = _spawnPoints.Where(sp => sp != null).ToArray();
+
+			return this;
+		}
+
+		public Map Save()
+		{
+			_spawnPoints = _spawnPoints.Where(sp => sp != null).ToArray();
+
+			return this;
 		}
 	}	
 }

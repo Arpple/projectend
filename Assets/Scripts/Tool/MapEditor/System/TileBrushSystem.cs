@@ -1,6 +1,7 @@
 ﻿using Entitas;
 using Entitas.Unity;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Entitas.Blueprints;
 
@@ -32,30 +33,59 @@ namespace End.MapEditor
 
 		public void Initialize()
 		{
-			_context.SetTileBrush(Tile.DeepForest, BrushAction.Click);
+			_context.SetTileBrush(Tile.DeepForest, BrushAction.Tile, 1);
 			TileBrush = _context.tileBrush;
 		}
 
 		protected override void Execute (List<GameEntity> entities)
 		{
-			var brushTile = _context.tileBrush.TileType;
+			var brush = _context.tileBrush;
+			var brushTile = brush.TileType;
 
 			foreach(var e in entities)
 			{
 				e.AddTileAction(null, e, (none, tileEntity) => {
-					if(tileEntity.tile.Type == brushTile) return;
+					if (brush.Action == BrushAction.Tile)
+					{
+						if (tileEntity.tile.Type == brushTile) return;
 
-					//remove old view
-					var link = tileEntity.view.GameObject.GetEntityLink();
-					link.Unlink();
-					GameObject.Destroy(tileEntity.view.GameObject);
+						//remove old view
+						var link = tileEntity.view.GameObject.GetEntityLink();
+						link.Unlink();
+						GameObject.Destroy(tileEntity.view.GameObject);
 
-					var pos = e.mapPosition;
-					e.RemoveAllComponents();
+						var pos = e.mapPosition;
+						e.RemoveAllComponents();
 
-					e.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
-					e.AddTile(brushTile);
-					e.AddMapPosition(pos.x, pos.y);
+						e.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
+						e.AddTile(brushTile);
+						e.AddMapPosition(pos.x, pos.y);
+					}
+					else if (brush.Action == BrushAction.Spawnpoint)
+					{
+						var oldSpawnpoint = _context.GetEntities(GameMatcher.Spawnpoint)
+							.Where(s => s.spawnpoint.index == brush.SpawnpointIndex)
+							.FirstOrDefault();
+
+						if(oldSpawnpoint != null)
+						{
+							oldSpawnpoint.RemoveSpawnpoint();
+						}
+
+						if (e.hasSpawnpoint)
+						{
+							Debug.Log("Spawnpoint replaced " + e.spawnpoint.index + "=>" + brush.SpawnpointIndex + " : " + e.mapPosition);
+							e.ReplaceSpawnpoint(brush.SpawnpointIndex);
+						}
+						else
+						{
+							Debug.Log("Spawnpoint set " + brush.SpawnpointIndex + " : " + e.mapPosition);
+							e.AddSpawnpoint(brush.SpawnpointIndex);
+						}
+
+						
+						
+					}
 				});
 			}
 		}

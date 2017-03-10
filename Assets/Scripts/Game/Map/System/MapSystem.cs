@@ -15,13 +15,14 @@ namespace End
 		public MapSystem(Contexts contexts, Map map, MapSetting setting)
 		{
 			_context = contexts.game;
-			_map = map;
+			_map = map.Load();
 			_setting = setting;
 		}
 
 		public void Initialize ()
 		{
 			var tileSetting = _setting.TileSetting;
+			var spawnpointCounter = 1;
 
 			_map.Heigth.Loop((y) => {
 				_map.Width.Loop((x) => {
@@ -31,6 +32,12 @@ namespace End
 					tileEntity.ApplyBlueprint(tileSetting.GetTileBlueprint(tile));
 					tileEntity.AddTile(tile);
 					tileEntity.AddMapPosition(x, y);
+
+					if(_map.IsSpawnPoint(x, y))
+					{
+						tileEntity.AddSpawnpoint(spawnpointCounter);
+						spawnpointCounter++;
+					}
 				});
 			});
 		}

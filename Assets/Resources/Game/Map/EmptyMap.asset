@@ -11,3 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ce6b15d9f651044b23c2c64243775e, type: 3}
   m_Name: EmptyMap
   m_EditorClassIdentifier: 
+  _rows: []
+  _spawnPoints:
+  - x: 0
+    y: 0
+  - x: 1
+    y: 0

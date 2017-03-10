@@ -19,9 +19,11 @@ namespace End.Test
 			_map.SetMap(5, 5, Tile.Grass);
 			Assert.AreEqual(Tile.Grass, _map.GetTile(4, 4));
 
-			var pos = new End.MapPositionComponent();
-			pos.x = 4;
-			pos.y = 4;
+			var pos = new MapPositionComponent()
+			{
+				x = 4,
+				y = 4
+			};
 			Assert.AreEqual(Tile.Grass, _map.GetTile(pos));
 		}
 
@@ -32,6 +34,15 @@ namespace End.Test
 			_map.SetTile(1, 1, Tile.None);
 
 			Assert.AreEqual(Tile.None, _map.GetTile(1, 1));
+		}
+
+		[Test]
+		public void Spawnpoint()
+		{
+			_map.SetMap(5, 5, Tile.Grass);
+			_map.SetSpawnPoint(1, 2, 2);
+
+			Assert.IsTrue(_map.IsSpawnPoint(2, 2));
 		}
 	}
 }

@@ -27,5 +27,10 @@ namespace End
 		{
 			return x == otherPosition.x && y == otherPosition.y;
 		}
+
+		public override string ToString()
+		{
+			return "(" + x + "," + y + ")";
+		}
 	}
 }
