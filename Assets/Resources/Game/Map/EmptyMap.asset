@@ -15,5 +15,9 @@ MonoBehaviour:
   _spawnPoints:
   - x: 0
     y: 0
-  - x: 1
+  - x: 4
     y: 0
+  - x: 0
+    y: 4
+  - x: 4
+    y: 4

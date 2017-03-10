@@ -39,54 +39,54 @@ namespace End.MapEditor
 
 		protected override void Execute (List<GameEntity> entities)
 		{
+			foreach(var e in entities)
+			{
+				e.AddTileAction(null, e, ReplaceTile);
+			}
+		}
+
+		void ReplaceTile(GameEntity none, GameEntity tileEntity)
+		{
 			var brush = _context.tileBrush;
 			var brushTile = brush.TileType;
 
-			foreach(var e in entities)
+			if (brush.Action == BrushAction.Tile)
 			{
-				e.AddTileAction(null, e, (none, tileEntity) => {
-					if (brush.Action == BrushAction.Tile)
-					{
-						if (tileEntity.tile.Type == brushTile) return;
+				if (tileEntity.tile.Type == brushTile) return;
 
-						//remove old view
-						var link = tileEntity.view.GameObject.GetEntityLink();
-						link.Unlink();
-						GameObject.Destroy(tileEntity.view.GameObject);
+				//remove old view
+				var link = tileEntity.view.GameObject.GetEntityLink();
+				link.Unlink();
+				GameObject.Destroy(tileEntity.view.GameObject);
 
-						var pos = e.mapPosition;
-						e.RemoveAllComponents();
+				var pos = tileEntity.mapPosition;
+				tileEntity.RemoveAllComponents();
 
-						e.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
-						e.AddTile(brushTile);
-						e.AddMapPosition(pos.x, pos.y);
-					}
-					else if (brush.Action == BrushAction.Spawnpoint)
-					{
-						var oldSpawnpoint = _context.GetEntities(GameMatcher.Spawnpoint)
-							.Where(s => s.spawnpoint.index == brush.SpawnpointIndex)
-							.FirstOrDefault();
+				tileEntity.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
+				tileEntity.AddTile(brushTile);
+				tileEntity.AddMapPosition(pos.x, pos.y);
+			}
+			else if (brush.Action == BrushAction.Spawnpoint)
+			{
+				var oldSpawnpoint = _context.GetEntities(GameMatcher.Spawnpoint)
+					.Where(s => s.spawnpoint.index == brush.SpawnpointIndex)
+					.FirstOrDefault();
 
-						if(oldSpawnpoint != null)
-						{
-							oldSpawnpoint.RemoveSpawnpoint();
-						}
+				if (oldSpawnpoint != null)
+				{
+					oldSpawnpoint.RemoveSpawnpoint();
+				}
 
-						if (e.hasSpawnpoint)
-						{
-							Debug.Log("Spawnpoint replaced " + e.spawnpoint.index + "=>" + brush.SpawnpointIndex + " : " + e.mapPosition);
-							e.ReplaceSpawnpoint(brush.SpawnpointIndex);
-						}
-						else
-						{
-							Debug.Log("Spawnpoint set " + brush.SpawnpointIndex + " : " + e.mapPosition);
-							e.AddSpawnpoint(brush.SpawnpointIndex);
-						}
-
-						
-						
-					}
-				});
+				if (tileEntity.hasSpawnpoint)
+				{
+					Debug.Log("Spawnpoint replaced " + tileEntity.spawnpoint.index + "=>" + brush.SpawnpointIndex + " : " + tileEntity.mapPosition);
+					tileEntity.ReplaceSpawnpoint(brush.SpawnpointIndex);
+				}
+				else
+				{
+					Debug.Log("Spawnpoint set " + brush.SpawnpointIndex + " : " + tileEntity.mapPosition);
+					tileEntity.AddSpawnpoint(brush.SpawnpointIndex);
+				}
 			}
 		}
 	}

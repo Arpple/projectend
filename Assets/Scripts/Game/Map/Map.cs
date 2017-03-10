@@ -53,7 +53,9 @@ namespace End
 		}
 
 		[SerializeField] private MapRow[] _rows;
-		[SerializeField] private SpawnPoint[] _spawnPoints;
+		[SerializeField] private List<SpawnPoint> _spawnPoints;
+
+		[NonSerialized] private Dictionary<int, SpawnPoint> _indexedSpawnpoints;
 
 		public int Width
 		{
@@ -78,7 +80,7 @@ namespace End
 				(i) => _rows[i] = new MapRow(width, defaultTile)
 			);
 
-			_spawnPoints = new SpawnPoint[Player.MAX_PLAYER];
+			_spawnPoints = new List<SpawnPoint>();
 
 			return this;
 		}
@@ -117,7 +119,16 @@ namespace End
 
 		public Map SetSpawnPoint(int index, int x, int y)
 		{
-			_spawnPoints[index - 1] = new SpawnPoint(x, y);
+			if(_indexedSpawnpoints.ContainsKey(index))
+			{
+				_indexedSpawnpoints[index].x = x;
+				_indexedSpawnpoints[index].y = y;
+			}
+			else
+			{
+				_indexedSpawnpoints.Add(index, new SpawnPoint(x, y));
+			}
+			
 			return this;
 		}
 
@@ -140,14 +151,17 @@ namespace End
 
 		public Map Load()
 		{
-			_spawnPoints = _spawnPoints.Where(sp => sp != null).ToArray();
+			_indexedSpawnpoints = new Dictionary<int, SpawnPoint>();
+			_spawnPoints.Count.Loop(
+				(i) => _indexedSpawnpoints.Add(i + 1, _spawnPoints[i])
+			);
 
 			return this;
 		}
 
 		public Map Save()
 		{
-			_spawnPoints = _spawnPoints.Where(sp => sp != null).ToArray();
+			_spawnPoints = _indexedSpawnpoints.Values.Where(s => s != null).ToList();
 
 			return this;
 		}

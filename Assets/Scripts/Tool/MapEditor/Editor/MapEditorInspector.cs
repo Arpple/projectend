@@ -27,7 +27,7 @@ namespace End.MapEditor
 					brush.SpawnpointIndex = EditorGUILayout.IntField("Spawnpoint Index", brush.SpawnpointIndex);
 					if (brush.SpawnpointIndex < 0 || brush.SpawnpointIndex > Player.MAX_PLAYER)
 					{
-						brush.SpawnpointIndex = 0;
+						brush.SpawnpointIndex = 1;
 						Debug.LogWarning("spawn point index should be player id (1-" + Player.MAX_PLAYER + ")");
 					}
 				}
@@ -39,6 +39,7 @@ namespace End.MapEditor
 				if (GUILayout.Button("Save"))
 				{
 					var map = MapEditorController.EdittingMap;
+					var spawnpointCount = 0;
 
 					foreach (var tileEntity in Contexts.sharedInstance.game.GetGroup(GameMatcher.Tile).GetEntities())
 					{
@@ -46,8 +47,14 @@ namespace End.MapEditor
 						if(tileEntity.hasSpawnpoint)
 						{
 							map.SetSpawnPoint(tileEntity.spawnpoint.index, tileEntity.mapPosition);
+							spawnpointCount++;
 						}
 					}
+					if(spawnpointCount < Player.MAX_PLAYER)
+					{
+						Debug.LogWarning("Spawnpoint is less than maximum player (" + spawnpointCount + "/" + Player.MAX_PLAYER + ")");
+					}
+
 					map.Save();
 					ProjectWindowUtil.CreateAsset(map, "Assets/Resources/Game/Map/NewMap.asset");
 				}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: GameSetting
   m_EditorClassIdentifier: 
   MapSetting:
-    GameMap: {fileID: 11400000, guid: 4e1a95ec5af76e7489888a0660aba11f, type: 2}
+    GameMap: {fileID: 11400000, guid: 88fd1c97cae29ff49902162a45a40196, type: 2}
     TileSetting:
       ViewRootPath: View/Tile
       TileBlueprints: {fileID: 11400000, guid: 78849841a2cb8c747931183a864e77c7, type: 2}
