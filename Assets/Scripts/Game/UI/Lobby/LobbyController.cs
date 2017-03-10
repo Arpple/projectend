@@ -8,6 +8,7 @@ namespace End.UI.Lobby {
     public class LobbyController : MonoBehaviour{
         public LobbyBodyController LobbyBodyController;
         public void AddPlayer() {
+            Debug.Log("AddPlayer");
             LobbyBodyController.AddPlayer();
         }
 
