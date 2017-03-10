@@ -18,8 +18,14 @@ namespace End
 		{
 			foreach (var p in _players)
 			{
+				//create player
 				_context.CreateEntity()
 					.AddPlayer(p);
+
+				//create character
+				var character = _context.CreateEntity();
+				character.AddUnit(p);
+				character.AddCharacter(p.SelectedCharacter);
 			}
 		}
 	}

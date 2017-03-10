@@ -11,7 +11,7 @@ namespace End
 		public static int PlayerCount;
 
 		[SyncVar] public int PlayerId;
-		[SyncVar] Character SelectedCharacter;
+		[SyncVar] public Character SelectedCharacter;
 
 		void Start()
 		{
