@@ -27,7 +27,7 @@ namespace End.MapEditor
 					brush.SpawnpointIndex = EditorGUILayout.IntField("Spawnpoint Index", brush.SpawnpointIndex);
 					if (brush.SpawnpointIndex < 0 || brush.SpawnpointIndex > Player.MAX_PLAYER)
 					{
-						brush.SpawnpointIndex = 0;
+						brush.SpawnpointIndex = 1;
 						Debug.LogWarning("spawn point index should be player id (1-" + Player.MAX_PLAYER + ")");
 					}
 				}

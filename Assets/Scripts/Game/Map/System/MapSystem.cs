@@ -2,6 +2,7 @@
 using UnityEngine;
 using Entitas;
 using Entitas.Blueprints;
+using UnityEngine.Assertions;
 
 namespace End
 {
@@ -14,6 +15,8 @@ namespace End
 
 		public MapSystem(Contexts contexts, Map map, MapSetting setting)
 		{
+			Assert.IsNotNull(map);
+
 			_context = contexts.game;
 			_map = map.Load();
 			_setting = setting;
