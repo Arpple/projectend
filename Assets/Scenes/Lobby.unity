@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 396546473}
   - component: {fileID: 396546472}
   - component: {fileID: 396546474}
+  - component: {fileID: 396546475}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -467,6 +468,24 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &396546475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396546470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7f0689f4042ea4f8ceeb4d4644e6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabsPlayerLobbyLeft: {fileID: 114912032014018612, guid: 7bc08f2361e9cc94cb17c1bf912abc8c,
+    type: 2}
+  PrefabsPlayerLobbyRight: {fileID: 114778870010374020, guid: 8305f93498512634fb8098aafa3455dd,
+    type: 2}
+  PrefabsPlayerRow: {fileID: 1041056794732472, guid: 95657767c39771243890bd94ce2f541a,
+    type: 2}
+  Content: {fileID: 0}
 --- !u!1 &468735529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,16 +1047,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2049567050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4daf39da0f4000048b7e1bf51822ceb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 98de52d904a281f43b8571955ccbe08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabsPlayerLobbyLeft: {fileID: 114912032014018612, guid: fcbd9b1f2e9dd9749b3eda224201443e,
-    type: 2}
-  PrefabsPlayerLobbyRight: {fileID: 114078262206196508, guid: 1e6b8708b85986f4c9ca9a0c159854f7,
-    type: 2}
-  PrefabsPlayerRow: {fileID: 1041056794732472, guid: a7dd40ed114cccf4cb770dd3a6d9ebb7,
-    type: 2}
-  Content: {fileID: 549674961}
+  LobbyBodyController: {fileID: 396546475}
 --- !u!1 &2112758992
 GameObject:
   m_ObjectHideFlags: 0

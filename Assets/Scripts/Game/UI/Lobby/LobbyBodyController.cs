@@ -44,7 +44,7 @@ namespace End.UI.Lobby {
         /// <returns></returns>
         private GameObject SpawnPlayerLobbyRow() {
             //Debug.Log("PrefabsPlayerRow is null ? "+(PrefabsPlayerRow==null)+" at round [ "+this._playerLobbyRowList.Count+" ]");
-            GameObject row = Instantiate<GameObject>(this.PrefabsPlayerRow,this.Content.transform,false);
+            GameObject row = Instantiate(this.PrefabsPlayerRow,this.Content.transform,false);
             row.transform.SetParent(this.Content.transform);
             row.gameObject.SetActive(true);
             this._playerLobbyRowList.Add(row);
