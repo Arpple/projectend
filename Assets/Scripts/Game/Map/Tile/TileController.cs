@@ -9,17 +9,11 @@ namespace End
 	{
 		private static GameObject _parent;
 
-		public string ParentName;
 		public SpriteRenderer SelectionBorder;
 		public SpriteRenderer TileSprite;
 		public TileClickAction ClickAction;
 
 		public delegate void TileClickAction();
-
-		private void Start()
-		{
-			transform.SetParent(ParentName);
-		}
 
 		void OnMouseDown()
 		{

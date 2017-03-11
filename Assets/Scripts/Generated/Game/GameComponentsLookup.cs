@@ -20,8 +20,9 @@ public static class GameComponentsLookup {
     public const int TileGraph = 9;
     public const int Unit = 10;
     public const int View = 11;
+    public const int ViewContainer = 12;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "Character",
@@ -35,7 +36,8 @@ public static class GameComponentsLookup {
         "TileBrush",
         "TileGraph",
         "Unit",
-        "View"
+        "View",
+        "ViewContainer"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -50,6 +52,7 @@ public static class GameComponentsLookup {
         typeof(End.MapEditor.TileBrushComponent),
         typeof(End.TileGraphComponent),
         typeof(End.UnitComponent),
-        typeof(End.ViewComponent)
+        typeof(End.ViewComponent),
+        typeof(End.ViewContainerComponent)
     };
 }
