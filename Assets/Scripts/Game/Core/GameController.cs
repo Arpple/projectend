@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using Entitas;
+﻿using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace End
+namespace End.Game
 {
 	public class GameController : MonoBehaviour
 	{

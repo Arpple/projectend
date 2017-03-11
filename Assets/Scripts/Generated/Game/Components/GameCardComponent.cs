@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.CardComponent card { get { return (End.CardComponent)GetComponent(GameComponentsLookup.Card); } }
+    public End.Game.CardComponent card { get { return (End.Game.CardComponent)GetComponent(GameComponentsLookup.Card); } }
     public bool hasCard { get { return HasComponent(GameComponentsLookup.Card); } }
 
-    public void AddCard(End.Card newType) {
-        var component = CreateComponent<End.CardComponent>(GameComponentsLookup.Card);
+    public void AddCard(End.Game.Card newType) {
+        var component = CreateComponent<End.Game.CardComponent>(GameComponentsLookup.Card);
         component.Type = newType;
         AddComponent(GameComponentsLookup.Card, component);
     }
 
-    public void ReplaceCard(End.Card newType) {
-        var component = CreateComponent<End.CardComponent>(GameComponentsLookup.Card);
+    public void ReplaceCard(End.Game.Card newType) {
+        var component = CreateComponent<End.Game.CardComponent>(GameComponentsLookup.Card);
         component.Type = newType;
         ReplaceComponent(GameComponentsLookup.Card, component);
     }

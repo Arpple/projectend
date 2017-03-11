@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace End
+namespace End.Game
 {
 	public interface ICustomView
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
-namespace End
+namespace End.Lobby.UI
 {
 	public class LoungeConnectionDialogue : MonoBehaviour
 	{

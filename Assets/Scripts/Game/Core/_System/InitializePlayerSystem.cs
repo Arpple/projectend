@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 
-namespace End
+namespace End.Game
 {
 	public class InitializePlayerSystem : IInitializeSystem
 	{

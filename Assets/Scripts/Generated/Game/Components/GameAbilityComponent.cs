@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.AbilityComponent ability { get { return (End.AbilityComponent)GetComponent(GameComponentsLookup.Ability); } }
+    public End.Game.AbilityComponent ability { get { return (End.Game.AbilityComponent)GetComponent(GameComponentsLookup.Ability); } }
     public bool hasAbility { get { return HasComponent(GameComponentsLookup.Ability); } }
 
-    public void AddAbility(End.Ability newAbility) {
-        var component = CreateComponent<End.AbilityComponent>(GameComponentsLookup.Ability);
+    public void AddAbility(End.Game.Ability newAbility) {
+        var component = CreateComponent<End.Game.AbilityComponent>(GameComponentsLookup.Ability);
         component.Ability = newAbility;
         AddComponent(GameComponentsLookup.Ability, component);
     }
 
-    public void ReplaceAbility(End.Ability newAbility) {
-        var component = CreateComponent<End.AbilityComponent>(GameComponentsLookup.Ability);
+    public void ReplaceAbility(End.Game.Ability newAbility) {
+        var component = CreateComponent<End.Game.AbilityComponent>(GameComponentsLookup.Ability);
         component.Ability = newAbility;
         ReplaceComponent(GameComponentsLookup.Ability, component);
     }

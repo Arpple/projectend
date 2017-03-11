@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using Entitas;
-using Entitas.CodeGenerator.Api;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class MapPositionComponent : IComponent

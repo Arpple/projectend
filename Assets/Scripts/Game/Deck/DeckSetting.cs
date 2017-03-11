@@ -1,6 +1,6 @@
-﻿using Entitas.Unity.Blueprints;
-using System;
-namespace End
+﻿using System;
+
+namespace End.Game
 {
 	[Serializable]
 	public class DeckSetting

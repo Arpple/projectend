@@ -1,6 +1,4 @@
-﻿using System;
-using Entitas;
-using Entitas.Unity;
+﻿using Entitas.Unity;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -20,7 +18,7 @@ namespace End.Test
 		public void LoadResourcesWithSprite()
 		{
 			//given
-			var system = new End.LoadResourceSystem(_contexts);
+			var system = new Game.LoadResourceSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddResource("Test/Editor/Sprite", null);
@@ -37,7 +35,7 @@ namespace End.Test
 		[Test]
 		public void LoadResourcesWithSpriteAndBasePrefabs()
 		{
-			var system = new End.LoadResourceSystem(_contexts);
+			var system = new Game.LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
 			entity.AddResource("Test/Editor/Sprite", "Test/Editor/Prefabs");
 
@@ -52,7 +50,7 @@ namespace End.Test
 		[Test]
 		public void LoadResourcesWithSpriteAndCustomViewBasePrefabs()
 		{
-			var system = new End.LoadResourceSystem(_contexts);
+			var system = new Game.LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
 			entity.AddResource("Test/Editor/Sprite", "Test/Editor/CustomViewPrefabs");
 

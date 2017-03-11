@@ -1,6 +1,4 @@
-﻿using Entitas;
-
-namespace End.Test
+﻿namespace End.Test
 {
 	public static class TestHelper
 	{

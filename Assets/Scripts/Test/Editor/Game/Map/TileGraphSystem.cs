@@ -23,7 +23,7 @@ namespace End.Test
 			var downTile = CreateTile(2, 1);
 			var unconnectedTile = CreateTile(1, 1);
 
-			var system = new End.TileGraphSystem(_contexts);
+			var system = new Game.TileGraphSystem(_contexts);
 			system.Initialize();
 
 			Assert.AreEqual(leftTile, originTile.tileGraph.Left);
@@ -43,7 +43,7 @@ namespace End.Test
 		private GameEntity CreateTile(int x, int y)
 		{
 			var entity = _contexts.game.CreateEntity();
-			entity.AddTile(Tile.Grass);
+			entity.AddTile(Game.Tile.Grass);
 			entity.AddMapPosition(x, y);
 			return entity;
 		}

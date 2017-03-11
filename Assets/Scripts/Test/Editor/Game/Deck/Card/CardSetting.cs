@@ -1,17 +1,18 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
 using System;
+using End.Game;
 
 namespace End.Test
 {
 	public class CardSetting
 	{
-		private End.CardSetting _setting;
+		private Game.CardSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			GameSetting setting = Resources.Load<End.GameSetting>("Game/Core/_Setting/GameSetting");
+			GameSetting setting = Resources.Load<GameSetting>("Game/Core/_Setting/GameSetting");
 			_setting = setting.DeckSetting.CardSetting;
 			Assert.IsNotNull(_setting);
 		}

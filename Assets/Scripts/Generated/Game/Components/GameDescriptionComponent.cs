@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent description { get { return (End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent)GetComponent(GameComponentsLookup.Description); } }
+    public End.Game.Role.RoleDescriptionComponent.DescriptionComponent description { get { return (End.Game.Role.RoleDescriptionComponent.DescriptionComponent)GetComponent(GameComponentsLookup.Description); } }
     public bool hasDescription { get { return HasComponent(GameComponentsLookup.Description); } }
 
     public void AddDescription(string newName, string newDescription) {
-        var component = CreateComponent<End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent>(GameComponentsLookup.Description);
+        var component = CreateComponent<End.Game.Role.RoleDescriptionComponent.DescriptionComponent>(GameComponentsLookup.Description);
         component.Name = newName;
         component.Description = newDescription;
         AddComponent(GameComponentsLookup.Description, component);
     }
 
     public void ReplaceDescription(string newName, string newDescription) {
-        var component = CreateComponent<End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent>(GameComponentsLookup.Description);
+        var component = CreateComponent<End.Game.Role.RoleDescriptionComponent.DescriptionComponent>(GameComponentsLookup.Description);
         component.Name = newName;
         component.Description = newDescription;
         ReplaceComponent(GameComponentsLookup.Description, component);

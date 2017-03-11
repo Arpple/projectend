@@ -2,7 +2,7 @@
 using Entitas;
 using Entitas.Blueprints;
 
-namespace End
+namespace End.Game
 {
 	public abstract class LoadBlueprintSystem : ReactiveSystem<GameEntity>
 	{

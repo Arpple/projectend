@@ -2,7 +2,7 @@
 using Entitas.Unity.Blueprints;
 using System;
 
-namespace End
+namespace End.Game
 {
 	[Serializable]
 	public class CharacterSetting

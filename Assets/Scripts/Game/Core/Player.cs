@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine.Networking;
 
-namespace End
+namespace End.Game
 {
 	public class Player : NetworkBehaviour
 	{

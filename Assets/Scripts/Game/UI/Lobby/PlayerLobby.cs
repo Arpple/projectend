@@ -1,10 +1,8 @@
 using End.Game.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.UI.Lobby {
+namespace End.Lobby.UI {
     public class PlayerLobby: MonoBehaviour {
         public enum PlayerStatus {
             Waiting,Ready

@@ -1,9 +1,6 @@
 ﻿using Entitas;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class PlayerComponent : IComponent

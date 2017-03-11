@@ -1,10 +1,7 @@
 ﻿using Entitas;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
 
-namespace End
+namespace End.Game
 {
 	public class ViewContainerSystem : ReactiveSystem<GameEntity>
 	{

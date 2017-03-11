@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Entitas;
 using Entitas.Blueprints;
-using UnityEngine;
 
-namespace End
+namespace End.Game
 {
 	public class LoadCharacterSystem : LoadUnitSystem
 	{

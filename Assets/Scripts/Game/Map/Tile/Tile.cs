@@ -1,4 +1,4 @@
-﻿namespace End
+﻿namespace End.Game
 {
 	public enum Tile
 	{

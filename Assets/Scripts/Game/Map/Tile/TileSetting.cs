@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Entitas.Unity.Blueprints;
+﻿using Entitas.Unity.Blueprints;
 using Entitas.Blueprints;
-using System.Linq;
 using System;
-using UnityEngine.Assertions;
 
-namespace End
+namespace End.Game
 {
 	[Serializable]
 	public class TileSetting

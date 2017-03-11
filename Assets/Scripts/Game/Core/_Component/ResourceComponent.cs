@@ -1,8 +1,6 @@
 ﻿using Entitas;
-using UnityEngine;
-using Entitas.CodeGenerator.Api;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class ResourceComponent : IComponent

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Entitas;
-using Entitas.Blueprints;
-
-namespace End
+﻿namespace End.Game
 {
 	public abstract class LoadUnitSystem :LoadBlueprintSystem
 	{

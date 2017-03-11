@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace End.MapEditor
 {
 	public class MapEditorSetting : ScriptableObject
 	{
-		public MapSetting MapSetting;
+		public Game.MapSetting MapSetting;
 	}
 
 }

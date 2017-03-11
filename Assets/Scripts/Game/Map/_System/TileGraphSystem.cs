@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using Entitas;
+﻿using Entitas;
 using System.Linq;
 
-namespace End
+namespace End.Game
 {
 	public class TileGraphSystem : IInitializeSystem
 	{

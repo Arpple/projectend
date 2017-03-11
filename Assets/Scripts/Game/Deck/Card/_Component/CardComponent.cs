@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class CardComponent : IComponent

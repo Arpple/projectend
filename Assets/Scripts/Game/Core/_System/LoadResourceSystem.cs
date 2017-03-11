@@ -3,7 +3,7 @@ using UnityEngine;
 using Entitas;
 using Entitas.Unity;
 
-namespace End
+namespace End.Game
 {
 	public sealed class LoadResourceSystem : ReactiveSystem<GameEntity>
 	{

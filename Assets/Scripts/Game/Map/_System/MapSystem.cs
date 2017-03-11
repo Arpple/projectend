@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Entitas;
+﻿using Entitas;
 using Entitas.Blueprints;
 using UnityEngine.Assertions;
 
-namespace End
+namespace End.Game
 {
 	public class MapSystem : IInitializeSystem
 	{

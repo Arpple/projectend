@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
+using End.Game;
 
 namespace End.Test
 {
 	public class LoadCharacterSystem
 	{
 		private Contexts _contexts;
-		private End.CharacterSetting _setting;
+		private Game.CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
@@ -21,7 +22,7 @@ namespace End.Test
 		[Test]
 		public void LoadCharacter()
 		{
-			var system = new End.LoadCharacterSystem(_contexts, _setting);
+			var system = new Game.LoadCharacterSystem(_contexts, _setting);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddCharacter(Character.LastBoss);

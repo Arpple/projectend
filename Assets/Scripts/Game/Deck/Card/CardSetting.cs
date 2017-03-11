@@ -2,7 +2,7 @@
 using Entitas.Blueprints;
 using Entitas.Unity.Blueprints;
 
-namespace End
+namespace End.Game
 {
 	[Serializable]
 	public class CardSetting

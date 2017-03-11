@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Entitas;
 
-namespace End
+namespace End.Game
 {
 	public class CameraKeyboardSystem : IExecuteSystem
 	{

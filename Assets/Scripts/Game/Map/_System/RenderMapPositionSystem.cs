@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using Entitas;
 
-namespace End
+namespace End.Game
 {
 	public class RenderMapPositionSystem : ReactiveSystem<GameEntity>
 	{

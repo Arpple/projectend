@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using Entitas;
 using UnityEngine.Assertions;
 
-namespace End
+namespace End.Game
 {
 	public class TileActionSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{

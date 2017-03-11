@@ -1,11 +1,8 @@
 ﻿#if UNITY_EDITOR
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace End.Test
+namespace End.Game.Test
 {
 	public class TestCustomView : MonoBehaviour, ICustomView
 	{

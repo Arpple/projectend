@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace End
+namespace End.Game
 {
 	[Serializable]
 	public class MapSetting

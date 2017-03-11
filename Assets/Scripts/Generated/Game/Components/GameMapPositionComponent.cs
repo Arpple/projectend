@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.MapPositionComponent mapPosition { get { return (End.MapPositionComponent)GetComponent(GameComponentsLookup.MapPosition); } }
+    public End.Game.MapPositionComponent mapPosition { get { return (End.Game.MapPositionComponent)GetComponent(GameComponentsLookup.MapPosition); } }
     public bool hasMapPosition { get { return HasComponent(GameComponentsLookup.MapPosition); } }
 
     public void AddMapPosition(int newX, int newY) {
-        var component = CreateComponent<End.MapPositionComponent>(GameComponentsLookup.MapPosition);
+        var component = CreateComponent<End.Game.MapPositionComponent>(GameComponentsLookup.MapPosition);
         component.x = newX;
         component.y = newY;
         AddComponent(GameComponentsLookup.MapPosition, component);
     }
 
     public void ReplaceMapPosition(int newX, int newY) {
-        var component = CreateComponent<End.MapPositionComponent>(GameComponentsLookup.MapPosition);
+        var component = CreateComponent<End.Game.MapPositionComponent>(GameComponentsLookup.MapPosition);
         component.x = newX;
         component.y = newY;
         ReplaceComponent(GameComponentsLookup.MapPosition, component);

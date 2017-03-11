@@ -45,20 +45,20 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(End.AbilityComponent),
-        typeof(End.CardComponent),
-        typeof(End.CharacterComponent),
-        typeof(End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent),
-        typeof(End.MapPositionComponent),
-        typeof(End.PlayerComponent),
-        typeof(End.ResourceComponent),
-        typeof(End.SpawnpointComponent),
-        typeof(End.TileComponent),
-        typeof(End.TileActionComponent),
+        typeof(End.Game.AbilityComponent),
+        typeof(End.Game.CardComponent),
+        typeof(End.Game.CharacterComponent),
+        typeof(End.Game.Role.RoleDescriptionComponent.DescriptionComponent),
+        typeof(End.Game.MapPositionComponent),
+        typeof(End.Game.PlayerComponent),
+        typeof(End.Game.ResourceComponent),
+        typeof(End.Game.SpawnpointComponent),
+        typeof(End.Game.TileComponent),
+        typeof(End.Game.TileActionComponent),
         typeof(End.MapEditor.TileBrushComponent),
-        typeof(End.TileGraphComponent),
-        typeof(End.UnitComponent),
-        typeof(End.ViewComponent),
-        typeof(End.ViewContainerComponent)
+        typeof(End.Game.TileGraphComponent),
+        typeof(End.Game.UnitComponent),
+        typeof(End.Game.ViewComponent),
+        typeof(End.Game.ViewContainerComponent)
     };
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: _CardBlueprints
   m_EditorClassIdentifier: 
   blueprints:
-  - {fileID: 11400000, guid: 176a4726512c4c3408ffdff29e8e5531, type: 2}
+  - {fileID: 11400000, guid: 74b934f847bed9e45b9ecf83cd23aa38, type: 2}

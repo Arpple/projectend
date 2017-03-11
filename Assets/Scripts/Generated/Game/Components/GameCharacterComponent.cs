@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.CharacterComponent character { get { return (End.CharacterComponent)GetComponent(GameComponentsLookup.Character); } }
+    public End.Game.CharacterComponent character { get { return (End.Game.CharacterComponent)GetComponent(GameComponentsLookup.Character); } }
     public bool hasCharacter { get { return HasComponent(GameComponentsLookup.Character); } }
 
-    public void AddCharacter(End.Character newType) {
-        var component = CreateComponent<End.CharacterComponent>(GameComponentsLookup.Character);
+    public void AddCharacter(End.Game.Character newType) {
+        var component = CreateComponent<End.Game.CharacterComponent>(GameComponentsLookup.Character);
         component.Type = newType;
         AddComponent(GameComponentsLookup.Character, component);
     }
 
-    public void ReplaceCharacter(End.Character newType) {
-        var component = CreateComponent<End.CharacterComponent>(GameComponentsLookup.Character);
+    public void ReplaceCharacter(End.Game.Character newType) {
+        var component = CreateComponent<End.Game.CharacterComponent>(GameComponentsLookup.Character);
         component.Type = newType;
         ReplaceComponent(GameComponentsLookup.Character, component);
     }

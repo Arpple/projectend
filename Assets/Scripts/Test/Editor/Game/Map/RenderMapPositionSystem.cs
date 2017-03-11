@@ -1,5 +1,4 @@
-﻿using Entitas;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UnityEngine;
 
 namespace End.Test
@@ -18,7 +17,7 @@ namespace End.Test
 		public void RenderPosition()
 		{
 			//given
-			var system = new End.RenderMapPositionSystem(_contexts);
+			var system = new Game.RenderMapPositionSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddView(new GameObject());

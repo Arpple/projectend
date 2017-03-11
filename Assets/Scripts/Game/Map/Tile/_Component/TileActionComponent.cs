@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Entitas;
+﻿using Entitas;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class TileActionComponent : IComponent

@@ -1,8 +1,6 @@
 ﻿using Entitas;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace End.Game.Role.Component {
+namespace End.Game.Role {
     public class RoleDescriptionComponent {
         [Game]
         public class DescriptionComponent: IComponent {

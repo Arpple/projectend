@@ -17,7 +17,7 @@ namespace End.Test
 		[Test]
 		public void EditorTest()
 		{
-			var system = new End.ViewContainerSystem(_contexts);
+			var system = new Game.ViewContainerSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddView(new GameObject());

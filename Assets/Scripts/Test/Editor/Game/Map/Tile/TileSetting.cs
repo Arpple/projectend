@@ -1,17 +1,18 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
 using System;
+using End.Game;
 
 namespace End.Test
 {
 	public class TileSetting
 	{
-		private End.TileSetting _setting;
+		private Game.TileSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			GameSetting setting = Resources.Load<End.GameSetting>("Game/Core/_Setting/GameSetting");
+			GameSetting setting = Resources.Load<GameSetting>("Game/Core/_Setting/GameSetting");
 			_setting = setting.MapSetting.TileSetting;
 			Assert.IsNotNull(_setting);
 		}

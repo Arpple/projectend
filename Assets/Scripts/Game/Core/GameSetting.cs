@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace End
+namespace End.Game
 {
 	/// <summary>
 	/// game data holder

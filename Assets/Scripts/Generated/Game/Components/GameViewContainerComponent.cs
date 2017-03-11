@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.ViewContainerComponent viewContainer { get { return (End.ViewContainerComponent)GetComponent(GameComponentsLookup.ViewContainer); } }
+    public End.Game.ViewContainerComponent viewContainer { get { return (End.Game.ViewContainerComponent)GetComponent(GameComponentsLookup.ViewContainer); } }
     public bool hasViewContainer { get { return HasComponent(GameComponentsLookup.ViewContainer); } }
 
     public void AddViewContainer(string newContainerName) {
-        var component = CreateComponent<End.ViewContainerComponent>(GameComponentsLookup.ViewContainer);
+        var component = CreateComponent<End.Game.ViewContainerComponent>(GameComponentsLookup.ViewContainer);
         component.ContainerName = newContainerName;
         AddComponent(GameComponentsLookup.ViewContainer, component);
     }
 
     public void ReplaceViewContainer(string newContainerName) {
-        var component = CreateComponent<End.ViewContainerComponent>(GameComponentsLookup.ViewContainer);
+        var component = CreateComponent<End.Game.ViewContainerComponent>(GameComponentsLookup.ViewContainer);
         component.ContainerName = newContainerName;
         ReplaceComponent(GameComponentsLookup.ViewContainer, component);
     }

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Entitas;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class TileGraphComponent : IComponent

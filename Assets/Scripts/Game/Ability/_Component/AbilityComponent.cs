@@ -1,7 +1,6 @@
 ﻿using Entitas;
-using UnityEngine;
 
-namespace End
+namespace End.Game
 {
 	[Game]
 	public class AbilityComponent : IComponent

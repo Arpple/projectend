@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.TileActionComponent tileAction { get { return (End.TileActionComponent)GetComponent(GameComponentsLookup.TileAction); } }
+    public End.Game.TileActionComponent tileAction { get { return (End.Game.TileActionComponent)GetComponent(GameComponentsLookup.TileAction); } }
     public bool hasTileAction { get { return HasComponent(GameComponentsLookup.TileAction); } }
 
-    public void AddTileAction(GameEntity newSource, GameEntity newTarget, End.TileActionComponent.TileAction newSelectedAction) {
-        var component = CreateComponent<End.TileActionComponent>(GameComponentsLookup.TileAction);
+    public void AddTileAction(GameEntity newSource, GameEntity newTarget, End.Game.TileActionComponent.TileAction newSelectedAction) {
+        var component = CreateComponent<End.Game.TileActionComponent>(GameComponentsLookup.TileAction);
         component.Source = newSource;
         component.Target = newTarget;
         component.SelectedAction = newSelectedAction;
         AddComponent(GameComponentsLookup.TileAction, component);
     }
 
-    public void ReplaceTileAction(GameEntity newSource, GameEntity newTarget, End.TileActionComponent.TileAction newSelectedAction) {
-        var component = CreateComponent<End.TileActionComponent>(GameComponentsLookup.TileAction);
+    public void ReplaceTileAction(GameEntity newSource, GameEntity newTarget, End.Game.TileActionComponent.TileAction newSelectedAction) {
+        var component = CreateComponent<End.Game.TileActionComponent>(GameComponentsLookup.TileAction);
         component.Source = newSource;
         component.Target = newTarget;
         component.SelectedAction = newSelectedAction;

@@ -1,8 +1,8 @@
 ﻿using Entitas;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using End.Game;
 
 namespace End.MapEditor
 {

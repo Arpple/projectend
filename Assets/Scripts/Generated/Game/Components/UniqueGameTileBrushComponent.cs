@@ -14,7 +14,7 @@ public partial class GameContext {
     public End.MapEditor.TileBrushComponent tileBrush { get { return tileBrushEntity.tileBrush; } }
     public bool hasTileBrush { get { return tileBrushEntity != null; } }
 
-    public GameEntity SetTileBrush(End.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public GameEntity SetTileBrush(End.Game.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         if(hasTileBrush) {
             throw new EntitasException("Could not set tileBrush!\n" + this + " already has an entity with TileBrushComponent!",
                 "You should check if the context already has a tileBrushEntity before setting it or use context.ReplaceTileBrush().");
@@ -24,7 +24,7 @@ public partial class GameContext {
         return entity;
     }
 
-    public void ReplaceTileBrush(End.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public void ReplaceTileBrush(End.Game.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         var entity = tileBrushEntity;
         if(entity == null) {
             entity = SetTileBrush(newTileType, newAction, newSpawnpointIndex);

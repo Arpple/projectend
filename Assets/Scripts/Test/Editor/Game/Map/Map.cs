@@ -1,16 +1,17 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
+using End.Game;
 
 namespace End.Test
 {
 	public class Map
 	{
-		private End.Map _map;
+		private Game.Map _map;
 
 		[SetUp]
 		public void Init()
 		{
-			_map = ScriptableObject.CreateInstance<End.Map>();
+			_map = ScriptableObject.CreateInstance<Game.Map>();
 		}
 
 		[Test]

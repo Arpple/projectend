@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace End
+namespace End.Lobby.UI
 {
 	public class LoungeController : MonoBehaviour
 	{
-		public LobbyNetworkInfo NetworkInfo;
 		public LoungeConnectionDialogue ConnectionDialogue;
 
 		public Button HostButton;
@@ -17,7 +15,6 @@ namespace End
 		/// </summary>
 		public void HostButtonClick()
 		{
-			NetworkInfo.IsHost = true;
 			Debug.Log("host server");
 		}
 
@@ -46,8 +43,6 @@ namespace End
 			if(ipAddress != "")
 			{
 				CloseConnectionDialogue();
-				NetworkInfo.IsHost = false;
-				NetworkInfo.JoinIpAddress = ConnectionDialogue.GetIpAddress();
 				Debug.Log("join server : " + ConnectionDialogue.GetIpAddress());
 			}
 		}

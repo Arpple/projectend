@@ -1,9 +1,6 @@
-﻿using Entitas.Blueprints;
-using Entitas.Unity.Blueprints;
-using System;
-using UnityEngine;
+﻿using System;
 
-namespace End
+namespace End.Game
 {
 	[Serializable]
 	public class UnitSetting
