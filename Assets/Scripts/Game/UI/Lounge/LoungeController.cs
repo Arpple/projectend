@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace End
 {
-	public class LoungeNetworkManager : NetworkLobbyManager
+	public class LoungeController : MonoBehaviour
 	{
+		public LobbyNetworkInfo NetworkInfo;
 		public LoungeConnectionDialogue ConnectionDialouge;
 
 		public Button HostButton;
@@ -16,7 +17,9 @@ namespace End
 		/// </summary>
 		public void HostButtonClick()
 		{
-			Debug.Log("Start Host");
+			NetworkInfo.IsHost = true;
+			Debug.Log("host server");
+			SceneManager.LoadScene("Lobby");
 		}
 
 		/// <summary>
@@ -41,7 +44,10 @@ namespace End
 		public void ConnectionDialogueConfirm()
 		{
 			CloseConnectionDialogue();
+			NetworkInfo.IsHost = false;
+			NetworkInfo.JoinIpAddress = ConnectionDialouge.GetIpAddress();
 			Debug.Log("join server : " + ConnectionDialouge.GetIpAddress());
+			SceneManager.LoadScene("Lobby");
 		}
 
 		private void ShowConnectionDialogue()
