@@ -29,9 +29,9 @@ namespace End
 			return entity.hasCharacter;
 		}
 
-		protected override Blueprint GetUnitBlueprint(GameEntity unitEntity)
+		protected override Blueprint GetBlueprint(GameEntity entity)
 		{
-			return _setting.GetCharBlueprint(unitEntity.character.Type);
+			return _setting.GetCharBlueprint(entity.character.Type);
 		}
 
 		protected override void Execute(List<GameEntity> entities)

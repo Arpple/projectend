@@ -9,24 +9,26 @@
 public static class GameComponentsLookup {
 
     public const int Ability = 0;
-    public const int Character = 1;
-    public const int Description = 2;
-    public const int MapPosition = 3;
-    public const int Player = 4;
-    public const int Resource = 5;
-    public const int Spawnpoint = 6;
-    public const int Tile = 7;
-    public const int TileAction = 8;
-    public const int TileBrush = 9;
-    public const int TileGraph = 10;
-    public const int Unit = 11;
-    public const int View = 12;
-    public const int ViewContainer = 13;
+    public const int Card = 1;
+    public const int Character = 2;
+    public const int Description = 3;
+    public const int MapPosition = 4;
+    public const int Player = 5;
+    public const int Resource = 6;
+    public const int Spawnpoint = 7;
+    public const int Tile = 8;
+    public const int TileAction = 9;
+    public const int TileBrush = 10;
+    public const int TileGraph = 11;
+    public const int Unit = 12;
+    public const int View = 13;
+    public const int ViewContainer = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "Ability",
+        "Card",
         "Character",
         "Description",
         "MapPosition",
@@ -44,6 +46,7 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(End.AbilityComponent),
+        typeof(End.CardComponent),
         typeof(End.CharacterComponent),
         typeof(End.Game.Role.Component.RoleDescriptionComponent.DescriptionComponent),
         typeof(End.MapPositionComponent),

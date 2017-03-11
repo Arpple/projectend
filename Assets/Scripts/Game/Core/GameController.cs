@@ -44,6 +44,9 @@ namespace End
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
+
+			var e = _contexts.game.CreateEntity();
+			e.AddCard(Card.Move);
 		}
 
 		void Update()
@@ -79,6 +82,7 @@ namespace End
 				.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new LoadCardSystem(contexts, Setting.DeckSetting.CardSetting))
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new ViewContainerSystem(contexts))
 				.Add(new TileActionSystem(contexts))

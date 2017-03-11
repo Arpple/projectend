@@ -33,8 +33,12 @@ namespace End
 			foreach(var e in entities)
 			{
 				//get sprite
-				Sprite sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
-
+				Sprite sprite = null;
+				if (e.resource.SpritePath != null)
+				{
+					sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
+				}
+			
 				//get view object
 				GameObject viewObject = null;
 				if(e.resource.BasePrefabsPath != null)
