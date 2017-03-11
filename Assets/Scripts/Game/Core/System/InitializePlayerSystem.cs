@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
 namespace End
 {
@@ -16,17 +17,26 @@ namespace End
 
 		public void Initialize()
 		{
-			foreach (var p in _players)
-			{
-				//create player
-				_context.CreateEntity()
-					.AddPlayer(p);
+			var spawnpoints = _context.GetEntities(GameMatcher.Spawnpoint);
+			Assert.IsTrue(spawnpoints.Length >= _players.Count);
 
-				//create character
-				var character = _context.CreateEntity();
-				character.AddUnit(p);
-				character.AddCharacter(p.SelectedCharacter);
-			}
+			_players.Count.Loop(
+				(i) =>
+				{
+					var p = _players[i];
+					var sp = spawnpoints[i];
+
+					//create player
+					_context.CreateEntity()
+						.AddPlayer(p);
+
+					//create character
+					var character = _context.CreateEntity();
+					character.AddUnit(p);
+					character.AddCharacter(p.SelectedCharacter);
+					character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
+				}
+			);
 		}
 	}
 

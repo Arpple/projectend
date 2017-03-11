@@ -80,6 +80,7 @@ namespace End
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadResourceSystem(contexts))
+				.Add(new ViewContainerSystem(contexts))
 				.Add(new TileActionSystem(contexts))
 
 				.Add(new RenderMapPositionSystem(contexts))

@@ -8,6 +8,7 @@ namespace End
 {
 	public class MapSystem : IInitializeSystem
 	{
+		const string TILE_VIEW_CONTAINER = "View/Tile";
 		readonly GameContext _context;
 		readonly MapSetting _setting;
 
@@ -35,6 +36,7 @@ namespace End
 					tileEntity.ApplyBlueprint(tileSetting.GetTileBlueprint(tile));
 					tileEntity.AddTile(tile);
 					tileEntity.AddMapPosition(x, y);
+					tileEntity.AddViewContainer(TILE_VIEW_CONTAINER);
 
 					if(_map.IsSpawnPoint(x, y))
 					{
