@@ -11,6 +11,7 @@ namespace End
 	{
 		public MapSetting MapSetting;
 		public UnitSetting UnitSetting;
+		public DeckSetting DeckSetting;
 	}
 
 }
