@@ -58,7 +58,7 @@ namespace End
 				//default view
 				else
 				{
-					var spriteRenderer = viewObject.GetComponent<SpriteRenderer>();
+					var spriteRenderer = viewObject.GetComponentInChildren<SpriteRenderer>();
 					if (spriteRenderer == null) spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
 					spriteRenderer.sprite = sprite;
 				}
