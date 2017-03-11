@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 namespace End.UI.Lobby {
     public class PlayerLobby: MonoBehaviour {
-        public enum PlayerStaus {
+        public enum PlayerStatus {
             Waiting,Ready
         }
         public Icon PlayerIcon;
-        public Text PlayerName,PlayerStatus;
-        public PlayerStaus Status;
+        public Text PlayerName,PlayerStat;
+        public PlayerStatus Status;
         public bool onAllocate;
 
         public Color Color_Yellow {
@@ -42,38 +42,38 @@ namespace End.UI.Lobby {
 
         // Update is called once per frame
         void Update() {
-            DummyChangeTextStatus();   
+            ChangeTextColorByStatus();   
         }
 
-        private void DummyChangeTextStatus() {
-            PlayerStaus status = this.Status;
-            var color = this.PlayerStatus.color;
+        private void ChangeTextColorByStatus() {
+            PlayerStatus status = this.Status;
+            var color = this.PlayerStat.color;
             switch(status) {
-                case PlayerStaus.Waiting:
+                case PlayerStatus.Waiting:
                 color = Color.Lerp(Color_Yellow,Color_Orange, Mathf.PingPong(Time.time, 2f));
                 break;
                 default:
                 color = Color_Green;
                 break;
             }
-            this.PlayerStatus.color = color;
-
-            this.PlayerStatus.text = status.ToString();
+            this.PlayerStat.color = color;
+            this.PlayerStat.text = status.ToString();
         }
 
-        public void SetPlayerStatus(PlayerStaus status) {
+        public void SetPlayerStatus(PlayerStatus status) {
             this.Status = status;
+            this.PlayerStat.text = status.ToString();
         }
 
         /// <summary>
         /// Is dummy parameter fix after got playerNetwork
         /// </summary>
         /// <param name="name"></param>
-        /// <param name=""></param>
-        public void SetPlayerData(string name) {
+        /// <param name="spritePath"></param>
+        public void SetPlayerData(string name,string spritePath= "Unit/Character/LastBoss/Icon",PlayerStatus stat=PlayerStatus.Waiting) {
             this.PlayerName.text = name;
-            //this.PlayerIcon.sprite = Resources.Load<Sprite>("Unit/Character/LastBoss/Icon");
             this.PlayerIcon.SetImage(Resources.Load<Sprite>("Unit/Character/LastBoss/Icon"));
+            SetPlayerStatus(stat);
             onAllocate = true;
         }
 
