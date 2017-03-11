@@ -16,21 +16,9 @@ namespace End
 
 		public delegate void TileClickAction();
 
-		public GameObject Parent
-		{
-			get
-			{
-				if(_parent == null)
-				{
-					_parent = GameObject.Find(ParentName) ?? new GameObject("Tile");
-				}
-				return _parent;
-			}
-		}
-
 		private void Start()
 		{
-			transform.SetParent(Parent.transform, false);
+			transform.SetParent(ParentName);
 		}
 
 		void OnMouseDown()
