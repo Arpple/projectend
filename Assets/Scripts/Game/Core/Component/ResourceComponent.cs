@@ -8,6 +8,7 @@ namespace End
 	public class ResourceComponent : IComponent
 	{
 		public string SpritePath;
+		public string BasePrefabsPath;
 	}
 }
 

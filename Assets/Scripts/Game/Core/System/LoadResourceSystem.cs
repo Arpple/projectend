@@ -32,16 +32,39 @@ namespace End
 		{
 			foreach(var e in entities)
 			{
-				var obj = new GameObject("EntityView");
-				var spriteRenderer = obj.AddComponent<SpriteRenderer>();
-				spriteRenderer.sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
-				if(spriteRenderer.sprite == null)
+				//get sprite
+				Sprite sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
+
+				//get view object
+				GameObject viewObject = null;
+				if(e.resource.BasePrefabsPath != null)
 				{
-					throw new MissingReferenceException("Resource " + e.resource.SpritePath);
+					var basePrefabs = Resources.Load<GameObject>(e.resource.BasePrefabsPath);
+					if(basePrefabs == null) throw new MissingReferenceException("Resource " + e.resource.BasePrefabsPath);
+					viewObject = GameObject.Instantiate(basePrefabs);
+				}
+				else
+				{
+					viewObject = new GameObject("EntityView");
 				}
 
-				e.AddView(obj);
-				obj.Link(e, _context);
+				//custom view
+				var viewModifier = (ICustomView)viewObject.GetComponent(typeof(ICustomView));
+				if (viewModifier != null)
+				{
+					viewObject = viewModifier.CreateView(e, sprite);
+				}
+
+				//default view
+				else
+				{
+					var spriteRenderer = viewObject.GetComponent<SpriteRenderer>();
+					if (spriteRenderer == null) spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
+					spriteRenderer.sprite = sprite;
+				}
+
+				e.AddView(viewObject);
+				viewObject.Link(e, _context);
 			}
 		}
 

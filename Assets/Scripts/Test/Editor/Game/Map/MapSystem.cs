@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace End.Test
 {
-	public class MapSystem : MonoBehaviour
+	public class MapSystem
 	{
 		private Contexts _contexts;
 		private End.Map _map;

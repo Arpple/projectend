@@ -69,7 +69,6 @@ namespace End.MapEditor
 				.Add(new TileGraphSystem(contexts))
 			
 				.Add(new LoadResourceSystem(contexts))
-				.Add(new RenderTileSystem(contexts, Setting.MapSetting.TileSetting))
 				.Add(new TileActionSystem(contexts))
 
 				.Add(new RenderMapPositionSystem(contexts))

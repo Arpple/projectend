@@ -14,7 +14,6 @@ namespace End
 	{
 		const string BLUEPRINT_ENUM_PREFIX = "Tile_";
 
-		public string ViewRootPath;
 		public Blueprints TileBlueprints;
 		public GameObject BaseTileObject;
 

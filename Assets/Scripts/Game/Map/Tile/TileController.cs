@@ -1,24 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace End
 {
-	public class TileController : MonoBehaviour
+	public class TileController : MonoBehaviour, ICustomView
 	{
-		public GameObject ViewContainer;
+		private static GameObject _parent;
+
+		public string ParentName;
 		public SpriteRenderer SelectionBorder;
+		public SpriteRenderer TileSprite;
+		public TileClickAction ClickAction;
 
-		private GameObject _tileView;
-
-		public void RegistView(GameObject view)
-		{
-			view.transform.SetParent(ViewContainer.transform, false);
-		}
-			
 		public delegate void TileClickAction();
 
-		public TileClickAction ClickAction;
+		public GameObject Parent
+		{
+			get
+			{
+				if(_parent == null)
+				{
+					_parent = GameObject.Find(ParentName) ?? new GameObject("Tile");
+				}
+				return _parent;
+			}
+		}
+
+		private void Start()
+		{
+			transform.SetParent(Parent.transform, false);
+		}
 
 		void OnMouseDown()
 		{
@@ -36,6 +49,13 @@ namespace End
 		private void OnMouseExit()
 		{
 			SelectionBorder.enabled = false;
+		}
+
+		public GameObject CreateView(GameEntity entity, Sprite sprite)
+		{
+			gameObject.name = "Tile " + entity.mapPosition;
+			TileSprite.sprite = sprite;
+			return gameObject;
 		}
 	}
 }
