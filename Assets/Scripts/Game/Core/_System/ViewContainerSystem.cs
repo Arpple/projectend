@@ -26,7 +26,6 @@ namespace End
 		{
 			foreach (var e in entities)
 			{
-				Debug.Log("Execute");
 				e.view.GameObject.transform.SetParent(e.viewContainer.ContainerName);
 			}
 		}
