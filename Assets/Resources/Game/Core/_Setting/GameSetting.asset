@@ -14,11 +14,11 @@ MonoBehaviour:
   MapSetting:
     GameMap: {fileID: 11400000, guid: 3e83a74fd2c3e9c419ad9f8a2c165723, type: 2}
     TileSetting:
-      TileBlueprints: {fileID: 11400000, guid: 78849841a2cb8c747931183a864e77c7, type: 2}
+      TileBlueprints: {fileID: 11400000, guid: f2db4536541717d42a0ba7ed4ecbef95, type: 2}
   UnitSetting:
     CharacterSetting:
-      CharacterBlueprints: {fileID: 11400000, guid: fd554e99cf52e0e4aae52587d723cf67,
+      CharacterBlueprints: {fileID: 11400000, guid: 2d0ae655196d3074eb63e1efe2244a4f,
         type: 2}
   DeckSetting:
     CardSetting:
-      CardBlueprints: {fileID: 11400000, guid: 03dbf7095040af049ad05765a9f353cc, type: 2}
+      CardBlueprints: {fileID: 11400000, guid: 8493ba8223b613c4aa81aa0098f5f0c1, type: 2}
