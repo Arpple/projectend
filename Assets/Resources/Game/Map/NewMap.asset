@@ -9,9 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80ce6b15d9f651044b23c2c64243775e, type: 3}
-  m_Name: EmptyMap
+  m_Name: NewMap
   m_EditorClassIdentifier: 
-  _rows: []
+  _rows:
+  - _tiles: 0100000001000000010000000100000001000000
+  - _tiles: 0100000001000000010000000100000001000000
+  - _tiles: 0100000001000000010000000100000001000000
+  - _tiles: 0100000001000000010000000100000001000000
+  - _tiles: 0100000001000000010000000100000001000000
   _spawnPoints:
   - x: 0
     y: 0

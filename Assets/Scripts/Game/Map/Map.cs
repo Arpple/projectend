@@ -11,7 +11,7 @@ namespace End
 		[Serializable]
 		private class MapRow
 		{
-			private int[] _tiles;
+			[SerializeField] private int[] _tiles;
 
 			public int Width
 			{
