@@ -7,7 +7,7 @@ namespace End
 	public class LoungeController : MonoBehaviour
 	{
 		public LobbyNetworkInfo NetworkInfo;
-		public LoungeConnectionDialogue ConnectionDialouge;
+		public LoungeConnectionDialogue ConnectionDialogue;
 
 		public Button HostButton;
 		public Button JoinButton;
@@ -19,7 +19,6 @@ namespace End
 		{
 			NetworkInfo.IsHost = true;
 			Debug.Log("host server");
-			SceneManager.LoadScene("Lobby");
 		}
 
 		/// <summary>
@@ -43,25 +42,28 @@ namespace End
 		/// </summary>
 		public void ConnectionDialogueConfirm()
 		{
-			CloseConnectionDialogue();
-			NetworkInfo.IsHost = false;
-			NetworkInfo.JoinIpAddress = ConnectionDialouge.GetIpAddress();
-			Debug.Log("join server : " + ConnectionDialouge.GetIpAddress());
-			SceneManager.LoadScene("Lobby");
+			var ipAddress = ConnectionDialogue.GetIpAddress();
+			if(ipAddress != "")
+			{
+				CloseConnectionDialogue();
+				NetworkInfo.IsHost = false;
+				NetworkInfo.JoinIpAddress = ConnectionDialogue.GetIpAddress();
+				Debug.Log("join server : " + ConnectionDialogue.GetIpAddress());
+			}
 		}
 
 		private void ShowConnectionDialogue()
 		{
-			ConnectionDialouge.Show();
-			HostButton.enabled = false;
-			JoinButton.enabled = false;
+			ConnectionDialogue.Show();
+			HostButton.interactable = false;
+			JoinButton.interactable = false;
 		}
 
 		private void CloseConnectionDialogue()
 		{
-			ConnectionDialouge.Close();
-			HostButton.enabled = true;
-			JoinButton.enabled = true;
+			ConnectionDialogue.Close();
+			HostButton.interactable = true;
+			JoinButton.interactable = true;
 		}
 
 

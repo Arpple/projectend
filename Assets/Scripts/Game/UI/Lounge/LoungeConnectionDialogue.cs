@@ -7,19 +7,17 @@ namespace End
 	{
 		public Text IpInputField;
 
+		public Button JoinButton;
+		public Button BackButton;
+
 		public string GetIpAddress()
 		{
 			return IpInputField.text;
 		}
 
-		public void BackButtonClick()
+		private void Update()
 		{
-
-		}
-
-		public void JoinButtonClick()
-		{
-
+			JoinButton.interactable = GetIpAddress() != "";
 		}
 
 		/// <summary>
