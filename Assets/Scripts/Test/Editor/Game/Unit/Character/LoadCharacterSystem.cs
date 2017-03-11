@@ -14,13 +14,13 @@ namespace End.Test
 		{
 			_contexts = TestHelper.CreateContexts();
 
-			GameSetting setting = Resources.Load<GameSetting>("Game/Core/Setting/GameSetting");
+			GameSetting setting = Resources.Load<GameSetting>("Game/Core/_Setting/GameSetting");
 			_setting = setting.UnitSetting.CharacterSetting;
 			Assert.IsNotNull(_setting);
 		}
 
 		[Test]
-		public void EditorTest()
+		public void LoadCharacter()
 		{
 			var system = new End.LoadCharacterSystem(_contexts, _setting);
 

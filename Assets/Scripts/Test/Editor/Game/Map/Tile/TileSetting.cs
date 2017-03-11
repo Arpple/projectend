@@ -11,7 +11,7 @@ namespace End.Test
 		[SetUp]
 		public void Init()
 		{
-			GameSetting setting = Resources.Load<End.GameSetting>("Game/Core/Setting/GameSetting");
+			GameSetting setting = Resources.Load<End.GameSetting>("Game/Core/_Setting/GameSetting");
 			_setting = setting.MapSetting.TileSetting;
 			Assert.IsNotNull(_setting);
 		}
