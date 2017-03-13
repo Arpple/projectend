@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 224060578473830576}
   - component: {fileID: 222128663026819514}
   - component: {fileID: 114866883880343182}
-  - component: {fileID: 114290022467239052}
   - component: {fileID: 114022469568400866}
   - component: {fileID: 114755190100017762}
   m_Layer: 5
@@ -148,23 +147,7 @@ MonoBehaviour:
     i14: 183
     i15: 156
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &114290022467239052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848363524146504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e416c629c16a4bb97352f6cc900d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerIcon: {fileID: 114694278835086112}
-  PlayerName: {fileID: 114716109644889774}
-  PlayerStat: {fileID: 114297065607483174}
-  Status: 0
-  onAllocate: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114297065607483174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -309,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac60e40bf7e00884c9d97accbc6b214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowLobbyGUI: 1
+  ShowLobbyGUI: 0
   PlayerNameText: {fileID: 114716109644889774}
   PlayerStatusText: {fileID: 114297065607483174}
   PlayerIcon: {fileID: 114694278835086112}

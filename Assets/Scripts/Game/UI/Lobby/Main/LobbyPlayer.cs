@@ -7,11 +7,7 @@ namespace End.Lobby.UI
 {
 	public class LobbyPlayer : NetworkLobbyPlayer
 	{
-		public enum Status
-		{
-			Wait,
-			Ready,
-		}
+		public delegate void PlayerStatusChangeAction(bool isReady);
 
 		readonly Color Color_Yellow = new Color(1, 237f / 255, 0);
 		readonly Color Color_Orange = new Color(1, 143 / 255f, 0);
@@ -25,17 +21,13 @@ namespace End.Lobby.UI
 		[SyncVar(hook = "OnNameChanged")]
 		public string PlayerName;
 
-		[SyncVar(hook = "OnStatusChanged")][HideInInspector]
-		public int __playerStatus;
+		[SyncVar(hook = "OnReadyChanged")]
+		public bool IsReady;
 
 		[SyncVar(hook = "OnIconChanged")]
 		public string PlayerIconPath;
 
-		public Status PlayerStatus
-		{
-			get { return (Status)__playerStatus; }
-			set { __playerStatus = (int)value; }
-		}
+		public PlayerStatusChangeAction StatusChangeCallback;
 
 		public void OnNameChanged(string newName)
 		{
@@ -43,16 +35,18 @@ namespace End.Lobby.UI
 			PlayerNameText.text = newName;
 		}
 
-		public void OnStatusChanged(int newStatusNumber)
+		public void OnReadyChanged(bool isReady)
 		{
-			__playerStatus = newStatusNumber;
-			PlayerStatusText.text = PlayerStatus.ToString();
+			IsReady = isReady;
+			PlayerStatusText.text = isReady ? "Ready" : "Waiting";
 
 			//change status to ready
-			if(PlayerStatus == Status.Ready)
+			if(isReady)
 			{
 				PlayerStatusText.color = Color_Green;
 			}
+
+			if (StatusChangeCallback != null) StatusChangeCallback(IsReady);
 		}
 
 		public void OnIconChanged(string newIconPath)
@@ -63,10 +57,15 @@ namespace End.Lobby.UI
 
 		private void Update()
 		{
-			if(PlayerStatus == Status.Wait)
+			if(!IsReady)
 			{
 				PlayerStatusText.color = Color.Lerp(Color_Yellow, Color_Orange, Mathf.PingPong(Time.time, 2f));
 			}
+		}
+
+		public void OnDestroy()
+		{
+			LobbyController.Instance.RemovePlayer(this);
 		}
 
 		#region Network
@@ -75,6 +74,19 @@ namespace End.Lobby.UI
 			base.OnClientEnterLobby();
 
 			LobbyController.Instance.AddPlayer(this);
+		}
+
+		public override void OnStartAuthority()
+		{
+			base.OnStartAuthority();
+
+			LobbyController.Instance.SetupLocalPlayer(this);
+		}
+
+		public override void OnClientReady(bool readyState)
+		{
+			base.OnClientReady(readyState);
+			IsReady = true;
 		}
 		#endregion
 	}
