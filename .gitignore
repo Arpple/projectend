@@ -23,3 +23,5 @@ sysinfo.txt
 Assets/StreamingAssets/build_info\.txt
 
 end_Data/
+Assets/Library/Entitas-Unity/MigrationAssistant.exe
+Assets/Library/UnityTestTools/UnitTesting/Editor/NSubstitute/NSubstitute.dll
