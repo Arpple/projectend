@@ -1,33 +1,120 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.Networking;
 
-namespace End.Lobby.UI {
-    public class LobbyController : MonoBehaviour{
-        public LobbyBodyController LobbyBodyController;
+namespace End.Lobby.UI
+{
+	public class LobbyController : NetworkLobbyManager
+	{
+
+		public static LobbyController Instance;
+
+		public LobbyMenu Menu;
+		public LobbyMain Main;
+		public int PlayerCount;
+
+		private LobbyPlayer _localPlayer;
+		private int _playerIdCounter = 0;
+
+		private void Awake()
+		{
+			Instance = this;
+			PlayerCount = 0;
+
+			Assert.IsNotNull(Menu);
+			Assert.IsNotNull(Main);
+		}
+
+		private void Start()
+		{
+			Menu.gameObject.SetActive(true);
+			Main.gameObject.SetActive(false);
+		}
+
+		public void AddPlayer(LobbyPlayer player)
+		{
+			Main.AddPlayer(player);
+			PlayerCount++;
+		}
+
+		public void RemovePlayer()
+		{
+			PlayerCount--;
+		}
+
+		public void SetupLocalPlayer(LobbyPlayer player)
+		{
+			_localPlayer = player;
+			Main.SetupLocalPlayer(player);
+			player.CmdSetName(Menu.GetPlayerName());
+			player.CmdSetStatus(false);
+		}
+
+		/// <summary>
+		/// Called when [start host].
+		/// </summary>
+		public override void OnStartHost()
+		{
+			base.OnStartHost();
+
+			_playerIdCounter = 1;
+
+			Menu.gameObject.SetActive(false);
+			Main.gameObject.SetActive(true);
+		}
 
 
-        public void AddPlayer() {
-            Debug.Log("AddPlayer");
-            LobbyBodyController.AddPlayer();
-        }
+		public override void OnStopHost()
+		{
+			base.OnStopHost();
 
-        public void RemovePlayer() {
-            int ran = UnityEngine.Random.Range(0, 7);
-            Debug.Log("Lobby Controller try to Random remove player ["+ran+"]");
-            LobbyBodyController.RemovePlayer(ran);
-        }
+			Menu.gameObject.SetActive(true);
+			Main.gameObject.SetActive(false);
+		}
 
-        /// <summary>
-        /// Click to change your stat to ready
-        /// </summary>
-        public void Ready() {
+		//public override void OnLobbyClientSceneChanged(NetworkConnection conn)
+		//{
+		//	base.OnLobbyClientSceneChanged(conn);
 
-        }
+		//	Game.Player.PlayerCount = PlayerCount;
+		//}
 
-        /// <summary>
-        /// Click to Change your stat to Waiting
-        /// </summary>
-        public void Waiting() {
+		public override void OnStartClient(NetworkClient lobbyClient)
+		{
+			base.OnStartClient(lobbyClient);
 
-        }
-    }
+			Menu.gameObject.SetActive(false);
+			Main.gameObject.SetActive(true);
+		}
+
+		/// <summary>
+		/// This is called on the server when it is told that a client has finished switching from the lobby scene to a game player scene.
+		/// </summary>
+		/// <param name="lobbyPlayer">The lobby player object.</param>
+		/// <param name="gamePlayer">The game player object.</param>
+		/// <returns>
+		/// False to not allow this player to replace the lobby player.
+		/// </returns>
+		public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
+		{
+			base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
+
+			if (lobbyPlayer == _localPlayer)
+			{
+				Game.Player.PlayerCount = PlayerCount;
+			}
+
+			var gp = gamePlayer.GetComponent<Game.Player>();
+			var lp = lobbyPlayer.GetComponent<LobbyPlayer>();
+
+			if(_localPlayer.isServer)
+			{
+				gp.PlayerId = _playerIdCounter;
+				_playerIdCounter++;
+			}
+
+			return true;
+		}
+	}
+
 }
