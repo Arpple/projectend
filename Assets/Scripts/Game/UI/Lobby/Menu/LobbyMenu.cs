@@ -6,6 +6,7 @@ namespace End.Lobby.UI
 {
 	public class LobbyMenu : MonoBehaviour
 	{
+		public LobbyPlayerProfile PlayerProfile;
 		public Button HostButton;
 		public Button JoinButton;
 		public LobbyMenuConnectionDialogue ConnectionDialogue;
@@ -15,9 +16,16 @@ namespace End.Lobby.UI
 			get { return LobbyController.Instance; }
 		}
 
+		private void Awake()
+		{
+			Assert.IsNotNull(PlayerProfile);
+			Assert.IsNotNull(HostButton);
+			Assert.IsNotNull(JoinButton);
+			Assert.IsNotNull(ConnectionDialogue);
+		}
+
 		private void Start()
 		{
-			Assert.IsNotNull(ConnectionDialogue);
 			ConnectionDialogue.CloseDialogueCallback = () =>
 			{
 				HostButton.interactable = true;
@@ -25,9 +33,14 @@ namespace End.Lobby.UI
 			};
 		}
 
+		public string GetPlayerName()
+		{
+			return PlayerProfile.PlayerName.text;
+		}
+
 		public void Host()
 		{
-			//LobbyController.StartHost();
+			LobbyController.StartHost();
 			Debug.Log("Host");
 		}
 

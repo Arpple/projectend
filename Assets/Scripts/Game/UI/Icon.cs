@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.Game.UI {
+namespace End.UI {
     public class Icon :MonoBehaviour {
         public Image IconImage;
         public Image BorderImage;
@@ -11,9 +11,7 @@ namespace End.Game.UI {
         }
 
         public void SetBorderColor(Color col) {
-            var color = BorderImage.color;
-            color = col;
-            BorderImage.color = color;
+			BorderImage.color = col;
         }
-    }
+	}
 }

@@ -68,6 +68,15 @@ namespace End.Lobby.UI
 				PlayerStatusText.color = Color.Lerp(Color_Yellow, Color_Orange, Mathf.PingPong(Time.time, 2f));
 			}
 		}
+
+		#region Network
+		public override void OnClientEnterLobby()
+		{
+			base.OnClientEnterLobby();
+
+			LobbyController.Instance.AddPlayer(this);
+		}
+		#endregion
 	}
 
 }

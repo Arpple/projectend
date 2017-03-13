@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace End.Lobby.UI
@@ -16,6 +17,14 @@ namespace End.Lobby.UI
 		public LobbyController LobbyController
 		{
 			get { return LobbyController.Instance; }
+		}
+
+		private void Awake()
+		{
+			Assert.IsNotNull(Menu);
+			Assert.IsNotNull(BackButton);
+			Assert.IsNotNull(JoinButton);
+			Assert.IsNotNull(IpInputField);
 		}
 
 		private void Update()
