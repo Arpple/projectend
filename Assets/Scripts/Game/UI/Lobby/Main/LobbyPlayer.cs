@@ -29,6 +29,7 @@ namespace End.Lobby.UI
 
 		public PlayerStatusChangeAction StatusChangeCallback;
 
+		#region Local
 		public void OnNameChanged(string newName)
 		{
 			PlayerName = newName;
@@ -65,8 +66,9 @@ namespace End.Lobby.UI
 
 		public void OnDestroy()
 		{
-			LobbyController.Instance.RemovePlayer(this);
+			LobbyController.Instance.RemovePlayer();
 		}
+		#endregion
 
 		#region Network
 		public override void OnClientEnterLobby()
@@ -87,6 +89,18 @@ namespace End.Lobby.UI
 		{
 			base.OnClientReady(readyState);
 			IsReady = true;
+		}
+
+		[Command]
+		public void CmdSetName(string name)
+		{
+			PlayerName = name;
+		}
+
+		[Command]
+		public void CmdSetStatus(bool isReady)
+		{
+			IsReady = isReady;
 		}
 		#endregion
 	}

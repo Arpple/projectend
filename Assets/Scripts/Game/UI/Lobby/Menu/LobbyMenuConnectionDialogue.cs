@@ -11,7 +11,7 @@ namespace End.Lobby.UI
 		public LobbyMenu Menu;
 		public Button BackButton;
 		public Button JoinButton;
-		public Text IpInputField;
+		public InputField IpInputField;
 		public CloseDialogueAction CloseDialogueCallback;
 
 		public LobbyController LobbyController
@@ -25,6 +25,11 @@ namespace End.Lobby.UI
 			Assert.IsNotNull(BackButton);
 			Assert.IsNotNull(JoinButton);
 			Assert.IsNotNull(IpInputField);
+		}
+
+		private void Start()
+		{
+			IpInputField.text = "127.0.0.1";
 		}
 
 		private void Update()
@@ -48,7 +53,7 @@ namespace End.Lobby.UI
 			gameObject.SetActive(false);
 			if (CloseDialogueCallback != null) CloseDialogueCallback();
 			LobbyController.networkAddress = IpInputField.text;
-			//LobbyController.StartClient();
+			LobbyController.StartClient();
 			Debug.Log("Join Server : " + IpInputField.text);
 		}
 	}

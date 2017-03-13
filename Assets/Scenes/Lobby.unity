@@ -2208,7 +2208,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 127.0.0.1
 --- !u!1 &1315864441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   Menu: {fileID: 1920416839}
   BackButton: {fileID: 1315864443}
   JoinButton: {fileID: 1315864444}
-  IpInputField: {fileID: 1315864440}
+  IpInputField: {fileID: 1290027313}
 --- !u!114 &1315864443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3175,7 +3175,8 @@ MonoBehaviour:
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Lobby
   m_OnlineScene: 
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1851284430463786, guid: a2de381bbcaefa440b19b482d83dd18b, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -3221,7 +3222,7 @@ MonoBehaviour:
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 8
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 2
+  m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 114755190100017762, guid: 684f1cd3dd8848c48bdb6bcf8a83b79c,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1851284430463786, guid: a2de381bbcaefa440b19b482d83dd18b,
@@ -3339,7 +3340,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080, y: 0}
+  m_SizeDelta: {x: 1080, y: 10}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1833363283
 MonoBehaviour:
@@ -3666,7 +3667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2049567051
 MonoBehaviour:
   m_ObjectHideFlags: 0

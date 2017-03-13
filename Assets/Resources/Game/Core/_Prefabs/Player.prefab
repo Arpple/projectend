@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70e16908f68de149af8193f77db6642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerId: 0
+  SelectedCharacter: 0
 --- !u!114 &114140827437525238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,4 +85,4 @@ MonoBehaviour:
     i14: 209
     i15: 139
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
