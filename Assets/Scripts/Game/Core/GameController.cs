@@ -58,6 +58,7 @@ namespace End.Game
 			if (!_isInitialized)
 			{
 				Debug.Log("Initialize");
+				Destroy(Lobby.UI.LobbyController.Instance.gameObject);
 				_systems.Initialize();
 				_isInitialized = true;
 			}
