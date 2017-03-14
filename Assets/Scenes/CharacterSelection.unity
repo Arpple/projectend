@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 81740846}
   - component: {fileID: 81740845}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Priest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,7 +454,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 81740846}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1910659335}
+        m_MethodName: PriestRole
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &81740846
@@ -703,13 +714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Win Condition
-
-    1. defeat apostle
-
-    2. defeat all atheist
-
-    3. don''t died...'
+  m_Text: "Win Condition\n1. Must know \nyour\nRole!"
 --- !u!222 &117980739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4039,7 +4044,7 @@ GameObject:
   - component: {fileID: 564754609}
   - component: {fileID: 564754608}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Apostle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4102,7 +4107,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 564754609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1910659335}
+        m_MethodName: ApostleRole
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &564754609
@@ -5646,7 +5662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- god rule -'
+  m_Text: '- Unknow -'
 --- !u!222 &888490660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9425,9 +9441,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1806647088}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1910659335}
+        m_MethodName: ToggleViewRole
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9435,17 +9451,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 55803509}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -11485,7 +11490,7 @@ GameObject:
   - component: {fileID: 1877028292}
   - component: {fileID: 1877028293}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Button Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11783,6 +11788,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitStatus: {fileID: 551469850}
   UnitSkill: {fileID: 1343150317}
+  RoleContent: {fileID: 55803509}
+  CharacterContent: {fileID: 1806647088}
+  RoleTitle: {fileID: 888490659}
+  RoleDesciption: {fileID: 117980738}
+  RoleImage: {fileID: 1818084776}
 --- !u!114 &1910659336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13332,7 +13342,7 @@ GameObject:
   - component: {fileID: 2113549167}
   - component: {fileID: 2113549166}
   m_Layer: 5
-  m_Name: Button
+  m_Name: God
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13395,7 +13405,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2113549167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1910659335}
+        m_MethodName: GodRole
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2113549167
@@ -13443,7 +13464,7 @@ GameObject:
   - component: {fileID: 2119783087}
   - component: {fileID: 2119783086}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Atheist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13506,7 +13527,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119783087}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1910659335}
+        m_MethodName: AtheistRole
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2119783087
