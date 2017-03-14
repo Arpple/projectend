@@ -6,7 +6,6 @@ namespace End.Lobby.UI
 {
 	public class LobbyController : NetworkLobbyManager
 	{
-
 		public static LobbyController Instance;
 
 		public LobbyMenu Menu;
@@ -31,6 +30,7 @@ namespace End.Lobby.UI
 			Main.gameObject.SetActive(false);
 		}
 
+		#region Client
 		public void AddPlayer(LobbyPlayer player)
 		{
 			Main.AddPlayer(player);
@@ -50,6 +50,24 @@ namespace End.Lobby.UI
 			player.CmdSetStatus(false);
 		}
 
+		public override void OnStartClient(NetworkClient lobbyClient)
+		{
+			base.OnStartClient(lobbyClient);
+
+			Menu.gameObject.SetActive(false);
+			Main.gameObject.SetActive(true);
+		}
+
+		public override void OnStopClient()
+		{
+			base.OnStopClient();
+
+			Menu.gameObject.SetActive(true);
+			Main.gameObject.SetActive(false);
+		}
+		#endregion
+
+		#region Server
 		/// <summary>
 		/// Called when [start host].
 		/// </summary>
@@ -57,34 +75,7 @@ namespace End.Lobby.UI
 		{
 			base.OnStartHost();
 
-			_playerIdCounter = 1;
-
-			Menu.gameObject.SetActive(false);
-			Main.gameObject.SetActive(true);
-		}
-
-
-		public override void OnStopHost()
-		{
-			base.OnStopHost();
-
-			Menu.gameObject.SetActive(true);
-			Main.gameObject.SetActive(false);
-		}
-
-		//public override void OnLobbyClientSceneChanged(NetworkConnection conn)
-		//{
-		//	base.OnLobbyClientSceneChanged(conn);
-
-		//	Game.Player.PlayerCount = PlayerCount;
-		//}
-
-		public override void OnStartClient(NetworkClient lobbyClient)
-		{
-			base.OnStartClient(lobbyClient);
-
-			Menu.gameObject.SetActive(false);
-			Main.gameObject.SetActive(true);
+			_playerIdCounter = 0;
 		}
 
 		/// <summary>
@@ -109,12 +100,18 @@ namespace End.Lobby.UI
 
 			if(_localPlayer.isServer)
 			{
-				gp.PlayerId = _playerIdCounter;
-				_playerIdCounter++;
+				gp.PlayerId = GeneratePlayerId();
 			}
 
 			return true;
 		}
+
+		private int GeneratePlayerId()
+		{
+			_playerIdCounter++;
+			return _playerIdCounter;
+		}
+		#endregion
 	}
 
 }
