@@ -35,6 +35,24 @@ namespace End.UI {
             }
         }
 
+        public Vector2 PositionOfMiddleItem {
+            get {
+                int itemCount = this.ItemCount;
+                int half = itemCount / 2 - (itemCount%2==0&&itemCount>0?1:0);//getMiddle index of Content...
+                Vector2 position = new Vector2(
+                    (this.ItemSpace + this.ItemSize.x) + extraPosition.x
+                    ,0);
+                return position;
+            }
+        }
+
+        private Vector2 extraPosition{
+            get{
+                float x = this.ItemCount % 2 == 0 ? -this.ItemSize.x / 2 : 0;
+                return new Vector2(x,0f);
+            }
+        }
+
         void Start() {
             foreach(SlideItem item in transform.GetComponentsInChildren<SlideItem>()) {
                 item.SetSize(ItemSize.x,ItemSize.y);
@@ -44,40 +62,50 @@ namespace End.UI {
         }
 
         void Update() {
-            Something();
+            ResizeItem();
         }
 
-        public void Something() {
+
+        public void ResizeItem() {
             float contentPosition = this.Content.transform.localPosition.x;
             int nearestIndex = getNearestItemIndex();
-            Debug.Log("NearestIndex = "+nearestIndex);
-
             foreach(SlideItem item in this.transform.GetComponentsInChildren<SlideItem>()) {
-                item.SetScale(this.NonFocusIndexScale);
+                item.SetScale(NonFocusIndexScale);
             }
 
             if(nearestIndex >= 0 && nearestIndex<ItemCount) {
                 this.SlideItems[nearestIndex].SetScale(1);
+                ShowDetail(nearestIndex);
             }
+        }
+
+        public Vector2 IndexToPosition(int index) {
+            return new Vector2((this.ItemSpace + this.ItemSize.x) * -(index - ItemCount / 2) + extraPosition.x,0);
         }
 
         public int getNearestItemIndex() {
             float contentPosition = this.Content.transform.localPosition.x;
-            return (int)(-(contentPosition / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2));
-
+            return (int)(-((contentPosition-extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2));
         }
 
+        /// <summary>
+        /// Force move Index to middle
+        /// </summary>
+        /// <param name="index"></param>
         public void FocusIndex(int index) {
             this.gameObject.GetComponent<ScrollRect>().StopMovement();
             int halfIndex = ItemCount/2;
-            float newPosition = (this.ItemSpace + this.ItemSize.x) * -(index - halfIndex);
+            float newPosition = IndexToPosition(index).x;
             Debug.Log("Focus Index -> ["+index+"/"+ItemCount+"] at position ["+newPosition+"]");
             this.Content.transform.localPosition = new Vector3(
                     newPosition
                     ,0
                     ,0
                 );
+            ShowDetail(index);
+        }
 
+        private void ShowDetail(int index) {
             this.ShowText.text = SlideItems[index].ShowText;
         }
 
