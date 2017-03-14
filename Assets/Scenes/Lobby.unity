@@ -3177,13 +3177,13 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1851284430463786, guid: a2de381bbcaefa440b19b482d83dd18b, type: 2}
-  m_CustomConfig: 0
+  m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
     m_PacketSize: 1500
     m_FragmentSize: 500
     m_ResendTimeout: 1200
-    m_DisconnectTimeout: 2000
+    m_DisconnectTimeout: 10000
     m_ConnectTimeout: 2000
     m_MinUpdateTimeout: 10
     m_PingTimeout: 500
