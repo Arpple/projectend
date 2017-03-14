@@ -9,6 +9,9 @@ namespace End.UI {
         public GameObject Content;
         public SlideItem PrefabsItem;
         public Text ShowText;
+
+        private bool isMouseDown;
+        private ScrollRect scrollrect;
         #endregion
 
         #region Variable
@@ -38,7 +41,6 @@ namespace End.UI {
         public Vector2 PositionOfMiddleItem {
             get {
                 int itemCount = this.ItemCount;
-                int half = itemCount / 2 - (itemCount%2==0&&itemCount>0?1:0);//getMiddle index of Content...
                 Vector2 position = new Vector2(
                     (this.ItemSpace + this.ItemSize.x) + extraPosition.x
                     ,0);
@@ -54,20 +56,24 @@ namespace End.UI {
         }
 
         void Start() {
+            Debug.Log("Start");
             foreach(SlideItem item in transform.GetComponentsInChildren<SlideItem>()) {
                 item.SetSize(ItemSize.x,ItemSize.y);
                 item.SetScale(1f);
             }
             FocusIndex(0);
+            this.scrollrect = this.gameObject.GetComponent<ScrollRect>();
         }
 
         void Update() {
             ResizeItem();
+            if( Mathf.Abs(this.scrollrect.velocity.x) <= 1f && !this.isMouseDown){
+                this.FocusIndex(getNearestItemIndex());
+            }
         }
 
 
         public void ResizeItem() {
-            float contentPosition = this.Content.transform.localPosition.x;
             int nearestIndex = getNearestItemIndex();
             foreach(SlideItem item in this.transform.GetComponentsInChildren<SlideItem>()) {
                 item.SetScale(NonFocusIndexScale);
@@ -85,7 +91,7 @@ namespace End.UI {
 
         public int getNearestItemIndex() {
             float contentPosition = this.Content.transform.localPosition.x;
-            return (int)(-((contentPosition-extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2));
+            return (int)Mathf.Round((-((contentPosition-extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
         }
 
         /// <summary>
@@ -93,8 +99,6 @@ namespace End.UI {
         /// </summary>
         /// <param name="index"></param>
         public void FocusIndex(int index) {
-            this.gameObject.GetComponent<ScrollRect>().StopMovement();
-            int halfIndex = ItemCount/2;
             float newPosition = IndexToPosition(index).x;
             Debug.Log("Focus Index -> ["+index+"/"+ItemCount+"] at position ["+newPosition+"]");
             this.Content.transform.localPosition = new Vector3(
@@ -115,11 +119,11 @@ namespace End.UI {
         }
 
         public void OnMouseDown() {
-
+            isMouseDown = true;
         }
 
         public void OnMouseUp() {
-            this.FocusIndex(getNearestItemIndex());
+            isMouseDown = false;
         }
     }
 
