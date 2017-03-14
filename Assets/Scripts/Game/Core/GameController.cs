@@ -38,7 +38,6 @@ namespace End.Game
 				var players = playerLoader.GetComponentsInChildren<Player>(true);
 				Player.PlayerCount = players.Length;
 			}
-			playerLoader.SetTargetPlayerCount(Player.PlayerCount);
 			
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
@@ -90,7 +89,9 @@ namespace End.Game
 				.Add(new RenderMapPositionSystem(contexts))
 
 				.Add(new CameraSystem(contexts))
-				.Add(new CameraKeyboardSystem(contexts));
+				.Add(new CameraKeyboardSystem(contexts))
+
+				.Add(new ClearContextsSystem(contexts));
 		}
 	}
 }

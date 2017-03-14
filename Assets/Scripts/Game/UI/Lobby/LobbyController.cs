@@ -61,9 +61,11 @@ namespace End.Lobby.UI
 		public override void OnStopClient()
 		{
 			base.OnStopClient();
-
-			Menu.gameObject.SetActive(true);
-			Main.gameObject.SetActive(false);
+			if(Instance != null)
+			{
+				Menu.gameObject.SetActive(true);
+				Main.gameObject.SetActive(false);
+			}
 		}
 		#endregion
 
@@ -78,6 +80,13 @@ namespace End.Lobby.UI
 			_playerIdCounter = 0;
 		}
 
+		public override void OnClientSceneChanged(NetworkConnection conn)
+		{
+			base.OnClientSceneChanged(conn);
+
+			Game.PlayerLoader.Instance.SetTargetPlayerCount(PlayerCount);
+		}
+
 		/// <summary>
 		/// This is called on the server when it is told that a client has finished switching from the lobby scene to a game player scene.
 		/// </summary>
@@ -89,11 +98,6 @@ namespace End.Lobby.UI
 		public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
 		{
 			base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
-
-			if (lobbyPlayer == _localPlayer)
-			{
-				Game.Player.PlayerCount = PlayerCount;
-			}
 
 			var gp = gamePlayer.GetComponent<Game.Player>();
 			var lp = lobbyPlayer.GetComponent<LobbyPlayer>();
