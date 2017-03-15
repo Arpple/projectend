@@ -31,9 +31,9 @@ namespace End.Lobby
 
 		private bool _isReady;
 
-		public Lounge.LoungeToLobby LoungeData
+		public Lounge.LoungeData LoungeData
 		{
-			get { return Lounge.LoungeToLobby.Instance; }
+			get { return Lounge.LoungeData.Instance; }
 		}
 
 		public LobbyController Lobby

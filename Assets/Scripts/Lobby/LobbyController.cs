@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace End.Lobby
 {
@@ -10,10 +11,11 @@ namespace End.Lobby
 		public static LobbyController Instance;
 
 		public GameObject PlayerContainer;
+		public Button BackButton;
 
-		public Lounge.LoungeToLobby LoungeData
+		public Lounge.LoungeData LoungeData
 		{
-			get { return Lounge.LoungeToLobby.Instance; }
+			get { return Lounge.LoungeData.Instance; }
 		}
 
 		private void Awake()
@@ -21,6 +23,7 @@ namespace End.Lobby
 			Instance = this;
 
 			Assert.IsNotNull(PlayerContainer);
+			Assert.IsNotNull(BackButton);
 		}
 
 		private void Start()
@@ -43,7 +46,30 @@ namespace End.Lobby
 			player.transform.SetParent(PlayerContainer.transform, false);
 		}
 
+		public void Back()
+		{
+			if (LoungeData.IsHost)
+			{
+				StopHost();
+			}
+			else
+			{
+				StopClient();
+			}
+			SceneManager.LoadScene(Scene.Lounge.ToString());
+			Destroy(gameObject);
+		}
+
 		#region Client
+		public override void OnLobbyClientSceneChanged(NetworkConnection conn)
+		{
+			if(SceneManager.GetActiveScene().name == Scene.Lounge.ToString())
+			{
+				return;
+			}
+
+			base.OnLobbyClientSceneChanged(conn);
+		}
 		#endregion
 
 		#region Server

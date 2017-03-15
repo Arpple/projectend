@@ -9,7 +9,7 @@ namespace End.Lounge
 {
 	public class LoungeController : MonoBehaviour
 	{
-		public LoungeToLobby PlayerSetting;
+		public LoungeData PlayerSetting;
 		public Icon PlayerIcon;
 		public InputField PlayerNameInputField;
 		public Button HostButton;
@@ -67,7 +67,7 @@ namespace End.Lounge
 
 		private void Connect(bool isHost)
 		{
-			var data = LoungeToLobby.Instance;
+			var data = LoungeData.Instance;
 			data.PlayerName = PlayerNameInputField.text;
 			data.IsHost = isHost;
 

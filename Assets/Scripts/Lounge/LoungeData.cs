@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace End.Lounge
 {
-	public class LoungeToLobby : MonoBehaviour
+	public class LoungeData : MonoBehaviour
 	{
-		public static LoungeToLobby Instance;
+		public static LoungeData Instance;
 
 		[Header("PlayerProfile")]
 		public string PlayerName;
@@ -19,6 +19,13 @@ namespace End.Lounge
 
 		private void Awake()
 		{
+			//use old data
+			if(Instance != null)
+			{
+				Destroy(gameObject);
+				return;
+			}
+
 			DontDestroyOnLoad(this);
 			Instance = this;
 		}
