@@ -2,11 +2,14 @@
 using UnityEngine;
 using End.UI;
 using UnityEngine.Assertions;
+using End.Network;
+using UnityEngine.SceneManagement;
 
 namespace End.Lounge
 {
 	public class LoungeController : MonoBehaviour
 	{
+		public LoungeToLobby PlayerSetting;
 		public Icon PlayerIcon;
 		public InputField PlayerNameInputField;
 		public Button HostButton;
@@ -15,6 +18,7 @@ namespace End.Lounge
 
 		private void Awake()
 		{
+			Assert.IsNotNull(PlayerSetting);
 			Assert.IsNotNull(PlayerIcon);
 			Assert.IsNotNull(PlayerNameInputField);
 			Assert.IsNotNull(HostButton);
@@ -24,23 +28,25 @@ namespace End.Lounge
 
 		private void Start()
 		{
-			HostButton.onClick.AddListener(Host);
-			JoinButton.onClick.AddListener(Join);
+			//set profile
+			var playerIconImage = Resources.Load<Sprite>(PlayerSetting.PlayerIconPath);
+			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
+			PlayerNameInputField.text = PlayerSetting.PlayerName;
+			PlayerNameInputField.onEndEdit.AddListener((s) => PlayerSetting.PlayerName = PlayerNameInputField.text);
 
+			//set dialogue event
 			ConnectionDialogue.OnBackButton += () => ToggleButton(true);
 			ConnectionDialogue.OnJoinButton += () =>
 			{
 				ToggleButton(true);
-				//TODO: start connection
-				var ip = ConnectionDialogue.IpAddress;
-				Debug.Log("Join " + ip);
+
+				Connect(false);
 			};
 		}
 
 		public void Host()
 		{
-			//TODO: start host
-			Debug.Log("Host");
+			Connect(true);
 		}
 
 		public void Join()
@@ -57,6 +63,25 @@ namespace End.Lounge
 		{
 			JoinButton.interactable = isEnable;
 			HostButton.interactable = isEnable;
+		}
+
+		private void Connect(bool isHost)
+		{
+			var data = LoungeToLobby.Instance;
+			data.PlayerName = PlayerNameInputField.text;
+			data.IsHost = isHost;
+
+			if(isHost)
+			{
+				Debug.Log("Starting Host");
+			}
+			else
+			{
+				data.ConnectingIpAddress = ConnectionDialogue.IpAddress;
+				Debug.Log("Connecting to " + ConnectionDialogue.IpAddress);
+			}
+
+			SceneManager.LoadScene(Scene.Lobby.ToString());
 		}
 	}
 

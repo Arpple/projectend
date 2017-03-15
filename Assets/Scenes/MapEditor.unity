@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadingMap: {fileID: 11400000, guid: 3e83a74fd2c3e9c419ad9f8a2c165723, type: 2}
-  IsCreatingNewMap: 0
+  IsCreatingNewMap: 1
   CreatingMap:
     Width: 5
     Heigth: 5
