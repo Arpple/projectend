@@ -15,6 +15,10 @@ namespace End.Game
 		{
 			return TileBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + tile.ToString());
 		}
-	}
+
+        public Blueprint GetTileBlueprint(string tile) {
+            return TileBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + tile);
+        }
+    }
 
 }
