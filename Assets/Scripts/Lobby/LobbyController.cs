@@ -3,11 +3,13 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-namespace End.Network
+namespace End.Lobby
 {
 	public class LobbyController : NetworkLobbyManager
 	{
 		public static LobbyController Instance;
+
+		public GameObject PlayerContainer;
 
 		public Lounge.LoungeToLobby LoungeData
 		{
@@ -18,12 +20,14 @@ namespace End.Network
 		{
 			Instance = this;
 
-			Assert.IsNotNull(LoungeData);
+			Assert.IsNotNull(PlayerContainer);
 		}
 
 		private void Start()
 		{
-			if(LoungeData.IsHost)
+			Assert.IsNotNull(LoungeData);
+
+			if (LoungeData.IsHost)
 			{
 				StartHost();
 			}
@@ -32,8 +36,11 @@ namespace End.Network
 				networkAddress = LoungeData.ConnectingIpAddress;
 				StartClient();
 			}
+		}
 
-			Destroy(LoungeData.gameObject);
+		public void AddPlayer(LobbyPlayer player)
+		{
+			player.transform.SetParent(PlayerContainer.transform, false);
 		}
 
 		#region Client
