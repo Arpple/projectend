@@ -71,11 +71,13 @@ namespace End.MapEditor
 			
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new TileActionSystem(contexts))
-
+                .Add(new TileHoverActionSystem(contexts))
+                
 				.Add(new RenderMapPositionSystem(contexts))
 				.Add(new TileBrushSystem(contexts, Setting.MapSetting.TileSetting))
+                .Add(new TileDetailSystem(contexts))
 
-				.Add(new CameraSystem(contexts))
+                .Add(new CameraSystem(contexts))
 				.Add(new CameraKeyboardSystem(contexts));
 
 		}
