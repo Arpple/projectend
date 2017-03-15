@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace End.Game
 {
@@ -14,7 +15,8 @@ namespace End.Game
 
 		void OnMouseDown()
 		{
-			if(ClickAction != null)
+            if(EventSystem.current.IsPointerOverGameObject()) return;
+            if(ClickAction != null)
 			{
 				ClickAction();
 			}
@@ -22,12 +24,12 @@ namespace End.Game
 
 		private void OnMouseEnter()
 		{
-			SelectionBorder.enabled = true;
+            SelectionBorder.enabled = true;
 		}
 
 		private void OnMouseExit()
 		{
-			SelectionBorder.enabled = false;
+            SelectionBorder.enabled = false;
 		}
 
 		public GameObject CreateView(GameEntity entity, Sprite sprite)
