@@ -156,7 +156,7 @@ namespace End.Game
 		public Map Save()
 		{
 			_spawnPoints = _indexedSpawnpoints.Values.Where(s => s != null).ToList();
-
+            //Debug.Log("_spanwPoin");
 			return this;
 		}
 	}	

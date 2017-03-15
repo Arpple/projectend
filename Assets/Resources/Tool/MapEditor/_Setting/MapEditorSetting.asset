@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Name: MapEditorSetting
   m_EditorClassIdentifier: 
   MapSetting:
+    GameMap: {fileID: 0}
     TileSetting:
-      TileBlueprints: {fileID: 11400000, guid: 78849841a2cb8c747931183a864e77c7, type: 2}
-      ViewRootPath: View/Tile
-      BaseTileObject: {fileID: 1197980941474246, guid: e7d98db282ccf124b8cdf87a1d62d60b,
-        type: 2}
+      TileBlueprints: {fileID: 11400000, guid: f2db4536541717d42a0ba7ed4ecbef95, type: 2}

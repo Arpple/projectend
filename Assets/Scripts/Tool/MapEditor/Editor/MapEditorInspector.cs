@@ -56,9 +56,14 @@ namespace End.MapEditor
 					}
 
 					map.Save();
-					ProjectWindowUtil.CreateAsset(map, "Assets/Resources/Game/Map/NewMap.asset");
-				}
-			}
+                    //TODO : Have map?
+                    //AssetDatabase.
+
+                    //TODO : New File
+                    //ProjectWindowUtil.CreateAsset(map, "Assets/Resources/Game/Map/NewMap.asset");
+                    AssetDatabase.CreateAsset(map, "Assets/Resources/Game/Map/"+mapEditor.MapName+".asset");
+                }
+            }
 		}
 	}
 

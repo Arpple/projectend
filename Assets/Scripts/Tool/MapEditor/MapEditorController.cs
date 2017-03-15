@@ -24,6 +24,7 @@ namespace End.MapEditor
 		
 		[Header("New Map")]
 		public bool IsCreatingNewMap;
+        public string MapName;
 		public MapInfo CreatingMap;
 
 		[Header("Setting")]

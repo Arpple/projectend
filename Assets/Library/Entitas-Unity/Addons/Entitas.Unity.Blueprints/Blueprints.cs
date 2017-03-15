@@ -40,7 +40,6 @@ namespace Entitas.Unity.Blueprints {
             if(!_binaryBlueprintsMap.TryGetValue(name, out binaryBlueprint)) {
                 throw new BlueprintsNotFoundException(name);
             }
-
             return binaryBlueprint.Deserialize();
         }
 
