@@ -20,11 +20,12 @@ public static class GameComponentsLookup {
     public const int TileAction = 9;
     public const int TileBrush = 10;
     public const int TileGraph = 11;
-    public const int Unit = 12;
-    public const int View = 13;
-    public const int ViewContainer = 14;
+    public const int TileHoverAction = 12;
+    public const int Unit = 13;
+    public const int View = 14;
+    public const int ViewContainer = 15;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "Ability",
@@ -39,6 +40,7 @@ public static class GameComponentsLookup {
         "TileAction",
         "TileBrush",
         "TileGraph",
+        "TileHoverAction",
         "Unit",
         "View",
         "ViewContainer"
@@ -57,6 +59,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.TileActionComponent),
         typeof(End.MapEditor.TileBrushComponent),
         typeof(End.Game.TileGraphComponent),
+        typeof(End.Game.TileHoverActionComponent),
         typeof(End.Game.UnitComponent),
         typeof(End.Game.ViewComponent),
         typeof(End.Game.ViewContainerComponent)
