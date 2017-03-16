@@ -11,13 +11,13 @@ public partial class GameEntity {
     public End.Game.UnitComponent unit { get { return (End.Game.UnitComponent)GetComponent(GameComponentsLookup.Unit); } }
     public bool hasUnit { get { return HasComponent(GameComponentsLookup.Unit); } }
 
-    public void AddUnit(End.Network.Player newOwnerPlayer) {
+    public void AddUnit(End.Player newOwnerPlayer) {
         var component = CreateComponent<End.Game.UnitComponent>(GameComponentsLookup.Unit);
         component.OwnerPlayer = newOwnerPlayer;
         AddComponent(GameComponentsLookup.Unit, component);
     }
 
-    public void ReplaceUnit(End.Network.Player newOwnerPlayer) {
+    public void ReplaceUnit(End.Player newOwnerPlayer) {
         var component = CreateComponent<End.Game.UnitComponent>(GameComponentsLookup.Unit);
         component.OwnerPlayer = newOwnerPlayer;
         ReplaceComponent(GameComponentsLookup.Unit, component);

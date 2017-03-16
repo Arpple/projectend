@@ -70,7 +70,9 @@ namespace End.Lounge
 
 		private void Connect(bool isHost)
 		{
-			if(isHost)
+			//SceneManager.LoadScene(Scene.Lobby.ToString());
+
+			if (isHost)
 			{
 				Debug.Log("Starting Host");
 				NetCon.StartHost();
@@ -80,9 +82,8 @@ namespace End.Lounge
 				var ip = ConnectionDialogue.IpAddress;
 				NetCon.networkAddress = ip;
 				Debug.Log("Connecting to " + ip);
+				NetCon.StartClient();
 			}
-
-			SceneManager.LoadScene(Scene.Lobby.ToString());
 		}
 	}
 

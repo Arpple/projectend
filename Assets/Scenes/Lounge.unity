@@ -953,7 +953,7 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   LocalPlayerName: Player Name
-  LocalPlayerIconPath: 
+  LocalPlayerIconPath: Game/Unit/Character/LastBoss/Icon
 --- !u!4 &625374861
 Transform:
   m_ObjectHideFlags: 0

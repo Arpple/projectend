@@ -1,141 +1,77 @@
-﻿//using End.UI;
-//using UnityEngine;
-//using UnityEngine.UI;
-//using UnityEngine.Assertions;
-//using UnityEngine.Networking;
+﻿using End.UI;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Assertions;
+using UnityEngine.Networking;
 
-//namespace End.Lobby
-//{
-//	public class LobbyPlayer : NetworkLobbyPlayer
-//	{
-//		//constant
-//		readonly Color Color_Yellow = new Color(1, 237f / 255, 0);
-//		readonly Color Color_Orange = new Color(1, 143 / 255f, 0);
-//		readonly Color Color_Green = new Color(36f / 255, 1, 46f / 255);
+namespace End.Lobby
+{
+	public class LobbyPlayer : MonoBehaviour
+	{
+		readonly Color Color_Yellow = new Color(1, 237f / 255, 0);
+		readonly Color Color_Orange = new Color(1, 143 / 255f, 0);
+		readonly Color Color_Green = new Color(36f / 255, 1, 46f / 255);
 
-//		//ui
-//		public Text PlayerNameText;
-//		public Text PlayerStatusText;
-//		public Icon PlayerIcon;
+		public Text PlayerNameText;
+		public Text PlayerStatusText;
+		public Icon PlayerIcon;
 
-//		//sync properties
-//		[SyncVar(hook = "OnNameChanged")]
-//		public string PlayerName;
+		private Player _player;
 
-//		[SyncVar(hook = "OnStatusChanged")]
-//		public bool IsReady;
+		private void Awake()
+		{
+			Assert.IsNotNull(PlayerNameText);
+			Assert.IsNotNull(PlayerStatusText);
+			Assert.IsNotNull(PlayerIcon);
+		}
 
-//		[SyncVar(hook = "OnIconChanged")]
-//		public string playerIconPath;
-		
+		public void SetPlayer(Player player)
+		{
+			transform.SetParent(player.transform.parent, false);
+			player.transform.SetParent(transform, false);
 
-//		private bool _isReady;
+			_player = player;
 
-//		public LobbyController Lobby
-//		{
-//			get { return LobbyController.Instance; }
-//		}
+			_player.OnNameChangedCallback += SetName;
+			_player.OnReadyStateChangedCallback += SetStatus;
+			_player.OnIconPathChangedCallback += SetIcon;
+		}
 
-//		private void Awake()
-//		{
-//			Assert.IsNotNull(PlayerNameText);
-//			Assert.IsNotNull(PlayerStatusText);
-//			Assert.IsNotNull(PlayerIcon);
-//		}
+		private void OnDestroy()
+		{
+			if (_player == null) return;
 
-//		private void Start()
-//		{
-//			Assert.IsNotNull(Lobby);
-//		}
+			_player.OnNameChangedCallback -= SetName;
+			_player.OnReadyStateChangedCallback -= SetStatus;
+			_player.OnIconPathChangedCallback -= SetIcon;
+		}
 
-//		private void Update()
-//		{
-//			if(!_isReady)
-//			{
-//				PlayerStatusText.color = Color.Lerp(Color_Yellow, Color_Orange, Mathf.PingPong(Time.time, 2f));
-//			}
-//		}
+		private void Update()
+		{
+			if(_player != null && !_player.IsReady)
+			{
+				PlayerStatusText.color = Color.Lerp(Color_Yellow, Color_Orange, Mathf.PingPong(Time.time, 2f));
+			}
+		}
 
-//		public void OnNameChanged(string name)
-//		{
-//			PlayerNameText.text = name;
-//		}
+		public void SetName(string name)
+		{
+			PlayerNameText.text = name;
+		}
 
-//		public void OnStatusChanged(bool isReady)
-//		{
-//			_isReady = isReady;
-//			PlayerStatusText.text = isReady ? "Ready" : "Waiting";
+		public void SetStatus(bool isReady)
+		{
+			PlayerStatusText.text = isReady ? "Ready" : "Waiting";
 			
-//			if(isReady)
-//			{
-//				PlayerStatusText.color = Color_Green;
-//			}
-//		}
+			if(isReady)
+			{
+				PlayerStatusText.color = Color_Green;
+			}
+		}
 
-//		public void OnIconChanged(string iconPath)
-//		{
-//			playerIconPath = iconPath;
-//			PlayerIcon.SetImage(Resources.Load<Sprite>(iconPath));
-//		}
-
-//		#region Network
-//		public override void OnStartLocalPlayer()
-//		{
-//			base.OnStartLocalPlayer();
-
-//			CmdSetName(LoungeData.PlayerName);
-//			CmdSetIcon(LoungeData.PlayerIconPath);
-//			CmdSetStatus(false);
-
-//			var readyBtn = Lobby.ReadyButton;
-//			var waitBtn = Lobby.WaitButton;
-
-//			readyBtn.onClick.RemoveAllListeners();
-//			readyBtn.onClick.AddListener(() =>
-//			{
-//				CmdSetStatus(true);
-//				SendReadyToBeginMessage();
-//				readyBtn.gameObject.SetActive(false);
-//				waitBtn.gameObject.SetActive(true);
-//			});
-
-			
-//			waitBtn.onClick.RemoveAllListeners();
-//			waitBtn.onClick.AddListener(() =>
-//			{
-//				CmdSetStatus(false);
-//				SendNotReadyToBeginMessage();
-//				readyBtn.gameObject.SetActive(true);
-//				waitBtn.gameObject.SetActive(false);
-//			});
-//		}
-
-//		public override void OnClientEnterLobby()
-//		{
-//			base.OnClientEnterLobby();
-
-//			Lobby.AddPlayer(this);
-//		}
-//		#endregion
-
-//		#region Command
-//		[Command]
-//		public void CmdSetName(string name)
-//		{
-//			PlayerName = name;
-//		}
-
-//		[Command]
-//		public void CmdSetStatus(bool isReady)
-//		{
-//			IsReady = isReady;
-//		}
-
-//		[Command]
-//		public void CmdSetIcon(string path)
-//		{
-//			playerIconPath = path;
-//		}
-//		#endregion
-//	}
-//}
+		public void SetIcon(string iconPath)
+		{
+			PlayerIcon.SetImage(Resources.Load<Sprite>(iconPath));
+		}
+	}
+}
