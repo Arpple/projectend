@@ -110,7 +110,7 @@ namespace End.UI {
         }
 
         private void ShowDetail(int index) {
-            this.ShowText.text = SlideItems[index].ShowText;
+            if(index >= 0 && index < ItemCount) this.ShowText.text = SlideItems[index].ShowText;
         }
 
         public SlideItem AddItem() {
