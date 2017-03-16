@@ -25,10 +25,10 @@ namespace End.MapEditor
 				else if(brush.Action == BrushAction.Spawnpoint)
 				{
 					brush.SpawnpointIndex = EditorGUILayout.IntField("Spawnpoint Index", brush.SpawnpointIndex);
-					if (brush.SpawnpointIndex < 0 || brush.SpawnpointIndex > Player.MAX_PLAYER)
+					if (brush.SpawnpointIndex < 0 || brush.SpawnpointIndex > 8)//Player.MAX_PLAYER)
 					{
 						brush.SpawnpointIndex = 1;
-						Debug.LogWarning("spawn point index should be player id (1-" + Player.MAX_PLAYER + ")");
+						Debug.LogWarning("spawn point index should be player id (1-" + 8 + ")");
 					}
 				}
 			}
@@ -50,9 +50,9 @@ namespace End.MapEditor
 							spawnpointCount++;
 						}
 					}
-					if(spawnpointCount < Player.MAX_PLAYER)
+					if(spawnpointCount < 8)//Player.MAX_PLAYER)
 					{
-						Debug.LogWarning("Spawnpoint is less than maximum player (" + spawnpointCount + "/" + Player.MAX_PLAYER + ")");
+						Debug.LogWarning("Spawnpoint is less than maximum player (" + spawnpointCount + "/" + 8 + ")");
 					}
 
 					map.Save();

@@ -31,13 +31,13 @@ namespace End.Game
 
 		void Start()
 		{
-			var playerLoader = PlayerLoader.Instance;
-			Assert.IsNotNull(playerLoader);
-			if(IsOffline)
-			{
-				var players = playerLoader.GetComponentsInChildren<Player>(true);
-				Player.PlayerCount = players.Length;
-			}
+			//var playerLoader = PlayerLoader.Instance;
+			//Assert.IsNotNull(playerLoader);
+			//if(IsOffline)
+			//{
+			//	var players = playerLoader.GetComponentsInChildren<Player>(true);
+			//	Player.PlayerCount = players.Length;
+			//}
 			
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
@@ -51,7 +51,7 @@ namespace End.Game
 		{
 			Assert.IsTrue(_systems != null);
 
-			if (!PlayerLoader.Instance.IsComplete) return;
+			//if (!PlayerLoader.Instance.IsComplete) return;
 
 			//initialize once
 			if (!_isInitialized)
@@ -77,7 +77,7 @@ namespace End.Game
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap, Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
-				.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
+				//.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadCardSystem(contexts, Setting.DeckSetting.CardSetting))

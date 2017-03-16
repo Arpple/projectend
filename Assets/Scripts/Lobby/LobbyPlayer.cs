@@ -6,40 +6,17 @@ using UnityEngine.Networking;
 
 namespace End.Lobby
 {
-	public class LobbyPlayer : NetworkLobbyPlayer
+	public class LobbyPlayer : MonoBehaviour
 	{
-		//constant
 		readonly Color Color_Yellow = new Color(1, 237f / 255, 0);
 		readonly Color Color_Orange = new Color(1, 143 / 255f, 0);
 		readonly Color Color_Green = new Color(36f / 255, 1, 46f / 255);
 
-		//ui
 		public Text PlayerNameText;
 		public Text PlayerStatusText;
 		public Icon PlayerIcon;
 
-		//sync properties
-		[SyncVar(hook = "OnNameChanged")]
-		public string PlayerName;
-
-		[SyncVar(hook = "OnStatusChanged")]
-		public bool IsReady;
-
-		[SyncVar(hook = "OnIconChanged")]
-		public string playerIconPath;
-		
-
-		private bool _isReady;
-
-		public Lounge.LoungeData LoungeData
-		{
-			get { return Lounge.LoungeData.Instance; }
-		}
-
-		public LobbyController Lobby
-		{
-			get { return LobbyController.Instance; }
-		}
+		private Player _player;
 
 		private void Awake()
 		{
@@ -48,28 +25,42 @@ namespace End.Lobby
 			Assert.IsNotNull(PlayerIcon);
 		}
 
-		private void Start()
+		public void SetPlayer(Player player)
 		{
-			Assert.IsNotNull(LoungeData);
-			Assert.IsNotNull(Lobby);
+			transform.SetParent(player.transform.parent, false);
+			player.transform.SetParent(transform, false);
+
+			_player = player;
+
+			_player.OnNameChangedCallback += SetName;
+			_player.OnReadyStateChangedCallback += SetStatus;
+			_player.OnIconPathChangedCallback += SetIcon;
+		}
+
+		private void OnDestroy()
+		{
+			if (_player == null) return;
+
+			_player.OnNameChangedCallback -= SetName;
+			_player.OnReadyStateChangedCallback -= SetStatus;
+			_player.OnIconPathChangedCallback -= SetIcon;
 		}
 
 		private void Update()
 		{
-			if(!_isReady)
+			if(_player != null && !_player.IsReady)
 			{
 				PlayerStatusText.color = Color.Lerp(Color_Yellow, Color_Orange, Mathf.PingPong(Time.time, 2f));
 			}
 		}
 
-		public void OnNameChanged(string name)
+		public void SetName(string name)
 		{
 			PlayerNameText.text = name;
 		}
 
-		public void OnStatusChanged(bool isReady)
+		public void SetStatus(bool isReady)
 		{
-			_isReady = isReady;
 			PlayerStatusText.text = isReady ? "Ready" : "Waiting";
 			
 			if(isReady)
@@ -78,70 +69,9 @@ namespace End.Lobby
 			}
 		}
 
-		public void OnIconChanged(string iconPath)
+		public void SetIcon(string iconPath)
 		{
-			playerIconPath = iconPath;
 			PlayerIcon.SetImage(Resources.Load<Sprite>(iconPath));
 		}
-
-		#region Network
-		public override void OnStartLocalPlayer()
-		{
-			base.OnStartLocalPlayer();
-
-			CmdSetName(LoungeData.PlayerName);
-			CmdSetIcon(LoungeData.PlayerIconPath);
-			CmdSetStatus(false);
-
-			var readyBtn = Lobby.ReadyButton;
-			var waitBtn = Lobby.WaitButton;
-
-			readyBtn.onClick.RemoveAllListeners();
-			readyBtn.onClick.AddListener(() =>
-			{
-				CmdSetStatus(true);
-				SendReadyToBeginMessage();
-				readyBtn.gameObject.SetActive(false);
-				waitBtn.gameObject.SetActive(true);
-			});
-
-			
-			waitBtn.onClick.RemoveAllListeners();
-			waitBtn.onClick.AddListener(() =>
-			{
-				CmdSetStatus(false);
-				SendNotReadyToBeginMessage();
-				readyBtn.gameObject.SetActive(true);
-				waitBtn.gameObject.SetActive(false);
-			});
-		}
-
-		public override void OnClientEnterLobby()
-		{
-			base.OnClientEnterLobby();
-
-			Lobby.AddPlayer(this);
-		}
-		#endregion
-
-		#region Command
-		[Command]
-		public void CmdSetName(string name)
-		{
-			PlayerName = name;
-		}
-
-		[Command]
-		public void CmdSetStatus(bool isReady)
-		{
-			IsReady = isReady;
-		}
-
-		[Command]
-		public void CmdSetIcon(string path)
-		{
-			playerIconPath = path;
-		}
-		#endregion
 	}
 }

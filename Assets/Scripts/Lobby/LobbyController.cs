@@ -1,12 +1,10 @@
 ﻿using UnityEngine.Assertions;
-using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace End.Lobby
 {
-	public class LobbyController : NetworkLobbyManager
+	public class LobbyController : MonoBehaviour
 	{
 		public static LobbyController Instance;
 
@@ -14,11 +12,7 @@ namespace End.Lobby
 		public Button BackButton;
 		public Button ReadyButton;
 		public Button WaitButton;
-
-		public Lounge.LoungeData LoungeData
-		{
-			get { return Lounge.LoungeData.Instance; }
-		}
+		public LobbyPlayer LobbyPlayerPrefabs;
 
 		private void Awake()
 		{
@@ -28,68 +22,42 @@ namespace End.Lobby
 			Assert.IsNotNull(BackButton);
 			Assert.IsNotNull(ReadyButton);
 			Assert.IsNotNull(WaitButton);
+			Assert.IsNotNull(LobbyPlayerPrefabs);
 		}
 
 		private void Start()
 		{
-			#if DEBUG
-			//quickly go back to lounge for debugging purpose
-			if(LoungeData == null)
-			{
-				SceneManager.LoadScene(Scene.Lounge.ToString());
-				Destroy(gameObject);
-				return;
-			}
-			#endif
-
-			if (LoungeData.IsHost)
-			{
-				StartHost();
-			}
-			else
-			{
-				networkAddress = LoungeData.ConnectingIpAddress;
-				StartClient();
-			}
+			ReadyButton.onClick.RemoveAllListeners();
+			WaitButton.onClick.RemoveAllListeners();
 		}
 
-		public void AddPlayer(LobbyPlayer player)
+		public void AddPlayer(Player player)
 		{
 			player.transform.SetParent(PlayerContainer.transform, false);
+			var lobbyPlayer = Instantiate(LobbyPlayerPrefabs).GetComponent<LobbyPlayer>();
+			lobbyPlayer.SetPlayer(player);
+		}
+
+		public void SetLocalPlayer(Player player)
+		{
+			ReadyButton.onClick.AddListener(() =>
+			{
+				player.CmdSetReadyStatus(true);
+				ReadyButton.gameObject.SetActive(false);
+				WaitButton.gameObject.SetActive(true);
+			});
+
+			WaitButton.onClick.AddListener(() =>
+			{
+				player.CmdSetReadyStatus(false);
+				ReadyButton.gameObject.SetActive(true);
+				WaitButton.gameObject.SetActive(false);
+			});
 		}
 
 		public void Back()
 		{
-			if (LoungeData.IsHost)
-			{
-				StopHost();
-			}
-			else
-			{
-				StopClient();
-			}
-			SceneManager.LoadScene(Scene.Lounge.ToString());
-			Destroy(gameObject);
+			NetworkController.Instance.Stop();
 		}
-
-		#region Client
-		public override void OnLobbyClientSceneChanged(NetworkConnection conn)
-		{
-			if(SceneManager.GetActiveScene().name == Scene.Lounge.ToString())
-			{
-				return;
-			}
-
-			base.OnLobbyClientSceneChanged(conn);
-		}
-		#endregion
-
-		#region Server
-		public override void OnLobbyStartHost()
-		{
-			base.OnLobbyStartHost();
-			maxConnections = maxPlayers;
-		}
-		#endregion
 	}
 }
