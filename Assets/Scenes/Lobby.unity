@@ -1453,6 +1453,8 @@ MonoBehaviour:
   lobbySlots: []
   PlayerContainer: {fileID: 1833363281}
   BackButton: {fileID: 1702411707}
+  ReadyButton: {fileID: 1421112543}
+  WaitButton: {fileID: 318087765}
 --- !u!1 &2112758992
 GameObject:
   m_ObjectHideFlags: 0

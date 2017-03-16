@@ -12,6 +12,8 @@ namespace End.Lobby
 
 		public GameObject PlayerContainer;
 		public Button BackButton;
+		public Button ReadyButton;
+		public Button WaitButton;
 
 		public Lounge.LoungeData LoungeData
 		{
@@ -24,11 +26,21 @@ namespace End.Lobby
 
 			Assert.IsNotNull(PlayerContainer);
 			Assert.IsNotNull(BackButton);
+			Assert.IsNotNull(ReadyButton);
+			Assert.IsNotNull(WaitButton);
 		}
 
 		private void Start()
 		{
-			Assert.IsNotNull(LoungeData);
+			#if DEBUG
+			//quickly go back to lounge for debugging purpose
+			if(LoungeData == null)
+			{
+				SceneManager.LoadScene(Scene.Lounge.ToString());
+				Destroy(gameObject);
+				return;
+			}
+			#endif
 
 			if (LoungeData.IsHost)
 			{
