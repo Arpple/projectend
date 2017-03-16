@@ -56,7 +56,7 @@ namespace End.UI {
         }
 
         void Start() {
-            Debug.Log("Start");
+            //Debug.Log("Start");
             foreach(SlideItem item in transform.GetComponentsInChildren<SlideItem>()) {
                 item.SetSize(ItemSize.x,ItemSize.y);
                 item.SetScale(1f);
@@ -100,7 +100,7 @@ namespace End.UI {
         /// <param name="index"></param>
         public void FocusIndex(int index) {
             float newPosition = IndexToPosition(index).x;
-            Debug.Log("Focus Index -> ["+index+"/"+ItemCount+"] at position ["+newPosition+"]");
+            //Debug.Log("Focus Index -> ["+index+"/"+ItemCount+"] at position ["+newPosition+"]");
             this.Content.transform.localPosition = new Vector3(
                     newPosition
                     ,0
