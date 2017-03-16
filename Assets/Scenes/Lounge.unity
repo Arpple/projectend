@@ -952,6 +952,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+  MaxPlayer: 8
   LocalPlayerName: Player Name
   LocalPlayerIconPath: Game/Unit/Character/LastBoss/Icon
 --- !u!4 &625374861

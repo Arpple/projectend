@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Networking;
 
 namespace End
 {
 	public class Player : NetworkBehaviour
 	{
-		public const int MAX_PLAYER = 8;
-
-		public static int PlayerCount;
+		public static List<Player> AllPlayers;
 
 		[SyncVar] public short PlayerId;
 
@@ -27,11 +27,13 @@ namespace End
 		public delegate void ChangeIconPathCallback(string iconPath);
 		public delegate void ChangeSelectedCharacterCallback(int charId);
 		public delegate void ChangeReadyStateCallback(bool ready);
+		public delegate void AllPlayerReadyCallback();
 
 		public event ChangeNameCallback OnNameChangedCallback;
 		public event ChangeIconPathCallback OnIconPathChangedCallback;
 		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
+		public event AllPlayerReadyCallback OnAllPlayerReady;
 
 		public void OnNameChanged(string name)
 		{
@@ -57,7 +59,24 @@ namespace End
 			if (OnReadyStateChangedCallback != null) OnReadyStateChangedCallback(ready);
 		}
 
-		#region Network
+		private void Start()
+		{
+			Assert.IsNotNull(AllPlayers);
+
+			AllPlayers.Add(this);
+		}
+
+		private void OnDestroy()
+		{
+			Assert.IsNotNull(AllPlayers);
+
+			AllPlayers.Remove(this);
+		}
+
+		#region Network		
+		/// <summary>
+		/// Called when the local player object has been set up.
+		/// </summary>
 		public override void OnStartLocalPlayer()
 		{
 			base.OnStartLocalPlayer();
@@ -70,6 +89,9 @@ namespace End
 			lobby.SetLocalPlayer(this);
 		}
 
+		/// <summary>
+		/// Called on every NetworkBehaviour when it is activated on a client.
+		/// </summary>
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
