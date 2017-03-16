@@ -4,10 +4,13 @@
 	{
 		None,
 		Grass,
-		Desert,
 		DeepForest,
 		Water,
-		Mountain,
+        Desert,
+        Mountain,
+        Snow,
+        SnowMountain,
+        Space,
 	}
 }
 
