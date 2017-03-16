@@ -1,7 +1,6 @@
 ﻿using UnityEngine.Assertions;
 using UnityEngine;
 using UnityEngine.UI;
-using End.Network;
 
 namespace End.Lobby
 {

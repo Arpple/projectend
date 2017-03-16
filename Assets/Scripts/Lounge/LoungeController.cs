@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
 using End.UI;
-using End.Network;
 
 namespace End.Lounge
 {
