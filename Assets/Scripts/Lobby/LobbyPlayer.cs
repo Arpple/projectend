@@ -92,6 +92,28 @@ namespace End.Lobby
 			CmdSetName(LoungeData.PlayerName);
 			CmdSetIcon(LoungeData.PlayerIconPath);
 			CmdSetStatus(false);
+
+			var readyBtn = Lobby.ReadyButton;
+			var waitBtn = Lobby.WaitButton;
+
+			readyBtn.onClick.RemoveAllListeners();
+			readyBtn.onClick.AddListener(() =>
+			{
+				CmdSetStatus(true);
+				SendReadyToBeginMessage();
+				readyBtn.gameObject.SetActive(false);
+				waitBtn.gameObject.SetActive(true);
+			});
+
+			
+			waitBtn.onClick.RemoveAllListeners();
+			waitBtn.onClick.AddListener(() =>
+			{
+				CmdSetStatus(false);
+				SendNotReadyToBeginMessage();
+				readyBtn.gameObject.SetActive(true);
+				waitBtn.gameObject.SetActive(false);
+			});
 		}
 
 		public override void OnClientEnterLobby()

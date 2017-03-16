@@ -12,6 +12,8 @@ namespace End.Lobby
 
 		public GameObject PlayerContainer;
 		public Button BackButton;
+		public Button ReadyButton;
+		public Button WaitButton;
 
 		public Lounge.LoungeData LoungeData
 		{
@@ -24,6 +26,8 @@ namespace End.Lobby
 
 			Assert.IsNotNull(PlayerContainer);
 			Assert.IsNotNull(BackButton);
+			Assert.IsNotNull(ReadyButton);
+			Assert.IsNotNull(WaitButton);
 		}
 
 		private void Start()
