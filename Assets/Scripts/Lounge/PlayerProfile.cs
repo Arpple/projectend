@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace End.Lounge
+namespace End.Network
 {
-	public class LoungeData : MonoBehaviour
+	public class PlayerProfile : MonoBehaviour
 	{
-		public static LoungeData Instance;
+		public static PlayerProfile Instance;
 
 		[Header("PlayerProfile")]
 		public string PlayerName;

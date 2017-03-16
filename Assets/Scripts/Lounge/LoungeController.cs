@@ -3,22 +3,25 @@ using UnityEngine.UI;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using End.UI;
-
+using End.Network;
 
 namespace End.Lounge
 {
 	public class LoungeController : MonoBehaviour
 	{
-		public LoungeData PlayerSetting;
 		public Icon PlayerIcon;
 		public InputField PlayerNameInputField;
 		public Button HostButton;
 		public Button JoinButton;
 		public ConnectionDialogue ConnectionDialogue;
 
+		public NetworkController NetCon
+		{
+			get { return NetworkController.Instance; }
+		}
+
 		private void Awake()
 		{
-			Assert.IsNotNull(PlayerSetting);
 			Assert.IsNotNull(PlayerIcon);
 			Assert.IsNotNull(PlayerNameInputField);
 			Assert.IsNotNull(HostButton);
@@ -29,10 +32,10 @@ namespace End.Lounge
 		private void Start()
 		{
 			//set profile
-			var playerIconImage = Resources.Load<Sprite>(PlayerSetting.PlayerIconPath);
+			var playerIconImage = Resources.Load<Sprite>(NetCon.LocalPlayerIconPath);
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
-			PlayerNameInputField.text = PlayerSetting.PlayerName;
-			PlayerNameInputField.onEndEdit.AddListener((s) => PlayerSetting.PlayerName = PlayerNameInputField.text);
+			PlayerNameInputField.text = NetCon.LocalPlayerName;
+			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
 
 			//set dialogue event
 			ConnectionDialogue.OnBackButton += () => ToggleButton(true);
@@ -67,18 +70,16 @@ namespace End.Lounge
 
 		private void Connect(bool isHost)
 		{
-			var data = LoungeData.Instance;
-			data.PlayerName = PlayerNameInputField.text;
-			data.IsHost = isHost;
-
 			if(isHost)
 			{
 				Debug.Log("Starting Host");
+				NetCon.StartHost();
 			}
 			else
 			{
-				data.ConnectingIpAddress = ConnectionDialogue.IpAddress;
-				Debug.Log("Connecting to " + ConnectionDialogue.IpAddress);
+				var ip = ConnectionDialogue.IpAddress;
+				NetCon.networkAddress = ip;
+				Debug.Log("Connecting to " + ip);
 			}
 
 			SceneManager.LoadScene(Scene.Lobby.ToString());
