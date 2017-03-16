@@ -28,7 +28,15 @@ namespace End.Lobby
 
 		private void Start()
 		{
-			Assert.IsNotNull(LoungeData);
+			#if DEBUG
+			//quickly go back to lounge for debugging purpose
+			if(LoungeData == null)
+			{
+				SceneManager.LoadScene(Scene.Lounge.ToString());
+				Destroy(gameObject);
+				return;
+			}
+			#endif
 
 			if (LoungeData.IsHost)
 			{
