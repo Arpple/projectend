@@ -16,18 +16,12 @@ namespace End.Lobby
 
 		private void Awake()
 		{
-			Debug.Log("AWAKE");
 			Instance = this;
 
 			Assert.IsNotNull(PlayerContainer);
 			Assert.IsNotNull(BackButton);
 			Assert.IsNotNull(ReadyButton);
 			Assert.IsNotNull(WaitButton);
-		}
-
-		private void Start()
-		{
-
 		}
 
 		public void AddPlayer(Player player)
