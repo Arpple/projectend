@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
@@ -8,6 +9,9 @@ namespace End
 	public class NetworkController : NetworkManager
 	{
 		public static NetworkController Instance;
+
+		public delegate void AllPlayerReadyCallback();
+		public event AllPlayerReadyCallback OnAllPlayerReadyCallback;
 
 		public delegate void ClientErrorCallback(int errorCode);
 		public event ClientErrorCallback OnClientErrorCallback;
@@ -52,12 +56,26 @@ namespace End
 			if (OnClientErrorCallback != null) OnClientErrorCallback(errorCode);
 		}
 
-		#region Server
+		#region Server		
+		/// <summary>
+		/// This hook is invoked when a server is started - including when a host is started.
+		/// </summary>
 		public override void OnStartServer()
 		{
 			base.OnStartServer();
 
 			maxConnections = MaxPlayer;
+		}
+
+		/// <summary>
+		/// Invoked on server when all player.isReady is true
+		/// </summary>
+		public void OnServerAllPlayerReady()
+		{
+			Assert.IsTrue(Player.AllPlayers.TrueForAll(p => p.IsReady));
+
+			if (OnAllPlayerReadyCallback != null) OnAllPlayerReadyCallback();
+			Debug.Log("All Ready");
 		}
 		#endregion
 	}

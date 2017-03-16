@@ -11,6 +11,7 @@ namespace End
 
 		[SyncVar] public short PlayerId;
 
+		#region SyncProperties
 		[SyncVar(hook = "OnNameChanged")]
 		public string PlayerName;
 
@@ -27,14 +28,12 @@ namespace End
 		public delegate void ChangeIconPathCallback(string iconPath);
 		public delegate void ChangeSelectedCharacterCallback(int charId);
 		public delegate void ChangeReadyStateCallback(bool ready);
-		public delegate void AllPlayerReadyCallback();
 
 		public event ChangeNameCallback OnNameChangedCallback;
 		public event ChangeIconPathCallback OnIconPathChangedCallback;
 		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
-		public event AllPlayerReadyCallback OnAllPlayerReady;
-
+		
 		public void OnNameChanged(string name)
 		{
 			PlayerName = name;
@@ -57,7 +56,13 @@ namespace End
 		{
 			IsReady = ready;
 			if (OnReadyStateChangedCallback != null) OnReadyStateChangedCallback(ready);
+
+			if(isServer)
+			{
+				if(AllPlayers.TrueForAll(p => p.IsReady)) { NetworkController.Instance.OnServerAllPlayerReady(); }
+			}
 		}
+		#endregion
 
 		private void Start()
 		{
