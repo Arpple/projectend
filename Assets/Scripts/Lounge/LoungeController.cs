@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using End.UI;
+using UnityEngine.Networking;
 
 namespace End.Lounge
 {
@@ -43,6 +44,13 @@ namespace End.Lounge
 
 				Connect(false);
 			};
+
+			NetCon.OnClientErrorCallback += ConnectError;
+		}
+
+		private void OnDestroy()
+		{
+			NetCon.OnClientErrorCallback -= ConnectError;
 		}
 
 		public void Host()
@@ -68,8 +76,6 @@ namespace End.Lounge
 
 		private void Connect(bool isHost)
 		{
-			//SceneManager.LoadScene(Scene.Lobby.ToString());
-
 			if (isHost)
 			{
 				Debug.Log("Starting Host");
@@ -78,9 +84,20 @@ namespace End.Lounge
 			else
 			{
 				var ip = ConnectionDialogue.IpAddress;
-				NetCon.networkAddress = ip;
 				Debug.Log("Connecting to " + ip);
+				NetCon.networkAddress = ip;
 				NetCon.StartClient();
+
+				//TODO: show connecting dialogue
+			}
+		}
+
+		public void ConnectError(int errorCode)
+		{
+			if(errorCode == (int)NetworkError.Timeout)
+			{
+				//TODO: show warining / erorr
+				Debug.Log("Time Out");
 			}
 		}
 	}

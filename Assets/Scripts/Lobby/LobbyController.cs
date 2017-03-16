@@ -57,6 +57,7 @@ namespace End.Lobby
 
 		public void Back()
 		{
+			NetworkController.Instance.Stop();
 		}
 	}
 }
