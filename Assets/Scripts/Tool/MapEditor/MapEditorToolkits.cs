@@ -48,8 +48,22 @@ namespace End.MapEditor {
             }
         }
         public void TileButton(Tile t) {
-            Debug.Log("Tile "+t.ToString()+" Select ");
+            //Debug.Log("Tile "+t.ToString()+" Select ");
             TileBrushSystem.TileBrush.TileType = t;
+            Text text;
+            var col = ButtonPrefabs.GetComponent<Button>().colors;
+            var selectedCol = ButtonPrefabs.GetComponent<Button>().colors;
+
+            selectedCol.normalColor = new Color(0,1f,0);
+
+            foreach(Button button in Instance.TileButtonContent.GetComponentsInChildren<Button>()) {
+                text = button.GetComponentInChildren<Text>();
+                if(text.text.Equals(t.ToString())) {
+                    button.colors = selectedCol;
+                } else {
+                    button.colors = col;
+                }
+            }
         }
 
         void Update() {
@@ -73,13 +87,17 @@ namespace End.MapEditor {
         }
 
         public void ShowDetailHoverTile(GameEntity tile) {
-            Debug.Log("Hover Tile >" + tile.view.GameObject.name);
+            //Debug.Log("Hover Tile >" + tile.view.GameObject.name);
             if(Instance.lastType != tile.tile.Type) {
                 Instance.lastType = tile.tile.Type;
                 Instance.TileImage.sprite = Resources.Load<Sprite>(tile.resource.SpritePath);
             }
             Instance.TileName.text = tile.tile.Type.ToString();
             Instance.TilePosition.text = "[ " + tile.mapPosition.x + " , " + tile.mapPosition.y + " ]";
+        }
+
+        public void GodFillRectangle(int from_x,int from_y,int to_x,int to_y) {
+            
         }
     }
 }

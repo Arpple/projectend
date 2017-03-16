@@ -32,6 +32,15 @@ public static class BlueprintsExtension {
     public static Blueprint Tile_None(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Tile_None");
     }
+    public static Blueprint Tile_Snow(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Snow");
+    }
+    public static Blueprint Tile_SnowMountain(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_SnowMountain");
+    }
+    public static Blueprint Tile_Space(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Space");
+    }
     public static Blueprint Tile_Water(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Tile_Water");
     }
