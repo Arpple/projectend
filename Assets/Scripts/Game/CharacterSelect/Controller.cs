@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace End.CharacterSelect
+namespace End.Game.CharacterSelect
 {
 	public class Controller : MonoBehaviour
 	{
