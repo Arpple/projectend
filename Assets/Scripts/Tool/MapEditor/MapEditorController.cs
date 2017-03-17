@@ -104,7 +104,7 @@ namespace End.MapEditor
 				if(LoadingMap != null)
 				{
 					Debug.Log("Load Map : " + LoadingMap.name);
-					return LoadingMap;
+					return LoadingMap.Load();
 				}
 			}
 

@@ -78,7 +78,7 @@ namespace End
 			AllPlayers.Remove(this);
 		}
 
-		#region Network		
+		#region Network
 		/// <summary>
 		/// Called when the local player object has been set up.
 		/// </summary>
@@ -86,12 +86,7 @@ namespace End
 		{
 			base.OnStartLocalPlayer();
 
-			var netCon = NetworkController.Instance;
-			CmdSetName(netCon.LocalPlayerName);
-			CmdSetIconPath(netCon.LocalPlayerIconPath);
-
-			Lobby.LobbyController lobby = Lobby.LobbyController.Instance;
-			lobby.SetLocalPlayer(this);
+			NetworkController.Instance.OnStartLocalPlayer(this);
 		}
 
 		/// <summary>
@@ -101,7 +96,7 @@ namespace End
 		{
 			base.OnStartClient();
 
-			Lobby.LobbyController.Instance.AddPlayer(this);
+			NetworkController.Instance.OnStartClient(this);
 		}
 
 		[Command]

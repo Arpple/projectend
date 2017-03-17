@@ -80,7 +80,12 @@ namespace End.Game
 				(i) => _rows[i] = new MapRow(width, defaultTile)
 			);
 
-			_spawnPoints = new List<SpawnPoint>();
+			return Load();
+		}
+
+		public Map Load()
+		{
+			_spawnPoints = _spawnPoints ?? new List<SpawnPoint>();
 			_indexedSpawnpoints = new Dictionary<int, SpawnPoint>();
 			_spawnPoints.Count.Loop(
 				(i) => _indexedSpawnpoints.Add(i + 1, _spawnPoints[i])
