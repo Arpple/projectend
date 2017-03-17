@@ -4,7 +4,7 @@
 	{
 		Lounge,
 		Lobby,
-		CharactorSelect,
+		CharacterSelect,
 		Game,
 	}
 }

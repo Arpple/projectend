@@ -29,6 +29,19 @@ namespace End.Lobby
 		{
 			ReadyButton.onClick.RemoveAllListeners();
 			WaitButton.onClick.RemoveAllListeners();
+
+			var netCon = NetworkController.Instance;
+			netCon.OnAllPlayerReadyCallback += MoveToCharacterSelection;
+			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
+		}
+
+		private void OnDestroy()
+		{
+			var netCon = NetworkController.Instance;
+			netCon.OnAllPlayerReadyCallback -= MoveToCharacterSelection;
+			netCon.OnClientPlayerStartCallback -= AddPlayer;
+			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
 		}
 
 		public void AddPlayer(Player player)
@@ -58,6 +71,11 @@ namespace End.Lobby
 		public void Back()
 		{
 			NetworkController.Instance.Stop();
+		}
+
+		public void MoveToCharacterSelection()
+		{
+			NetworkController.Instance.ServerChangeScene(Scene.CharacterSelect.ToString());
 		}
 	}
 }

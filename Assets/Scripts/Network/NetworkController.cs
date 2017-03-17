@@ -16,6 +16,12 @@ namespace End
 		public delegate void ClientErrorCallback(int errorCode);
 		public event ClientErrorCallback OnClientErrorCallback;
 
+		public delegate void ClientPlayerStartCallback(Player player);
+		public event ClientPlayerStartCallback OnClientPlayerStartCallback;
+
+		public delegate void LocalPlayerStartCallback(Player player);
+		public event LocalPlayerStartCallback OnLocalPlayerStartCallback;
+
 		[Header("Config")]
 		public int MaxPlayer;
 
@@ -38,6 +44,17 @@ namespace End
 			Shutdown();
 		}
 
+		public void OnStartClient(Player player)
+		{
+			if (OnClientPlayerStartCallback != null) OnClientPlayerStartCallback(player);
+		}
+
+		public void OnStartLocalPlayer(Player player)
+		{
+			if (OnLocalPlayerStartCallback != null) OnLocalPlayerStartCallback(player);
+		}
+
+		#region Client
 		public override void OnStartClient(NetworkClient client)
 		{
 			base.OnStartClient(client);
@@ -55,6 +72,7 @@ namespace End
 			base.OnClientError(conn, errorCode);
 			if (OnClientErrorCallback != null) OnClientErrorCallback(errorCode);
 		}
+		#endregion
 
 		#region Server		
 		/// <summary>
