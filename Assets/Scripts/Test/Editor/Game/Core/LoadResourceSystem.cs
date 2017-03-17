@@ -1,62 +1,33 @@
 ﻿using Entitas.Unity;
 using NUnit.Framework;
 using UnityEngine;
+using System;
+using End.Game;
+using End.Game.CharacterSelect;
 
 namespace End.Test
 {
 	public class LoadResourceSystem
 	{
 		private Contexts _contexts;
+		private Game.CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
+			_setting = TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
 		}
 
 		[Test]
-		public void LoadResourcesWithSprite()
+		public void EntityCreateCountMatchEnum()
 		{
-			//given
-			var system = new Game.LoadResourceSystem(_contexts);
+			var targetCount = Enum.GetNames(typeof(Character)).Length;
 
-			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Test/Editor/Sprite", null);
+			var system = new LoadAllCharacterSystems(_contexts, _setting);
+			system.Initialize();
 
-			//action
-			system.Execute();
-
-			//then
-			Assert.IsNotNull(entity.view.GameObject.GetComponent<SpriteRenderer>());
-			Assert.IsTrue(entity.hasView);
-			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
-		}
-
-		[Test]
-		public void LoadResourcesWithSpriteAndBasePrefabs()
-		{
-			var system = new Game.LoadResourceSystem(_contexts);
-			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Test/Editor/Sprite", "Test/Editor/Prefabs");
-
-			system.Execute();
-
-			Assert.AreEqual("Prefabs(Clone)", entity.view.GameObject.name);
-			Assert.IsNotNull(entity.view.GameObject.GetComponent<SpriteRenderer>());
-			Assert.IsTrue(entity.hasView);
-			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
-		}
-
-		[Test]
-		public void LoadResourcesWithSpriteAndCustomViewBasePrefabs()
-		{
-			var system = new Game.LoadResourceSystem(_contexts);
-			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Test/Editor/Sprite", "Test/Editor/CustomViewPrefabs");
-
-			system.Execute();
-
-			Assert.AreEqual("CustomName", entity.view.GameObject.name);
+			Assert.AreEqual(targetCount, _contexts.game.GetEntities().Length);
 		}
 	}
 

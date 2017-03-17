@@ -1,11 +1,14 @@
 ﻿using Entitas;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace End.Game.CharacterSelect
 {
 	public class Controller : MonoBehaviour
 	{
-		public Controller Instance;
+		public static Controller Instance;
+
+		public GameSetting Setting;
 
 		private Systems _systems;
 		private Contexts _contexts;
@@ -14,6 +17,9 @@ namespace End.Game.CharacterSelect
 		private void Awake()
 		{
 			Instance = this;
+
+			Assert.IsNotNull(Setting);
+
 			_isInit = false;
 		}
 
@@ -50,7 +56,8 @@ namespace End.Game.CharacterSelect
 		Systems CreateSystems(Contexts contexts)
 		{
 			return new Feature("Systems")
-				.Add(new Game.ClearContextsSystem(contexts));
+				.Add(new LoadAllCharacterSystems(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new ClearContextsSystem(contexts));
 		}
 	}
 

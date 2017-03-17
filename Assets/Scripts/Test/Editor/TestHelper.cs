@@ -1,4 +1,6 @@
-﻿namespace End.Test
+﻿using UnityEngine;
+
+namespace End.Test
 {
 	public static class TestHelper
 	{
@@ -8,6 +10,11 @@
 			_contexts.SetAllContexts();
 
 			return _contexts;
+		}
+
+		public static Game.GameSetting GetGameSetting()
+		{
+			return Resources.Load<Game.GameSetting>("Game/Core/_Setting/GameSetting");
 		}
 	}
 }

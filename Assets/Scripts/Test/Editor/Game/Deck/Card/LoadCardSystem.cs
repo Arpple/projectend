@@ -14,10 +14,7 @@ namespace End.Test
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-
-			GameSetting setting = Resources.Load<GameSetting>("Game/Core/_Setting/GameSetting");
-			_setting = setting.DeckSetting.CardSetting;
-			Assert.IsNotNull(_setting);
+			_setting = TestHelper.GetGameSetting().DeckSetting.CardSetting;
 		}
 
 		[Test]

@@ -17,8 +17,7 @@ namespace End.Test
 		{
 			_contexts = TestHelper.CreateContexts();
 			_map = ScriptableObject.CreateInstance<Game.Map>();
-			GameSetting setting = Resources.Load<Game.GameSetting>("Game/Core/_Setting/GameSetting");
-			_setting = setting.MapSetting;
+			_setting = TestHelper.GetGameSetting().MapSetting;
 		}
 
 		[Test]

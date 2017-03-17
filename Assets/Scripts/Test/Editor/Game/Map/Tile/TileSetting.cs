@@ -12,7 +12,7 @@ namespace End.Test
 		[SetUp]
 		public void Init()
 		{
-			GameSetting setting = Resources.Load<GameSetting>("Game/Core/_Setting/GameSetting");
+			Game.GameSetting setting = TestHelper.GetGameSetting();
 			_setting = setting.MapSetting.TileSetting;
 			Assert.IsNotNull(_setting);
 		}
