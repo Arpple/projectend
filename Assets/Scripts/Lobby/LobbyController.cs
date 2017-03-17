@@ -46,9 +46,11 @@ namespace End.Lobby
 
 		public void AddPlayer(Player player)
 		{
-			player.transform.SetParent(PlayerContainer.transform, false);
 			var lobbyPlayer = Instantiate(LobbyPlayerPrefabs).GetComponent<LobbyPlayer>();
+			lobbyPlayer.transform.SetParent(PlayerContainer.transform, false);
 			lobbyPlayer.SetPlayer(player);
+
+			player.OnPlayerDisconnectCallback += () => Destroy(lobbyPlayer.gameObject);
 		}
 
 		public void SetLocalPlayer(Player player)

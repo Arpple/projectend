@@ -33,6 +33,9 @@ namespace End
 		public event ChangeIconPathCallback OnIconPathChangedCallback;
 		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
+
+		public delegate void PlayerDisconnectCallback();
+		public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
 		
 		public void OnNameChanged(string name)
 		{
@@ -64,9 +67,9 @@ namespace End
 		}
 		#endregion
 
-		private void Start()
+		private void Awake()
 		{
-			
+			DontDestroyOnLoad(gameObject);
 		}
 
 		private void OnDestroy()
@@ -76,6 +79,8 @@ namespace End
 				Assert.IsNotNull(AllPlayers);
 				AllPlayers.Remove(this);
 			}
+
+			if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
 		}
 
 		#region Client

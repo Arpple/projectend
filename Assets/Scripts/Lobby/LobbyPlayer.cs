@@ -27,9 +27,6 @@ namespace End.Lobby
 
 		public void SetPlayer(Player player)
 		{
-			transform.SetParent(player.transform.parent, false);
-			player.transform.SetParent(transform, false);
-
 			_player = player;
 
 			_player.OnNameChangedCallback += SetName;
