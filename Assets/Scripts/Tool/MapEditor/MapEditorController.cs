@@ -63,7 +63,7 @@ namespace End.MapEditor
 
 		Systems CreateSystems(Contexts contexts)
 		{
-			EdittingMap = InitMap();
+			EdittingMap = InitMap().Load();
 
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, EdittingMap, Setting.MapSetting))
