@@ -4,13 +4,13 @@ namespace End.Test
 {
 	public class GameSetting
 	{
-		private Contexts _contexts;
+		//private Contexts _contexts;
 		private Game.GameSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			_contexts = TestHelper.CreateContexts();
+			//_contexts = TestHelper.CreateContexts();
 			_setting = TestHelper.GetGameSetting();
 		}
 

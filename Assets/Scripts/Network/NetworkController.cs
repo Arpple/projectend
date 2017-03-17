@@ -94,7 +94,6 @@ namespace End
 			Assert.IsTrue(Player.AllPlayers.TrueForAll(p => p.IsReady));
 
 			if (OnAllPlayerReadyCallback != null) OnAllPlayerReadyCallback();
-			Debug.Log("All Ready");
 		}
 
 		public override void OnServerSceneChanged(string sceneName)
