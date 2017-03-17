@@ -8,11 +8,11 @@ using End.Game;
 
 namespace End.MapEditor {
     public class TileDetailSystem: ReactiveSystem<GameEntity>, IInitializeSystem {
-        readonly GameContext _context;
+        //readonly GameContext _context;
 
         public TileDetailSystem(Contexts contexts)
             : base(contexts.game) {
-            _context = contexts.game;
+            //this._context = contexts.game;
         }
 
         protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context) {

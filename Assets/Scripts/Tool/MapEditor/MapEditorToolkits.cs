@@ -33,8 +33,8 @@ namespace End.MapEditor {
         // Use this for initialization
         void Start() {
             //TODO : SpawnButton :D
-            var tiles = MapEditorController.Setting.MapSetting.TileSetting.TileBlueprints;
-            var brush = TileBrushSystem.TileBrush;
+            //var tiles = MapEditorController.Setting.MapSetting.TileSetting.TileBlueprints;
+            //var brush = TileBrushSystem.TileBrush;
             foreach(Tile tile in Enum.GetValues(typeof(Tile))) {
                 //Debug.Log(tile.ToString());
                 Tile buttonTile = tile;
