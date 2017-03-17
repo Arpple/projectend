@@ -128,6 +128,10 @@ namespace End.Game
 
 		public Map SetSpawnPoint(int index, int x, int y)
 		{
+            if(_indexedSpawnpoints == null) {
+                Debug.Log("_indexedSpawnpoints==null");
+                _indexedSpawnpoints = new Dictionary<int, SpawnPoint>();
+            }
 			if(_indexedSpawnpoints.ContainsKey(index))
 			{
 				_indexedSpawnpoints[index].x = x;

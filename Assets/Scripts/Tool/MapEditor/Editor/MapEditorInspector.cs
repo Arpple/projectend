@@ -56,12 +56,21 @@ namespace End.MapEditor
 					}
 
 					map.Save();
-                    //TODO : Have map?
-                    //AssetDatabase.
 
-                    //TODO : New File
-                    //ProjectWindowUtil.CreateAsset(map, "Assets/Resources/Game/Map/NewMap.asset");
-                    AssetDatabase.CreateAsset(map, "Assets/Resources/Game/Map/"+mapEditor.MapName+".asset");
+                    //TODO : Have map?
+                    string path = "Assets/Resources/Game/Map/" + mapEditor.MapName + ".asset";
+                    Map saveFile = AssetDatabase.LoadMainAssetAtPath(path) as Map;
+                    if(saveFile==null) {
+                        //TODO : New File
+                        //ProjectWindowUtil.CreateAsset(map, "Assets/Resources/Game/Map/NewMap.asset");
+                        AssetDatabase.CreateAsset(map, path);
+                    } else {
+                        //Overwrite..
+                        EditorUtility.CopySerialized(map, saveFile);
+                        AssetDatabase.SaveAssets();
+                    }
+                    
+
                 }
             }
 		}
