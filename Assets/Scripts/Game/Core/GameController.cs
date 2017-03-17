@@ -42,9 +42,6 @@ namespace End.Game
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
-
-			var e = _contexts.game.CreateEntity();
-			e.AddCard(Card.Move);
 		}
 
 		void Update()
