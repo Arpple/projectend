@@ -81,7 +81,11 @@ namespace End.Lounge
 			if (isHost)
 			{
 				Debug.Log("Starting Host");
-				NetCon.StartHost();
+				if (NetCon.StartHost() == null)
+				{
+					ToggleButton(true);
+					//TODO: show error cant creat host
+				}
 			}
 			else
 			{

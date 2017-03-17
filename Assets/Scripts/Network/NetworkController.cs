@@ -16,6 +16,9 @@ namespace End
 		public delegate void ClientErrorCallback(int errorCode);
 		public event ClientErrorCallback OnClientErrorCallback;
 
+		public delegate void ServerErrorCallback(int errorCode);
+		public event ServerErrorCallback OnServerErrorCallback;
+
 		public delegate void ClientPlayerStartCallback(Player player);
 		public event ClientPlayerStartCallback OnClientPlayerStartCallback;
 
@@ -99,6 +102,12 @@ namespace End
 			base.OnServerSceneChanged(sceneName);
 
 			Player.AllPlayers = new List<Player>();
+		}
+
+		public override void OnServerError(NetworkConnection conn, int errorCode)
+		{
+			base.OnServerError(conn, errorCode);
+			if (OnServerErrorCallback != null) OnServerErrorCallback(errorCode);
 		}
 		#endregion
 	}
