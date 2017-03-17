@@ -79,7 +79,8 @@ namespace End.Game
 			heigth.Loop(
 				(i) => _rows[i] = new MapRow(width, defaultTile)
 			);
-			return this;
+
+			return Load();
 		}
 
 		public Map Load()

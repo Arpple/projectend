@@ -63,7 +63,7 @@ namespace End.MapEditor
 
 		Systems CreateSystems(Contexts contexts)
 		{
-			EdittingMap = InitMap().Load();
+			EdittingMap = InitMap();
 
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, EdittingMap, Setting.MapSetting))
@@ -104,7 +104,7 @@ namespace End.MapEditor
 				if(LoadingMap != null)
 				{
 					Debug.Log("Load Map : " + LoadingMap.name);
-					return LoadingMap;
+					return LoadingMap.Load();
 				}
 			}
 
