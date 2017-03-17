@@ -37,6 +37,7 @@ namespace End.Lounge
 			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
 
 			//set dialogue event
+			ToggleButton(true);
 			ConnectionDialogue.OnBackButton += () => ToggleButton(true);
 			ConnectionDialogue.OnJoinButton += () =>
 			{
@@ -76,6 +77,7 @@ namespace End.Lounge
 
 		private void Connect(bool isHost)
 		{
+			ToggleButton(false);
 			if (isHost)
 			{
 				Debug.Log("Starting Host");
