@@ -58,8 +58,6 @@ namespace End
 		public override void OnStartClient(NetworkClient client)
 		{
 			base.OnStartClient(client);
-
-			Player.AllPlayers = new List<Player>();
 		}
 
 		/// <summary>
@@ -94,6 +92,13 @@ namespace End
 
 			if (OnAllPlayerReadyCallback != null) OnAllPlayerReadyCallback();
 			Debug.Log("All Ready");
+		}
+
+		public override void OnServerSceneChanged(string sceneName)
+		{
+			base.OnServerSceneChanged(sceneName);
+
+			Player.AllPlayers = new List<Player>();
 		}
 		#endregion
 	}

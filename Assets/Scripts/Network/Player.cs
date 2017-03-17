@@ -66,19 +66,19 @@ namespace End
 
 		private void Start()
 		{
-			Assert.IsNotNull(AllPlayers);
-
-			AllPlayers.Add(this);
+			
 		}
 
 		private void OnDestroy()
 		{
-			Assert.IsNotNull(AllPlayers);
-
-			AllPlayers.Remove(this);
+			if(isServer)
+			{
+				Assert.IsNotNull(AllPlayers);
+				AllPlayers.Remove(this);
+			}
 		}
 
-		#region Network
+		#region Client
 		/// <summary>
 		/// Called when the local player object has been set up.
 		/// </summary>
@@ -97,6 +97,16 @@ namespace End
 			base.OnStartClient();
 
 			NetworkController.Instance.OnStartClient(this);
+		}
+		#endregion
+
+		#region Server
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
+
+			Assert.IsNotNull(AllPlayers);
+			AllPlayers.Add(this);
 		}
 
 		[Command]

@@ -75,7 +75,9 @@ namespace End.Lobby
 
 		public void MoveToCharacterSelection()
 		{
-			NetworkController.Instance.ServerChangeScene(Scene.CharacterSelect.ToString());
+			var netCon = NetworkController.Instance;
+			netCon.maxConnections = netCon.numPlayers;
+			netCon.ServerChangeScene(Scene.CharacterSelect.ToString());
 		}
 	}
 }
