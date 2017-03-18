@@ -35,6 +35,9 @@ namespace End.Game.CharacterSelect
 		{
 			foreach(var e in entities)
 			{
+                //! Dont spawn non character :3
+                if(e.character.Type == Character.None)continue; 
+
 				var slideItem = _slidemenu.AddItem();
 				var icon = Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(e.resource));
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);

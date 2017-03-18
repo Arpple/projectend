@@ -22,9 +22,10 @@ namespace End.Game.CharacterSelect
 			{
 				var c = (Character)character;
 
-				if (c == Character.None) continue;
+                //? should load non character ... ?
+                //if (c == Character.None) continue; 
 
-				var entity = _context.CreateEntity();
+                var entity = _context.CreateEntity();
 				entity.ApplyBlueprint(_setting.GetCharBlueprint(c));
 				entity.AddCharacter(c);
 			}
