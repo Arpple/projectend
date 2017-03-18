@@ -1,9 +1,10 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
+using End.Game;
 
 namespace End.Test
 {
-	public class RenderMapPositionSystem
+	public class TestRenderMapPositionSystem
 	{
 		private Contexts _contexts;
 
@@ -17,7 +18,7 @@ namespace End.Test
 		public void RenderPosition()
 		{
 			//given
-			var system = new Game.RenderMapPositionSystem(_contexts);
+			var system = new RenderMapPositionSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddView(new GameObject());

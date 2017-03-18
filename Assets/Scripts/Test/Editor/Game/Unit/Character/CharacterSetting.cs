@@ -1,13 +1,12 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
 using System;
 using End.Game;
 
 namespace End.Test
 {
-	public class CharacterSetting
+	public class TestCharacterSetting
 	{
-		private Game.CharacterSetting _setting;
+		private CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()

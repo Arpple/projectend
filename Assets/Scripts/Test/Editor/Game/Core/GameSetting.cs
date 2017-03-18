@@ -1,11 +1,12 @@
 ﻿using NUnit.Framework;
+using End.Game;
 
 namespace End.Test
 {
-	public class GameSetting
+	public class TestGameSetting
 	{
 		//private Contexts _contexts;
-		private Game.GameSetting _setting;
+		private GameSetting _setting;
 
 		[SetUp]
 		public void Init()

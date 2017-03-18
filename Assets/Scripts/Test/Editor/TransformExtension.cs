@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace End.Test
 {
-	public class TransformExtension
+	public class TestTransformExtension
 	{
 		[Test]
 		public void EditorTest()

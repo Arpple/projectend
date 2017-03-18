@@ -1,20 +1,17 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
 using System;
 using End.Game;
 
 namespace End.Test
 {
-	public class TileSetting
+	public class TestTileSetting
 	{
-		private Game.TileSetting _setting;
+		private TileSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			Game.GameSetting setting = TestHelper.GetGameSetting();
-			_setting = setting.MapSetting.TileSetting;
-			Assert.IsNotNull(_setting);
+			_setting = TestHelper.GetGameSetting().MapSetting.TileSetting;
 		}
 
 		[Test]

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace End.Test
 {
-	public class MapPosition
+	public class TestMapPosition
 	{
 		private Contexts _contexts;
 

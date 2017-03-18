@@ -1,14 +1,13 @@
-﻿using UnityEngine;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using End.Game;
 
 namespace End.Test
 {
-	public class LoadCardSystem
+	public class TestLoadCardSystem
 	{
 		private Contexts _contexts;
-		private Game.CardSetting _setting;
+		private CardSetting _setting;
 
 		[SetUp]
 		public void Init()
@@ -20,7 +19,7 @@ namespace End.Test
 		[Test]
 		public void LoadCard()
 		{
-			var system = new Game.LoadCardSystem(_contexts, _setting);
+			var system = new LoadCardSystem(_contexts, _setting);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddCard(Card.Move);
@@ -33,7 +32,7 @@ namespace End.Test
 		[Test]
 		public void AllCardHaveAbilityComponent()
 		{
-			var system = new Game.LoadCardSystem(_contexts, _setting);
+			var system = new LoadCardSystem(_contexts, _setting);
 
 			foreach(Card card in Enum.GetValues(typeof(Card)))
 			{

@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
-using Entitas;
+using End.Game;
 
 namespace End.Test
 {
-	public class LoadCharacterIconSystem
+	public class TestLoadCharacterIconSystem
 	{
 		private Contexts _contexts;
-		private Game.CharacterSetting _setting;
+		private CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
@@ -18,12 +18,12 @@ namespace End.Test
 		[Test]
 		public void IconObjectCreated()
 		{
-			var system = new Game.LoadCharacterIconSystem(_contexts, _setting);
+			var system = new LoadCharacterIconSystem(_contexts, _setting);
 
 			var context = _contexts.game;
 			var entity = context.CreateEntity();
 			entity.AddResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
-			entity.AddCharacter(Game.Character.LastBoss);
+			entity.AddCharacter(End.Game.Character.LastBoss);
 
 			system.Execute();
 

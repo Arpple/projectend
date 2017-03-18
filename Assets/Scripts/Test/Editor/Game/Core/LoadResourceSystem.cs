@@ -1,16 +1,14 @@
-﻿using Entitas.Unity;
-using NUnit.Framework;
-using UnityEngine;
+﻿using NUnit.Framework;
 using System;
 using End.Game;
 using End.Game.CharacterSelect;
 
 namespace End.Test
 {
-	public class LoadResourceSystem
+	public class TestLoadResourceSystem
 	{
 		private Contexts _contexts;
-		private Game.CharacterSetting _setting;
+		private CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()

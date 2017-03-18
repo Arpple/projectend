@@ -1,20 +1,17 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
 using System;
 using End.Game;
 
 namespace End.Test
 {
-	public class CardSetting
+	public class TestCardSetting
 	{
-		private Game.CardSetting _setting;
+		private CardSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			Game.GameSetting setting = TestHelper.GetGameSetting();
-			_setting = setting.DeckSetting.CardSetting;
-			Assert.IsNotNull(_setting);
+			_setting = TestHelper.GetGameSetting().DeckSetting.CardSetting;
 		}
 
 		[Test]

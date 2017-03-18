@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using NUnit.Framework;
+using End.Game;
 
 namespace End.Test
 {
-	public class TileGraphSystem
+	public class TestTileGraphSystem
 	{
 		private Contexts _contexts;
 
@@ -23,7 +24,7 @@ namespace End.Test
 			var downTile = CreateTile(2, 1);
 			var unconnectedTile = CreateTile(1, 1);
 
-			var system = new Game.TileGraphSystem(_contexts);
+			var system = new TileGraphSystem(_contexts);
 			system.Initialize();
 
 			Assert.AreEqual(leftTile, originTile.tileGraph.Left);
@@ -43,7 +44,7 @@ namespace End.Test
 		private GameEntity CreateTile(int x, int y)
 		{
 			var entity = _contexts.game.CreateEntity();
-			entity.AddTile(Game.Tile.Grass);
+			entity.AddTile(Tile.Grass);
 			entity.AddMapPosition(x, y);
 			return entity;
 		}

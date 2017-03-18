@@ -4,14 +4,14 @@ using End.Game;
 
 namespace End.Test
 {
-	public class Map
+	public class TestMap
 	{
-		private Game.Map _map;
+		private Map _map;
 
 		[SetUp]
 		public void Init()
 		{
-			_map = ScriptableObject.CreateInstance<Game.Map>();
+			_map = ScriptableObject.CreateInstance<Map>();
 		}
 
 		[Test]

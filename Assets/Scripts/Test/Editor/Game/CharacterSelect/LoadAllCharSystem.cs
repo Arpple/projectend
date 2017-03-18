@@ -1,13 +1,13 @@
-﻿using Entitas;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
+using End.Game;
 
 namespace End.Test
 {
-	public class LoadAllCharSytem
+	public class TestLoadAllCharacterSystem
 	{
 		private Contexts _contexts;
-		private Game.CharacterSetting _setting;
+		private CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
@@ -19,10 +19,10 @@ namespace End.Test
 		[Test]
 		public void LoadCharacterCountEqualEnum()
 		{
-			var system = new Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
+			var system = new End.Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
 			system.Initialize();
 
-			var enumCount = Enum.GetNames(typeof(Game.Character)).Length;
+			var enumCount = Enum.GetNames(typeof(Character)).Length;
 
 			Assert.AreEqual(enumCount, _contexts.game.count);
 			
@@ -31,7 +31,7 @@ namespace End.Test
 		[Test]
 		public void CharacterComponentAdded()
 		{
-			var system = new Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
+			var system = new End.Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
 			system.Initialize();
 
 			foreach (var e in _contexts.game.GetEntities())

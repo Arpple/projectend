@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using NUnit.Framework;
+using End.Game;
 
 namespace End.Test
 {
-	public class ViewContainerSystem
+	public class TestViewContainerSystem
 	{
 		private Contexts _contexts;
 
@@ -17,7 +17,7 @@ namespace End.Test
 		[Test]
 		public void EditorTest()
 		{
-			var system = new Game.ViewContainerSystem(_contexts);
+			var system = new ViewContainerSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddView(new GameObject());
