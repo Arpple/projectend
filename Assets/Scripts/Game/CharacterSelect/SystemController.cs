@@ -4,9 +4,9 @@ using UnityEngine.Assertions;
 
 namespace End.Game.CharacterSelect
 {
-	public class Controller : MonoBehaviour
+	public class SystemController : MonoBehaviour
 	{
-		public static Controller Instance;
+		public static SystemController Instance;
 
 		public GameSetting Setting;
 
@@ -25,8 +25,6 @@ namespace End.Game.CharacterSelect
 
 		public void Start()
 		{
-			var netCon = NetworkController.Instance;
-			netCon.OnAllPlayerReadyCallback += Initialize;
 			_contexts = Contexts.sharedInstance;
 			Initialize();
 		}
@@ -57,6 +55,7 @@ namespace End.Game.CharacterSelect
 		{
 			return new Feature("Systems")
 				.Add(new LoadAllCharacterSystems(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new LoadCharacterIconSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new ClearContextsSystem(contexts));
 		}
 	}

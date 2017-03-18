@@ -7,7 +7,7 @@ namespace End.UI {
     public class SlideMenu: MonoBehaviour {
         #region Setting
         public GameObject Content;
-        public SlideItem PrefabsItem;
+        public SlideItem SlideItemPrefabs;
         public Text ShowText;
 
         private bool isMouseDown;
@@ -68,13 +68,13 @@ namespace End.UI {
         void Update() {
             ResizeItem();
             if( Mathf.Abs(this.scrollrect.velocity.x) <= 1f && !this.isMouseDown){
-                this.FocusIndex(getNearestItemIndex());
+                this.FocusIndex(GetNearestItemIndex());
             }
         }
 
 
-        public void ResizeItem() {
-            int nearestIndex = getNearestItemIndex();
+        private void ResizeItem() {
+            int nearestIndex = GetNearestItemIndex();
             foreach(SlideItem item in this.transform.GetComponentsInChildren<SlideItem>()) {
                 item.SetScale(NonFocusIndexScale);
             }
@@ -89,7 +89,7 @@ namespace End.UI {
             return new Vector2((this.ItemSpace + this.ItemSize.x) * -(index - ItemCount / 2) + extraPosition.x,0);
         }
 
-        public int getNearestItemIndex() {
+		private int GetNearestItemIndex() {
             float contentPosition = this.Content.transform.localPosition.x;
             return (int)Mathf.Round((-((contentPosition-extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
         }
@@ -98,7 +98,7 @@ namespace End.UI {
         /// Force move Index to middle
         /// </summary>
         /// <param name="index"></param>
-        public void FocusIndex(int index) {
+        private void FocusIndex(int index) {
             float newPosition = IndexToPosition(index).x;
             //Debug.Log("Focus Index -> ["+index+"/"+ItemCount+"] at position ["+newPosition+"]");
             this.Content.transform.localPosition = new Vector3(
@@ -113,8 +113,8 @@ namespace End.UI {
             if(index >= 0 && index < ItemCount) this.ShowText.text = SlideItems[index].ShowText;
         }
 
-        public SlideItem AddItem() {
-            SlideItem item = Instantiate<SlideItem>(PrefabsItem,Content.transform,false);
+        public SlideItem AddUnit(GameEntity unitEntity) {
+            SlideItem item = Instantiate(SlideItemPrefabs,Content.transform,false);
             return item;
         }
 

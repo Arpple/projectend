@@ -20,7 +20,9 @@ namespace End.Game.CharacterSelect
 		{
 			foreach(var character in Enum.GetValues(typeof(Character)))
 			{
-				_context.CreateEntity().ApplyBlueprint(_setting.GetCharBlueprint((Character)character));
+				var entity = _context.CreateEntity();
+				entity.ApplyBlueprint(_setting.GetCharBlueprint((Character)character));
+				entity.AddCharacter((Character)character);
 			}
 		}
 	}

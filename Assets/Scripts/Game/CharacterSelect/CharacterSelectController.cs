@@ -5,15 +5,27 @@ using System.Text;
 using UnityEngine;
 using End.Game.UI.CharacterSelection;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
+using End.UI;
 
-namespace End.UI.CharacterSelection {
-    public class CharacterSelectionController : MonoBehaviour{
+namespace End.Game.CharacterSelect {
+    public class CharacterSelectController : MonoBehaviour{
         public UnitStatus UnitStatus;
         public UnitSkill UnitSkill;
 
         public GameObject RoleContent,CharacterContent;
+		public SlideMenu CharacterSelectSlideMenu;
 
-        void Start() {
+		private void Awake()
+		{
+			Assert.IsNotNull(UnitStatus);
+			Assert.IsNotNull(UnitSkill);
+			Assert.IsNotNull(RoleContent);
+			Assert.IsNotNull(CharacterContent);
+			Assert.IsNotNull(CharacterSelectSlideMenu);
+		}
+
+		void Start() {
             InitialPrefabs();
         }
 
@@ -37,7 +49,7 @@ namespace End.UI.CharacterSelection {
         }
 
         #region UI RoleContent
-
+		[Header("Role")]
         public Text RoleTitle, RoleDesciption;
         public Image RoleImage;
 

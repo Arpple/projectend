@@ -11,27 +11,29 @@ public static class GameComponentsLookup {
     public const int Ability = 0;
     public const int Card = 1;
     public const int Character = 2;
-    public const int Description = 3;
-    public const int MapPosition = 4;
-    public const int Player = 5;
-    public const int Resource = 6;
-    public const int Spawnpoint = 7;
-    public const int Tile = 8;
-    public const int TileAction = 9;
-    public const int TileBrush = 10;
-    public const int TileGraph = 11;
-    public const int TileHoverAction = 12;
-    public const int Unit = 13;
-    public const int UnitStatus = 14;
-    public const int View = 15;
-    public const int ViewContainer = 16;
+    public const int CharacterIcon = 3;
+    public const int Description = 4;
+    public const int MapPosition = 5;
+    public const int Player = 6;
+    public const int Resource = 7;
+    public const int Spawnpoint = 8;
+    public const int Tile = 9;
+    public const int TileAction = 10;
+    public const int TileBrush = 11;
+    public const int TileGraph = 12;
+    public const int TileHoverAction = 13;
+    public const int Unit = 14;
+    public const int UnitStatus = 15;
+    public const int View = 16;
+    public const int ViewContainer = 17;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "Ability",
         "Card",
         "Character",
+        "CharacterIcon",
         "Description",
         "MapPosition",
         "Player",
@@ -52,6 +54,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.AbilityComponent),
         typeof(End.Game.CardComponent),
         typeof(End.Game.CharacterComponent),
+        typeof(End.Game.CharacterIconComponent),
         typeof(End.Game.Role.RoleDescriptionComponent.DescriptionComponent),
         typeof(End.Game.MapPositionComponent),
         typeof(End.Game.PlayerComponent),

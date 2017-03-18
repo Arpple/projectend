@@ -1,26 +1,43 @@
 ﻿using Entitas;
 using NUnit.Framework;
+using System;
 
 namespace End.Test
 {
 	public class LoadAllCharSytem
 	{
-		//private Contexts _contexts;
-		private Game.GameSetting _setting;
+		private Contexts _contexts;
+		private Game.CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			//_contexts = TestHelper.CreateContexts();
-			_setting = TestHelper.GetGameSetting();
+			_contexts = TestHelper.CreateContexts();
+			_setting = TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
 		}
 
 		[Test]
-		public void ComponentAssigned()
+		public void LoadCharacterCountEqualEnum()
 		{
-			Assert.IsNotNull(_setting.MapSetting);
-			Assert.IsNotNull(_setting.UnitSetting);
-			Assert.IsNotNull(_setting.DeckSetting);
+			var system = new Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
+			system.Initialize();
+
+			var enumCount = Enum.GetNames(typeof(Game.Character)).Length;
+
+			Assert.AreEqual(enumCount, _contexts.game.count);
+			
+		}
+
+		[Test]
+		public void CharacterComponentAdded()
+		{
+			var system = new Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
+			system.Initialize();
+
+			foreach (var e in _contexts.game.GetEntities())
+			{
+				Assert.IsTrue(e.hasCharacter);
+			}
 		}
 	}
 }
