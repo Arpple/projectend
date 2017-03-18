@@ -17,7 +17,7 @@ namespace End.Game.CharacterSelect {
         public UnitStatus UnitStatus;
         public UnitSkill UnitSkill;
 
-        public GameObject RoleContent,CharacterContent;
+        public GameObject RoleContent,CharacterContent,PlayerListContent;
 		public SlideMenu CharacterSelectSlideMenu;
 		public Button LockButton;
 		public CharacterSelectPlayer CharacterSelectPlayerPrefabs;
@@ -133,7 +133,7 @@ namespace End.Game.CharacterSelect {
 
 		private void AddPlayer(Player player)
 		{
-			CharacterSelectPlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs);
+			CharacterSelectPlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs,PlayerListContent.transform,false);
 			charPlayer.SetPlayer(player);
 
 			player.OnSelectedCharacterChangedCallback += DisableCharacterIcon;

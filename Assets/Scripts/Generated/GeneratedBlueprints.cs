@@ -23,6 +23,9 @@ public static class BlueprintsExtension {
     public static Blueprint Char_Mimic(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Char_Mimic");
     }
+    public static Blueprint Char_None(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Char_None");
+    }
     public static Blueprint Char_SharpShooter(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Char_SharpShooter");
     }
