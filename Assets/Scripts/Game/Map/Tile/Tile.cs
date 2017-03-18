@@ -11,6 +11,7 @@
         Snow,
         SnowMountain,
         Space,
+        TownField,
 	}
 }
 
