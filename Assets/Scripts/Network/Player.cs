@@ -7,8 +7,6 @@ namespace End
 {
 	public class Player : NetworkBehaviour
 	{
-		public static List<Player> AllPlayers;
-
 		[SyncVar] public short PlayerId;
 
 		#region SyncProperties
@@ -106,6 +104,15 @@ namespace End
 		#endregion
 
 		#region Server
+		public static List<Player> AllPlayers;
+		private static List<int> _selectedCharacterIdList;
+
+		public static void ServerSetup()
+		{
+			AllPlayers = new List<Player>();
+			_selectedCharacterIdList = new List<int>();
+		}
+
 		public override void OnStartServer()
 		{
 			base.OnStartServer();
@@ -129,7 +136,11 @@ namespace End
 		[Command]
 		public void CmdSetCharacterId(int charId)
 		{
-			SelectedCharacterId = charId;
+			if(!_selectedCharacterIdList.Contains(charId) && charId != (int)Game.Character.None)
+			{
+				_selectedCharacterIdList.Add(charId);
+				SelectedCharacterId = charId;
+			}
 		}
 
 		[Command]

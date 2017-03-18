@@ -12,13 +12,15 @@ using Entitas.Unity;
 namespace End.Game.CharacterSelect {
     public class CharacterSelectController : MonoBehaviour{
 
-		public static CharacterSelectController Instance;
+		public static CharacterSelectController Instance;	
 
         public UnitStatus UnitStatus;
         public UnitSkill UnitSkill;
 
         public GameObject RoleContent,CharacterContent;
 		public SlideMenu CharacterSelectSlideMenu;
+		public Button LockButton;
+		public CharacterSelectPlayer CharacterSelectPlayerPrefabs;
 
 		private Character _focusingCharacter;
 		private Player _localPlayer;
@@ -32,11 +34,11 @@ namespace End.Game.CharacterSelect {
 			Assert.IsNotNull(RoleContent);
 			Assert.IsNotNull(CharacterContent);
 			Assert.IsNotNull(CharacterSelectSlideMenu);
+			Assert.IsNotNull(LockButton);
+			Assert.IsNotNull(CharacterSelectPlayerPrefabs);
 		}
 
 		void Start() {
-			NetworkController.Instance.OnLocalPlayerStartCallback += SetLocalPlayer;
-
 			CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
 				var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
 				Debug.Log(entity.character.Type);
@@ -46,7 +48,11 @@ namespace End.Game.CharacterSelect {
 				//TODO: get description from entity and show
 				//ShowUnitInformationUnit(entity);
 			};
-        }
+
+			var netCon = NetworkController.Instance;
+			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
+			netCon.OnClientPlayerStartCallback += AddPlayer;
+		}
 
 		private void OnDestroy()
 		{
@@ -58,10 +64,9 @@ namespace End.Game.CharacterSelect {
 			}
 		}
 
-		public void SetPlayerInTheGame(List<object> players) {
-
-        }
-
+		/// <summary>
+		/// Lock character selection
+		/// </summary>
 		public void Lock()
 		{
 			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
@@ -118,10 +123,48 @@ namespace End.Game.CharacterSelect {
         }
 		#endregion
 
-		private void SetLocalPlayer(Player player)
+		private void AddPlayer(Player player)
+		{
+			CharacterSelectPlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs);
+			charPlayer.SetPlayer(player);
+
+			player.OnSelectedCharacterChangedCallback += DisableCharacterIcon;
+		}
+
+		public void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
-			Debug.Log("Set Local Player");
+			_localPlayer.CmdSetReadyStatus(false);
+			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
+		}
+
+		/// <summary>
+		/// Called when player is assigned character
+		/// </summary>
+		/// <param name="characterId">The character identifier.</param>
+		public void OnLocalPlayerCharacterSelected(int characterId)
+		{
+			_localPlayer.CmdSetReadyStatus(true);
+			LockButton.interactable = false;
+		}
+
+		/// <summary>
+		/// Disables the character selection icon.
+		/// </summary>
+		/// <param name="charId">The character identifier.</param>
+		public void DisableCharacterIcon(int charId)
+		{
+			var character = (Character)charId;
+			Assert.AreNotEqual(Character.None, character);
+
+			var item = CharacterSelectSlideMenu.SlideItems.First(i =>
+			{
+				var entity = (GameEntity)i.gameObject.GetEntityLink().entity;
+				return entity.character.Type == character;
+			});
+
+			//TODO: disable 'item'
+			Debug.Log("disable : " + item.gameObject);
 		}
 	}
 }

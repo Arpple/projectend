@@ -75,7 +75,7 @@ namespace End
 		}
 		#endregion
 
-		#region Server		
+		#region Server
 		/// <summary>
 		/// This hook is invoked when a server is started - including when a host is started.
 		/// </summary>
@@ -84,7 +84,7 @@ namespace End
 			base.OnStartServer();
 
 			maxConnections = MaxPlayer;
-			Player.AllPlayers = new List<Player>();
+			Player.ServerSetup();
 		}
 
 		/// <summary>

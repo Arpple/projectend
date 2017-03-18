@@ -1363,7 +1363,6 @@ GameObject:
   - component: {fileID: 224929797589949276}
   - component: {fileID: 222217798035931942}
   - component: {fileID: 114098951821490784}
-  - component: {fileID: 114855347777759024}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -5921,22 +5920,6 @@ MonoBehaviour:
   m_PreferredHeight: 88
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
---- !u!114 &114855347777759024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1573435503934184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e416c629c16a4bb97352f6cc900d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerIcon: {fileID: 114965801279567198}
-  PlayerName: {fileID: 114777620355723906}
-  PlayerStat: {fileID: 114666075035623690}
-  Status: 0
-  onAllocate: 0
 --- !u!114 &114860016194782474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6543,6 +6526,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitStatus: {fileID: 114673618529266668}
   UnitSkill: {fileID: 114808444825300534}
+  RoleContent: {fileID: 0}
+  CharacterContent: {fileID: 0}
+  CharacterSelectSlideMenu: {fileID: 0}
+  RoleTitle: {fileID: 0}
+  RoleDesciption: {fileID: 0}
+  RoleImage: {fileID: 0}
 --- !u!222 &222003302415734630
 CanvasRenderer:
   m_ObjectHideFlags: 1
