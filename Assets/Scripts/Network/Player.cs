@@ -7,6 +7,8 @@ namespace End
 {
 	public class Player : NetworkBehaviour
 	{
+		public static int PlayerCount;
+
 		[SyncVar] public short PlayerId;
 
 		#region SyncProperties
@@ -147,6 +149,12 @@ namespace End
 		public void CmdSetReadyStatus(bool ready)
 		{
 			IsReady = ready;
+		}
+
+		[ClientRpc]
+		public void RpcSetPlayerCount(int count)
+		{
+			PlayerCount = count;
 		}
 		#endregion
 	}

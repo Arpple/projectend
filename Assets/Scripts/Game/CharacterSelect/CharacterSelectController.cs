@@ -52,12 +52,15 @@ namespace End.Game.CharacterSelect {
 			var netCon = NetworkController.Instance;
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
-			netCon.OnAllPlayerReadyCallback += () => Debug.Log("Move");
+			netCon.OnAllPlayerReadyCallback += MoveToGame;
 		}
 
 		private void OnDestroy()
 		{
-			NetworkController.Instance.OnLocalPlayerStartCallback -= SetLocalPlayer;
+			var netCon = NetworkController.Instance;
+			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
+			netCon.OnClientPlayerStartCallback -= AddPlayer;
+			netCon.OnAllPlayerReadyCallback -= MoveToGame;
 
 			foreach (var item in CharacterSelectSlideMenu.SlideItems)
 			{
@@ -172,6 +175,16 @@ namespace End.Game.CharacterSelect {
 
 			//TODO: disable 'item'
 			Debug.Log("disable : " + item.gameObject);
+		}
+
+		/// <summary>
+		/// Moves to game. (Server)
+		/// </summary>
+		public void MoveToGame()
+		{
+			var netCon = NetworkController.Instance;
+			netCon.ServerChangeScene(Scene.Game.ToString());
+			_localPlayer.RpcSetPlayerCount(Player.AllPlayers.Count);
 		}
 	}
 }

@@ -80,7 +80,6 @@ namespace End.Lobby
 		public void MoveToCharacterSelection()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.maxConnections = netCon.numPlayers;
 			netCon.ServerChangeScene(Scene.CharacterSelect.ToString());
 		}
 	}
