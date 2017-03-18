@@ -12,13 +12,12 @@ namespace End.Game.CharacterSelect
 	public class CharacterSelectPlayer : MonoBehaviour
 	{
 		private Player _player;
-        public Icon charactorIcon;
+        public Icon CharactorIcon;
         public Image SignLockImage;
 
 		public void SetPlayer(Player player)
 		{
 			_player = player;
-
 			_player.OnSelectedCharacterChangedCallback += SetCharacter;
 		}
 
@@ -37,12 +36,23 @@ namespace End.Game.CharacterSelect
             //TODO: change display icon
             GameEntity[] entities = Contexts.sharedInstance.game.GetEntities();
             Character CharName = (Character)Enum.Parse(typeof(Character),characterId.ToString());
-            foreach(var entity in entities) {
-                if(entity.character.Type == CharName) {
-                    this.charactorIcon.SetImage(Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(entity.resource)));
-                }
-            }
+            this.CharactorIcon.SetImage(Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(Array.Find(entities, enity => enity.character.Type == CharName).resource)));
             this.SignLockImage.color = Color.green;
+        }
+        
+        public void FocusPlayer() {
+            //Debug.Log("Focus player with char ID "+_player.SelectedCharacterId);
+            GameEntity[] entities = Contexts.sharedInstance.game.GetEntities();
+            Character CharName = (Character)Enum.Parse(typeof(Character), _player.SelectedCharacterId.ToString());
+            GameEntity unit = Array.Find(entities, enity => enity.character.Type == CharName);
+            CharacterSelectController.Instance.ShowUnitInformationUnit(unit);
+
+            //TODO : need to fix show role. ?
+            FocusPlayerStatus.Instance.SetFocusPlayer(this._player.PlayerName,
+                (this._player.SelectedCharacterId!=0),
+                "-Unknow-", 
+                Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(unit.resource)));
+
         }
 	}
 

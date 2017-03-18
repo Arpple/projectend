@@ -81,7 +81,7 @@ namespace End.Game.CharacterSelect {
         /// </summary>
         public void ShowUnitInformationUnit(GameEntity unit) {
             //TODO : Set Character Status
-            //UnitStatus.setCharacterStatus(unit.unitStatus.AttackPower);
+            //Debug.Log("Unit null right ?"+(unit==null));
             Sprite sprite = Resources.Load<Sprite>(unit.resource.SpritePath);
             UnitStatus.setUnitStatus(unit.unitStatus.Name,sprite
                 ,unit.unitStatus.HitPoint
