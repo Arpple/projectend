@@ -20,6 +20,9 @@ namespace End.Game.CharacterSelect {
         public GameObject RoleContent,CharacterContent;
 		public SlideMenu CharacterSelectSlideMenu;
 
+		private Character _focusingCharacter;
+		private Player _localPlayer;
+
 		private void Awake()
 		{
 			Instance = this;
@@ -32,18 +35,37 @@ namespace End.Game.CharacterSelect {
 		}
 
 		void Start() {
+			NetworkController.Instance.OnLocalPlayerStartCallback += SetLocalPlayer;
+
 			CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
 				var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
 				Debug.Log(entity.character.Type);
+
+				_focusingCharacter = entity.character.Type;
 
 				//TODO: get description from entity and show
 				//ShowUnitInformationUnit(entity);
 			};
         }
 
-        public void SetPlayerInTheGame(List<object> players) {
+		private void OnDestroy()
+		{
+			NetworkController.Instance.OnLocalPlayerStartCallback -= SetLocalPlayer;
+
+			foreach (var item in CharacterSelectSlideMenu.SlideItems)
+			{
+				item.gameObject.GetEntityLink().Unlink();
+			}
+		}
+
+		public void SetPlayerInTheGame(List<object> players) {
 
         }
+
+		public void Lock()
+		{
+			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
+		}
 
         /// <summary>
         /// Show Unit Info 
@@ -94,6 +116,12 @@ namespace End.Game.CharacterSelect {
                 + RoleAndDescription.ATHEIST_WIN_CONDITION;
             RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_ATHEIST);
         }
-        #endregion
-    }
+		#endregion
+
+		private void SetLocalPlayer(Player player)
+		{
+			_localPlayer = player;
+			Debug.Log("Set Local Player");
+		}
+	}
 }
