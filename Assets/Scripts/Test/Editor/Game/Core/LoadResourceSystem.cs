@@ -1,31 +1,60 @@
 ﻿using NUnit.Framework;
-using System;
+using UnityEngine;
 using End.Game;
-using End.Game.CharacterSelect;
+using Entitas.Unity;
 
 namespace End.Test
 {
 	public class TestLoadResourceSystem
 	{
 		private Contexts _contexts;
-		private CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			_setting = TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
 		}
 
 		[Test]
-		public void EntityCreateCountMatchEnum()
+		public void LoadResourcesWithSprite()
 		{
-			var targetCount = Enum.GetNames(typeof(Character)).Length;
+			var system = new LoadResourceSystem(_contexts);
+			var entity = _contexts.game.CreateEntity();
 
-			var system = new LoadAllCharacterSystems(_contexts, _setting);
-			system.Initialize();
+			entity.AddResource("Test/Editor/Sprite", null);
+			system.Execute();
 
-			Assert.AreEqual(targetCount, _contexts.game.GetEntities().Length);
+			//then 
+			Assert.IsNotNull(entity.view.GameObject.GetComponent<SpriteRenderer>());
+			Assert.IsTrue(entity.hasView);
+			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
+		}
+
+		[Test]
+		public void LoadResourcesWithSpriteAndBasePrefabs()
+		{
+			var system = new Game.LoadResourceSystem(_contexts);
+			var entity = _contexts.game.CreateEntity();
+			entity.AddResource("Test/Editor/Sprite", "Test/Editor/Prefabs");
+
+			system.Execute();
+
+			Assert.AreEqual("Prefabs(Clone)", entity.view.GameObject.name);
+			Assert.IsNotNull(entity.view.GameObject.GetComponent<SpriteRenderer>());
+			Assert.IsTrue(entity.hasView);
+			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
+		}
+
+		[Test]
+		public void LoadResourcesWithSpriteAndCustomViewBasePrefabs()
+		{
+			var system = new Game.LoadResourceSystem(_contexts);
+			var entity = _contexts.game.CreateEntity();
+			entity.AddResource("Test/Editor/Sprite", "Test/Editor/CustomViewPrefabs");
+
+			system.Execute();
+
+			Assert.AreEqual("CustomName", entity.view.GameObject.name);
 		}
 	}
 
