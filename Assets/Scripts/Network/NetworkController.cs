@@ -47,7 +47,7 @@ namespace End
 			Shutdown();
 		}
 
-		public void OnStartClient(Player player)
+		public void OnStartClientPlayer(Player player)
 		{
 			if (OnClientPlayerStartCallback != null) OnClientPlayerStartCallback(player);
 		}

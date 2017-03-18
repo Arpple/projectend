@@ -99,7 +99,7 @@ namespace End
 		{
 			base.OnStartClient();
 
-			NetworkController.Instance.OnStartClient(this);
+			NetworkController.Instance.OnStartClientPlayer(this);
 		}
 		#endregion
 
