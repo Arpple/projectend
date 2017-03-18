@@ -146,6 +146,7 @@ namespace End.Game.CharacterSelect {
 		{
 			_localPlayer.CmdSetReadyStatus(true);
 			LockButton.interactable = false;
+			NetworkController.Instance.SelectedCharacter = (Character)characterId;
 		}
 
 		/// <summary>
