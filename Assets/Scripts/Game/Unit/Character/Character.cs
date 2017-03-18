@@ -2,7 +2,10 @@
 {
 	public enum Character
 	{
+        SharpShooter,
+        CurseSword,
+        Mimic,
+        WhiteRabbit,
 		LastBoss,
-		Sharpshooter,
 	}
 }

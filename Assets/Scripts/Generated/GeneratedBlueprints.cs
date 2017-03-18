@@ -14,11 +14,20 @@ public static class BlueprintsExtension {
     public static Blueprint Card_Move(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Card_Move");
     }
+    public static Blueprint Char_CurseSword(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Char_CurseSword");
+    }
     public static Blueprint Char_LastBoss(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Char_LastBoss");
     }
-    public static Blueprint Char_Sharpshooter(this Blueprints blueprints) {
-        return blueprints.GetBlueprint("Char_Sharpshooter");
+    public static Blueprint Char_Mimic(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Char_Mimic");
+    }
+    public static Blueprint Char_SharpShooter(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Char_SharpShooter");
+    }
+    public static Blueprint Char_WhiteRabbit(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Char_WhiteRabbit");
     }
     public static Blueprint Tile_DeepForest(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Tile_DeepForest");
@@ -43,6 +52,9 @@ public static class BlueprintsExtension {
     }
     public static Blueprint Tile_Space(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Tile_Space");
+    }
+    public static Blueprint Tile_TownField(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_TownField");
     }
     public static Blueprint Tile_Water(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Tile_Water");
