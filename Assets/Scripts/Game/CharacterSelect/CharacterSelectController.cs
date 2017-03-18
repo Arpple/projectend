@@ -52,11 +52,15 @@ namespace End.Game.CharacterSelect {
 			var netCon = NetworkController.Instance;
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.OnAllPlayerReadyCallback += MoveToGame;
 		}
 
 		private void OnDestroy()
 		{
-			NetworkController.Instance.OnLocalPlayerStartCallback -= SetLocalPlayer;
+			var netCon = NetworkController.Instance;
+			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
+			netCon.OnClientPlayerStartCallback -= AddPlayer;
+			netCon.OnAllPlayerReadyCallback -= MoveToGame;
 
 			foreach (var item in CharacterSelectSlideMenu.SlideItems)
 			{
@@ -142,7 +146,6 @@ namespace End.Game.CharacterSelect {
 		public void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
-			_localPlayer.CmdSetReadyStatus(false);
 			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
 		}
 
@@ -152,8 +155,15 @@ namespace End.Game.CharacterSelect {
 		/// <param name="characterId">The character identifier.</param>
 		public void OnLocalPlayerCharacterSelected(int characterId)
 		{
-			_localPlayer.CmdSetReadyStatus(true);
+			StartCoroutine(Ready());
 			LockButton.interactable = false;
+			NetworkController.Instance.SelectedCharacter = (Character)characterId;
+		}
+
+		System.Collections.IEnumerator Ready()
+		{
+			yield return new WaitForEndOfFrame();
+			_localPlayer.CmdSetReadyStatus(true);
 		}
 
 		/// <summary>
@@ -173,6 +183,16 @@ namespace End.Game.CharacterSelect {
 
 			//TODO: disable 'item'
 			Debug.Log("disable : " + item.gameObject);
+		}
+
+		/// <summary>
+		/// Moves to game. (Server)
+		/// </summary>
+		public void MoveToGame()
+		{
+			var netCon = NetworkController.Instance;
+			netCon.ServerChangeScene(Scene.Game.ToString());
+			_localPlayer.RpcSetPlayerCount(Player.AllPlayers.Count);
 		}
 	}
 }

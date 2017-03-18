@@ -31,6 +31,7 @@ namespace End
 		[Header("Local Player")]
 		public string LocalPlayerName;
 		public string LocalPlayerIconPath;
+		public Game.Character SelectedCharacter;
 
 		private void Awake()
 		{
@@ -47,7 +48,7 @@ namespace End
 			Shutdown();
 		}
 
-		public void OnStartClient(Player player)
+		public void OnStartClientPlayer(Player player)
 		{
 			if (OnClientPlayerStartCallback != null) OnClientPlayerStartCallback(player);
 		}
@@ -61,6 +62,8 @@ namespace End
 		public override void OnStartClient(NetworkClient client)
 		{
 			base.OnStartClient(client);
+
+			SelectedCharacter = Game.Character.None;
 		}
 
 		/// <summary>
