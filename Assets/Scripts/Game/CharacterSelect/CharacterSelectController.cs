@@ -37,7 +37,7 @@ namespace End.Game.CharacterSelect {
 				Debug.Log(entity.character.Type);
 
 				//TODO: get description from entity and show
-				//ShowUnitInformationUnit(entity);
+				ShowUnitInformationUnit(entity);
 			};
         }
 
@@ -48,12 +48,20 @@ namespace End.Game.CharacterSelect {
         /// <summary>
         /// Show Unit Info 
         /// </summary>
-        public void ShowUnitInformationUnit(object unit) {
+        public void ShowUnitInformationUnit(GameEntity unit) {
             //TODO : Set Character Status
-            //UnitStatus.setCharacterStatus();
-            
+            //UnitStatus.setCharacterStatus(unit.unitStatus.AttackPower);
+            Sprite sprite = Resources.Load<Sprite>(unit.resource.SpritePath);
+            UnitStatus.setUnitStatus(unit.unitStatus.Name,sprite
+                ,unit.unitStatus.HitPoint
+                ,unit.unitStatus.AttackPower
+                ,unit.unitStatus.AttackRange
+                ,unit.unitStatus.VisionRange
+                ,unit.unitStatus.MoveSpeed);
             //TODO : Set Character Ability
-            //UnitSkill.SetAbility();
+            /*UnitSkill.SetAbility(
+                unit.ability.Ability
+                );*/
         }
 
         #region UI RoleContent
