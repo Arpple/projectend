@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -19,7 +17,7 @@ namespace End.UI {
         public Vector2 ItemSize;
         public float ItemSpace;
         public float NonFocusIndexScale;
-
+        private float _keyupTime;
 		public int FocusingIndex;
 
 		public delegate void FocusItemChangeCallback(SlideItem item);
@@ -111,7 +109,6 @@ namespace End.UI {
 			return SlideItems.ToList().IndexOf(
 				items.OrderBy(i => Mathf.Abs(i.transform.position.x - transform.position.x)).First()
 			);
-				
             //return (int)Mathf.Round((-((contentPosition-_extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
         }
 

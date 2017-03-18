@@ -24,8 +24,7 @@ namespace End.Test
 
 			var enumCount = Enum.GetNames(typeof(Character)).Length;
 
-			Assert.AreEqual(enumCount, _contexts.game.count);
-			
+			Assert.AreEqual(enumCount - 1, _contexts.game.count); //substract 1 from None
 		}
 
 		[Test]
