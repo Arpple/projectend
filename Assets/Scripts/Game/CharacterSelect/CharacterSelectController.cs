@@ -52,6 +52,7 @@ namespace End.Game.CharacterSelect {
 			var netCon = NetworkController.Instance;
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.OnAllPlayerReadyCallback += () => Debug.Log("Move");
 		}
 
 		private void OnDestroy()
@@ -134,7 +135,6 @@ namespace End.Game.CharacterSelect {
 		public void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
-			_localPlayer.CmdSetReadyStatus(false);
 			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
 		}
 
@@ -144,9 +144,15 @@ namespace End.Game.CharacterSelect {
 		/// <param name="characterId">The character identifier.</param>
 		public void OnLocalPlayerCharacterSelected(int characterId)
 		{
-			_localPlayer.CmdSetReadyStatus(true);
+			StartCoroutine(Ready());
 			LockButton.interactable = false;
 			NetworkController.Instance.SelectedCharacter = (Character)characterId;
+		}
+
+		System.Collections.IEnumerator Ready()
+		{
+			yield return new WaitForEndOfFrame();
+			_localPlayer.CmdSetReadyStatus(true);
 		}
 
 		/// <summary>
