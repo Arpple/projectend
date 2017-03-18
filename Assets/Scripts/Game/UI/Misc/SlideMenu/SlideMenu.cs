@@ -113,7 +113,7 @@ namespace End.UI {
             if(index >= 0 && index < ItemCount) this.ShowText.text = SlideItems[index].ShowText;
         }
 
-        public SlideItem AddUnit(GameEntity unitEntity) {
+        public SlideItem AddItem() {
             SlideItem item = Instantiate(SlideItemPrefabs,Content.transform,false);
             return item;
         }
