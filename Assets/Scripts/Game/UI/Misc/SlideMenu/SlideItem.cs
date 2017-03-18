@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace End.UI {
 
-    [RequireComponent(typeof(UnityEngine.UI.Image))]
-    [RequireComponent(typeof(UnityEngine.UI.Mask))]
+    [RequireComponent(typeof(Image))]
+    [RequireComponent(typeof(Mask))]
     /// <summary>
     /// Item slide is a frame of item in slidemenu only
     /// Content is a object that show graphic on screen
@@ -31,7 +29,7 @@ namespace End.UI {
             this.GetComponent<RectTransform>().sizeDelta = new Vector2(x, y);
         }
 
-        public void setText(string text) {
+        public void SetText(string text) {
             this.ShowText = text;
         }
     }

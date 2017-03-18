@@ -10,6 +10,9 @@ using End.UI;
 
 namespace End.Game.CharacterSelect {
     public class CharacterSelectController : MonoBehaviour{
+
+		public static CharacterSelectController Instance;
+
         public UnitStatus UnitStatus;
         public UnitSkill UnitSkill;
 
@@ -18,6 +21,8 @@ namespace End.Game.CharacterSelect {
 
 		private void Awake()
 		{
+			Instance = this;
+
 			Assert.IsNotNull(UnitStatus);
 			Assert.IsNotNull(UnitSkill);
 			Assert.IsNotNull(RoleContent);

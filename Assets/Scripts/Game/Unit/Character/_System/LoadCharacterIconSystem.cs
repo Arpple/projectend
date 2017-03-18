@@ -7,6 +7,13 @@ namespace End.Game
 {
 	public class LoadCharacterIconSystem : ReactiveSystem<GameEntity>
 	{
+		public static string GetIconPath(ResourceComponent res)
+		{
+			var pathArray = res.SpritePath.Split('/');
+			pathArray[pathArray.Length - 1] = "";
+			return string.Join("/", pathArray) + "Icon";
+		}
+
 		readonly CharacterSetting _setting;
 
 		public LoadCharacterIconSystem(Contexts contexts, CharacterSetting setting)
@@ -34,16 +41,6 @@ namespace End.Game
 				e.AddCharacterIcon(icon);
 			}
 		}
-
-		private string GetIconPath(ResourceComponent res)
-		{
-			var pathArray = res.SpritePath.Split('/');
-			pathArray[pathArray.Length - 1] = "";
-			return string.Join("/", pathArray) + "Icon";
-		}
-		
-
-		
 	}
 
 }

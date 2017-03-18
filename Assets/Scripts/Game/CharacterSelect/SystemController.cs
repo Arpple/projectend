@@ -55,7 +55,7 @@ namespace End.Game.CharacterSelect
 		{
 			return new Feature("Systems")
 				.Add(new LoadAllCharacterSystems(contexts, Setting.UnitSetting.CharacterSetting))
-				.Add(new LoadCharacterIconSystem(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new CreateCharacterSelectionIconSystem(contexts, CharacterSelectController.Instance.CharacterSelectSlideMenu))
 				.Add(new ClearContextsSystem(contexts));
 		}
 	}

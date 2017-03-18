@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace End.UI {
     public class SlideMenu: MonoBehaviour {
         #region Setting
-        public GameObject Content;
+        public GameObject SlideItemContainer;
         public SlideItem SlideItemPrefabs;
         public Text ShowText;
 
@@ -20,21 +20,21 @@ namespace End.UI {
         public float NonFocusIndexScale;
         #endregion
 
-        private Vector2 PanelSize {
+        public Vector2 PanelSize {
             get{
                 return this.GetComponent<RectTransform>().rect.size;
             }
         }
 
-        private SlideItem[] SlideItems {
+        public SlideItem[] SlideItems {
             get{
-                return this.Content.GetComponentsInChildren<SlideItem>();
+                return this.SlideItemContainer.GetComponentsInChildren<SlideItem>();
             }
         }
 
-        private int ItemCount {
+		public int ItemCount {
             get{
-                return this.Content.transform.GetComponentsInChildren<SlideItem>().Length;
+                return this.SlideItemContainer.transform.GetComponentsInChildren<SlideItem>().Length;
             }
         }
 
@@ -42,13 +42,13 @@ namespace End.UI {
             get {
                 int itemCount = this.ItemCount;
                 Vector2 position = new Vector2(
-                    (this.ItemSpace + this.ItemSize.x) + extraPosition.x
+                    (this.ItemSpace + this.ItemSize.x) + _extraPosition.x
                     ,0);
                 return position;
             }
         }
 
-        private Vector2 extraPosition{
+        private Vector2 _extraPosition{
             get{
                 float x = this.ItemCount % 2 == 0 ? -this.ItemSize.x / 2 : 0;
                 return new Vector2(x,0f);
@@ -86,22 +86,22 @@ namespace End.UI {
         }
 
         public Vector2 IndexToPosition(int index) {
-            return new Vector2((this.ItemSpace + this.ItemSize.x) * -(index - ItemCount / 2) + extraPosition.x,0);
+            return new Vector2((this.ItemSpace + this.ItemSize.x) * -(index - ItemCount / 2) + _extraPosition.x,0);
         }
 
-		private int GetNearestItemIndex() {
-            float contentPosition = this.Content.transform.localPosition.x;
-            return (int)Mathf.Round((-((contentPosition-extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
+		public int GetNearestItemIndex() {
+            float contentPosition = this.SlideItemContainer.transform.localPosition.x;
+            return (int)Mathf.Round((-((contentPosition-_extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
         }
 
         /// <summary>
         /// Force move Index to middle
         /// </summary>
         /// <param name="index"></param>
-        private void FocusIndex(int index) {
+        public void FocusIndex(int index) {
             float newPosition = IndexToPosition(index).x;
             //Debug.Log("Focus Index -> ["+index+"/"+ItemCount+"] at position ["+newPosition+"]");
-            this.Content.transform.localPosition = new Vector3(
+            this.SlideItemContainer.transform.localPosition = new Vector3(
                     newPosition
                     ,0
                     ,0
@@ -109,12 +109,12 @@ namespace End.UI {
             ShowDetail(index);
         }
 
-        private void ShowDetail(int index) {
+        public void ShowDetail(int index) {
             if(index >= 0 && index < ItemCount) this.ShowText.text = SlideItems[index].ShowText;
         }
 
         public SlideItem AddItem() {
-            SlideItem item = Instantiate(SlideItemPrefabs,Content.transform,false);
+            SlideItem item = Instantiate(SlideItemPrefabs,SlideItemContainer.transform,false);
             return item;
         }
 
