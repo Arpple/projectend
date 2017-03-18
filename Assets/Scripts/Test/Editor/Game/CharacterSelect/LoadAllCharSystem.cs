@@ -19,7 +19,7 @@ namespace End.Test
 		[Test]
 		public void LoadCharacterCountEqualEnum()
 		{
-			var system = new End.Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
+			var system = new Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
 			system.Initialize();
 
 			var enumCount = Enum.GetNames(typeof(Character)).Length;
@@ -31,7 +31,7 @@ namespace End.Test
 		[Test]
 		public void CharacterComponentAdded()
 		{
-			var system = new End.Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
+			var system = new Game.CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
 			system.Initialize();
 
 			foreach (var e in _contexts.game.GetEntities())

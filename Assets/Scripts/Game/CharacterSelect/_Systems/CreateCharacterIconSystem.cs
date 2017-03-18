@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Entitas;
 using End.UI;
+using UnityEngine.Assertions;
 
 namespace End.Game.CharacterSelect
 {
@@ -22,11 +23,15 @@ namespace End.Game.CharacterSelect
 
 		protected override bool Filter(GameEntity entity)
 		{
+			Assert.IsTrue(entity.hasResource);
+
 			return entity.hasCharacter;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
+			
+
 			foreach(var e in entities)
 			{
 				var slideItem = _slidemenu.AddItem();

@@ -23,7 +23,7 @@ namespace End.Test
 			var context = _contexts.game;
 			var entity = context.CreateEntity();
 			entity.AddResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
-			entity.AddCharacter(End.Game.Character.LastBoss);
+			entity.AddCharacter(Character.LastBoss);
 
 			system.Execute();
 
