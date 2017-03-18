@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Entitas;
+using Entitas.Unity;
 using End.UI;
 using UnityEngine.Assertions;
 
@@ -8,11 +9,13 @@ namespace End.Game.CharacterSelect
 {
 	public class CreateCharacterSelectionIconSystem : ReactiveSystem<GameEntity>
 	{
+		private readonly GameContext _context;
 		private readonly SlideMenu _slidemenu;
 
 		public CreateCharacterSelectionIconSystem(Contexts contexts, SlideMenu slideMenu)
 			: base(contexts.game)
 		{
+			_context = contexts.game;
 			_slidemenu = slideMenu;
 		}
 
@@ -36,6 +39,7 @@ namespace End.Game.CharacterSelect
 				var icon = Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(e.resource));
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);
 				slideItem.SetText(e.unitStatus.Name);
+				slideItem.gameObject.Link(e, _context);
 			}
 		}
 	}

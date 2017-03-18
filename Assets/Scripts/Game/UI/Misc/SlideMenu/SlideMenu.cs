@@ -22,8 +22,8 @@ namespace End.UI {
 
 		public int FocusingIndex;
 
-		public delegate void FocusIndexChangeCallback(int index);
-		public FocusIndexChangeCallback OnFocusIndexChangedCallback;
+		public delegate void FocusItemChangeCallback(SlideItem item);
+		public FocusItemChangeCallback OnFocusItemChangedCallback;
         #endregion
 
         public Vector2 PanelSize {
@@ -132,7 +132,7 @@ namespace End.UI {
 			//focus index change
 			if(index != FocusingIndex)
 			{
-				if (OnFocusIndexChangedCallback != null) OnFocusIndexChangedCallback(index);
+				if (OnFocusItemChangedCallback != null) OnFocusItemChangedCallback(SlideItems[index]);
 				FocusingIndex = index;
 			}	
         }

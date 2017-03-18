@@ -7,6 +7,7 @@ using End.Game.UI.CharacterSelection;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using End.UI;
+using Entitas.Unity;
 
 namespace End.Game.CharacterSelect {
     public class CharacterSelectController : MonoBehaviour{
@@ -31,7 +32,13 @@ namespace End.Game.CharacterSelect {
 		}
 
 		void Start() {
-			CharacterSelectSlideMenu.OnFocusIndexChangedCallback += (i) => Debug.Log("Focus " + i);
+			CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
+				var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
+				Debug.Log(entity.character.Type);
+
+				//TODO: get description from entity and show
+				//ShowUnitInformationUnit(entity);
+			};
         }
 
         public void SetPlayerInTheGame(List<object> players) {

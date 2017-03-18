@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 namespace End
 {
@@ -84,6 +84,7 @@ namespace End
 			base.OnStartServer();
 
 			maxConnections = MaxPlayer;
+			Player.AllPlayers = new List<Player>();
 		}
 
 		/// <summary>
@@ -100,7 +101,11 @@ namespace End
 		{
 			base.OnServerSceneChanged(sceneName);
 
-			Player.AllPlayers = new List<Player>();
+			if (SceneManager.GetActiveScene().name != Scene.Lobby.ToString())
+			{
+				maxConnections = numPlayers;
+				Debug.Log("Lock connection to " + numPlayers);
+			}
 		}
 
 		public override void OnServerError(NetworkConnection conn, int errorCode)
