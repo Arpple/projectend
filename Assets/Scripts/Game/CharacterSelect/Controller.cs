@@ -28,7 +28,7 @@ namespace End.Game.CharacterSelect
 			var netCon = NetworkController.Instance;
 			netCon.OnAllPlayerReadyCallback += Initialize;
 			_contexts = Contexts.sharedInstance;
-			
+			Initialize();
 		}
 
 		public void Initialize()

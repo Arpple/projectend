@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224235144941042106}
   - component: {fileID: 222897205936862900}
   - component: {fileID: 114001779689093468}
-  - component: {fileID: 114246685821734010}
   m_Layer: 5
   m_Name: PlayerLeft
   m_TagString: Untagged
@@ -321,7 +320,6 @@ GameObject:
   - component: {fileID: 224965231597543530}
   - component: {fileID: 222910123128005126}
   - component: {fileID: 114805647741340234}
-  - component: {fileID: 114254216439993040}
   m_Layer: 5
   m_Name: Role
   m_TagString: Untagged
@@ -3915,6 +3913,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitStatus: {fileID: 114931615000815662}
   UnitSkill: {fileID: 114899270088838726}
+  RoleContent: {fileID: 0}
+  CharacterContent: {fileID: 0}
+  RoleTitle: {fileID: 0}
+  RoleDesciption: {fileID: 0}
+  RoleImage: {fileID: 0}
 --- !u!114 &114227102703043748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3954,7 +3957,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114254216439993040}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowAtheistDetail
         m_Mode: 1
         m_Arguments:
@@ -4107,22 +4110,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114246685821734010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003525068198046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e416c629c16a4bb97352f6cc900d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerIcon: {fileID: 114534569394542666}
-  PlayerName: {fileID: 114277960817710904}
-  PlayerStat: {fileID: 114223707868593058}
-  Status: 0
-  onAllocate: 0
 --- !u!114 &114248960164495376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4159,19 +4146,6 @@ MonoBehaviour:
   m_PreferredHeight: 55
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
---- !u!114 &114254216439993040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129646083530972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2ba89e00d2dc844abf7e95f9aaaf68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RoleName: {fileID: 114147040468444258}
-  RoleDescription: {fileID: 114181900491173346}
 --- !u!114 &114254361471843610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5234,7 +5208,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114254216439993040}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowPriestDetail
         m_Mode: 1
         m_Arguments:
@@ -5340,7 +5314,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114254216439993040}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowGodDetail
         m_Mode: 1
         m_Arguments:
@@ -7928,7 +7902,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114254216439993040}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowAspotleDetail
         m_Mode: 1
         m_Arguments:

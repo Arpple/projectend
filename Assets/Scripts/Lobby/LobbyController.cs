@@ -50,7 +50,9 @@ namespace End.Lobby
 			lobbyPlayer.transform.SetParent(PlayerContainer.transform, false);
 			lobbyPlayer.SetPlayer(player);
 
-			player.OnPlayerDisconnectCallback += () => Destroy(lobbyPlayer.gameObject);
+			player.OnPlayerDisconnectCallback += () => {
+				if (lobbyPlayer != null) Destroy(lobbyPlayer.gameObject);
+			};
 		}
 
 		public void SetLocalPlayer(Player player)
