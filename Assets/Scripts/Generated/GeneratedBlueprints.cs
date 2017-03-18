@@ -17,6 +17,9 @@ public static class BlueprintsExtension {
     public static Blueprint Char_LastBoss(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Char_LastBoss");
     }
+    public static Blueprint Char_Sharpshooter(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Char_Sharpshooter");
+    }
     public static Blueprint Tile_DeepForest(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Tile_DeepForest");
     }

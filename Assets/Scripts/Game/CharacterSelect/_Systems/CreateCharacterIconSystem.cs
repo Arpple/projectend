@@ -30,8 +30,6 @@ namespace End.Game.CharacterSelect
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			
-
 			foreach(var e in entities)
 			{
 				var slideItem = _slidemenu.AddItem();

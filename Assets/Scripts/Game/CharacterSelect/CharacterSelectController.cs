@@ -31,11 +31,7 @@ namespace End.Game.CharacterSelect {
 		}
 
 		void Start() {
-            InitialPrefabs();
-        }
-
-        private void InitialPrefabs() {
-
+			CharacterSelectSlideMenu.OnFocusIndexChangedCallback += (i) => Debug.Log("Focus " + i);
         }
 
         public void SetPlayerInTheGame(List<object> players) {

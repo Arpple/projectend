@@ -330,6 +330,7 @@ MonoBehaviour:
   ItemSize: {x: 200, y: 425}
   ItemSpace: 35
   NonFocusIndexScale: 0.75
+  FocusingIndex: 0
 --- !u!1 &55803509
 GameObject:
   m_ObjectHideFlags: 0

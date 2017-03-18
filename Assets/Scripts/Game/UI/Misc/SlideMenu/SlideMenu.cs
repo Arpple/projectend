@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace End.UI {
     public class SlideMenu: MonoBehaviour {
@@ -18,6 +19,11 @@ namespace End.UI {
         public Vector2 ItemSize;
         public float ItemSpace;
         public float NonFocusIndexScale;
+
+		public int FocusingIndex;
+
+		public delegate void FocusIndexChangeCallback(int index);
+		public FocusIndexChangeCallback OnFocusIndexChangedCallback;
         #endregion
 
         public Vector2 PanelSize {
@@ -34,7 +40,7 @@ namespace End.UI {
 
 		public int ItemCount {
             get{
-                return this.SlideItemContainer.transform.GetComponentsInChildren<SlideItem>().Length;
+                return SlideItems.Length;
             }
         }
 
@@ -55,14 +61,16 @@ namespace End.UI {
             }
         }
 
-        void Start() {
-            //Debug.Log("Start");
-            foreach(SlideItem item in transform.GetComponentsInChildren<SlideItem>()) {
-                item.SetSize(ItemSize.x,ItemSize.y);
-                item.SetScale(1f);
+		private void Awake()
+		{
+			this.scrollrect = this.gameObject.GetComponent<ScrollRect>();
+		}
+
+		void Start() {
+            foreach(SlideItem item in SlideItems) {
+				InitSlideItem(item);
             }
             FocusIndex(0);
-            this.scrollrect = this.gameObject.GetComponent<ScrollRect>();
         }
 
         void Update() {
@@ -71,6 +79,12 @@ namespace End.UI {
                 this.FocusIndex(GetNearestItemIndex());
             }
         }
+
+		private void InitSlideItem(SlideItem item)
+		{
+			item.SetSize(ItemSize.x, ItemSize.y);
+			item.SetScale(1f);
+		}
 
 
         private void ResizeItem() {
@@ -90,8 +104,15 @@ namespace End.UI {
         }
 
 		public int GetNearestItemIndex() {
-            float contentPosition = this.SlideItemContainer.transform.localPosition.x;
-            return (int)Mathf.Round((-((contentPosition-_extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
+			//float contentPosition = this.SlideItemContainer.transform.localPosition.x;
+			var items = SlideItems;
+			if (items.Length == 0) return 0;
+
+			return SlideItems.ToList().IndexOf(
+				items.OrderBy(i => Mathf.Abs(i.transform.position.x - transform.position.x)).First()
+			);
+				
+            //return (int)Mathf.Round((-((contentPosition-_extraPosition.x) / (this.ItemSpace + this.ItemSize.x)) + (ItemCount / 2)));
         }
 
         /// <summary>
@@ -107,15 +128,27 @@ namespace End.UI {
                     ,0
                 );
             ShowDetail(index);
+
+			//focus index change
+			if(index != FocusingIndex)
+			{
+				if (OnFocusIndexChangedCallback != null) OnFocusIndexChangedCallback(index);
+				FocusingIndex = index;
+			}	
         }
 
         public void ShowDetail(int index) {
             if(index >= 0 && index < ItemCount) this.ShowText.text = SlideItems[index].ShowText;
         }
 
-        public SlideItem AddItem() {
+		/// <summary>
+		/// Create and add new SlideItem.
+		/// </summary>
+		/// <returns>created SlideItem</returns>
+		public SlideItem AddItem() {
             SlideItem item = Instantiate(SlideItemPrefabs,SlideItemContainer.transform,false);
-            return item;
+			InitSlideItem(item);
+			return item;
         }
 
         public void OnMouseDown() {

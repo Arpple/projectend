@@ -3,5 +3,6 @@
 	public enum Character
 	{
 		LastBoss,
+		Sharpshooter,
 	}
 }
