@@ -113,6 +113,7 @@ namespace End
 		/// </summary>
 		public void StartGame()
 		{
+			Debug.Log("Start Game");
 			_gameStarted = true;
 		}
 

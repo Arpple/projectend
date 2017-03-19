@@ -18,6 +18,21 @@ namespace End
 			return conn.Send(MsgGameStarted, new NormalMessage());
 		}
 
+		public class PlayerCountMessage : MessageBase
+		{
+			public int Count;
+		}
+
+		public static short MsgPlayerCount = MsgType.Highest + 1;
+		public static bool SendPlayerCount(int count)
+		{
+			var msg = new PlayerCountMessage()
+			{
+				Count = count
+			};
+			return NetworkServer.SendToAll(MsgPlayerCount, msg);
+		}
+
 	}
 
 }

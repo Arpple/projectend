@@ -194,7 +194,7 @@ namespace End.Game.CharacterSelect {
 		{
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(Scene.Game.ToString());
-			_localPlayer.RpcSetPlayerCount(Player.AllPlayers.Count);
+			NetMessage.SendPlayerCount(netCon.ConnectionCount);
 		}
 	}
 }
