@@ -39,14 +39,13 @@ namespace End.Game.CharacterSelect {
 		}
 
 		void Start() {
-			CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
-				var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
-				_focusingCharacter = entity.character.Type;
+            CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
+                var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
+                _focusingCharacter = entity.character.Type;
 
-				//TODO: get description from entity and show
-				ShowUnitInformationUnit(entity);
-			};
-
+                //TODO: get description from entity and show
+                ShowUnitInformationUnit(entity);
+            };
 			var netCon = NetworkController.Instance;
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
 			netCon.OnClientPlayerStartCallback += AddPlayer;

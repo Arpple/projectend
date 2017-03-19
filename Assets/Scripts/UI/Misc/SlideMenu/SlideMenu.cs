@@ -124,14 +124,15 @@ namespace End.UI {
                     ,0
                     ,0
                 );
-            ShowDetail(index);
 
 			//focus index change
 			if(index != FocusingIndex)
 			{
 				if (OnFocusItemChangedCallback != null) OnFocusItemChangedCallback(SlideItems[index]);
 				FocusingIndex = index;
-			}	
+			}
+
+            ShowDetail(index);
         }
 
         public void ShowDetail(int index) {

@@ -35,15 +35,22 @@ namespace End.Game.CharacterSelect
 		{
 			foreach(var e in entities)
 			{
-                if(e.character.Type == Character.None)continue; 
+                
 
 				var slideItem = _slidemenu.AddItem();
 				var icon = Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(e.resource));
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);
 				slideItem.SetText(e.unitStatus.Name);
 				slideItem.gameObject.Link(e, _context);
-			}
-		}
-	}
+
+                if(e.character.Type == Character.None) {
+                    slideItem.gameObject.SetActive(false);
+                }
+            }
+
+            this._slidemenu.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object
+            //Debug.Log("Init Focus on > "+_slidemenu.FocusingIndex);
+        }
+    }
 }
 
