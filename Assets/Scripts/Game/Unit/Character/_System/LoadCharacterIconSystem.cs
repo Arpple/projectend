@@ -9,9 +9,10 @@ namespace End.Game
 	{
 		public static string GetIconPath(ResourceComponent res)
 		{
-			var pathArray = res.SpritePath.Split('/');
-			pathArray[pathArray.Length - 1] = "";
-			return string.Join("/", pathArray) + "Icon";
+            //Debug.Log("Load Icon > "+ res.SpritePath.Replace("SpriteBody", "Icon"));
+            return res.SpritePath.Replace("SpriteBody","Icon");
+			//var pathArray = res.SpritePath.Split('/');
+			//return string.Join("/", pathArray) + "Icon";
 		}
 
 		readonly CharacterSetting _setting;
