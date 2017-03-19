@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -13,50 +14,71 @@ namespace End.Game
 			get { return Instance.IsOfflineMode; }
 		}
 
+		public static Player LocalPlayer
+		{
+			get; private set;
+		}
+
 		[Header("Test")]
 		public bool IsOfflineMode = false;
 
 		[Header("Config")]
 		public GameSetting Setting;
+		public GameObject PlayerContainer;
 
 		private Systems _systems;
 		private Contexts _contexts;
 		private bool _isInitialized;
+		private List<Player> _players;
 
 		void Awake()
 		{
 			Instance = this;
 			_isInitialized = false;
+			_players = new List<Player>();
+
+			Assert.IsNotNull(Setting);
+			Assert.IsNotNull(PlayerContainer);
 		}
 
 		void Start()
 		{
-			//var playerLoader = PlayerLoader.Instance;
-			//Assert.IsNotNull(playerLoader);
-			//if(IsOffline)
-			//{
-			//	var players = playerLoader.GetComponentsInChildren<Player>(true);
-			//	Player.PlayerCount = players.Length;
-			//}
-			
+			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
+
+			if(IsOfflineMode)
+			{
+				SetupNetworkOffline();
+			}
+			else
+			{
+				SetupNetwork();
+			}
+		}
+
+		private void Initialize()
+		{
+			if(LocalPlayer.isServer)
+			{
+				//setup player id
+				short id = 1;
+				foreach(var player in _players)
+				{
+					player.PlayerId = id;
+					id++;
+				}
+			}
+
+			_systems.Initialize();
+			_isInitialized = true;
 		}
 
 		void Update()
 		{
 			Assert.IsTrue(_systems != null);
-
-			//if (!PlayerLoader.Instance.IsComplete) return;
-
-			//initialize once
-			if (!_isInitialized)
-			{
-				Debug.Log("Initialize");
-				_systems.Initialize();
-				_isInitialized = true;
-			}
+			if (!_isInitialized) return;
 
 			_systems.Execute();
 			_systems.Cleanup();
@@ -89,5 +111,43 @@ namespace End.Game
 
 				.Add(new ClearContextsSystem(contexts));
 		}
+
+		private void SetupNetworkOffline()
+		{
+			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
+			NetworkController.Instance.PlayerCount = players.Length;
+			foreach (var player in players)
+			{
+				AddPlayer(player);
+			}
+		}
+
+		#region Network
+
+		public void SetupNetwork()
+		{
+			var netCon = NetworkController.Instance;
+			netCon.OnClientPlayerStartCallback += AddPlayer;
+		}
+
+		public void AddPlayer(Player player)
+		{
+			_players.Add(player);
+			player.transform.SetParent(PlayerContainer.transform);
+
+			//start game if all player connected
+			var playerCount = NetworkController.Instance.PlayerCount;
+			Assert.AreNotEqual(0, playerCount);
+			if(_players.Count == playerCount)
+			{
+				Initialize();
+			}
+		}
+
+		public void AddLocalPlayer(Player player)
+		{
+			LocalPlayer = player;
+		}
+		#endregion
 	}
 }
