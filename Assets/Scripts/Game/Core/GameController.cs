@@ -60,7 +60,7 @@ namespace End.Game
 
 		private void Initialize()
 		{
-			if(LocalPlayer.isServer)
+			if(NetworkController.IsServer)
 			{
 				//setup player id
 				short id = 1;
@@ -115,7 +115,7 @@ namespace End.Game
 		private void SetupNetworkOffline()
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
-			NetworkController.Instance.PlayerCount = players.Length;
+			NetworkController.Instance.ConnectionCount = players.Length;
 			foreach (var player in players)
 			{
 				AddPlayer(player);
@@ -136,9 +136,9 @@ namespace End.Game
 			player.transform.SetParent(PlayerContainer.transform);
 
 			//start game if all player connected
-			var playerCount = NetworkController.Instance.PlayerCount;
+			var playerCount = NetworkController.Instance.ConnectionCount;
 			Assert.AreNotEqual(0, playerCount);
-			if(_players.Count == playerCount)
+			if (_players.Count == playerCount)
 			{
 				Initialize();
 			}

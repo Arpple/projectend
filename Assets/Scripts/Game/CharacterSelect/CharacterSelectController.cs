@@ -41,8 +41,6 @@ namespace End.Game.CharacterSelect {
 		void Start() {
 			CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
 				var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
-				Debug.Log(entity.character.Type);
-
 				_focusingCharacter = entity.character.Type;
 
 				//TODO: get description from entity and show
@@ -186,7 +184,6 @@ namespace End.Game.CharacterSelect {
 			});
 
 			//TODO: disable 'item'
-			Debug.Log("disable : " + item.gameObject);
 		}
 
 		/// <summary>

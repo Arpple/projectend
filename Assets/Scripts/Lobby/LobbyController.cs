@@ -81,7 +81,7 @@ namespace End.Lobby
 		{
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(Scene.CharacterSelect.ToString());
-			netCon.StartGame();
+			netCon.CloseConnectionForPlaying();
 		}
 	}
 }

@@ -32,6 +32,12 @@ namespace End
 		public string LocalPlayerName;
 		public string LocalPlayerIconPath;
 		public Game.Character SelectedCharacter;
+		public Player LocalPlayer;
+
+		public static bool IsServer
+		{
+			get { return NetworkServer.active; }
+		}
 
 		private void Awake()
 		{
@@ -56,6 +62,7 @@ namespace End
 		public void OnStartLocalPlayer(Player player)
 		{
 			if (OnLocalPlayerStartCallback != null) OnLocalPlayerStartCallback(player);
+			LocalPlayer = player;
 		}
 
 		#region Client
@@ -82,10 +89,11 @@ namespace End
 		public int ConnectionCount;
 
 		/// <summary>
-		/// The maximum connections, override version of default maxconnections
+		/// The maximum connections, override version of default maxConnections
 		/// which is not working
 		/// </summary>
 		private int _maxConnections;
+
 		private bool _isPlaying;
 
 		/// <summary>
@@ -100,11 +108,18 @@ namespace End
 			return ConnectionCount == _maxConnections;
 		}
 
-		public void StartGame()
+		/// <summary>
+		/// Closes the connection because game is now running
+		/// </summary>
+		public void CloseConnectionForPlaying()
 		{
 			_isPlaying = true;
 		}
 
+		/// <summary>
+		/// Called on the server when a new client connects.
+		/// </summary>
+		/// <param name="conn">Connection from client.</param>
 		public override void OnServerConnect(NetworkConnection conn)
 		{
 			base.OnServerConnect(conn);
@@ -122,6 +137,17 @@ namespace End
 			}
 
 			ConnectionCount++;
+		}
+
+		/// <summary>
+		/// Called on the server when a client disconnects.
+		/// </summary>
+		/// <param name="conn">Connection from client.</param>
+		public override void OnServerDisconnect(NetworkConnection conn)
+		{
+			base.OnServerDisconnect(conn);
+
+			ConnectionCount--;
 		}
 
 		/// <summary>
@@ -145,17 +171,6 @@ namespace End
 			Assert.IsTrue(Player.AllPlayers.TrueForAll(p => p.IsReady));
 
 			if (OnAllPlayerReadyCallback != null) OnAllPlayerReadyCallback();
-		}
-
-		public override void OnServerSceneChanged(string sceneName)
-		{
-			base.OnServerSceneChanged(sceneName);
-
-			if (SceneManager.GetActiveScene().name != Scene.Lobby.ToString())
-			{
-				maxConnections = numPlayers;
-				Debug.Log("Lock connection to " + numPlayers);
-			}
 		}
 
 		public override void OnServerError(NetworkConnection conn, int errorCode)
