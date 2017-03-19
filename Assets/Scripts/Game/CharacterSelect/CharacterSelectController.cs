@@ -146,6 +146,10 @@ namespace End.Game.CharacterSelect {
 		public void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
+
+			var netCon = NetworkController.Instance;
+			_localPlayer.CmdSetName(netCon.LocalPlayerName);
+
 			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
 		}
 
