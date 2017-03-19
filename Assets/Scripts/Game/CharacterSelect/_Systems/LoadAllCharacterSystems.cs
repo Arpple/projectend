@@ -21,10 +21,6 @@ namespace End.Game.CharacterSelect
 			foreach(var character in Enum.GetValues(typeof(Character)))
 			{
 				var c = (Character)character;
-
-                //? should load non character ... ?
-                //if (c == Character.None) continue; 
-
                 var entity = _context.CreateEntity();
 				entity.ApplyBlueprint(_setting.GetCharBlueprint(c));
 				entity.AddCharacter(c);
