@@ -93,7 +93,8 @@ namespace End.Lounge
 				Debug.Log("Connecting to " + ip);
 				NetCon.networkAddress = ip;
 				var client = NetCon.StartClient();
-				client.RegisterHandler(NetworkController.MsgFull, ServerFullHandler);
+				client.RegisterHandler(NetworkController.MsgServerFull, ServerFullHandler);
+				client.RegisterHandler(NetworkController.MsgGamePlaying, ServerIsPlayingHandler);
 
 				//TODO: show connecting dialogue
 			}
@@ -112,6 +113,13 @@ namespace End.Lounge
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is full");
+			//TODO: show
+		}
+
+		public void ServerIsPlayingHandler(NetworkMessage msg)
+		{
+			msg.conn.Disconnect();
+			Debug.Log("Server is playing");
 			//TODO: show
 		}
 	}

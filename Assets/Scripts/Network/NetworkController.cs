@@ -86,14 +86,7 @@ namespace End
 		/// which is not working
 		/// </summary>
 		private int _maxConnections;
-
-		/// <summary>
-		/// Limit the server connection, prevent more connection
-		/// </summary>
-		public void ServerLimitConnection()
-		{
-			_maxConnections = ConnectionCount;
-		}
+		private bool _isPlaying;
 
 		/// <summary>
 		/// Check if connection is now at maximum
@@ -107,12 +100,24 @@ namespace End
 			return ConnectionCount == _maxConnections;
 		}
 
+		public void StartGame()
+		{
+			_isPlaying = true;
+		}
+
 		public override void OnServerConnect(NetworkConnection conn)
 		{
 			base.OnServerConnect(conn);
+
+			if(_isPlaying)
+			{
+				conn.Send(MsgGamePlaying, new NormalMessage());
+				return;
+			}
+
 			if(IsMaxConnected())
 			{
-				conn.Send(MsgFull, new FullMsg());
+				conn.Send(MsgServerFull, new NormalMessage());
 				return;
 			}
 
@@ -127,6 +132,7 @@ namespace End
 			base.OnStartServer();
 
 			_maxConnections = MaxPlayer;
+			_isPlaying = false;
 			ConnectionCount = 0;
 			Player.ServerSetup();
 		}
@@ -160,13 +166,9 @@ namespace End
 		#endregion
 
 		#region Message
-		class FullMsg : MessageBase { }
-		public static short MsgFull = MsgType.Highest + 1;
-
-		public void ConnectionFull(NetworkConnection conn)
-		{
-			conn.Send(MsgFull, new FullMsg());
-		}
+		class NormalMessage : MessageBase { }
+		public static short MsgServerFull = MsgType.Highest + 1;
+		public static short MsgGamePlaying = MsgType.Highest + 1;
 		#endregion
 	}
 }
