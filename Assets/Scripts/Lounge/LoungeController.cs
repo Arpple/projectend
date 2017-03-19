@@ -93,8 +93,8 @@ namespace End.Lounge
 				Debug.Log("Connecting to " + ip);
 				NetCon.networkAddress = ip;
 				var client = NetCon.StartClient();
-				client.RegisterHandler(NetworkController.MsgServerFull, ServerFullHandler);
-				client.RegisterHandler(NetworkController.MsgGamePlaying, ServerIsPlayingHandler);
+				client.RegisterHandler(NetMessage .MsgServerFull, ServerFullHandler);
+				client.RegisterHandler(NetMessage.MsgGameStarted, ServerIsPlayingHandler);
 
 				//TODO: show connecting dialogue
 			}

@@ -94,7 +94,7 @@ namespace End
 		/// </summary>
 		private int _maxConnections;
 
-		private bool _isPlaying;
+		private bool _gameStarted;
 
 		/// <summary>
 		/// Check if connection is now at maximum
@@ -111,9 +111,9 @@ namespace End
 		/// <summary>
 		/// Closes the connection because game is now running
 		/// </summary>
-		public void CloseConnectionForPlaying()
+		public void StartGame()
 		{
-			_isPlaying = true;
+			_gameStarted = true;
 		}
 
 		/// <summary>
@@ -124,15 +124,15 @@ namespace End
 		{
 			base.OnServerConnect(conn);
 
-			if(_isPlaying)
+			if(_gameStarted)
 			{
-				conn.Send(MsgGamePlaying, new NormalMessage());
+				conn.SendGameStarted();
 				return;
 			}
 
 			if(IsMaxConnected())
 			{
-				conn.Send(MsgServerFull, new NormalMessage());
+				conn.SendServerIsFull();
 				return;
 			}
 
@@ -158,7 +158,7 @@ namespace End
 			base.OnStartServer();
 
 			_maxConnections = MaxPlayer;
-			_isPlaying = false;
+			_gameStarted = false;
 			ConnectionCount = 0;
 			Player.ServerSetup();
 		}
@@ -178,12 +178,6 @@ namespace End
 			base.OnServerError(conn, errorCode);
 			if (OnServerErrorCallback != null) OnServerErrorCallback(errorCode);
 		}
-		#endregion
-
-		#region Message
-		class NormalMessage : MessageBase { }
-		public static short MsgServerFull = MsgType.Highest + 1;
-		public static short MsgGamePlaying = MsgType.Highest + 1;
 		#endregion
 	}
 }

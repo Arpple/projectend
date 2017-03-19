@@ -184,6 +184,7 @@ namespace End.Game.CharacterSelect {
 			});
 
 			//TODO: disable 'item'
+			Debug.Log("disable " + item);
 		}
 
 		/// <summary>
