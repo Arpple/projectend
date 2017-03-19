@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.UI.Dialogue {
+namespace End.UI.Dialogues {
     public class Dialogue :MonoBehaviour{
         public Text DialogueTopic;
         public Text DialogueText;
@@ -20,6 +20,12 @@ namespace End.UI.Dialogue {
             DialogueManager.PopupDialogue(this);
             this.gameObject.SetActive(true);
         }
+
+        public virtual void Open(string topic,string text) {
+            SetDialogue(topic, text);
+            Open();
+        }
+
         public virtual void Close() {
             if(DialogueManager.CloseDialogue(this)) {
                 this.gameObject.SetActive(false);

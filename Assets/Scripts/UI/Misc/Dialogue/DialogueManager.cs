@@ -5,19 +5,19 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace End.UI.Dialogue {
+namespace End.UI.Dialogues {
     public class DialogueManager : MonoBehaviour{
 
         public Dialogue DefaultDialog;
         public GameObject BackgroundPanel;
 
         public static DialogueManager Instance;
-        private static Canvas DialogueCanvas;
-        private static Stack<Dialogue> dialogues = new Stack<Dialogue>();
+        private Stack<Dialogue> dialogues ;
         
 
         void Awake() {
             DialogueManager.Instance = this;
+            this.dialogues = new Stack<Dialogue>();
         }
 
         void Update() {
@@ -44,12 +44,15 @@ namespace End.UI.Dialogue {
         /// </summary>
         /// <param name="dialog">Dialog Prefabs.</param>
         public static void PopupDialogue(Dialogue dialog) {
-            dialogues.Push(dialog);
-            dialog.gameObject.SetActive(true);
-            dialog.transform.SetParent(Instance.BackgroundPanel.transform);
-            if(dialogues.Count > 0) {
-                Instance.BackgroundPanel.SetActive(true);
+            Instance.BackgroundPanel.SetActive(true);
+            //Diable current dialog
+            if(Instance.dialogues.Count > 0) {
+                Instance.dialogues.Peek().gameObject.SetActive(false);
             }
+            //add new dialog :3 and show
+            Instance.dialogues.Push(dialog);
+            dialog.gameObject.SetActive(true);
+            dialog.transform.SetParent(Instance.BackgroundPanel.transform,false);
         }
 
         /// <summary>
@@ -59,11 +62,17 @@ namespace End.UI.Dialogue {
         /// <returns>result of close successful</returns>
         public static bool CloseDialogue(Dialogue dialog) {
             bool result = false;
-            if(dialogues.Peek() == dialog) {
-                dialogues.Pop();
+            if(Instance.dialogues.Peek() == dialog) {
+                //remove old dialog :\
+                Instance.dialogues.Pop().gameObject.SetActive(false);
                 result = true;
+                if(Instance.dialogues.Count > 0){
+                    Instance.dialogues.Peek().gameObject.SetActive(true);
+                }
             }
-            if(dialogues.Count <= 0) {
+
+            Debug.Log("Close dialog["+dialog.name+"] now have ["+ Instance.dialogues.Count+"]" );
+            if(Instance.dialogues.Count <= 0) {
                 Instance.BackgroundPanel.SetActive(false);
             }
 

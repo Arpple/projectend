@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using UnityEngine.Assertions;
 using End.UI;
 using UnityEngine.Networking;
+using End.UI.Dialogues;
+using System;
+using System.Collections;
 
 namespace End.Lounge
 {
@@ -13,6 +16,7 @@ namespace End.Lounge
 		public Button HostButton;
 		public Button JoinButton;
 		public ConnectionDialogue ConnectionDialogue;
+        public Dialogue WarningDialog,ConnectingDialog;
 
 		public NetworkController NetCon
 		{
@@ -42,7 +46,6 @@ namespace End.Lounge
 			ConnectionDialogue.OnJoinButton += () =>
 			{
 				ToggleButton(true);
-
 				Connect(false);
 			};
 
@@ -84,21 +87,29 @@ namespace End.Lounge
 				if (NetCon.StartHost() == null)
 				{
 					ToggleButton(true);
-					//TODO: show error cant creat host
-				}
-			}
+                    //TODO: show error cant creat host
+                    this.WarningDialog.Open("Alert!", "You can't be Host!"+Environment.NewLine+"Why ? Don't Ask me!!!");
+                }
+            }
 			else
 			{
-				var ip = ConnectionDialogue.IpAddress;
+                //TODO: show connecting dialogue
+                this.ConnectingDialog.Open();
+                StartCoroutine(Wait3Sec());
+
+                //TODO : Ok. Connect :D
+                var ip = ConnectionDialogue.IpAddress;
 				Debug.Log("Connecting to " + ip);
 				NetCon.networkAddress = ip;
 				var client = NetCon.StartClient();
 				client.RegisterHandler(NetworkController.MsgServerFull, ServerFullHandler);
-				client.RegisterHandler(NetworkController.MsgGamePlaying, ServerIsPlayingHandler);
-
-				//TODO: show connecting dialogue
+				client.RegisterHandler(NetworkController.MsgGamePlaying, ServerIsPlayingHandler); 
 			}
 		}
+
+        private IEnumerator Wait3Sec() {
+            yield return new WaitForSeconds(3f);
+        }
 
 		public void ConnectError(int errorCode)
 		{
@@ -106,6 +117,7 @@ namespace End.Lounge
 			{
 				//TODO: show warining / erorr
 				Debug.Log("Time Out");
+                this.WarningDialog.Open("Alert!", "I think you connection error now."+Environment.NewLine+"But, Don't Ask me why.");
 			}
 		}
 
@@ -113,15 +125,17 @@ namespace End.Lounge
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is full");
-			//TODO: show
-		}
+            //TODO: show
+            this.WarningDialog.Open("Alert!", "Hey ! Server is full !"+Environment.NewLine+"Go other room");
+        }
 
 		public void ServerIsPlayingHandler(NetworkMessage msg)
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is playing");
-			//TODO: show
-		}
+            //TODO: show
+            this.WarningDialog.Open("Alert!", "This room are playing now..."+Environment.NewLine +"Why you don't ask your friends");
+        }
 	}
 
 }

@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using End.UI.Dialogues;
+using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace End.Lounge
 {
-	public class ConnectionDialogue : MonoBehaviour
-	{
+	public class ConnectionDialogue : MonoBehaviour{
 		public InputField IpInputField;
 		public Button BackButton;
 		public Button JoinButton;

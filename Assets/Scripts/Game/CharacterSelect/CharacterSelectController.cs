@@ -184,6 +184,7 @@ namespace End.Game.CharacterSelect {
 			});
 
 			//TODO: disable 'item'
+            //item.GetComponent<SlideItem>()
 		}
 
 		/// <summary>
