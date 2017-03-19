@@ -184,7 +184,7 @@ namespace End.Game.CharacterSelect {
 			});
 
 			//TODO: disable 'item'
-            //item.GetComponent<SlideItem>()
+			Debug.Log("disable " + item);
 		}
 
 		/// <summary>
@@ -194,7 +194,7 @@ namespace End.Game.CharacterSelect {
 		{
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(Scene.Game.ToString());
-			_localPlayer.RpcSetPlayerCount(Player.AllPlayers.Count);
+			NetMessage.SendPlayerCount(netCon.ConnectionCount);
 		}
 	}
 }
