@@ -955,6 +955,8 @@ MonoBehaviour:
   MaxPlayer: 8
   LocalPlayerName: Player Name
   LocalPlayerIconPath: Game/Unit/Character/LastBoss/Icon
+  SelectedCharacter: 0
+  ConnectionCount: 0
 --- !u!4 &625374861
 Transform:
   m_ObjectHideFlags: 0

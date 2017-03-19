@@ -92,7 +92,8 @@ namespace End.Lounge
 				var ip = ConnectionDialogue.IpAddress;
 				Debug.Log("Connecting to " + ip);
 				NetCon.networkAddress = ip;
-				NetCon.StartClient();
+				var client = NetCon.StartClient();
+				client.RegisterHandler(NetworkController.MsgFull, ServerFullHandler);
 
 				//TODO: show connecting dialogue
 			}
@@ -100,11 +101,18 @@ namespace End.Lounge
 
 		public void ConnectError(int errorCode)
 		{
-			if(errorCode == (int)NetworkError.Timeout)
+			if (errorCode == (int)NetworkError.Timeout)
 			{
 				//TODO: show warining / erorr
 				Debug.Log("Time Out");
 			}
+		}
+
+		public void ServerFullHandler(NetworkMessage msg)
+		{
+			msg.conn.Disconnect();
+			Debug.Log("Server is full");
+			//TODO: show
 		}
 	}
 

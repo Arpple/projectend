@@ -79,6 +79,46 @@ namespace End
 		#endregion
 
 		#region Server
+		public int ConnectionCount;
+
+		/// <summary>
+		/// The maximum connections, override version of default maxconnections
+		/// which is not working
+		/// </summary>
+		private int _maxConnections;
+
+		/// <summary>
+		/// Limit the server connection, prevent more connection
+		/// </summary>
+		public void ServerLimitConnection()
+		{
+			_maxConnections = ConnectionCount;
+		}
+
+		/// <summary>
+		/// Check if connection is now at maximum
+		/// </summary>
+		/// <returns>
+		///   <c>true</c> if [is maximum connected]; otherwise, <c>false</c>.
+		/// </returns>
+		public bool IsMaxConnected()
+		{
+			Assert.IsTrue(ConnectionCount <= _maxConnections);
+			return ConnectionCount == _maxConnections;
+		}
+
+		public override void OnServerConnect(NetworkConnection conn)
+		{
+			base.OnServerConnect(conn);
+			if(IsMaxConnected())
+			{
+				conn.Send(MsgFull, new FullMsg());
+				return;
+			}
+
+			ConnectionCount++;
+		}
+
 		/// <summary>
 		/// This hook is invoked when a server is started - including when a host is started.
 		/// </summary>
@@ -86,7 +126,8 @@ namespace End
 		{
 			base.OnStartServer();
 
-			maxConnections = MaxPlayer;
+			_maxConnections = MaxPlayer;
+			ConnectionCount = 0;
 			Player.ServerSetup();
 		}
 
@@ -115,6 +156,16 @@ namespace End
 		{
 			base.OnServerError(conn, errorCode);
 			if (OnServerErrorCallback != null) OnServerErrorCallback(errorCode);
+		}
+		#endregion
+
+		#region Message
+		class FullMsg : MessageBase { }
+		public static short MsgFull = MsgType.Highest + 1;
+
+		public void ConnectionFull(NetworkConnection conn)
+		{
+			conn.Send(MsgFull, new FullMsg());
 		}
 		#endregion
 	}
