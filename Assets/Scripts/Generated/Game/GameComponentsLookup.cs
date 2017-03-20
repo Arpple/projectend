@@ -13,21 +13,23 @@ public static class GameComponentsLookup {
     public const int Character = 2;
     public const int CharacterIcon = 3;
     public const int Description = 4;
-    public const int MapPosition = 5;
-    public const int Player = 6;
-    public const int Resource = 7;
-    public const int Spawnpoint = 8;
-    public const int Tile = 9;
-    public const int TileAction = 10;
-    public const int TileBrush = 11;
-    public const int TileGraph = 12;
-    public const int TileHoverAction = 13;
-    public const int Unit = 14;
-    public const int UnitStatus = 15;
-    public const int View = 16;
-    public const int ViewContainer = 17;
+    public const int LocalPlayer = 5;
+    public const int MapPosition = 6;
+    public const int Player = 7;
+    public const int PlayingOrder = 8;
+    public const int Resource = 9;
+    public const int Spawnpoint = 10;
+    public const int Tile = 11;
+    public const int TileAction = 12;
+    public const int TileBrush = 13;
+    public const int TileGraph = 14;
+    public const int TileHoverAction = 15;
+    public const int Unit = 16;
+    public const int UnitStatus = 17;
+    public const int View = 18;
+    public const int ViewContainer = 19;
 
-    public const int TotalComponents = 18;
+    public const int TotalComponents = 20;
 
     public static readonly string[] componentNames = {
         "Ability",
@@ -35,8 +37,10 @@ public static class GameComponentsLookup {
         "Character",
         "CharacterIcon",
         "Description",
+        "LocalPlayer",
         "MapPosition",
         "Player",
+        "PlayingOrder",
         "Resource",
         "Spawnpoint",
         "Tile",
@@ -56,8 +60,10 @@ public static class GameComponentsLookup {
         typeof(End.Game.CharacterComponent),
         typeof(End.Game.CharacterIconComponent),
         typeof(End.Game.Role.RoleDescriptionComponent.DescriptionComponent),
+        typeof(End.Game.LocalPlayerComponent),
         typeof(End.Game.MapPositionComponent),
         typeof(End.Game.PlayerComponent),
+        typeof(End.Game.PlayingOrderComponent),
         typeof(End.Game.ResourceComponent),
         typeof(End.Game.SpawnpointComponent),
         typeof(End.Game.TileComponent),
