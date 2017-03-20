@@ -11,13 +11,13 @@ public partial class GameEntity {
     public End.Game.PlayingOrderComponent playingOrder { get { return (End.Game.PlayingOrderComponent)GetComponent(GameComponentsLookup.PlayingOrder); } }
     public bool hasPlayingOrder { get { return HasComponent(GameComponentsLookup.PlayingOrder); } }
 
-    public void AddPlayingOrder(int[] newPlayerIdOrder) {
+    public void AddPlayingOrder(System.Collections.Generic.List<short> newPlayerIdOrder) {
         var component = CreateComponent<End.Game.PlayingOrderComponent>(GameComponentsLookup.PlayingOrder);
         component.PlayerIdOrder = newPlayerIdOrder;
         AddComponent(GameComponentsLookup.PlayingOrder, component);
     }
 
-    public void ReplacePlayingOrder(int[] newPlayerIdOrder) {
+    public void ReplacePlayingOrder(System.Collections.Generic.List<short> newPlayerIdOrder) {
         var component = CreateComponent<End.Game.PlayingOrderComponent>(GameComponentsLookup.PlayingOrder);
         component.PlayerIdOrder = newPlayerIdOrder;
         ReplaceComponent(GameComponentsLookup.PlayingOrder, component);
