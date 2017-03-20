@@ -15,6 +15,11 @@ namespace End.Game
 		private int _turn;
 		private int _round;
 
+		public int CurrentPlayerId
+		{
+			get { return PlayerIdOrder[_turn - 1]; }
+		}
+
 		/// <summary>
 		/// Cycle the playing order
 		/// </summary>
@@ -37,7 +42,7 @@ namespace End.Game
 
 			_turn++;
 			Assert.IsTrue(_turn > 0 && _turn <= PlayerIdOrder.Count);
-			return PlayerIdOrder[_turn - 1];
+			return CurrentPlayerId;
 
 		}
 
