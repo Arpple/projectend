@@ -162,7 +162,7 @@ namespace End
         [ClientRpc]
 		public void RpcCreateEvent(int componentId, params int[] args)
 		{
-			Game.GameEventHelper.CreateEventAndDecode(componentId, args);
+			Game.GameEvent.CreateEventAndDecode(componentId, args);
 		}
 
 		#endregion
