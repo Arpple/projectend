@@ -13,7 +13,7 @@ namespace End.Test
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			_playerObject = Resources.Load<GameObject>("Game/Core/_Prefabs/Player");
+			_playerObject = Resources.Load<GameObject>("Network/Player");
 		}
 
 		[Test]

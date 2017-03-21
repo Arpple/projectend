@@ -10,7 +10,7 @@ namespace End.Game
 		public static void CreateEvent<T>(params int[] args) where T : GameEventComponent
 		{
 			int componentId = GameEventComponentsLookup.componentTypes.ToList().IndexOf(typeof(T));
-			if (GameController.IsOffline)
+			if (GameController.IsTest || GameController.Instance.IsOffline)
 			{
 				CreateEventAndDecode(componentId, args);
 			}
@@ -24,7 +24,7 @@ namespace End.Game
 		{
 			//create entity and component
 			var entity = Contexts.sharedInstance.gameEvent.CreateEntity();
-			IComponent component = entity.CreateComponent(componentId, GameComponentsLookup.componentTypes[componentId]);
+			IComponent component = entity.CreateComponent(componentId, GameEventComponentsLookup.componentTypes[componentId]);
 			entity.AddComponent(componentId, component);
 
 			//decode integer to component variable
@@ -39,7 +39,7 @@ namespace End.Game
 				if (decodeFn != null)
 				{
 					object[] param = args.Cast<object>().ToArray();
-					decodeFn.Invoke(entity.GetComponent(componentId), param);
+					decodeFn.Invoke((GameEventComponent)entity.GetComponent(componentId), param);
 				}
 			}
 

@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using System;
 
 namespace End.Game
 {
 	public class GameController : MonoBehaviour
 	{
 		public static GameController Instance;
-
-		public static bool IsOffline
-		{
-			get { return Instance.IsOfflineMode; }
-		}
+		public static bool IsTest;
 
 		public static Player LocalPlayer
 		{
@@ -26,10 +23,14 @@ namespace End.Game
 		public GameSetting Setting;
 		public GameObject PlayerContainer;
 
+		[HideInInspector]
+		public bool IsOffline{ get { return IsOfflineMode; } }
+
 		private Systems _systems;
 		private Contexts _contexts;
 		private bool _isInitialized;
 		private List<Player> _players;
+		private int _playerCount;
 
 		void Awake()
 		{
@@ -46,7 +47,7 @@ namespace End.Game
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
-			_systems = CreateSystems(_contexts);
+			_systems = CreateSystem(_contexts);
 
 			if(IsOfflineMode)
 			{
@@ -91,7 +92,7 @@ namespace End.Game
 			_systems.TearDown();
 		}
 
-		Systems CreateSystems(Contexts contexts)
+		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
@@ -115,7 +116,7 @@ namespace End.Game
 		private void SetupNetworkOffline()
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
-			NetworkController.Instance.ConnectionCount = players.Length;
+			_playerCount = players.Length;
 			foreach (var player in players)
 			{
 				AddPlayer(player);
@@ -128,6 +129,7 @@ namespace End.Game
 		{
 			var netCon = NetworkController.Instance;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
+			_playerCount = netCon.ConnectionCount;
 		}
 
 		public void AddPlayer(Player player)
@@ -136,9 +138,8 @@ namespace End.Game
 			player.transform.SetParent(PlayerContainer.transform);
 
 			//start game if all player connected
-			var playerCount = NetworkController.Instance.ConnectionCount;
-			Assert.AreNotEqual(0, playerCount);
-			if (_players.Count == playerCount)
+			Assert.AreNotEqual(0, _playerCount);
+			if (_players.Count == _playerCount)
 			{
 				Initialize();
 			}

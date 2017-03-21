@@ -7,7 +7,6 @@ namespace End.Game
 	/// Abstract GameEvent class.
 	/// more detail is commented in class
 	/// </summary>
-	[DontGenerate]
 	public abstract class GameEventComponent : IComponent
 	{
 		// to send data across network
