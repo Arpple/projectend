@@ -12,7 +12,7 @@ namespace End.Game
 
 		public override GameEntity GetTarget(GameEntity position)
 		{
-			return position.GetUnitOnTile() == null ? position : null;
+			return position.isTileMovable ? position : null;
 		}
 
 		public override void ApplyAbilityEffect(GameEntity caster, GameEntity target)
