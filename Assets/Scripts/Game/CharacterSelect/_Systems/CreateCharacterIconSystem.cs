@@ -35,8 +35,6 @@ namespace End.Game.CharacterSelect
 		{
 			foreach(var e in entities)
 			{
-                
-
 				var slideItem = _slidemenu.AddItem();
 				var icon = Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(e.resource));
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);

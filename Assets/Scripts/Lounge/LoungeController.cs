@@ -140,6 +140,6 @@ namespace End.Lounge
             //TODO: show
             this.WarningDialog.Open("Alert!", "This room are playing now..." + Environment.NewLine + "Why you don't ask your friends");
         }
-	}
+    }
 
 }
