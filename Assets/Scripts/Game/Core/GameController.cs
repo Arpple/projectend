@@ -98,6 +98,7 @@ namespace End.Game
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
 				//.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
+				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadCardSystem(contexts, Setting.DeckSetting.CardSetting))
