@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace End.Game
 {
-	public class CardDeck : ScriptableObject
+	[Serializable]
+	public class CardDeck
 	{
 		[Serializable]
 		public class CardDeckCount
@@ -14,6 +15,11 @@ namespace End.Game
 		}
 
 		public List<CardDeckCount> SettingList;
+
+		public CardDeck()
+		{
+			SettingList = new List<CardDeckCount>();
+		}
 	}
 
 }
