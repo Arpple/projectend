@@ -12,7 +12,8 @@ namespace End.Game
 
 		public override GameEntity GetTarget(GameEntity position)
 		{
-			return position.isTileMovable ? position : null;
+			//already filter by selector
+			return position;
 		}
 
 		public override void ApplyAbilityEffect(GameEntity caster, GameEntity target)
