@@ -35,7 +35,7 @@ namespace End.Game
 				Assert.IsNotNull(tileCon);
 
 				var tileAction = e.tileAction;
-				tileCon.ClickAction = () => tileAction.SelectedAction(tileAction.Source, tileAction.Target);
+				tileCon.ClickAction = () => tileAction.SelectedAction();
 			}
 		}
 

@@ -42,11 +42,11 @@ namespace End.MapEditor
 		{
 			foreach(var e in entities)
 			{
-				e.AddTileAction(null, e, ReplaceTile);
+				e.AddTileAction(() => ReplaceTile(e));
 			}
 		}
 
-		void ReplaceTile(GameEntity none, GameEntity tileEntity)
+		void ReplaceTile(GameEntity tileEntity)
 		{
 			var brush = _context.tileBrush;
 			var brushTile = brush.TileType;
