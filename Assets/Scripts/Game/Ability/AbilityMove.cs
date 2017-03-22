@@ -7,7 +7,7 @@ namespace End.Game
 	{
 		public override GameEntity[] GetTileEntityInArea(GameEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster, caster.unitStatus.MoveSpeed);
+			return AreaSelector.GetMovePathInRange(caster, caster.unitStatus.MoveSpeed);
 		}
 
 		public override GameEntity GetTarget(GameEntity position)
