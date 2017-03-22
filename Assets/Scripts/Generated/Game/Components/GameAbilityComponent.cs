@@ -11,14 +11,16 @@ public partial class GameEntity {
     public End.Game.AbilityComponent ability { get { return (End.Game.AbilityComponent)GetComponent(GameComponentsLookup.Ability); } }
     public bool hasAbility { get { return HasComponent(GameComponentsLookup.Ability); } }
 
-    public void AddAbility(End.Game.Ability newAbility) {
+    public void AddAbility(string newAbilityClassName, End.Game.Ability newAbility) {
         var component = CreateComponent<End.Game.AbilityComponent>(GameComponentsLookup.Ability);
+        component.AbilityClassName = newAbilityClassName;
         component.Ability = newAbility;
         AddComponent(GameComponentsLookup.Ability, component);
     }
 
-    public void ReplaceAbility(End.Game.Ability newAbility) {
+    public void ReplaceAbility(string newAbilityClassName, End.Game.Ability newAbility) {
         var component = CreateComponent<End.Game.AbilityComponent>(GameComponentsLookup.Ability);
+        component.AbilityClassName = newAbilityClassName;
         component.Ability = newAbility;
         ReplaceComponent(GameComponentsLookup.Ability, component);
     }

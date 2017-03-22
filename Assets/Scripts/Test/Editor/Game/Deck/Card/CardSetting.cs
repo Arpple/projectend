@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Linq;
 using End.Game;
 
 namespace End.Test
@@ -12,6 +13,9 @@ namespace End.Test
 		public void Init()
 		{
 			_setting = TestHelper.GetGameSetting().DeckSetting.CardSetting;
+
+			Assert.IsNotNull(_setting.CardBlueprints);
+			Assert.IsNotNull(_setting.Deck);
 		}
 
 		[Test]
@@ -21,6 +25,17 @@ namespace End.Test
 			{
 				Assert.IsNotNull(_setting.GetCardBlueprint(c), "Card blueprint not fonud for " + c.ToString());
 			}
+		}
+
+		[Test]
+		public void CheckDeckData()
+		{
+			var setList = _setting.Deck.SettingList;
+
+			//no dupplicate setting for each type
+			Assert.AreEqual(setList.Count, setList.Select(s => s.Type).Distinct().Count());
+
+			Assert.AreEqual(Enum.GetNames(typeof(Card)).Length, setList.Count);
 		}
 	}
 }

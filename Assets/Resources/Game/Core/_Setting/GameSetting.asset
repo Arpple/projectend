@@ -24,3 +24,7 @@ MonoBehaviour:
   DeckSetting:
     CardSetting:
       CardBlueprints: {fileID: 11400000, guid: 8493ba8223b613c4aa81aa0098f5f0c1, type: 2}
+      Deck:
+        SettingList:
+        - Type: 0
+          Count: 10

@@ -7,7 +7,7 @@ namespace End.Game
 	{
 		public Player PlayerObject;
 
-		public int PlayerId
+		public short PlayerId
 		{
 			get { return PlayerObject.PlayerId; }
 		}
