@@ -52,6 +52,9 @@ namespace End.Lounge
 			};
 
 			NetCon.OnClientErrorCallback += ConnectError;
+
+			this.WarningDialog.OnDialogueClose += () => ToggleButton(true);
+			this.ConnectingDialog.OnDialogueClose += () => ToggleButton(true);
 		}
 
 		private void OnDestroy()
@@ -89,7 +92,6 @@ namespace End.Lounge
 				if (NetCon.StartHost() == null)
 				{
 					ToggleButton(true);
-                    //TODO: show error cant creat host
                     this.WarningDialog.Open("Alert!", "You can't be Host!" + Environment.NewLine + "Why ? Don't Ask me!!!");
                 }
 			}
@@ -119,9 +121,8 @@ namespace End.Lounge
 		{
 			if (errorCode == (int)NetworkError.Timeout)
 			{
-				//TODO: show warining / erorr
 				Debug.Log("Time Out");
-                this.WarningDialog.Open("Alert!", "I think you connection error now." + Environment.NewLine + "But, Don't Ask me why.");
+                this.WarningDialog.Open("Alert!", "I think your connection has an error." + Environment.NewLine + "But, Don't Ask me why.");
             }
 		}
 
@@ -129,7 +130,6 @@ namespace End.Lounge
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is full");
-            //TODO: show
             this.WarningDialog.Open("Alert!", "Hey ! Server is full !" + Environment.NewLine + "Go other room");
         }
 
@@ -137,7 +137,6 @@ namespace End.Lounge
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is playing");
-            //TODO: show
             this.WarningDialog.Open("Alert!", "This room are playing now..." + Environment.NewLine + "Why you don't ask your friends");
         }
     }
