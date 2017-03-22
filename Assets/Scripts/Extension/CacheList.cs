@@ -25,13 +25,12 @@ public class CacheList<TIndex, TItem>
 	/// <param name="callback">Callback.</param>
 	public TItem Get(TIndex index, GetItemCallback callback)
 	{
-		if(!_cache.ContainsKey(index))
-		{
-			_cache.Add(index, callback(index));
-		}
-	
 		TItem result = default(TItem);
-		_cache.TryGetValue(index, out  result);
+		if(!_cache.TryGetValue(index, out  result))
+		{
+			result = callback(index);
+			_cache.Add(index, result);
+		}
 
 		return result;
 	}
