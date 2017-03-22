@@ -30,5 +30,15 @@ namespace End.Game
 		{
 			return _setting.GetCardBlueprint(entity.card.Type);
 		}
+
+		protected override void Execute(List<GameEntity> entities)
+		{
+			base.Execute(entities);
+
+			foreach(var e in entities)
+			{
+				e.AddPlayerCard(0);
+			}
+		}
 	}
 }
