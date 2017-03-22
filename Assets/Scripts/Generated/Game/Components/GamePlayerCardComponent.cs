@@ -11,15 +11,15 @@ public partial class GameEntity {
     public End.Game.PlayerCardComponent playerCard { get { return (End.Game.PlayerCardComponent)GetComponent(GameComponentsLookup.PlayerCard); } }
     public bool hasPlayerCard { get { return HasComponent(GameComponentsLookup.PlayerCard); } }
 
-    public void AddPlayerCard(int newCurrentPlayerId) {
+    public void AddPlayerCard(int newCurrentOwnerId) {
         var component = CreateComponent<End.Game.PlayerCardComponent>(GameComponentsLookup.PlayerCard);
-        component.CurrentOwnerId = newCurrentPlayerId;
+        component.CurrentOwnerId = newCurrentOwnerId;
         AddComponent(GameComponentsLookup.PlayerCard, component);
     }
 
-    public void ReplacePlayerCard(int newCurrentPlayerId) {
+    public void ReplacePlayerCard(int newCurrentOwnerId) {
         var component = CreateComponent<End.Game.PlayerCardComponent>(GameComponentsLookup.PlayerCard);
-        component.CurrentOwnerId = newCurrentPlayerId;
+        component.CurrentOwnerId = newCurrentOwnerId;
         ReplaceComponent(GameComponentsLookup.PlayerCard, component);
     }
 

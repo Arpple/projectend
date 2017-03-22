@@ -16,22 +16,24 @@ public static class GameComponentsLookup {
     public const int LocalPlayer = 5;
     public const int MapPosition = 6;
     public const int Player = 7;
-    public const int PlayerCard = 8;
-    public const int PlayingOrder = 9;
-    public const int Resource = 10;
-    public const int Spawnpoint = 11;
-    public const int Tile = 12;
-    public const int TileAction = 13;
-    public const int TileBrush = 14;
-    public const int TileGraph = 15;
-    public const int TileHoverAction = 16;
-    public const int TileMovable = 17;
-    public const int Unit = 18;
-    public const int UnitStatus = 19;
-    public const int View = 20;
-    public const int ViewContainer = 21;
+    public const int PlayerBox = 8;
+    public const int PlayerCard = 9;
+    public const int PlayerDeck = 10;
+    public const int PlayingOrder = 11;
+    public const int Resource = 12;
+    public const int Spawnpoint = 13;
+    public const int Tile = 14;
+    public const int TileAction = 15;
+    public const int TileBrush = 16;
+    public const int TileGraph = 17;
+    public const int TileHoverAction = 18;
+    public const int TileMovable = 19;
+    public const int Unit = 20;
+    public const int UnitStatus = 21;
+    public const int View = 22;
+    public const int ViewContainer = 23;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
         "Ability",
@@ -42,7 +44,9 @@ public static class GameComponentsLookup {
         "LocalPlayer",
         "MapPosition",
         "Player",
+        "PlayerBox",
         "PlayerCard",
+        "PlayerDeck",
         "PlayingOrder",
         "Resource",
         "Spawnpoint",
@@ -67,7 +71,9 @@ public static class GameComponentsLookup {
         typeof(End.Game.LocalPlayerComponent),
         typeof(End.Game.MapPositionComponent),
         typeof(End.Game.PlayerComponent),
+        typeof(End.Game.PlayerBoxComponent),
         typeof(End.Game.PlayerCardComponent),
+        typeof(End.Game.PlayerDeckComponent),
         typeof(End.Game.PlayingOrderComponent),
         typeof(End.Game.ResourceComponent),
         typeof(End.Game.SpawnpointComponent),
