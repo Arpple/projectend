@@ -15,8 +15,6 @@ namespace End.Game
 
 		public static GameEntity[] GetMovePathInRange(GameEntity center, int range, bool includeCenter = false)
 		{
-			var tiles = Contexts.sharedInstance.game.GetEntities(GameMatcher.Tile);
-
 			var selectedTiles = new GameEntity[0];
 			var leaf = new GameEntity[] { center };
 
@@ -36,7 +34,7 @@ namespace End.Game
 						.Except(selectedTiles).ToArray();
 
 					newLeaf = newLeaf.Union(found).ToArray();
-					selectedTiles = selectedTiles.Union(found).Where(t => t != null).ToArray();
+					selectedTiles = selectedTiles.Union(found).ToArray();
 				}
 
 				leaf = newLeaf;
