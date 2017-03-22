@@ -11,18 +11,14 @@ public partial class GameEntity {
     public End.Game.TileActionComponent tileAction { get { return (End.Game.TileActionComponent)GetComponent(GameComponentsLookup.TileAction); } }
     public bool hasTileAction { get { return HasComponent(GameComponentsLookup.TileAction); } }
 
-    public void AddTileAction(GameEntity newSource, GameEntity newTarget, End.Game.TileActionComponent.TileAction newSelectedAction) {
+    public void AddTileAction(End.Game.TileActionComponent.TileAction newSelectedAction) {
         var component = CreateComponent<End.Game.TileActionComponent>(GameComponentsLookup.TileAction);
-        component.Source = newSource;
-        component.Target = newTarget;
         component.SelectedAction = newSelectedAction;
         AddComponent(GameComponentsLookup.TileAction, component);
     }
 
-    public void ReplaceTileAction(GameEntity newSource, GameEntity newTarget, End.Game.TileActionComponent.TileAction newSelectedAction) {
+    public void ReplaceTileAction(End.Game.TileActionComponent.TileAction newSelectedAction) {
         var component = CreateComponent<End.Game.TileActionComponent>(GameComponentsLookup.TileAction);
-        component.Source = newSource;
-        component.Target = newTarget;
         component.SelectedAction = newSelectedAction;
         ReplaceComponent(GameComponentsLookup.TileAction, component);
     }

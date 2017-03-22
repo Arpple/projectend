@@ -1,14 +1,23 @@
-﻿using UnityEngine.Assertions;
+﻿using System;
+using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public class AbilityMove : Ability
+	public class AbilityMove : TargetAbility
 	{
-		public override void ActivateAbility(GameEntity sourceEntity, GameEntity targetEntity)
+		public override GameEntity[] GetTileEntityInArea(GameEntity caster)
 		{
-			Assert.IsTrue(sourceEntity.hasMapPosition);
-			Assert.IsTrue(targetEntity.hasMapPosition);
-			EventMove.Create(sourceEntity, targetEntity.mapPosition);
+			return AreaSelector.GetMovePathInRange(caster, caster.unitStatus.MoveSpeed);
+		}
+
+		public override GameEntity GetTarget(GameEntity position)
+		{
+			return position.isTileMovable ? position : null;
+		}
+
+		public override void ApplyAbilityEffect(GameEntity caster, GameEntity target)
+		{
+			EventMove.Create(caster, target.mapPosition);
 		}
 	}
 

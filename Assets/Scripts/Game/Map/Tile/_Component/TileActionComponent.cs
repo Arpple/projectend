@@ -10,15 +10,13 @@ namespace End.Game
 		/// </summary>
 		/// <param name="actor">source entity</param>
 		/// <param name="target">target entity</param>
-		public delegate void TileAction(GameEntity actor, GameEntity target);
+		public delegate void TileAction();
 
-		public GameEntity Source;
-		public GameEntity Target;
 		public TileAction SelectedAction;
 
 		public void OnSelected()
 		{
-			SelectedAction(Source, Target);
+			SelectedAction();
 		}
 	}
 

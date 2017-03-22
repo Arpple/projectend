@@ -11,6 +11,9 @@ namespace End.UI.Dialogues {
         public Text DialogueTopic;
         public Text DialogueText;
 
+		public delegate void CloseDialogueCallback();
+		public event CloseDialogueCallback OnDialogueClose;
+
         public void SetDialogue(string topic,string text) {
             DialogueText.text = text;
             this.DialogueTopic.text = topic;
@@ -29,6 +32,7 @@ namespace End.UI.Dialogues {
         public virtual void Close() {
             if(DialogueManager.CloseDialogue(this)) {
                 this.gameObject.SetActive(false);
+				if(OnDialogueClose != null) { OnDialogueClose(); }
             }
         }
     }
