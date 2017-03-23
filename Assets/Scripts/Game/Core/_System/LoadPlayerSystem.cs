@@ -1,6 +1,5 @@
 ﻿using Entitas;
 using System.Collections.Generic;
-using UnityEngine.Assertions;
 
 namespace End.Game
 {

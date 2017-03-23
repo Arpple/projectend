@@ -22,7 +22,7 @@ namespace End.Game
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayer && entity.player.PlayerObject.SelectedCharacterId != (int)Character.None;
+			return entity.hasPlayer;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -34,10 +34,12 @@ namespace End.Game
 			{
 				var sp = spawnpoints[player.PlayerId];
 
-				//create character
+				var characterType = (Character)player.PlayerObject.SelectedCharacterId;
+				Assert.IsTrue(characterType != Character.None);
+
 				var character = _context.CreateEntity();
 				character.AddUnit(player.PlayerObject);
-				character.AddCharacter((Character)player.PlayerObject.SelectedCharacterId);
+				character.AddCharacter(characterType);
 				character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
 			}
 		}
