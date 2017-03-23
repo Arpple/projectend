@@ -1,8 +1,9 @@
-﻿using Entitas;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
-using System;
+using End.Game.UI;
 
 namespace End.Game
 {
@@ -78,8 +79,8 @@ namespace End.Game
 
 		void Update()
 		{
-			Assert.IsTrue(_systems != null);
 			if (!_isInitialized) return;
+			Assert.IsNotNull(_systems);
 
 			_systems.Execute();
 			_systems.Cleanup();
@@ -87,8 +88,9 @@ namespace End.Game
 
 		void OnDestory()
 		{
-			Assert.IsTrue(_systems != null);
+			Assert.IsNotNull(_systems);
 
+			_systems.ClearReactiveSystems();
 			_systems.TearDown();
 		}
 
@@ -97,6 +99,7 @@ namespace End.Game
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
+				.Add(new SetupActionButtonSystem(contexts))
 				//.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
 				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
 
@@ -122,6 +125,7 @@ namespace End.Game
 			{
 				AddPlayer(player);
 			}
+			LocalPlayer = players.First();
 		}
 
 		#region Network
@@ -130,6 +134,7 @@ namespace End.Game
 		{
 			var netCon = NetworkController.Instance;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.OnLocalPlayerStartCallback += AddLocalPlayer;
 			_playerCount = netCon.ConnectionCount;
 		}
 

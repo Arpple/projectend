@@ -7,16 +7,18 @@ using UnityEngine.Assertions;
 
 namespace End.Game.CharacterSelect
 {
-	public class CreateCharacterSelectionIconSystem : ReactiveSystem<GameEntity>
+	public class CreateCharacterSelectionIconSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{
 		private readonly GameContext _context;
 		private readonly SlideMenu _slidemenu;
+		private List<GameObject> _linkedObjects;
 
 		public CreateCharacterSelectionIconSystem(Contexts contexts, SlideMenu slideMenu)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
 			_slidemenu = slideMenu;
+			_linkedObjects = new List<GameObject>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -40,6 +42,7 @@ namespace End.Game.CharacterSelect
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);
 				slideItem.SetText(e.unitStatus.Name);
 				slideItem.gameObject.Link(e, _context);
+				_linkedObjects.Add(slideItem.gameObject);
 
                 if(e.character.Type == Character.None) {
                     slideItem.gameObject.SetActive(false);
@@ -49,6 +52,11 @@ namespace End.Game.CharacterSelect
             this._slidemenu.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object
             //Debug.Log("Init Focus on > "+_slidemenu.FocusingIndex);
         }
-    }
+
+		public void TearDown()
+		{
+			_linkedObjects.ForEach(e => e.Unlink());
+		}
+	}
 }
 

@@ -48,6 +48,7 @@ namespace End.Game.CharacterSelect
 
 		private void OnDestroy()
 		{
+			_systems.ClearReactiveSystems();
 			_systems.TearDown();
 		}
 
