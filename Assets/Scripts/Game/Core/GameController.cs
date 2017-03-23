@@ -107,7 +107,8 @@ namespace End.Game
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
 				.Add(new SetupActionButtonSystem(contexts))
-				//.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
+				.Add(new InitializePlayerSystem(contexts, _players))
+				.Add(new LoadPlayerDeckSystem(contexts))
 				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
@@ -128,10 +129,11 @@ namespace End.Game
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
 			_playerCount = players.Length;
-			foreach (var player in players)
+			players.Length.Loop(i =>
 			{
-				AddPlayer(player);
-			}
+				players[i].PlayerId = (short)(i + 1);
+				AddPlayer(players[i]);
+			});
 			LocalPlayer = players.First();
 		}
 

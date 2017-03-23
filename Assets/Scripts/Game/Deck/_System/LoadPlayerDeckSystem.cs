@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Entitas;
-using UnityEngine;
+using End.Game.UI;
 
 namespace End.Game
 {
-	public class LoadPlayerDeckSystem : ReactiveSystem<GameEntity>
+	public class LoadPlayerDeckSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
+		private CardContainer _cardContainerUI;
+
 		public LoadPlayerDeckSystem(Contexts contexts)
 			: base(contexts.game)
 		{
-
+			_cardContainerUI = GameUI.Instance.InventoryGroup.CardContainer;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -23,13 +24,18 @@ namespace End.Game
 			return entity.hasPlayer;
 		}
 
+		public void Initialize()
+		{
+			//create middle deck
+			var playerDeck = _cardContainerUI.CreateContainer(0);
+		}
+
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach (var e in entities)
 			{
-				//TODO: replace temp gameobject with created playercard object
-				var temp = new GameObject();
-				e.AddPlayerDeck(temp);
+				var playerDeck = _cardContainerUI.CreateContainer(e.player.PlayerId);
+				e.AddPlayerDeck(playerDeck);
 			}
 		}
 	}
