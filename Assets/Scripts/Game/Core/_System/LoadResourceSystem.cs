@@ -67,6 +67,8 @@ namespace End.Game
 					var spriteRenderer = viewObject.GetComponentInChildren<SpriteRenderer>();
 					if (spriteRenderer == null) spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
 					spriteRenderer.sprite = sprite;
+                    spriteRenderer.sortingLayerName = "Unit";
+                    spriteRenderer.sortingOrder = 5;
 				}
 
 				e.AddView(viewObject);
