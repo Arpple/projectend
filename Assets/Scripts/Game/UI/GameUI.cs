@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
 
 namespace End.Game.UI
 {
@@ -10,12 +7,14 @@ namespace End.Game.UI
 		public static GameUI Instance;
 
 		public ActionButtonGroup ActionButtonGroup;
+		public InventoryGroup InventoryGroup;
 
 		private void Awake()
 		{
 			Instance = this;
 
 			ActionButtonGroup.Awake();
+			InventoryGroup.Awake();
 		}
 	}
 }

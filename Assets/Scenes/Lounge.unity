@@ -886,7 +886,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Develop by ABC
+  m_Text: Develop by ---
 --- !u!222 &129836352
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: version 3.0.0
+  m_Text: Version
 --- !u!222 &356674934
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6610,6 +6610,7 @@ MonoBehaviour:
   PlayerNameInputField: {fileID: 220475691}
   HostButton: {fileID: 782950282}
   JoinButton: {fileID: 1530970097}
+  VersionText: {fileID: 356674933}
   ConnectionDialogue: {fileID: 1315864442}
   WarningDialog: {fileID: 1671464209}
   ConnectingDialog: {fileID: 44383626}

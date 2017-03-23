@@ -4,6 +4,7 @@ using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
 using End.Game.UI;
+using Entitas.Unity.VisualDebugging;
 
 namespace End.Game
 {
@@ -45,6 +46,12 @@ namespace End.Game
 
 		void Start()
 		{
+			//clear old observer
+			foreach(var observer in FindObjectsOfType<ContextObserverBehaviour>())
+			{
+				Destroy(observer.gameObject);
+			}
+
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
@@ -100,8 +107,11 @@ namespace End.Game
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
 				.Add(new SetupActionButtonSystem(contexts))
-				//.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
+				.Add(new InitializePlayerSystem(contexts, _players))
+				.Add(new LoadPlayerDeckSystem(contexts))
 				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
+				.Add(new RenderDeckCardSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
+				.Add(new RenderPlayerCardSystem(contexts))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadCardSystem(contexts, Setting.DeckSetting.CardSetting))
@@ -121,10 +131,11 @@ namespace End.Game
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
 			_playerCount = players.Length;
-			foreach (var player in players)
+			players.Length.Loop(i =>
 			{
-				AddPlayer(player);
-			}
+				players[i].PlayerId = (short)(i + 1);
+				AddPlayer(players[i]);
+			});
 			LocalPlayer = players.First();
 		}
 

@@ -1,16 +1,21 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
+using End.Game.UI;
 
 namespace End.Game
 {
 	public class RenderPlayerCardSystem : ReactiveSystem<GameEntity>
 	{
+		private GameContext _context;
+		private CacheList<int, GameObject> _playerDeckCache;
+
 		public RenderPlayerCardSystem(Contexts contexts)
 			: base(contexts.game)
 		{
-
+			_context = contexts.game;
+			_playerDeckCache = new CacheList<int, GameObject>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -27,7 +32,14 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				//TODO: move this to hand of player
+				var deck = _playerDeckCache.Get(e.playerCard.CurrentOwnerId, (id) =>
+					_context.GetEntities(GameMatcher.PlayerDeck)
+						.Where(p => p.player.PlayerId == id)
+						.First()
+						.playerDeck.PlayerDeckObject
+				);
+
+				e.view.GameObject.transform.SetParent(deck.transform, false);
 			}
 		}
 	}

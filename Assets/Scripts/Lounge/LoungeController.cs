@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using End.UI.Dialogues;
 using System;
 using System.Collections;
+using Entitas.Unity.VisualDebugging;
 
 namespace End.Lounge
 {
@@ -15,8 +16,8 @@ namespace End.Lounge
 		public InputField PlayerNameInputField;
 		public Button HostButton;
 		public Button JoinButton;
+		public Text VersionText;
 		public ConnectionDialogue ConnectionDialogue;
-
         public Dialogue WarningDialog, ConnectingDialog;
 
         public NetworkController NetCon
@@ -30,11 +31,22 @@ namespace End.Lounge
 			Assert.IsNotNull(PlayerNameInputField);
 			Assert.IsNotNull(HostButton);
 			Assert.IsNotNull(JoinButton);
+			Assert.IsNotNull(VersionText);
 			Assert.IsNotNull(ConnectionDialogue);
+			Assert.IsNotNull(WarningDialog);
+			Assert.IsNotNull(ConnectingDialog);
 		}
 
 		private void Start()
 		{
+			VersionText.text = "Version " + Application.version;
+
+			//clear old observer
+			foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
+			{
+				Destroy(observer.gameObject);
+			}
+
 			//set profile
 			var playerIconImage = Resources.Load<Sprite>(NetCon.LocalPlayerIconPath);
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
