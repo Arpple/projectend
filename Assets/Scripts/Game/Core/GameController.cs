@@ -1,8 +1,8 @@
-﻿using Entitas;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
-using System;
+using End.Game.UI;
 
 namespace End.Game
 {
@@ -97,6 +97,7 @@ namespace End.Game
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
+				.Add(new SetupActionButtonSystem(contexts))
 				//.Add(new InitializePlayerSystem(contexts, PlayerLoader.Instance.PlayerList))
 				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
 
