@@ -13,13 +13,13 @@ public partial class GameEntity {
 
     public void AddPlayerDeck(UnityEngine.GameObject newUI) {
         var component = CreateComponent<End.Game.PlayerDeckComponent>(GameComponentsLookup.PlayerDeck);
-        component.UI = newUI;
+        component.PlayerDeckObject = newUI;
         AddComponent(GameComponentsLookup.PlayerDeck, component);
     }
 
     public void ReplacePlayerDeck(UnityEngine.GameObject newUI) {
         var component = CreateComponent<End.Game.PlayerDeckComponent>(GameComponentsLookup.PlayerDeck);
-        component.UI = newUI;
+        component.PlayerDeckObject = newUI;
         ReplaceComponent(GameComponentsLookup.PlayerDeck, component);
     }
 

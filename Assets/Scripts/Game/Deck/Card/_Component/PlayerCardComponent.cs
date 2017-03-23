@@ -10,16 +10,6 @@ namespace End.Game
 		/// 0 if none
 		/// </summary>
 		public int CurrentOwnerId;
-
-		public void MoveToPlayer(Player player)
-		{
-			CurrentOwnerId = player.PlayerId;
-		}
-
-		public void MoveToDeck()
-		{
-			CurrentOwnerId = 0;
-		}
 	}
 
 }

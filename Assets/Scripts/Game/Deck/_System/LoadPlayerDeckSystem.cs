@@ -27,7 +27,7 @@ namespace End.Game
 		public void Initialize()
 		{
 			//create middle deck
-			var playerDeck = _cardContainerUI.CreateContainer(0);
+			_cardContainerUI.CreateContainer(0);
 		}
 
 		protected override void Execute(List<GameEntity> entities)

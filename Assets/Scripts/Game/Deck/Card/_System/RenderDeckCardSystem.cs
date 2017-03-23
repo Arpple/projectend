@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class RenderDeckCardSystem : ReactiveSystem<GameEntity>
 	{
-		public RenderDeckCardSystem(Contexts contexts)
+		private readonly CardContainer _cardContainer;
+
+		public RenderDeckCardSystem(Contexts contexts, CardContainer cardContainer)
 			: base(contexts.game)
 		{
-
+			_cardContainer = cardContainer;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -27,7 +29,7 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				//TODO: move this to deck
+				e.view.GameObject.transform.SetParent(_cardContainer.PlayerDecks[0].transform, false);
 			}
 		}
 	}
