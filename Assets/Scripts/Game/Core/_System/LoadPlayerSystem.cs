@@ -4,12 +4,12 @@ using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public class LoadPlayersystem : IInitializeSystem
+	public class LoadPlayerSystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 		readonly List<Player> _players;
 
-		public LoadPlayersystem(Contexts contexts, List<Player> players)
+		public LoadPlayerSystem(Contexts contexts, List<Player> players)
 		{
 			_context = contexts.game;
 			_players = players;
@@ -17,26 +17,11 @@ namespace End.Game
 
 		public void Initialize()
 		{
-			var spawnpoints = _context.GetEntities(GameMatcher.Spawnpoint);
-			Assert.IsTrue(spawnpoints.Length >= _players.Count);
-
-			_players.Count.Loop(
-				(i) =>
-				{
-					var p = _players[i];
-					var sp = spawnpoints[i];
-
-					//create player
-					var player = _context.CreateEntity();
-					player.AddPlayer(p);
-
-					//create character
-					var character = _context.CreateEntity();
-					character.AddUnit(p);
-					character.AddCharacter((Character)p.SelectedCharacterId);
-					character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
-				}
-			);
+			foreach(var p in _players)
+			{
+				var playerEntity = _context.CreateEntity();
+				playerEntity.AddPlayer(p);
+			}
 		}
 	}
 
