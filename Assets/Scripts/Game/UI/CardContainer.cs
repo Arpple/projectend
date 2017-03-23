@@ -21,7 +21,7 @@ namespace End.Game.UI
 			return go;
 		}
 
-		private void Awake()
+		public void Awake()
 		{
 			PlayerDecks = new Dictionary<int, GameObject>();
 		}

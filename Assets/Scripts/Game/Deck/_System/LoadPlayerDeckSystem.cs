@@ -8,10 +8,10 @@ namespace End.Game
 	{
 		private CardContainer _cardContainerUI;
 
-		public LoadPlayerDeckSystem(Contexts contexts)
+		public LoadPlayerDeckSystem(Contexts contexts, CardContainer container)
 			: base(contexts.game)
 		{
-			_cardContainerUI = GameUI.Instance.InventoryGroup.CardContainer;
+			_cardContainerUI = container;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
