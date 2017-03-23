@@ -108,7 +108,7 @@ namespace End.Game
 				.Add(new TileGraphSystem(contexts))
 				.Add(new SetupActionButtonSystem(contexts))
 				.Add(new InitializePlayerSystem(contexts, _players))
-				.Add(new LoadPlayerDeckSystem(contexts))
+				.Add(new LoadPlayerDeckSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
 				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
 				.Add(new RenderDeckCardSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
 				.Add(new RenderPlayerCardSystem(contexts))
