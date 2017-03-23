@@ -4,6 +4,7 @@ using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
 using End.Game.UI;
+using Entitas.Unity.VisualDebugging;
 
 namespace End.Game
 {
@@ -45,6 +46,12 @@ namespace End.Game
 
 		void Start()
 		{
+			//clear old observer
+			foreach(var observer in FindObjectsOfType<ContextObserverBehaviour>())
+			{
+				Destroy(observer.gameObject);
+			}
+
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();

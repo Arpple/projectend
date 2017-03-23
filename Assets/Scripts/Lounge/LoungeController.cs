@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using End.UI.Dialogues;
 using System;
 using System.Collections;
+using Entitas.Unity.VisualDebugging;
 
 namespace End.Lounge
 {
@@ -35,6 +36,12 @@ namespace End.Lounge
 
 		private void Start()
 		{
+			//clear old observer
+			foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
+			{
+				Destroy(observer.gameObject);
+			}
+
 			//set profile
 			var playerIconImage = Resources.Load<Sprite>(NetCon.LocalPlayerIconPath);
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
