@@ -1,8 +1,5 @@
 ﻿using End.Game;
-using Entitas.Unity;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

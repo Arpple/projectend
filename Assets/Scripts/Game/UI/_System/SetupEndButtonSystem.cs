@@ -15,7 +15,7 @@ namespace End.Game.UI
 		public override void Initialize()
 		{
 			//TODO: setup button
-			_button.OnClickCallback += () => Debug.Log("End Turn");
+			_button.OnClickCallback += () => EventEndTurn.Create();
 		}
 	}
 

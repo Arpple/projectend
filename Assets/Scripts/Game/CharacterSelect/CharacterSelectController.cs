@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using End.Game.UI.CharacterSelection;
 using UnityEngine.UI;
@@ -58,11 +56,6 @@ namespace End.Game.CharacterSelect {
 			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
 			netCon.OnClientPlayerStartCallback -= AddPlayer;
 			netCon.OnAllPlayerReadyCallback -= MoveToGame;
-
-			foreach (var item in CharacterSelectSlideMenu.SlideItems)
-			{
-				item.gameObject.GetEntityLink().Unlink();
-			}
 		}
 
 		/// <summary>

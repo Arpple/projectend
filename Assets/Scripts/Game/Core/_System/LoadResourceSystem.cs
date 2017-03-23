@@ -5,17 +5,19 @@ using Entitas.Unity;
 
 namespace End.Game
 {
-	public sealed class LoadResourceSystem : ReactiveSystem<GameEntity>
+	public sealed class LoadResourceSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{
 		readonly GameContext _context;
 
 		private CacheList<string, Sprite> _cacheSprite;
+		private List<GameObject> _linkedObjects;
 
 		public LoadResourceSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
 			_cacheSprite = new CacheList<string, Sprite>();
+			_linkedObjects = new List<GameObject>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
@@ -69,8 +71,13 @@ namespace End.Game
 
 				e.AddView(viewObject);
 				viewObject.Link(e, _context);
+				_linkedObjects.Add(viewObject);
 			}
 		}
 
+		public void TearDown()
+		{
+			_linkedObjects.ForEach(o => o.Unlink());
+		}
 	}
 }

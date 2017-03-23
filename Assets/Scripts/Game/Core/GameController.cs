@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -78,8 +79,8 @@ namespace End.Game
 
 		void Update()
 		{
-			Assert.IsTrue(_systems != null);
 			if (!_isInitialized) return;
+			Assert.IsNotNull(_systems);
 
 			_systems.Execute();
 			_systems.Cleanup();
@@ -87,8 +88,9 @@ namespace End.Game
 
 		void OnDestory()
 		{
-			Assert.IsTrue(_systems != null);
+			Assert.IsNotNull(_systems);
 
+			_systems.ClearReactiveSystems();
 			_systems.TearDown();
 		}
 
@@ -123,6 +125,7 @@ namespace End.Game
 			{
 				AddPlayer(player);
 			}
+			LocalPlayer = players.First();
 		}
 
 		#region Network
@@ -131,6 +134,7 @@ namespace End.Game
 		{
 			var netCon = NetworkController.Instance;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.OnLocalPlayerStartCallback += AddLocalPlayer;
 			_playerCount = netCon.ConnectionCount;
 		}
 
