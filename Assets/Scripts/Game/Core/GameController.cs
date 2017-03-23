@@ -122,6 +122,7 @@ namespace End.Game
 				.Add(new TileActionSystem(contexts))
 
 				.Add(new RenderMapPositionSystem(contexts))
+				.Add(new GameEventFeature(contexts))
 
 				.Add(new CameraSystem(contexts))
 				.Add(new CameraKeyboardSystem(contexts))

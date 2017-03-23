@@ -20,7 +20,7 @@ namespace End.Game
 		{
 			foreach(var p in _processed)
 			{
-				p.Destroy();
+				_contexts.gameEvent.DestroyEntity(p);
 			}
 
 			_processed.Clear();

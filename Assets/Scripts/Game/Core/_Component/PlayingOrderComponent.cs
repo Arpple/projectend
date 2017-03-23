@@ -24,6 +24,7 @@ namespace End.Game
 		{
 			_turn = 1;
 			_round = 1;
+			Debug.Log("Current R:" + _round + " T:" + _turn);
 		}
 
 		/// <summary>
@@ -48,6 +49,9 @@ namespace End.Game
 
 			_turn++;
 			Assert.IsTrue(_turn > 0 && _turn <= PlayerIdOrder.Count);
+
+			Debug.Log("Current R:" + _round + " T:" + _turn);
+
 			return CurrentPlayerId;
 
 		}
