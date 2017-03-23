@@ -14,8 +14,13 @@ namespace End.Game.UI
 
 		public override void Initialize()
 		{
-			//TODO: setup button
-			_button.OnClickCallback += () => EventEndTurn.Create();
+			_button.OnClickCallback += () =>
+			{
+				if (_contexts.game.playingOrder.CurrentPlayerId == GameController.LocalPlayer.PlayerId)
+				{
+					EventEndTurn.Create();
+				}
+			};
 		}
 	}
 

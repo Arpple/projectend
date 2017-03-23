@@ -20,6 +20,12 @@ namespace End.Game
 			get { return PlayerIdOrder[_turn - 1]; }
 		}
 
+		public void Initialize()
+		{
+			_turn = 1;
+			_round = 1;
+		}
+
 		/// <summary>
 		/// Cycle the playing order
 		/// </summary>

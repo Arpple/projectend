@@ -4,12 +4,12 @@ using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public class InitializePlayerSystem : IInitializeSystem
+	public class LoadPlayersystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 		readonly List<Player> _players;
 
-		public InitializePlayerSystem(Contexts contexts, List<Player> players)
+		public LoadPlayersystem(Contexts contexts, List<Player> players)
 		{
 			_context = contexts.game;
 			_players = players;
@@ -27,8 +27,8 @@ namespace End.Game
 					var sp = spawnpoints[i];
 
 					//create player
-					_context.CreateEntity()
-						.AddPlayer(p);
+					var player = _context.CreateEntity();
+					player.AddPlayer(p);
 
 					//create character
 					var character = _context.CreateEntity();

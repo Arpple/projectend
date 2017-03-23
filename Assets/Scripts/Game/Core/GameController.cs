@@ -57,7 +57,7 @@ namespace End.Game
 			_contexts.SetAllContexts();
 			_systems = CreateSystem(_contexts);
 
-			if(IsOfflineMode)
+			if (IsOfflineMode)
 			{
 				SetupNetworkOffline();
 			}
@@ -106,8 +106,10 @@ namespace End.Game
 			return new Feature("Systems")
 				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
 				.Add(new TileGraphSystem(contexts))
+				.Add(new PlayingOrderSystem(contexts, _players))
 				.Add(new SetupActionButtonSystem(contexts))
-				.Add(new InitializePlayerSystem(contexts, _players))
+				.Add(new LoadPlayersystem(contexts, _players))
+				.Add(new SetupLocalPlayerSystem(contexts))
 				.Add(new LoadPlayerDeckSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
 				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
 				.Add(new RenderDeckCardSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
@@ -131,12 +133,12 @@ namespace End.Game
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
 			_playerCount = players.Length;
+			AddLocalPlayer(players.First());
 			players.Length.Loop(i =>
 			{
 				players[i].PlayerId = (short)(i + 1);
 				AddPlayer(players[i]);
 			});
-			LocalPlayer = players.First();
 		}
 
 		#region Network

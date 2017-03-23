@@ -19,6 +19,7 @@ namespace End.Game
 		public void Initialize()
 		{
 			_context.SetPlayingOrder(_players.Select(p => p.PlayerId).OrderBy(i => i).ToList());
+			_context.playingOrder.Initialize();
 		}
 	}
 

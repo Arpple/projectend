@@ -8,22 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.LocalPlayerComponent localPlayer { get { return (End.Game.LocalPlayerComponent)GetComponent(GameComponentsLookup.LocalPlayer); } }
-    public bool hasLocalPlayer { get { return HasComponent(GameComponentsLookup.LocalPlayer); } }
+    static readonly End.Game.LocalPlayerComponent localPlayerComponent = new End.Game.LocalPlayerComponent();
 
-    public void AddLocalPlayer(End.Player newPlayerObject) {
-        var component = CreateComponent<End.Game.LocalPlayerComponent>(GameComponentsLookup.LocalPlayer);
-        component.PlayerObject = newPlayerObject;
-        AddComponent(GameComponentsLookup.LocalPlayer, component);
-    }
-
-    public void ReplaceLocalPlayer(End.Player newPlayerObject) {
-        var component = CreateComponent<End.Game.LocalPlayerComponent>(GameComponentsLookup.LocalPlayer);
-        component.PlayerObject = newPlayerObject;
-        ReplaceComponent(GameComponentsLookup.LocalPlayer, component);
-    }
-
-    public void RemoveLocalPlayer() {
-        RemoveComponent(GameComponentsLookup.LocalPlayer);
+    public bool isLocalPlayer {
+        get { return HasComponent(GameComponentsLookup.LocalPlayer); }
+        set {
+            if(value != isLocalPlayer) {
+                if(value) {
+                    AddComponent(GameComponentsLookup.LocalPlayer, localPlayerComponent);
+                } else {
+                    RemoveComponent(GameComponentsLookup.LocalPlayer);
+                }
+            }
+        }
     }
 }
