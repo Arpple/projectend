@@ -135,6 +135,10 @@ namespace End.UI {
             ShowDetail(index);
         }
 
+        public void RandomFocus() {
+            FocusIndex(UnityEngine.Random.Range(0, ItemCount));
+        }
+
         public void ShowDetail(int index) {
             if(index >= 0 && index < ItemCount) this.ShowText.text = SlideItems[index].ShowText;
         }
