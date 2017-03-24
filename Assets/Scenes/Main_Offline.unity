@@ -228,6 +228,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45201335}
+--- !u!1 &56401015 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1499209278318712, guid: 5333cdc24f813164e8f27297cb7fa9d4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1458752436}
 --- !u!1001 &70129254
 Prefab:
   m_ObjectHideFlags: 0
@@ -3983,7 +3988,7 @@ MonoBehaviour:
     Text: {fileID: 256173524}
     CardContainer: {fileID: 2021611134}
     BoxContainer: {fileID: 74711972}
-    SkillContainer: {fileID: 0}
+    SkillContainer: {fileID: 56401015}
 --- !u!1 &779476363
 GameObject:
   m_ObjectHideFlags: 0

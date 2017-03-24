@@ -9,7 +9,6 @@ namespace End.Game
 			Add(new CreateMapTileSystem(contexts, setting.GameMap.Load(), setting));
 			Add(new CreateTileGraphSystem(contexts));
 			Add(new CreateTileActionSystem(contexts));
-			Add(new RenderMapPositionSystem(contexts));
 		}
 	}
 }

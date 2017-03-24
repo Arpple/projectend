@@ -32,7 +32,7 @@ namespace End.Game
 
 			foreach (var player in entities.Select(e => e.player))
 			{
-				var sp = spawnpoints[player.PlayerId];
+				var sp = spawnpoints[player.PlayerId - 1];
 
 				var characterType = (Character)player.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);

@@ -114,6 +114,7 @@ namespace End.Game
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new ViewContainerSystem(contexts))
+				.Add(new RenderMapPositionSystem(contexts))
 
 				.Add(new GameEventFeature(contexts))
 
