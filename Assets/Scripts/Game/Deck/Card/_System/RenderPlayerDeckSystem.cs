@@ -6,12 +6,12 @@ using End.Game.UI;
 
 namespace End.Game
 {
-	public class RenderPlayerCardSystem : ReactiveSystem<GameEntity>
+	public class RenderPlayerDeckSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
 		private CacheList<int, GameObject> _playerDeckCache;
 
-		public RenderPlayerCardSystem(Contexts contexts)
+		public RenderPlayerDeckSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;

@@ -6,7 +6,7 @@ using End.Game.UI;
 
 namespace End.Test
 {
-	public class TestRenderPlayerCardSystem
+	public class TestRenderPlayerDeckSystem
 	{
 		private Contexts _contexts;
 
@@ -19,7 +19,7 @@ namespace End.Test
 		[Test]
 		public void CardViewObjectMovedToDeckObject()
 		{
-			var system = new RenderPlayerCardSystem(_contexts);
+			var system = new RenderPlayerDeckSystem(_contexts);
 
 			var player = new GameObject().AddComponent<Player>();
 			player.PlayerId = 1;

@@ -7,7 +7,7 @@ using Entitas;
 
 namespace End.Test
 {
-	public class TestLoadPlayerDeckCardSystem
+	public class TestCreatePlayerDeckSystem
 	{
 		private Contexts _contexts;
 		private CardContainer _container;
@@ -24,7 +24,7 @@ namespace End.Test
 		[Test]
 		public void CreateMiddleDeck()
 		{
-			var system = new LoadPlayerDeckSystem(_contexts, _container);
+			var system = new CreatePlayerDeckSystem(_contexts, _container);
 			system.Initialize();
 
 			Assert.IsNotNull(_container.PlayerDecks[0]);
@@ -33,7 +33,7 @@ namespace End.Test
 		[Test]
 		public void CreateDeckWhenPlayerCreated()
 		{
-			var system = new LoadPlayerDeckSystem(_contexts, _container);
+			var system = new CreatePlayerDeckSystem(_contexts, _container);
 			var entity = _contexts.game.CreateEntity();
 
 			var player = new GameObject().AddComponent<Player>();

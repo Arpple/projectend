@@ -4,12 +4,16 @@ using System;
 
 namespace End.Game
 {
-	public class LoadCardDeckSystem : IInitializeSystem
+	/// <summary>
+	/// System for creating card entity from deck
+	/// </summary>
+	/// <seealso cref="Entitas.IInitializeSystem" />
+	public class CreateDeckCardsSystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 		readonly CardDeck _deck;
 
-		public LoadCardDeckSystem(Contexts contexts, CardDeck deck)
+		public CreateDeckCardsSystem(Contexts contexts, CardDeck deck)
 		{
 			_context = contexts.game;
 			_deck = deck;

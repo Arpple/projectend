@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace End.Test
 {
-	public class TestLoadPlayerCharacterSystem
+	public class TestCreatePlayerCharacterSystem
 	{
 		private Contexts _contexts;
 
@@ -22,7 +22,7 @@ namespace End.Test
 			var player = new GameObject().AddComponent<Player>();
 			player.SelectedCharacterId = 1;
 
-			var system = new LoadPlayerCharacterSystem(_contexts);
+			var system = new CreatePlayerCharacterSystem(_contexts);
 
 			var tile = _contexts.game.CreateEntity();
 			tile.AddSpawnpoint(1);

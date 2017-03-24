@@ -6,7 +6,7 @@ using End.Game.UI;
 
 namespace End.Test
 {
-	public class TestRenderDeckCardSystem
+	public class TestRenderMiddleDeckSystem
 	{
 		private Contexts _contexts;
 		private CardContainer _container;
@@ -25,7 +25,7 @@ namespace End.Test
 		{
 			_container.CreateContainer(0);
 
-			var system = new RenderDeckCardSystem(_contexts, _container);
+			var system = new RenderMiddleDeckSystem(_contexts, _container);
 			var card = _contexts.game.CreateEntity();
 			card.AddPlayerCard(0);
 			card.AddView(new GameObject());

@@ -104,30 +104,20 @@ namespace End.Game
 		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
-				.Add(new MapSystem(contexts, Setting.MapSetting.GameMap.Load(), Setting.MapSetting))
-				.Add(new TileGraphSystem(contexts))
-				.Add(new PlayingOrderSystem(contexts, _players))
+				.Add(new MapSystem(contexts, Setting.MapSetting))
+
 				.Add(new SetupActionButtonSystem(contexts))
-				.Add(new LoadPlayerSystem(contexts, _players))
-				.Add(new LoadPlayerCharacterSystem(contexts))
-				.Add(new SetupLocalPlayerSystem(contexts))
-				.Add(new LoadPlayerDeckSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
-				.Add(new LoadCardDeckSystem(contexts, Setting.DeckSetting.CardSetting.Deck))
-				.Add(new RenderDeckCardSystem(contexts, GameUI.Instance.InventoryGroup.CardContainer))
-				.Add(new RenderPlayerCardSystem(contexts))
+
+				.Add(new PlayerSystem(contexts, _players))
+				.Add(new DeckSystem(contexts, Setting.DeckSetting))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
-				.Add(new LoadCardSystem(contexts, Setting.DeckSetting.CardSetting))
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new ViewContainerSystem(contexts))
-				.Add(new TileActionSystem(contexts))
 
-				.Add(new RenderMapPositionSystem(contexts))
 				.Add(new GameEventFeature(contexts))
 
-				.Add(new CameraSystem(contexts))
-				.Add(new CameraKeyboardSystem(contexts))
-
+				.Add(new ControlSystem(contexts))
 				.Add(new ClearContextsSystem(contexts));
 		}
 

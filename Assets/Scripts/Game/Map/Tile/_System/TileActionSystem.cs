@@ -4,11 +4,11 @@ using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public class TileActionSystem : ReactiveSystem<GameEntity>, ITearDownSystem
+	public class CreateTileActionSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{
 		readonly GameContext _context;
 
-		public TileActionSystem(Contexts contexts)
+		public CreateTileActionSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;

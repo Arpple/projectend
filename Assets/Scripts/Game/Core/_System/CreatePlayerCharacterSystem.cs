@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace End.Game
 {
-	public class LoadPlayerCharacterSystem : ReactiveSystem<GameEntity>
+	public class CreatePlayerCharacterSystem : ReactiveSystem<GameEntity>
 	{
 		readonly GameContext _context;
 
-		public LoadPlayerCharacterSystem(Contexts contexts)
+		public CreatePlayerCharacterSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;

@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace End.Game
 {
-	public class LoadPlayerBoxSystem : ReactiveSystem<GameEntity>
+	public class CreatePlayerBoxSystem : ReactiveSystem<GameEntity>
 	{
-		public LoadPlayerBoxSystem(Contexts contexts)
+		public CreatePlayerBoxSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 
@@ -28,7 +28,7 @@ namespace End.Game
 			foreach (var e in entities)
 			{
 				//TODO: replace temp gameobject with created playercard object
-				var temp = new GameObject();
+				var temp = new GameObject("box");
 				e.AddPlayerBox(temp);
 			}
 		}

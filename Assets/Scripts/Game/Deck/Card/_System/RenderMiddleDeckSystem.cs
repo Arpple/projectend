@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Entitas;
-using UnityEngine;
+using End.Game.UI;
 
-namespace End.Game.UI
+namespace End.Game
 {
-	public class RenderDeckCardSystem : ReactiveSystem<GameEntity>
+	public class RenderMiddleDeckSystem : ReactiveSystem<GameEntity>
 	{
 		private readonly CardContainer _cardContainer;
 
-		public RenderDeckCardSystem(Contexts contexts, CardContainer cardContainer)
+		public RenderMiddleDeckSystem(Contexts contexts, CardContainer cardContainer)
 			: base(contexts.game)
 		{
 			_cardContainer = cardContainer;

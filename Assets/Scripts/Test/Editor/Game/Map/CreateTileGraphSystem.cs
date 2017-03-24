@@ -4,7 +4,7 @@ using End.Game;
 
 namespace End.Test
 {
-	public class TestTileGraphSystem
+	public class TestCreateTileGraphSystem
 	{
 		private Contexts _contexts;
 
@@ -24,7 +24,7 @@ namespace End.Test
 			var downTile = CreateTile(2, 1);
 			var unconnectedTile = CreateTile(1, 1);
 
-			var system = new TileGraphSystem(_contexts);
+			var system = new CreateTileGraphSystem(_contexts);
 			system.Initialize();
 
 			Assert.AreEqual(leftTile, originTile.tileGraph.Left);

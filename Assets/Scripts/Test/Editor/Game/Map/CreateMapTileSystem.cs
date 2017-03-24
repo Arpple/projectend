@@ -6,7 +6,7 @@ using End.Game;
 
 namespace End.Test
 {
-	public class TestMapSystem
+	public class TestCreateMapTileSystem
 	{
 		private Contexts _contexts;
 		private Map _map;
@@ -24,7 +24,7 @@ namespace End.Test
 		public void GenerateTile()
 		{
 			_map.SetMap(5, 5, Tile.Grass);
-			var system = new MapSystem(_contexts, _map, _setting);
+			var system = new CreateMapTileSystem(_contexts, _map, _setting);
 			system.Initialize();
 
 			var tileEntities = _contexts.game.GetEntities(GameMatcher.Tile);
@@ -38,7 +38,7 @@ namespace End.Test
 			_map.SetMap(5, 5, Tile.Grass);
 			_map.SetSpawnPoint(1, 1, 1);
 			_map.Save();
-			var system = new MapSystem(_contexts, _map, _setting);
+			var system = new CreateMapTileSystem(_contexts, _map, _setting);
 			system.Initialize();
 
 			var tileEntities = _contexts.game.GetEntities(GameMatcher.Tile);

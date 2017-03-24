@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace End.Game
 {
-	public class TileGraphSystem : IInitializeSystem
+	public class CreateTileGraphSystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 
-		public TileGraphSystem(Contexts contexts)
+		public CreateTileGraphSystem(Contexts contexts)
 		{
 			_context = contexts.game;
 		}

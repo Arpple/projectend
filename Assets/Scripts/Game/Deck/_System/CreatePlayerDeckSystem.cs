@@ -4,11 +4,11 @@ using End.Game.UI;
 
 namespace End.Game
 {
-	public class LoadPlayerDeckSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class CreatePlayerDeckSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
 		private CardContainer _cardContainerUI;
 
-		public LoadPlayerDeckSystem(Contexts contexts, CardContainer container)
+		public CreatePlayerDeckSystem(Contexts contexts, CardContainer container)
 			: base(contexts.game)
 		{
 			_cardContainerUI = container;

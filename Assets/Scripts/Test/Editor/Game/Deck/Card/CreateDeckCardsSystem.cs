@@ -3,7 +3,7 @@ using End.Game;
 
 namespace End.Test
 {
-	public class TestLoadCardDeckSystem
+	public class TestCreateDeckCardsSystem
 	{
 		private Contexts _contexts;
 
@@ -23,7 +23,7 @@ namespace End.Test
 				Count = 2
 			});
 
-			var system = new LoadCardDeckSystem(_contexts, deck);
+			var system = new CreateDeckCardsSystem(_contexts, deck);
 			system.Initialize();
 
 			var cards = _contexts.game.GetGroup(GameMatcher.Card).GetEntities();
