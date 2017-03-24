@@ -9,17 +9,20 @@
 public static class GameEventComponentsLookup {
 
     public const int EventEndTurn = 0;
-    public const int EventMove = 1;
+    public const int EventMoveCard = 1;
+    public const int EventMoveUnit = 2;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
         "EventEndTurn",
-        "EventMove"
+        "EventMoveCard",
+        "EventMoveUnit"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(End.Game.EventEndTurn),
-        typeof(End.Game.EventMove)
+        typeof(End.Game.EventMoveCard),
+        typeof(End.Game.EventMoveUnit)
     };
 }

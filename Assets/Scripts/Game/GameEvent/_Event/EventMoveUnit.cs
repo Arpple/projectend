@@ -6,7 +6,7 @@ using System;
 namespace End.Game
 {
 	[GameEvent]
-	public class EventMove : GameEventComponent
+	public class EventMoveUnit : GameEventComponent
 	{
 		public GameEntity MovingEntity;
 		public int x;
@@ -17,7 +17,7 @@ namespace End.Game
 			Assert.IsTrue(entity.hasUnit);
 			Assert.IsTrue(entity.hasMapPosition);
 
-			GameEvent.CreateEvent<EventMove>(entity.unit.OwnerPlayer.PlayerId, position.x, position.y);
+			GameEvent.CreateEvent<EventMoveUnit>(entity.unit.OwnerPlayer.PlayerId, position.x, position.y);
 		}
 
 		public void Decode(int playerId, int x, int y)
@@ -31,23 +31,23 @@ namespace End.Game
 		}
 	}
 
-	public class EventMoveSystem : GameEventSystem
+	public class EventMoveUnitSystem : GameEventSystem
 	{
-		public EventMoveSystem(Contexts contexts) : base(contexts){}
+		public EventMoveUnitSystem(Contexts contexts) : base(contexts){}
 
 		protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
 		{
-			return context.CreateCollector(GameEventMatcher.EventMove, GroupEvent.Added);
+			return context.CreateCollector(GameEventMatcher.EventMoveUnit, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEventEntity entity)
 		{
-			return entity.hasEventMove;
+			return entity.hasEventMoveUnit;
 		}
 
 		protected override void Process(GameEventEntity entity)
 		{
-			var e = entity.eventMove;
+			var e = entity.eventMoveUnit;
 
 			e.MovingEntity.ReplaceMapPosition(e.x, e.y);
 		}
