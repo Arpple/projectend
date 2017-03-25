@@ -55,8 +55,7 @@ namespace End.Game
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
-			_systems = CreateSystem(_contexts);
-
+			
 			if (IsOfflineMode)
 			{
 				SetupNetworkOffline();
@@ -79,7 +78,7 @@ namespace End.Game
 					id++;
 				}
 			}
-
+			_systems = CreateSystem(_contexts);
 			_systems.Initialize();
 			_isInitialized = true;
 		}
@@ -120,6 +119,16 @@ namespace End.Game
 				.Add(new ClearContextsSystem(contexts));
 		}
 
+		#region Network
+
+		public void SetupNetwork()
+		{
+			var netCon = NetworkController.Instance;
+			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.OnLocalPlayerStartCallback += AddLocalPlayer;
+			_playerCount = netCon.ConnectionCount;
+		}
+
 		private void SetupNetworkOffline()
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
@@ -130,16 +139,6 @@ namespace End.Game
 				players[i].PlayerId = (short)(i + 1);
 				AddPlayer(players[i]);
 			});
-		}
-
-		#region Network
-
-		public void SetupNetwork()
-		{
-			var netCon = NetworkController.Instance;
-			netCon.OnClientPlayerStartCallback += AddPlayer;
-			netCon.OnLocalPlayerStartCallback += AddLocalPlayer;
-			_playerCount = netCon.ConnectionCount;
 		}
 
 		public void AddPlayer(Player player)
