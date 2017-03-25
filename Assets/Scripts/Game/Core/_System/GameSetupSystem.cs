@@ -19,6 +19,9 @@ namespace End.Game
 
 			//card
 			Add(new CreateDeckCardsSystem(contexts, setting.DeckSetting.CardSetting.Deck));
+
+			//turn
+			Add(new PlayingOrderSystem(contexts, players));
 		}
 	}
 }

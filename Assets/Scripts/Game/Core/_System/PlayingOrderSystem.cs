@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using System.Linq;
+using UnityEngine;
 
 namespace End.Game
 {
@@ -20,6 +21,7 @@ namespace End.Game
 		{
 			_context.SetPlayingOrder(_players.Select(p => p.PlayerId).OrderBy(i => i).ToList());
 			_context.playingOrder.Initialize();
+			Debug.Log(_context.playingOrder);
 		}
 	}
 

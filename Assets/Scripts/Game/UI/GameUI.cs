@@ -54,6 +54,11 @@ namespace End.Game.UI
 				act.OnClickCallback += OnMainActionClicked;
 			}
 
+			main.EndButton.OnClickCallback += (act) =>
+			{
+				EventEndTurn.TryEndTurn();
+			};
+
 		}
 
 		public void OnMainActionClicked(ActionButton act)
