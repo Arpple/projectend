@@ -18,10 +18,15 @@ namespace End.Game
 
 		public void Initialize()
 		{
-			foreach (var e in _context.GetEntities(GameMatcher.Player))
+			foreach (var player in _context.GetEntities(GameMatcher.Player))
 			{
-				var playerDeck = _cardContainerUI.CreateContainer(e.player.PlayerId);
-				e.AddPlayerDeck(playerDeck);
+				var playerDeck = _cardContainerUI.CreateContainer(player.player.PlayerId);
+				player.AddPlayerDeck(playerDeck);
+
+				if(player.isLocalPlayer)
+				{
+					playerDeck.SetActive(true);
+				}
 			}
 		}
 	}

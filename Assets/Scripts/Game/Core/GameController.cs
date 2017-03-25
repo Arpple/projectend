@@ -14,14 +14,11 @@ namespace End.Game
 		public static bool IsTest;
 
 		[Header("Test")]
-		public bool IsOfflineMode = false;
+		public bool IsOffline = false;
 
 		[Header("Config")]
 		public GameSetting Setting;
 		public GameObject PlayerContainer;
-
-		[HideInInspector]
-		public bool IsOffline{ get { return IsOfflineMode; } }
 
 		private Systems _systems;
 		private Contexts _contexts;
@@ -52,7 +49,7 @@ namespace End.Game
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
 			
-			if (IsOfflineMode)
+			if (IsOffline)
 			{
 				SetupNetworkOffline();
 			}

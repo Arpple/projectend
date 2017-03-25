@@ -5,14 +5,13 @@ namespace End.Game.UI
 {
 	public class CardContainer : MonoBehaviour
 	{
+		public GameObject PlayerDeckPrefabs;
 		public Dictionary<int, GameObject> PlayerDecks;
 
 		public GameObject CreateContainer(int playerId)
 		{
-			var go = new GameObject()
-			{
-				name = "Player " + playerId
-			};
+			var go = Instantiate(PlayerDeckPrefabs);
+			go.name = "Player " + playerId;
 			go.transform.SetParent(transform, false);
 
 			PlayerDecks.Add(playerId, go);

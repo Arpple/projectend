@@ -10,7 +10,7 @@ namespace End.Game
 		public static void CreateEvent<T>(params int[] args) where T : GameEventComponent
 		{
 			int componentId = GameEventComponentsLookup.componentTypes.ToList().IndexOf(typeof(T));
-			if (GameController.IsTest || GameController.Instance.IsOffline)
+			if (GameController.Instance == null || GameController.Instance.IsOffline)
 			{
 				CreateEventAndDecode(componentId, args);
 			}

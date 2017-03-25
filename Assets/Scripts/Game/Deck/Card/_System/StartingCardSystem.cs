@@ -22,11 +22,12 @@ namespace End.Game
 
 			Assert.IsTrue(players.Count() * _setting.StartCardCount <= cards.Length);
 
+			var i = 0;
 			foreach (var p in players)
 			{
-				_setting.StartCardCount.Loop(i => 
+				_setting.StartCardCount.Loop(() => 
 				{
-					cards[i].ReplacePlayerCard(p.PlayerId);
+					EventMoveCard.MoveCard(cards[i], p.PlayerId);
 					i++;
 				});
 			}

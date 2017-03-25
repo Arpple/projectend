@@ -8,6 +8,7 @@ namespace End.Game
 		{
 			Add(new EventMoveUnitSystem(contexts));
 			Add(new EventEndTurnSystem(contexts));
+			Add(new EventMoveCardSystem(contexts));
 		}
 	}
 }

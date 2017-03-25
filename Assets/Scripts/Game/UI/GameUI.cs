@@ -58,7 +58,6 @@ namespace End.Game.UI
 			{
 				EventEndTurn.TryEndTurn();
 			};
-
 		}
 
 		public void OnMainActionClicked(ActionButton act)

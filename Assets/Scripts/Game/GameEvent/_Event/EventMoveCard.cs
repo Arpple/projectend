@@ -46,7 +46,6 @@ namespace End.Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var e = entity.eventMoveCard;
-
 			e.CardEntity.ReplacePlayerCard(e.TargetPlayerId);
 		}
 	}

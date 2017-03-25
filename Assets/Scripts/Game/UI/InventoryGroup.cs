@@ -19,6 +19,8 @@ namespace End.Game.UI
 			Assert.IsNotNull(BoxContainer);
 			Assert.IsNotNull(SkillContainer);
 			Assert.IsNotNull(Text);
+
+			CardContainer.Awake();
 		}
 
 		public void SetText(string text)
