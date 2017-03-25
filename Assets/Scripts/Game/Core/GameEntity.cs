@@ -2,7 +2,7 @@
 
 public sealed partial class GameEntity
 {
-	private static GameContext Context
+	public static GameContext Context
 	{
 		get { return Contexts.sharedInstance.game; }
 	}

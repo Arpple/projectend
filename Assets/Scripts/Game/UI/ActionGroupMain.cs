@@ -19,6 +19,13 @@ namespace End.Game.UI
 			{
 				Assert.IsNotNull(a);
 			}
+
+			EndButton.OnClickCallback += EndTurn;
+		}
+
+		public void EndTurn()
+		{
+			EventEndTurn.TryEndTurn();
 		}
 	}
 }

@@ -4,7 +4,7 @@ using End.Game.UI;
 
 namespace End.Game
 {
-	public class CreatePlayerDeckSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class CreatePlayerDeckSystem : ReactiveSystem<GameEntity>
 	{
 		private CardContainer _cardContainerUI;
 
@@ -22,13 +22,6 @@ namespace End.Game
 		protected override bool Filter(GameEntity entity)
 		{
 			return entity.hasPlayer;
-		}
-
-		public void Initialize()
-		{
-			//create middle deck
-			var middleDeck = _cardContainerUI.CreateContainer(0);
-			middleDeck.SetActive(false);
 		}
 
 		protected override void Execute(List<GameEntity> entities)
