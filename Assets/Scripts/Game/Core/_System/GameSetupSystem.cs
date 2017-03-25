@@ -5,11 +5,11 @@ namespace End.Game
 {
 	public class GameSetupSystem : Feature
 	{
-		public GameSetupSystem(Contexts contexts, GameSetting setting, List<Player> players) : base("Game Setup")
+		public GameSetupSystem(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 		{
 			//player
 			Add(new LoadPlayerSystem(contexts, players));
-			Add(new SetupLocalPlayerSystem(contexts));
+			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
 			Add(new CreatePlayerCharacterSystem(contexts));
 
 			//map
