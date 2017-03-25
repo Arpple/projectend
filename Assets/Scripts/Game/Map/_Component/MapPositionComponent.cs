@@ -7,7 +7,7 @@ namespace End.Game
 	[Game]
 	public class MapPositionComponent : IComponent
 	{
-		const float SIZE = 1.65f;
+		const float SIZE = 1.63f; //Old 1.65f
 
 		public int x;
 		public int y;
