@@ -5,17 +5,16 @@ namespace End.Game
 {
 	public class SetupLocalPlayerSystem : IInitializeSystem
 	{
-		private readonly GameContext _context;
+		private readonly Player _localPlayer;
 
-		public SetupLocalPlayerSystem(Contexts contexts)
+		public SetupLocalPlayerSystem(Contexts contexts, Player localPlayer)
 		{
-			_context = contexts.game;
+			_localPlayer = localPlayer;
 		}
 
 		public void Initialize()
 		{
-			_context.GetEntities(GameMatcher.Player)
-				.Where(p => p.player.PlayerId == GameController.LocalPlayer.PlayerId)
+			EntityGroup.Player.Where(p => p.player.PlayerObject == _localPlayer)
 				.First()
 				.isLocalPlayer = true;
 		}

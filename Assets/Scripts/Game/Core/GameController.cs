@@ -105,7 +105,7 @@ namespace End.Game
 			return new Feature("Systems")
 				.Add(new SceneSetupSystem(contexts, GameUI.Instance))
 
-				.Add(new GameSetupSystem(contexts, Setting, _players))
+				.Add(new GameSetupSystem(contexts, Setting, _players, LocalPlayer))
 				.Add(new DeckSystem(contexts, Setting.DeckSetting))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
