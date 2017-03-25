@@ -22,15 +22,6 @@ namespace End.Test
 		}
 
 		[Test]
-		public void CreateMiddleDeck()
-		{
-			var system = new CreatePlayerDeckSystem(_contexts, _container);
-			system.Initialize();
-
-			Assert.IsNotNull(_container.PlayerDecks[0]);
-		}
-
-		[Test]
 		public void CreateDeckWhenPlayerCreated()
 		{
 			var system = new CreatePlayerDeckSystem(_contexts, _container);

@@ -1,25 +1,21 @@
 ﻿using System;
-using UnityEngine.Assertions;
 
 namespace End.Game.UI
 {
 	[Serializable]
 	public class ActionButtonGroup
 	{
-		public ActionButton EndButton;
-		public ActionButton BoxButton;
-		public ActionButton CardButton;
-		public ActionButton SkillButton;
-		public ActionButton TurnButton;
-
-		public void Awake()
+		public ActionButton[] AllActions
 		{
-			Assert.IsTrue(EndButton);
-			Assert.IsTrue(BoxButton);
-			Assert.IsTrue(CardButton);
-			Assert.IsTrue(SkillButton);
-			Assert.IsTrue(TurnButton);
+			get; protected set;
+		}
+
+		public void ToggleVisibility(bool isVisible)
+		{
+			foreach (var a in AllActions)
+			{
+				a.gameObject.SetActive(isVisible);
+			}
 		}
 	}
-
 }

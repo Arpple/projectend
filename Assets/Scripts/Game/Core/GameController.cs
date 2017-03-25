@@ -103,8 +103,6 @@ namespace End.Game
 		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
-				.Add(new SceneSetupSystem(contexts, GameUI.Instance))
-
 				.Add(new GameSetupSystem(contexts, Setting, _players, LocalPlayer))
 				.Add(new DeckSystem(contexts, Setting.DeckSetting))
 

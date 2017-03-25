@@ -6,7 +6,7 @@ namespace End.Game.UI
 {
 	public class ActionButton : MonoBehaviour
 	{
-		public delegate void ClickCallback();
+		public delegate void ClickCallback(ActionButton btn);
 		public event ClickCallback OnClickCallback;
 
 		public Button Button;
@@ -19,7 +19,7 @@ namespace End.Game.UI
 		public void Click()
 		{
 			ClickAction();
-			if(OnClickCallback != null)OnClickCallback();
+			if(OnClickCallback != null)OnClickCallback(this);
 		}
 
 		protected virtual void ClickAction()

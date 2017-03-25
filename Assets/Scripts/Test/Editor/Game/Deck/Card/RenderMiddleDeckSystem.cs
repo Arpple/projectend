@@ -23,8 +23,6 @@ namespace End.Test
 		[Test]
 		public void CardViewObjectMovedToDeckObject()
 		{
-			_container.CreateContainer(0);
-
 			var system = new RenderMiddleDeckSystem(_contexts, _container);
 			var card = _contexts.game.CreateEntity();
 			card.AddPlayerCard(0);

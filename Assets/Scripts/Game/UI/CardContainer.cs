@@ -11,7 +11,7 @@ namespace End.Game.UI
 		{
 			var go = new GameObject()
 			{
-				name = playerId == 0 ? "Middle Deck" : "Player " + playerId
+				name = "Player " + playerId
 			};
 			go.transform.SetParent(transform, false);
 
@@ -23,6 +23,9 @@ namespace End.Game.UI
 		public void Awake()
 		{
 			PlayerDecks = new Dictionary<int, GameObject>();
+			var middleDeck = CreateContainer(0);
+			middleDeck.gameObject.SetActive(false);
+			middleDeck.name = "Middle Deck";
 		}
 	}
 }

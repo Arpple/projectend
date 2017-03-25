@@ -1,13 +1,19 @@
 ﻿using Entitas;
+using UnityEngine;
 
 namespace End.Game
 {
 	[GameEvent]
 	public class EventEndTurn : GameEventComponent
 	{
-		public static void Create()
+		public static bool TryEndTurn()
 		{
-			GameEvent.CreateEvent<EventEndTurn>();
+			if(GameUtil.IsLocalPlayerTurn)
+			{
+				GameEvent.CreateEvent<EventEndTurn>();
+				return true;
+			}
+			return false;
 		}
 	}
 
@@ -27,7 +33,9 @@ namespace End.Game
 
 		protected override void Process(GameEventEntity entity)
 		{
-			_contexts.game.playingOrder.NextPlayerId();
+			var playingOrder = _contexts.game.playingOrder;
+			playingOrder.NextPlayerId();
+			Debug.Log(playingOrder);
 		}
 	}
 
