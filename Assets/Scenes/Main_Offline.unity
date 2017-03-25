@@ -4217,7 +4217,7 @@ MonoBehaviour:
     Text: {fileID: 256173524}
     CardContainer: {fileID: 2021611134}
     BoxContainer: {fileID: 74711972}
-    SkillContainer: {fileID: 0}
+    SkillContainer: {fileID: 1780688480}
 --- !u!1 &779476363
 GameObject:
   m_ObjectHideFlags: 0
@@ -4300,6 +4300,11 @@ Prefab:
         type: 2}
       propertyPath: SelectedCharacterId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
+        type: 2}
+      propertyPath: PlayerId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
@@ -4518,6 +4523,11 @@ Prefab:
         type: 2}
       propertyPath: SelectedCharacterId
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
+        type: 2}
+      propertyPath: PlayerId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
@@ -7889,6 +7899,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fcf8dbcdab45684ebf8272fa814d605, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1780688480 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1499209278318712, guid: 5333cdc24f813164e8f27297cb7fa9d4,
+    type: 2}
+  m_PrefabInternal: {fileID: 20602870}
 --- !u!1 &1793311317
 GameObject:
   m_ObjectHideFlags: 0
