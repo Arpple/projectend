@@ -22,7 +22,7 @@ namespace End.Test
 			e.AddMapPosition(1, 1);
 			var worldPos = e.mapPosition.GetWorldPosition();
 
-			Assert.AreEqual(new Vector3(1.65f, 1.65f, 1), worldPos);
+			Assert.AreEqual(new Vector3(1.63f, 1.63f, 1), worldPos);
 		}
 
 		[Test]
