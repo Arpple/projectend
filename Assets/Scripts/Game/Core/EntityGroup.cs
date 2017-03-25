@@ -1,38 +1,34 @@
 ﻿using Entitas;
 
-namespace End.Game
+public sealed partial class GameEntity
 {
-	public static class EntityGroup
+	private static GameContext Context
 	{
-		private static GameContext _game
-		{
-			get { return Contexts.sharedInstance.game; }
-		}
-
-		public static GameEntity[] Player
-		{
-			get { return _game.GetEntities(GameMatcher.Player); }
-		}
-
-		public static GameEntity LocalPlayer
-		{
-			get { return _game.GetGroup(GameMatcher.LocalPlayer).GetSingleEntity(); }
-		}
-
-		public static GameEntity[] Character
-		{
-			get { return _game.GetEntities(GameMatcher.Character); }
-		}
-
-		public static GameEntity[] Card
-		{
-			get { return _game.GetEntities(GameMatcher.Card); }
-		}
-
-		public static GameEntity[] Tile
-		{
-			get { return _game.GetEntities(GameMatcher.Tile); }
-		}
+		get { return Contexts.sharedInstance.game; }
 	}
 
+	public static GameEntity[] Player
+	{
+		get { return Context.GetEntities(GameMatcher.Player); }
+	}
+
+	public static GameEntity LocalPlayer
+	{
+		get { return Context.GetGroup(GameMatcher.LocalPlayer).GetSingleEntity(); }
+	}
+
+	public static GameEntity[] Character
+	{
+		get { return Context.GetEntities(GameMatcher.Character); }
+	}
+
+	public static GameEntity[] Card
+	{
+		get { return Context.GetEntities(GameMatcher.Card); }
+	}
+
+	public static GameEntity[] Tile
+	{
+		get { return Context.GetEntities(GameMatcher.Tile); }
+	}
 }

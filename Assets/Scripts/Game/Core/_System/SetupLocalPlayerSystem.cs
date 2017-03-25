@@ -14,7 +14,7 @@ namespace End.Game
 
 		public void Initialize()
 		{
-			EntityGroup.Player.Where(p => p.player.PlayerObject == _localPlayer)
+			GameEntity.Player.Where(p => p.player.PlayerObject == _localPlayer)
 				.First()
 				.isLocalPlayer = true;
 		}
