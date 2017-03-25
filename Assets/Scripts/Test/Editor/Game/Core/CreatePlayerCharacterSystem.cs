@@ -17,9 +17,10 @@ namespace End.Test
 		}
 
 		[Test]
-		public void EditorTest()
+		public void CreateCharacter()
 		{
 			var player = new GameObject().AddComponent<Player>();
+			player.PlayerId = 1;
 			player.SelectedCharacterId = 1;
 
 			var system = new CreatePlayerCharacterSystem(_contexts);

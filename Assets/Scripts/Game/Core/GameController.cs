@@ -104,16 +104,15 @@ namespace End.Game
 		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
-				.Add(new MapSystem(contexts, Setting.MapSetting))
+				.Add(new SceneSetupSystem(contexts, GameUI.Instance))
 
-				.Add(new SetupActionButtonSystem(contexts))
-
-				.Add(new PlayerSystem(contexts, _players))
+				.Add(new GameSetupSystem(contexts, Setting, _players))
 				.Add(new DeckSystem(contexts, Setting.DeckSetting))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new LoadResourceSystem(contexts))
 				.Add(new ViewContainerSystem(contexts))
+				.Add(new RenderMapPositionSystem(contexts))
 
 				.Add(new GameEventFeature(contexts))
 

@@ -67,7 +67,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.CardComponent),
         typeof(End.Game.CharacterComponent),
         typeof(End.Game.CharacterIconComponent),
-        typeof(End.Game.Role.RoleDescriptionComponent.DescriptionComponent),
+        typeof(End.Game.RoleDescriptionComponent.DescriptionComponent),
         typeof(End.Game.LocalPlayerComponent),
         typeof(End.Game.MapPositionComponent),
         typeof(End.Game.PlayerComponent),

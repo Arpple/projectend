@@ -18,7 +18,7 @@ namespace End.Game
 
 		public override void ApplyAbilityEffect(GameEntity caster, GameEntity target)
 		{
-			EventMove.Create(caster, target.mapPosition);
+			EventMoveUnit.Create(caster, target.mapPosition);
 		}
 	}
 

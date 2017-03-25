@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-namespace End.Game.Role {
+namespace End.Game {
     public class RoleDescriptionComponent {
         [Game]
         public class DescriptionComponent: IComponent {

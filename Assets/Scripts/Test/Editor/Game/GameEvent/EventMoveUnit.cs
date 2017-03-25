@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
 using End.Game;
-using System.Linq;
 
 namespace End.Test
 {
-	public class TestEventMove
+	public class TestEventMoveUnit
 	{
 		private Contexts _contexts;
 		private Player _player;
@@ -14,7 +13,7 @@ namespace End.Test
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			Game.GameController.IsTest = true;
+			GameController.IsTest = true;
 			_player = Resources.Load<Player>("Network/Player");
 		}
 
@@ -30,14 +29,14 @@ namespace End.Test
 			var tile = _contexts.game.CreateEntity();
 			tile.AddMapPosition(2, 2);
 
-			EventMove.Create(charEntity, tile.mapPosition);
+			EventMoveUnit.Create(charEntity, tile.mapPosition);
 
 			var eventEntities = _contexts.gameEvent.GetEntities();
 
 			Assert.AreEqual(1, eventEntities.Length);
-			Assert.IsTrue(eventEntities[0].hasEventMove);
+			Assert.IsTrue(eventEntities[0].hasEventMoveUnit);
 
-			var e = eventEntities[0].eventMove;
+			var e = eventEntities[0].eventMoveUnit;
 			Assert.AreEqual(charEntity, e.MovingEntity);
 			Assert.AreEqual(2, e.x);
 			Assert.AreEqual(2, e.y);
@@ -46,7 +45,7 @@ namespace End.Test
 		[Test]
 		public void SystemReplacePosition()
 		{
-			var system = new EventMoveSystem(_contexts);
+			var system = new EventMoveUnitSystem(_contexts);
 
 			var charEntity = _contexts.game.CreateEntity();
 			charEntity.AddCharacter(Character.CurseSword);
@@ -56,7 +55,7 @@ namespace End.Test
 			var tile = _contexts.game.CreateEntity();
 			tile.AddMapPosition(2, 2);
 
-			EventMove.Create(charEntity, tile.mapPosition);
+			EventMoveUnit.Create(charEntity, tile.mapPosition);
 
 			system.Execute();
 
