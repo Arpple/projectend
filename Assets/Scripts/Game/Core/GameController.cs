@@ -13,11 +13,6 @@ namespace End.Game
 		public static GameController Instance;
 		public static bool IsTest;
 
-		public static Player LocalPlayer
-		{
-			get; private set;
-		}
-
 		[Header("Test")]
 		public bool IsOfflineMode = false;
 
@@ -33,6 +28,7 @@ namespace End.Game
 		private bool _isInitialized;
 		private List<Player> _players;
 		private int _playerCount;
+		private Player _localPlayer;
 
 		void Awake()
 		{
@@ -103,7 +99,7 @@ namespace End.Game
 		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
-				.Add(new GameSetupSystem(contexts, Setting, _players, LocalPlayer))
+				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
 				.Add(new DeckSystem(contexts, Setting.DeckSetting))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
@@ -154,7 +150,7 @@ namespace End.Game
 
 		public void AddLocalPlayer(Player player)
 		{
-			LocalPlayer = player;
+			_localPlayer = player;
 		}
 		#endregion
 	}

@@ -11,7 +11,7 @@ namespace End.Game
 	{
 		public static bool IsLocalPlayerTurn
 		{
-			get { return GameController.LocalPlayer.PlayerId == GameEntity.Context.playingOrder.CurrentPlayerId; }
+			get { return GameEntity.LocalPlayer.player.PlayerId == GameEntity.Context.playingOrder.CurrentPlayerId; }
 		}
 	}
 

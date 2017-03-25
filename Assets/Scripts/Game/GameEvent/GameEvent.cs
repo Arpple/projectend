@@ -16,7 +16,7 @@ namespace End.Game
 			}
 			else
 			{
-				GameController.LocalPlayer.CmdCreateEvent(componentId, args);
+				GameEntity.LocalPlayer.player.PlayerObject.CmdCreateEvent(componentId, args);
 			}
 		}
 
