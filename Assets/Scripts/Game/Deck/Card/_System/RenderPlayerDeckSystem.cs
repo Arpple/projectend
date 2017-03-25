@@ -39,7 +39,7 @@ namespace End.Game
 						.playerDeck.PlayerDeckObject
 				);
 
-				e.view.GameObject.transform.SetParent(deck.transform, false);
+				e.view.GameObject.transform.SetParent(deck.transform.FindChild("Content").transform, false);
 			}
 		}
 	}
