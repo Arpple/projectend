@@ -30,9 +30,11 @@ namespace End.Game
 			var spawnpoints = _context.GetEntities(GameMatcher.Spawnpoint);
 			Assert.IsTrue(spawnpoints.Length >= entities.Count);
 
+            int indexSpawnPoint = 0;
 			foreach (var player in entities.Select(e => e.player))
 			{
-				var sp = spawnpoints[player.PlayerId];
+				var sp = spawnpoints[indexSpawnPoint];
+                indexSpawnPoint++;
 
 				var characterType = (Character)player.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);
