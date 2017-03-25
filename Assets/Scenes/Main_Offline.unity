@@ -364,6 +364,10 @@ Prefab:
       propertyPath: m_Name
       value: Skill
       objectReference: {fileID: 0}
+    - target: {fileID: 1298612039460208, guid: 5333cdc24f813164e8f27297cb7fa9d4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5333cdc24f813164e8f27297cb7fa9d4, type: 2}
   m_IsPrefabParent: 0
@@ -2878,6 +2882,10 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -31.600006
       objectReference: {fileID: 0}
+    - target: {fileID: 1592849526345508, guid: e8d1e24145f18dc4787a99b9a9504984, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8d1e24145f18dc4787a99b9a9504984, type: 2}
   m_IsPrefabParent: 0
@@ -3482,6 +3490,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &399868187 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1567111113213040, guid: e9177003bf6b896469b751709c893c8b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117641824}
 --- !u!1 &414064965
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,17 +6666,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2a0e800c2a40341ab73006c4b803b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionButtonGroup:
-    EndButton: {fileID: 164766119}
-    BoxButton: {fileID: 535701338}
-    CardButton: {fileID: 577513578}
-    SkillButton: {fileID: 414064967}
-    TurnButton: {fileID: 1352293206}
+  ActionButton:
+    MainAction:
+      EndButton: {fileID: 164766119}
+      BoxButton: {fileID: 535701338}
+      CardButton: {fileID: 577513578}
+      SkillButton: {fileID: 414064967}
+      TurnButton: {fileID: 1352293206}
+    CardAction:
+      Activate: {fileID: 86019376}
+      Box: {fileID: 900971818}
+      Cancel: {fileID: 376067203}
   InventoryGroup:
     Text: {fileID: 256173524}
     CardContainer: {fileID: 2021611134}
     BoxContainer: {fileID: 74711972}
     SkillContainer: {fileID: 1780688480}
+  TurnPanel: {fileID: 399868187}
 --- !u!1 &779476363
 GameObject:
   m_ObjectHideFlags: 0
@@ -9585,7 +9604,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1567111113213040, guid: e9177003bf6b896469b751709c893c8b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9177003bf6b896469b751709c893c8b, type: 2}
@@ -11487,6 +11506,10 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: -31.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668312651236546, guid: 58f289f7d08653a4e9d4d71c6a94201d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58f289f7d08653a4e9d4d71c6a94201d, type: 2}

@@ -99,11 +99,11 @@ namespace End.Game
 		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
+				.Add(new DataLoadingSystem(contexts, Setting))
 				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
 				.Add(new DeckSystem(contexts, Setting.DeckSetting))
 
 				.Add(new LoadCharacterSystem(contexts, Setting.UnitSetting.CharacterSetting))
-				.Add(new LoadResourceSystem(contexts))
 				.Add(new ViewContainerSystem(contexts))
 				.Add(new RenderMapPositionSystem(contexts))
 

@@ -12,9 +12,9 @@ namespace End.Test
 			return _contexts;
 		}
 
-		public static End.Game.GameSetting GetGameSetting()
+		public static Game.GameSetting GetGameSetting()
 		{
-			return Resources.Load<End.Game.GameSetting>("Game/Core/_Setting/GameSetting");
+			return Object.Instantiate<Game.GameSetting>(Resources.Load<Game.GameSetting>("Game/Core/_Setting/GameSetting"));
 		}
 	}
 }

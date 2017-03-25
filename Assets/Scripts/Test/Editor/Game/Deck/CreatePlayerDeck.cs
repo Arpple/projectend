@@ -22,7 +22,7 @@ namespace End.Test
 		}
 
 		[Test]
-		public void CreateDeckWhenPlayerCreated()
+		public void CreateDeck()
 		{
 			var system = new CreatePlayerDeckSystem(_contexts, _container);
 			var entity = _contexts.game.CreateEntity();
@@ -31,7 +31,7 @@ namespace End.Test
 			player.PlayerId = 1;
 			entity.AddPlayer(player);
 
-			system.Execute();
+			system.Initialize();
 
 			Assert.AreEqual(_container.PlayerDecks[1], _contexts.game.GetEntities(GameMatcher.PlayerDeck).First().playerDeck.PlayerDeckObject);
 		}

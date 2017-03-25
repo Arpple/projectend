@@ -1,32 +1,24 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 using End.Game.UI;
+using System;
 
 namespace End.Game
 {
-	public class CreatePlayerDeckSystem : ReactiveSystem<GameEntity>
+	public class CreatePlayerDeckSystem : IInitializeSystem
 	{
-		private CardContainer _cardContainerUI;
+		private readonly GameContext _context;
+		private readonly CardContainer _cardContainerUI;
 
 		public CreatePlayerDeckSystem(Contexts contexts, CardContainer container)
-			: base(contexts.game)
 		{
+			_context = contexts.game;
 			_cardContainerUI = container;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		public void Initialize()
 		{
-			return context.CreateCollector(GameMatcher.Player, GroupEvent.Added);
-		}
-
-		protected override bool Filter(GameEntity entity)
-		{
-			return entity.hasPlayer;
-		}
-
-		protected override void Execute(List<GameEntity> entities)
-		{
-			foreach (var e in entities)
+			foreach (var e in _context.GetEntities(GameMatcher.Player))
 			{
 				var playerDeck = _cardContainerUI.CreateContainer(e.player.PlayerId);
 				e.AddPlayerDeck(playerDeck);

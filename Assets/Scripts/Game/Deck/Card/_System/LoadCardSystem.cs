@@ -18,7 +18,7 @@ namespace End.Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Card);
+			return context.CreateCollector(GameMatcher.Card, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
@@ -29,16 +29,6 @@ namespace End.Game
 		protected override Blueprint GetBlueprint(GameEntity entity)
 		{
 			return _setting.GetCardBlueprint(entity.card.Type);
-		}
-
-		protected override void Execute(List<GameEntity> entities)
-		{
-			base.Execute(entities);
-
-			foreach(var e in entities)
-			{
-				e.AddPlayerCard(0);
-			}
 		}
 	}
 }

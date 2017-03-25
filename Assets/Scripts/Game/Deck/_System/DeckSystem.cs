@@ -10,8 +10,6 @@ namespace End.Game
 
 			Add(new RenderMiddleDeckSystem(contexts, cardContainer));
 			Add(new RenderPlayerDeckSystem(contexts));
-
-			Add(new LoadCardSystem(contexts, setting.CardSetting));
 		}
 	}
 

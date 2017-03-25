@@ -104,8 +104,9 @@ GameObject:
   - component: {fileID: 224739904566237170}
   - component: {fileID: 222163028682751876}
   - component: {fileID: 114489024637261256}
+  - component: {fileID: 114544459095568098}
   m_Layer: 5
-  m_Name: CardDeck_Mini
+  m_Name: CardDeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,6 +419,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114544459095568098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287037312234532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de38cf4611f5cc4382bc04f394ad69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainImage: {fileID: 114485950949972300}
 --- !u!114 &114674473132141492
 MonoBehaviour:
   m_ObjectHideFlags: 1

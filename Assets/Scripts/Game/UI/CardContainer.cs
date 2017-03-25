@@ -16,6 +16,7 @@ namespace End.Game.UI
 			go.transform.SetParent(transform, false);
 
 			PlayerDecks.Add(playerId, go);
+			go.SetActive(false);
 
 			return go;
 		}
@@ -24,7 +25,6 @@ namespace End.Game.UI
 		{
 			PlayerDecks = new Dictionary<int, GameObject>();
 			var middleDeck = CreateContainer(0);
-			middleDeck.gameObject.SetActive(false);
 			middleDeck.name = "Middle Deck";
 		}
 	}
