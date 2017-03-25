@@ -6,7 +6,7 @@ namespace End.Game.UI
 	{
 		public static GameUI Instance;
 
-		public ActionButtonGroup ActionButtonGroup;
+		public ActionButtonController ActionButtonGroup;
 		public InventoryGroup InventoryGroup;
 
 		private void Awake()
