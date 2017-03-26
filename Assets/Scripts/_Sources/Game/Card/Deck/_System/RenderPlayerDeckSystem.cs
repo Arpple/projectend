@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using Entitas;
-using UnityEngine;
 using End.Game.UI;
 
 namespace End.Game
@@ -9,13 +8,13 @@ namespace End.Game
 	public class RenderPlayerDeckSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
-		private CacheList<int, GameObject> _playerDeckCache;
+		private CacheList<int, PlayerDeck> _playerDeckCache;
 
 		public RenderPlayerDeckSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
-			_playerDeckCache = new CacheList<int, GameObject>();
+			_playerDeckCache = new CacheList<int, PlayerDeck>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -39,7 +38,7 @@ namespace End.Game
 						.playerDeck.PlayerDeckObject
 				);
 
-				e.view.GameObject.transform.SetParent(deck.transform.FindChild("Content").transform, false);
+				deck.AddCard(e.view.GameObject);
 			}
 		}
 	}

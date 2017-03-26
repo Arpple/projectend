@@ -25,7 +25,7 @@ namespace End.Game
 
 				if(player.isLocalPlayer)
 				{
-					playerDeck.SetActive(true);
+					playerDeck.gameObject.SetActive(true);
 				}
 			}
 		}

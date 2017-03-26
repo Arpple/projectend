@@ -28,7 +28,7 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				e.view.GameObject.transform.SetParent(_cardContainer.PlayerDecks[0].transform.FindChild("Content").transform, false);
+				_cardContainer.PlayerDecks[0].AddCard(e.view.GameObject);
 			}
 		}
 	}

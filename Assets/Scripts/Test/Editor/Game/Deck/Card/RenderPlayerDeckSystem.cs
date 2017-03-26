@@ -26,7 +26,7 @@ namespace End.Test
 
 			var container = _contexts.game.CreateEntity();
 			container.AddPlayer(player);
-			container.AddPlayerDeck(new GameObject());
+			container.AddPlayerDeck(new GameObject().AddComponent<PlayerDeck>());
 			
 			var card = _contexts.game.CreateEntity();
 			card.AddPlayerDeckCard(1);

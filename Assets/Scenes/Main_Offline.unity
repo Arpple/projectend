@@ -5621,7 +5621,6 @@ MonoBehaviour:
       Box: {fileID: 900971818}
       Cancel: {fileID: 376067203}
   InventoryGroup:
-    Text: {fileID: 0}
     CardContainer: {fileID: 1377177148}
     BoxContainer: {fileID: 252051764}
     SkillContainer: {fileID: 679152541}
@@ -9458,7 +9457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad36db40b7146e4092397fb74421b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDeckPrefabs: {fileID: 1227802001587710, guid: e86afea9550d52340a8407757413ae44,
+  PlayerDeckPrefabs: {fileID: 114718372869664354, guid: 81d068ce585ef3243bd1fe47244f4184,
     type: 2}
 --- !u!1 &1387818844
 GameObject:

@@ -5,24 +5,24 @@ namespace End.Game.UI
 {
 	public class CardContainer : MonoBehaviour
 	{
-		public GameObject PlayerDeckPrefabs;
-		public Dictionary<int, GameObject> PlayerDecks;
+		public PlayerDeck PlayerDeckPrefabs;
+		public Dictionary<int, PlayerDeck> PlayerDecks;
 
-		public GameObject CreateContainer(int playerId)
+		public PlayerDeck CreateContainer(int playerId)
 		{
-			var go = Instantiate(PlayerDeckPrefabs);
-			go.name = "Player " + playerId;
-			go.transform.SetParent(transform, false);
+			var deck = Instantiate(PlayerDeckPrefabs);
+			deck.name = "Player " + playerId;
+			deck.transform.SetParent(transform, false);
 
-			PlayerDecks.Add(playerId, go);
-			go.SetActive(false);
+			PlayerDecks.Add(playerId, deck);
+			deck.gameObject.SetActive(false);
 
-			return go;
+			return deck;
 		}
 
 		public void Awake()
 		{
-			PlayerDecks = new Dictionary<int, GameObject>();
+			PlayerDecks = new Dictionary<int, PlayerDeck>();
 			var middleDeck = CreateContainer(0);
 			middleDeck.name = "Middle Deck";
 		}
