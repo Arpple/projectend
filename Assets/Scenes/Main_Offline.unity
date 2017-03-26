@@ -5513,7 +5513,6 @@ GameObject:
   - component: {fileID: 766729634}
   - component: {fileID: 766729633}
   - component: {fileID: 766729637}
-  - component: {fileID: 766729638}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -5605,7 +5604,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 766729632}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce2a0e800c2a40341ab73006c4b803b7, type: 3}
   m_Name: 
@@ -5626,31 +5625,6 @@ MonoBehaviour:
     BoxContainer: {fileID: 252051764}
     SkillContainer: {fileID: 679152541}
   TurnPanel: {fileID: 399868187}
---- !u!114 &766729638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 766729632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df1239529ea20864ea0b843a2d5fa2ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainGroup:
-    EndButton: {fileID: 164766119}
-    BoxButton:
-      Button: {fileID: 535701339}
-      Panel: {fileID: 252051764}
-    CardButton:
-      Button: {fileID: 577513579}
-      Panel: {fileID: 1377177146}
-    SkillButton:
-      Button: {fileID: 414064968}
-      Panel: {fileID: 679152541}
-    TurnButton:
-      Button: {fileID: 1352293207}
-      Panel: {fileID: 399868187}
 --- !u!1 &779476363
 GameObject:
   m_ObjectHideFlags: 0
@@ -9483,7 +9457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad36db40b7146e4092397fb74421b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDeckPrefabs: {fileID: 114718372869664354, guid: 81d068ce585ef3243bd1fe47244f4184,
+  PlayerDeckPrefabs: {fileID: 114658536204716022, guid: e86afea9550d52340a8407757413ae44,
     type: 2}
 --- !u!1 &1387818844
 GameObject:

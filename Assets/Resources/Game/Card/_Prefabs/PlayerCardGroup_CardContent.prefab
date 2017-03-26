@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 222875189255746048}
   - component: {fileID: 114365430749639344}
   - component: {fileID: 114835122639598740}
+  - component: {fileID: 114658536204716022}
   m_Layer: 5
-  m_Name: CardContent(In PlayerDeck)
+  m_Name: PlayerCardGroup_CardContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,6 +109,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114658536204716022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1227802001587710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62af3fcff071bea489df4d1833708b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Content: {fileID: 1868942223894034}
 --- !u!114 &114835122639598740
 MonoBehaviour:
   m_ObjectHideFlags: 1
