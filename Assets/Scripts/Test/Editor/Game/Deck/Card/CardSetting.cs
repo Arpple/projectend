@@ -12,7 +12,7 @@ namespace End.Test
 		[SetUp]
 		public void Init()
 		{
-			_setting = TestHelper.GetGameSetting().DeckSetting.CardSetting;
+			_setting = TestHelper.GetGameSetting().CardSetting;
 
 			Assert.IsNotNull(_setting.CardBlueprints);
 			Assert.IsNotNull(_setting.Deck);

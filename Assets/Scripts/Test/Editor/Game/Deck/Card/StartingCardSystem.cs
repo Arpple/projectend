@@ -16,13 +16,13 @@ namespace End.Test
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			_setting = TestHelper.GetGameSetting().DeckSetting.CardSetting;
+			_setting = TestHelper.GetGameSetting().CardSetting;
 		}
 
 		[Test]
 		public void CreateCardForAllPlayer()
 		{
-			var system = new StartingCardSystem(_contexts, _setting);
+			var system = new StartingDeckCardSystem(_contexts, _setting);
 
 			_setting.StartCardCount = 1;
 
@@ -34,7 +34,7 @@ namespace End.Test
 				
 				var card = _contexts.game.CreateEntity();
 				card.AddCard((short)i, Card.Move);
-				card.AddPlayerCard(0);
+				card.AddPlayerDeckCard(0);
 			});
 
 			system.Initialize();

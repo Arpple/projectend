@@ -23,9 +23,9 @@ namespace End.Test
 		[Test]
 		public void CardViewObjectMovedToDeckObject()
 		{
-			var system = new RenderMiddleDeckSystem(_contexts, _container);
+			var system = new RenderShareDeckSystem(_contexts, _container);
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerCard(0);
+			card.AddPlayerDeckCard(0);
 			card.AddView(new GameObject());
 
 			system.Execute();

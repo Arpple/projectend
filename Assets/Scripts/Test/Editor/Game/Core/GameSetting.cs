@@ -20,7 +20,7 @@ namespace End.Test
 		{
 			Assert.IsNotNull(_setting.MapSetting);
 			Assert.IsNotNull(_setting.UnitSetting);
-			Assert.IsNotNull(_setting.DeckSetting);
+			Assert.IsNotNull(_setting.CardSetting);
 		}
 	}
 }

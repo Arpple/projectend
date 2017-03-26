@@ -20,7 +20,7 @@ namespace End.Test
 		{
 			var card = _contexts.game.CreateEntity();
 			card.AddCard(1, Card.Move);
-			card.AddPlayerCard(1);
+			card.AddPlayerDeckCard(1);
 
 			EventMoveCard.MoveCard(card, 2);
 
@@ -41,13 +41,13 @@ namespace End.Test
 
 			var card = _contexts.game.CreateEntity();
 			card.AddCard(1, Card.Move);
-			card.AddPlayerCard(1);
+			card.AddPlayerDeckCard(1);
 
 			EventMoveCard.MoveCard(card, 2);
 
 			system.Execute();
 
-			Assert.AreEqual(2, card.playerCard.CurrentOwnerId);
+			Assert.AreEqual(2, card.playerDeckCard.CurrentOwnerId);
 		}
 	}
 
