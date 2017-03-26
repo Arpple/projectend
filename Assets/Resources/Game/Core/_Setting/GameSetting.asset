@@ -21,11 +21,10 @@ MonoBehaviour:
         type: 2}
       CharacterIconPrefabs: {fileID: 114917532828873708, guid: ea4f123b8ee52c742b5d5650d674d9be,
         type: 2}
-  DeckSetting:
-    CardSetting:
-      StartCardCount: 5
-      CardBlueprints: {fileID: 11400000, guid: 8493ba8223b613c4aa81aa0098f5f0c1, type: 2}
-      Deck:
-        SettingList:
-        - Type: 0
-          Count: 50
+  CardSetting:
+    StartCardCount: 0
+    CardBlueprints: {fileID: 11400000, guid: 8493ba8223b613c4aa81aa0098f5f0c1, type: 2}
+    Deck:
+      SettingList:
+      - Type: 0
+        Count: 50

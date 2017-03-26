@@ -15,7 +15,7 @@ namespace End.Test
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			_slideMenu = SlideMenu.Instantiate(Resources.Load<SlideMenu>("Game/UI/Misc/SlideMenu/SlideMenu"));
+			_slideMenu = SlideMenu.Instantiate(Resources.Load<SlideMenu>("Misc/SlideMenu/SlideMenu"));
 		}
 
 		[Test]

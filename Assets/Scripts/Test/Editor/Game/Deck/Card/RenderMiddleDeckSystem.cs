@@ -17,6 +17,7 @@ namespace End.Test
 			_contexts = TestHelper.CreateContexts();
 			var obj = new GameObject();
 			_container = obj.AddComponent<CardContainer>();
+			_container.PlayerDeckPrefabs = new GameObject();
 			_container.Awake();
 		}
 
