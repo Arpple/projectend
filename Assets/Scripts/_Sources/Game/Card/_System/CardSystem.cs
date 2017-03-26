@@ -6,7 +6,7 @@ namespace End.Game
 	{
 		public CardSystem(Contexts contexts) : base("Deck System")
 		{
-			var cardContainer = UI.GameUI.Instance.InventoryGroup.CardContainer;
+			var cardContainer = UI.GameUI_Old.Instance.InventoryGroup.CardContainer;
 
 			//card
 
