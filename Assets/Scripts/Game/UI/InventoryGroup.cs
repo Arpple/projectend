@@ -8,7 +8,6 @@ namespace End.Game.UI
 	[Serializable]
 	public class InventoryGroup
 	{
-		public Text Text; //? change name?
 		public CardContainer CardContainer;
 		public GameObject BoxContainer;
 		public GameObject SkillContainer;
@@ -18,14 +17,8 @@ namespace End.Game.UI
 			Assert.IsNotNull(CardContainer);
 			Assert.IsNotNull(BoxContainer);
 			Assert.IsNotNull(SkillContainer);
-			Assert.IsNotNull(Text);
 
 			CardContainer.Awake();
-		}
-
-		public void SetText(string text)
-		{
-			Text.text = text;
 		}
 	}
 
