@@ -29,7 +29,7 @@ namespace End.Game.UI
 			}
 		}
 
-		public ActionButton EndButton;
+		public Button EndButton;
 		public PanelToggleButton BoxButton;
 		public PanelToggleButton CardButton;
 		public PanelToggleButton SkillButton;
@@ -62,7 +62,8 @@ namespace End.Game.UI
 				button.Init();
 				button.Button.onClick.AddListener(() => HideAllExcept(button));
 			}
-			
+
+			EndButton.onClick.AddListener(() => EventEndTurn.TryEndTurn());
 		}
 
 		public void HideAllExcept(PanelToggleButton panelButton)

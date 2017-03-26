@@ -13,6 +13,8 @@ namespace End.Game
 		{
 			get { return GameEntity.LocalPlayer.player.PlayerId == GameEntity.Context.playingOrder.CurrentPlayerId; }
 		}
+
+		public static GameEntity LocalPlayerEntity;
 	}
 
 }

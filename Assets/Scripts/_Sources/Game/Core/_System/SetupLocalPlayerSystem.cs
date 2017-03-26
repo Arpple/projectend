@@ -14,9 +14,11 @@ namespace End.Game
 
 		public void Initialize()
 		{
-			GameEntity.Player.Where(p => p.player.PlayerObject == _localPlayer)
-				.First()
-				.isLocalPlayer = true;
+			var localPlayerEntity = GameEntity.Player.Where(p => p.player.PlayerObject == _localPlayer)
+				.First();
+
+			localPlayerEntity.isLocalPlayer = true;
+			GameUtil.LocalPlayerEntity = localPlayerEntity;
 		}
 	}
 }

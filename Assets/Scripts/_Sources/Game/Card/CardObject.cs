@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class CardObject : MonoBehaviour, ICustomView
 	{
@@ -18,6 +18,11 @@ namespace End.Game
 		public void SetImage(Sprite image)
 		{
 			MainImage.sprite = image;
+		}
+
+		public void OnClick()
+		{
+			GameUI.Instance.OnCardClicked(this);
 		}
 	}
 
