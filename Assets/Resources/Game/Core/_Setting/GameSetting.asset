@@ -28,4 +28,4 @@ MonoBehaviour:
       Deck:
         SettingList:
         - Type: 0
-          Count: 5
+          Count: 50
