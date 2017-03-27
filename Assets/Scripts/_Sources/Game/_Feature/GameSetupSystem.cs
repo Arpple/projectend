@@ -19,14 +19,14 @@ namespace End.Game
 
 			//card
 			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.CardContainer));
-			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.Deck));
+			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.DeckSetting.Deck));
 			
 			//turn
 			Add(new PlayingOrderSystem(contexts, players));
 
 			if(localPlayer.isServer || GameController.Instance.IsOffline)
 			{
-				Add(new StartingDeckCardSystem(contexts, setting.CardSetting));
+				Add(new StartingDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
 			}
 		}
 	}

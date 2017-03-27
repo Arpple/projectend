@@ -8,7 +8,7 @@ namespace End.Game
 		{
 			Add(new LoadResourceSystem(contexts));
 
-			Add(new LoadDeckCardSystem(contexts, setting.CardSetting));
+			Add(new LoadDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
 			Add(new LoadCharacterSystem(contexts, setting.UnitSetting.CharacterSetting));
 		}
 	}

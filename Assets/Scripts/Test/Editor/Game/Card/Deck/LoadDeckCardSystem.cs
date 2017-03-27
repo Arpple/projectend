@@ -7,13 +7,13 @@ namespace End.Test
 	public class TestLoadDeckCardSystem
 	{
 		private Contexts _contexts;
-		private CardSetting _setting;
+		private DeckSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			_setting = TestHelper.GetGameSetting().CardSetting;
+			_setting = TestHelper.GetGameSetting().CardSetting.DeckSetting;
 		}
 
 		[Test]

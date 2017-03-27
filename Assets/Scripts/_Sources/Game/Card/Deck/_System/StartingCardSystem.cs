@@ -7,9 +7,9 @@ namespace End.Game
 	public class StartingDeckCardSystem : IInitializeSystem
 	{
 		private readonly GameContext _context;
-		private readonly CardSetting _setting;
+		private readonly DeckSetting _setting;
 
-		public StartingDeckCardSystem(Contexts contexts, CardSetting setting)
+		public StartingDeckCardSystem(Contexts contexts, DeckSetting setting)
 		{
 			_context = contexts.game;
 			_setting = setting;

@@ -8,9 +8,9 @@ namespace End.Game
 {
 	public class LoadDeckCardSystem : LoadBlueprintSystem
 	{
-		readonly CardSetting _setting;
+		readonly DeckSetting _setting;
 
-		public LoadDeckCardSystem(Contexts contexts, CardSetting setting)
+		public LoadDeckCardSystem(Contexts contexts, DeckSetting setting)
 			: base(contexts)
 		{
 			_setting = setting;

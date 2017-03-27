@@ -5,14 +5,14 @@ using End.Game;
 
 namespace End.Test
 {
-	public class TestCardSetting
+	public class TestDeckSetting
 	{
-		private CardSetting _setting;
+		private DeckSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			_setting = TestHelper.GetGameSetting().CardSetting;
+			_setting = TestHelper.GetGameSetting().CardSetting.DeckSetting;
 
 			Assert.IsNotNull(_setting.CardBlueprints);
 			Assert.IsNotNull(_setting.Deck);
