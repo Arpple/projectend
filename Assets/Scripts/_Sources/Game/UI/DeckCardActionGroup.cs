@@ -53,9 +53,15 @@ namespace End.Game.UI
 		{
 			if(card.Entity.hasAbility)
 			{
-				card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter);
+				card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter, 
+					() =>
+					{
+						EventMoveCard.MoveCardToDeck(card.Entity);
+						CloseAction();
+					}
+				);
+				
 			}
-
 		}
 	}
 

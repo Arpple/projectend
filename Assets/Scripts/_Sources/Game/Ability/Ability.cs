@@ -9,6 +9,6 @@ namespace End.Game
 		/// Activates the ability.
 		/// </summary>
 		/// <param name="caster">The caster.</param>
-		public abstract void ActivateAbility(GameEntity caster);
+		public abstract void ActivateAbility(GameEntity caster, Action callback);
 	}
 }

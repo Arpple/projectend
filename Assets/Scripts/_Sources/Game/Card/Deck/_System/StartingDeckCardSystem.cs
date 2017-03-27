@@ -27,7 +27,7 @@ namespace End.Game
 			{
 				_setting.StartCardCount.Loop(() => 
 				{
-					EventMoveCard.MoveCard(cards[i], p.PlayerId);
+					EventMoveCard.MoveCardToPlayer(cards[i], p.PlayerId);
 					i++;
 				});
 			}

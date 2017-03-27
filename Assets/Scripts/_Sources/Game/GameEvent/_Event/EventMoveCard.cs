@@ -11,11 +11,18 @@ namespace End.Game
 		public GameEntity CardEntity;
 		public int TargetPlayerId;
 
-		public static void MoveCard(GameEntity cardEntity,int playerId)
+		public static void MoveCardToPlayer(GameEntity cardEntity, int playerId)
 		{
 			Assert.IsTrue(cardEntity.hasCard);
 
 			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, playerId);
+		}
+
+		public static void MoveCardToDeck(GameEntity cardEntity)
+		{
+			Assert.IsTrue(cardEntity.hasCard);
+
+			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, 0);
 		}
 
 		public void Decode(int cardId, int playerId)
@@ -45,7 +52,14 @@ namespace End.Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var e = entity.eventMoveCard;
-			e.CardEntity.ReplacePlayerCard(e.TargetPlayerId);
+			if(e.TargetPlayerId != 0)
+			{
+				e.CardEntity.ReplacePlayerCard(e.TargetPlayerId);
+			}
+			else
+			{
+				e.CardEntity.RemovePlayerCard();
+			}
 		}
 	}
 }

@@ -10,15 +10,17 @@ namespace End.Game
 
 		private GameEntity[] _showingArea;
 		private GameEntity _caster;
+		private Action _callback;
 
 		/// <summary>
 		/// Activates the ability.
 		/// </summary>
 		/// <param name="caster">The caster.</param>
-		public override void ActivateAbility(GameEntity caster)
+		public override void ActivateAbility(GameEntity caster, Action callback)
 		{
 			Assert.IsTrue(caster.hasMapPosition);
 			_caster = caster;
+			_callback = callback;
 			ShowTarget();
 		}
 
@@ -84,6 +86,7 @@ namespace End.Game
 		{
 			ApplyAbilityEffect(_caster, target);
 			ClearArea();
+			_callback();
 		}
 	}
 }
