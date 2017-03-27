@@ -813,7 +813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &86019375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2500,7 +2500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &376067202
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5833,9 +5833,10 @@ MonoBehaviour:
     TurnButton:
       Button: {fileID: 1352293207}
       Panel: {fileID: 399868187}
-  CardGroup:
-    Description: {fileID: 0}
-    ActiveCard: {fileID: 0}
+  DeckGroup:
+    ActiveButton: {fileID: 86019377}
+    BoxButton: {fileID: 900971819}
+    CancelButton: {fileID: 376067204}
   CardDesc: {fileID: 308883055}
 --- !u!1 &779476363
 GameObject:
@@ -6282,7 +6283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &900971817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11386,7 +11387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1664891811
 RectTransform:
   m_ObjectHideFlags: 0

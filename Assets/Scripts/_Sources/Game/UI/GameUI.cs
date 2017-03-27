@@ -9,9 +9,11 @@ namespace End.Game.UI
 		public static GameUI Instance;
 
 		public MainActionGroup MainGroup;
-		public CardActionGroup CardGroup;
+		public DeckCardActionGroup DeckGroup;
 
 		public CardDescription CardDesc;
+
+		private CardObject _activeCard;
 
 		private void Awake()
 		{
@@ -26,26 +28,35 @@ namespace End.Game.UI
 
 		public void OnCardClicked(CardObject card)
 		{
-			//TODO: switch card type and call that group
-			if(CardGroup.ActiveCard != card)
+			if(_activeCard != card)
 			{
-				CardGroup.ActiveCard = card;
-
+				_activeCard = card;
 				CardDesc.SetDescription(card);
 				CardDesc.gameObject.SetActive(true);
+				MainGroup.ToggleButtons(false);
+
+				//TODO: switch card type and call that group
+				DeckGroup.ShowAction(card);
+				
+
 				//hightlight card
 				//switch to card action
 			}
 			else
 			{
-				ResetAction();
+				HideCardAction();
 			}
 		}
 
-		public void ResetAction()
+		public void HideCardAction()
 		{
 			CardDesc.gameObject.SetActive(false);
-			CardGroup.ActiveCard = null;
+			_activeCard = null;
+
+			//TODO: switch card type and call that group
+			DeckGroup.CloseAction();
+
+			MainGroup.ToggleButtons(true);
 		}
 	}
 }

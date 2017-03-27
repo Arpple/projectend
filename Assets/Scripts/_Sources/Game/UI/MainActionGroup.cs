@@ -73,5 +73,14 @@ namespace End.Game.UI
 				pb.Panel.gameObject.SetActive(false);
 			}
 		}
+
+		public void ToggleButtons(bool isVisible)
+		{
+			foreach(var pb in PanelButtons)
+			{
+				pb.Button.gameObject.SetActive(isVisible);
+			}
+			EndButton.gameObject.SetActive(isVisible);
+		}
 	}
 }
