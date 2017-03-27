@@ -9,6 +9,8 @@ namespace End.Game
 			Add(new LoadDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
 			Add(new LoadCharacterSystem(contexts, setting.UnitSetting.CharacterSetting));
 
+			Add(new LoadAbilitySystem(contexts));
+
 			Add(new LoadResourceSystem(contexts));
 		}
 	}

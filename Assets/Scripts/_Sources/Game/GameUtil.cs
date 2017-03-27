@@ -15,6 +15,7 @@ namespace End.Game
 		}
 
 		public static GameEntity LocalPlayerEntity;
+		public static GameEntity LocalPlayerCharacter;
 	}
 
 }

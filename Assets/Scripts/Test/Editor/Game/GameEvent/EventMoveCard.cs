@@ -22,7 +22,7 @@ namespace End.Test
 			card.AddCard(1, Card.Move);
 			card.AddPlayerCard(1);
 
-			EventMoveCard.MoveCard(card, 2);
+			EventMoveCard.MoveCardToPlayer(card, 2);
 
 			var eventEntity = _contexts.gameEvent.GetEntities();
 
@@ -43,7 +43,7 @@ namespace End.Test
 			card.AddCard(1, Card.Move);
 			card.AddPlayerCard(1);
 
-			EventMoveCard.MoveCard(card, 2);
+			EventMoveCard.MoveCardToPlayer(card, 2);
 
 			system.Execute();
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using Entitas.Unity;
 
 namespace End.Game
 {
@@ -8,19 +9,30 @@ namespace End.Game
         private static GameObject _parent;
 
 		public SpriteRenderer SelectionBorder;
+		public SpriteRenderer Span;
 		public SpriteRenderer TileSprite;
-		public TileClickAction ClickAction;
-        public TileHoverAction MouseEnterAction;
+		public TileHoverAction MouseEnterAction;
 
 		public delegate void TileClickAction();
         public delegate void TileHoverAction();
 
+		public GameEntity Entity
+		{
+			get { return (GameEntity)gameObject.GetEntityLink().entity; }
+		}
+
+		private void Start()
+		{
+			SelectionBorder.enabled = false;
+			Span.enabled = false;
+		}
+
 		void OnMouseDown()
 		{
             if(EventSystem.current.IsPointerOverGameObject()) return;
-            if(ClickAction != null)
+            if(Entity.hasTileAction)
 			{
-				ClickAction();
+				Entity.tileAction.OnSelected();
 			}
 		}
 

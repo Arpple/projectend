@@ -37,7 +37,7 @@ namespace End.Game {
                 var tileCon = e.view.GameObject.GetComponent<TileController>();
                 Assert.IsNotNull(tileCon);
 
-                tileCon.ClickAction = null;
+               // tileCon.ClickAction = null;
             }
         }
     }

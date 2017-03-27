@@ -1,37 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public abstract class TargetAbility : Ability
+	public abstract class TargetAbility : Ability, ITargetAbility
 	{
 		protected virtual int _range{ get { return 1; } }
 
-		private readonly List<GameEntity> _showingArea;
-
-		public TargetAbility()
-		{
-			_showingArea = new List<GameEntity>();
-		}
+		private GameEntity[] _showingArea;
+		private GameEntity _caster;
+		private Action _callback;
 
 		/// <summary>
 		/// Activates the ability.
 		/// </summary>
 		/// <param name="caster">The caster.</param>
-		public override void ActivateAbility(GameEntity caster)
+		public override void ActivateAbility(GameEntity caster, Action callback)
 		{
 			Assert.IsTrue(caster.hasMapPosition);
-
-			var inAreaTargets = GetTileEntityInArea(caster);
-			foreach(var targetPosition in inAreaTargets)
-			{
-				ShowAreaOnPosition(targetPosition);
-				var target = GetTarget(targetPosition);
-				if(target != null)
-				{
-					targetPosition.AddTileAction(() => OnTargetSelected(caster, GetTarget(targetPosition)));
-				}
-			}
+			_caster = caster;
+			_callback = callback;
+			ShowTarget();
 		}
 
 		/// <summary>
@@ -40,7 +30,7 @@ namespace End.Game
 		/// <param name="position">The position in area.</param>
 		public void ShowAreaOnPosition(GameEntity position)
 		{
-			//TODO: highlight 
+			position.view.GameObject.GetComponent<TileController>().Span.enabled = true;
 		}
 
 		/// <summary>
@@ -52,26 +42,15 @@ namespace End.Game
 		}
 
 		/// <summary>
-		/// Called when select target
-		/// </summary>
-		/// <param name="caster">The caster.</param>
-		/// <param name="target">The target.</param>
-		public void OnTargetSelected(GameEntity caster, GameEntity target)
-		{
-			ApplyAbilityEffect(caster, target);
-			ClearArea();
-		}
-
-		/// <summary>
 		/// Clears the area action.
 		/// </summary>
 		public void ClearArea()
 		{
 			foreach(var e in _showingArea)
 			{
-				//TODO: unhightlight
+				e.view.GameObject.GetComponent<TileController>().Span.enabled = false;
 
-				if(e.hasTileAction)
+				if (e.hasTileAction)
 				{
 					e.RemoveTileAction();
 				}
@@ -88,5 +67,26 @@ namespace End.Game
 		public abstract GameEntity GetTarget(GameEntity position);
 
 		public abstract void ApplyAbilityEffect(GameEntity caster, GameEntity target);
+
+		public void ShowTarget()
+		{
+			_showingArea = GetTileEntityInArea(_caster);
+			foreach (var targetPosition in _showingArea)
+			{
+				ShowAreaOnPosition(targetPosition);
+				var target = GetTarget(targetPosition);
+				if (target != null)
+				{
+					targetPosition.AddTileAction(() => OnTargetSelected((targetPosition)));
+				}
+			}
+		}
+
+		public void OnTargetSelected(GameEntity target)
+		{
+			ApplyAbilityEffect(_caster, target);
+			ClearArea();
+			_callback();
+		}
 	}
 }

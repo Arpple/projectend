@@ -44,9 +44,24 @@ namespace End.Game.UI
 				btn.gameObject.SetActive(true);
 			}
 
-			ActiveButton.onClick.AddListener(() => Debug.Log("Use " + card));
+			ActiveButton.onClick.AddListener(() => ActivateCard(card));
 			BoxButton.onClick.AddListener(() => Debug.Log("Move to box " + card));
 			CancelButton.onClick.AddListener(() => CloseAction());
+		}
+
+		public void ActivateCard(CardObject card)
+		{
+			if(card.Entity.hasAbility)
+			{
+				card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter, 
+					() =>
+					{
+						EventMoveCard.MoveCardToDeck(card.Entity);
+						CloseAction();
+					}
+				);
+				
+			}
 		}
 	}
 
