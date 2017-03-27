@@ -16,12 +16,12 @@ namespace End.Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.PlayerDeckCard, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayerDeckCard && entity.playerDeckCard.CurrentOwnerId == 0;
+			return entity.hasPlayerCard && entity.playerCard.CurrentOwnerId == 0;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

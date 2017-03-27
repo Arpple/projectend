@@ -26,7 +26,7 @@ namespace End.Test
 		{
 			var system = new RenderShareDeckSystem(_contexts, _container);
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerDeckCard(0);
+			card.AddPlayerCard(0);
 			card.AddView(new GameObject());
 
 			system.Execute();

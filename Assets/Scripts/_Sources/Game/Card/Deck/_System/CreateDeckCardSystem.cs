@@ -29,7 +29,7 @@ namespace End.Game
 				{
 					var e = _context.CreateEntity();
 					e.AddCard(id, cardSet.Type);
-					e.AddPlayerDeckCard(0);
+					e.AddPlayerCard(0);
 					id++;
 				});
 			}

@@ -34,7 +34,7 @@ namespace End.Test
 				
 				var card = _contexts.game.CreateEntity();
 				card.AddCard((short)i, Card.Move);
-				card.AddPlayerDeckCard(0);
+				card.AddPlayerCard(0);
 			});
 
 			system.Initialize();

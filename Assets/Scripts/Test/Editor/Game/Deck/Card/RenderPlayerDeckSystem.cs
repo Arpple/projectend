@@ -29,7 +29,7 @@ namespace End.Test
 			container.AddPlayerDeck(new GameObject().AddComponent<PlayerDeck>());
 			
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerDeckCard(1);
+			card.AddPlayerCard(1);
 			card.AddView(new GameObject());
 
 			system.Execute();

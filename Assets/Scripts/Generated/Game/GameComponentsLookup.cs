@@ -17,8 +17,8 @@ public static class GameComponentsLookup {
     public const int MapPosition = 6;
     public const int Player = 7;
     public const int PlayerBox = 8;
-    public const int PlayerDeck = 9;
-    public const int PlayerDeckCard = 10;
+    public const int PlayerCard = 9;
+    public const int PlayerDeck = 10;
     public const int PlayingOrder = 11;
     public const int Resource = 12;
     public const int Spawnpoint = 13;
@@ -45,8 +45,8 @@ public static class GameComponentsLookup {
         "MapPosition",
         "Player",
         "PlayerBox",
+        "PlayerCard",
         "PlayerDeck",
-        "PlayerDeckCard",
         "PlayingOrder",
         "Resource",
         "Spawnpoint",
@@ -72,8 +72,8 @@ public static class GameComponentsLookup {
         typeof(End.Game.MapPositionComponent),
         typeof(End.Game.PlayerComponent),
         typeof(End.Game.PlayerBoxComponent),
+        typeof(End.Game.PlayerCardComponent),
         typeof(End.Game.PlayerDeckComponent),
-        typeof(End.Game.PlayerDeckCardComponent),
         typeof(End.Game.PlayingOrderComponent),
         typeof(End.Game.ResourceComponent),
         typeof(End.Game.SpawnpointComponent),

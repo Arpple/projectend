@@ -19,19 +19,19 @@ namespace End.Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.PlayerDeckCard, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayerDeckCard && entity.playerDeckCard.CurrentOwnerId > 0;
+			return entity.hasPlayerCard && entity.playerCard.CurrentOwnerId > 0;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				var deck = _playerDeckCache.Get(e.playerDeckCard.CurrentOwnerId, (id) =>
+				var deck = _playerDeckCache.Get(e.playerCard.CurrentOwnerId, (id) =>
 					_context.GetEntities(GameMatcher.PlayerDeck)
 						.Where(p => p.player.PlayerId == id)
 						.First()
