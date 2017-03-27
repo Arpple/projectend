@@ -4,7 +4,7 @@ using End.Game;
 
 namespace End.Test
 {
-	public class TestLoadCardSystem
+	public class TestLoadDeckCardSystem
 	{
 		private Contexts _contexts;
 		private CardSetting _setting;

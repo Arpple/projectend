@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace End.Test
 {
-	public class TestStartingCardSystem
+	public class TestStartingDeckCardSystem
 	{
 		private Contexts _contexts;
 		private CardSetting _setting;
