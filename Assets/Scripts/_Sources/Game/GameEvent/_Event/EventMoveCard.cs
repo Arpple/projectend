@@ -14,7 +14,6 @@ namespace End.Game
 		public static void MoveCard(GameEntity cardEntity,int playerId)
 		{
 			Assert.IsTrue(cardEntity.hasCard);
-			Assert.IsTrue(cardEntity.hasPlayerCard);
 
 			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, playerId);
 		}

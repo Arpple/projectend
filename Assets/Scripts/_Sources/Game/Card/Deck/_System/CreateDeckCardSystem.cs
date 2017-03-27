@@ -29,7 +29,6 @@ namespace End.Game
 				{
 					var e = _context.CreateEntity();
 					e.AddCard(id, cardSet.Type);
-					e.AddPlayerCard(0);
 					id++;
 				});
 			}
