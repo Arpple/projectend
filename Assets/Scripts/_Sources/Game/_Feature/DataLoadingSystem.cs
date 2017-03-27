@@ -6,9 +6,10 @@ namespace End.Game
 	{
 		public DataLoadingSystem(Contexts contexts, GameSetting setting) : base("Data Loading System")
 		{
-			Add(new LoadDeckCardSystem(contexts, setting.CardSetting));
-
 			Add(new LoadResourceSystem(contexts));
+
+			Add(new LoadDeckCardSystem(contexts, setting.CardSetting));
+			Add(new LoadCharacterSystem(contexts, setting.UnitSetting.CharacterSetting));
 		}
 	}
 

@@ -12,12 +12,14 @@ namespace End.Game.UI
 		public DeckCardActionGroup DeckGroup;
 
 		public CardDescription CardDesc;
+		public CardContainer CardContainer;
 
 		private CardObject _activeCard;
 
 		private void Awake()
 		{
 			Instance = this;
+			CardContainer.Init();
 		}
 
 		private void Start()

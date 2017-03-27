@@ -19,7 +19,7 @@ namespace End.Test
 			var obj = new GameObject();
 			_container = obj.AddComponent<CardContainer>();
 			_container.PlayerDeckPrefabs = new GameObject().AddComponent<PlayerDeck>();
-			_container.Awake();
+			_container.Init();
 		}
 
 		[Test]

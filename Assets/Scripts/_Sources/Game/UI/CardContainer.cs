@@ -21,7 +21,7 @@ namespace End.Game.UI
 			return deck;
 		}
 
-		public void Awake()
+		public void Init()
 		{
 			PlayerDecks = new Dictionary<int, PlayerDeck>();
 			var middleDeck = CreateContainer(0);

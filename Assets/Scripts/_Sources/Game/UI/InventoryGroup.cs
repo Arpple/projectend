@@ -18,7 +18,7 @@ namespace End.Game.UI
 			Assert.IsNotNull(BoxContainer);
 			Assert.IsNotNull(SkillContainer);
 
-			CardContainer.Awake();
+			CardContainer.Init();
 		}
 	}
 

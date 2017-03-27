@@ -5838,6 +5838,7 @@ MonoBehaviour:
     BoxButton: {fileID: 900971819}
     CancelButton: {fileID: 376067204}
   CardDesc: {fileID: 308883055}
+  CardContainer: {fileID: 1377177148}
 --- !u!1 &779476363
 GameObject:
   m_ObjectHideFlags: 0
