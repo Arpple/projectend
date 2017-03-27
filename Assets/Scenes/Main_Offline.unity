@@ -806,7 +806,6 @@ GameObject:
   - component: {fileID: 86019379}
   - component: {fileID: 86019378}
   - component: {fileID: 86019377}
-  - component: {fileID: 86019376}
   m_Layer: 5
   m_Name: Active
   m_TagString: Untagged
@@ -835,18 +834,6 @@ RectTransform:
   m_AnchoredPosition: {x: 540, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &86019376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 86019374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 86019377}
 --- !u!114 &86019377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,7 +873,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 86019376}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -1305,7 +1292,6 @@ GameObject:
   - component: {fileID: 164766122}
   - component: {fileID: 164766121}
   - component: {fileID: 164766120}
-  - component: {fileID: 164766119}
   m_Layer: 5
   m_Name: EndTurn
   m_TagString: Untagged
@@ -1334,18 +1320,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &164766119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 164766117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 164766120}
 --- !u!114 &164766120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,7 +1359,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164766119}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -2493,7 +2467,6 @@ GameObject:
   - component: {fileID: 376067206}
   - component: {fileID: 376067205}
   - component: {fileID: 376067204}
-  - component: {fileID: 376067203}
   m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
@@ -2522,18 +2495,6 @@ RectTransform:
   m_AnchoredPosition: {x: 715, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &376067203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 376067201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 376067204}
 --- !u!114 &376067204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,7 +2534,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 376067203}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -2717,7 +2678,6 @@ GameObject:
   - component: {fileID: 414064970}
   - component: {fileID: 414064969}
   - component: {fileID: 414064968}
-  - component: {fileID: 414064967}
   m_Layer: 5
   m_Name: Ability
   m_TagString: Untagged
@@ -2746,18 +2706,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &414064967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414064965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 414064968}
 --- !u!114 &414064968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,7 +2745,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 414064967}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -3347,7 +3295,6 @@ GameObject:
   - component: {fileID: 535701341}
   - component: {fileID: 535701340}
   - component: {fileID: 535701339}
-  - component: {fileID: 535701338}
   m_Layer: 5
   m_Name: Box
   m_TagString: Untagged
@@ -3376,18 +3323,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &535701338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 535701336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 535701339}
 --- !u!114 &535701339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3427,7 +3362,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 535701338}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -3552,7 +3487,6 @@ GameObject:
   - component: {fileID: 559058517}
   - component: {fileID: 559058516}
   - component: {fileID: 559058515}
-  - component: {fileID: 559058514}
   m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
@@ -3581,18 +3515,6 @@ RectTransform:
   m_AnchoredPosition: {x: 715, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &559058514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 559058512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 559058515}
 --- !u!114 &559058515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3632,7 +3554,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 559058514}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -4000,7 +3922,6 @@ GameObject:
   - component: {fileID: 577513581}
   - component: {fileID: 577513580}
   - component: {fileID: 577513579}
-  - component: {fileID: 577513578}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -4029,18 +3950,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &577513578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 577513576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 577513579}
 --- !u!114 &577513579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,7 +3989,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 577513578}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -4944,8 +4853,6 @@ GameObject:
   - component: {fileID: 684309196}
   - component: {fileID: 684309200}
   - component: {fileID: 684309199}
-  - component: {fileID: 684309198}
-  - component: {fileID: 684309197}
   m_Layer: 5
   m_Name: TabIcon
   m_TagString: Untagged
@@ -4973,72 +4880,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &684309197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114334104844670026, guid: 2fcf8dbcdab45684ebf8272fa814d605,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 684309195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 684309198}
---- !u!114 &684309198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114597207911119692, guid: 2fcf8dbcdab45684ebf8272fa814d605,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 684309195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 684309199}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 684309197}
-        m_MethodName: Click
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &684309199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5693,7 +5534,6 @@ GameObject:
   - component: {fileID: 766729635}
   - component: {fileID: 766729634}
   - component: {fileID: 766729633}
-  - component: {fileID: 766729637}
   - component: {fileID: 766729638}
   m_Layer: 5
   m_Name: GameUI
@@ -5781,33 +5621,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &766729637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 766729632}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2a0e800c2a40341ab73006c4b803b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActionButton:
-    MainAction:
-      EndButton: {fileID: 164766119}
-      BoxButton: {fileID: 535701338}
-      CardButton: {fileID: 577513578}
-      SkillButton: {fileID: 414064967}
-      TurnButton: {fileID: 1352293206}
-    CardAction:
-      Activate: {fileID: 86019376}
-      Box: {fileID: 900971818}
-      Cancel: {fileID: 376067203}
-  InventoryGroup:
-    CardContainer: {fileID: 1377177148}
-    BoxContainer: {fileID: 252051764}
-    SkillContainer: {fileID: 679152541}
-  TurnPanel: {fileID: 399868187}
 --- !u!114 &766729638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6277,7 +6090,6 @@ GameObject:
   - component: {fileID: 900971821}
   - component: {fileID: 900971820}
   - component: {fileID: 900971819}
-  - component: {fileID: 900971818}
   m_Layer: 5
   m_Name: Box
   m_TagString: Untagged
@@ -6306,18 +6118,6 @@ RectTransform:
   m_AnchoredPosition: {x: 365, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &900971818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 900971816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 900971819}
 --- !u!114 &900971819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6357,7 +6157,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 900971818}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -8166,7 +7966,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114514054685879326, guid: e9177003bf6b896469b751709c893c8b, type: 2}
+    - {fileID: 114385764180831494, guid: e9177003bf6b896469b751709c893c8b, type: 2}
+    - {fileID: 114904156834892012, guid: e9177003bf6b896469b751709c893c8b, type: 2}
+    - {fileID: 114927094051716310, guid: e9177003bf6b896469b751709c893c8b, type: 2}
+    - {fileID: 114585898928226172, guid: e9177003bf6b896469b751709c893c8b, type: 2}
+    - {fileID: 114973651113461074, guid: e9177003bf6b896469b751709c893c8b, type: 2}
+    - {fileID: 114087529247408798, guid: e9177003bf6b896469b751709c893c8b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e9177003bf6b896469b751709c893c8b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1140149444
@@ -8663,7 +8470,6 @@ GameObject:
   - component: {fileID: 1197253555}
   - component: {fileID: 1197253554}
   - component: {fileID: 1197253553}
-  - component: {fileID: 1197253552}
   m_Layer: 5
   m_Name: Active
   m_TagString: Untagged
@@ -8692,18 +8498,6 @@ RectTransform:
   m_AnchoredPosition: {x: 452.5, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1197253552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1197253550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1197253553}
 --- !u!114 &1197253553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8743,7 +8537,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1197253552}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -9341,7 +9135,6 @@ GameObject:
   - component: {fileID: 1290520287}
   - component: {fileID: 1290520286}
   - component: {fileID: 1290520285}
-  - component: {fileID: 1290520284}
   m_Layer: 5
   m_Name: Discard
   m_TagString: Untagged
@@ -9370,18 +9163,6 @@ RectTransform:
   m_AnchoredPosition: {x: 365, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1290520284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1290520282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1290520285}
 --- !u!114 &1290520285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9421,7 +9202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290520284}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -9619,7 +9400,6 @@ GameObject:
   - component: {fileID: 1352293209}
   - component: {fileID: 1352293208}
   - component: {fileID: 1352293207}
-  - component: {fileID: 1352293206}
   m_Layer: 5
   m_Name: Turn
   m_TagString: Untagged
@@ -9648,18 +9428,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1352293206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1352293204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1352293207}
 --- !u!114 &1352293207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9699,7 +9467,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1352293206}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -12165,8 +11933,6 @@ GameObject:
   - component: {fileID: 1836745077}
   - component: {fileID: 1836745081}
   - component: {fileID: 1836745080}
-  - component: {fileID: 1836745079}
-  - component: {fileID: 1836745078}
   m_Layer: 5
   m_Name: TabIcon
   m_TagString: Untagged
@@ -12194,72 +11960,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1836745078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114334104844670026, guid: 2fcf8dbcdab45684ebf8272fa814d605,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1836745076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1836745079}
---- !u!114 &1836745079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114597207911119692, guid: 2fcf8dbcdab45684ebf8272fa814d605,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1836745076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1836745080}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1836745078}
-        m_MethodName: Click
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1836745080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13496,8 +13196,6 @@ GameObject:
   - component: {fileID: 2019809915}
   - component: {fileID: 2019809919}
   - component: {fileID: 2019809918}
-  - component: {fileID: 2019809917}
-  - component: {fileID: 2019809916}
   m_Layer: 5
   m_Name: TabIcon
   m_TagString: Untagged
@@ -13525,72 +13223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &2019809916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114229339483399458, guid: 81d068ce585ef3243bd1fe47244f4184,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2019809914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 2019809917}
---- !u!114 &2019809917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114715124743202048, guid: 81d068ce585ef3243bd1fe47244f4184,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2019809914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2019809918}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2019809916}
-        m_MethodName: Click
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2019809918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14249,7 +13881,6 @@ GameObject:
   - component: {fileID: 2073308616}
   - component: {fileID: 2073308615}
   - component: {fileID: 2073308614}
-  - component: {fileID: 2073308613}
   m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
@@ -14278,18 +13909,6 @@ RectTransform:
   m_AnchoredPosition: {x: 627.5, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2073308613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073308611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 2073308614}
 --- !u!114 &2073308614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14329,7 +13948,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2073308613}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -14886,7 +14505,6 @@ GameObject:
   - component: {fileID: 2130276579}
   - component: {fileID: 2130276578}
   - component: {fileID: 2130276577}
-  - component: {fileID: 2130276576}
   m_Layer: 5
   m_Name: ToHand
   m_TagString: Untagged
@@ -14915,18 +14533,6 @@ RectTransform:
   m_AnchoredPosition: {x: 540, y: -75}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2130276576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2130276574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 2130276577}
 --- !u!114 &2130276577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14966,7 +14572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2130276576}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:

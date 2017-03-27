@@ -18,7 +18,7 @@ namespace End.Game
 			Add(new CreateTileActionSystem(contexts));
 
 			//card
-			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI_Old.Instance.InventoryGroup.CardContainer));
+			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.CardContainer));
 			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.Deck));
 			
 			//turn
