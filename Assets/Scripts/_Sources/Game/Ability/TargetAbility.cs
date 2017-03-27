@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public abstract class TargetAbility : Ability
+	public abstract class TargetAbility : Ability, ITargetAbility
 	{
 		protected virtual int _range{ get { return 1; } }
 
 		private readonly List<GameEntity> _showingArea;
+		private GameEntity _caster;
 
 		public TargetAbility()
 		{
@@ -21,17 +23,8 @@ namespace End.Game
 		public override void ActivateAbility(GameEntity caster)
 		{
 			Assert.IsTrue(caster.hasMapPosition);
-
-			var inAreaTargets = GetTileEntityInArea(caster);
-			foreach(var targetPosition in inAreaTargets)
-			{
-				ShowAreaOnPosition(targetPosition);
-				var target = GetTarget(targetPosition);
-				if(target != null)
-				{
-					targetPosition.AddTileAction(() => OnTargetSelected(caster, GetTarget(targetPosition)));
-				}
-			}
+			_caster = caster;
+			ShowTarget();
 		}
 
 		/// <summary>
@@ -48,17 +41,6 @@ namespace End.Game
 		/// </summary>
 		public void OnTargetCancel()
 		{
-			ClearArea();
-		}
-
-		/// <summary>
-		/// Called when select target
-		/// </summary>
-		/// <param name="caster">The caster.</param>
-		/// <param name="target">The target.</param>
-		public void OnTargetSelected(GameEntity caster, GameEntity target)
-		{
-			ApplyAbilityEffect(caster, target);
 			ClearArea();
 		}
 
@@ -88,5 +70,25 @@ namespace End.Game
 		public abstract GameEntity GetTarget(GameEntity position);
 
 		public abstract void ApplyAbilityEffect(GameEntity caster, GameEntity target);
+
+		public void ShowTarget()
+		{
+			var inAreaTargets = GetTileEntityInArea(_caster);
+			foreach (var targetPosition in inAreaTargets)
+			{
+				ShowAreaOnPosition(targetPosition);
+				var target = GetTarget(targetPosition);
+				if (target != null)
+				{
+					targetPosition.AddTileAction(() => OnTargetSelected((targetPosition)));
+				}
+			}
+		}
+
+		public void OnTargetSelected(GameEntity target)
+		{
+			ApplyAbilityEffect(_caster, target);
+			ClearArea();
+		}
 	}
 }
