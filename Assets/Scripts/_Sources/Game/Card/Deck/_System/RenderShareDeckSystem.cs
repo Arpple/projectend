@@ -21,7 +21,7 @@ namespace End.Game
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return !entity.hasPlayerCard;
+			return !entity.hasPlayerCard && entity.isDeckCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

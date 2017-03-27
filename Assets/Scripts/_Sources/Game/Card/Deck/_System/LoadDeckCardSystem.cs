@@ -18,7 +18,7 @@ namespace End.Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Card, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.DeckCard, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)

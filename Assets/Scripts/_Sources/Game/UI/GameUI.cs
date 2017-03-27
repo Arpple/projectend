@@ -39,15 +39,19 @@ namespace End.Game.UI
 				CardDesc.gameObject.SetActive(true);
 				MainGroup.ToggleButtons(false);
 
-				//TODO: switch card type and call that group
-				DeckGroup.ShowAction(card);
+				if (card.Entity.isDeckCard)
+				{
+					DeckGroup.ShowAction(card);
+				}
 				
-
 				//hightlight card
 			}
 			else
 			{
-				DeckGroup.CloseAction();
+				if (card.Entity.isDeckCard)
+				{
+					DeckGroup.CloseAction();
+				}
 			}
 		}
 

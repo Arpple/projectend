@@ -32,6 +32,7 @@ namespace End.Test
 			
 			var card = _contexts.game.CreateEntity();
 			card.AddPlayerCard(1);
+			card.isDeckCard = true;
 			card.AddView(new GameObject());
 
 			system.Execute();

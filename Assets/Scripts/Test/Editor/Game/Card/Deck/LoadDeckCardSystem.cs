@@ -23,6 +23,7 @@ namespace End.Test
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddCard(0, Card.Move);
+			entity.isDeckCard = true;
 
 			system.Execute();
 
@@ -38,6 +39,7 @@ namespace End.Test
 			{
 				var entity = _contexts.game.CreateEntity();
 				entity.AddCard(0, card);
+				entity.isDeckCard = true;
 
 				system.Execute();
 
