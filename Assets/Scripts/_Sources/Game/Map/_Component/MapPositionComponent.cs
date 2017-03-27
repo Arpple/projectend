@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Entitas;
+using System.Linq;
 
 namespace End.Game
 {
@@ -30,6 +31,14 @@ namespace End.Game
 		public override string ToString()
 		{
 			return "(" + x + "," + y + ")";
+		}
+
+		public GameEntity GetTile()
+		{
+			var context = Contexts.sharedInstance.game;
+			return context.GetEntities(GameMatcher.Tile)
+				.Where(t => t.mapPosition.IsEqual(this))
+				.First();
 		}
 	}
 }

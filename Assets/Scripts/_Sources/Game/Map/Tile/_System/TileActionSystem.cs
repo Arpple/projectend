@@ -28,14 +28,15 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				Assert.IsTrue(e.hasView);
-				Assert.IsTrue(e.hasTile);
+				//Assert.IsTrue(e.hasView);
+				//Assert.IsTrue(e.hasTile);
 
-				var tileCon = e.view.GameObject.GetComponent<TileController>();
-				Assert.IsNotNull(tileCon);
+				//var tileCon = e.view.GameObject.GetComponent<TileController>();
+				//Assert.IsNotNull(tileCon);
 
-				var tileAction = e.tileAction;
-				tileCon.ClickAction = () => tileAction.SelectedAction();
+				//var tileAction = e.tileAction;
+				//tileAction.SelectedAction
+				//tileCon.ClickAction = () => tileAction.SelectedAction();
 			}
 		}
 
@@ -46,7 +47,7 @@ namespace End.Game
 				var tileCon = e.view.GameObject.GetComponent<TileController>();
 				Assert.IsNotNull(tileCon);
 
-				tileCon.ClickAction = null;
+				//tileCon.ClickAction = null;
 			}
 		}
 	}

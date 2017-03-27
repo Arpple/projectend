@@ -31,18 +31,23 @@ namespace End.Game
 			Assert.IsTrue(spawnpoints.Length >= entities.Count);
 
             int indexSpawnPoint = 0;
-			foreach (var player in entities.Select(e => e.player))
+			foreach (var playerEntity in entities)
 			{
 				var sp = spawnpoints[indexSpawnPoint];
                 indexSpawnPoint++;
 
-				var characterType = (Character)player.PlayerObject.SelectedCharacterId;
+				var characterType = (Character)playerEntity.player.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);
 
 				var character = _context.CreateEntity();
-				character.AddUnit(player.PlayerObject);
+				character.AddUnit(playerEntity.player.PlayerObject);
 				character.AddCharacter(characterType);
 				character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
+
+				if (playerEntity.isLocalPlayer)
+				{
+					GameUtil.LocalPlayerCharacter = character;
+				}
 			}
 		}
 	}

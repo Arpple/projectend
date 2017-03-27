@@ -8,13 +8,8 @@ namespace End.Game
 	{
 		protected virtual int _range{ get { return 1; } }
 
-		private readonly List<GameEntity> _showingArea;
+		private GameEntity[] _showingArea;
 		private GameEntity _caster;
-
-		public TargetAbility()
-		{
-			_showingArea = new List<GameEntity>();
-		}
 
 		/// <summary>
 		/// Activates the ability.
@@ -33,7 +28,7 @@ namespace End.Game
 		/// <param name="position">The position in area.</param>
 		public void ShowAreaOnPosition(GameEntity position)
 		{
-			//TODO: highlight 
+			position.view.GameObject.GetComponent<TileController>().Span.enabled = true;
 		}
 
 		/// <summary>
@@ -51,9 +46,9 @@ namespace End.Game
 		{
 			foreach(var e in _showingArea)
 			{
-				//TODO: unhightlight
+				e.view.GameObject.GetComponent<TileController>().Span.enabled = false;
 
-				if(e.hasTileAction)
+				if (e.hasTileAction)
 				{
 					e.RemoveTileAction();
 				}
@@ -73,8 +68,8 @@ namespace End.Game
 
 		public void ShowTarget()
 		{
-			var inAreaTargets = GetTileEntityInArea(_caster);
-			foreach (var targetPosition in inAreaTargets)
+			_showingArea = GetTileEntityInArea(_caster);
+			foreach (var targetPosition in _showingArea)
 			{
 				ShowAreaOnPosition(targetPosition);
 				var target = GetTarget(targetPosition);
