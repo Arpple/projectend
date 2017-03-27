@@ -11,6 +11,7 @@ namespace End.Game.UI
 		public PlayerDeck CreateContainer(int playerId)
 		{
 			var deck = Instantiate(PlayerDeckPrefabs);
+			deck.Init();
 			deck.name = "Player " + playerId;
 			deck.transform.SetParent(transform, false);
 

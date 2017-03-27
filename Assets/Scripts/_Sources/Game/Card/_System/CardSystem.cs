@@ -11,7 +11,7 @@ namespace End.Game
 			//card
 
 			//deck card
-			Add(new RenderShareDeckSystem(contexts, cardContainer));
+			Add(new RenderShareDeckSystem(contexts, cardContainer.PlayerDecks[0]));
 			Add(new RenderPlayerDeckSystem(contexts));
 
 			//box card

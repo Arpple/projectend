@@ -26,7 +26,9 @@ namespace End.Test
 
 			var container = _contexts.game.CreateEntity();
 			container.AddPlayer(player);
-			container.AddPlayerDeck(new GameObject().AddComponent<PlayerDeck>());
+			var deck = new GameObject().AddComponent<PlayerDeck>();
+			deck.Init();
+			container.AddPlayerDeck(deck);
 			
 			var card = _contexts.game.CreateEntity();
 			card.AddPlayerCard(1);
@@ -34,7 +36,7 @@ namespace End.Test
 
 			system.Execute();
 
-			Assert.AreEqual(container.playerDeck.PlayerDeckObject, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(container.playerDeck.PlayerDeckObject.Content, card.view.GameObject.transform.parent.gameObject);
 		}
 	}
 

@@ -6,29 +6,30 @@ namespace End.Game
 {
 	public class RenderShareDeckSystem : ReactiveSystem<GameEntity>
 	{
-		private readonly CardContainer _cardContainer;
+		private readonly PlayerDeck _shareDeck;
 
-		public RenderShareDeckSystem(Contexts contexts, CardContainer cardContainer)
+		public RenderShareDeckSystem(Contexts contexts, PlayerDeck shareDeck)
 			: base(contexts.game)
 		{
-			_cardContainer = cardContainer;
+			_shareDeck = shareDeck;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.Removed);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayerCard && entity.playerCard.CurrentOwnerId == 0;
+			return !entity.hasPlayerCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				_cardContainer.PlayerDecks[0].AddCard(e.view.GameObject);
+				UnityEngine.Debug.Log(e.view.GameObject);
+				_shareDeck.AddCard(e.view.GameObject);
 			}
 		}
 	}

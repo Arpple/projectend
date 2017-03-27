@@ -8,7 +8,7 @@ namespace End.Game.UI
 	{
 		public GameObject Content;
 
-		private void Awake()
+		public void Init()
 		{
 			Content = Content ?? Instantiate(new GameObject("Content"), transform, false) as GameObject;
 		}
