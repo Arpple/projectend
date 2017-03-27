@@ -15,7 +15,6 @@ namespace End.Game
 			//map
 			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
 			Add(new CreateTileGraphSystem(contexts));
-			Add(new CreateTileActionSystem(contexts));
 
 			//card
 			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.CardContainer));

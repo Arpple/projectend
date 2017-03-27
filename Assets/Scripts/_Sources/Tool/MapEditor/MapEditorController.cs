@@ -70,7 +70,6 @@ namespace End.MapEditor
 				.Add(new CreateTileGraphSystem(contexts))
 			
 				.Add(new LoadResourceSystem(contexts))
-				.Add(new CreateTileActionSystem(contexts))
                 .Add(new TileHoverActionSystem(contexts))
                 
 				.Add(new RenderMapPositionSystem(contexts))
