@@ -24,6 +24,8 @@ namespace End.Game.UI
 		{
 			MainGroup.Init();
 			CardDesc.Init();
+
+			DeckGroup.OnGroupClosed += HideCardAction;
 		}
 
 		public void OnCardClicked(CardObject card)
@@ -40,11 +42,10 @@ namespace End.Game.UI
 				
 
 				//hightlight card
-				//switch to card action
 			}
 			else
 			{
-				HideCardAction();
+				DeckGroup.CloseAction();
 			}
 		}
 
@@ -52,10 +53,6 @@ namespace End.Game.UI
 		{
 			CardDesc.gameObject.SetActive(false);
 			_activeCard = null;
-
-			//TODO: switch card type and call that group
-			DeckGroup.CloseAction();
-
 			MainGroup.ToggleButtons(true);
 		}
 	}

@@ -46,7 +46,7 @@ namespace End.Game.UI
 
 			ActiveButton.onClick.AddListener(() => Debug.Log("Use " + card));
 			BoxButton.onClick.AddListener(() => Debug.Log("Move to box " + card));
-			CancelButton.onClick.AddListener(() => Debug.Log("Close"));
+			CancelButton.onClick.AddListener(() => CloseAction());
 		}
 	}
 
