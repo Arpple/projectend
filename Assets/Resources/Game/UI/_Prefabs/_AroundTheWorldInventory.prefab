@@ -245,7 +245,6 @@ GameObject:
   - component: {fileID: 222274835365785994}
   - component: {fileID: 114687225732894756}
   - component: {fileID: 114720444298260722}
-  - component: {fileID: 114963924840099050}
   m_Layer: 5
   m_Name: Box
   m_TagString: Untagged
@@ -635,7 +634,6 @@ GameObject:
   - component: {fileID: 222844947651682664}
   - component: {fileID: 114347202034932492}
   - component: {fileID: 114597207911119692}
-  - component: {fileID: 114334104844670026}
   m_Layer: 5
   m_Name: TabIcon
   m_TagString: Untagged
@@ -1473,18 +1471,6 @@ MonoBehaviour:
   m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114334104844670026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1818060419686162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 114597207911119692}
 --- !u!114 &114347202034932492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1829,7 +1815,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114334104844670026}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -2231,7 +2217,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114963924840099050}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -2471,18 +2457,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114963924840099050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221140027703820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 114720444298260722}
 --- !u!114 &114980214240605064
 MonoBehaviour:
   m_ObjectHideFlags: 1

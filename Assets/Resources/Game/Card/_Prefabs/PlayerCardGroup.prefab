@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 222381393397681494}
   - component: {fileID: 114164798612350908}
   - component: {fileID: 114715124743202048}
-  - component: {fileID: 114229339483399458}
   m_Layer: 5
   m_Name: TabIcon
   m_TagString: Untagged
@@ -266,18 +265,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114229339483399458
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026723339347384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5cf75e628d45f44ea606f976ab49250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 114715124743202048}
 --- !u!114 &114266962417972442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,7 +412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114229339483399458}
+      - m_Target: {fileID: 0}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
