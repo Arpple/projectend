@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine.Networking;
 
 namespace End.Game
 {
@@ -23,7 +24,7 @@ namespace End.Game
 			//turn
 			Add(new PlayingOrderSystem(contexts, players));
 
-			if(localPlayer.isServer || GameController.Instance.IsOffline)
+			if((NetworkController.Instance != null && NetworkController.IsServer) || GameController.Instance.IsOffline)
 			{
 				Add(new StartingDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
 			}

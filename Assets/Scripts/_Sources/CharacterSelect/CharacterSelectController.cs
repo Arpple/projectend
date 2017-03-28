@@ -186,8 +186,8 @@ namespace End.CharacterSelect
 		public void MoveToGame()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.ServerChangeScene(Scene.Game.ToString());
 			NetMessage.SendPlayerCount(netCon.ConnectionCount);
+			netCon.ServerChangeScene(Scene.Game.ToString());
 		}
 	}
 }
