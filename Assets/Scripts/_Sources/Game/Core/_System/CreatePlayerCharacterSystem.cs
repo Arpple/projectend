@@ -31,7 +31,8 @@ namespace End.Game
 			Assert.IsTrue(spawnpoints.Length >= entities.Count);
 
             int indexSpawnPoint = 0;
-			foreach (var playerEntity in entities)
+			int id = 0;
+			foreach (var playerEntity in entities.OrderBy(p => p.player.PlayerId))
 			{
 				var sp = spawnpoints[indexSpawnPoint];
                 indexSpawnPoint++;
@@ -40,7 +41,7 @@ namespace End.Game
 				Assert.IsTrue(characterType != Character.None);
 
 				var character = _context.CreateEntity();
-				character.AddUnit(playerEntity.player.PlayerObject);
+				character.AddUnit(id, playerEntity.player.PlayerObject);
 				character.AddCharacter(characterType);
 				character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
 
@@ -48,6 +49,7 @@ namespace End.Game
 				{
 					GameUtil.LocalPlayerCharacter = character;
 				}
+				id++;
 			}
 		}
 	}

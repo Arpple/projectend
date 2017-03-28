@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 namespace End.Game.UI
 {
@@ -7,7 +9,7 @@ namespace End.Game.UI
 	{
 		private GameEntity[] _tiles;
 
-		public TileTargetSelector(GameEntity[] tiles, TileActionComponent.TileAction onTileSelected)
+		public TileTargetSelector(GameEntity[] tiles, Func<GameEntity, bool> tilesActionFilter, TileActionComponent.TileAction onTileSelected)
 		{
 			_tiles = tiles;
 
@@ -19,10 +21,14 @@ namespace End.Game.UI
 				var con = tile.view.GameObject.GetComponent<TileController>();
 				con.Span.enabled = true;
 
-				tile.AddTileAction((t) => {
-					onTileSelected(t);
-					ClearSelection();
-				});
+				if(tilesActionFilter(tile))
+				{
+					tile.AddTileAction((t) => 
+					{
+						onTileSelected(t);
+						ClearSelection();
+					});
+				}
 			}
 		}
 
@@ -35,7 +41,10 @@ namespace End.Game.UI
 				var con = tile.view.GameObject.GetComponent<TileController>();
 				con.Span.enabled = false;
 
-				tile.RemoveTileAction();
+				if(tile.hasTileAction)
+				{
+					tile.RemoveTileAction();
+				}
 			}
 		}
 	}

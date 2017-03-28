@@ -47,6 +47,7 @@ namespace End.Game.UI
 					var targetAbility = (ITargetAbility)ability;
 					TileTargetSelector tileSelector = new TileTargetSelector(
 						targetAbility.GetTargets(GameUtil.LocalPlayerCharacter),
+						targetAbility.IsTileTargetable,
 						(t) => 
 						{
 							targetAbility.OnTargetSelected(t);
@@ -58,14 +59,6 @@ namespace End.Game.UI
 
 					cancel.SetAction(() => tileSelector.ClearSelection());
 				}
-
-				//card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter,
-				//	() =>
-				//	{
-				//		EventMoveCard.MoveCardToDeck(card.Entity);
-				//		CloseAction();
-				//	}
-				//);
 			}
 		}
 
