@@ -12,7 +12,6 @@ namespace End.Game
 		{
 			_localPlayer = localPlayer;
 			_context = contexts.game;
-			UnityEngine.Debug.Log(localPlayer);
 		}
 
 		public void Initialize()

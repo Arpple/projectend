@@ -60,17 +60,17 @@ namespace End
 
             if (isServer)
             {
-                if (AllPlayers.TrueForAll(p => p.IsReady)) { NetworkController.Instance.OnServerAllPlayerReady(); }
+                if (NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsReady)) { NetworkController.Instance.OnServerAllPlayerReady(); }
             }
         }
-        #endregion
+		#endregion
 
-        private void Awake()
-        {
-            //DontDestroyOnLoad(gameObject);
-        }
+		private void Start()
+		{
+			CrossSceneObject.AddObject(gameObject);
+		}
 
-        private void OnDestroy()
+		private void OnDestroy()
         {
             if (isServer)
             {
@@ -79,6 +79,7 @@ namespace End
             }
 
             if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
+			NetworkController.Instance.OnDisconnectPlayer(this);
         }
 
         #region Client
@@ -163,6 +164,12 @@ namespace End
 		public void RpcCreateEvent(int componentId, params int[] args)
 		{
 			Game.GameEvent.CreateEventAndDecode(componentId, args);
+		}
+
+		[ClientRpc]
+		public void RpcResetReadyStatus()
+		{
+			IsReady = false;
 		}
 
 		#endregion

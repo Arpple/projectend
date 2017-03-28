@@ -37,7 +37,8 @@ namespace End.CharacterSelect
 			Assert.IsNotNull(CharacterSelectPlayerPrefabs);
 		}
 
-		void Start() {
+		void Start()
+		{
             CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
                 var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
                 _focusingCharacter = entity.character.Type;
@@ -45,17 +46,25 @@ namespace End.CharacterSelect
                 //TODO: get description from entity and show
                 ShowUnitInformationUnit(entity);
             };
+
 			var netCon = NetworkController.Instance;
-			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
-			netCon.OnClientPlayerStartCallback += AddPlayer;
+			netCon.ServerSceneChangedCallback = netCon.LocalPlayer.RpcResetReadyStatus;
+
+			SetLocalPlayer(netCon.LocalPlayer);
+
+			foreach(var player in netCon.AllPlayers)
+			{
+				AddPlayer(player);
+			}
+
 			netCon.OnAllPlayerReadyCallback += MoveToGame;
 		}
 
 		private void OnDestroy()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
-			netCon.OnClientPlayerStartCallback -= AddPlayer;
+
+			netCon.ServerSceneChangedCallback = null;
 			netCon.OnAllPlayerReadyCallback -= MoveToGame;
 		}
 

@@ -24,7 +24,6 @@ namespace End.Game
 		private Contexts _contexts;
 		private bool _isInitialized;
 		private List<Player> _players;
-		private int _playerCount;
 		private Player _localPlayer;
 
 		void Awake()
@@ -39,6 +38,7 @@ namespace End.Game
 
 		void Start()
 		{
+			Debug.Log("Start");
 			//clear old observer
 			foreach(var observer in FindObjectsOfType<ContextObserverBehaviour>())
 			{
@@ -48,10 +48,12 @@ namespace End.Game
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();
-			
+
 			if (IsOffline)
 			{
 				SetupNetworkOffline();
+				Debug.Log("Offline Init");
+				Initialize();
 			}
 			else
 			{
@@ -61,16 +63,8 @@ namespace End.Game
 
 		private void Initialize()
 		{
-			if(NetworkController.IsServer)
-			{
-				//setup player id
-				short id = 1;
-				foreach(var player in _players)
-				{
-					player.PlayerId = id;
-					id++;
-				}
-			}
+			Debug.Log("Initialize");
+			
 			_systems = CreateSystem(_contexts);
 			_systems.Initialize();
 			_isInitialized = true;
@@ -113,15 +107,28 @@ namespace End.Game
 		public void SetupNetwork()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.OnClientPlayerStartCallback += AddPlayer;
-			netCon.OnLocalPlayerStartCallback += AddLocalPlayer;
-			_playerCount = netCon.ConnectionCount;
+			netCon.ServerSceneChangedCallback = netCon.LocalPlayer.RpcResetReadyStatus;
+			netCon.ClientSceneChangedCallback = () => netCon.LocalPlayer.CmdSetReadyStatus(true);
+			netCon.OnAllPlayerReadyCallback += Initialize;
+
+			short id = 1;
+			foreach (var player in netCon.AllPlayers)
+			{
+				AddPlayer(player);
+				if (NetworkController.IsServer)
+				{
+					//setup player id
+					player.PlayerId = id;
+					id++;
+				}
+			}
+
+			AddLocalPlayer(netCon.LocalPlayer);
 		}
 
 		private void SetupNetworkOffline()
 		{
 			var players = PlayerContainer.GetComponentsInChildren<Player>(true);
-			_playerCount = players.Length;
 			AddLocalPlayer(players.First());
 			players.Length.Loop(i =>
 			{
@@ -133,14 +140,6 @@ namespace End.Game
 		public void AddPlayer(Player player)
 		{
 			_players.Add(player);
-			player.transform.SetParent(PlayerContainer.transform);
-
-			//start game if all player connected
-			Assert.AreNotEqual(0, _playerCount);
-			if (_players.Count == _playerCount)
-			{
-				Initialize();
-			}
 		}
 
 		public void AddLocalPlayer(Player player)

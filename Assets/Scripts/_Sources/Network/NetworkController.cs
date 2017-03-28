@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 namespace End
 {
@@ -19,11 +20,12 @@ namespace End
 		public delegate void ServerErrorCallback(int errorCode);
 		public event ServerErrorCallback OnServerErrorCallback;
 
-		public delegate void ClientPlayerStartCallback(Player player);
-		public event ClientPlayerStartCallback OnClientPlayerStartCallback;
+		public delegate void PlayerAction(Player player);
+		public event PlayerAction OnClientPlayerStartCallback;
+		public event PlayerAction OnLocalPlayerStartCallback;
 
-		public delegate void LocalPlayerStartCallback(Player player);
-		public event LocalPlayerStartCallback OnLocalPlayerStartCallback;
+		public UnityAction ServerSceneChangedCallback;
+		public UnityAction ClientSceneChangedCallback;
 
 		[Header("Config")]
 		public int MaxPlayer;
@@ -34,6 +36,8 @@ namespace End
 		public Game.Character SelectedCharacter;
 		public Player LocalPlayer;
 
+		public List<Player> AllPlayers;
+
 		public static bool IsServer
 		{
 			get { return NetworkServer.active; }
@@ -41,12 +45,13 @@ namespace End
 
 		private void Awake()
 		{
-			if(Instance != null)
-			{
-				DestroyImmediate(gameObject);
-				return;
-			}
 			Instance = this;
+			AllPlayers = new List<Player>();
+		}
+
+		private void Start()
+		{
+			CrossSceneObject.AddObject(gameObject);
 		}
 
 		public void Stop()
@@ -56,6 +61,7 @@ namespace End
 
 		public void OnStartClientPlayer(Player player)
 		{
+			AllPlayers.Add(player);
 			if (OnClientPlayerStartCallback != null) OnClientPlayerStartCallback(player);
 		}
 
@@ -65,12 +71,15 @@ namespace End
 			LocalPlayer = player;
 		}
 
+		public void OnDisconnectPlayer(Player player)
+		{
+			AllPlayers.Remove(player);
+		}
+
 		#region Client
 		public override void OnStartClient(NetworkClient client)
 		{
 			base.OnStartClient(client);
-
-			SelectedCharacter = Game.Character.None;
 		}
 
 		/// <summary>
@@ -82,6 +91,18 @@ namespace End
 		{
 			base.OnClientError(conn, errorCode);
 			if (OnClientErrorCallback != null) OnClientErrorCallback(errorCode);
+		}
+
+		public override void OnClientSceneChanged(NetworkConnection conn)
+		{
+			base.OnClientSceneChanged(conn);
+
+			foreach(var player in AllPlayers)
+			{
+				player.IsReady = false;
+			}
+
+			if (ClientSceneChangedCallback != null) ClientSceneChangedCallback();
 		}
 		#endregion
 
@@ -164,14 +185,28 @@ namespace End
 			Player.ServerSetup();
 		}
 
+		public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+		{
+			if (SceneManager.GetActiveScene().name == Scene.Lobby.ToString())
+			{
+				base.OnServerAddPlayer(conn, playerControllerId);
+			}
+		}
+
 		/// <summary>
 		/// Invoked on server when all player.isReady is true
 		/// </summary>
 		public void OnServerAllPlayerReady()
 		{
-			Assert.IsTrue(Player.AllPlayers.TrueForAll(p => p.IsReady));
+			Assert.IsTrue(AllPlayers.TrueForAll(p => p.IsReady));
 
 			if (OnAllPlayerReadyCallback != null) OnAllPlayerReadyCallback();
+		}
+
+		public override void OnServerSceneChanged(string sceneName)
+		{
+			base.OnServerSceneChanged(sceneName);
+			if (ServerSceneChangedCallback != null) ServerSceneChangedCallback();
 		}
 
 		public override void OnServerError(NetworkConnection conn, int errorCode)
