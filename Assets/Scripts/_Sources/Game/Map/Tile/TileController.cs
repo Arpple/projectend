@@ -32,7 +32,7 @@ namespace End.Game
             if(EventSystem.current.IsPointerOverGameObject()) return;
             if(Entity.hasTileAction)
 			{
-				Entity.tileAction.OnSelected();
+				Entity.tileAction.OnSelected(Entity);
 			}
 		}
 

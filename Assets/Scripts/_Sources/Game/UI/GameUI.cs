@@ -11,6 +11,8 @@ namespace End.Game.UI
 		public MainActionGroup MainGroup;
 		public DeckCardActionGroup DeckGroup;
 
+		public CancelActionGroup CancelGroup;
+
 		public CardDescription CardDesc;
 		public CardContainer CardContainer;
 
@@ -26,8 +28,6 @@ namespace End.Game.UI
 		{
 			MainGroup.Init();
 			CardDesc.Init();
-
-			DeckGroup.OnGroupClosed += HideCardAction;
 		}
 
 		public void OnCardClicked(CardObject card)
@@ -37,11 +37,12 @@ namespace End.Game.UI
 				_activeCard = card;
 				CardDesc.SetDescription(card);
 				CardDesc.gameObject.SetActive(true);
-				MainGroup.ToggleButtons(false);
 
 				if (card.Entity.isDeckCard)
 				{
-					DeckGroup.ShowAction(card);
+					MainGroup.ShowSubAction(DeckGroup);
+					DeckGroup.SetAction(card);
+					DeckGroup.OnCloseHandler += HideCardDescription;
 				}
 				
 				//hightlight card
@@ -55,11 +56,10 @@ namespace End.Game.UI
 			}
 		}
 
-		public void HideCardAction()
+		public void HideCardDescription()
 		{
 			CardDesc.gameObject.SetActive(false);
 			_activeCard = null;
-			MainGroup.ToggleButtons(true);
 		}
 	}
 }

@@ -4287,6 +4287,8 @@ MonoBehaviour:
     ActiveButton: {fileID: 1722890382}
     BoxButton: {fileID: 1123426736}
     CancelButton: {fileID: 1956758860}
+  CancelGroup:
+    CancelButton: {fileID: 1332145776}
   CardDesc: {fileID: 308883055}
   CardContainer: {fileID: 1377177148}
 --- !u!1 &767457181
