@@ -116,6 +116,7 @@ namespace End
 		private int _maxConnections;
 
 		private bool _gameStarted;
+		private int _playerIdCounter;
 
 		/// <summary>
 		/// Check if connection is now at maximum
