@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace End.Game.UI
 {
 	[Serializable]
-	public class DeckCardActionGroup : ICardActionGroup
+	public class DeckCardActionGroup : ActionGroup, ICardActionGroup
 	{
 		public Button ActiveButton;
 		public Button BoxButton;
@@ -24,26 +24,8 @@ namespace End.Game.UI
 
 		private Button[] _buttons;
 
-		public event GroupCloseHandler OnGroupClosed;
-
-		public void CloseAction()
+		public void SetAction(CardObject card)
 		{
-			foreach(var btn in Buttons)
-			{
-				btn.gameObject.SetActive(false);
-			}
-
-			if (OnGroupClosed != null) OnGroupClosed();
-		}
-
-		public void ShowAction(CardObject card)
-		{
-			foreach (var btn in Buttons)
-			{
-				btn.onClick.RemoveAllListeners();
-				btn.gameObject.SetActive(true);
-			}
-
 			ActiveButton.onClick.AddListener(() => ActivateCard(card));
 			BoxButton.onClick.AddListener(() => Debug.Log("Move to box " + card));
 			CancelButton.onClick.AddListener(() => CloseAction());
@@ -51,16 +33,35 @@ namespace End.Game.UI
 
 		public void ActivateCard(CardObject card)
 		{
-			if(card.Entity.hasAbility)
+			if (!GameUtil.IsLocalPlayerTurn) return;
+			GameUI.Instance.HideCardDescription();
+
+			if (card.Entity.hasAbility)
 			{
-				card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter, 
+				card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter,
 					() =>
 					{
 						EventMoveCard.MoveCardToDeck(card.Entity);
 						CloseAction();
 					}
 				);
-				
+			}
+		}
+
+		protected override void Show()
+		{
+			foreach (var btn in Buttons)
+			{
+				btn.gameObject.SetActive(true);
+			}
+		}
+
+		protected override void Hide()
+		{
+			foreach (var btn in Buttons)
+			{
+				btn.onClick.RemoveAllListeners();
+				btn.gameObject.SetActive(false);
 			}
 		}
 	}

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace End.Game.UI
 {
 	[Serializable]
-	public class MainActionGroup
+	public class MainActionGroup : ActionGroup
 	{
 		[Serializable]
 		public class PanelToggleButton
@@ -81,6 +81,16 @@ namespace End.Game.UI
 				pb.Button.gameObject.SetActive(isVisible);
 			}
 			EndButton.gameObject.SetActive(isVisible);
+		}
+
+		protected override void Show()
+		{
+			ToggleButtons(true);
+		}
+
+		protected override void Hide()
+		{
+			ToggleButtons(false);
 		}
 	}
 }
