@@ -73,7 +73,9 @@ namespace End
 		private void OnDestroy()
         {
             if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
-			NetworkController.Instance.OnDisconnectPlayer(this);
+
+			if(NetworkController.Instance != null)
+				NetworkController.Instance.OnDisconnectPlayer(this);
         }
 
         #region Client
