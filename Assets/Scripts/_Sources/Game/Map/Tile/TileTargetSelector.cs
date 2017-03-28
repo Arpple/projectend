@@ -36,8 +36,6 @@ namespace End.Game.UI
 		{
 			foreach(var tile in _tiles)
 			{
-				Assert.IsTrue(tile.hasTileAction);
-
 				var con = tile.view.GameObject.GetComponent<TileController>();
 				con.Span.enabled = false;
 

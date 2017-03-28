@@ -37,6 +37,7 @@ namespace End.Game
 			foreach(var e in entities)
 			{
 				e.AddViewContainer(CHARACTER_VIEW_CONTAINER);
+				e.AddHitpoint(e.unitStatus.HitPoint);
 			}
 		}
 	}

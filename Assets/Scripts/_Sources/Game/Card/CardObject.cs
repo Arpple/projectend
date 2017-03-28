@@ -16,14 +16,9 @@ namespace End.Game.UI
 
 		public GameObject CreateView(GameEntity entity, Sprite sprite)
 		{
-			SetImage(sprite);
+			MainImage.sprite = sprite;
 
 			return gameObject;
-		}
-
-		public void SetImage(Sprite image)
-		{
-			MainImage.sprite = image;
 		}
 
 		public void OnClick()
