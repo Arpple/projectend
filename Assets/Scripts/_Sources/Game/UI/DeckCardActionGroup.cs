@@ -38,13 +38,34 @@ namespace End.Game.UI
 
 			if (card.Entity.hasAbility)
 			{
-				card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter,
-					() =>
-					{
-						EventMoveCard.MoveCardToDeck(card.Entity);
-						CloseAction();
-					}
-				);
+				var ability = card.Entity.ability.Ability;
+
+				if(ability is ITargetAbility)
+				{
+					var cancel = (CancelActionGroup)ShowSubAction(GameUI.Instance.CancelGroup);
+
+					var targetAbility = (ITargetAbility)ability;
+					TileTargetSelector tileSelector = new TileTargetSelector(
+						targetAbility.GetTargets(GameUtil.LocalPlayerCharacter),
+						(t) => 
+						{
+							targetAbility.OnTargetSelected(t);
+							cancel.CloseAction();
+							EventMoveCard.MoveCardToDeck(card.Entity);
+							CloseAction();
+						}
+					);
+
+					cancel.SetAction(() => tileSelector.ClearSelection());
+				}
+
+				//card.Entity.ability.Ability.ActivateAbility(GameUtil.LocalPlayerCharacter,
+				//	() =>
+				//	{
+				//		EventMoveCard.MoveCardToDeck(card.Entity);
+				//		CloseAction();
+				//	}
+				//);
 			}
 		}
 

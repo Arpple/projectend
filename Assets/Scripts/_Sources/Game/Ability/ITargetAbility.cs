@@ -6,7 +6,7 @@ namespace End.Game
 {
 	public interface ITargetAbility
 	{
-		void ShowTarget();
+		GameEntity[] GetTargets(GameEntity caster);
 		void OnTargetSelected(GameEntity target);
 	}
 }

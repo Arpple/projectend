@@ -3,22 +3,20 @@ using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public class AbilityMove : TargetAbility
+	public class AbilityMove : Ability, ITargetAbility
 	{
-		public override GameEntity[] GetTileEntityInArea(GameEntity caster)
+		private GameEntity _caster;
+		private MapPositionComponent _targetPosition;
+
+		public GameEntity[] GetTargets(GameEntity caster)
 		{
+			_caster = caster;
 			return AreaSelector.GetMovePathInRange(caster.mapPosition.GetTile(), caster.unitStatus.MoveSpeed);
 		}
 
-		public override GameEntity GetTarget(GameEntity position)
+		public void OnTargetSelected(GameEntity target)
 		{
-			//already filter by selector
-			return position;
-		}
-
-		public override void ApplyAbilityEffect(GameEntity caster, GameEntity target)
-		{
-			EventMoveUnit.Create(caster, target.mapPosition);
+			EventMoveUnit.Create(_caster, target.mapPosition);
 		}
 	}
 

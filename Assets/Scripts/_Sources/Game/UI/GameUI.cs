@@ -11,6 +11,8 @@ namespace End.Game.UI
 		public MainActionGroup MainGroup;
 		public DeckCardActionGroup DeckGroup;
 
+		public CancelActionGroup CancelGroup;
+
 		public CardDescription CardDesc;
 		public CardContainer CardContainer;
 

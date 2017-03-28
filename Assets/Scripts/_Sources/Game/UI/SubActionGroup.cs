@@ -21,9 +21,9 @@ namespace End.Game.UI
 
 		public void CloseAction()
 		{
-			Hide();
 			if (OnCloseHandler != null) OnCloseHandler();
 			OnCloseHandler = null;
+			Hide();
 		}
 	}
 

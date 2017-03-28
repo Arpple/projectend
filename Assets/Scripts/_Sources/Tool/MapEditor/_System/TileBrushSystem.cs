@@ -42,7 +42,7 @@ namespace End.MapEditor
 		{
 			foreach(var e in entities)
 			{
-				e.AddTileAction(() => ReplaceTile(e));
+				e.AddTileAction((x) => ReplaceTile(x));
 			}
 		}
 
