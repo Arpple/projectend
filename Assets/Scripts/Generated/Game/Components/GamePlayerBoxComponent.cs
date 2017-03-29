@@ -11,15 +11,15 @@ public partial class GameEntity {
     public End.Game.PlayerBoxComponent playerBox { get { return (End.Game.PlayerBoxComponent)GetComponent(GameComponentsLookup.PlayerBox); } }
     public bool hasPlayerBox { get { return HasComponent(GameComponentsLookup.PlayerBox); } }
 
-    public void AddPlayerBox(UnityEngine.GameObject newUI) {
+    public void AddPlayerBox(End.Game.UI.PlayerBox newBoxObject) {
         var component = CreateComponent<End.Game.PlayerBoxComponent>(GameComponentsLookup.PlayerBox);
-        component.UI = newUI;
+        component.BoxObject = newBoxObject;
         AddComponent(GameComponentsLookup.PlayerBox, component);
     }
 
-    public void ReplacePlayerBox(UnityEngine.GameObject newUI) {
+    public void ReplacePlayerBox(End.Game.UI.PlayerBox newBoxObject) {
         var component = CreateComponent<End.Game.PlayerBoxComponent>(GameComponentsLookup.PlayerBox);
-        component.UI = newUI;
+        component.BoxObject = newBoxObject;
         ReplaceComponent(GameComponentsLookup.PlayerBox, component);
     }
 

@@ -19,6 +19,7 @@ namespace End.Game
 
 			//card
 			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.CardContainer));
+			Add(new CreatePlayerBoxSystem(contexts, UI.GameUI.Instance.BoxContainer));
 			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.DeckSetting.Deck));
 			
 			//turn

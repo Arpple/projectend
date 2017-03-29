@@ -15,28 +15,29 @@ public static class GameComponentsLookup {
     public const int Dead = 4;
     public const int DeckCard = 5;
     public const int Hitpoint = 6;
-    public const int LocalPlayer = 7;
-    public const int MapPosition = 8;
-    public const int Player = 9;
-    public const int PlayerBox = 10;
-    public const int PlayerCard = 11;
-    public const int PlayerDeck = 12;
-    public const int PlayingOrder = 13;
-    public const int Resource = 14;
-    public const int Role = 15;
-    public const int Spawnpoint = 16;
-    public const int Tile = 17;
-    public const int TileAction = 18;
-    public const int TileBrush = 19;
-    public const int TileGraph = 20;
-    public const int TileHoverAction = 21;
-    public const int TileMovable = 22;
-    public const int Unit = 23;
-    public const int UnitStatus = 24;
-    public const int View = 25;
-    public const int ViewContainer = 26;
+    public const int InBox = 7;
+    public const int LocalPlayer = 8;
+    public const int MapPosition = 9;
+    public const int Player = 10;
+    public const int PlayerBox = 11;
+    public const int PlayerCard = 12;
+    public const int PlayerDeck = 13;
+    public const int PlayingOrder = 14;
+    public const int Resource = 15;
+    public const int Role = 16;
+    public const int Spawnpoint = 17;
+    public const int Tile = 18;
+    public const int TileAction = 19;
+    public const int TileBrush = 20;
+    public const int TileGraph = 21;
+    public const int TileHoverAction = 22;
+    public const int TileMovable = 23;
+    public const int Unit = 24;
+    public const int UnitStatus = 25;
+    public const int View = 26;
+    public const int ViewContainer = 27;
 
-    public const int TotalComponents = 27;
+    public const int TotalComponents = 28;
 
     public static readonly string[] componentNames = {
         "Ability",
@@ -46,6 +47,7 @@ public static class GameComponentsLookup {
         "Dead",
         "DeckCard",
         "Hitpoint",
+        "InBox",
         "LocalPlayer",
         "MapPosition",
         "Player",
@@ -76,6 +78,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.DeadComponent),
         typeof(End.Game.DeckCardComponent),
         typeof(End.Game.HitpointComponent),
+        typeof(End.Game.InBoxComponent),
         typeof(End.Game.LocalPlayerComponent),
         typeof(End.Game.MapPositionComponent),
         typeof(End.Game.PlayerComponent),

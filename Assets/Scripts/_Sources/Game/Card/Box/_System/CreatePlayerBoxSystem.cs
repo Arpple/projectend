@@ -2,34 +2,32 @@
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
+using End.Game.UI;
 
 namespace End.Game
 {
-	public class CreatePlayerBoxSystem : ReactiveSystem<GameEntity>
+	public class CreatePlayerBoxSystem : IInitializeSystem
 	{
-		public CreatePlayerBoxSystem(Contexts contexts)
-			: base(contexts.game)
-		{
+		private GameContext _context;
+		private BoxContainer _boxContainer;
 
+		public CreatePlayerBoxSystem(Contexts contexts, BoxContainer boxContainer)
+		{
+			_context = contexts.game;
+			_boxContainer = boxContainer;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		public void Initialize()
 		{
-			return context.CreateCollector(GameMatcher.Player, GroupEvent.Added);
-		}
-
-		protected override bool Filter(GameEntity entity)
-		{
-			return entity.hasPlayer;
-		}
-
-		protected override void Execute(List<GameEntity> entities)
-		{
-			foreach (var e in entities)
+			foreach(var player in _context.GetEntities(GameMatcher.Player))
 			{
-				//TODO: replace temp gameobject with created playercard object
-				var temp = new GameObject("box");
-				e.AddPlayerBox(temp);
+				var playerbox = _boxContainer.CreateContainer(player.player.PlayerId);
+				player.AddPlayerBox(playerbox);
+
+				if (player.isLocalPlayer)
+				{
+					playerbox.gameObject.SetActive(true);
+				}
 			}
 		}
 	}

@@ -1,12 +1,11 @@
 ﻿using Entitas;
-using UnityEngine;
+using End.Game.UI;
 
 namespace End.Game
 {
 	[Game]
 	public class PlayerBoxComponent : IComponent
 	{
-		//TODO replace with ui class
-		public GameObject UI;
+		public PlayerBox BoxObject;
 	}
 }

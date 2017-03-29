@@ -18,20 +18,23 @@ namespace End.Game.UI
 
 		[Space(15)]
 		public CardDescription CardDesc;
+
 		public CardContainer CardContainer;
+		public BoxContainer BoxContainer;
 
 		private CardObject _activeCard;
 
 		private void Awake()
 		{
 			Instance = this;
-			CardContainer.Init();
 		}
 
 		private void Start()
 		{
 			MainGroup.Init();
 			CardDesc.Init();
+			CardContainer.Init();
+			BoxContainer.Init();
 		}
 
 		public void OnCardClicked(CardObject card)
