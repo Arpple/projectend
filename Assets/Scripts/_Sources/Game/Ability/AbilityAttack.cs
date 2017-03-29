@@ -25,7 +25,7 @@ namespace End.Game
 
 		public void OnTargetSelected(GameEntity target)
 		{
-			EventDamage.Create(_caster, target, _caster.unitStatus.AttackPower);
+			EventHitpointModify.Create(_caster, target, _caster.unitStatus.AttackPower, HitPointModifyType.FatalDamage);
 		}
 	}
 

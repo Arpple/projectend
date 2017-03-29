@@ -7,8 +7,11 @@ namespace End.Game
 {
 	public class AbilityRevive : Ability, IOnDeadAbility, ITargetAbility
 	{
+		private GameEntity _caster;
+
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
+			_caster = caster;
 			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.VisionRange);
 		}
 
@@ -24,11 +27,8 @@ namespace End.Game
 
 		public void OnTargetSelected(GameEntity target)
 		{
-			target.ModifyHitpoint(1);
-			target.isDead = false;
+			EventHitpointModify.Create(_caster, target, 1, HitPointModifyType.Recovery);
 		}
-
-		
 	}
 
 }
