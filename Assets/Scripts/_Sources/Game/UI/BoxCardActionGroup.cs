@@ -37,7 +37,7 @@ namespace End.Game.UI
 
 		public void DiscardCard(CardObject card)
 		{
-			EventMoveCard.MoveCardToDeck(card.Entity);
+			EventMoveCard.MoveCardToShareDeck(card.Entity);
 		}
 
 		public void MoveToDeck(CardObject card)

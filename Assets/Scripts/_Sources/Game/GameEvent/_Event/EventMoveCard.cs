@@ -18,7 +18,7 @@ namespace End.Game
 			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, playerId);
 		}
 
-		public static void MoveCardToDeck(GameEntity cardEntity)
+		public static void MoveCardToShareDeck(GameEntity cardEntity)
 		{
 			Assert.IsTrue(cardEntity.hasCard);
 
@@ -52,7 +52,13 @@ namespace End.Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var e = entity.eventMoveCard;
-			if(e.TargetPlayerId != 0)
+
+			if (e.CardEntity.hasInBox)
+			{
+				e.CardEntity.RemoveInBox();
+			}
+
+			if (e.TargetPlayerId != 0)
 			{
 				e.CardEntity.ReplacePlayerCard(e.TargetPlayerId);
 			}

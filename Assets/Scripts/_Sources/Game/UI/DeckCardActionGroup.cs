@@ -52,7 +52,7 @@ namespace End.Game.UI
 						{
 							targetAbility.OnTargetSelected(t);
 							cancel.CloseAction();
-							EventMoveCard.MoveCardToDeck(card.Entity);
+							EventMoveCard.MoveCardToShareDeck(card.Entity);
 							CloseAction();
 						}
 					);
