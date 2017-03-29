@@ -72,14 +72,10 @@ namespace End
 
 		private void OnDestroy()
         {
-            if (isServer)
-            {
-                Assert.IsNotNull(AllPlayers);
-                AllPlayers.Remove(this);
-            }
-
             if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
-			NetworkController.Instance.OnDisconnectPlayer(this);
+
+			if(NetworkController.Instance != null)
+				NetworkController.Instance.OnDisconnectPlayer(this);
         }
 
         #region Client
@@ -105,21 +101,20 @@ namespace End
         #endregion
 
         #region Server
-        public static List<Player> AllPlayers;
         private static List<int> _selectedCharacterIdList;
+		private static short _playerIdCounter;
 
         public static void ServerSetup()
         {
-            AllPlayers = new List<Player>();
             _selectedCharacterIdList = new List<int>();
+			_playerIdCounter = 1;
         }
 
         public override void OnStartServer()
         {
             base.OnStartServer();
-
-            Assert.IsNotNull(AllPlayers);
-            AllPlayers.Add(this);
+			PlayerId = _playerIdCounter;
+			_playerIdCounter++;
         }
 
 

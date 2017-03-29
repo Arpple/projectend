@@ -52,8 +52,8 @@ namespace End.Game
 			if (IsOffline)
 			{
 				SetupNetworkOffline();
-				Debug.Log("Offline Init");
 				Initialize();
+				Debug.Log("Offline Init");
 			}
 			else
 			{
@@ -107,23 +107,14 @@ namespace End.Game
 		public void SetupNetwork()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.ServerSceneChangedCallback = netCon.LocalPlayer.RpcResetReadyStatus;
-			netCon.ClientSceneChangedCallback = () => netCon.LocalPlayer.CmdSetReadyStatus(true);
-			netCon.OnAllPlayerReadyCallback += Initialize;
 
-			short id = 1;
 			foreach (var player in netCon.AllPlayers)
 			{
 				AddPlayer(player);
-				if (NetworkController.IsServer)
-				{
-					//setup player id
-					player.PlayerId = id;
-					id++;
-				}
 			}
 
 			AddLocalPlayer(netCon.LocalPlayer);
+			netCon.ClientSceneChangedCallback = Initialize;
 		}
 
 		private void SetupNetworkOffline()

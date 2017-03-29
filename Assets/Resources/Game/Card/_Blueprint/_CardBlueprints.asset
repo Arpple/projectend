@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprints:
   - {fileID: 11400000, guid: 74b934f847bed9e45b9ecf83cd23aa38, type: 2}
+  - {fileID: 11400000, guid: 4785cbeac69060c41a29cfb6b388167f, type: 2}
