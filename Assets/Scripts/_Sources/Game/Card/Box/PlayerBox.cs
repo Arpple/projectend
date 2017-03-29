@@ -11,9 +11,10 @@ namespace End.Game.UI
 			Content = Content ?? gameObject;
 		}
 
-		public void AddCard(GameObject cardObject)
+		public void AddCard(GameObject cardObject, int index)
 		{
 			cardObject.transform.SetParent(Content.transform, false);
+			cardObject.transform.SetSiblingIndex(index);
 		}
 	}
 

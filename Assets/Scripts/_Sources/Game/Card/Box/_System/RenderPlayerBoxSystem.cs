@@ -24,7 +24,7 @@ namespace End.Game
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayerCard && entity.isInBox;
+			return entity.hasPlayerCard && entity.hasInBox;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -38,7 +38,7 @@ namespace End.Game
 						.playerBox.BoxObject
 				);
 
-				box.AddCard(e.view.GameObject);
+				box.AddCard(e.view.GameObject, e.inBox.Index);
 			}
 		}
 	}

@@ -8,18 +8,22 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly End.Game.InBoxComponent inBoxComponent = new End.Game.InBoxComponent();
+    public End.Game.InBoxComponent inBox { get { return (End.Game.InBoxComponent)GetComponent(GameComponentsLookup.InBox); } }
+    public bool hasInBox { get { return HasComponent(GameComponentsLookup.InBox); } }
 
-    public bool isInBox {
-        get { return HasComponent(GameComponentsLookup.InBox); }
-        set {
-            if(value != isInBox) {
-                if(value) {
-                    AddComponent(GameComponentsLookup.InBox, inBoxComponent);
-                } else {
-                    RemoveComponent(GameComponentsLookup.InBox);
-                }
-            }
-        }
+    public void AddInBox(int newIndex) {
+        var component = CreateComponent<End.Game.InBoxComponent>(GameComponentsLookup.InBox);
+        component.Index = newIndex;
+        AddComponent(GameComponentsLookup.InBox, component);
+    }
+
+    public void ReplaceInBox(int newIndex) {
+        var component = CreateComponent<End.Game.InBoxComponent>(GameComponentsLookup.InBox);
+        component.Index = newIndex;
+        ReplaceComponent(GameComponentsLookup.InBox, component);
+    }
+
+    public void RemoveInBox() {
+        RemoveComponent(GameComponentsLookup.InBox);
     }
 }
