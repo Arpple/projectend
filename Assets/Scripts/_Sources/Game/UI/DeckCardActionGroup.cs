@@ -27,7 +27,7 @@ namespace End.Game.UI
 		public void SetAction(CardObject card)
 		{
 			ActiveButton.onClick.AddListener(() => ActivateCard(card));
-			BoxButton.onClick.AddListener(() => Debug.Log("Move to box " + card));
+			BoxButton.onClick.AddListener(() => MoveToBox(card));
 			CancelButton.onClick.AddListener(() => CloseAction());
 		}
 
@@ -60,6 +60,12 @@ namespace End.Game.UI
 					cancel.SetAction(() => tileSelector.ClearSelection());
 				}
 			}
+		}
+
+		public void MoveToBox(CardObject card)
+		{
+			card.Entity.AddInBox(0);
+			CloseAction();
 		}
 
 		protected override void Show()

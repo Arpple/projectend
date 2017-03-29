@@ -45,11 +45,19 @@ namespace End.Game.UI
 				CardDesc.SetDescription(card);
 				CardDesc.gameObject.SetActive(true);
 
-				if (card.Entity.isDeckCard)
+				var cardEntity = card.Entity;
+				if (cardEntity.isDeckCard)
 				{
-					MainGroup.ShowSubAction(DeckGroup);
-					DeckGroup.SetAction(card);
-					DeckGroup.OnCloseHandler += HideCardDescription;
+					if (cardEntity.hasInBox)
+					{
+
+					}
+					else
+					{
+						MainGroup.ShowSubAction(DeckGroup);
+						DeckGroup.SetAction(card);
+						DeckGroup.OnCloseHandler += HideCardDescription;
+					}
 				}
 				
 				//hightlight card

@@ -11,7 +11,7 @@ namespace End.Game
 			Add(new NewDeckCardToShareDeckSystem(contexts, ui.CardContainer.PlayerDecks[0]));
 			Add(new RenderShareDeckSystem(contexts, ui.CardContainer.PlayerDecks[0]));
 			Add(new RenderPlayerDeckSystem(contexts));
-			Add(new RenderPlayerBoxSystem(contexts));
+			Add(new PlayerBoxCardAddSystem(contexts));
 
 			//unit
 			Add(new DeadSystem(contexts));

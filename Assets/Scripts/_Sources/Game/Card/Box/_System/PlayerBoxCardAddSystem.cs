@@ -5,12 +5,12 @@ using End.Game.UI;
 
 namespace End.Game
 {
-	public class RenderPlayerBoxSystem : ReactiveSystem<GameEntity>
+	public class PlayerBoxCardAddSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
 		private CacheList<int, PlayerBox> _playerBoxCache;
 
-		public RenderPlayerBoxSystem(Contexts contexts)
+		public PlayerBoxCardAddSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
