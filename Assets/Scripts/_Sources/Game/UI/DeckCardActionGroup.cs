@@ -46,7 +46,7 @@ namespace End.Game.UI
 
 					var targetAbility = (ITargetAbility)ability;
 					TileTargetSelector tileSelector = new TileTargetSelector(
-						targetAbility.GetTargets(GameUtil.LocalPlayerCharacter),
+						targetAbility.GetTilesArea(GameUtil.LocalPlayerCharacter),
 						targetAbility.GetTargetEntity,
 						(t) => 
 						{

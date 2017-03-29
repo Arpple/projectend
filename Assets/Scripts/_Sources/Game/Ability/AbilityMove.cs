@@ -8,7 +8,7 @@ namespace End.Game
 		private GameEntity _caster;
 		private MapPositionComponent _targetPosition;
 
-		public GameEntity[] GetTargets(GameEntity caster)
+		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
 			_caster = caster;
 			return AreaSelector.GetMovePathInRange(caster.mapPosition.GetTile(), caster.unitStatus.MoveSpeed);
@@ -23,8 +23,6 @@ namespace End.Game
 		{
 			EventMoveUnit.Create(_caster, target.mapPosition);
 		}
-
-		
 	}
 
 }

@@ -7,7 +7,7 @@ namespace End.Game
 {
 	public class AbilityRevive : Ability, IOnDeadAbility, ITargetAbility
 	{
-		public GameEntity[] GetTargets(GameEntity caster)
+		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
 			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.VisionRange);
 		}
