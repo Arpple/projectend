@@ -1,0 +1,36 @@
+﻿using System.Linq;
+using NUnit.Framework;
+using End.Game;
+
+namespace End.Test
+{
+	public class TestRoleSetting
+	{
+		private RoleSetting _setting;
+
+		[SetUp]
+		public void Init()
+		{
+			_setting = TestHelper.GetGameSetting().RoleSetting;
+		}
+
+		[Test]
+		public void RoleCountValid()
+		{
+			Assert.IsTrue(_setting.RoleCount.Count > 0);
+
+			//player count for each setting is distinct
+			Assert.AreEqual(
+				_setting.RoleCount.Count, 
+				_setting.RoleCount.Select(rc => rc.PlayerCount).Distinct().Count()
+			);
+
+			foreach(var rc in _setting.RoleCount)
+			{
+				var total = rc.InvaderCount + rc.OriginCount;
+				Assert.AreEqual(rc.PlayerCount, total);
+			}
+		}
+	}
+
+}

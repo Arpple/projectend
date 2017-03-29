@@ -31,3 +31,6 @@ MonoBehaviour:
           Count: 20
         - Type: 1
           Count: 20
+  RoleSetting:
+    OriginCount: 1
+    InvaderCount: 1

@@ -9,10 +9,14 @@ namespace End.Game.UI
 		public static GameUI Instance;
 
 		public MainActionGroup MainGroup;
+
+		[Space(15)]
 		public DeckCardActionGroup DeckGroup;
 
+		[Space(15)]
 		public CancelActionGroup CancelGroup;
 
+		[Space(15)]
 		public CardDescription CardDesc;
 		public CardContainer CardContainer;
 

@@ -23,7 +23,7 @@ namespace End.Test
 		{
 			var charEntity = _contexts.game.CreateEntity();
 			charEntity.AddCharacter(Character.CurseSword);
-			//charEntity.AddUnit(0, _player);
+			charEntity.AddUnit(0, _player);
 			charEntity.AddMapPosition(0, 0);
 
 			var tile = _contexts.game.CreateEntity();
