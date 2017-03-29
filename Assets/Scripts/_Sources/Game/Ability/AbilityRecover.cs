@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace End.Game
 {
-	public class AbilityRevive : Ability, IOnDeadAbility, ITargetAbility
+	public class AbilityRecover : Ability, IOnDeadAbility, ITargetAbility
 	{
 		private GameEntity _caster;
 
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
 			_caster = caster;
-			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.VisionRange);
+			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.VisionRange, true);
 		}
 
 		public GameEntity GetTargetEntity(GameEntity targetTile)
