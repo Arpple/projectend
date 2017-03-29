@@ -7,20 +7,23 @@ namespace End.Test
 	public class TestEventMoveUnit
 	{
 		private Contexts _contexts;
-		private Player _player;
+		private GameEntity _player;
 
 		[SetUp]
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
 			GameController.IsTest = true;
-			_player = Resources.Load<Player>("Network/Player");
+			var player = Resources.Load<Player>("Network/Player");
+			_player = _contexts.game.CreateEntity();
+			_player.AddPlayer(player);
 		}
 
 
 		[Test]
 		public void CreateEvent()
 		{
+
 			var charEntity = _contexts.game.CreateEntity();
 			charEntity.AddCharacter(Character.CurseSword);
 			charEntity.AddUnit(0, _player);

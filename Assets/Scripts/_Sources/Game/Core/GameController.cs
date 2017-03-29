@@ -45,6 +45,8 @@ namespace End.Game
 				Destroy(observer.gameObject);
 			}
 
+			new GameUtil();
+
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
 			_contexts.SetAllContexts();

@@ -16,11 +16,11 @@ namespace End.Game
 
 		public GameEntity GetTargetEntity(GameEntity tile)
 		{
-			var unit = tile.GetUnitOnTile();
+			var targetUnit = tile.GetUnitOnTile();
 
-			if (unit == null) return unit;
+			if (targetUnit == null) return targetUnit;
 
-			return unit.unit.OwnerPlayer != _caster.unit.OwnerPlayer ? unit : null;
+			return targetUnit.unit.OwnerEntity != _caster.unit.OwnerEntity ? targetUnit : null;
 		}
 
 		public void OnTargetSelected(GameEntity target)

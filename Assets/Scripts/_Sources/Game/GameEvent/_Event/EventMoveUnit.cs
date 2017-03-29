@@ -17,13 +17,13 @@ namespace End.Game
 			Assert.IsTrue(entity.hasUnit);
 			Assert.IsTrue(entity.hasMapPosition);
 
-			GameEvent.CreateEvent<EventMoveUnit>(entity.unit.OwnerPlayer.PlayerId, position.x, position.y);
+			GameEvent.CreateEvent<EventMoveUnit>(entity.unit.OwnerEntity.player.PlayerId, position.x, position.y);
 		}
 
 		public void Decode(int playerId, int x, int y)
 		{
 			MovingEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.Character)
-				.Where(c => c.unit.OwnerPlayer.PlayerId == playerId)
+				.Where(c => c.unit.OwnerEntity.player.PlayerId == playerId)
 				.First();
 
 			this.x = x;

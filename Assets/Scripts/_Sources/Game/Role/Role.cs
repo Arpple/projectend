@@ -9,7 +9,7 @@
 
 		public virtual bool IsWin(GameContext context, GameEntity entity)
 		{
-			return !GameUtil.GetPlayerCharacter(entity.player.PlayerId).isDead;
+			return !GameUtil.GetCharacterFromPlayer(entity.player.PlayerId).isDead;
 		}
 	}
 }

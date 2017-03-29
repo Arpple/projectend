@@ -6,6 +6,6 @@ namespace End.Game
 	public class UnitComponent : IComponent
 	{
 		public int Id;
-		public Player OwnerPlayer;
+		public GameEntity OwnerEntity;
 	}
 }

@@ -22,9 +22,7 @@ namespace End.Game
 
 		public static void Create(GameEntity source, GameEntity target, int value, HitPointModifyType type)
 		{
-			Assert.IsTrue(source.hasUnitStatus);
 			Assert.IsTrue(target.hasUnitStatus);
-
 			Assert.IsTrue(target.hasHitpoint);
 
 			GameEvent.CreateEvent<EventHitpointModify>(source.unit.Id, target.unit.Id, value, (int)type);

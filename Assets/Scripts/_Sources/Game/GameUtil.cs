@@ -6,40 +6,68 @@ namespace End.Game
 	/// <summary>
 	/// Utility command/shortcut class
 	/// </summary>
-	public static class GameUtil
+	public class GameUtil
 	{
+		public static GameUtil Instance;
+
+		private CacheList<int, GameEntity> _cachedPlayerCharacterEntity;
+		private CacheList<int, GameEntity> _cachedPlayerEntity;
+		private GameEntity _localPlayerEntity;
+		private GameEntity _localPlayerCharacter;
+
+		public GameUtil()
+		{
+			Instance = this;
+
+			_cachedPlayerCharacterEntity = new CacheList<int, GameEntity>();
+			_cachedPlayerEntity = new CacheList<int, GameEntity>();
+			_localPlayerEntity = null;
+			_localPlayerCharacter = null;
+		}
+
 		public static bool IsLocalPlayerTurn
 		{
 			get { return GameEntity.LocalPlayer.player.PlayerId == GameEntity.Context.playingOrder.CurrentPlayerId; }
 		}
 
-		public static GameEntity LocalPlayerEntity;
-		public static GameEntity LocalPlayerCharacter;
-
-		private static CacheList<int, GameEntity> _cachedPlayerCharacter;
-
-		public static CacheList<int, GameEntity> CachedPlayerCharacter
+		public static GameEntity LocalPlayerEntity
 		{
-			get
-			{
-				if (_cachedPlayerCharacter == null)
-					_cachedPlayerCharacter = new CacheList<int, GameEntity>();
-				return _cachedPlayerCharacter;
-			}
+			get { return Instance._localPlayerEntity; }
+			set { Instance._localPlayerEntity = value; }
 		}
 
-		public static GameEntity GetPlayerCharacter(int playerId)
+		public static GameEntity LocalPlayerCharacter
 		{
-			return _cachedPlayerCharacter.Get(playerId, (e) =>
+			get { return Instance._localPlayerCharacter; }
+			set { Instance._localPlayerCharacter = value; }
+		}
+
+		public static GameEntity GetCharacterFromPlayer(int playerId)
+		{
+			return Instance._cachedPlayerCharacterEntity.Get(playerId, (id) =>
 				GameEntity.Context.GetEntities(GameMatcher.Character)
-					.Where(c => c.unit.OwnerPlayer.PlayerId == playerId)
+					.Where(c => c.unit.OwnerEntity.player.PlayerId == id)
 					.FirstOrDefault()
 			);
 		}
 
-		public static GameEntity GetPlayerCharacter(Player player)
+		public static GameEntity GetCharacterFromPlayer(Player player)
 		{
-			return GetPlayerCharacter(player.PlayerId);
+			return GetCharacterFromPlayer(player.PlayerId);
+		}
+
+		public static GameEntity GetPlayerEntity(int playerId)
+		{
+			return Instance._cachedPlayerEntity.Get(playerId, (id) =>
+				GameEntity.Context.GetEntities(GameMatcher.Player)
+					.Where(e => e.player.PlayerId == id)
+					.FirstOrDefault()
+			);
+		}
+
+		public static GameEntity GetPlayerEntity(Player player)
+		{
+			return GetPlayerEntity(player.PlayerId);
 		}
 	}
 
