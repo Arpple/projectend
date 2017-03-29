@@ -64,7 +64,7 @@ namespace End.Game.UI
 
 		public void MoveToBox(CardObject card)
 		{
-			card.Entity.AddInBox(0);
+			EventMoveCard.MoveCardInToBox(card.Entity);
 			CloseAction();
 		}
 

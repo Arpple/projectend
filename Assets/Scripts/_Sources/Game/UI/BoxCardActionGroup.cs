@@ -38,11 +38,13 @@ namespace End.Game.UI
 		public void DiscardCard(CardObject card)
 		{
 			EventMoveCard.MoveCardToShareDeck(card.Entity);
+			CloseAction();
 		}
 
 		public void MoveToDeck(CardObject card)
 		{
-			card.Entity.RemoveInBox();
+			EventMoveCard.MoveCardOutFromBox(card.Entity);
+			CloseAction();
 		}
 
 		public void MoveBoxCard(CardObject card, int direction)

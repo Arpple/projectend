@@ -10,28 +10,49 @@ namespace End.Game
 	{
 		public GameEntity CardEntity;
 		public int TargetPlayerId;
+		public bool IsInBox;
+
+		private static void MoveCard(GameEntity cardEntity, int playerId, bool isMoveTobox)
+		{
+			Assert.IsTrue(cardEntity.hasCard);
+
+			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, playerId, isMoveTobox ? 1 : 0);
+		}
 
 		public static void MoveCardToPlayer(GameEntity cardEntity, int playerId)
 		{
 			Assert.IsTrue(cardEntity.hasCard);
 
-			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, playerId);
+			MoveCard(cardEntity, playerId, false);
+		}
+
+		public static void MoveCardInToBox(GameEntity cardEntity)
+		{
+			Assert.IsFalse(cardEntity.hasInBox);
+
+			MoveCard(cardEntity, cardEntity.playerCard.CurrentOwnerId, true);
+		}
+
+		public static void MoveCardOutFromBox(GameEntity cardEntity)
+		{
+			Assert.IsTrue(cardEntity.hasInBox);
+
+			MoveCard(cardEntity, cardEntity.playerCard.CurrentOwnerId, false);
 		}
 
 		public static void MoveCardToShareDeck(GameEntity cardEntity)
 		{
-			Assert.IsTrue(cardEntity.hasCard);
-
-			GameEvent.CreateEvent<EventMoveCard>(cardEntity.card.Id, 0);
+			MoveCard(cardEntity, 0, false);
 		}
 
-		public void Decode(int cardId, int playerId)
+		public void Decode(int cardId, int playerId, int isInBox)
 		{
 			CardEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.Card)
 				.Where(c => c.card.Id == cardId)
 				.First();
 
-			this.TargetPlayerId = playerId;
+			TargetPlayerId = playerId;
+			IsInBox = isInBox != 0;
 		}
 	}
 
@@ -53,11 +74,6 @@ namespace End.Game
 		{
 			var e = entity.eventMoveCard;
 
-			if (e.CardEntity.hasInBox)
-			{
-				e.CardEntity.RemoveInBox();
-			}
-
 			if (e.TargetPlayerId != 0)
 			{
 				e.CardEntity.ReplacePlayerCard(e.TargetPlayerId);
@@ -65,6 +81,18 @@ namespace End.Game
 			else
 			{
 				e.CardEntity.RemovePlayerCard();
+			}
+
+			if (e.IsInBox)
+			{
+				e.CardEntity.AddInBox(0);
+			}
+			else
+			{
+				if (e.CardEntity.hasInBox)
+				{
+					e.CardEntity.RemoveInBox();
+				}
 			}
 		}
 	}
