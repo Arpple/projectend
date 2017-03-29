@@ -35,12 +35,14 @@ namespace End.Game
 				{
 					var box = e.unit.OwnerEntity.playerBox;
 
-					var card = box.GetBoxCard<IOnDeadAbility>(e.unit.OwnerEntity);
-					while (card != null && e.hitpoint.HitPoint == 0)
+					var cards = box.GetBoxCards<IOnDeadAbility>(e.unit.OwnerEntity);
+
+					foreach(var card in cards)
 					{
+						if (e.hitpoint.HitPoint > 0) break;
+
 						var ability = (IOnDeadAbility)card.ability.Ability;
 						ability.OnDead(e);
-
 						EventMoveCard.MoveCardToShareDeck(card);
 					}
 				}
