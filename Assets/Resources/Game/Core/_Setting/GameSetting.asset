@@ -28,9 +28,40 @@ MonoBehaviour:
       Deck:
         SettingList:
         - Type: 0
-          Count: 20
+          Count: 10
         - Type: 1
-          Count: 20
+          Count: 10
+        - Type: 2
+          Count: 10
   RoleSetting:
-    OriginCount: 1
-    InvaderCount: 1
+    RoleCount:
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0
+    - PlayerCount: 0
+      OriginCount: 0
+      InvaderCount: 0

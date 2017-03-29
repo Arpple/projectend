@@ -8,6 +8,6 @@ namespace End.Game
 	{
 		GameEntity[] GetTargets(GameEntity caster);
 		void OnTargetSelected(GameEntity target);
-		bool IsTileTargetable(GameEntity tile);
+		GameEntity GetTargetEntity(GameEntity targetTile);
 	}
 }

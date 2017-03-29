@@ -19,7 +19,6 @@ namespace End.Game.UI
 		{
 			CancelButton.gameObject.SetActive(false);
 			CancelButton.onClick.RemoveAllListeners();
-			UnityEngine.Debug.Log("hide");
 		}
 
 		protected override void Show()

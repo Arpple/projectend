@@ -17,6 +17,9 @@ public static class BlueprintsExtension {
     public static Blueprint Card_Move(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Card_Move");
     }
+    public static Blueprint Card_Potion(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Card_Potion");
+    }
     public static Blueprint Char_CurseSword(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Char_CurseSword");
     }

@@ -14,15 +14,17 @@ namespace End.Game
 			return AreaSelector.GetMovePathInRange(caster.mapPosition.GetTile(), caster.unitStatus.MoveSpeed);
 		}
 
-		public bool IsTileTargetable(GameEntity tile)
+		public GameEntity GetTargetEntity(GameEntity targetTile)
 		{
-			return true;
+			return targetTile;
 		}
 
 		public void OnTargetSelected(GameEntity target)
 		{
 			EventMoveUnit.Create(_caster, target.mapPosition);
 		}
+
+		
 	}
 
 }

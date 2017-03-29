@@ -14,16 +14,18 @@ namespace End.Game
 			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.AttackRange);
 		}
 
-		public bool IsTileTargetable(GameEntity tile)
+		public GameEntity GetTargetEntity(GameEntity tile)
 		{
 			var unit = tile.GetUnitOnTile();
-			return unit != null
-				&& unit.unit.OwnerPlayer != _caster.unit.OwnerPlayer;
+
+			if (unit == null) return unit;
+
+			return unit.unit.OwnerPlayer != _caster.unit.OwnerPlayer ? unit : null;
 		}
 
 		public void OnTargetSelected(GameEntity target)
 		{
-			EventDamage.Create(_caster, target.GetUnitOnTile(), _caster.unitStatus.AttackPower);
+			EventDamage.Create(_caster, target, _caster.unitStatus.AttackPower);
 		}
 	}
 

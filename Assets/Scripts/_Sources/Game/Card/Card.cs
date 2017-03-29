@@ -4,6 +4,7 @@
 	{
 		Move,
 		Attack,
+		Potion,
 	}
 }
 
