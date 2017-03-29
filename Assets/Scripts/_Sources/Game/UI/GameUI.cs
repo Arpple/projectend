@@ -14,6 +14,9 @@ namespace End.Game.UI
 		public DeckCardActionGroup DeckGroup;
 
 		[Space(15)]
+		public BoxCardActionGroup BoxGroup;
+
+		[Space(15)]
 		public CancelActionGroup CancelGroup;
 
 		[Space(15)]
@@ -39,18 +42,20 @@ namespace End.Game.UI
 
 		public void OnCardClicked(CardObject card)
 		{
-			if(_activeCard != card)
+			var cardEntity = card.Entity;
+			if (_activeCard != card)
 			{
 				_activeCard = card;
 				CardDesc.SetDescription(card);
 				CardDesc.gameObject.SetActive(true);
 
-				var cardEntity = card.Entity;
 				if (cardEntity.isDeckCard)
 				{
 					if (cardEntity.hasInBox)
 					{
-
+						MainGroup.ShowSubAction(BoxGroup);
+						BoxGroup.SetAction(card);
+						BoxGroup.OnCloseHandler += HideCardDescription;
 					}
 					else
 					{
@@ -64,9 +69,16 @@ namespace End.Game.UI
 			}
 			else
 			{
-				if (card.Entity.isDeckCard)
+				if (cardEntity.isDeckCard)
 				{
-					DeckGroup.CloseAction();
+					if (cardEntity.hasInBox)
+					{
+						BoxGroup.CloseAction();
+					}
+					else
+					{
+						DeckGroup.CloseAction();
+					}
 				}
 			}
 		}
