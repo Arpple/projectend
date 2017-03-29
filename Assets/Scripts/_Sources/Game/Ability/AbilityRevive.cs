@@ -24,7 +24,7 @@ namespace End.Game
 
 		public void OnTargetSelected(GameEntity target)
 		{
-			target.hitpoint.HitPoint += 1;
+			target.ModifyHitpoint(1);
 			target.isDead = false;
 		}
 

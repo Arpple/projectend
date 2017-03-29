@@ -54,7 +54,7 @@ namespace End.Game
 		{
 			var e = entity.eventDamage;
 
-			e.TargetUnit.ReplaceHitpoint(e.TargetUnit.hitpoint.HitPoint - e.damage);
+			e.TargetUnit.ModifyHitpoint(-e.damage);
 		}
 	}
 }
