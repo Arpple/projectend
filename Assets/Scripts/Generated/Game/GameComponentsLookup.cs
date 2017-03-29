@@ -12,8 +12,8 @@ public static class GameComponentsLookup {
     public const int Card = 1;
     public const int Character = 2;
     public const int CharacterIcon = 3;
-    public const int DeckCard = 4;
-    public const int Description = 5;
+    public const int Dead = 4;
+    public const int DeckCard = 5;
     public const int Hitpoint = 6;
     public const int LocalPlayer = 7;
     public const int MapPosition = 8;
@@ -23,27 +23,28 @@ public static class GameComponentsLookup {
     public const int PlayerDeck = 12;
     public const int PlayingOrder = 13;
     public const int Resource = 14;
-    public const int Spawnpoint = 15;
-    public const int Tile = 16;
-    public const int TileAction = 17;
-    public const int TileBrush = 18;
-    public const int TileGraph = 19;
-    public const int TileHoverAction = 20;
-    public const int TileMovable = 21;
-    public const int Unit = 22;
-    public const int UnitStatus = 23;
-    public const int View = 24;
-    public const int ViewContainer = 25;
+    public const int Role = 15;
+    public const int Spawnpoint = 16;
+    public const int Tile = 17;
+    public const int TileAction = 18;
+    public const int TileBrush = 19;
+    public const int TileGraph = 20;
+    public const int TileHoverAction = 21;
+    public const int TileMovable = 22;
+    public const int Unit = 23;
+    public const int UnitStatus = 24;
+    public const int View = 25;
+    public const int ViewContainer = 26;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
         "Ability",
         "Card",
         "Character",
         "CharacterIcon",
+        "Dead",
         "DeckCard",
-        "Description",
         "Hitpoint",
         "LocalPlayer",
         "MapPosition",
@@ -53,6 +54,7 @@ public static class GameComponentsLookup {
         "PlayerDeck",
         "PlayingOrder",
         "Resource",
+        "Role",
         "Spawnpoint",
         "Tile",
         "TileAction",
@@ -71,8 +73,8 @@ public static class GameComponentsLookup {
         typeof(End.Game.CardComponent),
         typeof(End.Game.CharacterComponent),
         typeof(End.Game.CharacterIconComponent),
+        typeof(End.Game.DeadComponent),
         typeof(End.Game.DeckCardComponent),
-        typeof(End.Game.RoleDescriptionComponent.DescriptionComponent),
         typeof(End.Game.HitpointComponent),
         typeof(End.Game.LocalPlayerComponent),
         typeof(End.Game.MapPositionComponent),
@@ -82,6 +84,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.PlayerDeckComponent),
         typeof(End.Game.PlayingOrderComponent),
         typeof(End.Game.ResourceComponent),
+        typeof(End.Game.RoleComponent),
         typeof(End.Game.SpawnpointComponent),
         typeof(End.Game.TileComponent),
         typeof(End.Game.TileActionComponent),

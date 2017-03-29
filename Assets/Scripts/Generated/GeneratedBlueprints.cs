@@ -11,6 +11,9 @@ using Entitas.Unity.Blueprints;
 
 public static class BlueprintsExtension {
 
+    public static Blueprint Card_Attack(this Blueprints blueprints) {
+        return blueprints.GetBlueprint("Card_Attack");
+    }
     public static Blueprint Card_Move(this Blueprints blueprints) {
         return blueprints.GetBlueprint("Card_Move");
     }

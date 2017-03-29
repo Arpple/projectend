@@ -7,6 +7,9 @@
 		public abstract string GoalDescription { get; }
 		public abstract string IconPath { get; }
 
-		public abstract bool IsWin(GameEntity entity);
+		public virtual bool IsWin(GameContext context, GameEntity entity)
+		{
+			return !GameUtil.GetPlayerCharacter(entity.player.PlayerId).isDead;
+		}
 	}
 }

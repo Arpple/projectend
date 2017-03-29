@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Linq;
+using Entitas;
 
 namespace End.Game
 {
@@ -16,6 +15,32 @@ namespace End.Game
 
 		public static GameEntity LocalPlayerEntity;
 		public static GameEntity LocalPlayerCharacter;
+
+		private static CacheList<int, GameEntity> _cachedPlayerCharacter;
+
+		public static CacheList<int, GameEntity> CachedPlayerCharacter
+		{
+			get
+			{
+				if (_cachedPlayerCharacter == null)
+					_cachedPlayerCharacter = new CacheList<int, GameEntity>();
+				return _cachedPlayerCharacter;
+			}
+		}
+
+		public static GameEntity GetPlayerCharacter(int playerId)
+		{
+			return _cachedPlayerCharacter.Get(playerId, (e) =>
+				GameEntity.Context.GetEntities(GameMatcher.Character)
+					.Where(c => c.unit.OwnerPlayer.PlayerId == playerId)
+					.FirstOrDefault()
+			);
+		}
+
+		public static GameEntity GetPlayerCharacter(Player player)
+		{
+			return GetPlayerCharacter(player.PlayerId);
+		}
 	}
 
 }
