@@ -30,27 +30,7 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				//try to call card in box
-				if (e.unit.OwnerEntity.hasPlayerBox)
-				{
-					var box = e.unit.OwnerEntity.playerBox;
-
-					var cards = box.GetBoxCards<IOnDeadAbility>(e.unit.OwnerEntity);
-
-					foreach(var card in cards)
-					{
-						if (e.hitpoint.HitPoint > 0) break;
-
-						var ability = (IOnDeadAbility)card.ability.Ability;
-						ability.OnDead(e);
-						EventMoveCard.MoveCardToShareDeck(card);
-					}
-				}
-
-				if(e.hitpoint.HitPoint == 0)
-				{
-					e.isDead = true;
-				}
+				e.isDead = true;
 			}
 		}
 	}
