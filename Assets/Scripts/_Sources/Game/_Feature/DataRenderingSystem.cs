@@ -14,6 +14,7 @@ namespace End.Game
 			Add(new PlayerBoxCardAddSystem(contexts));
 
 			//unit
+			Add(new OnDeadBoxSystem(contexts));
 			Add(new DeadSystem(contexts));
 
 			//map

@@ -25,14 +25,16 @@ namespace End.Game
 			Assert.IsTrue(target.hasUnitStatus);
 			Assert.IsTrue(target.hasHitpoint);
 
-			GameEvent.CreateEvent<EventHitpointModify>(source.unit.Id, target.unit.Id, value, (int)type);
+			GameEvent.CreateEvent<EventHitpointModify>(source != null ? source.unit.Id : -1, target.unit.Id, value, (int)type);
 		}
 
 		public void Decode(int sourceId, int targetId, int value, int type)
 		{
-			SourceUnit = Contexts.sharedInstance.game.GetEntities(GameMatcher.Unit)
-				.Where(u => u.unit.Id == sourceId)
-				.First();
+			SourceUnit = sourceId == -1 
+				? null 
+				: Contexts.sharedInstance.game.GetEntities(GameMatcher.Unit)
+					.Where(u => u.unit.Id == sourceId)
+					.First();
 
 			TargetUnit = Contexts.sharedInstance.game.GetEntities(GameMatcher.Unit)
 				.Where(u => u.unit.Id == targetId)
