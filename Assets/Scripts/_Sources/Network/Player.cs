@@ -158,7 +158,7 @@ namespace End
         [ClientRpc]
 		public void RpcCreateEvent(int componentId, params int[] args)
 		{
-			Game.GameEvent.CreateEventAndDecode(componentId, args);
+			Game.GameEvent.CreateEventEntityAndDecode(componentId, args);
 		}
 
 		[ClientRpc]
