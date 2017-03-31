@@ -34,10 +34,10 @@ namespace End.Test
 			system.Initialize();
 
 			var roles = _contexts.game.GetEntities(GameMatcher.Role);
-			Assert.AreEqual(1, roles.Where(r => r.role.RoleObject is RoleOrigin).Count());
-			Assert.AreEqual(1, roles.Where(r => r.role.RoleObject is RoleInvader).Count());
-			//Assert.AreEqual(1, roles.Where(r => r.role.RoleObject is RoleOrigin).Count());
-			//Assert.AreEqual(1, roles.Where(r => r.role.RoleObject is RoleOrigin).Count());
+			Assert.AreEqual(rc.Origin, roles.Where(r => r.role.RoleObject is RoleOrigin).Count());
+			Assert.AreEqual(rc.Invader, roles.Where(r => r.role.RoleObject is RoleInvader).Count());
+			Assert.AreEqual(rc.End, roles.Where(r => r.role.RoleObject is RoleEnd).Count());
+			Assert.AreEqual(rc.Seed, roles.Where(r => r.role.RoleObject is RoleSeed).Count());
 		}
 	}
 
