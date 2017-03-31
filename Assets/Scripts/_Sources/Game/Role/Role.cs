@@ -16,11 +16,11 @@ namespace End.Game
 			_context = context;
 		}
 
-		public virtual bool IsWin(GameEntity playerEntity)
-		{
-			Assert.IsTrue(playerEntity.hasPlayer);
+		//public virtual bool IsWin(GameEntity playerEntity)
+		//{
+		//	Assert.IsTrue(playerEntity.hasPlayer);
 
-			return !GameUtil.GetCharacterFromPlayer(playerEntity).isDead;
-		}
+		//	return !GameUtil.GetCharacterFromPlayer(playerEntity).isDead;
+		//}
 	}
 }

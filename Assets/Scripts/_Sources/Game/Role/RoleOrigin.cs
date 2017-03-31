@@ -41,13 +41,13 @@ namespace End.Game
 			}
 		}
 
-		public override bool IsWin(GameEntity playerEntity)
-		{
-			return base.IsWin(playerEntity)
-				&& _context.GetEntities(GameMatcher.Role)
-				.Where(r => r.role.RoleObject is RoleInvader)
-				.All(x => x.isDead);
-		}
+		//public override bool IsWin(GameEntity playerEntity)
+		//{
+		//	return base.IsWin(playerEntity)
+		//		&& _context.GetEntities(GameMatcher.Role)
+		//		.Where(r => r.role.RoleObject is RoleInvader)
+		//		.All(x => x.isDead);
+		//}
 	}
 }
 

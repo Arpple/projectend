@@ -12,6 +12,7 @@ namespace End.Game
 			Add(new LoadPlayerSystem(contexts, players));
 			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
 			Add(new CreatePlayerCharacterSystem(contexts));
+			Add(new RoleSetupSystem(contexts, setting.RoleSetting.GetRolesCount(players.Count)));
 
 			//map
 			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
