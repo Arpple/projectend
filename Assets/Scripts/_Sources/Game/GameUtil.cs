@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Entitas;
+using UnityEngine.Assertions;
 
 namespace End.Game
 {
@@ -51,9 +52,11 @@ namespace End.Game
 			);
 		}
 
-		public static GameEntity GetCharacterFromPlayer(Player player)
+		public static GameEntity GetCharacterFromPlayer(GameEntity playerEntity)
 		{
-			return GetCharacterFromPlayer(player.PlayerId);
+			Assert.IsTrue(playerEntity.hasPlayer);
+
+			return GetCharacterFromPlayer(playerEntity.player.PlayerId);
 		}
 
 		public static GameEntity GetPlayerEntity(int playerId)

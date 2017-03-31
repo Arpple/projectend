@@ -1,4 +1,6 @@
-﻿namespace End.Game
+﻿using UnityEngine.Assertions;
+
+namespace End.Game
 {
 	public abstract class Role
 	{
@@ -7,9 +9,18 @@
 		public abstract string GoalDescription { get; }
 		public abstract string IconPath { get; }
 
-		public virtual bool IsWin(GameContext context, GameEntity entity)
+		protected GameContext _context;
+
+		public Role(GameContext context)
 		{
-			return !GameUtil.GetCharacterFromPlayer(entity.player.PlayerId).isDead;
+			_context = context;
+		}
+
+		public virtual bool IsWin(GameEntity playerEntity)
+		{
+			Assert.IsTrue(playerEntity.hasPlayer);
+
+			return !GameUtil.GetCharacterFromPlayer(playerEntity).isDead;
 		}
 	}
 }

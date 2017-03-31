@@ -6,22 +6,22 @@ using UnityEngine;
 namespace End.Game
 {
 	//TODO: implement
-	public class RoleOrigin : Role
+	public class RoleInvader : Role
 	{
-		public RoleOrigin(GameContext context) : base(context)
+		public RoleInvader(GameContext context) : base(context)
 		{
 		}
 
 		public override string Name
 		{
-			get { return "Origin"; }
+			get { return ""; }
 		}
 
 		public override string Description
 		{
 			get
 			{
-				return "Origin is ...";
+				return "";
 			}
 		}
 
@@ -29,7 +29,7 @@ namespace End.Game
 		{
 			get
 			{
-				return "To win ...";
+				return "";
 			}
 		}
 
@@ -45,7 +45,8 @@ namespace End.Game
 		{
 			return base.IsWin(playerEntity)
 				&& _context.GetEntities(GameMatcher.Role)
-				.Where(r => r.role.RoleObject is RoleInvader)
+				.Where(r => r.role.RoleObject is RoleOrigin)
+				.Select(p => GameUtil.GetCharacterFromPlayer(p))
 				.All(x => x.isDead);
 		}
 	}
