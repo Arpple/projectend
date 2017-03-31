@@ -27,8 +27,7 @@ namespace End.Test
 
 			foreach(var rc in _setting.RoleCount)
 			{
-				var total = rc.InvaderCount + rc.OriginCount;
-				Assert.AreEqual(rc.PlayerCount, total);
+				Assert.AreEqual(rc.PlayerCount, rc.TotalCount, "Role Count Setting Invalid for P:" + rc.PlayerCount);
 			}
 		}
 	}
