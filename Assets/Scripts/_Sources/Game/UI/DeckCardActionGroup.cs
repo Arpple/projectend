@@ -36,10 +36,12 @@ namespace End.Game.UI
 			if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
 			GameUI.Instance.HideCardDescription();
 
-			if (card.Entity.hasAbility)
-			{
-				var ability = card.Entity.ability.Ability;
+			var cardEntity = card.Entity;
 
+			if (cardEntity.hasAbility)
+			{
+				var ability = cardEntity.ability.Ability;
+				
 				if(ability is ITargetAbility)
 				{
 					var cancel = (CancelActionGroup)ShowSubAction(GameUI.Instance.CancelGroup);
@@ -53,7 +55,11 @@ namespace End.Game.UI
 						{
 							if (t.hasUnit)
 							{
-								EventUseCardOnUnit.Create(caster, card.Entity, t);
+								EventUseCardOnUnit.Create(caster, cardEntity, t);
+							}
+							else if(t.hasTile)
+							{
+								EventUseCardOnTile.Create(caster, cardEntity, t);
 							}
 							cancel.CloseAction();
 							CloseAction();

@@ -12,15 +12,17 @@ public static class GameEventComponentsLookup {
     public const int EventHitpointModify = 1;
     public const int EventMoveCard = 2;
     public const int EventMoveUnit = 3;
-    public const int EventUseCardOnUnit = 4;
+    public const int EventUseCardOnTile = 4;
+    public const int EventUseCardOnUnit = 5;
 
-    public const int TotalComponents = 5;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
         "EventEndTurn",
         "EventHitpointModify",
         "EventMoveCard",
         "EventMoveUnit",
+        "EventUseCardOnTile",
         "EventUseCardOnUnit"
     };
 
@@ -29,6 +31,7 @@ public static class GameEventComponentsLookup {
         typeof(End.Game.EventHitpointModify),
         typeof(End.Game.EventMoveCard),
         typeof(End.Game.EventMoveUnit),
+        typeof(End.Game.EventUseCardOnTile),
         typeof(End.Game.EventUseCardOnUnit)
     };
 }
