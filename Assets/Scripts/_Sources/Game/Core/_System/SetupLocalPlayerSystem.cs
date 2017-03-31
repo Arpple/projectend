@@ -20,7 +20,6 @@ namespace End.Game
 				.First();
 
 			localPlayerEntity.isLocalPlayer = true;
-			GameUtil.LocalPlayerEntity = localPlayerEntity;
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace End.Game
 	{
 		public static void CreateEvent<T>(params int[] args) where T : GameEventComponent
 		{
-			if (GameController.Instance != null && !GameUtil.IsLocalPlayerTurn) return; //not create event if not current player
+			if (GameController.Instance != null && !Contexts.sharedInstance.game.IsLocalPlayerTurn) return; //not create event if not current player
 
 			int componentId = GameEventComponentsLookup.componentTypes.ToList().IndexOf(typeof(T));
 			if (GameController.Instance == null || GameController.Instance.IsOffline)

@@ -8,7 +8,7 @@ namespace End.Game
 	{
 		public static bool TryEndTurn()
 		{
-			if(GameUtil.IsLocalPlayerTurn)
+			if(Contexts.sharedInstance.game.IsLocalPlayerTurn)
 			{
 				GameEvent.CreateEvent<EventEndTurn>();
 				return true;

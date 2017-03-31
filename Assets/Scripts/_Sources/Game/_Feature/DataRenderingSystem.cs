@@ -19,6 +19,10 @@ namespace End.Game
 
 			//map
 			Add(new RenderMapPositionSystem(contexts));
+
+			//event
+			Add(new RoleOriginWinningSystem(contexts));
+			Add(new WinSystem(contexts));
 		}
 	}
 

@@ -33,7 +33,7 @@ namespace End.Game.UI
 
 		public void ActivateCard(CardObject card)
 		{
-			if (!GameUtil.IsLocalPlayerTurn) return;
+			if (Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
 			GameUI.Instance.HideCardDescription();
 
 			if (card.Entity.hasAbility)
@@ -46,7 +46,7 @@ namespace End.Game.UI
 
 					var targetAbility = (ITargetAbility)ability;
 					TileTargetSelector tileSelector = new TileTargetSelector(
-						targetAbility.GetTilesArea(GameUtil.LocalPlayerCharacter),
+						targetAbility.GetTilesArea(Contexts.sharedInstance.game.LocalPlayerCharacter),
 						targetAbility.GetTargetEntity,
 						(t) => 
 						{

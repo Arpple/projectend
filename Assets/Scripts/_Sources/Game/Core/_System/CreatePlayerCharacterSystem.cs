@@ -44,11 +44,6 @@ namespace End.Game
 				character.AddUnit(id, playerEntity);
 				character.AddCharacter(characterType);
 				character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
-
-				if (playerEntity.isLocalPlayer)
-				{
-					GameUtil.LocalPlayerCharacter = character;
-				}
 				id++;
 			}
 		}
