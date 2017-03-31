@@ -6,7 +6,7 @@ namespace End.Game
 {
 	public abstract class LocalEventSystem : ReactiveSystem<GameEntity>
 	{
-		private GameContext _context;
+		protected GameContext _context;
 
 		public LocalEventSystem(Contexts contexts) : base(contexts.game)
 		{

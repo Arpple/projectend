@@ -18,7 +18,7 @@ namespace End.Game
 			}
 			else
 			{
-				GameEntity.LocalPlayer.player.PlayerObject.CmdCreateEvent(componentId, args);
+				Contexts.sharedInstance.game.localPlayerEntity.player.PlayerObject.CmdCreateEvent(componentId, args);
 			}
 		}
 

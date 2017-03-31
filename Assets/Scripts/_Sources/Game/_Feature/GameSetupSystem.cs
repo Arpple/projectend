@@ -9,7 +9,7 @@ namespace End.Game
 		public GameSetupSystem(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 		{
 			//player
-			Add(new LoadPlayerSystem(contexts, players));
+			Add(new CreatePlayerSystem(contexts, players));
 			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
 			Add(new CreatePlayerCharacterSystem(contexts));
 			Add(new RoleSetupSystem(contexts, setting.RoleSetting.GetRolesCount(players.Count)));

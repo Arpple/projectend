@@ -8,10 +8,13 @@ namespace End.Game
 	public class PlayerBoxComponent : IComponent
 	{
 		public PlayerBox BoxObject;
+	}
 
-		public GameEntity[] GetBoxCards<T>(GameEntity playerEntity)
+	public static class PlayerBoxExtension
+	{
+		public static GameEntity[] GetBoxCards<T>(this GameContext context, GameEntity playerEntity)
 		{
-			return GameEntity.Context.GetEntities(GameMatcher.InBox)
+			return context.GetEntities(GameMatcher.InBox)
 				.Where(boxCard => boxCard.playerCard.CurrentOwnerId == playerEntity.player.PlayerId)
 				.Where(boxCard => boxCard.ability.Ability is T)
 				.ToArray();

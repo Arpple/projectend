@@ -6,7 +6,7 @@ using Entitas;
 
 namespace End.Test
 {
-	public class TestLoadPlayerSystem
+	public class TestCreatePlayerSystem
 	{
 		private Contexts _contexts;
 
@@ -22,7 +22,7 @@ namespace End.Test
 			var player = new GameObject().AddComponent<Player>();
 			var players = new List<Player> { player };
 
-			var system = new LoadPlayerSystem(_contexts, players);
+			var system = new CreatePlayerSystem(_contexts, players);
 
 			system.Initialize();
 

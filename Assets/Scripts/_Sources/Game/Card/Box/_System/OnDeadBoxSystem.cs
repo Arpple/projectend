@@ -24,9 +24,7 @@ namespace End.Game
 
 		protected override void Process(GameEntity entity)
 		{
-			var box = entity.unit.OwnerEntity.playerBox;
-
-			var cards = box.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
+			var cards = _context.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
 
 			foreach (var card in cards)
 			{

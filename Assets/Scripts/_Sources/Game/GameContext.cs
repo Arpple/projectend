@@ -29,7 +29,7 @@ public sealed partial class GameContext : Context<GameEntity>
 
 	public bool IsLocalPlayerTurn
 	{
-		get { return GameEntity.LocalPlayer.player.PlayerId == GameEntity.Context.playingOrder.CurrentPlayerId; }
+		get { return this.localPlayerEntity.player.PlayerId == this.playingOrder.CurrentPlayerId; }
 	}
 
 	public GameEntity LocalPlayerCharacter
@@ -54,7 +54,7 @@ public sealed partial class GameContext : Context<GameEntity>
 	public GameEntity GetPlayerEntity(int playerId)
 	{
 		return _cachedPlayerEntity.Get(playerId, (id) =>
-			GameEntity.Context.GetEntities(GameMatcher.Player)
+			this.GetEntities(GameMatcher.Player)
 				.Where(e => e.player.PlayerId == id)
 				.FirstOrDefault()
 		);
