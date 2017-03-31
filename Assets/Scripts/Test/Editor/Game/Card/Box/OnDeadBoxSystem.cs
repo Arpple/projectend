@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using End.Game;
 using End.Game.UI;
+using System.Linq;
+using Entitas;
 
 namespace End.Test
 {
@@ -47,8 +49,12 @@ namespace End.Test
 			card.AddAbility("", new TestOnDeadAbility());
 
 			system.Execute();
-			Assert.AreEqual(1, _unit.hitpoint.HitPoint);
-			Assert.IsFalse(_unit.isDead);
+
+			var gameEvent = _contexts.gameEvent.GetEntities(GameEventMatcher.EventUseCardOnUnit).First();
+			Assert.IsNotNull(gameEvent);
+			Assert.AreEqual(_unit, gameEvent.eventUseCardOnUnit.UserEntity);
+			Assert.AreEqual(card, gameEvent.eventUseCardOnUnit.CardEnttiy);
+			Assert.AreEqual(_unit, gameEvent.eventUseCardOnUnit.TargetEnttiy);
 		}
 	}
 }

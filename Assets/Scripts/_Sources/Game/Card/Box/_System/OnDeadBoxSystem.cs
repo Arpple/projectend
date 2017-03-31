@@ -28,13 +28,8 @@ namespace End.Game
 
 			foreach (var card in cards)
 			{
-				var ability = (IOnDeadAbility)card.ability.Ability;
-				ability.OnDead(entity);
-				EventMoveCard.MoveCardToShareDeck(card);
-
-				if (entity.hitpoint.HitPoint > 0) break;
+				EventUseCardOnUnit.Create(entity, card, entity);
 			}
 		}
 	}
-
 }

@@ -15,7 +15,8 @@ namespace End.Game
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			if (GameController.Instance != null && _context.IsLocalPlayerTurn) return;
+			if (GameController.Instance != null && !_context.IsLocalPlayerTurn) return;
+
 			foreach(var e in entities)
 			{
 				Process(e);
