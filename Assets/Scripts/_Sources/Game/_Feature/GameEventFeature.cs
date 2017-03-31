@@ -6,6 +6,7 @@ namespace End.Game
 	{
 		public GameEventFeature(Contexts contexts) : base("Game Event")
 		{
+			Add(new EventUseCardOnUnitSystem(contexts));
 			Add(new EventMoveUnitSystem(contexts));
 			Add(new EventEndTurnSystem(contexts));
 			Add(new EventMoveCardSystem(contexts));
