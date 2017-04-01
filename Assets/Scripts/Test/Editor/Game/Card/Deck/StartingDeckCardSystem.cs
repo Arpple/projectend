@@ -27,14 +27,10 @@ namespace End.Test
 			_setting.StartCardCount = 1;
 
 			2.Loop((i) => {
-				var obj = new GameObject();
-				var p = obj.AddComponent<Player>();
-				p.PlayerId = (short)i;
-				_contexts.game.CreateEntity().AddPlayer(p);
+				_contexts.game.CreatePlayerEntity((short)(i + 1));
 				
 				var card = _contexts.game.CreateEntity();
 				card.AddCard((short)i, Card.Move);
-				card.AddPlayerCard(0);
 			});
 
 			system.Initialize();
@@ -42,7 +38,7 @@ namespace End.Test
 			foreach (var p in _contexts.game.GetEntities(GameMatcher.Player))
 			{
 				Assert.AreEqual(1, _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveCard)
-					.Where(c => c.eventMoveCard.TargetPlayerId == p.player.PlayerId)
+					.Where(c => c.eventMoveCard.TargetPlayerEntity == p)
 					.Count()
 				);
 			}

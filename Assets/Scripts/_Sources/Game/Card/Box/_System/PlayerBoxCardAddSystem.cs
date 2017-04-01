@@ -9,13 +9,13 @@ namespace End.Game
 	public class PlayerBoxCardAddSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
-		private CacheList<int, PlayerBox> _playerBoxCache;
+		private CacheList<GameEntity, PlayerBox> _playerBoxCache;
 
 		public PlayerBoxCardAddSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
-			_playerBoxCache = new CacheList<int, PlayerBox>();
+			_playerBoxCache = new CacheList<GameEntity, PlayerBox>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -34,9 +34,9 @@ namespace End.Game
 			{
 				Assert.IsTrue(e.hasPlayerCard);
 
-				var box = _playerBoxCache.Get(e.playerCard.CurrentOwnerId, (id) =>
+				var box = _playerBoxCache.Get(e.playerCard.OwnerEntity, (playerEntity) =>
 					_context.GetEntities(GameMatcher.PlayerBox)
-						.Where(p => p.player.PlayerId == id)
+						.Where(p => p == playerEntity)
 						.First()
 						.playerBox.BoxObject
 				);

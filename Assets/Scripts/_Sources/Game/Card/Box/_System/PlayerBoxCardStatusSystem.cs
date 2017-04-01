@@ -40,7 +40,7 @@ namespace End.Game
 		private void UpdateCount()
 		{
 			var boxCardCount = _context.GetEntities(GameMatcher.InBox)
-				.Where(e => e.playerCard.CurrentOwnerId == _context.localPlayerEntity.player.PlayerId)
+				.Where(e => e.playerCard.OwnerEntity == _context.localPlayerEntity)
 				.Count();
 
 			_localStatus.BoxCardCountText.text = boxCardCount.ToString();

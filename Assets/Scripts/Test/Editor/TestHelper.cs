@@ -16,5 +16,15 @@ namespace End.Test
 		{
 			return Object.Instantiate<Game.GameSetting>(Resources.Load<Game.GameSetting>("Game/Core/_Setting/GameSetting"));
 		}
+
+		public static GameEntity CreatePlayerEntity(this GameContext context, short playerId)
+		{
+			var e = context.CreateEntity();
+			var p = new GameObject().AddComponent<Player>();
+			p.PlayerId = playerId;
+
+			e.AddPlayer(p);
+			return e;
+		}
 	}
 }

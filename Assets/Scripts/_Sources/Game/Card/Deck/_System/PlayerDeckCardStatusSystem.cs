@@ -29,7 +29,7 @@ namespace End.Game
 		protected override void Execute(List<GameEntity> entities)
 		{
 			var deckCardCount = _context.GetEntities(GameMatcher.PlayerCard)
-				.Where(e => e.playerCard.CurrentOwnerId == _context.localPlayerEntity.player.PlayerId)
+				.Where(e => e.playerCard.OwnerEntity == _context.localPlayerEntity)
 				.Count();
 
 			_localStatus.DeckCardCountText.text = deckCardCount.ToString();

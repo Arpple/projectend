@@ -44,7 +44,7 @@ namespace End.Test
 
 			var card = _contexts.game.CreateEntity();
 			card.AddCard(0, Card.Potion);
-			card.AddPlayerCard(_ownerPlayer.player.PlayerId);
+			card.AddPlayerCard(_ownerPlayer);
 			card.AddInBox(0);
 			card.AddAbility("", new TestOnDeadAbility());
 

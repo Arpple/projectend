@@ -5,7 +5,7 @@ namespace End.Game
 	[Game]
 	public class PlayerCardComponent : IComponent
 	{
-		public int CurrentOwnerId;
+		public GameEntity OwnerEntity;
 	}
 
 }
