@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 224351109484361490}
   - component: {fileID: 222448960509021368}
   - component: {fileID: 114442517281631938}
+  - component: {fileID: 114173081591944240}
   m_Layer: 5
   m_Name: DisplayStatus (Left)
   m_TagString: Untagged
@@ -748,6 +749,26 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 5, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &114173081591944240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266539564516442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3c2c822b23a0f4486b8b9ee57449e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNameText: {fileID: 114048645117368160}
+  CharacterNameText: {fileID: 114901086129797990}
+  CharacterIcon: {fileID: 114315217196335048}
+  DeckCardCountText: {fileID: 114506140931269598}
+  BoxCardCountText: {fileID: 114124111813067108}
+  AttackPowerText: {fileID: 114465404131141336}
+  AttackRangeText: {fileID: 114531102981107826}
+  MoveSpeedText: {fileID: 114362241694140236}
+  VisionRangeText: {fileID: 114063024296357776}
 --- !u!114 &114187524473085464
 MonoBehaviour:
   m_ObjectHideFlags: 1
