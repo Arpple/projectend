@@ -24,7 +24,7 @@ namespace End.Test
 			var system = new CreateCharacterSelectionIconSystem(_contexts, _slideMenu);
 			var entity = _contexts.game.CreateEntity();
 			entity.AddResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
-			entity.AddUnitStatus("name", 0, 0, 0, 0, 0);
+			entity.AddUnitStatus(0, 0, 0, 0, 0);
 			entity.AddCharacter(Character.LastBoss);
 
 			system.Execute();

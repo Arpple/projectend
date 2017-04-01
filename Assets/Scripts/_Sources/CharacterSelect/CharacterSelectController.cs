@@ -83,7 +83,7 @@ namespace End.CharacterSelect
             //TODO : Set Character Status
             //Debug.Log("Unit null right ?"+(unit==null));
             Sprite sprite = Resources.Load<Sprite>(unit.resource.SpritePath);
-            UnitStatus.setUnitStatus(unit.unitStatus.Name,sprite
+            UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
                 ,unit.unitStatus.HitPoint
                 ,unit.unitStatus.AttackPower
                 ,unit.unitStatus.AttackRange
