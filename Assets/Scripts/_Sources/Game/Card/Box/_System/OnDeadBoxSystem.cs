@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Entitas;
-using System;
+using System.Linq;
 
 namespace End.Game
 {
@@ -24,9 +23,15 @@ namespace End.Game
 
 		protected override void Process(GameEntity entity)
 		{
-			var cards = _context.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
+			var reviveCard = _context.GetBoxCards<IReviveAbility>(entity.unit.OwnerEntity).FirstOrDefault();
+			if(reviveCard != null)
+			{
+				EventUseCardOnUnit.Create(entity, reviveCard, entity);
+			}
 
-			foreach (var card in cards)
+			var onDeadCards = _context.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
+
+			foreach (var card in onDeadCards)
 			{
 				EventUseCardOnUnit.Create(entity, card, entity);
 			}

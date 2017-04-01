@@ -17,6 +17,7 @@ namespace End.Game
 			return context.GetEntities(GameMatcher.InBox)
 				.Where(boxCard => boxCard.playerCard.CurrentOwnerId == playerEntity.player.PlayerId)
 				.Where(boxCard => boxCard.ability.Ability is T)
+				.OrderBy(card => card.inBox.Index)
 				.ToArray();
 		}
 	}

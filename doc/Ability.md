@@ -9,6 +9,10 @@ then implement the interface for type of ability you want
 
 ### Active
 - [ITargetAbility](Assets/Scripts/_Sources/Game/Ability/ITargetAbility.cs)  
+    - ability that use on target
 
 ### Passive
 - [IOnDeadAbility](Assets/Scripts/_Sources/Game/Ability/IOnDead.cs)  
+    - called all of this in box when hp drop to zero
+- [IReviveAbility](Assets/Scripts/_Sources/Game/Ability/IReviveAbility.cs)
+    - called one of this in box when hp drop to zero
