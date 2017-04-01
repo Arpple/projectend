@@ -146,10 +146,6 @@ namespace End.CharacterSelect
 		public void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
-
-			var netCon = NetworkController.Instance;
-			_localPlayer.CmdSetName(netCon.LocalPlayerName);
-
 			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
 		}
 
@@ -161,7 +157,6 @@ namespace End.CharacterSelect
 		{
 			StartCoroutine(Ready());
 			LockButton.interactable = false;
-			NetworkController.Instance.SelectedCharacter = (Character)characterId;
 		}
 
 		System.Collections.IEnumerator Ready()
