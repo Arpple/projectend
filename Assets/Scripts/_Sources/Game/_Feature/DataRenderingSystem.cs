@@ -16,6 +16,7 @@ namespace End.Game
 			//unit
 			Add(new OnDeadBoxSystem(contexts));
 			Add(new DeadSystem(contexts));
+			Add(new LocalCharacterStatusSystem(contexts, ui.LocalCharacterStatus));
 
 			//map
 			Add(new RenderMapPositionSystem(contexts));

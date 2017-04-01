@@ -34,7 +34,13 @@ namespace End.Game.UI
 			Assert.IsNotNull(VisionRangeText);
 		}
 
-
+		public void UpdateUnitStatus(UnitStatusComponent status)
+		{
+			AttackPowerText.text = status.AttackPower.ToString();
+			AttackRangeText.text = status.AttackRange.ToString();
+			MoveSpeedText.text = status.MoveSpeed.ToString();
+			VisionRangeText.text = status.VisionRange.ToString();
+		}
 
 	}
 }
