@@ -13,6 +13,7 @@ namespace End.Game
 			Add(new RenderPlayerDeckSystem(contexts));
 			Add(new PlayerBoxCardAddSystem(contexts));
 			Add(new PlayerDeckCardStatusSystem(contexts, ui.LocalPlayerStatus));
+			Add(new PlayerBoxCardStatusSystem(contexts, ui.LocalPlayerStatus));
 
 			//unit
 			Add(new OnDeadBoxSystem(contexts));
