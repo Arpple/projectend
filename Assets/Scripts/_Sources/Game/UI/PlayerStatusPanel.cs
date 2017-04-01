@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace End.Game.UI
 {
-	public class UnitStatusPanel : MonoBehaviour
+	public class PlayerStatusPanel : MonoBehaviour
 	{
 		[Header("Player and Character")]
 		public Text PlayerNameText;

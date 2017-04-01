@@ -22,7 +22,7 @@ namespace End.Game.UI
 		public CardDescription CardDesc;
 		public CardContainer CardContainer;
 		public BoxContainer BoxContainer;
-		public UnitStatusPanel LocalCharacterStatus;
+		public PlayerStatusPanel LocalPlayerStatus;
 
 		private CardObject _activeCard;
 
@@ -37,7 +37,7 @@ namespace End.Game.UI
 			Assert.IsNotNull(CardDesc);
 			Assert.IsNotNull(CardContainer);
 			Assert.IsNotNull(BoxContainer);
-			Assert.IsNotNull(LocalCharacterStatus);
+			Assert.IsNotNull(LocalPlayerStatus);
 		}
 
 		private void Start()

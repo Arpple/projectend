@@ -4777,7 +4777,7 @@ MonoBehaviour:
   CardDesc: {fileID: 308883055}
   CardContainer: {fileID: 1377177148}
   BoxContainer: {fileID: 252051766}
-  LocalCharacterStatus: {fileID: 918514068}
+  LocalPlayerStatus: {fileID: 918514068}
 --- !u!1 &767457181
 GameObject:
   m_ObjectHideFlags: 0

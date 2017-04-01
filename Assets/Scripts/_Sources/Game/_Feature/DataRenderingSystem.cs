@@ -12,11 +12,12 @@ namespace End.Game
 			Add(new RenderShareDeckSystem(contexts, ui.CardContainer.PlayerDecks[0]));
 			Add(new RenderPlayerDeckSystem(contexts));
 			Add(new PlayerBoxCardAddSystem(contexts));
+			Add(new PlayerDeckCardStatusSystem(contexts, ui.LocalPlayerStatus));
 
 			//unit
 			Add(new OnDeadBoxSystem(contexts));
 			Add(new DeadSystem(contexts));
-			Add(new LocalCharacterStatusSystem(contexts, ui.LocalCharacterStatus));
+			Add(new LocalCharacterStatusSystem(contexts, ui.LocalPlayerStatus));
 
 			//map
 			Add(new RenderMapPositionSystem(contexts));

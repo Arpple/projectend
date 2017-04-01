@@ -10,9 +10,9 @@ namespace End.Game
 	public class LocalCharacterStatusSystem : ReactiveSystem<GameEntity>
 	{
 		private readonly GameContext _context;
-		private readonly UnitStatusPanel _ui;
+		private readonly PlayerStatusPanel _ui;
 
-		public LocalCharacterStatusSystem(Contexts contexts, UnitStatusPanel ui) : base(contexts.game)
+		public LocalCharacterStatusSystem(Contexts contexts, PlayerStatusPanel ui) : base(contexts.game)
 		{
 			_ui = ui;
 		}
