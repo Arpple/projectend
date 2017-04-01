@@ -93,10 +93,12 @@ namespace End.Game
 				
 				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
 				.Add(new DataLoadingSystem(contexts, Setting))
-				.Add(new DataRenderingSystem(contexts, GameUI.Instance))
+				.Add(new DataRenderingSystem(contexts))
 		
 				.Add(new ViewContainerSystem(contexts))
 				.Add(new GameEventFeature(contexts))
+
+				.Add(new GameUISystem(contexts, GameUI.Instance))
 
 				.Add(new ControlSystem(contexts))
 				.Add(new ClearContextsSystem(contexts));
