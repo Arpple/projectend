@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Entitas;
-using System;
-using End.Game.UI;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class TurnPanelSetupSystem : IInitializeSystem
 	{

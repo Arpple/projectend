@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using End.Game.UI;
 using Entitas;
-using System;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class LocalCharacterStatusSystem : ReactiveSystem<GameEntity>
 	{

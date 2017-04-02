@@ -1,9 +1,8 @@
 ﻿using Entitas;
 using System.Linq;
 using System.Collections.Generic;
-using End.Game.UI;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class PlayerDeckCardStatusSystem : ReactiveSystem<GameEntity>
 	{

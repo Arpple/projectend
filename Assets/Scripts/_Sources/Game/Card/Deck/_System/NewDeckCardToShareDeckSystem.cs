@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using End.Game.UI;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class NewDeckCardToShareDeckSystem : ReactiveSystem<GameEntity>
 	{
