@@ -23,5 +23,10 @@ namespace End.Game.UI
 			CardName.text = card.name;
 			CardDetail.text = "Desc " + card.name;
 		}
+
+		public void ToggleVisibility()
+		{
+			gameObject.SetActive(!gameObject.activeSelf);
+		}
 	}
 }

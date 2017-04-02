@@ -28,12 +28,12 @@ namespace End.Game.UI
 			//ActiveButton.onClick.AddListener(() => ActivateCard(card));
 			BoxButton.onClick.AddListener(() => MoveToBox(card));
 			CancelButton.onClick.AddListener(() => CloseAction());
+			ActivateCard(card);
 		}
 
 		public void ActivateCard(CardObject card)
 		{
 			if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
-			GameUI.Instance.HideCardDescription();
 
 			var cardEntity = card.Entity;
 
@@ -43,8 +43,6 @@ namespace End.Game.UI
 				
 				if(ability is ITargetAbility)
 				{
-					var cancel = (CancelActionGroup)ShowSubAction(GameUI.Instance.CancelGroup);
-
 					var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
 					var targetAbility = (ITargetAbility)ability;
 					TileTargetSelector tileSelector = new TileTargetSelector(
@@ -60,12 +58,11 @@ namespace End.Game.UI
 							{
 								EventUseCardOnTile.Create(caster, cardEntity, t);
 							}
-							cancel.CloseAction();
 							CloseAction();
 						}
 					);
 
-					cancel.SetAction(() => tileSelector.ClearSelection());
+					OnCloseHandler += tileSelector.ClearSelection;
 				}
 			}
 		}

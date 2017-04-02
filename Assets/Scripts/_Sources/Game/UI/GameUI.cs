@@ -48,55 +48,87 @@ namespace End.Game.UI
 			CardDesc.Init();
 			CardContainer.Init();
 			BoxContainer.Init();
+
+			SetUpMainGroup();
 		}
 
 		public void OnCardClicked(CardObject card)
 		{
 			var cardEntity = card.Entity;
-			if (_activeCard != card)
+			if (!IsFocusingOnCard(card))
 			{
-				_activeCard = card;
-				CardDesc.SetDescription(card);
-				CardDesc.gameObject.SetActive(true);
-
-				if (cardEntity.isDeckCard)
-				{
-					if (cardEntity.hasInBox)
-					{
-						MainGroup.ShowSubAction(BoxGroup);
-						BoxGroup.SetAction(card);
-						BoxGroup.OnCloseHandler += HideCardDescription;
-					}
-					else
-					{
-						MainGroup.ShowSubAction(DeckGroup);
-						DeckGroup.SetAction(card);
-						DeckGroup.OnCloseHandler += HideCardDescription;
-					}
-				}
-				
-				//hightlight card
+				FocusOnCard(card);
 			}
 			else
 			{
-				if (cardEntity.isDeckCard)
-				{
-					if (cardEntity.hasInBox)
-					{
-						BoxGroup.CloseAction();
-					}
-					else
-					{
-						DeckGroup.CloseAction();
-					}
-				}
+				CardDesc.ToggleVisibility();
 			}
+		}
+
+		public void FocusOnCard(CardObject card)
+		{
+			var group = GetCardGroup(card);
+			if (group != null)
+			{
+				if (IsFocusingOtherCardFrom(card))
+				{
+					group.CloseAction();
+				}
+
+				MainGroup.ShowSubAction(group);
+				if (group is ICardActionGroup)
+				{
+					var cardGroup = (ICardActionGroup)group;
+					cardGroup.SetAction(card);
+				}
+				group.OnCloseHandler += HideCardDescription;
+			}
+
+			_activeCard = card;
+			CardDesc.SetDescription(card);
 		}
 
 		public void HideCardDescription()
 		{
 			CardDesc.gameObject.SetActive(false);
 			_activeCard = null;
+		}
+
+		private void SetUpMainGroup()
+		{
+			foreach(var p in MainGroup.PanelButtons)
+			{
+				p.Button.onClick.AddListener(() =>
+				{
+					if (!p.Panel.activeSelf)
+					{
+						HideCardDescription();
+					}
+				});
+			}
+		}
+
+		private ActionGroup GetCardGroup(CardObject card)
+		{
+			var entity = card.Entity;
+			if (entity.isDeckCard)
+			{
+				if (entity.hasInBox)
+					return BoxGroup;
+				else
+					return DeckGroup;
+			}
+			return null;
+		}
+
+		private bool IsFocusingOnCard(CardObject card)
+		{
+			return _activeCard == card && _activeCard != null;
+		}
+
+		private bool IsFocusingOtherCardFrom(CardObject newFocusingCard)
+		{
+			return _activeCard != newFocusingCard && _activeCard != null;
 		}
 	}
 }
