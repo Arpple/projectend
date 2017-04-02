@@ -11,15 +11,15 @@ public partial class GameEntity {
     public End.Game.PlayingOrderComponent playingOrder { get { return (End.Game.PlayingOrderComponent)GetComponent(GameComponentsLookup.PlayingOrder); } }
     public bool hasPlayingOrder { get { return HasComponent(GameComponentsLookup.PlayingOrder); } }
 
-    public void AddPlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerIdOrder) {
+    public void AddPlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerOrder) {
         var component = CreateComponent<End.Game.PlayingOrderComponent>(GameComponentsLookup.PlayingOrder);
-        component.PlayerOrder = newPlayerIdOrder;
+        component.PlayerOrder = newPlayerOrder;
         AddComponent(GameComponentsLookup.PlayingOrder, component);
     }
 
-    public void ReplacePlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerIdOrder) {
+    public void ReplacePlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerOrder) {
         var component = CreateComponent<End.Game.PlayingOrderComponent>(GameComponentsLookup.PlayingOrder);
-        component.PlayerOrder = newPlayerIdOrder;
+        component.PlayerOrder = newPlayerOrder;
         ReplaceComponent(GameComponentsLookup.PlayingOrder, component);
     }
 

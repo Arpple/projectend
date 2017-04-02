@@ -7,13 +7,11 @@ namespace End.Test
 	public class TestPlayingOrderSystem
 	{
 		private Contexts _contexts;
-		private GameObject _playerObject;
 
 		[SetUp]
 		public void Init()
 		{
 			_contexts = TestHelper.CreateContexts();
-			_playerObject = Resources.Load<GameObject>("Network/Player");
 		}
 
 		[Test]
