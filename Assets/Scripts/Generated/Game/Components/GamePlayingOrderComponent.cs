@@ -13,13 +13,13 @@ public partial class GameEntity {
 
     public void AddPlayingOrder(System.Collections.Generic.List<short> newPlayerIdOrder) {
         var component = CreateComponent<End.Game.PlayingOrderComponent>(GameComponentsLookup.PlayingOrder);
-        component.PlayerIdOrder = newPlayerIdOrder;
+        component.PlayerOrder = newPlayerIdOrder;
         AddComponent(GameComponentsLookup.PlayingOrder, component);
     }
 
     public void ReplacePlayingOrder(System.Collections.Generic.List<short> newPlayerIdOrder) {
         var component = CreateComponent<End.Game.PlayingOrderComponent>(GameComponentsLookup.PlayingOrder);
-        component.PlayerIdOrder = newPlayerIdOrder;
+        component.PlayerOrder = newPlayerIdOrder;
         ReplaceComponent(GameComponentsLookup.PlayingOrder, component);
     }
 

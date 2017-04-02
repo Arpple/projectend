@@ -21,15 +21,15 @@ namespace End.Test
 		{
 			_contexts.game.SetPlayingOrder(new List<short> { 1, 2, 3, 4 });
 			var order = _contexts.game.playingOrder;
-			Assert.AreEqual(1, order.NextPlayerId());
-			Assert.AreEqual(2, order.NextPlayerId());
-			Assert.AreEqual(3, order.NextPlayerId());
-			Assert.AreEqual(4, order.NextPlayerId());
-			Assert.AreEqual(2, order.NextPlayerId());
-			Assert.AreEqual(3, order.NextPlayerId());
-			Assert.AreEqual(4, order.NextPlayerId());
-			Assert.AreEqual(1, order.NextPlayerId());
-			Assert.AreEqual(3, order.NextPlayerId());
+			Assert.AreEqual(1, order.GetNextPlayerId());
+			Assert.AreEqual(2, order.GetNextPlayerId());
+			Assert.AreEqual(3, order.GetNextPlayerId());
+			Assert.AreEqual(4, order.GetNextPlayerId());
+			Assert.AreEqual(2, order.GetNextPlayerId());
+			Assert.AreEqual(3, order.GetNextPlayerId());
+			Assert.AreEqual(4, order.GetNextPlayerId());
+			Assert.AreEqual(1, order.GetNextPlayerId());
+			Assert.AreEqual(3, order.GetNextPlayerId());
 		}
 
 		[Test]
@@ -48,7 +48,7 @@ namespace End.Test
 
 			system.Initialize();
 
-			var order = _contexts.game.playingOrder.PlayerIdOrder;
+			var order = _contexts.game.playingOrder.PlayerOrder;
 
 			4.Loop(i => Assert.AreEqual((short)(i + 1), order[i]));
 		}
