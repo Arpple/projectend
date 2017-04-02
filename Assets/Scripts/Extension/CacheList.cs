@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CacheList<TIndex, TItem>
 {
 	private Dictionary<TIndex, TItem> _cache;
 
-	private bool _cacheEmpty;
-
-	public CacheList(bool cacheEmpty = false)
+	public CacheList()
 	{
 		_cache = new Dictionary<TIndex, TItem>();
-		_cacheEmpty = cacheEmpty;
 	}
 
 	/// <summary>
@@ -32,11 +30,7 @@ public class CacheList<TIndex, TItem>
 		if(!_cache.TryGetValue(index, out  result))
 		{
 			result = callback(index);
-
-			if (_cacheEmpty || !result.Equals(default(TItem)))
-			{
-				_cache.Add(index, result);
-			}
+			_cache.Add(index, result);
 		}
 
 		return result;

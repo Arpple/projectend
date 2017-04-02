@@ -2,40 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 using System.Linq;
+using System;
 
 namespace End.Game
 {
-	public class CreatePlayerCharacterSystem : ReactiveSystem<GameEntity>
+	public class CreatePlayerCharacterSystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 
 		public CreatePlayerCharacterSystem(Contexts contexts)
-			: base(contexts.game)
 		{
 			_context = contexts.game;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
-		{
-			return context.CreateCollector(GameMatcher.Player, GroupEvent.Added);
-		}
-
-		protected override bool Filter(GameEntity entity)
-		{
-			return entity.hasPlayer;
-		}
-
-		protected override void Execute(List<GameEntity> entities)
+		public void Initialize()
 		{
 			var spawnpoints = _context.GetEntities(GameMatcher.Spawnpoint);
-			Assert.IsTrue(spawnpoints.Length >= entities.Count);
+			var players = _context.GetEntities(GameMatcher.Player);
+			Assert.IsTrue(spawnpoints.Length >= players.Length);
 
-            int indexSpawnPoint = 0;
+			int indexSpawnPoint = 0;
 			int id = 0;
-			foreach (var playerEntity in entities.OrderBy(p => p.player.PlayerId))
+			foreach (var playerEntity in players.OrderBy(p => p.player.PlayerId))
 			{
 				var sp = spawnpoints[indexSpawnPoint];
-                indexSpawnPoint++;
+				indexSpawnPoint++;
 
 				var characterType = (Character)playerEntity.player.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);
@@ -48,5 +39,4 @@ namespace End.Game
 			}
 		}
 	}
-
 }

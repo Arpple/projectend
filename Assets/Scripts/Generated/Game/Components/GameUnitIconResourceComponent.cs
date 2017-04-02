@@ -11,15 +11,15 @@ public partial class GameEntity {
     public End.Game.UnitIconResourceComponent unitIconResource { get { return (End.Game.UnitIconResourceComponent)GetComponent(GameComponentsLookup.UnitIconResource); } }
     public bool hasUnitIconResource { get { return HasComponent(GameComponentsLookup.UnitIconResource); } }
 
-    public void AddUnitIconResource(string newIconSpriteShortenPath) {
+    public void AddUnitIconResource(string newIconSpritePath) {
         var component = CreateComponent<End.Game.UnitIconResourceComponent>(GameComponentsLookup.UnitIconResource);
-        component.IconSpritePath = newIconSpriteShortenPath;
+        component.IconSpritePath = newIconSpritePath;
         AddComponent(GameComponentsLookup.UnitIconResource, component);
     }
 
-    public void ReplaceUnitIconResource(string newIconSpriteShortenPath) {
+    public void ReplaceUnitIconResource(string newIconSpritePath) {
         var component = CreateComponent<End.Game.UnitIconResourceComponent>(GameComponentsLookup.UnitIconResource);
-        component.IconSpritePath = newIconSpriteShortenPath;
+        component.IconSpritePath = newIconSpritePath;
         ReplaceComponent(GameComponentsLookup.UnitIconResource, component);
     }
 

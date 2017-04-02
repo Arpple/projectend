@@ -8,15 +8,19 @@ namespace End.Game
 	{
 		public GameSetupSystem(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 		{
+			//map
+			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
+			Add(new CreateTileGraphSystem(contexts));
+
 			//player
 			Add(new CreatePlayerSystem(contexts, players));
 			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
 			Add(new CreatePlayerCharacterSystem(contexts));
 			Add(new RoleSetupSystem(contexts, setting.RoleSetting.GetRolesCount(players.Count)));
 
-			//map
-			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
-			Add(new CreateTileGraphSystem(contexts));
+			//unit
+			Add(new CharacterBlueprintLoadingSystem(contexts, setting.UnitSetting.CharacterSetting));
+			Add(new CharacterIconLoadingSystem(contexts));
 
 			//card
 			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.CardContainer));

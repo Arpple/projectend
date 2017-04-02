@@ -3,7 +3,7 @@ using End.Game;
 
 namespace End.Test
 {
-	public class TestLoadCharacterSystem
+	public class TestCharacterBlueprintLoadingSystem
 	{
 		private Contexts _contexts;
 		private CharacterSetting _setting;
@@ -18,12 +18,12 @@ namespace End.Test
 		[Test]
 		public void LoadCharacter()
 		{
-			var system = new LoadCharacterSystem(_contexts, _setting);
+			var system = new CharacterBlueprintLoadingSystem(_contexts, _setting);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddCharacter(Character.LastBoss);
 
-			system.Execute();
+			system.Initialize();
 
 			Assert.IsTrue(entity.hasResource);
 		}

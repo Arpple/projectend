@@ -32,7 +32,7 @@ namespace End.Test
 			var p = _contexts.game.CreateEntity();
 			p.AddPlayer(player);
 
-			system.Execute();
+			system.Initialize();
 
 			var character = _contexts.game.GetEntities(GameMatcher.Character).FirstOrDefault();
 			Assert.IsNotNull(character);
