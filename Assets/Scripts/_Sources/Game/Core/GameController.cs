@@ -90,15 +90,17 @@ namespace End.Game
 		public Systems CreateSystem(Contexts contexts)
 		{
 			return new Feature("Systems")
-				
+
 				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
+				
 				.Add(new DataLoadingSystem(contexts, Setting))
 				.Add(new DataRenderingSystem(contexts))
 		
 				.Add(new ViewContainerSystem(contexts))
 				.Add(new GameEventFeature(contexts))
 
-				.Add(new GameUISystem(contexts, GameUI.Instance))
+				.Add(new GameUISetupSystem(contexts, GameUI.Instance))
+				.Add(new GameUIRenderingSystem(contexts, GameUI.Instance))
 
 				.Add(new ControlSystem(contexts))
 				.Add(new ClearContextsSystem(contexts));

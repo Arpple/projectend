@@ -1,10 +1,8 @@
 ﻿using Entitas;
 using System.Linq;
 using System.Collections.Generic;
-using End.Game.UI;
-using System;
 
-namespace End.Game
+namespace End.Game.UI
 {
 	public class PlayerBoxCardStatusSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{

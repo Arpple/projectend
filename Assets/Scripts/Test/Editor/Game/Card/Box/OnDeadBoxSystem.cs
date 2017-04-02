@@ -17,7 +17,7 @@ namespace End.Test
 		{
 			public void OnDead(GameEntity deadEntity)
 			{
-				deadEntity.hitpoint.HitPoint += 1;
+				deadEntity.hitpoint.Value += 1;
 			}
 		}
 

@@ -20,7 +20,6 @@ namespace End.Game
 
 			foreach(var character in characters)
 			{
-				Debug.Log(character.hasUnitIconResource);
 				if (character.hasUnitIconResource && !character.hasUnitIcon)
 				{
 					character.AddUnitIcon(Resources.Load<Sprite>(character.unitIconResource.IconSpritePath));

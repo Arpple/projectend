@@ -37,7 +37,7 @@ namespace End.Test
 			ch.AddUnitIcon(sprite);
 			ch.AddUnit(0, ch);
 
-			var order = _contexts.game.SetPlayingOrder(new List<GameEntity>() { ch });
+			_contexts.game.SetPlayingOrder(new List<GameEntity>() { ch });
 
 			system.Initialize();
 

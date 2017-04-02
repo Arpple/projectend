@@ -63,7 +63,7 @@ namespace End.Game
 		{
 			var e = entity.eventHitpointModify;
 
-			var newHp = e.TargetUnit.hitpoint.HitPoint + (e.Type != HitPointModifyType.Recovery ? -1 : 1 * e.Value);
+			var newHp = e.TargetUnit.hitpoint.Value + (e.Type != HitPointModifyType.Recovery ? -1 : 1 * e.Value);
 			e.TargetUnit.ReplaceHitpoint(Mathf.Clamp(newHp, e.Type == HitPointModifyType.FatalDamage ? 0 : 1, e.TargetUnit.unitStatus.HitPoint));
 		}
 	}
