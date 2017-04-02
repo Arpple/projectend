@@ -8,7 +8,6 @@ namespace End.Game.UI
 	[Serializable]
 	public class DeckCardActionGroup : ActionGroup, ICardActionGroup
 	{
-		public Button ActiveButton;
 		public Button BoxButton;
 		public Button CancelButton;
 
@@ -17,7 +16,7 @@ namespace End.Game.UI
 			get
 			{
 				if (_buttons == null)
-					_buttons = new Button[] { ActiveButton, BoxButton, CancelButton };
+					_buttons = new Button[] { BoxButton, CancelButton };
 				return _buttons;
 			}
 		}
@@ -26,7 +25,7 @@ namespace End.Game.UI
 
 		public void SetAction(CardObject card)
 		{
-			ActiveButton.onClick.AddListener(() => ActivateCard(card));
+			//ActiveButton.onClick.AddListener(() => ActivateCard(card));
 			BoxButton.onClick.AddListener(() => MoveToBox(card));
 			CancelButton.onClick.AddListener(() => CloseAction());
 		}

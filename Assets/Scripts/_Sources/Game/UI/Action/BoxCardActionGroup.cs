@@ -11,7 +11,6 @@ namespace End.Game.UI
 		public Button DiscardButton;
 		public Button MoveLeftButton;
 		public Button ToDeckButton;
-		public Button MoveRightButton;
 		public Button CloseBoxButton;
 
 		public Button[] Buttons
@@ -19,7 +18,7 @@ namespace End.Game.UI
 			get
 			{
 				if (_buttons == null)
-					_buttons = new Button[] {DiscardButton, MoveLeftButton, ToDeckButton, MoveRightButton, CloseBoxButton };
+					_buttons = new Button[] {DiscardButton, MoveLeftButton, ToDeckButton, CloseBoxButton };
 				return _buttons;
 			}
 		}
@@ -30,7 +29,6 @@ namespace End.Game.UI
 		{
 			DiscardButton.onClick.AddListener(() => DiscardCard(card));
 			MoveLeftButton.onClick.AddListener(() => MoveBoxCard(card, -1));
-			MoveRightButton.onClick.AddListener(() => MoveBoxCard(card, 1));
 			ToDeckButton.onClick.AddListener(() => MoveToDeck(card));
 			CloseBoxButton.onClick.AddListener(() => CloseAction());
 		}
@@ -49,7 +47,19 @@ namespace End.Game.UI
 
 		public void MoveBoxCard(CardObject card, int direction)
 		{
-			card.transform.SetSiblingIndex(card.transform.GetSiblingIndex() + direction);
+			if(IsAtLeftMost(card))
+			{
+				card.transform.SetAsLastSibling();
+			}
+			else
+			{
+				card.transform.SetSiblingIndex(card.transform.GetSiblingIndex() + direction);
+			}
+		}
+
+		private bool IsAtLeftMost(CardObject card)
+		{
+			return card.transform.GetSiblingIndex() == 0;
 		}
 
 		protected override void Show()
