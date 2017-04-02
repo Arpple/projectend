@@ -135,6 +135,11 @@ Prefab:
       propertyPath: SelectedCharacterId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
+        type: 2}
+      propertyPath: PlayerName
+      value: P1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
   m_IsPrefabParent: 0
@@ -190,6 +195,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1419789583}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &114656420 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114894506466071718, guid: f9c414a456ee6584aac51f7eb1edf077,
+    type: 2}
+  m_PrefabInternal: {fileID: 431850431}
+  m_Script: {fileID: 11500000, guid: af3c2c822b23a0f4486b8b9ee57449e9, type: 3}
 --- !u!1 &155260797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,7 +1883,7 @@ MonoBehaviour:
   CardDesc: {fileID: 1517447198}
   CardContainer: {fileID: 1377177148}
   BoxContainer: {fileID: 909950547}
-  LocalPlayerStatus: {fileID: 918514068}
+  LocalPlayerStatus: {fileID: 114656420}
   TurnPanel: {fileID: 399868188}
 --- !u!1 &772018017
 GameObject:
@@ -1964,6 +1975,11 @@ Prefab:
         type: 2}
       propertyPath: PlayerId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
+        type: 2}
+      propertyPath: PlayerName
+      value: P2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
@@ -2216,6 +2232,11 @@ Prefab:
       propertyPath: PlayerId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
+        type: 2}
+      propertyPath: PlayerName
+      value: P3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
   m_IsPrefabParent: 0
@@ -2275,12 +2296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerBoxPrefabs: {fileID: 114963737539022526, guid: 859c985935ebaa642ab3312fded665ee,
     type: 2}
---- !u!114 &918514068 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114173081591944240, guid: 106523ba2fa965e43935c630a54dbb79,
-    type: 2}
-  m_PrefabInternal: {fileID: 1756768712}
-  m_Script: {fileID: 11500000, guid: af3c2c822b23a0f4486b8b9ee57449e9, type: 3}
 --- !u!1 &939497848
 GameObject:
   m_ObjectHideFlags: 0

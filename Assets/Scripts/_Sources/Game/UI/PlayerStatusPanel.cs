@@ -33,6 +33,16 @@ namespace End.Game.UI
 			Assert.IsNotNull(VisionRangeText);
 		}
 
+		public void SetPlayer(GameEntity playerEntity)
+		{
+			PlayerNameText.text = playerEntity.player.PlayerObject.PlayerName;
+		}
+
+		public void SetCharacter(GameEntity characterEntity)
+		{
+			CharacterIcon.IconImage.sprite = characterEntity.unitIcon.IconSprite;
+		}
+
 		public void UpdateUnitStatus(UnitStatusComponent status)
 		{
 			AttackPowerText.text = status.AttackPower.ToString();

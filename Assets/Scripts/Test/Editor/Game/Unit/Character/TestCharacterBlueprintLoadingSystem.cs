@@ -1,17 +1,15 @@
 ﻿using NUnit.Framework;
 using End.Game;
 
-namespace End.Test
+namespace End.Test.System
 {
-	public class TestCharacterBlueprintLoadingSystem
+	public class TestCharacterBlueprintLoadingSystem : ContextsTest
 	{
-		private Contexts _contexts;
 		private CharacterSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			_contexts = TestHelper.CreateContexts();
 			_setting = TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
 		}
 
