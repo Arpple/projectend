@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace End.Game
 {
-	public class AbilityRecover : Ability, IOnDeadAbility, ITargetAbility
+	public class AbilityRecover : Ability, IReviveAbility, ITargetAbility
 	{
 		private GameEntity _caster;
 

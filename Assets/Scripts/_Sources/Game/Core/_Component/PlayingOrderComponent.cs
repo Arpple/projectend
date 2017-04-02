@@ -10,14 +10,14 @@ namespace End.Game
 	[Game, Unique]
 	public class PlayingOrderComponent : IComponent
 	{
-		public List<short> PlayerIdOrder;
+		public List<GameEntity> PlayerOrder;
 
 		private int _turn;
 		private int _round;
 
-		public int CurrentPlayerId
+		public GameEntity CurrentPlayer
 		{
-			get { return PlayerIdOrder[_turn - 1]; }
+			get { return PlayerOrder[_turn - 1]; }
 		}
 
 		public void Initialize()
@@ -27,35 +27,43 @@ namespace End.Game
 		}
 
 		/// <summary>
-		/// Cycle the playing order
+		/// Cycle the playing order and get player id
 		/// </summary>
 		/// <returns>next playing playerId</returns>
-		public int NextPlayerId()
+		public GameEntity GetNextPlayerEntity()
 		{
-			Assert.IsNotNull(PlayerIdOrder);
-			Assert.IsTrue(PlayerIdOrder.Count > 0);
+			Assert.IsNotNull(PlayerOrder);
+			Assert.IsTrue(PlayerOrder.Count > 0);
 
-			//end round
-			if(_turn == PlayerIdOrder.Count)
+			if(IsRoundEnd())
 			{
-				var first = PlayerIdOrder.First();
-				PlayerIdOrder.RemoveAt(0);
-				PlayerIdOrder.Add(first);
-
-				_turn = 0;
-				_round++;
+				EndRound();
 			}
-
 			_turn++;
-			Assert.IsTrue(_turn > 0 && _turn <= PlayerIdOrder.Count);
 
-			return CurrentPlayerId;
+			Assert.IsTrue(_turn > 0 && _turn <= PlayerOrder.Count);
 
+			return CurrentPlayer;
 		}
 
 		public override string ToString()
 		{
 			return "R:" + _round + ", T:" + _turn;
+		}
+
+		private bool IsRoundEnd()
+		{
+			return _turn == PlayerOrder.Count;
+		}
+
+		private void EndRound()
+		{
+			var first = PlayerOrder.First();
+			PlayerOrder.RemoveAt(0);
+			PlayerOrder.Add(first);
+
+			_turn = 0;
+			_round++;
 		}
 	}
 }

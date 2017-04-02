@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace End.Game.UI
 {
@@ -8,28 +9,35 @@ namespace End.Game.UI
 	{
 		public static GameUI Instance;
 
+		[Header("Action")]
 		public MainActionGroup MainGroup;
-
-		[Space(15)]
+		[Space]
 		public DeckCardActionGroup DeckGroup;
-
-		[Space(15)]
+		[Space]
 		public BoxCardActionGroup BoxGroup;
-
-		[Space(15)]
+		[Space]
 		public CancelActionGroup CancelGroup;
-
-		[Space(15)]
+		
+		[Header("Components")]
 		public CardDescription CardDesc;
-
 		public CardContainer CardContainer;
 		public BoxContainer BoxContainer;
+		public PlayerStatusPanel LocalPlayerStatus;
 
 		private CardObject _activeCard;
 
 		private void Awake()
 		{
 			Instance = this;
+
+			Assert.IsNotNull(MainGroup);
+			Assert.IsNotNull(DeckGroup);
+			Assert.IsNotNull(BoxGroup);
+			Assert.IsNotNull(CancelGroup);
+			Assert.IsNotNull(CardDesc);
+			Assert.IsNotNull(CardContainer);
+			Assert.IsNotNull(BoxContainer);
+			Assert.IsNotNull(LocalPlayerStatus);
 		}
 
 		private void Start()

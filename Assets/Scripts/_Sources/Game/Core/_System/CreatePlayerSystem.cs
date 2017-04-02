@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace End.Game
 {
-	public class LoadPlayerSystem : IInitializeSystem
+	public class CreatePlayerSystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 		readonly List<Player> _players;
 
-		public LoadPlayerSystem(Contexts contexts, List<Player> players)
+		public CreatePlayerSystem(Contexts contexts, List<Player> players)
 		{
 			_context = contexts.game;
 			_players = players;

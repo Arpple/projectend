@@ -35,33 +35,52 @@ MonoBehaviour:
           Count: 10
   RoleSetting:
     RoleCount:
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
-    - PlayerCount: 0
-      OriginCount: 0
-      InvaderCount: 0
+    - PlayerCount: 2
+      OriginCount: 1
+      InvaderCount: 1
+      IsRandom: 0
+      RandomCount: 0
+      EndCount: 0
+      SeedCount: 0
+    - PlayerCount: 3
+      OriginCount: 1
+      InvaderCount: 1
+      IsRandom: 1
+      RandomCount: 1
+      EndCount: 0
+      SeedCount: 0
+    - PlayerCount: 4
+      OriginCount: 2
+      InvaderCount: 2
+      IsRandom: 0
+      RandomCount: 0
+      EndCount: 0
+      SeedCount: 0
+    - PlayerCount: 5
+      OriginCount: 2
+      InvaderCount: 2
+      IsRandom: 1
+      RandomCount: 1
+      EndCount: 0
+      SeedCount: 0
+    - PlayerCount: 6
+      OriginCount: 3
+      InvaderCount: 3
+      IsRandom: 0
+      RandomCount: 0
+      EndCount: 0
+      SeedCount: 0
+    - PlayerCount: 7
+      OriginCount: 3
+      InvaderCount: 3
+      IsRandom: 1
+      RandomCount: 1
+      EndCount: 0
+      SeedCount: 0
+    - PlayerCount: 8
+      OriginCount: 3
+      InvaderCount: 3
+      IsRandom: 0
+      RandomCount: 0
+      EndCount: 1
+      SeedCount: 1

@@ -41,7 +41,7 @@ namespace End.CharacterSelect
 				var slideItem = _slidemenu.AddItem();
 				var icon = Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(e.resource));
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);
-				slideItem.SetText(e.unitStatus.Name);
+				slideItem.SetText(e.unitDetail.Name);
 				slideItem.gameObject.Link(e, _context);
 				_linkedObjects.Add(slideItem.gameObject);
 

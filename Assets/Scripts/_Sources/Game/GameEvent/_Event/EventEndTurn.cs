@@ -4,11 +4,11 @@ using UnityEngine;
 namespace End.Game
 {
 	[GameEvent]
-	public class EventEndTurn : GameEventComponent
+	public class EventEndTurn : GameEventComponent, IRemoteEvent
 	{
 		public static bool TryEndTurn()
 		{
-			if(GameUtil.IsLocalPlayerTurn)
+			if(Contexts.sharedInstance.game.IsLocalPlayerTurn)
 			{
 				GameEvent.CreateEvent<EventEndTurn>();
 				return true;
@@ -34,7 +34,7 @@ namespace End.Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var playingOrder = _contexts.game.playingOrder;
-			playingOrder.NextPlayerId();
+			playingOrder.GetNextPlayerEntity();
 			Debug.Log(playingOrder);
 		}
 	}

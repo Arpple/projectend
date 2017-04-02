@@ -6,9 +6,12 @@ public class CacheList<TIndex, TItem>
 {
 	private Dictionary<TIndex, TItem> _cache;
 
-	public CacheList()
+	private bool _cacheEmpty;
+
+	public CacheList(bool cacheEmpty = false)
 	{
 		_cache = new Dictionary<TIndex, TItem>();
+		_cacheEmpty = cacheEmpty;
 	}
 
 	/// <summary>
@@ -29,7 +32,11 @@ public class CacheList<TIndex, TItem>
 		if(!_cache.TryGetValue(index, out  result))
 		{
 			result = callback(index);
-			_cache.Add(index, result);
+
+			if (_cacheEmpty || !result.Equals(default(TItem)))
+			{
+				_cache.Add(index, result);
+			}
 		}
 
 		return result;

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Entitas;
-using System;
+using System.Linq;
 
 namespace End.Game
 {
@@ -24,19 +23,18 @@ namespace End.Game
 
 		protected override void Process(GameEntity entity)
 		{
-			var box = entity.unit.OwnerEntity.playerBox;
-
-			var cards = box.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
-
-			foreach (var card in cards)
+			var reviveCard = _context.GetBoxCards<IReviveAbility>(entity.unit.OwnerEntity).FirstOrDefault();
+			if(reviveCard != null)
 			{
-				var ability = (IOnDeadAbility)card.ability.Ability;
-				ability.OnDead(entity);
-				EventMoveCard.MoveCardToShareDeck(card);
+				EventUseCardOnUnit.Create(entity, reviveCard, entity);
+			}
 
-				if (entity.hitpoint.HitPoint > 0) break;
+			var onDeadCards = _context.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
+
+			foreach (var card in onDeadCards)
+			{
+				EventUseCardOnUnit.Create(entity, card, entity);
 			}
 		}
 	}
-
 }

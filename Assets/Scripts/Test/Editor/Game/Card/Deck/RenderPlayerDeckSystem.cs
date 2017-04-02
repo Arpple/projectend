@@ -31,7 +31,7 @@ namespace End.Test
 			container.AddPlayerDeck(deck);
 			
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerCard(1);
+			card.AddPlayerCard(container);
 			card.isDeckCard = true;
 			card.AddView(new GameObject());
 

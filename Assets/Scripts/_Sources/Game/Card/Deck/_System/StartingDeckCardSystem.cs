@@ -18,7 +18,7 @@ namespace End.Game
 		public void Initialize()
 		{
 			var cards = _context.GetEntities(GameMatcher.Card).Shuffle();
-			var players = _context.GetEntities(GameMatcher.Player).Select(p => p.player);
+			var players = _context.GetEntities(GameMatcher.Player);
 
 			Assert.IsTrue(players.Count() * _setting.StartCardCount <= cards.Length);
 
@@ -27,7 +27,7 @@ namespace End.Game
 			{
 				_setting.StartCardCount.Loop(() => 
 				{
-					EventMoveCard.MoveCardToPlayer(cards[i], p.PlayerId);
+					EventMoveCard.MoveCardToPlayer(cards[i], p);
 					i++;
 				});
 			}

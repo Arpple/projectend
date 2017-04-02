@@ -9,13 +9,13 @@ namespace End.Game
 	public class PlayerBoxCardRemoveSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
-		private CacheList<int, PlayerDeck> _playerDeckCache;
+		private CacheList<GameEntity, PlayerDeck> _playerDeckCache;
 
 		public PlayerBoxCardRemoveSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
-			_playerDeckCache = new CacheList<int, PlayerDeck>();
+			_playerDeckCache = new CacheList<GameEntity, PlayerDeck>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -32,9 +32,9 @@ namespace End.Game
 		{
 			foreach (var e in entities)
 			{
-				var deck = _playerDeckCache.Get(e.playerCard.CurrentOwnerId, (id) =>
+				var deck = _playerDeckCache.Get(e.playerCard.OwnerEntity, (playerEntity) =>
 					_context.GetEntities(GameMatcher.PlayerDeck)
-						.Where(p => p.player.PlayerId == id)
+						.Where(p => p == playerEntity)
 						.First()
 						.playerDeck.PlayerDeckObject
 				);

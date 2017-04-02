@@ -70,6 +70,9 @@ namespace End.Lobby
 				ReadyButton.gameObject.SetActive(true);
 				WaitButton.gameObject.SetActive(false);
 			});
+
+			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
+			player.CmdSetIconPath(NetworkController.Instance.LocalPlayerIconPath);
 		}
 
 		public void Back()

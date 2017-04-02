@@ -33,7 +33,6 @@ namespace End
 		[Header("Local Player")]
 		public string LocalPlayerName;
 		public string LocalPlayerIconPath;
-		public Game.Character SelectedCharacter;
 		public Player LocalPlayer;
 
 		public List<Player> AllPlayers;

@@ -33,26 +33,35 @@ namespace End.Game.UI
 
 		public void ActivateCard(CardObject card)
 		{
-			if (!GameUtil.IsLocalPlayerTurn) return;
+			if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
 			GameUI.Instance.HideCardDescription();
 
-			if (card.Entity.hasAbility)
-			{
-				var ability = card.Entity.ability.Ability;
+			var cardEntity = card.Entity;
 
+			if (cardEntity.hasAbility)
+			{
+				var ability = cardEntity.ability.Ability;
+				
 				if(ability is ITargetAbility)
 				{
 					var cancel = (CancelActionGroup)ShowSubAction(GameUI.Instance.CancelGroup);
 
+					var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
 					var targetAbility = (ITargetAbility)ability;
 					TileTargetSelector tileSelector = new TileTargetSelector(
-						targetAbility.GetTilesArea(GameUtil.LocalPlayerCharacter),
+						targetAbility.GetTilesArea(caster),
 						targetAbility.GetTargetEntity,
 						(t) => 
 						{
-							targetAbility.OnTargetSelected(t);
+							if (t.hasUnit)
+							{
+								EventUseCardOnUnit.Create(caster, cardEntity, t);
+							}
+							else if(t.hasTile)
+							{
+								EventUseCardOnTile.Create(caster, cardEntity, t);
+							}
 							cancel.CloseAction();
-							EventMoveCard.MoveCardToShareDeck(card.Entity);
 							CloseAction();
 						}
 					);

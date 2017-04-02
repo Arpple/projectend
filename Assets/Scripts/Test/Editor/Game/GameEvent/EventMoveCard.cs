@@ -7,7 +7,6 @@ namespace End.Test
 	public class TestEventMoveCard
 	{
 		private Contexts _contexts;
-		private GameEntity _card;
 
 		[SetUp]
 		public void Init()
@@ -15,15 +14,20 @@ namespace End.Test
 			_contexts = TestHelper.CreateContexts();
 			GameController.IsTest = true;
 
-			_card = _contexts.game.CreateEntity();
-			_card.AddCard(1, Card.Move);
-			_card.AddPlayerCard(1);
+			
 		}
 
 		[Test]
 		public void CreateEvent()
 		{
-			EventMoveCard.MoveCardToPlayer(_card, 2);
+			var p1 = _contexts.game.CreatePlayerEntity(1);
+			var p2 = _contexts.game.CreatePlayerEntity(2);
+
+			var card = _contexts.game.CreateEntity();
+			card.AddCard(1, Card.Move);
+			card.AddPlayerCard(p1);
+
+			EventMoveCard.MoveCardToPlayer(card, p2);
 
 			var eventEntity = _contexts.gameEvent.GetEntities();
 
@@ -31,8 +35,8 @@ namespace End.Test
 			Assert.IsTrue(eventEntity[0].hasEventMoveCard);
 
 			var e = eventEntity[0].eventMoveCard;
-			Assert.AreEqual(_card, e.CardEntity);
-			Assert.AreEqual(2, e.TargetPlayerId);
+			Assert.AreEqual(card, e.CardEntity);
+			Assert.AreEqual(p2, e.TargetPlayerEntity);
 		}
 
 		[Test]
@@ -40,11 +44,19 @@ namespace End.Test
 		{
 			var system = new EventMoveCardSystem(_contexts);
 
-			EventMoveCard.MoveCardToPlayer(_card, 2);
+			var p1 = _contexts.game.CreatePlayerEntity(1);
+			var p2 = _contexts.game.CreatePlayerEntity(2);
+
+			var card = _contexts.game.CreateEntity();
+			card.AddCard(1, Card.Move);
+			card.AddPlayerCard(p1);
+
+
+			EventMoveCard.MoveCardToPlayer(card, p2);
 
 			system.Execute();
 
-			Assert.AreEqual(2, _card.playerCard.CurrentOwnerId);
+			Assert.AreEqual(p2, card.playerCard.OwnerEntity);
 		}
 
 		[Test]
@@ -52,12 +64,18 @@ namespace End.Test
 		{
 			var system = new EventMoveCardSystem(_contexts);
 
-			EventMoveCard.MoveCardInToBox(_card);
+			var p1 = _contexts.game.CreatePlayerEntity(1);
+
+			var card = _contexts.game.CreateEntity();
+			card.AddCard(1, Card.Move);
+			card.AddPlayerCard(p1);
+
+			EventMoveCard.MoveCardInToBox(card);
 
 			system.Execute();
 
-			Assert.AreEqual(1, _card.playerCard.CurrentOwnerId);
-			Assert.IsTrue(_card.hasInBox);
+			Assert.AreEqual(p1, card.playerCard.OwnerEntity);
+			Assert.IsTrue(card.hasInBox);
 		}
 
 		[Test]
@@ -65,14 +83,19 @@ namespace End.Test
 		{
 			var system = new EventMoveCardSystem(_contexts);
 
-			_card.AddInBox(0);
+			var p1 = _contexts.game.CreatePlayerEntity(1);
 
-			EventMoveCard.MoveCardOutFromBox(_card);
+			var card = _contexts.game.CreateEntity();
+			card.AddCard(1, Card.Move);
+			card.AddPlayerCard(p1);
+			card.AddInBox(0);
+
+			EventMoveCard.MoveCardOutFromBox(card);
 
 			system.Execute();
 
-			Assert.AreEqual(1, _card.playerCard.CurrentOwnerId);
-			Assert.IsFalse(_card.hasInBox);
+			Assert.AreEqual(p1, card.playerCard.OwnerEntity);
+			Assert.IsFalse(card.hasInBox);
 		}
 
 		[Test]
@@ -80,11 +103,16 @@ namespace End.Test
 		{
 			var system = new EventMoveCardSystem(_contexts);
 
-			EventMoveCard.MoveCardToShareDeck(_card);
+			var p1 = _contexts.game.CreatePlayerEntity(1);
+			var card = _contexts.game.CreateEntity();
+			card.AddCard(1, Card.Move);
+			card.AddPlayerCard(p1);
+
+			EventMoveCard.MoveCardToShareDeck(card);
 
 			system.Execute();
 
-			Assert.IsFalse(_card.hasPlayerCard);
+			Assert.IsFalse(card.hasPlayerCard);
 		}
 	}
 
