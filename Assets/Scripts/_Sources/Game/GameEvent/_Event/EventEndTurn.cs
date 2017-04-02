@@ -34,7 +34,7 @@ namespace End.Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var playingOrder = _contexts.game.playingOrder;
-			playingOrder.GetNextPlayerId();
+			playingOrder.GetNextPlayerEntity();
 			Debug.Log(playingOrder);
 		}
 	}

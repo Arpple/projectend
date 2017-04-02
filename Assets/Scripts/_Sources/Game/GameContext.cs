@@ -30,7 +30,7 @@ public sealed partial class GameContext : Context<GameEntity>
 
 	public bool IsLocalPlayerTurn
 	{
-		get { return this.localPlayerEntity.player.PlayerId == this.playingOrder.CurrentPlayerId; }
+		get { return this.localPlayerEntity == this.playingOrder.CurrentPlayer; }
 	}
 
 	public GameEntity LocalPlayerCharacter

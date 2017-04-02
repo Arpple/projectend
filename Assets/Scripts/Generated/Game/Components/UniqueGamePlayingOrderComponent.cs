@@ -14,7 +14,7 @@ public partial class GameContext {
     public End.Game.PlayingOrderComponent playingOrder { get { return playingOrderEntity.playingOrder; } }
     public bool hasPlayingOrder { get { return playingOrderEntity != null; } }
 
-    public GameEntity SetPlayingOrder(System.Collections.Generic.List<short> newPlayerIdOrder) {
+    public GameEntity SetPlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerIdOrder) {
         if(hasPlayingOrder) {
             throw new EntitasException("Could not set playingOrder!\n" + this + " already has an entity with PlayingOrderComponent!",
                 "You should check if the context already has a playingOrderEntity before setting it or use context.ReplacePlayingOrder().");
@@ -24,7 +24,7 @@ public partial class GameContext {
         return entity;
     }
 
-    public void ReplacePlayingOrder(System.Collections.Generic.List<short> newPlayerIdOrder) {
+    public void ReplacePlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerIdOrder) {
         var entity = playingOrderEntity;
         if(entity == null) {
             entity = SetPlayingOrder(newPlayerIdOrder);

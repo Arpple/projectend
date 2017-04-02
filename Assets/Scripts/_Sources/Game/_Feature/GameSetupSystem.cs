@@ -24,7 +24,7 @@ namespace End.Game
 			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.DeckSetting.Deck));
 			
 			//turn
-			Add(new PlayingOrderSystem(contexts, players));
+			Add(new PlayingOrderSystem(contexts));
 
 			if((NetworkController.Instance != null && NetworkController.IsServer) || GameController.Instance.IsOffline)
 			{

@@ -9,17 +9,16 @@ namespace End.Game
 	{
 		readonly GameContext _context;
 
-		private List<Player> _players;
-
-		public PlayingOrderSystem(Contexts contexts, List<Player> players)
+		public PlayingOrderSystem(Contexts contexts)
 		{
 			_context = contexts.game;
-			_players = players;
 		}
 
 		public void Initialize()
 		{
-			_context.SetPlayingOrder(_players.Select(p => p.PlayerId).OrderBy(i => i).ToList());
+			var players = _context.GetEntities(GameMatcher.Player);
+
+			_context.SetPlayingOrder(players.OrderBy(p => p.player.PlayerId).ToList());
 			_context.playingOrder.Initialize();
 			Debug.Log(_context.playingOrder);
 		}
