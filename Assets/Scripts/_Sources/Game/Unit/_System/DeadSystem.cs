@@ -21,9 +21,9 @@ namespace End.Game
 
 		protected override bool Filter(GameEntity entity)
 		{
-			Assert.IsFalse(entity.hitpoint.HitPoint < 0);
+			Assert.IsFalse(entity.hitpoint.Value < 0);
 
-			return entity.hitpoint.HitPoint == 0;
+			return entity.hitpoint.Value == 0;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

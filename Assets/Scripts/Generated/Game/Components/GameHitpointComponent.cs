@@ -11,15 +11,15 @@ public partial class GameEntity {
     public End.Game.HitpointComponent hitpoint { get { return (End.Game.HitpointComponent)GetComponent(GameComponentsLookup.Hitpoint); } }
     public bool hasHitpoint { get { return HasComponent(GameComponentsLookup.Hitpoint); } }
 
-    public void AddHitpoint(int newHitPoint) {
+    public void AddHitpoint(int newValue) {
         var component = CreateComponent<End.Game.HitpointComponent>(GameComponentsLookup.Hitpoint);
-        component.HitPoint = newHitPoint;
+        component.Value = newValue;
         AddComponent(GameComponentsLookup.Hitpoint, component);
     }
 
-    public void ReplaceHitpoint(int newHitPoint) {
+    public void ReplaceHitpoint(int newValue) {
         var component = CreateComponent<End.Game.HitpointComponent>(GameComponentsLookup.Hitpoint);
-        component.HitPoint = newHitPoint;
+        component.Value = newValue;
         ReplaceComponent(GameComponentsLookup.Hitpoint, component);
     }
 

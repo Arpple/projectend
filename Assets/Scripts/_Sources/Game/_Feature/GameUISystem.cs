@@ -15,6 +15,8 @@ namespace End.Game.UI
 
 			Add(new LocalCharacterStatusSystem(contexts, ui.LocalPlayerStatus));
 			Add(new TurnPanelSetupSystem(contexts, ui.TurnPanel));
+
+			Add(new LocalCharacterHpBarSystem(contexts, ui.LocalPlayerStatus.HpBar));
 		}
 	}
 

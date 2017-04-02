@@ -10,7 +10,6 @@ namespace End.Game.UI
 	{
 		[Header("Player and Character")]
 		public Text PlayerNameText;
-		public Text CharacterNameText;
 		public Icon CharacterIcon;
 
 		[Header("Character Status")]
@@ -20,11 +19,11 @@ namespace End.Game.UI
 		public Text AttackRangeText;
 		public Text MoveSpeedText;
 		public Text VisionRangeText;
+		public HpBar HpBar;
 
 		private void Awake()
 		{
 			Assert.IsNotNull(PlayerNameText);
-			Assert.IsNotNull(CharacterNameText);
 			Assert.IsNotNull(CharacterIcon);
 			Assert.IsNotNull(DeckCardCountText);
 			Assert.IsNotNull(BoxCardCountText);
@@ -40,7 +39,12 @@ namespace End.Game.UI
 			AttackRangeText.text = status.AttackRange.ToString();
 			MoveSpeedText.text = status.MoveSpeed.ToString();
 			VisionRangeText.text = status.VisionRange.ToString();
+			HpBar.SetMaxValue(status.HitPoint);
 		}
 
+		public void UpdateUnitHitpoint(HitpointComponent hp)
+		{
+			HpBar.UpdateHp(hp.Value);
+		}
 	}
 }

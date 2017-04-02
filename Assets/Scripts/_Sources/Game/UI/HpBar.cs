@@ -10,22 +10,37 @@ namespace End.Game.UI
 		public Text ValueText;
 
 		private int _maxValue;
+		private int _current;
 
 		public void SetMaxValue(int x)
 		{
+			if (x == _maxValue) return;
+
+			UpdateValueText(_current, x);
+			UpdateValueBarLength(_current ,x);
+
 			_maxValue = x;
 		}
 
-		public void SetCurrentValue(int x)
+		public void UpdateHp(int x)
 		{
-			ValueText.text = x + "/" + _maxValue;
-			UpdateValueBar(x);
+			if (x == _current) return;
+
+			UpdateValueText(x, _maxValue);
+			UpdateValueBarLength(x, _maxValue);
+
+			_current = x;
 		}
 
-		public void UpdateValueBar(int current)
+		private void UpdateValueText(int current, int max)
 		{
-			var scale = _maxValue > 0
-				? ((float)current) / _maxValue
+			ValueText.text = current + "/" + max;
+		}
+
+		private void UpdateValueBarLength(int current, int max)
+		{
+			var scale = max > 0
+				? ((float)current) / max
 				: 0;
 
 			CurrentValueBarImage.transform.localScale = new Vector3(scale, 1, 0);

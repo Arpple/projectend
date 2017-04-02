@@ -18,7 +18,7 @@ namespace End.Game
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hitpoint.HitPoint == 0 && entity.unit.OwnerEntity.hasPlayerBox;
+			return entity.hitpoint.Value == 0 && entity.unit.OwnerEntity.hasPlayerBox;
 		}
 
 		protected override void Process(GameEntity entity)
