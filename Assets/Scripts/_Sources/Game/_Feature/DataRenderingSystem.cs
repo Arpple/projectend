@@ -17,6 +17,7 @@ namespace End.Game
 
 			//map
 			Add(new RenderMapPositionSystem(contexts));
+			Add(new TileActionSystem(contexts));
 
 			//event
 			Add(new RoleOriginWinningSystem(contexts));

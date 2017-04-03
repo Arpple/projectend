@@ -51,9 +51,9 @@ namespace End.Game
 
 			if (IsOffline)
 			{
+				Debug.Log("Offline Init");
 				SetupNetworkOffline();
 				Initialize();
-				Debug.Log("Offline Init");
 			}
 			else
 			{

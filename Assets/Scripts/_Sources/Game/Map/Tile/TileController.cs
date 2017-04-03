@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using Entitas.Unity;
+using System;
 
 namespace End.Game
 {
@@ -12,8 +13,8 @@ namespace End.Game
 		public SpriteRenderer Span;
 		public SpriteRenderer TileSprite;
 		public TileHoverAction MouseEnterAction;
+		public Action<GameEntity> TileAction;
 
-		public delegate void TileClickAction();
         public delegate void TileHoverAction();
 
 		public GameEntity Entity
@@ -30,10 +31,8 @@ namespace End.Game
 		void OnMouseDown()
 		{
             if(EventSystem.current.IsPointerOverGameObject()) return;
-            if(Entity.hasTileAction)
-			{
-				Entity.tileAction.OnSelected(Entity);
-			}
+			if(TileAction != null)
+				TileAction(Entity);
 		}
 
 		private void OnMouseEnter()
