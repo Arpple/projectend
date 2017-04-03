@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using Entitas;
+using System;
+using System.Collections.Generic;
 
 namespace End.Game.UI
 {
-	public class TargetUnitStatusDisplaySystem : IInitializeSystem
+	public class TargetUnitStatusDisplaySystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
 		private readonly GameContext _context;
 		private readonly PlayerUnitStatusPanel _panel;
 
-		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel)
+		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.game)
 		{
 			_context = contexts.game;
 			_panel = panel;
@@ -44,7 +46,36 @@ namespace End.Game.UI
 
 		private void HideDisplayStatus()
 		{
-			_panel.gameObject.SetActive(false);
+			_panel.HideDisplay();
+		}
+
+		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		{
+			return new Collector<GameEntity>(
+				new[] {
+					context.GetGroup(GameMatcher.Hitpoint),
+					context.GetGroup(GameMatcher.UnitStatus)
+				}, 
+				new[] 
+				{
+					GroupEvent.Added,
+					GroupEvent.Added,
+				}
+			);
+		}
+
+		protected override bool Filter(GameEntity entity)
+		{
+			return _panel.ShowingCharacter == entity && entity.hasHitpoint && entity.hasUnitStatus;
+		}
+
+		protected override void Execute(List<GameEntity> entities)
+		{
+			foreach(var e in entities)
+			{
+				_panel.UpdateUnitHitpoint(e.hitpoint);
+				_panel.UpdateUnitStatus(e.unitStatus);
+			}
 		}
 	}
 

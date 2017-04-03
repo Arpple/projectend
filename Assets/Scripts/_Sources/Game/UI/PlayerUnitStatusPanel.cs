@@ -21,6 +21,8 @@ namespace End.Game.UI
 		public Text VisionRangeText;
 		public HpBar HpBar;
 
+		public GameEntity ShowingCharacter;
+
 		private void Awake()
 		{
 			Assert.IsNotNull(PlayerNameText);
@@ -40,6 +42,8 @@ namespace End.Game.UI
 
 			UpdateUnitStatus(characterEntity.unitStatus);
 			UpdateUnitHitpoint(characterEntity.hitpoint);
+
+			ShowingCharacter = characterEntity;
 		}
 
 		public void UpdateUnitStatus(UnitStatusComponent status)
@@ -54,6 +58,12 @@ namespace End.Game.UI
 		public void UpdateUnitHitpoint(HitpointComponent hp)
 		{
 			HpBar.UpdateHp(hp.Value);
+		}
+
+		public void HideDisplay()
+		{
+			gameObject.SetActive(false);
+			ShowingCharacter = null;
 		}
 	}
 }
