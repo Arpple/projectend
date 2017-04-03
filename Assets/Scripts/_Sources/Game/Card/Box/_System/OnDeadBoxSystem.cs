@@ -23,17 +23,28 @@ namespace End.Game
 
 		protected override void Process(GameEntity entity)
 		{
-			var reviveCard = _context.GetBoxCards<IReviveAbility>(entity.unit.OwnerEntity).FirstOrDefault();
-			if(reviveCard != null)
-			{
-				EventUseCardOnUnit.Create(entity, reviveCard, entity);
-			}
+			UseReviveCard(entity);
+			UseOnDeadCard(entity);
+		}
 
-			var onDeadCards = _context.GetBoxCards<IOnDeadAbility>(entity.unit.OwnerEntity);
+		private void UseReviveCard(GameEntity deadEntity)
+		{
+			var reviveCard = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.unit.OwnerEntity)
+				.OrderBy(c => c.inBox.Index)
+				.FirstOrDefault();
+			if (reviveCard != null)
+			{
+				EventUseCardOnUnit.Create(deadEntity, reviveCard, deadEntity);
+			}
+		}
+
+		private void UseOnDeadCard(GameEntity deadEntity)
+		{
+			var onDeadCards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.unit.OwnerEntity);
 
 			foreach (var card in onDeadCards)
 			{
-				EventUseCardOnUnit.Create(entity, card, entity);
+				EventUseCardOnUnit.Create(deadEntity, card, deadEntity);
 			}
 		}
 	}

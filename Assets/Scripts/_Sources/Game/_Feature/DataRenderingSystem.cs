@@ -9,7 +9,7 @@ namespace End.Game
 		{
 			//deck card
 			Add(new RenderPlayerDeckSystem(contexts));
-			Add(new PlayerBoxCardAddSystem(contexts));
+			Add(new PlayerBoxCardSystem(contexts));
 			
 			//unit
 			Add(new OnDeadBoxSystem(contexts));

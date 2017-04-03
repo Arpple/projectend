@@ -60,6 +60,16 @@ namespace End.Game.UI
 			HpBar.UpdateHp(hp.Value);
 		}
 
+		public void UpdateDeckCardCount(int count)
+		{
+			DeckCardCountText.text = count.ToString();
+		}
+
+		public void UpdateBoxCardCount(int count)
+		{
+			BoxCardCountText.text = count.ToString();
+		}
+
 		public void HideDisplay()
 		{
 			gameObject.SetActive(false);

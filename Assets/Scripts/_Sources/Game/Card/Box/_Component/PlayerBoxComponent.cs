@@ -9,16 +9,4 @@ namespace End.Game
 	{
 		public PlayerBox BoxObject;
 	}
-
-	public static class PlayerBoxExtension
-	{
-		public static GameEntity[] GetBoxCards<T>(this GameContext context, GameEntity playerEntity)
-		{
-			return context.GetEntities(GameMatcher.InBox)
-				.Where(boxCard => boxCard.playerCard.OwnerEntity == playerEntity)
-				.Where(boxCard => boxCard.ability.Ability is T)
-				.OrderBy(card => card.inBox.Index)
-				.ToArray();
-		}
-	}
 }

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace End.Game.UI
 {
-	public class PlayerBoxCardStatusSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class LocalPlayerBoxCardStatusSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
 		private readonly GameContext _context;
 		private readonly PlayerUnitStatusPanel _localStatus;
 
-		public PlayerBoxCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel localPlayerStatus) : base(contexts.game)
+		public LocalPlayerBoxCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel localPlayerStatus) : base(contexts.game)
 		{
 			_context = contexts.game;
 			_localStatus = localPlayerStatus;
@@ -22,7 +22,7 @@ namespace End.Game.UI
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return true;
+			return entity.playerCard.OwnerEntity.isLocalPlayer;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -37,10 +37,7 @@ namespace End.Game.UI
 
 		private void UpdateCount()
 		{
-			var boxCardCount = _context.GetEntities(GameMatcher.InBox)
-				.Where(e => e.playerCard.OwnerEntity == _context.localPlayerEntity)
-				.Count();
-
+			var boxCardCount = _context.GetPlayerBoxCards(_context.localPlayerEntity);
 			_localStatus.BoxCardCountText.text = boxCardCount.ToString();
 		}
 	}
