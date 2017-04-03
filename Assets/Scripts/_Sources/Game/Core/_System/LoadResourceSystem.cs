@@ -5,7 +5,7 @@ using Entitas.Unity;
 
 namespace End.Game
 {
-	public sealed class LoadResourceSystem : ReactiveSystem<GameEntity>, ITearDownSystem
+	public sealed class LoadResourceSystem : ReactiveSystem<GameEntity>, ITearDownSystem, IInitializeSystem
 	{
 		readonly GameContext _context;
 
@@ -18,6 +18,17 @@ namespace End.Game
 			_context = contexts.game;
 			_cacheSprite = new CacheList<string, Sprite>();
 			_linkedObjects = new List<GameObject>();
+		}
+
+		public void Initialize()
+		{
+			foreach(var e in _context.GetEntities(GameMatcher.Resource))
+			{
+				if(!e.hasView)
+				{
+					LoadResource(e);
+				}
+			}
 		}
 
 		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
@@ -34,52 +45,57 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				//get sprite
-				Sprite sprite = null;
-				if (e.resource.SpritePath != null)
-				{
-					sprite = _cacheSprite.Get(e.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
-				}
-			
-				//get view object
-				GameObject viewObject = null;
-				if(e.resource.BasePrefabsPath != null)
-				{
-					var basePrefabs = Resources.Load<GameObject>(e.resource.BasePrefabsPath);
-					if(basePrefabs == null) throw new MissingReferenceException("Resource " + e.resource.BasePrefabsPath);
-					viewObject = GameObject.Instantiate(basePrefabs);
-				}
-				else
-				{
-					viewObject = new GameObject("EntityView");
-				}
-
-				//custom view
-				var viewModifier = (ICustomView)viewObject.GetComponent(typeof(ICustomView));
-				if (viewModifier != null)
-				{
-					viewObject = viewModifier.CreateView(e, sprite);
-				}
-
-				//default view
-				else
-				{
-					var spriteRenderer = viewObject.GetComponentInChildren<SpriteRenderer>();
-					if (spriteRenderer == null) spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
-					spriteRenderer.sprite = sprite;
-                    spriteRenderer.sortingLayerName = "Unit";
-                    spriteRenderer.sortingOrder = 5;
-				}
-
-				e.AddView(viewObject);
-				viewObject.Link(e, _context);
-				_linkedObjects.Add(viewObject);
+				LoadResource(e);
 			}
 		}
 
 		public void TearDown()
 		{
 			_linkedObjects.ForEach(o => o.Unlink());
+		}
+
+		private void LoadResource(GameEntity entity)
+		{
+			//get sprite
+			Sprite sprite = null;
+			if (entity.resource.SpritePath != null)
+			{
+				sprite = _cacheSprite.Get(entity.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
+			}
+
+			//get view object
+			GameObject viewObject = null;
+			if (entity.resource.BasePrefabsPath != null)
+			{
+				var basePrefabs = Resources.Load<GameObject>(entity.resource.BasePrefabsPath);
+				if (basePrefabs == null) throw new MissingReferenceException("Resource " + entity.resource.BasePrefabsPath);
+				viewObject = GameObject.Instantiate(basePrefabs);
+			}
+			else
+			{
+				viewObject = new GameObject("EntityView");
+			}
+
+			//custom view
+			var viewModifier = (ICustomView)viewObject.GetComponent(typeof(ICustomView));
+			if (viewModifier != null)
+			{
+				viewObject = viewModifier.CreateView(entity, sprite);
+			}
+
+			//default view
+			else
+			{
+				var spriteRenderer = viewObject.GetComponentInChildren<SpriteRenderer>();
+				if (spriteRenderer == null) spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
+				spriteRenderer.sprite = sprite;
+				spriteRenderer.sortingLayerName = "Unit";
+				spriteRenderer.sortingOrder = 5;
+			}
+
+			entity.AddView(viewObject);
+			viewObject.Link(entity, _context);
+			_linkedObjects.Add(viewObject);
 		}
 	}
 }

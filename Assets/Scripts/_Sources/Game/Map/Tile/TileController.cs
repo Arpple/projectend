@@ -14,6 +14,7 @@ namespace End.Game
 		public SpriteRenderer TileSprite;
 		public TileHoverAction MouseEnterAction;
 		public Action<GameEntity> TileAction;
+		public Action<GameEntity> DefaultTileAction;
 
         public delegate void TileHoverAction();
 
@@ -31,8 +32,17 @@ namespace End.Game
 		void OnMouseDown()
 		{
             if(EventSystem.current.IsPointerOverGameObject()) return;
-			if(TileAction != null)
+			if (TileAction != null)
+			{
 				TileAction(Entity);
+			}
+			else
+			{
+				if (DefaultTileAction != null)
+				{
+					DefaultTileAction(Entity);
+				}
+			}
 		}
 
 		private void OnMouseEnter()
