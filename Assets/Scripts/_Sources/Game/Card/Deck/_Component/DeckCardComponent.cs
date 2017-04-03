@@ -17,14 +17,14 @@ namespace End.Game
 		public static GameEntity[] GetPlayerDeckCards(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()
-				.Where(c => c.playerCard.OwnerEntity == playerEntity && !c.hasInBox)
+				.Where(c => c.hasPlayerCard && c.playerCard.OwnerEntity == playerEntity && !c.hasInBox)
 				.ToArray();
 		}
 
 		public static GameEntity[] GetPlayerDeckCardsIncludeBox(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()
-				.Where(c => c.playerCard.OwnerEntity == playerEntity)
+				.Where(c => c.hasPlayerCard && c.playerCard.OwnerEntity == playerEntity)
 				.ToArray();
 		}
 	}

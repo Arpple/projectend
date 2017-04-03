@@ -1,38 +1,49 @@
 ﻿using Entitas;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace End.Game.UI
 {
-	public class TargetPlayerDeckCardStatusUpdateSystem : ReactiveSystem<GameEntity>
+	public class TargetPlayerDeckCardStatusSystem : ReactiveSystem<GameEntity>
 	{
 		private readonly GameContext _context;
-		private readonly PlayerUnitStatusPanel _targetStatus;
+		private readonly PlayerUnitStatusPanel _status;
 
-		public TargetPlayerDeckCardStatusUpdateSystem(Contexts contexts, PlayerUnitStatusPanel targetStatus) : base(contexts.game)
+		public TargetPlayerDeckCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel status) : base(contexts.game)
 		{
 			_context = contexts.game;
-			_targetStatus = targetStatus;
+			_status = status;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.AddedOrRemoved);
+			return new Collector<GameEntity>(
+				new[]
+				{
+					context.GetGroup(GameMatcher.PlayerCard),
+					context.GetGroup(GameMatcher.InBox),
+				},
+				new[]
+				{
+					GroupEvent.AddedOrRemoved,
+					GroupEvent.AddedOrRemoved
+				}
+			);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return _targetStatus.ShowingCharacter != null 
-				&& entity.playerCard.OwnerEntity == _targetStatus.ShowingCharacter.unit.OwnerEntity;
+			return _status.ShowingCharacter != null;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			var deckCardCount = _context.GetEntities(GameMatcher.PlayerCard)
-				.Where(e => e.playerCard.OwnerEntity == _targetStatus.ShowingCharacter.unit.OwnerEntity)
-				.Count();
+			var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.unit.OwnerEntity)
+				.Length;
+			var boxCardCount = _context.GetPlayerBoxCards(_status.ShowingCharacter.unit.OwnerEntity)
+				.Length;
 
-			_targetStatus.UpdateDeckCardCount(deckCardCount);
+			_status.UpdateDeckCardCount(deckCardCount);
+			_status.UpdateBoxCardCount(boxCardCount);
 		}
 	}
 

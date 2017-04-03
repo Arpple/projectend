@@ -42,6 +42,8 @@ namespace End.Game.UI
 		{
 			_panel.SetCharacter(unit);
 			_panel.gameObject.SetActive(true);
+			_panel.UpdateBoxCardCount(_context.GetPlayerBoxCards(unit.unit.OwnerEntity).Length);
+			_panel.UpdateDeckCardCount(_context.GetPlayerDeckCards(unit.unit.OwnerEntity).Length);
 		}
 
 		private void HideDisplayStatus()

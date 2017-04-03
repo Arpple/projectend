@@ -11,10 +11,7 @@ namespace End.Game.UI
 			Add(new RenderShareDeckSystem(contexts, ui.CardContainer.PlayerDecks[0]));
 
 			Add(new LocalPlayerDeckCardStatusSystem(contexts, ui.LocalPlayerStatus));
-			Add(new LocalPlayerBoxCardStatusSystem(contexts, ui.LocalPlayerStatus));
-
-			Add(new TargetPlayerBoxCardStatusUpdateSystem(contexts, ui.TargetPlayerStatus));
-			Add(new TargetPlayerDeckCardStatusUpdateSystem(contexts, ui.TargetPlayerStatus));
+			Add(new TargetPlayerDeckCardStatusSystem(contexts, ui.TargetPlayerStatus));
 		}
 	}
 
