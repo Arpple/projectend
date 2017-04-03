@@ -5,24 +5,13 @@ using System.Collections.Generic;
 
 namespace End.Game.UI
 {
-	public class LocalCharacterHpBarSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class LocalCharacterHpBarSystem : ReactiveSystem<GameEntity>
 	{
-		private readonly GameContext _context;
 		private readonly HpBar _hpBar;
 
 		public LocalCharacterHpBarSystem(Contexts contexts, HpBar hpBar) : base(contexts.game)
 		{
-			_context = contexts.game;
 			_hpBar = hpBar;
-		}
-
-		public void Initialize()
-		{
-			var localCharacter = _context.GetEntities(GameMatcher.Character)
-				.Where(c => c.unit.OwnerEntity.isLocalPlayer)
-				.First();
-
-			_hpBar.SetMaxValue(localCharacter.unitStatus.HitPoint);
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)

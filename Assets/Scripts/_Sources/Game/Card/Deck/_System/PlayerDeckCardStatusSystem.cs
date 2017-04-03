@@ -7,9 +7,9 @@ namespace End.Game.UI
 	public class PlayerDeckCardStatusSystem : ReactiveSystem<GameEntity>
 	{
 		private readonly GameContext _context;
-		private readonly PlayerStatusPanel _localStatus;
+		private readonly PlayerUnitStatusPanel _localStatus;
 
-		public PlayerDeckCardStatusSystem(Contexts contexts, PlayerStatusPanel localPlayerStatus) : base(contexts.game)
+		public PlayerDeckCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel localPlayerStatus) : base(contexts.game)
 		{
 			_context = contexts.game;
 			_localStatus = localPlayerStatus;

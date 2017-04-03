@@ -22,7 +22,7 @@ namespace End.Game.UI
 		public CardDescription CardDesc;
 		public CardContainer CardContainer;
 		public BoxContainer BoxContainer;
-		public PlayerStatusPanel LocalPlayerStatus;
+		public PlayerUnitStatusPanel LocalPlayerStatus;
 		public TurnPanel TurnPanel;
 
 		private CardObject _activeCard;

@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace End.Game.UI
 {
-	public class PlayerStatusPanel : MonoBehaviour
+	public class PlayerUnitStatusPanel : MonoBehaviour
 	{
 		[Header("Player and Character")]
 		public Text PlayerNameText;
@@ -33,14 +33,13 @@ namespace End.Game.UI
 			Assert.IsNotNull(VisionRangeText);
 		}
 
-		public void SetPlayer(GameEntity playerEntity)
-		{
-			PlayerNameText.text = playerEntity.player.PlayerObject.PlayerName;
-		}
-
 		public void SetCharacter(GameEntity characterEntity)
 		{
+			PlayerNameText.text = characterEntity.unit.OwnerEntity.player.PlayerObject.PlayerName;
 			CharacterIcon.IconImage.sprite = characterEntity.unitIcon.IconSprite;
+
+			UpdateUnitStatus(characterEntity.unitStatus);
+			UpdateUnitHitpoint(characterEntity.hitpoint);
 		}
 
 		public void UpdateUnitStatus(UnitStatusComponent status)
