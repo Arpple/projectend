@@ -76,12 +76,7 @@ namespace End.CharacterSelect
 
 		private bool IsServer()
 		{
-			return (NetworkController.Instance != null && NetworkController.IsServer) || IsOffline();
-		}
-
-		private bool IsOffline()
-		{
-			return GameController.Instance.IsOffline;
+			return (NetworkController.Instance != null && NetworkController.IsServer);
 		}
 	}
 
