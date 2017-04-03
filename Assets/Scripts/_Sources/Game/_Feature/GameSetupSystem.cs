@@ -15,7 +15,7 @@ namespace End.Game
 			//player
 			Add(new CreatePlayerSystem(contexts, players));
 			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
-			Add(new CreatePlayerCharacterSystem(contexts));
+			Add(new CreatePlayerCharacterSystem(contexts));	
 
 			//unit
 			Add(new CharacterBlueprintLoadingSystem(contexts, setting.UnitSetting.CharacterSetting));
@@ -33,10 +33,14 @@ namespace End.Game
 			{
 				Add(new StartingDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
 			}
-		
-			if(IsOffline())
+
+			if (IsOffline())
 			{
 				Add(new RoleSetupSystem(contexts, setting.RoleSetting.GetRolesCount(players.Count)));
+			}
+			else
+			{
+				Add(new RoleLoadingSystem(contexts));
 			}
 		}
 

@@ -3,11 +3,11 @@ using Entitas;
 
 namespace End.CharacterSelect
 {
-	public class RoleSaveSystem : IInitializeSystem
+	public class RoleSavingSystem : IInitializeSystem
 	{
 		private readonly GameContext _context;
 
-		public RoleSaveSystem(Contexts contexts)
+		public RoleSavingSystem(Contexts contexts)
 		{
 			_context = contexts.game;
 		}
@@ -20,5 +20,4 @@ namespace End.CharacterSelect
 			}
 		}
 	}
-
 }

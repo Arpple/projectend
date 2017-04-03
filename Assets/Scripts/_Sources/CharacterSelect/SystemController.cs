@@ -68,7 +68,7 @@ namespace End.CharacterSelect
 			if(IsServer())
 			{
 				systems.Add(new RoleSetupSystem(contexts, Setting.RoleSetting.GetRolesCount(players.Count)));
-				systems.Add(new RoleSaveSystem(contexts));
+				systems.Add(new RoleSavingSystem(contexts));
 			}
 
 			return systems;
