@@ -44,7 +44,7 @@ namespace End.CharacterSelect
 				_linkedObjects.Add(slideItem.gameObject);
             }
 
-            this._slidemenu.FocusIndex(0); //because 0 is ... umm ... None (Deactive) Object
+            this._slidemenu.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object
             //Debug.Log("Init Focus on > "+_slidemenu.FocusingIndex);
         }
 

@@ -3,6 +3,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using End.Game;
+using Entitas;
+using System.Linq;
 
 namespace End.CharacterSelect
 {
@@ -31,30 +33,33 @@ namespace End.CharacterSelect
 		/// <summary>
 		/// change display for player to selected character
 		/// </summary>
-		/// <param name="characterId">The character identifier.</param>
-		public void SetCharacter(int characterId)
+		/// <param name="characterTypeId">The character identifier.</param>
+		public void SetCharacter(int characterTypeId)
 		{
-            //TODO: change display icon
-            GameEntity[] entities = Contexts.sharedInstance.game.GetEntities();
-            Character CharName = (Character)Enum.Parse(typeof(Character),characterId.ToString());
-            //this.CharactorIcon.SetImage(Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(Array.Find(entities, enity => enity.character.Type == CharName).resource)));
+			var character = GetCharacterEntity(characterTypeId);
+            this.CharactorIcon.SetImage(character.unitIcon.IconSprite);
             this.SignLockImage.color = Color.green;
         }
         
-        public void FocusPlayer() {
-            //Debug.Log("Focus player with char ID "+_player.SelectedCharacterId);
-            GameEntity[] entities = Contexts.sharedInstance.game.GetEntities();
-            Character CharName = (Character)Enum.Parse(typeof(Character), _player.SelectedCharacterId.ToString());
-            GameEntity unit = Array.Find(entities, enity => enity.character.Type == CharName);
-            CharacterSelectController.Instance.ShowUnitInformationUnit(unit);
+        public void OnPlayerFocus() {
+			//Debug.Log("Focus player with char ID "+_player.SelectedCharacterId);
+			var character = GetCharacterEntity(_player.SelectedCharacterId);
+            CharacterSelectController.Instance.ShowUnitInformationUnit(character);
 
             //TODO : need to fix show role. ?
             FocusPlayerStatus.Instance.SetFocusPlayer(this._player.PlayerName,
                 (this._player.SelectedCharacterId!=0),
                 "-Unknow-", 
-                unit.unitIcon.IconSprite);
+                character.unitIcon.IconSprite);
 
         }
+
+		private GameEntity GetCharacterEntity(int characterTypeId)
+		{
+			return Contexts.sharedInstance.game.GetEntities(GameMatcher.Character)
+				.Where(c => (int)c.character.Type == characterTypeId)
+				.First();
+		}
 	}
 
 }
