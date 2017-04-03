@@ -20,7 +20,7 @@ namespace End.CharacterSelect
 
         public void SetFocusPlayer(string playerName,bool isLocked, string playerRole, Sprite characterSelectedIcon) {
             PlayerName.text = playerName;
-            PlayerLockedStatus.text = isLocked ? ("-Locked-") : "-Waiting-";
+            PlayerLockedStatus.text = isLocked ? "-Locked-" : "-Waiting-";
             if(isLocked) {
                 PlayerLockedStatus.color = Color_Green;
             } else {

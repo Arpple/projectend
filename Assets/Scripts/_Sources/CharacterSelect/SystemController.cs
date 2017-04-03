@@ -55,12 +55,33 @@ namespace End.CharacterSelect
 
 		Systems CreateSystems(Contexts contexts)
 		{
-			return new Feature("Systems")
-				.Add(new CreatePlayerSystem(contexts, NetworkController.Instance.AllPlayers))
+			var players = NetworkController.Instance.AllPlayers;
+
+			var systems = new Feature("Systems")
+				.Add(new CreatePlayerSystem(contexts, players))
 				.Add(new LoadAllCharacterSystems(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconLoadingSystem(contexts))
 				.Add(new CreateCharacterSelectionIconSystem(contexts, CharacterSelectController.Instance.CharacterSelectSlideMenu))
-				.Add(new ClearContextsSystem(contexts));
+				.Add(new ClearContextsSystem(contexts))
+				;
+
+			if(IsServer())
+			{
+				systems.Add(new RoleSetupSystem(contexts, Setting.RoleSetting.GetRolesCount(players.Count)));
+				systems.Add(new RoleSaveSystem(contexts));
+			}
+
+			return systems;
+		}
+
+		private bool IsServer()
+		{
+			return (NetworkController.Instance != null && NetworkController.IsServer) || IsOffline();
+		}
+
+		private bool IsOffline()
+		{
+			return GameController.Instance.IsOffline;
 		}
 	}
 

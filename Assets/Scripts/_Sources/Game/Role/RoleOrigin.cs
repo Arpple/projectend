@@ -6,7 +6,7 @@ using UnityEngine;
 namespace End.Game
 {
 	//TODO: implement
-	public class RoleOrigin : Role
+	public class RoleOrigin : RoleObject
 	{
 		public RoleOrigin(GameContext context) : base(context)
 		{
@@ -14,7 +14,12 @@ namespace End.Game
 
 		public override string Name
 		{
-			get { return "Origin"; }
+			get { return "End"; }
+		}
+
+		public override Role Type
+		{
+			get { return Role.Invader; }
 		}
 
 		public override string Description

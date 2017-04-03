@@ -20,7 +20,7 @@ namespace End.Game
 			var players = _context.GetEntities(GameMatcher.Player).Shuffle();
 
 			int i = 0;
-			Action<Role> assignRole = (r) => { players[i].AddRole(r); i++; };
+			Action<RoleObject> assignRole = (r) => { players[i].AddRole(r); i++; };
 
 			_rolesCount.Origin.Loop(() => assignRole(new RoleOrigin(_context)));
 			_rolesCount.Invader.Loop(() => assignRole(new RoleInvader(_context)));

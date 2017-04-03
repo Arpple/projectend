@@ -5,64 +5,67 @@ using UnityEngine.Networking;
 
 namespace End
 {
-    public class Player : NetworkBehaviour
-    {
-        [SyncVar] public short PlayerId;
+	public class Player : NetworkBehaviour
+	{
+		[SyncVar] public short PlayerId;
 
-        #region SyncProperties
-        [SyncVar(hook = "OnNameChanged")]
-        public string PlayerName;
+		#region SyncProperties
+		[SyncVar(hook = "OnNameChanged")]
+		public string PlayerName;
 
-        [SyncVar(hook = "OnIconPathChanged")]
-        public string PlayerIconPath;
+		[SyncVar(hook = "OnIconPathChanged")]
+		public string PlayerIconPath;
 
-        [SyncVar(hook = "OnCharacterIdChanged")]
-        public int SelectedCharacterId;
+		[SyncVar(hook = "OnCharacterIdChanged")]
+		public int SelectedCharacterId;
 
-        [SyncVar(hook = "OnReadyStateChanged")]
-        public bool IsReady;
+		[SyncVar(hook = "OnReadyStateChanged")]
+		public bool IsReady;
 
-        public delegate void ChangeNameCallback(string name);
-        public delegate void ChangeIconPathCallback(string iconPath);
-        public delegate void ChangeSelectedCharacterCallback(int charId);
-        public delegate void ChangeReadyStateCallback(bool ready);
+		[SyncVar]
+		public int RoleId;
 
-        public event ChangeNameCallback OnNameChangedCallback;
-        public event ChangeIconPathCallback OnIconPathChangedCallback;
-        public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
-        public event ChangeReadyStateCallback OnReadyStateChangedCallback;
+		public delegate void ChangeNameCallback(string name);
+		public delegate void ChangeIconPathCallback(string iconPath);
+		public delegate void ChangeSelectedCharacterCallback(int charId);
+		public delegate void ChangeReadyStateCallback(bool ready);
 
-        public delegate void PlayerDisconnectCallback();
-        public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
+		public event ChangeNameCallback OnNameChangedCallback;
+		public event ChangeIconPathCallback OnIconPathChangedCallback;
+		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
+		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
 
-        public void OnNameChanged(string name)
-        {
-            PlayerName = name;
-            if (OnNameChangedCallback != null) OnNameChangedCallback(name);
-        }
+		public delegate void PlayerDisconnectCallback();
+		public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
 
-        public void OnIconPathChanged(string iconPath)
-        {
-            PlayerIconPath = iconPath;
-            if (OnIconPathChangedCallback != null) OnIconPathChangedCallback(iconPath);
-        }
+		public void OnNameChanged(string name)
+		{
+			PlayerName = name;
+			if (OnNameChangedCallback != null) OnNameChangedCallback(name);
+		}
 
-        public void OnCharacterIdChanged(int charId)
-        {
-            SelectedCharacterId = charId;
-            if (OnSelectedCharacterChangedCallback != null) OnSelectedCharacterChangedCallback(charId);
-        }
+		public void OnIconPathChanged(string iconPath)
+		{
+			PlayerIconPath = iconPath;
+			if (OnIconPathChangedCallback != null) OnIconPathChangedCallback(iconPath);
+		}
 
-        public void OnReadyStateChanged(bool ready)
-        {
-            IsReady = ready;
-            if (OnReadyStateChangedCallback != null) OnReadyStateChangedCallback(ready);
+		public void OnCharacterIdChanged(int charId)
+		{
+			SelectedCharacterId = charId;
+			if (OnSelectedCharacterChangedCallback != null) OnSelectedCharacterChangedCallback(charId);
+		}
 
-            if (isServer)
-            {
-                if (NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsReady)) { NetworkController.Instance.OnServerAllPlayerReady(); }
-            }
-        }
+		public void OnReadyStateChanged(bool ready)
+		{
+			IsReady = ready;
+			if (OnReadyStateChangedCallback != null) OnReadyStateChangedCallback(ready);
+
+			if (isServer)
+			{
+				if (NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsReady)) { NetworkController.Instance.OnServerAllPlayerReady(); }
+			}
+		}
 		#endregion
 
 		private void Start()
@@ -71,89 +74,95 @@ namespace End
 		}
 
 		private void OnDestroy()
-        {
-            if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
+		{
+			if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
 
-			if(NetworkController.Instance != null)
+			if (NetworkController.Instance != null)
 				NetworkController.Instance.OnDisconnectPlayer(this);
-        }
+		}
 
-        #region Client
-        /// <summary>
-        /// Called when the local player object has been set up.
-        /// </summary>
-        public override void OnStartLocalPlayer()
-        {
-            base.OnStartLocalPlayer();
+		#region Client
+		/// <summary>
+		/// Called when the local player object has been set up.
+		/// </summary>
+		public override void OnStartLocalPlayer()
+		{
+			base.OnStartLocalPlayer();
 
-            NetworkController.Instance.OnStartLocalPlayer(this);
-        }
+			NetworkController.Instance.OnStartLocalPlayer(this);
+		}
 
-        /// <summary>
-        /// Called on every NetworkBehaviour when it is activated on a client.
-        /// </summary>
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
+		/// <summary>
+		/// Called on every NetworkBehaviour when it is activated on a client.
+		/// </summary>
+		public override void OnStartClient()
+		{
+			base.OnStartClient();
 
-            NetworkController.Instance.OnStartClientPlayer(this);
-        }
-        #endregion
+			NetworkController.Instance.OnStartClientPlayer(this);
+		}
+		#endregion
 
-        #region Server
-        private static List<int> _selectedCharacterIdList;
+		#region Server
+		private static List<int> _selectedCharacterIdList;
 		private static short _playerIdCounter;
 
-        public static void ServerSetup()
-        {
-            _selectedCharacterIdList = new List<int>();
+		public static void ServerSetup()
+		{
+			_selectedCharacterIdList = new List<int>();
 			_playerIdCounter = 1;
-        }
+		}
 
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
+		public override void OnStartServer()
+		{
+			base.OnStartServer();
 			PlayerId = _playerIdCounter;
 			_playerIdCounter++;
-        }
+		}
 
 
-        #endregion
+		#endregion
 
-        #region Command
-        [Command]
-        public void CmdSetName(string name)
-        {
-            PlayerName = name;
-        }
+		#region Command
+		[Command]
+		public void CmdSetName(string name)
+		{
+			PlayerName = name;
+		}
 
-        [Command]
-        public void CmdSetIconPath(string iconPath)
-        {
-            PlayerIconPath = iconPath;
-        }
+		[Command]
+		public void CmdSetIconPath(string iconPath)
+		{
+			PlayerIconPath = iconPath;
+		}
 
-        [Command]
-        public void CmdSetCharacterId(int charId)
-        {
-            if (!_selectedCharacterIdList.Contains(charId) && charId != (int)Game.Character.None)
-            {
-                _selectedCharacterIdList.Add(charId);
-                SelectedCharacterId = charId;
-            }
-        }
+		[Command]
+		public void CmdSetCharacterId(int charId)
+		{
+			if (!_selectedCharacterIdList.Contains(charId) && charId != (int)Game.Character.None)
+			{
+				_selectedCharacterIdList.Add(charId);
+				SelectedCharacterId = charId;
+			}
+		}
 
-        [Command]
-        public void CmdSetReadyStatus(bool ready)
-        {
-            IsReady = ready;
-        }
+		[Command]
+		public void CmdSetReadyStatus(bool ready)
+		{
+			IsReady = ready;
+		}
 
-        [Command]
-        public void CmdCreateEvent(int componentId, params int[] args)
-        {
+		[Command]
+		public void CmdCreateEvent(int componentId, params int[] args)
+		{
 			RpcCreateEvent(componentId, args);
-        }
+		}
+
+		[Command]
+		public void CmdSetRole(int roleId)
+		{
+			RoleId = roleId;
+		}
 
         [ClientRpc]
 		public void RpcCreateEvent(int componentId, params int[] args)

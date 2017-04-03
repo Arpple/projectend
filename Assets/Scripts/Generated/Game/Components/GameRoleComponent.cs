@@ -11,13 +11,13 @@ public partial class GameEntity {
     public End.Game.RoleComponent role { get { return (End.Game.RoleComponent)GetComponent(GameComponentsLookup.Role); } }
     public bool hasRole { get { return HasComponent(GameComponentsLookup.Role); } }
 
-    public void AddRole(End.Game.Role newRoleObject) {
+    public void AddRole(End.Game.RoleObject newRoleObject) {
         var component = CreateComponent<End.Game.RoleComponent>(GameComponentsLookup.Role);
         component.RoleObject = newRoleObject;
         AddComponent(GameComponentsLookup.Role, component);
     }
 
-    public void ReplaceRole(End.Game.Role newRoleObject) {
+    public void ReplaceRole(End.Game.RoleObject newRoleObject) {
         var component = CreateComponent<End.Game.RoleComponent>(GameComponentsLookup.Role);
         component.RoleObject = newRoleObject;
         ReplaceComponent(GameComponentsLookup.Role, component);

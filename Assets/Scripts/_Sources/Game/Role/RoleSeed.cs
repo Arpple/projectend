@@ -3,7 +3,7 @@ using System;
 
 namespace End.Game
 {
-	public class RoleSeed : Role
+	public class RoleSeed : RoleObject
 	{
 		public RoleSeed(GameContext context) : base(context)
 		{
@@ -11,10 +11,12 @@ namespace End.Game
 
 		public override string Name
 		{
-			get
-			{
-				return "Seed";
-			}
+			get { return "End"; }
+		}
+
+		public override Role Type
+		{
+			get { return Role.Seed; }
 		}
 
 		public override string Description

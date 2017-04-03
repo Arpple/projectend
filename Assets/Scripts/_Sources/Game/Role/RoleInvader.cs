@@ -6,7 +6,7 @@ using UnityEngine;
 namespace End.Game
 {
 	//TODO: implement
-	public class RoleInvader : Role
+	public class RoleInvader : RoleObject
 	{
 		public RoleInvader(GameContext context) : base(context)
 		{
@@ -14,7 +14,12 @@ namespace End.Game
 
 		public override string Name
 		{
-			get { return ""; }
+			get { return "End"; }
+		}
+
+		public override Role Type
+		{
+			get { return Role.Invader; }
 		}
 
 		public override string Description

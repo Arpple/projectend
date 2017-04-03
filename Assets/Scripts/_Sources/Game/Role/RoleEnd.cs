@@ -2,7 +2,7 @@
 
 namespace End.Game
 {
-	public class RoleEnd : Role
+	public class RoleEnd : RoleObject
 	{
 		public RoleEnd(GameContext context) : base(context)
 		{
@@ -10,10 +10,12 @@ namespace End.Game
 
 		public override string Name
 		{
-			get
-			{
-				return "End";
-			}
+			get { return "End"; }
+		}
+
+		public override Role Type
+		{
+			get { return Role.End; }
 		}
 
 		public override string Description
