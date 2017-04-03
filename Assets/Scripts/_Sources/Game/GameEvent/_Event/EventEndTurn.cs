@@ -4,7 +4,7 @@ using UnityEngine;
 namespace End.Game
 {
 	[GameEvent]
-	public class EventEndTurn : GameEventComponent, IRemoteEvent
+	public class EventEndTurn : GameEventComponent
 	{
 		public static bool TryEndTurn()
 		{

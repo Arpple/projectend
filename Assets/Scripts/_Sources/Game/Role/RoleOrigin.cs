@@ -19,7 +19,7 @@ namespace End.Game
 
 		public override Role Type
 		{
-			get { return Role.Invader; }
+			get { return Role.Origin; }
 		}
 
 		public override string Description

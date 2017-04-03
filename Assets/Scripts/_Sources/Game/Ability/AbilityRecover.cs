@@ -7,27 +7,19 @@ namespace End.Game
 {
 	public class AbilityRecover : Ability, IReviveAbility, ITargetAbility
 	{
-		private GameEntity _caster;
-
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
-			_caster = caster;
 			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.VisionRange, true);
 		}
 
-		public GameEntity GetTargetEntity(GameEntity targetTile)
+		public GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
 		{
 			return targetTile.GetUnitOnTile();
 		}
 
-		public void OnDead(GameEntity deadEntity)
+		public void OnTargetSelected(GameEntity caster, GameEntity target)
 		{
-			OnTargetSelected(deadEntity);
-		}
-
-		public void OnTargetSelected(GameEntity target)
-		{
-			EventHitpointModify.Create(_caster, target, 1, HitPointModifyType.Recovery);
+			target.RecoverHitpoint(1);
 		}
 	}
 

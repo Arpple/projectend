@@ -9,7 +9,7 @@ namespace End.Game.UI
 	{
 		private GameEntity[] _tiles;
 
-		public TileTargetSelector(GameEntity[] tiles, Func<GameEntity, GameEntity> getTargetFromTileFunction, TileActionComponent.TileAction onTileSelected)
+		public TileTargetSelector(GameEntity selector, GameEntity[] tiles, Func<GameEntity, GameEntity, GameEntity> getTargetFromTileFunction, TileActionComponent.TileAction onTileSelected)
 		{
 			_tiles = tiles;
 
@@ -21,7 +21,7 @@ namespace End.Game.UI
 				var con = tile.view.GameObject.GetComponent<TileController>();
 				con.Span.enabled = true;
 
-				var target = getTargetFromTileFunction(tile);
+				var target = getTargetFromTileFunction(selector, tile);
 				if(target != null)
 				{
 					tile.AddTileAction((t) => 

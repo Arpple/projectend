@@ -5,27 +5,25 @@ namespace End.Game
 {
 	public class AbilityAttack : Ability, ITargetAbility
 	{
-		private GameEntity _caster;
 		private MapPositionComponent _targetPosition;
 
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
-			_caster = caster;
 			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.AttackRange);
 		}
 
-		public GameEntity GetTargetEntity(GameEntity tile)
+		public GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
 		{
-			var targetUnit = tile.GetUnitOnTile();
+			var targetUnit = targetTile.GetUnitOnTile();
 
 			if (targetUnit == null) return targetUnit;
 
-			return targetUnit.unit.OwnerEntity != _caster.unit.OwnerEntity ? targetUnit : null;
+			return targetUnit.unit.OwnerEntity != caster.unit.OwnerEntity ? targetUnit : null;
 		}
 
-		public void OnTargetSelected(GameEntity target)
+		public void OnTargetSelected(GameEntity caster, GameEntity target)
 		{
-			EventHitpointModify.Create(_caster, target, _caster.unitStatus.AttackPower, HitPointModifyType.FatalDamage);
+			target.TakeFatalDamage(caster.unitStatus.AttackPower);
 		}
 	}
 

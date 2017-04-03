@@ -120,7 +120,6 @@ namespace End.Lounge
 				var client = NetCon.StartClient();
 				client.RegisterHandler(NetMessage .MsgServerFull, ServerFullHandler);
 				client.RegisterHandler(NetMessage.MsgGameStarted, ServerIsPlayingHandler);
-				client.RegisterHandler(NetMessage.MsgPlayerCount, (m) => NetworkController.Instance.ConnectionCount = m.ReadMessage<NetMessage.PlayerCountMessage>().Count);
 			}
 		}
 

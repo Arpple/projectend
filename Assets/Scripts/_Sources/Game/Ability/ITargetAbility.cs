@@ -14,19 +14,21 @@ namespace End.Game
 		GameEntity[] GetTilesArea(GameEntity caster);
 
 		/// <summary>
-		/// apply ability effect when target selected
-		/// </summary>
-		/// <param name="target">The target entity.</param>
-		void OnTargetSelected(GameEntity target);
-
-		/// <summary>
 		/// Gets the target entity from selected tile entity.
 		/// </summary>
+		/// <param name="targetTile">ability caster entity.</param>
 		/// <param name="targetTile">The target tile entity.</param>
 		/// <returns>
 		/// target entity or null if tile can't be target.
 		/// (still be highlighted)
 		/// </returns>
-		GameEntity GetTargetEntity(GameEntity targetTile);
+		GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile);
+
+		/// <summary>
+		/// apply ability effect when target selected
+		/// </summary>
+		/// <param name="targetTile">ability caster entity.</param>
+		/// <param name="target">The target entity.</param>
+		void OnTargetSelected(GameEntity caster, GameEntity target);
 	}
 }

@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 namespace End.Game
 {
 	[GameEvent]
-	public class EventUseCardOnTile : GameEventComponent, IRemoteEvent
+	public class EventUseCardOnTile : GameEventComponent
 	{
 		public GameEntity UserEntity;
 		public GameEntity CardEnttiy;
@@ -57,9 +57,15 @@ namespace End.Game
 		{
 			var cardEvent = entity.eventUseCardOnTile;
 			var ability = (ITargetAbility)cardEvent.CardEnttiy.ability.Ability;
-			ability.OnTargetSelected(cardEvent.TargetEnttiy);
+			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
-			EventMoveCard.MoveCardToShareDeck(cardEvent.CardEnttiy);
+			RemovePlayerCard(cardEvent.CardEnttiy);
+		}
+
+		private void RemovePlayerCard(GameEntity card)
+		{
+			card.RemovePlayerCard();
+			if (card.hasInBox) card.RemoveInBox();
 		}
 	}
 }

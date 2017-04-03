@@ -5,21 +5,19 @@ using Entitas;
 
 namespace End.Game
 {
-	public interface IRemoteEvent{}
-
 	public static class GameEvent
 	{
 		public static void CreateEvent<T>(params int[] args) where T : GameEventComponent
 		{
-			if (GameController.Instance != null && !Contexts.sharedInstance.game.IsLocalPlayerTurn) return; //not create event if not current player
-
 			int componentId = GameEventComponentsLookup.componentTypes.ToList().IndexOf(typeof(T));
-			if (GameController.Instance != null && !GameController.Instance.IsOffline && typeof(T).IsAssignableFrom(typeof(IRemoteEvent)))
+			if (GameController.Instance != null && !GameController.Instance.IsOffline)
 			{
+				Debug.Log("Create Online Event " + typeof(T).ToString());
 				Contexts.sharedInstance.game.localPlayerEntity.player.PlayerObject.CmdCreateEvent(componentId, args);
 			}
 			else
 			{
+				Debug.Log("Create Local Event " + typeof(T).ToString());
 				CreateEventEntityAndDecode(componentId, args);
 			}
 		}

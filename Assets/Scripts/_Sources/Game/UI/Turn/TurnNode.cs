@@ -8,11 +8,11 @@ namespace End.Game.UI
 	{
 		public Image IconImage;
 
-		private GameEntity _playerEntity;
+		//private GameEntity _playerEntity;
 
 		public void SetPlayer(GameEntity playerEntity)
 		{
-			_playerEntity = playerEntity;
+			//_playerEntity = playerEntity;
 		}
 
 		public void SetTurnIcon(Sprite iconSprite)

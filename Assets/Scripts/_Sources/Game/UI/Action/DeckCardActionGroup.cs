@@ -46,6 +46,7 @@ namespace End.Game.UI
 					var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
 					var targetAbility = (ITargetAbility)ability;
 					TileTargetSelector tileSelector = new TileTargetSelector(
+						caster,
 						targetAbility.GetTilesArea(caster),
 						targetAbility.GetTargetEntity,
 						(t) => 

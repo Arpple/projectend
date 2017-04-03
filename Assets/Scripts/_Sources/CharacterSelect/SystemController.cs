@@ -59,13 +59,14 @@ namespace End.CharacterSelect
 
 			var systems = new Feature("Systems")
 				.Add(new CreatePlayerSystem(contexts, players))
+				.Add(new SetupLocalPlayerSystem(contexts, NetworkController.Instance.LocalPlayer))
 				.Add(new LoadAllCharacterSystems(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconLoadingSystem(contexts))
 				.Add(new CreateCharacterSelectionIconSystem(contexts, CharacterSelectController.Instance.CharacterSelectSlideMenu))
 				.Add(new ClearContextsSystem(contexts))
 				;
 
-			if(IsServer())
+			if (IsServer())
 			{
 				systems.Add(new RoleSetupSystem(contexts, Setting.RoleSetting.GetRolesCount(players.Count)));
 				systems.Add(new RoleSavingSystem(contexts));

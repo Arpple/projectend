@@ -5,23 +5,21 @@ namespace End.Game
 {
 	public class AbilityMove : Ability, ITargetAbility
 	{
-		private GameEntity _caster;
 		private MapPositionComponent _targetPosition;
 
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
-			_caster = caster;
 			return AreaSelector.GetMovePathInRange(caster.mapPosition.GetTile(), caster.unitStatus.MoveSpeed);
 		}
 
-		public GameEntity GetTargetEntity(GameEntity targetTile)
+		public void OnTargetSelected(GameEntity caster, GameEntity target)
 		{
-			return targetTile;
+			caster.ReplaceMapPosition(target.mapPosition.x, target.mapPosition.y);
 		}
 
-		public void OnTargetSelected(GameEntity target)
+		public GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
 		{
-			EventMoveUnit.Create(_caster, target.mapPosition);
+			return targetTile;
 		}
 	}
 
