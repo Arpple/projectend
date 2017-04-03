@@ -56,7 +56,9 @@ namespace End.CharacterSelect
 		Systems CreateSystems(Contexts contexts)
 		{
 			return new Feature("Systems")
+				.Add(new CreatePlayerSystem(contexts, NetworkController.Instance.AllPlayers))
 				.Add(new LoadAllCharacterSystems(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new CharacterIconLoadingSystem(contexts))
 				.Add(new CreateCharacterSelectionIconSystem(contexts, CharacterSelectController.Instance.CharacterSelectSlideMenu))
 				.Add(new ClearContextsSystem(contexts));
 		}

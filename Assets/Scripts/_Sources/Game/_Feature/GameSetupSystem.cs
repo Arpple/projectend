@@ -16,7 +16,6 @@ namespace End.Game
 			Add(new CreatePlayerSystem(contexts, players));
 			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
 			Add(new CreatePlayerCharacterSystem(contexts));
-			Add(new RoleSetupSystem(contexts, setting.RoleSetting.GetRolesCount(players.Count)));
 
 			//unit
 			Add(new CharacterBlueprintLoadingSystem(contexts, setting.UnitSetting.CharacterSetting));
@@ -30,10 +29,25 @@ namespace End.Game
 			//turn
 			Add(new PlayingOrderSystem(contexts));
 
-			if((NetworkController.Instance != null && NetworkController.IsServer) || GameController.Instance.IsOffline)
+			if(IsServer())
 			{
 				Add(new StartingDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
 			}
+		
+			if(IsOffline())
+			{
+				Add(new RoleSetupSystem(contexts, setting.RoleSetting.GetRolesCount(players.Count)));
+			}
+		}
+
+		private bool IsServer()
+		{
+			return (NetworkController.Instance != null && NetworkController.IsServer) || IsOffline();
+		}
+		
+		private bool IsOffline()
+		{
+			return GameController.Instance.IsOffline;
 		}
 	}
 }

@@ -84,3 +84,10 @@ MonoBehaviour:
       RandomCount: 0
       EndCount: 1
       SeedCount: 1
+    - PlayerCount: 1
+      OriginCount: 1
+      InvaderCount: 0
+      IsRandom: 0
+      RandomCount: 0
+      EndCount: 0
+      SeedCount: 0

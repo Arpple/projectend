@@ -37,7 +37,7 @@ namespace End.CharacterSelect
             //TODO: change display icon
             GameEntity[] entities = Contexts.sharedInstance.game.GetEntities();
             Character CharName = (Character)Enum.Parse(typeof(Character),characterId.ToString());
-            this.CharactorIcon.SetImage(Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(Array.Find(entities, enity => enity.character.Type == CharName).resource)));
+            //this.CharactorIcon.SetImage(Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(Array.Find(entities, enity => enity.character.Type == CharName).resource)));
             this.SignLockImage.color = Color.green;
         }
         
@@ -52,7 +52,7 @@ namespace End.CharacterSelect
             FocusPlayerStatus.Instance.SetFocusPlayer(this._player.PlayerName,
                 (this._player.SelectedCharacterId!=0),
                 "-Unknow-", 
-                Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(unit.resource)));
+                unit.unitIcon.IconSprite);
 
         }
 	}

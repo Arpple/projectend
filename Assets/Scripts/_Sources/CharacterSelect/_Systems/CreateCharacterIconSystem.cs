@@ -29,9 +29,7 @@ namespace End.CharacterSelect
 
 		protected override bool Filter(GameEntity entity)
 		{
-			Assert.IsTrue(entity.hasResource);
-
-			return entity.hasCharacter;
+			return entity.hasCharacter && entity.character.Type != Character.None;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -39,18 +37,14 @@ namespace End.CharacterSelect
 			foreach(var e in entities)
 			{
 				var slideItem = _slidemenu.AddItem();
-				var icon = Resources.Load<Sprite>(LoadCharacterIconSystem.GetIconPath(e.resource));
+				var icon = e.unitIcon.IconSprite;
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);
 				slideItem.SetText(e.unitDetail.Name);
 				slideItem.gameObject.Link(e, _context);
 				_linkedObjects.Add(slideItem.gameObject);
-
-                if(e.character.Type == Character.None) {
-                    slideItem.gameObject.SetActive(false);
-                }
             }
 
-            this._slidemenu.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object
+            this._slidemenu.FocusIndex(0); //because 0 is ... umm ... None (Deactive) Object
             //Debug.Log("Init Focus on > "+_slidemenu.FocusingIndex);
         }
 
