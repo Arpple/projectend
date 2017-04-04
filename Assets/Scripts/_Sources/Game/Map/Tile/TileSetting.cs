@@ -9,7 +9,7 @@ namespace Game
 	{
 		const string BLUEPRINT_ENUM_PREFIX = "Tile_";
 
-		public Blueprints TileBlueprints;
+		public JsonBlueprints TileBlueprints;
 
 		public Blueprint GetTileBlueprint(Tile tile)
 		{

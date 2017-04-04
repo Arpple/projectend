@@ -10,7 +10,7 @@ namespace Game
 	{
 		const string BLUEPRINT_ENUM_PREFIX = "Char_";
 
-		public Blueprints CharacterBlueprints;
+		public JsonBlueprints CharacterBlueprints;
 		public Icon CharacterIconPrefabs;
 
 		public Blueprint GetCharBlueprint(Character cha)
