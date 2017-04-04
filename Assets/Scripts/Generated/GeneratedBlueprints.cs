@@ -20,4 +20,34 @@ public static class BlueprintsExtension {
     public static Blueprint Card_Potion(this JsonBlueprints blueprints) {
         return blueprints.GetBlueprint("Card_Potion");
     }
+    public static Blueprint Tile_DeepForest(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_DeepForest");
+    }
+    public static Blueprint Tile_Desert(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Desert");
+    }
+    public static Blueprint Tile_Grass(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Grass");
+    }
+    public static Blueprint Tile_Mountain(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Mountain");
+    }
+    public static Blueprint Tile_None(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_None");
+    }
+    public static Blueprint Tile_Snow(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Snow");
+    }
+    public static Blueprint Tile_SnowMountain(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_SnowMountain");
+    }
+    public static Blueprint Tile_Space(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Space");
+    }
+    public static Blueprint Tile_TownField(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_TownField");
+    }
+    public static Blueprint Tile_Water(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Tile_Water");
+    }
 }
