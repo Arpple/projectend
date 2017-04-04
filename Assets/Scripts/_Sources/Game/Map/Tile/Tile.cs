@@ -23,7 +23,7 @@ namespace End.Game
 		{
 			var context = Contexts.sharedInstance.game;
 			return context.GetEntities(GameMatcher.Unit)
-				.Where(obj => obj.mapPosition.IsEqual(tile.mapPosition))
+				.Where(obj => obj.mapPosition.Equals(tile.mapPosition))
 				.FirstOrDefault();
 		}
 	}

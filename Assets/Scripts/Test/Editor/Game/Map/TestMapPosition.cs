@@ -48,8 +48,8 @@ namespace End.Test
 			e2.AddMapPosition(1, 1);
 			e3.AddMapPosition(1, 2);
 
-			Assert.IsTrue(e1.mapPosition.IsEqual(e2.mapPosition));
-			Assert.IsFalse(e1.mapPosition.IsEqual(e3.mapPosition));
+			Assert.IsTrue(e1.mapPosition.Equals(e2.mapPosition));
+			Assert.IsFalse(e1.mapPosition.Equals(e3.mapPosition));
 		}
 	}	
 }

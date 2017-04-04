@@ -32,7 +32,7 @@ namespace End.Test.TestAbility
 		public void MoveToTargetPosition()
 		{
 			_activeAbility.OnTargetSelected(_caster, _target);
-			Assert.IsTrue(_target.mapPosition.IsEqual(_caster.mapPosition));
+			Assert.IsTrue(_target.mapPosition.Equals(_caster.mapPosition));
 		}
 	}
 }

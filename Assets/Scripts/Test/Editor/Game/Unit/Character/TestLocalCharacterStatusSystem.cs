@@ -12,7 +12,7 @@ namespace End.Test.System
 		[SetUp]
 		public void Init()
 		{
-			_panel = Object.Instantiate(Resources.Load<PlayerUnitStatusPanel>("Game/UI/_Prefabs/DisplayStatus/DisplayStatus (Player)"));
+			_panel = Object.Instantiate(Resources.Load<PlayerUnitStatusPanel>("Game/UI/_Prefabs/DisplayStatus/Player Status"));
 		}
 
 		[Test]

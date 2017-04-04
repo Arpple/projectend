@@ -11,7 +11,7 @@ namespace End.Test.System
 		[SetUp]
 		public void Init()
 		{
-			PlayerUnitStatusPanel _panel = Object.Instantiate(Resources.Load<PlayerUnitStatusPanel>("Game/UI/_Prefabs/DisplayStatus/DisplayStatus (Player)"));
+			PlayerUnitStatusPanel _panel = Object.Instantiate(Resources.Load<PlayerUnitStatusPanel>("Game/UI/_Prefabs/DisplayStatus/Player Status"));
 			_hp = _panel.HpBar;
 		}
 

@@ -28,7 +28,7 @@ namespace End.Test.System
 
 			var character = _contexts.game.GetEntities(GameMatcher.Character).FirstOrDefault();
 			Assert.IsNotNull(character);
-			Assert.IsTrue(tile.mapPosition.IsEqual(character.mapPosition));
+			Assert.IsTrue(tile.mapPosition.Equals(character.mapPosition));
 		}
 	}
 }

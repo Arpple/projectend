@@ -23,9 +23,9 @@ namespace End.Game
 			return Math.Abs(x - otherPosition.x) + Math.Abs(y - otherPosition.y);
 		}
 
-		public bool IsEqual(MapPositionComponent otherPosition)
+		public bool Equals(MapPositionComponent other)
 		{
-			return x == otherPosition.x && y == otherPosition.y;
+			return x == other.x && y == other.y;
 		}
 
 		public override string ToString()
@@ -37,7 +37,7 @@ namespace End.Game
 		{
 			var context = Contexts.sharedInstance.game;
 			return context.GetEntities(GameMatcher.Tile)
-				.Where(t => t.mapPosition.IsEqual(this))
+				.Where(t => t.mapPosition.Equals(this))
 				.First();
 		}
 	}
