@@ -25,6 +25,7 @@ namespace End.Game
 		private bool _isInitialized;
 		private List<Player> _players;
 		private Player _localPlayer;
+		private PlayerLoader _playerLoader;
 
 		void Awake()
 		{
@@ -68,11 +69,15 @@ namespace End.Game
 			_systems = CreateSystem(_contexts);
 			_systems.Initialize();
 			_isInitialized = true;
+
+			if(!IsOffline)
+				_localPlayer.CmdClientLoad();
 		}
 
 		void Update()
 		{
 			if (!_isInitialized) return;
+			if (!_playerLoader.IsReady()) return;
 			Assert.IsNotNull(_systems);
 
 			_systems.Execute();
@@ -119,6 +124,15 @@ namespace End.Game
 
 			AddLocalPlayer(netCon.LocalPlayer);
 			netCon.ClientSceneChangedCallback = Initialize;
+
+			if(NetworkController.IsServer)
+			{
+				_playerLoader = new ServerPlayerLoader(netCon.AllPlayers.Count);
+			}
+			else
+			{
+				_playerLoader = new ClientPlayerLoader();
+			}
 		}
 
 		private void SetupNetworkOffline()
@@ -130,6 +144,10 @@ namespace End.Game
 				players[i].PlayerId = (short)(i + 1);
 				AddPlayer(players[i]);
 			});
+
+			_playerLoader = new ClientPlayerLoader();
+			var pl = _playerLoader as ClientPlayerLoader;
+			pl.SetReady();
 		}
 
 		public void AddPlayer(Player player)
@@ -140,6 +158,28 @@ namespace End.Game
 		public void AddLocalPlayer(Player player)
 		{
 			_localPlayer = player;
+		}
+
+		public void ServerLoadPlayer()
+		{
+			var pl = _playerLoader as ServerPlayerLoader;
+			if(pl != null)
+			{
+				pl.LoadPlayer();
+			}
+			if(_playerLoader.IsReady())
+			{
+				_localPlayer.RpcServerReady();
+			}
+		}
+
+		public void SetClientReady()
+		{
+			var pl = _playerLoader as ClientPlayerLoader;
+			if (pl != null)
+			{
+				pl.SetReady();
+			}
 		}
 		#endregion
 	}

@@ -177,6 +177,18 @@ namespace End
 			IsReady = false;
 		}
 
+		[Command]
+		public void CmdClientLoad()
+		{
+			Game.GameController.Instance.ServerLoadPlayer();
+		}
+
+		[ClientRpc]
+		public void RpcServerReady()
+		{
+			Game.GameController.Instance.SetClientReady();
+		}
+
 		#endregion
 	}
 
