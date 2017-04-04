@@ -82,9 +82,9 @@ namespace End.Game.UI
 				}
 
 				MainGroup.ShowSubAction(group);
-				if (group is ICardActionGroup)
+				if (group is CardActionGroup)
 				{
-					var cardGroup = (ICardActionGroup)group;
+					var cardGroup = (CardActionGroup)group;
 					cardGroup.SetAction(card);
 				}
 				group.OnCloseHandler += HideCardDescription;
