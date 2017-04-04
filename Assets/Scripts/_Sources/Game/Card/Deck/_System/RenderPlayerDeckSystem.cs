@@ -19,26 +19,26 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GamePlayerCard, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayerCard && entity.isDeckCard;
+			return entity.hasGamePlayerCard && entity.isGameDeckCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				var deck = _playerDeckCache.Get(e.playerCard.OwnerEntity, (playerEntity) =>
-					_context.GetEntities(GameMatcher.PlayerDeck)
+				var deck = _playerDeckCache.Get(e.gamePlayerCard.OwnerEntity, (playerEntity) =>
+					_context.GetEntities(GameMatcher.GamePlayerDeck)
 						.Where(p => p == playerEntity)
 						.First()
-						.playerDeck.PlayerDeckObject
+						.gamePlayerDeck.PlayerDeckObject
 				);
 
-				deck.AddCard(e.view.GameObject);
+				deck.AddCard(e.gameView.GameObject);
 			}
 		}
 	}

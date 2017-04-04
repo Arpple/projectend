@@ -37,7 +37,7 @@ namespace CharacterSelect
 		public void SetCharacter(int characterTypeId)
 		{
 			var character = GetCharacterEntity(characterTypeId);
-            this.CharactorIcon.SetImage(character.unitIcon.IconSprite);
+            this.CharactorIcon.SetImage(character.gameUnitIcon.IconSprite);
             this.SignLockImage.color = Color.green;
         }
         
@@ -50,14 +50,14 @@ namespace CharacterSelect
             FocusPlayerStatus.Instance.SetFocusPlayer(this._player.PlayerName,
                 (this._player.SelectedCharacterId!=0),
                 "-Unknow-", 
-                character.unitIcon.IconSprite);
+                character.gameUnitIcon.IconSprite);
 
         }
 
 		private GameEntity GetCharacterEntity(int characterTypeId)
 		{
-			return Contexts.sharedInstance.game.GetEntities(GameMatcher.Character)
-				.Where(c => (int)c.character.Type == characterTypeId)
+			return Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCharacter)
+				.Where(c => (int)c.gameCharacter.Type == characterTypeId)
 				.First();
 		}
 	}

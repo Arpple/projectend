@@ -23,14 +23,14 @@ namespace Test.System
 		{
 			var system = new RenderShareDeckSystem(_contexts, _deck);
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerCard(null);
-			card.isDeckCard = true;
-			card.RemovePlayerCard();
-			card.AddView(new GameObject());
+			card.AddGamePlayerCard(null);
+			card.isGameDeckCard = true;
+			card.RemoveGamePlayerCard();
+			card.AddGameView(new GameObject());
 
 			system.Execute();
 
-			Assert.AreEqual(_deck.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(_deck.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
 		}
 	}
 

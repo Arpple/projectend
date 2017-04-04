@@ -19,12 +19,12 @@ namespace Game
 
 		public void Initialize()
 		{
-			foreach(var player in _context.GetEntities(GameMatcher.Player))
+			foreach(var player in _context.GetEntities(GameMatcher.GamePlayer))
 			{
-				var playerbox = _boxContainer.CreateContainer(player.player.PlayerId);
-				player.AddPlayerBox(playerbox);
+				var playerbox = _boxContainer.CreateContainer(player.gamePlayer.PlayerId);
+				player.AddGamePlayerBox(playerbox);
 
-				if (player.isLocalPlayer)
+				if (player.isGameLocalPlayer)
 				{
 					playerbox.gameObject.SetActive(true);
 				}

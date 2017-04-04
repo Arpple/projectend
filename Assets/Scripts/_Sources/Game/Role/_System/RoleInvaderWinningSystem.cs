@@ -16,25 +16,25 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Dead, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameDead, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isDead && entity.unit.OwnerEntity.role.RoleObject is RoleOrigin;
+			return entity.isGameDead && entity.gameUnit.OwnerEntity.gameRole.RoleObject is RoleOrigin;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			var origins = _context.GetEntities(GameMatcher.Role)
-				.Where(r => r.role.RoleObject is RoleOrigin);
+			var origins = _context.GetEntities(GameMatcher.GameRole)
+				.Where(r => r.gameRole.RoleObject is RoleOrigin);
 
-			if (!origins.All(i => _context.GetCharacterFromPlayer(i).isDead)) return;
+			if (!origins.All(i => _context.GetCharacterFromPlayer(i).isGameDead)) return;
 
-			foreach (var i in _context.GetEntities(GameMatcher.Role)
-				.Where(r => r.role.RoleObject is RoleInvader))
+			foreach (var i in _context.GetEntities(GameMatcher.GameRole)
+				.Where(r => r.gameRole.RoleObject is RoleInvader))
 			{
-				i.isWin = true;
+				i.isGameWin = true;
 			}
 		}
 	}

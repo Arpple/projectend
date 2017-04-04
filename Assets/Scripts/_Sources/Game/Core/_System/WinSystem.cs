@@ -13,12 +13,12 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Win, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameWin, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isWin;
+			return entity.isGameWin;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -26,7 +26,7 @@ namespace Game
 			Debug.Log("Game End");
 			foreach(var e in entities)
 			{
-				var player = e.player.PlayerObject;
+				var player = e.gamePlayer.PlayerObject;
 				Debug.Log(player.PlayerName + "(" + player.PlayerId + ") win");
 			}
 		}

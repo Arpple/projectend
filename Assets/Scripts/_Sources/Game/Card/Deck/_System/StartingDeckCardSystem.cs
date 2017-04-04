@@ -17,8 +17,8 @@ namespace Game
 
 		public void Initialize()
 		{
-			var cards = _context.GetEntities(GameMatcher.DeckCard).Shuffle();
-			var players = _context.GetEntities(GameMatcher.Player);
+			var cards = _context.GetEntities(GameMatcher.GameDeckCard).Shuffle();
+			var players = _context.GetEntities(GameMatcher.GamePlayer);
 
 			Assert.IsTrue(players.Count() * _setting.StartCardCount <= cards.Length);
 

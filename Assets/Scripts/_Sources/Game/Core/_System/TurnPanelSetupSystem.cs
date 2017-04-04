@@ -16,13 +16,13 @@ namespace Game.UI
 
 		public void Initialize()
 		{
-			foreach(var player in _context.playingOrder.PlayerOrder)
+			foreach(var player in _context.gamePlayingOrder.PlayerOrder)
 			{
 				var character = _context.GetCharacterFromPlayer(player);
 				var turnNode = _turnPanel.CreateTurnNode();
 				turnNode.SetPlayer(player);
-				if(character.hasUnitIcon)
-					turnNode.SetTurnIcon(character.unitIcon.IconSprite);
+				if(character.hasGameUnitIcon)
+					turnNode.SetTurnIcon(character.gameUnitIcon.IconSprite);
 			}
 		}
 	}

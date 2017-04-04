@@ -13,9 +13,9 @@ namespace Test.TestAbility
 		protected override GameEntity SetupTarget()
 		{
 			var entity = base.SetupTarget();
-			entity.AddUnitStatus(10, 1, 1, 1, 1);
-			entity.AddHitpoint(0);
-			entity.isDead = true;
+			entity.AddGameUnitStatus(10, 1, 1, 1, 1);
+			entity.AddGameHitpoint(0);
+			entity.isGameDead = true;
 
 			return entity;
 		}
@@ -25,8 +25,8 @@ namespace Test.TestAbility
 		{
 			_activeAbility.OnTargetSelected(_caster, _target);
 
-			Assert.IsFalse(_target.isDead);
-			Assert.AreEqual(1, _target.hitpoint.Value);
+			Assert.IsFalse(_target.isGameDead);
+			Assert.AreEqual(1, _target.gameHitpoint.Value);
 		}
 
 		[Test]
@@ -35,8 +35,8 @@ namespace Test.TestAbility
 			var a = (IReviveAbility)_ability;
 			a.OnDead(_target);
 
-			Assert.IsFalse(_target.isDead);
-			Assert.AreEqual(1, _target.hitpoint.Value);
+			Assert.IsFalse(_target.isGameDead);
+			Assert.AreEqual(1, _target.gameHitpoint.Value);
 		}
 	}
 }

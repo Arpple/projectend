@@ -13,24 +13,24 @@ namespace Test.System
 		public void Init()
 		{
 			_ownerPlayer = _contexts.game.CreateEntity();
-			_ownerPlayer.AddPlayer(new GameObject().AddComponent<Player>());
+			_ownerPlayer.AddGamePlayer(new GameObject().AddComponent<Player>());
 
 			_unit = _contexts.game.CreateEntity();
-			_unit.AddUnit(0, _ownerPlayer);
+			_unit.AddGameUnit(0, _ownerPlayer);
 		}
 
 		[Test]
 		public void IsDeadWhenHpDrop()
 		{
 			var system = new DeadSystem(_contexts);
-			_unit.AddHitpoint(1);
+			_unit.AddGameHitpoint(1);
 
 			system.Execute();
-			Assert.IsFalse(_unit.isDead);
+			Assert.IsFalse(_unit.isGameDead);
 
-			_unit.ReplaceHitpoint(0);
+			_unit.ReplaceGameHitpoint(0);
 			system.Execute();
-			Assert.IsTrue(_unit.isDead);
+			Assert.IsTrue(_unit.isGameDead);
 		}
 	}
 

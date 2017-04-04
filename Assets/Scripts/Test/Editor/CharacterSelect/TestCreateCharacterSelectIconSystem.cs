@@ -21,11 +21,11 @@ namespace Test.System
 		{
 			var system = new CreateCharacterSelectionIconSystem(_contexts, _slideMenu);
 			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
-			entity.AddUnitStatus(0, 0, 0, 0, 0);
-			entity.AddUnitDetail("", "");
-			entity.AddCharacter(Character.LastBoss);
-			entity.AddUnitIcon(null);
+			entity.AddGameResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
+			entity.AddGameUnitStatus(0, 0, 0, 0, 0);
+			entity.AddGameUnitDetail("", "");
+			entity.AddGameCharacter(Character.LastBoss);
+			entity.AddGameUnitIcon(null);
 
 			system.Execute();
 

@@ -18,7 +18,7 @@ namespace Test.System
 			var system = new CreateDeckCardsSystem(_contexts, deck);
 			system.Initialize();
 
-			var cards = _contexts.game.GetGroup(GameMatcher.Card).GetEntities();
+			var cards = _contexts.game.GetGroup(GameMatcher.GameCard).GetEntities();
 			Assert.AreEqual(2, cards.Length);
 		}
 	}

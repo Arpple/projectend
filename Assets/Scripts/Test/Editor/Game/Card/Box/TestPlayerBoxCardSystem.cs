@@ -15,11 +15,11 @@ namespace Test.System
 			_player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
 			var box = new GameObject().AddComponent<PlayerBox>();
 			box.Init();
-			_player.AddPlayerBox(box);
+			_player.AddGamePlayerBox(box);
 
 			var deck = new GameObject().AddComponent<CardContainer>();
 			deck.Init();
-			_player.AddPlayerDeck(deck);
+			_player.AddGamePlayerDeck(deck);
 		}
 
 		[Test]
@@ -28,14 +28,14 @@ namespace Test.System
 			var system = new PlayerBoxCardSystem(_contexts);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerCard(_player);
-			card.isDeckCard = true;
-			card.AddView(new GameObject());
-			card.AddInBox(0);
+			card.AddGamePlayerCard(_player);
+			card.isGameDeckCard = true;
+			card.AddGameView(new GameObject());
+			card.AddGameInBox(0);
 
 			system.Execute();
 
-			Assert.AreEqual(_player.playerBox.BoxObject.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(_player.gamePlayerBox.BoxObject.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
 		}
 
 		[Test]
@@ -44,15 +44,15 @@ namespace Test.System
 			var system = new PlayerBoxCardSystem(_contexts);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerCard(_player);
-			card.isDeckCard = true;
-			card.AddView(new GameObject());
-			card.AddInBox(0);
-			card.RemoveInBox();
+			card.AddGamePlayerCard(_player);
+			card.isGameDeckCard = true;
+			card.AddGameView(new GameObject());
+			card.AddGameInBox(0);
+			card.RemoveGameInBox();
 
 			system.Execute();
 
-			Assert.AreEqual(_player.playerDeck.PlayerDeckObject.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(_player.gamePlayerDeck.PlayerDeckObject.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
 		}
 	}
 

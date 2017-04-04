@@ -15,16 +15,16 @@ namespace Game.UI
 
 			foreach (var tile in _tiles)
 			{
-				Assert.IsTrue(tile.hasTile);
-				Assert.IsTrue(tile.hasView);
+				Assert.IsTrue(tile.hasGameTile);
+				Assert.IsTrue(tile.hasGameView);
 
-				var con = tile.view.GameObject.GetComponent<TileController>();
+				var con = tile.gameView.GameObject.GetComponent<TileController>();
 				con.Span.enabled = true;
 
 				var target = getTargetFromTileFunction(selector, tile);
 				if(target != null)
 				{
-					tile.AddTileAction((t) => 
+					tile.AddGameTileAction((t) => 
 					{
 						onTileSelected(target);
 						ClearSelection();
@@ -37,12 +37,12 @@ namespace Game.UI
 		{
 			foreach(var tile in _tiles)
 			{
-				var con = tile.view.GameObject.GetComponent<TileController>();
+				var con = tile.gameView.GameObject.GetComponent<TileController>();
 				con.Span.enabled = false;
 
-				if(tile.hasTileAction)
+				if(tile.hasGameTileAction)
 				{
-					tile.RemoveTileAction();
+					tile.RemoveGameTileAction();
 				}
 			}
 		}

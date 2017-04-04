@@ -30,23 +30,23 @@ namespace Test.System
 
 			_system.Initialize();
 
-			Assert.IsTrue(p.hasPlayerSkillCardUI);
+			Assert.IsTrue(p.hasGameUIPlayerSkillCardUI);
 		}
 
 		[Test]
 		public void AddNewSkillToUI()
 		{
 			var p = TestHelper.CreatePlayerEntity(_contexts.game, 1);
-			p.AddPlayerSkillCardUI(_container);
+			p.AddGameUIPlayerSkillCardUI(_container);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddView(new GameObject());
-			card.isSkillCard = true;
-			card.AddPlayerCard(p);
+			card.AddGameView(new GameObject());
+			card.isGameSkillCard = true;
+			card.AddGamePlayerCard(p);
 
 			_system.Execute();
 
-			Assert.AreEqual(p.playerSkillCardUI.ContainerObject.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(p.gameUIPlayerSkillCardUI.ContainerObject.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
 		}
 	}
 

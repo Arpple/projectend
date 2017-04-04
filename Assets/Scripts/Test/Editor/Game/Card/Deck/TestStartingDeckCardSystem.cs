@@ -28,15 +28,15 @@ namespace Test.System
 				_contexts.game.CreatePlayerEntity((short)(i + 1));
 				
 				var card = _contexts.game.CreateEntity();
-				card.AddCard((short)i, Card.Move);
+				card.AddGameCard((short)i, Card.Move);
 			});
 
 			system.Initialize();
 
-			foreach (var p in _contexts.game.GetEntities(GameMatcher.Player))
+			foreach (var p in _contexts.game.GetEntities(GameMatcher.GamePlayer))
 			{
-				Assert.AreEqual(1, _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveCard)
-					.Where(c => c.eventMoveCard.TargetPlayerEntity == p)
+				Assert.AreEqual(1, _contexts.gameEvent.GetEntities(GameEventMatcher.GameEventMoveCard)
+					.Where(c => c.gameEventMoveCard.TargetPlayerEntity == p)
 					.Count()
 				);
 			}

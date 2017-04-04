@@ -169,7 +169,7 @@ namespace UnityTest
 
         private static List<string> FindTestScenesInProject()
         {
-            var integrationTestScenePattern = "*Test?.unity";
+            var integrationTestScenePattern = "*Test?.gameUnity";
             return Directory.GetFiles("Assets", integrationTestScenePattern, SearchOption.AllDirectories).ToList();
         }
 
@@ -184,8 +184,8 @@ namespace UnityTest
                     foreach (var scene in scenesFromParam)
                     {
                         var sceneName = scene;
-                        if (!sceneName.EndsWith(".unity"))
-                            sceneName += ".unity";
+                        if (!sceneName.EndsWith(".gameUnity"))
+                            sceneName += ".gameUnity";
                         var foundScenes = Directory.GetFiles(Directory.GetCurrentDirectory(), sceneName, SearchOption.AllDirectories);
                         if (foundScenes.Length == 1)
                             sceneList.Add(foundScenes[0].Substring(Directory.GetCurrentDirectory().Length + 1));

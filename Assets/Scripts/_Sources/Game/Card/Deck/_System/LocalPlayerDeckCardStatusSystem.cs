@@ -19,8 +19,8 @@ namespace Game.UI
 			return new Collector<GameEntity>(
 				new[]
 				{
-					context.GetGroup(GameMatcher.PlayerCard),
-					context.GetGroup(GameMatcher.InBox),
+					context.GetGroup(GameMatcher.GamePlayerCard),
+					context.GetGroup(GameMatcher.GameInBox),
 				},
 				new[]
 				{
@@ -32,14 +32,14 @@ namespace Game.UI
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isDeckCard;
+			return entity.isGameDeckCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			var deckCardCount = _context.GetPlayerDeckCards(_context.localPlayerEntity)
+			var deckCardCount = _context.GetPlayerDeckCards(_context.gameLocalPlayerEntity)
 				.Length;
-			var boxCardCount = _context.GetPlayerBoxCards(_context.localPlayerEntity)
+			var boxCardCount = _context.GetPlayerBoxCards(_context.gameLocalPlayerEntity)
 				.Length;
 
 			_status.UpdateDeckCardCount(deckCardCount);

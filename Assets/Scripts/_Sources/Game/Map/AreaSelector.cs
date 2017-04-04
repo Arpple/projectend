@@ -7,8 +7,8 @@ namespace Game
 	{
 		public static GameEntity[] GetAllInRange(GameEntity center, int range, bool includeCenter = false)
 		{
-			var tiles = Contexts.sharedInstance.game.GetEntities(GameMatcher.Tile)
-				.Where(t => t.mapPosition.GetDistance(center.mapPosition) <= range);
+			var tiles = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameTile)
+				.Where(t => t.gameMapPosition.GetDistance(center.gameMapPosition) <= range);
 
 			return includeCenter ? tiles.ToArray() : tiles.Where(t => t != center).ToArray();
 		}
@@ -26,11 +26,11 @@ namespace Game
 				{
 					var found = new GameEntity[]
 					{
-						tile.tileGraph.Up,
-						tile.tileGraph.Down,
-						tile.tileGraph.Left,
-						tile.tileGraph.Right,
-					}.Where(t => t != null && t.isTileMovable && t.GetUnitOnTile() == null)
+						tile.gameTileGraph.Up,
+						tile.gameTileGraph.Down,
+						tile.gameTileGraph.Left,
+						tile.gameTileGraph.Right,
+					}.Where(t => t != null && t.isGameTileMovable && t.GetUnitOnTile() == null)
 						.Except(selectedTiles).ToArray();
 
 					newLeaf = newLeaf.Union(found).ToArray();

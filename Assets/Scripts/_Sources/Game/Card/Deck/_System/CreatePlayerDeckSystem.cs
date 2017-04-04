@@ -18,12 +18,12 @@ namespace Game
 
 		public void Initialize()
 		{
-			foreach (var player in _context.GetEntities(GameMatcher.Player))
+			foreach (var player in _context.GetEntities(GameMatcher.GamePlayer))
 			{
-				var playerDeck = _cardDecks.CreateContainer(player.player.PlayerId);
-				player.AddPlayerDeck(playerDeck);
+				var playerDeck = _cardDecks.CreateContainer(player.gamePlayer.PlayerId);
+				player.AddGamePlayerDeck(playerDeck);
 
-				if(player.isLocalPlayer)
+				if(player.isGameLocalPlayer)
 				{
 					playerDeck.gameObject.SetActive(true);
 				}

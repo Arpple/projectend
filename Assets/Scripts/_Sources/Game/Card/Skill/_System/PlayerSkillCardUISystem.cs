@@ -19,29 +19,29 @@ namespace Game.UI
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.SkillCard);
+			return context.CreateCollector(GameMatcher.GameSkillCard);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isSkillCard;
+			return entity.isGameSkillCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				e.playerCard.OwnerEntity.playerSkillCardUI.ContainerObject.AddCard(e.view.GameObject);
+				e.gamePlayerCard.OwnerEntity.gameUIPlayerSkillCardUI.ContainerObject.AddCard(e.gameView.GameObject);
 			}
 		}
 
 		public void Initialize()
 		{
-			foreach(var p in _context.GetEntities(GameMatcher.Player))
+			foreach(var p in _context.GetEntities(GameMatcher.GamePlayer))
 			{
-				var cont = _factory.CreateContainer(p.player.PlayerId);
-				p.AddPlayerSkillCardUI(cont);
-				if (p.isLocalPlayer) cont.gameObject.SetActive(true);
+				var cont = _factory.CreateContainer(p.gamePlayer.PlayerId);
+				p.AddGameUIPlayerSkillCardUI(cont);
+				if (p.isGameLocalPlayer) cont.gameObject.SetActive(true);
 			}
 		}
 	}

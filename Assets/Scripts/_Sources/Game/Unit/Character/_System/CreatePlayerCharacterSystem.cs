@@ -17,24 +17,24 @@ namespace Game
 
 		public void Initialize()
 		{
-			var spawnpoints = _context.GetEntities(GameMatcher.Spawnpoint);
-			var players = _context.GetEntities(GameMatcher.Player);
+			var spawnpoints = _context.GetEntities(GameMatcher.GameSpawnpoint);
+			var players = _context.GetEntities(GameMatcher.GamePlayer);
 			Assert.IsTrue(spawnpoints.Length >= players.Length);
 
 			int indexSpawnPoint = 0;
 			int id = 0;
-			foreach (var playerEntity in players.OrderBy(p => p.player.PlayerId))
+			foreach (var playerEntity in players.OrderBy(p => p.gamePlayer.PlayerId))
 			{
 				var sp = spawnpoints[indexSpawnPoint];
 				indexSpawnPoint++;
 
-				var characterType = (Character)playerEntity.player.PlayerObject.SelectedCharacterId;
+				var characterType = (Character)playerEntity.gamePlayer.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);
 
 				var character = _context.CreateEntity();
-				character.AddUnit(id, playerEntity);
-				character.AddCharacter(characterType);
-				character.AddMapPosition(sp.mapPosition.x, sp.mapPosition.y);
+				character.AddGameUnit(id, playerEntity);
+				character.AddGameCharacter(characterType);
+				character.AddGameMapPosition(sp.gameMapPosition.x, sp.gameMapPosition.y);
 				id++;
 			}
 		}

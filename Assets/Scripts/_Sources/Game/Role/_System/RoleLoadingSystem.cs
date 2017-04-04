@@ -14,28 +14,28 @@ namespace Game
 
 		public void Initialize()
 		{
-			foreach (var p in _context.GetEntities(GameMatcher.Player))
+			foreach (var p in _context.GetEntities(GameMatcher.GamePlayer))
 			{
-				switch((Role)p.player.PlayerObject.RoleId)
+				switch((Role)p.gamePlayer.PlayerObject.RoleId)
 				{
 					case Role.End:
-						p.AddRole(new RoleEnd(_context));
+						p.AddGameRole(new RoleEnd(_context));
 					break;
 
 					case Role.Invader:
-						p.AddRole(new RoleInvader(_context));
+						p.AddGameRole(new RoleInvader(_context));
 					break;
 
 					case Role.Origin:
-						p.AddRole(new RoleOrigin(_context));
+						p.AddGameRole(new RoleOrigin(_context));
 					break;
 
 					case Role.Seed:
-						p.AddRole(new RoleSeed(_context));
+						p.AddGameRole(new RoleSeed(_context));
 					break;
 
 					default:
-						throw new Exception("cannot load role " + p.player.PlayerObject.RoleId);
+						throw new Exception("cannot load role " + p.gamePlayer.PlayerObject.RoleId);
 				}
 			}
 		}

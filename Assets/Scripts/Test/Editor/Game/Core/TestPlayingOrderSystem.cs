@@ -4,28 +4,28 @@ using UnityEngine;
 
 namespace Test.System
 {
-	public class TestPlayingOrderSystem : ContextsTest
+	public class TestgamePlayingOrderSystem : ContextsTest
 	{
 		[Test]
 		public void CycleTurnLogic()
 		{
-			_contexts.game.SetPlayingOrder(new List<GameEntity>
+			_contexts.game.SetGamePlayingOrder(new List<GameEntity>
 			{
 				TestHelper.CreatePlayerEntity(_contexts.game, 1),
 				TestHelper.CreatePlayerEntity(_contexts.game, 2),
 				TestHelper.CreatePlayerEntity(_contexts.game, 3),
 				TestHelper.CreatePlayerEntity(_contexts.game, 4),
 			});
-			var order = _contexts.game.playingOrder;
-			Assert.AreEqual(1, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(2, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(3, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(4, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(2, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(3, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(4, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(1, order.GetNextPlayerEntity().player.PlayerId);
-			Assert.AreEqual(3, order.GetNextPlayerEntity().player.PlayerId);
+			var order = _contexts.game.gamePlayingOrder;
+			Assert.AreEqual(1, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(2, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(3, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(4, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(2, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(3, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(4, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(1, order.GetNextPlayerEntity().gamePlayer.PlayerId);
+			Assert.AreEqual(3, order.GetNextPlayerEntity().gamePlayer.PlayerId);
 		}
 
 		[Test]
@@ -36,13 +36,13 @@ namespace Test.System
 				TestHelper.CreatePlayerEntity(_contexts.game, i + 1);
 			});
 
-			var system = new Game.PlayingOrderSystem(_contexts);
+			var system = new Game.gamePlayingOrderSystem(_contexts);
 
 			system.Initialize();
 
-			var order = _contexts.game.playingOrder.PlayerOrder;
+			var order = _contexts.game.gamePlayingOrder.PlayerOrder;
 
-			4.Loop(i => Assert.AreEqual(i + 1, order[i].player.PlayerId));
+			4.Loop(i => Assert.AreEqual(i + 1, order[i].gamePlayer.PlayerId));
 		}
 	
 	}

@@ -19,8 +19,8 @@ namespace Test
 		{
 			var e = _contexts.game.CreateEntity();
 
-			e.AddMapPosition(1, 1);
-			var worldPos = e.mapPosition.GetWorldPosition();
+			e.AddGameMapPosition(1, 1);
+			var worldPos = e.gameMapPosition.GetWorldPosition();
 
 			Assert.AreEqual(new Vector3(1, 1, 1), worldPos);
 		}
@@ -29,12 +29,12 @@ namespace Test
 		public void GetDistance()
 		{
 			var e1 = _contexts.game.CreateEntity();
-			e1.AddMapPosition(1, 1);
+			e1.AddGameMapPosition(1, 1);
 
 			var e2 = _contexts.game.CreateEntity();
-			e2.AddMapPosition(-2, 2);
+			e2.AddGameMapPosition(-2, 2);
 
-			Assert.AreEqual(4, e1.mapPosition.GetDistance(e2.mapPosition));
+			Assert.AreEqual(4, e1.gameMapPosition.GetDistance(e2.gameMapPosition));
 		}
 
 		[Test]
@@ -44,12 +44,12 @@ namespace Test
 			var e2 = _contexts.game.CreateEntity();
 			var e3 = _contexts.game.CreateEntity();
 
-			e1.AddMapPosition(1, 1);
-			e2.AddMapPosition(1, 1);
-			e3.AddMapPosition(1, 2);
+			e1.AddGameMapPosition(1, 1);
+			e2.AddGameMapPosition(1, 1);
+			e3.AddGameMapPosition(1, 2);
 
-			Assert.IsTrue(e1.mapPosition.Equals(e2.mapPosition));
-			Assert.IsFalse(e1.mapPosition.Equals(e3.mapPosition));
+			Assert.IsTrue(e1.gameMapPosition.Equals(e2.gameMapPosition));
+			Assert.IsFalse(e1.gameMapPosition.Equals(e3.gameMapPosition));
 		}
 	}	
 }

@@ -23,15 +23,15 @@ namespace Test.System
 			var icon = Resources.Load<Sprite>("Test/Editor/Sprite");
 
 			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
-			player.player.PlayerObject.PlayerName = "test";
-			player.isLocalPlayer = true;
+			player.gamePlayer.PlayerObject.PlayerName = "test";
+			player.isGameLocalPlayer = true;
 
 			var character = _contexts.game.CreateEntity();
-			character.AddUnitIcon(icon);
-			character.AddUnit(1, player);
-			character.AddCharacter(Game.Character.LastBoss);
-			character.AddUnitStatus(1, 1, 1, 1, 1);
-			character.AddHitpoint(1);
+			character.AddGameUnitIcon(icon);
+			character.AddGameUnit(1, player);
+			character.AddGameCharacter(Game.Character.LastBoss);
+			character.AddGameUnitStatus(1, 1, 1, 1, 1);
+			character.AddGameHitpoint(1);
 
 			system.Initialize();
 

@@ -19,7 +19,7 @@ namespace Game
 			foreach(var p in _players)
 			{
 				var playerEntity = _context.CreateEntity();
-				playerEntity.AddPlayer(p);
+				playerEntity.AddGamePlayer(p);
 			}
 		}
 	}

@@ -7,8 +7,7 @@ namespace Test
 		public static Contexts CreateContexts()
 		{
 			var _contexts = Contexts.sharedInstance;
-			_contexts.SetAllContexts();
-
+			_contexts.Reset();
 			return _contexts;
 		}
 
@@ -23,7 +22,7 @@ namespace Test
 			var p = new GameObject().AddComponent<Player>();
 			p.PlayerId = (short)playerId;
 
-			e.AddPlayer(p);
+			e.AddGamePlayer(p);
 			return e;
 		}
 	}

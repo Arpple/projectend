@@ -18,17 +18,17 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Card, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameCard, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasCard;
+			return entity.hasGameCard;
 		}
 
 		protected override Blueprint GetBlueprint(GameEntity entity)
 		{
-			return _setting.GetCardBlueprint(entity.card.Type);
+			return _setting.GetCardBlueprint(entity.gameCard.Type);
 		}
 	}
 }

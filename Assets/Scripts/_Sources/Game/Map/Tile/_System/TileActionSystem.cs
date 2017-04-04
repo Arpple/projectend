@@ -14,7 +14,7 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.TileAction, GroupEvent.AddedOrRemoved);
+			return context.CreateCollector(GameMatcher.GameTileAction, GroupEvent.AddedOrRemoved);
 		}
 
 		protected override bool Filter(GameEntity entity)
@@ -26,7 +26,7 @@ namespace Game
 		{
 			foreach(var e in entities)
 			{
-				if (e.hasTileAction)
+				if (e.hasGameTileAction)
 					AddActionToController(e);
 				else
 					RemoveActionFromController(e);
@@ -35,13 +35,13 @@ namespace Game
 
 		private TileController GetController(GameEntity tileEntity)
 		{
-			return tileEntity.view.GameObject.GetComponent<TileController>();
+			return tileEntity.gameView.GameObject.GetComponent<TileController>();
 		}
 
 		private void AddActionToController(GameEntity tileEntity)
 		{
 			var controller = GetController(tileEntity);
-			controller.TileAction = tileEntity.tileAction.OnSelected;
+			controller.TileAction = tileEntity.gameTileAction.OnSelected;
 		}
 
 		private void RemoveActionFromController(GameEntity tileEntity)

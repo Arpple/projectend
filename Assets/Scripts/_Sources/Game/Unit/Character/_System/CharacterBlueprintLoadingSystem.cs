@@ -20,7 +20,7 @@ namespace Game
 
 		protected Blueprint GetBlueprint(GameEntity entity)
 		{
-			return _setting.GetCharBlueprint(entity.character.Type);
+			return _setting.GetCharBlueprint(entity.gameCharacter.Type);
 		}
 
 		protected void LoadUnitData(GameEntity[] entities)
@@ -28,14 +28,14 @@ namespace Game
 			foreach(var e in entities)
 			{
 				e.ApplyBlueprint(GetBlueprint(e));
-				e.AddViewContainer(CHARACTER_VIEW_CONTAINER);
-				e.AddHitpoint(e.unitStatus.HitPoint);
+				e.AddGameViewContainer(CHARACTER_VIEW_CONTAINER);
+				e.AddGameHitpoint(e.gameUnitStatus.HitPoint);
 			}
 		}
 
 		public void Initialize()
 		{
-			LoadUnitData(_context.GetEntities(GameMatcher.Character));
+			LoadUnitData(_context.GetEntities(GameMatcher.GameCharacter));
 		}
 	}
 

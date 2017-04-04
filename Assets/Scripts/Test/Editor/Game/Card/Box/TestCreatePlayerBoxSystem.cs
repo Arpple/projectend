@@ -28,11 +28,11 @@ namespace Test.System
 
 			var player = new GameObject().AddComponent<Player>();
 			player.PlayerId = 1;
-			entity.AddPlayer(player);
+			entity.AddGamePlayer(player);
 
 			system.Initialize();
 
-			Assert.AreEqual(_factory.AllContainers[1], _contexts.game.GetEntities(GameMatcher.PlayerBox).First().playerBox.BoxObject);
+			Assert.AreEqual(_factory.AllContainers[1], _contexts.game.GetEntities(GameMatcher.GamePlayerBox).First().gamePlayerBox.BoxObject);
 		}
 	}
 }

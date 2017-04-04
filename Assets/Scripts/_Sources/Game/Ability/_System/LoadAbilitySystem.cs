@@ -16,21 +16,21 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Ability, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameAbility, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasAbility
-				&& entity.ability.AbilityClassName != ""
-				&& entity.ability.Ability == null;
+			return entity.hasGameAbility
+				&& entity.gameAbility.AbilityClassName != ""
+				&& entity.gameAbility.Ability == null;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				e.ability.Ability = _ability.Get(e.ability.AbilityClassName, (name)
+				e.gameAbility.Ability = _ability.Get(e.gameAbility.AbilityClassName, (name)
 					=> (Ability)System.Reflection.Assembly.GetExecutingAssembly().CreateInstance(name));
 			}
 		}

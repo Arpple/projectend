@@ -18,7 +18,7 @@ namespace Test.System
 
 			system.Initialize();
 
-			Assert.AreEqual(1, _contexts.game.GetEntities(GameMatcher.Player).Length);
+			Assert.AreEqual(1, _contexts.game.GetEntities(GameMatcher.GamePlayer).Length);
 		}
 	}
 }

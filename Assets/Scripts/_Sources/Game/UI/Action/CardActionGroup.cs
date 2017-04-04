@@ -16,9 +16,9 @@ namespace Game.UI
 
 			var cardEntity = card.Entity;
 
-			if (cardEntity.hasAbility)
+			if (cardEntity.hasGameAbility)
 			{
-				var ability = cardEntity.ability.Ability as IActiveAbility;
+				var ability = cardEntity.gameAbility.Ability as IActiveAbility;
 				if (ability == null) return;
 
 				var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
@@ -29,11 +29,11 @@ namespace Game.UI
 					ability.GetTargetEntity,
 					(t) =>
 					{
-						if (t.hasUnit)
+						if (t.hasGameUnit)
 						{
 							EventUseCardOnUnit.Create(caster, cardEntity, t);
 						}
-						else if (t.hasTile)
+						else if (t.hasGameTile)
 						{
 							EventUseCardOnTile.Create(caster, cardEntity, t);
 						}

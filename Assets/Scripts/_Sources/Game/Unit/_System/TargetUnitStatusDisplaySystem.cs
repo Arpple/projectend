@@ -18,9 +18,9 @@ namespace Game.UI
 
 		public void Initialize()
 		{
-			foreach(var tile in _context.GetEntities(GameMatcher.Tile))
+			foreach(var tile in _context.GetEntities(GameMatcher.GameTile))
 			{
-				var tileCon = tile.view.GameObject.GetComponent<TileController>();
+				var tileCon = tile.gameView.GameObject.GetComponent<TileController>();
 				tileCon.DefaultTileAction = OnTileClicked;
 			}
 		}
@@ -42,8 +42,8 @@ namespace Game.UI
 		{
 			_panel.SetCharacter(unit);
 			_panel.gameObject.SetActive(true);
-			_panel.UpdateBoxCardCount(_context.GetPlayerBoxCards(unit.unit.OwnerEntity).Length);
-			_panel.UpdateDeckCardCount(_context.GetPlayerDeckCards(unit.unit.OwnerEntity).Length);
+			_panel.UpdateBoxCardCount(_context.GetPlayerBoxCards(unit.gameUnit.OwnerEntity).Length);
+			_panel.UpdateDeckCardCount(_context.GetPlayerDeckCards(unit.gameUnit.OwnerEntity).Length);
 		}
 
 		private void HideDisplayStatus()
@@ -55,8 +55,8 @@ namespace Game.UI
 		{
 			return new Collector<GameEntity>(
 				new[] {
-					context.GetGroup(GameMatcher.Hitpoint),
-					context.GetGroup(GameMatcher.UnitStatus)
+					context.GetGroup(GameMatcher.GameHitpoint),
+					context.GetGroup(GameMatcher.GameUnitStatus)
 				}, 
 				new[] 
 				{
@@ -68,15 +68,15 @@ namespace Game.UI
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return _panel.ShowingCharacter == entity && entity.hasHitpoint && entity.hasUnitStatus;
+			return _panel.ShowingCharacter == entity && entity.hasGameHitpoint && entity.hasGameUnitStatus;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				_panel.UpdateUnitHitpoint(e.hitpoint);
-				_panel.UpdateUnitStatus(e.unitStatus);
+				_panel.UpdateUnitHitpoint(e.gameHitpoint);
+				_panel.UpdateUnitStatus(e.gameUnitStatus);
 			}
 		}
 	}

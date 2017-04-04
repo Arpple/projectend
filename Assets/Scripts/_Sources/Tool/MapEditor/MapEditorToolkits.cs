@@ -84,13 +84,13 @@ namespace MapEditor {
         }
 
         public void ShowDetailHoverTile(GameEntity tile) {
-            //Debug.Log("Hover Tile >" + tile.view.GameObject.name);
-            if(Instance.lastType != tile.tile.Type) {
-                Instance.lastType = tile.tile.Type;
-                Instance.TileImage.sprite = Resources.Load<Sprite>(tile.resource.SpritePath);
+            //Debug.Log("Hover Tile >" + tile.gameView.GameObject.name);
+            if(Instance.lastType != tile.gameTile.Type) {
+                Instance.lastType = tile.gameTile.Type;
+                Instance.TileImage.sprite = Resources.Load<Sprite>(tile.gameResource.SpritePath);
             }
-            Instance.TileName.text = tile.tile.Type.ToString();
-            Instance.TilePosition.text = "[ " + tile.mapPosition.x + " , " + tile.mapPosition.y + " ]";
+            Instance.TileName.text = tile.gameTile.Type.ToString();
+            Instance.TilePosition.text = "[ " + tile.gameMapPosition.x + " , " + tile.gameMapPosition.y + " ]";
         }
 
         public void GodFillRectangle(int from_x,int from_y,int to_x,int to_y) {

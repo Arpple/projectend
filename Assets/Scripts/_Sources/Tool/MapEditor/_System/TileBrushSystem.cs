@@ -24,69 +24,69 @@ namespace MapEditor
 
 		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Tile, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameTile, GroupEvent.Added);
 		}
 
 		protected override bool Filter (GameEntity entity)
 		{
-			return entity.hasTile;
+			return entity.hasGameTile;
 		}
 
 		public void Initialize()
 		{
-			_context.SetTileBrush(Tile.DeepForest, BrushAction.Tile, 1);
-			TileBrush = _context.tileBrush;
+			_context.SetMapEditorTileBrush(Tile.DeepForest, BrushAction.Tile, 1);
+			TileBrush = _context.mapEditorTileBrush;
 		}
 
 		protected override void Execute (List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				e.AddTileAction((x) => ReplaceTile(x));
+				e.AddGameTileAction((x) => ReplaceTile(x));
 			}
 		}
 
 		void ReplaceTile(GameEntity tileEntity)
 		{
-			var brush = _context.tileBrush;
+			var brush = _context.mapEditorTileBrush;
 			var brushTile = brush.TileType;
 
 			if (brush.Action == BrushAction.Tile)
 			{
-				if (tileEntity.tile.Type == brushTile) return;
+				if (tileEntity.gameTile.Type == brushTile) return;
 
 				//remove old view
-				var link = tileEntity.view.GameObject.GetEntityLink();
+				var link = tileEntity.gameView.GameObject.GetEntityLink();
 				link.Unlink();
-				GameObject.Destroy(tileEntity.view.GameObject);
+				GameObject.Destroy(tileEntity.gameView.GameObject);
 
-				var pos = tileEntity.mapPosition;
+				var pos = tileEntity.gameMapPosition;
 				tileEntity.RemoveAllComponents();
 
 				tileEntity.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
-				tileEntity.AddTile(brushTile);
-				tileEntity.AddMapPosition(pos.x, pos.y);
+				tileEntity.AddGameTile(brushTile);
+				tileEntity.AddGameMapPosition(pos.x, pos.y);
 			}
 			else if (brush.Action == BrushAction.Spawnpoint)
 			{
-				var oldSpawnpoint = _context.GetEntities(GameMatcher.Spawnpoint)
-					.Where(s => s.spawnpoint.index == brush.SpawnpointIndex)
+				var oldSpawnpoint = _context.GetEntities(GameMatcher.GameSpawnpoint)
+					.Where(s => s.gameSpawnpoint.index == brush.SpawnpointIndex)
 					.FirstOrDefault();
 
 				if (oldSpawnpoint != null)
 				{
-					oldSpawnpoint.RemoveSpawnpoint();
+					oldSpawnpoint.RemoveGameSpawnpoint();
 				}
 
-				if (tileEntity.hasSpawnpoint)
+				if (tileEntity.hasGameSpawnpoint)
 				{
-					Debug.Log("Spawnpoint replaced " + tileEntity.spawnpoint.index + "=>" + brush.SpawnpointIndex + " : " + tileEntity.mapPosition);
-					tileEntity.ReplaceSpawnpoint(brush.SpawnpointIndex);
+					Debug.Log("Spawnpoint replaced " + tileEntity.gameSpawnpoint.index + "=>" + brush.SpawnpointIndex + " : " + tileEntity.gameMapPosition);
+					tileEntity.ReplaceGameSpawnpoint(brush.SpawnpointIndex);
 				}
 				else
 				{
-					Debug.Log("Spawnpoint set " + brush.SpawnpointIndex + " : " + tileEntity.mapPosition);
-					tileEntity.AddSpawnpoint(brush.SpawnpointIndex);
+					Debug.Log("Spawnpoint set " + brush.SpawnpointIndex + " : " + tileEntity.gameMapPosition);
+					tileEntity.AddGameSpawnpoint(brush.SpawnpointIndex);
 				}
 			}
 		}

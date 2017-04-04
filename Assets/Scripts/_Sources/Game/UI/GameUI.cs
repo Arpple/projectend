@@ -120,14 +120,14 @@ namespace Game.UI
 		private ActionGroup GetCardGroup(CardObject card)
 		{
 			var entity = card.Entity;
-			if (entity.isDeckCard)
+			if (entity.isGameDeckCard)
 			{
-				if (entity.hasInBox)
+				if (entity.hasGameInBox)
 					return BoxGroup;
 				else
 					return DeckGroup;
 			}
-			else if (entity.isSkillCard)
+			else if (entity.isGameSkillCard)
 			{
 				return SkillGroup;
 			}

@@ -18,20 +18,20 @@ namespace Game
 		{
 			foreach(var c in GetCharacters())
 			{
-				foreach (var skill in c.characterSkillsResource.Skills)
+				foreach (var skill in c.gameCharacterSkillsResource.Skills)
 				{
 					var skillCard = _context.CreateCard(skill);
-					skillCard.isSkillCard = true;
-					skillCard.AddPlayerCard(c.unit.OwnerEntity);
+					skillCard.isGameSkillCard = true;
+					skillCard.AddGamePlayerCard(c.gameUnit.OwnerEntity);
 				}
 			}
 		}
 
 		private GameEntity[] GetCharacters()
 		{
-			return _context.GetEntities(GameMatcher.Character)
-				.Where(c => c.hasCharacterSkillsResource)
-				.OrderBy(c => c.unit.OwnerEntity.player.PlayerId)
+			return _context.GetEntities(GameMatcher.GameCharacter)
+				.Where(c => c.hasGameCharacterSkillsResource)
+				.OrderBy(c => c.gameUnit.OwnerEntity.gamePlayer.PlayerId)
 				.ToArray();
 		}
 	}

@@ -15,19 +15,19 @@ namespace Game.UI
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.PlayerCard, GroupEvent.Removed);
+			return context.CreateCollector(GameMatcher.GamePlayerCard, GroupEvent.Removed);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return !entity.hasPlayerCard && entity.isDeckCard;
+			return !entity.hasGamePlayerCard && entity.isGameDeckCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				_shareDeck.AddCard(e.view.GameObject);
+				_shareDeck.AddCard(e.gameView.GameObject);
 			}
 		}
 	}

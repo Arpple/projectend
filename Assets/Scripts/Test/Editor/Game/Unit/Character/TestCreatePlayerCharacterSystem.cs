@@ -18,17 +18,17 @@ namespace Test.System
 			var system = new CreatePlayerCharacterSystem(_contexts);
 
 			var tile = _contexts.game.CreateEntity();
-			tile.AddSpawnpoint(1);
-			tile.AddMapPosition(0, 0);
+			tile.AddGameSpawnpoint(1);
+			tile.AddGameMapPosition(0, 0);
 
 			var p = _contexts.game.CreateEntity();
-			p.AddPlayer(player);
+			p.AddGamePlayer(player);
 
 			system.Initialize();
 
-			var character = _contexts.game.GetEntities(GameMatcher.Character).FirstOrDefault();
+			var character = _contexts.game.GetEntities(GameMatcher.GameCharacter).FirstOrDefault();
 			Assert.IsNotNull(character);
-			Assert.IsTrue(tile.mapPosition.Equals(character.mapPosition));
+			Assert.IsTrue(tile.gameMapPosition.Equals(character.gameMapPosition));
 		}
 	}
 }

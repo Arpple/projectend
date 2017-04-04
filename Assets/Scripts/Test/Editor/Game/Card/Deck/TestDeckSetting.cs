@@ -21,6 +21,9 @@ namespace Test.Setting
 		[Test]
 		public void CheckEnumBlueprint()
 		{
+			//UnityEngine.Debug.Log(_setting.CardBlueprints.Card_Attack());
+			//UnityEngine.Debug.Log(_setting.CardBlueprints.Card_Move());
+			//UnityEngine.Debug.Log(_setting.CardBlueprints.Card_Potion());
 			foreach (Card c in Enum.GetValues(typeof(Card)))
 			{
 				Assert.IsNotNull(_setting.GetCardBlueprint(c), "Card blueprint not fonud for " + c.ToString());

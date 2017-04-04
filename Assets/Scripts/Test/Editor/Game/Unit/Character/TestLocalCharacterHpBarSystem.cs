@@ -21,11 +21,11 @@ namespace Test.System
 			var system = new LocalCharacterHpBarSystem(_contexts, _hp);
 
 			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
-			player.isLocalPlayer = true;
+			player.isGameLocalPlayer = true;
 
 			var ch = _contexts.game.CreateEntity();
-			ch.AddUnit(1, player);
-			ch.AddHitpoint(1);
+			ch.AddGameUnit(1, player);
+			ch.AddGameHitpoint(1);
 
 			_hp.SetMaxValue(10);
 

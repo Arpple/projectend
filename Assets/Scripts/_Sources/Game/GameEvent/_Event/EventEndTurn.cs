@@ -23,19 +23,19 @@ namespace Game
 
 		protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
 		{
-			return context.CreateCollector(GameEventMatcher.EventEndTurn, GroupEvent.Added);
+			return context.CreateCollector(GameEventMatcher.GameEventEndTurn, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEventEntity entity)
 		{
-			return entity.isEventEndTurn;
+			return entity.isGameEventEndTurn;
 		}
 
 		protected override void Process(GameEventEntity entity)
 		{
-			var playingOrder = _contexts.game.playingOrder;
-			playingOrder.GetNextPlayerEntity();
-			Debug.Log(playingOrder);
+			var gamePlayingOrder = _contexts.game.gamePlayingOrder;
+			gamePlayingOrder.GetNextPlayerEntity();
+			Debug.Log(gamePlayingOrder);
 		}
 	}
 

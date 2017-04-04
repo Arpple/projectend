@@ -29,7 +29,7 @@ namespace Game
 			Add(new CharacterSkillLoadingSystem(contexts));
 
 			//turn
-			Add(new PlayingOrderSystem(contexts));
+			Add(new gamePlayingOrderSystem(contexts));
 
 			if(IsServer())
 			{

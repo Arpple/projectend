@@ -10,8 +10,8 @@ public class IntegrationTestAttribute : Attribute
 
     public IntegrationTestAttribute(string path)
     {
-        if (path.EndsWith(".unity"))
-            path = path.Substring(0, path.Length - ".unity".Length);
+        if (path.EndsWith(".gameUnity"))
+            path = path.Substring(0, path.Length - ".gameUnity".Length);
         m_Path = path;
     }
 

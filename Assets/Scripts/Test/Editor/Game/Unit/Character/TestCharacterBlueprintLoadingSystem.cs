@@ -19,11 +19,11 @@ namespace Test.System
 			var system = new CharacterBlueprintLoadingSystem(_contexts, _setting);
 
 			var entity = _contexts.game.CreateEntity();
-			entity.AddCharacter(Character.LastBoss);
+			entity.AddGameCharacter(Character.LastBoss);
 
 			system.Initialize();
 
-			Assert.IsTrue(entity.hasResource);
+			Assert.IsTrue(entity.hasGameResource);
 		}
 	}
 }

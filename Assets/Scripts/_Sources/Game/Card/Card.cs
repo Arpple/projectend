@@ -14,7 +14,7 @@
 		public static GameEntity CreateCard(this GameContext context, Card type)
 		{
 			var entity = context.CreateEntity();
-			entity.AddCard((short)GetNextCardId(), type);
+			entity.AddGameCard((short)GetNextCardId(), type);
 
 			_lastCreatedCard = entity;
 			return entity;
@@ -24,7 +24,7 @@
 		{
 			return _lastCreatedCard == null
 				? 0
-				: _lastCreatedCard.card.Id + 1;
+				: _lastCreatedCard.gameCard.Id + 1;
 		}
 
 	}

@@ -14,25 +14,25 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.InBox, GroupEvent.AddedOrRemoved);
+			return context.CreateCollector(GameMatcher.GameInBox, GroupEvent.AddedOrRemoved);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasPlayerCard;
+			return entity.hasGamePlayerCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach (var e in entities)
 			{
-				if(e.hasInBox)
+				if(e.hasGameInBox)
 				{
-					e.playerCard.OwnerEntity.playerBox.BoxObject.AddCard(e.view.GameObject, e.inBox.Index);
+					e.gamePlayerCard.OwnerEntity.gamePlayerBox.BoxObject.AddCard(e.gameView.GameObject, e.gameInBox.Index);
 				}
 				else
 				{
-					e.playerCard.OwnerEntity.playerDeck.PlayerDeckObject.AddCard(e.view.GameObject);
+					e.gamePlayerCard.OwnerEntity.gamePlayerDeck.PlayerDeckObject.AddCard(e.gameView.GameObject);
 				}
 			}
 		}

@@ -25,7 +25,7 @@ namespace Test.System
 			var system = new CreateMapTileSystem(_contexts, _map, _setting);
 			system.Initialize();
 
-			var tileEntities = _contexts.game.GetEntities(GameMatcher.Tile);
+			var tileEntities = _contexts.game.GetEntities(GameMatcher.GameTile);
 
 			Assert.AreEqual(25, tileEntities.Length);
 		}
@@ -39,12 +39,12 @@ namespace Test.System
 			var system = new CreateMapTileSystem(_contexts, _map, _setting);
 			system.Initialize();
 
-			var tileEntities = _contexts.game.GetEntities(GameMatcher.Tile);
-			var spawnPoints = tileEntities.Where(t => t.hasSpawnpoint);
+			var tileEntities = _contexts.game.GetEntities(GameMatcher.GameTile);
+			var spawnPoints = tileEntities.Where(t => t.hasGameSpawnpoint);
 
 			Assert.AreEqual(1, spawnPoints.Count());
-			Assert.AreEqual(1, spawnPoints.First().mapPosition.x);
-			Assert.AreEqual(1, spawnPoints.First().mapPosition.y);
+			Assert.AreEqual(1, spawnPoints.First().gameMapPosition.x);
+			Assert.AreEqual(1, spawnPoints.First().gameMapPosition.y);
 		}
 
 	}

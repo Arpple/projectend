@@ -12,29 +12,29 @@ namespace Game {
         }
 
         protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-            return context.CreateCollector(GameMatcher.TileAction, GroupEvent.Added);
+            return context.CreateCollector(GameMatcher.GameTileAction, GroupEvent.Added);
         }
 
         protected override bool Filter(GameEntity entity) {
-            return entity.hasTileAction;
+            return entity.hasGameTileAction;
         }
 
         protected override void Execute(List<GameEntity> entities) {
             foreach(var e in entities) {
-                Assert.IsTrue(e.hasView);
-                Assert.IsTrue(e.hasTile);
+                Assert.IsTrue(e.hasGameView);
+                Assert.IsTrue(e.hasGameTile);
 
-                var tileCon = e.view.GameObject.GetComponent<TileController>();
+                var tileCon = e.gameView.GameObject.GetComponent<TileController>();
                 Assert.IsNotNull(tileCon);
                 
-                var tileHoverAction = e.tileHoverAction;
+                var tileHoverAction = e.gameTileHoverAction;
                 tileCon.MouseEnterAction = () => tileHoverAction.HoverAction(tileHoverAction.Source, tileHoverAction.Target);
             }
         }
 
         public void TearDown() {
-            foreach(var e in _context.GetEntities(GameMatcher.Tile)) {
-                var tileCon = e.view.GameObject.GetComponent<TileController>();
+            foreach(var e in _context.GetEntities(GameMatcher.GameTile)) {
+                var tileCon = e.gameView.GameObject.GetComponent<TileController>();
                 Assert.IsNotNull(tileCon);
 
                // tileCon.ClickAction = null;
