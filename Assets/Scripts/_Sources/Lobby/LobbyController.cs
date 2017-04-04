@@ -30,6 +30,9 @@ namespace End.Lobby
 			ReadyButton.onClick.RemoveAllListeners();
 			WaitButton.onClick.RemoveAllListeners();
 
+			BackButton.onClick.RemoveAllListeners();
+			BackButton.onClick.AddListener(Back);
+
 			var netCon = NetworkController.Instance;
 			netCon.OnAllPlayerReadyCallback += MoveToCharacterSelection;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
