@@ -20,6 +20,24 @@ public static class BlueprintsExtension {
     public static Blueprint Card_Potion(this JsonBlueprints blueprints) {
         return blueprints.GetBlueprint("Card_Potion");
     }
+    public static Blueprint Char_CurseSword(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Char_CurseSword");
+    }
+    public static Blueprint Char_LastBoss(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Char_LastBoss");
+    }
+    public static Blueprint Char_Mimic(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Char_Mimic");
+    }
+    public static Blueprint Char_None(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Char_None");
+    }
+    public static Blueprint Char_SharpShooter(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Char_SharpShooter");
+    }
+    public static Blueprint Char_WhiteRabbit(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Char_WhiteRabbit");
+    }
     public static Blueprint Tile_DeepForest(this JsonBlueprints blueprints) {
         return blueprints.GetBlueprint("Tile_DeepForest");
     }

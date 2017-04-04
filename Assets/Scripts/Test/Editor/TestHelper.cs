@@ -7,6 +7,7 @@ namespace Test
 		public static Contexts CreateContexts()
 		{
 			var _contexts = Contexts.sharedInstance;
+			_contexts.Reset();
 			return _contexts;
 		}
 

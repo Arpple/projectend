@@ -17,7 +17,8 @@ MonoBehaviour:
       TileBlueprints: {fileID: 11400000, guid: 7b7b69dc23403ba4d8796ec7398f18c9, type: 2}
   UnitSetting:
     CharacterSetting:
-      CharacterBlueprints: {fileID: 0}
+      CharacterBlueprints: {fileID: 11400000, guid: 4cec7519da8122e49a6e6c5c7e7a9251,
+        type: 2}
       CharacterIconPrefabs: {fileID: 114917532828873708, guid: ea4f123b8ee52c742b5d5650d674d9be,
         type: 2}
   CardSetting:
