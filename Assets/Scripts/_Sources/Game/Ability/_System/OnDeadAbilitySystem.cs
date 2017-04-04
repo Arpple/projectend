@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace End.Game
 {
-	public class OnDeadBoxSystem : ReactiveSystem<GameEntity>
+	public class OnDeadAbilitySystem : ReactiveSystem<GameEntity>
 	{
 		private readonly GameContext _context;
 
-		public OnDeadBoxSystem(Contexts contexts) : base(contexts.game)
+		public OnDeadAbilitySystem(Contexts contexts) : base(contexts.game)
 		{
 			_context = contexts.game;
 		}
@@ -29,12 +29,12 @@ namespace End.Game
 		{
 			foreach(var e in entities)
 			{
-				UseReviveCard(e);
-				UseOnDeadCard(e);
+				UseBoxReviveCard(e);
+				UseBoxOnDeadCard(e);
 			}
 		}
 
-		private void UseReviveCard(GameEntity deadEntity)
+		private void UseBoxReviveCard(GameEntity deadEntity)
 		{
 			var card = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.unit.OwnerEntity)
 				.OrderBy(c => c.inBox.Index)
@@ -47,7 +47,7 @@ namespace End.Game
 			}
 		}
 
-		private void UseOnDeadCard(GameEntity deadEntity)
+		private void UseBoxOnDeadCard(GameEntity deadEntity)
 		{
 			var cards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.unit.OwnerEntity);
 
@@ -58,7 +58,5 @@ namespace End.Game
 				card.MoveCardToDeck();
 			}
 		}
-
-		
 	}
 }

@@ -8,7 +8,7 @@ using System;
 
 namespace End.Test.System
 {
-	public class TestOnDeadBoxSystem : ContextsTest
+	public class TestOnDeadAbilitySystem : ContextsTest
 	{
 		private GameEntity _ownerPlayer;
 		private GameEntity _unit;
@@ -34,7 +34,7 @@ namespace End.Test.System
 		[Test]
 		public void CallOnDeadAbilityFromBox()
 		{
-			var system = new OnDeadBoxSystem(_contexts);
+			var system = new OnDeadAbilitySystem(_contexts);
 			_unit.AddHitpoint(0);
 
 			var box = new GameObject().AddComponent<PlayerBox>();

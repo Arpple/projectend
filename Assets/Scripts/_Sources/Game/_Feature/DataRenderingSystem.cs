@@ -12,7 +12,7 @@ namespace End.Game
 			Add(new PlayerBoxCardSystem(contexts));
 			
 			//unit
-			Add(new OnDeadBoxSystem(contexts));
+			Add(new OnDeadAbilitySystem(contexts));
 			Add(new DeadSystem(contexts));
 
 			//map
