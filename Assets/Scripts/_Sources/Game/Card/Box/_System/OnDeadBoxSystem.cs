@@ -29,22 +29,26 @@ namespace End.Game
 
 		private void UseReviveCard(GameEntity deadEntity)
 		{
-			var reviveCard = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.unit.OwnerEntity)
+			var card = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.unit.OwnerEntity)
 				.OrderBy(c => c.inBox.Index)
 				.FirstOrDefault();
-			if (reviveCard != null)
+			if (card != null)
 			{
-				EventUseCardOnUnit.Create(deadEntity, reviveCard, deadEntity);
+				var ability = (IReviveAbility)card.ability.Ability;
+				ability.OnDead(deadEntity);
+				card.MoveCardToDeck();
 			}
 		}
 
 		private void UseOnDeadCard(GameEntity deadEntity)
 		{
-			var onDeadCards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.unit.OwnerEntity);
+			var cards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.unit.OwnerEntity);
 
-			foreach (var card in onDeadCards)
+			foreach (var card in cards)
 			{
-				EventUseCardOnUnit.Create(deadEntity, card, deadEntity);
+				var ability = (IOnDeadAbility)card.ability.Ability;
+				ability.OnDead(deadEntity);
+				card.MoveCardToDeck();
 			}
 		}
 	}

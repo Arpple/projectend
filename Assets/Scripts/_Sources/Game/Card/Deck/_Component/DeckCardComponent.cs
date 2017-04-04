@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using System.Linq;
+using UnityEngine.Assertions;
 
 namespace End.Game
 {
@@ -26,6 +27,20 @@ namespace End.Game
 			return context.GetDeckCards()
 				.Where(c => c.hasPlayerCard && c.playerCard.OwnerEntity == playerEntity)
 				.ToArray();
+		}
+
+		public static void MoveCardToDeck(this GameEntity cardEntity)
+		{
+			Assert.IsTrue(cardEntity.isDeckCard);
+
+			cardEntity.RemovePlayerCard();
+			RemoveInbox(cardEntity);
+		}
+
+		private static void RemoveInbox(GameEntity card)
+		{
+			if (card.hasInBox)
+				card.RemoveInBox();
 		}
 	}
 }

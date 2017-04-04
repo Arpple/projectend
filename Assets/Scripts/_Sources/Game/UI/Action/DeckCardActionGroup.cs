@@ -40,31 +40,27 @@ namespace End.Game.UI
 			if (cardEntity.hasAbility)
 			{
 				var ability = cardEntity.ability.Ability;
-				
-				if(ability is ITargetAbility)
-				{
-					var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
-					var targetAbility = (ITargetAbility)ability;
-					TileTargetSelector tileSelector = new TileTargetSelector(
-						caster,
-						targetAbility.GetTilesArea(caster),
-						targetAbility.GetTargetEntity,
-						(t) => 
-						{
-							if (t.hasUnit)
-							{
-								EventUseCardOnUnit.Create(caster, cardEntity, t);
-							}
-							else if(t.hasTile)
-							{
-								EventUseCardOnTile.Create(caster, cardEntity, t);
-							}
-							CloseAction();
-						}
-					);
+				var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
 
-					OnCloseHandler += tileSelector.ClearSelection;
-				}
+				TileTargetSelector tileSelector = new TileTargetSelector(
+					caster,
+					ability.GetTilesArea(caster),
+					ability.GetTargetEntity,
+					(t) => 
+					{
+						if (t.hasUnit)
+						{
+							EventUseCardOnUnit.Create(caster, cardEntity, t);
+						}
+						else if(t.hasTile)
+						{
+							EventUseCardOnTile.Create(caster, cardEntity, t);
+						}
+						CloseAction();
+					}
+				);
+
+				OnCloseHandler += tileSelector.ClearSelection;
 			}
 		}
 

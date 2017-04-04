@@ -4,6 +4,7 @@ using End.Game;
 using End.Game.UI;
 using System.Linq;
 using Entitas;
+using System;
 
 namespace End.Test.System
 {
@@ -14,9 +15,24 @@ namespace End.Test.System
 
 		private class TestOnDeadAbility : Ability, IOnDeadAbility
 		{
+			public override GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
+			{
+				throw new NotImplementedException();
+			}
+
+			public override GameEntity[] GetTilesArea(GameEntity caster)
+			{
+				throw new NotImplementedException();
+			}
+
 			public void OnDead(GameEntity deadEntity)
 			{
-				deadEntity.hitpoint.Value += 1;
+				Assert.Pass();
+			}
+
+			public override void OnTargetSelected(GameEntity caster, GameEntity target)
+			{
+				throw new NotImplementedException();
 			}
 		}
 
@@ -47,11 +63,8 @@ namespace End.Test.System
 
 			system.Execute();
 
-			var gameEvent = _contexts.gameEvent.GetEntities(GameEventMatcher.EventUseCardOnUnit).First();
-			Assert.IsNotNull(gameEvent);
-			Assert.AreEqual(_unit, gameEvent.eventUseCardOnUnit.UserEntity);
-			Assert.AreEqual(card, gameEvent.eventUseCardOnUnit.CardEnttiy);
-			Assert.AreEqual(_unit, gameEvent.eventUseCardOnUnit.TargetEnttiy);
+			//fail if ability not called
+			Assert.Fail();
 		}
 	}
 }

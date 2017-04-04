@@ -3,16 +3,16 @@ using UnityEngine.Assertions;
 
 namespace End.Game
 {
-	public class AbilityAttack : Ability, ITargetAbility
+	public class AbilityAttack : Ability
 	{
 		private MapPositionComponent _targetPosition;
 
-		public GameEntity[] GetTilesArea(GameEntity caster)
+		public override GameEntity[] GetTilesArea(GameEntity caster)
 		{
 			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.AttackRange);
 		}
 
-		public GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
+		public override GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
 		{
 			var targetUnit = targetTile.GetUnitOnTile();
 
@@ -21,7 +21,7 @@ namespace End.Game
 			return targetUnit.unit.OwnerEntity != caster.unit.OwnerEntity ? targetUnit : null;
 		}
 
-		public void OnTargetSelected(GameEntity caster, GameEntity target)
+		public override void OnTargetSelected(GameEntity caster, GameEntity target)
 		{
 			target.TakeFatalDamage(caster.unitStatus.AttackPower);
 		}

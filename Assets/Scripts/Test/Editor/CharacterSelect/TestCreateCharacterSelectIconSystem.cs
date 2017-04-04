@@ -25,6 +25,7 @@ namespace End.Test.System
 			entity.AddUnitStatus(0, 0, 0, 0, 0);
 			entity.AddUnitDetail("", "");
 			entity.AddCharacter(Character.LastBoss);
+			entity.AddUnitIcon(null);
 
 			system.Execute();
 
