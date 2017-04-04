@@ -56,7 +56,7 @@ namespace End.Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var cardEvent = entity.eventUseCardOnUnit;
-			var ability = cardEvent.CardEnttiy.ability.Ability;
+			var ability = (IActiveAbility)cardEvent.CardEnttiy.ability.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
 			RemovePlayerCard(cardEvent.CardEnttiy);

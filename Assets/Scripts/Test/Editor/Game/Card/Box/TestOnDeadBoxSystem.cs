@@ -15,24 +15,9 @@ namespace End.Test.System
 
 		private class TestOnDeadAbility : Ability, IOnDeadAbility
 		{
-			public override GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
-			{
-				throw new NotImplementedException();
-			}
-
-			public override GameEntity[] GetTilesArea(GameEntity caster)
-			{
-				throw new NotImplementedException();
-			}
-
 			public void OnDead(GameEntity deadEntity)
 			{
 				Assert.Pass();
-			}
-
-			public override void OnTargetSelected(GameEntity caster, GameEntity target)
-			{
-				throw new NotImplementedException();
 			}
 		}
 
