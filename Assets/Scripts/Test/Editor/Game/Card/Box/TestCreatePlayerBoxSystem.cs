@@ -9,21 +9,21 @@ namespace End.Test.System
 {
 	public class TestCreatePlayerBoxSystem : ContextsTest
 	{
-		private BoxContainer _container;
+		private PlayerBoxFactory _factory;
 
 		[SetUp]
 		public void Init()
 		{
 			var obj = new GameObject();
-			_container = obj.AddComponent<BoxContainer>();
-			_container.PlayerBoxPrefabs = new GameObject().AddComponent<PlayerBox>();
-			_container.Init();
+			_factory = obj.AddComponent<PlayerBoxFactory>();
+			_factory.ContainerPrefabs = new GameObject().AddComponent<PlayerBox>();
+			_factory.Init();
 		}
 
 		[Test]
 		public void CreateBox()
 		{
-			var system = new CreatePlayerBoxSystem(_contexts, _container);
+			var system = new CreatePlayerBoxSystem(_contexts, _factory);
 			var entity = _contexts.game.CreateEntity();
 
 			var player = new GameObject().AddComponent<Player>();
@@ -32,7 +32,7 @@ namespace End.Test.System
 
 			system.Initialize();
 
-			Assert.AreEqual(_container.PlayerBoxs[1], _contexts.game.GetEntities(GameMatcher.PlayerBox).First().playerBox.BoxObject);
+			Assert.AreEqual(_factory.AllContainers[1], _contexts.game.GetEntities(GameMatcher.PlayerBox).First().playerBox.BoxObject);
 		}
 	}
 }

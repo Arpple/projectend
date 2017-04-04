@@ -9,9 +9,9 @@ namespace End.Game
 	public class CreatePlayerBoxSystem : IInitializeSystem
 	{
 		private GameContext _context;
-		private BoxContainer _boxContainer;
+		private PlayerBoxFactory _boxContainer;
 
-		public CreatePlayerBoxSystem(Contexts contexts, BoxContainer boxContainer)
+		public CreatePlayerBoxSystem(Contexts contexts, PlayerBoxFactory boxContainer)
 		{
 			_context = contexts.game;
 			_boxContainer = boxContainer;

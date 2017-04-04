@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace End.Game
 {
-	public class LoadDeckCardSystem : LoadBlueprintSystem
+	public class LoadCardSystem : LoadBlueprintSystem
 	{
 		readonly DeckSetting _setting;
 
-		public LoadDeckCardSystem(Contexts contexts, DeckSetting setting)
+		public LoadCardSystem(Contexts contexts, DeckSetting setting)
 			: base(contexts)
 		{
 			_setting = setting;
@@ -18,7 +18,7 @@ namespace End.Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.DeckCard, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.Card, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)

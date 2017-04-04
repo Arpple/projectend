@@ -8,13 +8,13 @@ namespace End.Game
 	public class RenderPlayerDeckSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
-		private CacheList<GameEntity, PlayerDeck> _playerDeckCache;
+		private CacheList<GameEntity, CardContainer> _playerDeckCache;
 
 		public RenderPlayerDeckSystem(Contexts contexts)
 			: base(contexts.game)
 		{
 			_context = contexts.game;
-			_playerDeckCache = new CacheList<GameEntity, PlayerDeck>();
+			_playerDeckCache = new CacheList<GameEntity, CardContainer>();
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)

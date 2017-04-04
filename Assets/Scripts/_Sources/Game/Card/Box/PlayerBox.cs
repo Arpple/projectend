@@ -2,18 +2,11 @@
 
 namespace End.Game.UI
 {
-	public class PlayerBox : MonoBehaviour
+	public class PlayerBox : CardContainer
 	{
-		public GameObject Content;
-
-		public void Init()
-		{
-			Content = Content ?? gameObject;
-		}
-
 		public void AddCard(GameObject cardObject, int index)
 		{
-			cardObject.transform.SetParent(Content.transform, false);
+			base.AddCard(cardObject);
 			cardObject.transform.SetSiblingIndex(index);
 		}
 	}

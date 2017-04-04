@@ -22,10 +22,12 @@ namespace End.Game
 			Add(new CharacterIconLoadingSystem(contexts));
 
 			//card
-			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.CardContainer));
-			Add(new CreatePlayerBoxSystem(contexts, UI.GameUI.Instance.BoxContainer));
+			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.DeckFactory));
+			Add(new CreatePlayerBoxSystem(contexts, UI.GameUI.Instance.BoxFactory));
 			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.DeckSetting.Deck));
-			
+
+			Add(new CharacterSkillLoadingSystem(contexts));
+
 			//turn
 			Add(new PlayingOrderSystem(contexts));
 

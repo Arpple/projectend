@@ -17,7 +17,7 @@ namespace End.Test.System
 		[Test]
 		public void LoadCard()
 		{
-			var system = new LoadDeckCardSystem(_contexts, _setting);
+			var system = new LoadCardSystem(_contexts, _setting);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddCard(0, Card.Move);
@@ -31,7 +31,7 @@ namespace End.Test.System
 		[Test]
 		public void AllCardHaveAbilityComponent()
 		{
-			var system = new LoadDeckCardSystem(_contexts, _setting);
+			var system = new LoadCardSystem(_contexts, _setting);
 
 			foreach(Card card in Enum.GetValues(typeof(Card)))
 			{

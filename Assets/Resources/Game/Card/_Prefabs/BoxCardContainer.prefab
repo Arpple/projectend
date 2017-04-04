@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114835122639598740}
   - component: {fileID: 114963737539022526}
   m_Layer: 5
-  m_Name: PlayerBox_CardContent
+  m_Name: BoxCardContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abcf88a8fb20a149a26cedbb0b15dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Content: {fileID: 1868942223894034}
+  ObjectContainer: {fileID: 1868942223894034}
 --- !u!222 &222875189255746048
 CanvasRenderer:
   m_ObjectHideFlags: 1

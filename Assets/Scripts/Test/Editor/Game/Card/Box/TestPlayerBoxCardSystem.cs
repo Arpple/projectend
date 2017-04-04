@@ -17,7 +17,7 @@ namespace End.Test.System
 			box.Init();
 			_player.AddPlayerBox(box);
 
-			var deck = new GameObject().AddComponent<PlayerDeck>();
+			var deck = new GameObject().AddComponent<CardContainer>();
 			deck.Init();
 			_player.AddPlayerDeck(deck);
 		}
@@ -35,7 +35,7 @@ namespace End.Test.System
 
 			system.Execute();
 
-			Assert.AreEqual(_player.playerBox.BoxObject.Content, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(_player.playerBox.BoxObject.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
 		}
 
 		[Test]
@@ -52,7 +52,7 @@ namespace End.Test.System
 
 			system.Execute();
 
-			Assert.AreEqual(_player.playerDeck.PlayerDeckObject.Content, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(_player.playerDeck.PlayerDeckObject.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
 		}
 	}
 

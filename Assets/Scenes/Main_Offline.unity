@@ -1404,8 +1404,8 @@ MonoBehaviour:
   CancelGroup:
     CancelButton: {fileID: 1332145776}
   CardDesc: {fileID: 1517447198}
-  CardContainer: {fileID: 1377177148}
-  BoxContainer: {fileID: 909950547}
+  DeckFactory: {fileID: 1465027410}
+  BoxFactory: {fileID: 1465027411}
   LocalPlayerStatus: {fileID: 1278553945}
   TargetPlayerStatus: {fileID: 1812729849}
   TurnPanel: {fileID: 399868188}
@@ -1678,7 +1678,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 909950546}
-  - component: {fileID: 909950547}
   m_Layer: 5
   m_Name: Box
   m_TagString: Untagged
@@ -1707,19 +1706,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &909950547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 909950545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b35efaf52838f43962ba6cee86efe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerBoxPrefabs: {fileID: 114963737539022526, guid: 859c985935ebaa642ab3312fded665ee,
-    type: 2}
 --- !u!1 &939497848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2532,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1377177147}
-  - component: {fileID: 1377177148}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -2574,20 +2559,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1377177148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114498197635576624, guid: 0f54bca9411031045b4dd0d74dffbc06,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1377177146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad36db40b7146e4092397fb74421b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerDeckPrefabs: {fileID: 114658536204716022, guid: e86afea9550d52340a8407757413ae44,
-    type: 2}
 --- !u!1001 &1408515023
 Prefab:
   m_ObjectHideFlags: 0
@@ -3017,6 +2988,69 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fd5bdf60727bfa4e8320da8ea6664dd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1465027409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1465027412}
+  - component: {fileID: 1465027411}
+  - component: {fileID: 1465027410}
+  m_Layer: 5
+  m_Name: Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1465027410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465027409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76e8b10f1d45aa489ec07d902a266bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContainerPrefabs: {fileID: 114729715775179442, guid: 81d068ce585ef3243bd1fe47244f4184,
+    type: 2}
+  CreatingObjectParent: {fileID: 1377177146}
+--- !u!114 &1465027411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465027409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a9dd4c8a3b73d45ab0c943adb46916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContainerPrefabs: {fileID: 114963737539022526, guid: 859c985935ebaa642ab3312fded665ee,
+    type: 2}
+  CreatingObjectParent: {fileID: 909950545}
+--- !u!224 &1465027412
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465027409}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 540, y: 347.25}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517352090 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114577585121074120, guid: 5fd5bdf60727bfa4e8320da8ea6664dd,

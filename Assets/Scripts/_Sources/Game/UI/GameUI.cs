@@ -20,8 +20,8 @@ namespace End.Game.UI
 		
 		[Header("Components")]
 		public CardDescription CardDesc;
-		public CardContainer CardContainer;
-		public BoxContainer BoxContainer;
+		public PlayerDeckFactory DeckFactory;
+		public PlayerBoxFactory BoxFactory;
 		public PlayerUnitStatusPanel LocalPlayerStatus;
 		public PlayerUnitStatusPanel TargetPlayerStatus;
 		public TurnPanel TurnPanel;
@@ -37,8 +37,8 @@ namespace End.Game.UI
 			Assert.IsNotNull(BoxGroup);
 			Assert.IsNotNull(CancelGroup);
 			Assert.IsNotNull(CardDesc);
-			Assert.IsNotNull(CardContainer);
-			Assert.IsNotNull(BoxContainer);
+			Assert.IsNotNull(DeckFactory);
+			Assert.IsNotNull(BoxFactory);
 			Assert.IsNotNull(LocalPlayerStatus);
 			Assert.IsNotNull(TargetPlayerStatus);
 			Assert.IsNotNull(TurnPanel);
@@ -48,8 +48,8 @@ namespace End.Game.UI
 		{
 			MainGroup.Init();
 			CardDesc.Init();
-			CardContainer.Init();
-			BoxContainer.Init();
+			DeckFactory.Init();
+			BoxFactory.Init();
 
 			SetUpMainGroup();
 		}

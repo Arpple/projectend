@@ -8,19 +8,19 @@ namespace End.Game
 	public class CreatePlayerDeckSystem : IInitializeSystem
 	{
 		private readonly GameContext _context;
-		private readonly CardContainer _cardContainerUI;
+		private readonly PlayerDeckFactory _cardDecks;
 
-		public CreatePlayerDeckSystem(Contexts contexts, CardContainer container)
+		public CreatePlayerDeckSystem(Contexts contexts, PlayerDeckFactory decks)
 		{
 			_context = contexts.game;
-			_cardContainerUI = container;
+			_cardDecks = decks;
 		}
 
 		public void Initialize()
 		{
 			foreach (var player in _context.GetEntities(GameMatcher.Player))
 			{
-				var playerDeck = _cardContainerUI.CreateContainer(player.player.PlayerId);
+				var playerDeck = _cardDecks.CreateContainer(player.player.PlayerId);
 				player.AddPlayerDeck(playerDeck);
 
 				if(player.isLocalPlayer)

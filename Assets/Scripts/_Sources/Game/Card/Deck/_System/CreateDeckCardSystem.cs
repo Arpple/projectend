@@ -22,15 +22,12 @@ namespace End.Game
 		public void Initialize()
 		{
 			var cardSetList = _deck.SettingList;
-			short id = 1;
 			foreach (var cardSet in cardSetList)
 			{
 				cardSet.Count.Loop(() =>
 				{
-					var e = _context.CreateEntity();
-					e.AddCard(id, cardSet.Type);
+					var e = _context.CreateCard(cardSet.Type);
 					e.isDeckCard = true;
-					id++;
 				});
 			}
 		}

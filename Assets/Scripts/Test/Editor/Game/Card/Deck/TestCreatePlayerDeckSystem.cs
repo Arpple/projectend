@@ -9,21 +9,21 @@ namespace End.Test.System
 {
 	public class TestCreatePlayerDeckSystem : ContextsTest
 	{
-		private CardContainer _container;
+		private PlayerDeckFactory _decks;
 
 		[SetUp]
 		public void Init()
 		{
 			var obj = new GameObject();
-			_container = obj.AddComponent<CardContainer>();
-			_container.PlayerDeckPrefabs = new GameObject().AddComponent<PlayerDeck>();
-			_container.Init();
+			_decks = obj.AddComponent<PlayerDeckFactory>();
+			_decks.ContainerPrefabs = new GameObject().AddComponent<CardContainer>();
+			_decks.Init();
 		}
 
 		[Test]
 		public void CreateDeck()
 		{
-			var system = new CreatePlayerDeckSystem(_contexts, _container);
+			var system = new CreatePlayerDeckSystem(_contexts, _decks);
 			var entity = _contexts.game.CreateEntity();
 
 			var player = new GameObject().AddComponent<Player>();
@@ -32,7 +32,7 @@ namespace End.Test.System
 
 			system.Initialize();
 
-			Assert.AreEqual(_container.PlayerDecks[1], _contexts.game.GetEntities(GameMatcher.PlayerDeck).First().playerDeck.PlayerDeckObject);
+			Assert.AreEqual(_decks.AllContainers[1], _contexts.game.GetEntities(GameMatcher.PlayerDeck).First().playerDeck.PlayerDeckObject);
 		}
 	}
 }

@@ -5,9 +5,9 @@ namespace End.Game.UI
 {
 	public class RenderShareDeckSystem : ReactiveSystem<GameEntity>
 	{
-		private readonly PlayerDeck _shareDeck;
+		private readonly CardContainer _shareDeck;
 
-		public RenderShareDeckSystem(Contexts contexts, PlayerDeck shareDeck)
+		public RenderShareDeckSystem(Contexts contexts, CardContainer shareDeck)
 			: base(contexts.game)
 		{
 			_shareDeck = shareDeck;

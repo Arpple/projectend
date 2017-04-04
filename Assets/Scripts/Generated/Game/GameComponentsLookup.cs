@@ -11,42 +11,44 @@ public static class GameComponentsLookup {
     public const int Ability = 0;
     public const int Card = 1;
     public const int Character = 2;
-    public const int Dead = 3;
-    public const int DeckCard = 4;
-    public const int Hitpoint = 5;
-    public const int InBox = 6;
-    public const int LocalPlayer = 7;
-    public const int MapPosition = 8;
-    public const int Player = 9;
-    public const int PlayerBox = 10;
-    public const int PlayerCard = 11;
-    public const int PlayerDeck = 12;
-    public const int PlayingOrder = 13;
-    public const int Resource = 14;
-    public const int Role = 15;
-    public const int SkillCard = 16;
-    public const int Spawnpoint = 17;
-    public const int Tile = 18;
-    public const int TileAction = 19;
-    public const int TileBrush = 20;
-    public const int TileGraph = 21;
-    public const int TileHoverAction = 22;
-    public const int TileMovable = 23;
-    public const int Unit = 24;
-    public const int UnitDetail = 25;
-    public const int UnitIcon = 26;
-    public const int UnitIconResource = 27;
-    public const int UnitStatus = 28;
-    public const int View = 29;
-    public const int ViewContainer = 30;
-    public const int Win = 31;
+    public const int CharacterSkillsResource = 3;
+    public const int Dead = 4;
+    public const int DeckCard = 5;
+    public const int Hitpoint = 6;
+    public const int InBox = 7;
+    public const int LocalPlayer = 8;
+    public const int MapPosition = 9;
+    public const int Player = 10;
+    public const int PlayerBox = 11;
+    public const int PlayerCard = 12;
+    public const int PlayerDeck = 13;
+    public const int PlayingOrder = 14;
+    public const int Resource = 15;
+    public const int Role = 16;
+    public const int SkillCard = 17;
+    public const int Spawnpoint = 18;
+    public const int Tile = 19;
+    public const int TileAction = 20;
+    public const int TileBrush = 21;
+    public const int TileGraph = 22;
+    public const int TileHoverAction = 23;
+    public const int TileMovable = 24;
+    public const int Unit = 25;
+    public const int UnitDetail = 26;
+    public const int UnitIcon = 27;
+    public const int UnitIconResource = 28;
+    public const int UnitStatus = 29;
+    public const int View = 30;
+    public const int ViewContainer = 31;
+    public const int Win = 32;
 
-    public const int TotalComponents = 32;
+    public const int TotalComponents = 33;
 
     public static readonly string[] componentNames = {
         "Ability",
         "Card",
         "Character",
+        "CharacterSkillsResource",
         "Dead",
         "DeckCard",
         "Hitpoint",
@@ -82,6 +84,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.AbilityComponent),
         typeof(End.Game.CardComponent),
         typeof(End.Game.CharacterComponent),
+        typeof(End.Game.CharacterSkillsResourceComponent),
         typeof(End.Game.DeadComponent),
         typeof(End.Game.DeckCardComponent),
         typeof(End.Game.HitpointComponent),

@@ -106,9 +106,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224684543055869936}
-  - component: {fileID: 114718372869664354}
+  - component: {fileID: 114729715775179442}
   m_Layer: 5
-  m_Name: PlayerCardGroup
+  m_Name: DeckCardContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114718372869664354
+--- !u!114 &114729715775179442
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -433,10 +433,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655373802988848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62af3fcff071bea489df4d1833708b94, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dab05ce3aad28c4da8ab3bcbd0b30f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Content: {fileID: 1196503802601430}
+  ObjectContainer: {fileID: 1196503802601430}
 --- !u!114 &114904318968733572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -664,8 +664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 26.5}
-  m_SizeDelta: {x: 0, y: 53}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224711737451770716
 RectTransform:
