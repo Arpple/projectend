@@ -1,4 +1,4 @@
-﻿namespace End.Game
+﻿namespace Game
 {
 	public enum Character
 	{

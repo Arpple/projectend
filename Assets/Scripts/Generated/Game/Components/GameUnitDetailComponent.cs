@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.UnitDetailComponent unitDetail { get { return (End.Game.UnitDetailComponent)GetComponent(GameComponentsLookup.UnitDetail); } }
+    public Game.UnitDetailComponent unitDetail { get { return (Game.UnitDetailComponent)GetComponent(GameComponentsLookup.UnitDetail); } }
     public bool hasUnitDetail { get { return HasComponent(GameComponentsLookup.UnitDetail); } }
 
     public void AddUnitDetail(string newName, string newDescription) {
-        var component = CreateComponent<End.Game.UnitDetailComponent>(GameComponentsLookup.UnitDetail);
+        var component = CreateComponent<Game.UnitDetailComponent>(GameComponentsLookup.UnitDetail);
         component.Name = newName;
         component.Description = newDescription;
         AddComponent(GameComponentsLookup.UnitDetail, component);
     }
 
     public void ReplaceUnitDetail(string newName, string newDescription) {
-        var component = CreateComponent<End.Game.UnitDetailComponent>(GameComponentsLookup.UnitDetail);
+        var component = CreateComponent<Game.UnitDetailComponent>(GameComponentsLookup.UnitDetail);
         component.Name = newName;
         component.Description = newDescription;
         ReplaceComponent(GameComponentsLookup.UnitDetail, component);

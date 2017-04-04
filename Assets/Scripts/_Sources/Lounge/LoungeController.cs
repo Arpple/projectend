@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
-using End.UI;
+using UI;
 using UnityEngine.Networking;
 using System;
 using System.Collections;
 using Entitas.Unity.VisualDebugging;
 
-namespace End.Lounge
+namespace Lounge
 {
 	public class LoungeController : MonoBehaviour
 	{

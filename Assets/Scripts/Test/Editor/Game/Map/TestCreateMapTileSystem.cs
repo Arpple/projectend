@@ -2,9 +2,9 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Linq;
-using End.Game;
+using Game;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestCreateMapTileSystem : ContextsTest
 	{

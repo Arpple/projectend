@@ -3,7 +3,7 @@ using System.Linq;
 using Entitas;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	//TODO: implement
 	public class RoleInvader : RoleObject

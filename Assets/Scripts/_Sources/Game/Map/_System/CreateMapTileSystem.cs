@@ -2,7 +2,7 @@
 using Entitas.Blueprints;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	public class CreateMapTileSystem : IInitializeSystem
 	{

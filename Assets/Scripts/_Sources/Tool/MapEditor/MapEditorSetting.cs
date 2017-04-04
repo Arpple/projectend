@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace End.MapEditor
+namespace MapEditor
 {
 	public class MapEditorSetting : ScriptableObject
 	{

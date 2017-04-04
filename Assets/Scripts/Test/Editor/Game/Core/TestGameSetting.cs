@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using End.Game;
+using Game;
 
-namespace End.Test.Setting
+namespace Test.Setting
 {
 	public class TestGameSetting
 	{

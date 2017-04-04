@@ -2,7 +2,7 @@
 //using UnityEngine;
 //using UnityEngine.Assertions;
 
-//namespace End.Game
+//namespace Game
 //{
 //	public class PlayerLoader : MonoBehaviour
 //	{

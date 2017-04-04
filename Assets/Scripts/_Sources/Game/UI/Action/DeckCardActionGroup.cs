@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	[Serializable]
 	public class DeckCardActionGroup : CardActionGroup

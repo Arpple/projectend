@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using NUnit.Framework;
-using End.Game;
-using End.Game.UI;
+using Game;
+using Game.UI;
 using System.Collections.Generic;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestTurnPanelSetupSystem : ContextsTest
 	{

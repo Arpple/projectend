@@ -1,9 +1,9 @@
 ﻿using Entitas.Blueprints;
 using Entitas.Unity.Blueprints;
 using System;
-using End.UI;
+using UI;
 
-namespace End.Game
+namespace Game
 {
 	[Serializable]
 	public class CharacterSetting

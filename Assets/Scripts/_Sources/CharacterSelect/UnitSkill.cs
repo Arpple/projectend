@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using End.UI;
+using UI;
 
-namespace End.CharacterSelect {
+namespace CharacterSelect {
     public class UnitSkill : MonoBehaviour{
         public Icon[] AbilityIcon;
         public Text TextAbilityName,TextDescription;

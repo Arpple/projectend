@@ -61,7 +61,7 @@ public sealed partial class GameContext : Context<GameEntity>
 		);
 	}
 
-	public GameEntity GetPlayerEntity(End.Player player)
+	public GameEntity GetPlayerEntity(Player player)
 	{
 		return GetPlayerEntity(player.PlayerId);
 	}

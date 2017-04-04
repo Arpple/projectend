@@ -1,7 +1,7 @@
 ﻿using System;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
 	public class ClearContextsSystem : ITearDownSystem
 	{

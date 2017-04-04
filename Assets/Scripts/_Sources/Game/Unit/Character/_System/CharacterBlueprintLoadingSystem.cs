@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Entitas;
 using Entitas.Blueprints;
 
-namespace End.Game
+namespace Game
 {
 	public class CharacterBlueprintLoadingSystem : IInitializeSystem
 	{

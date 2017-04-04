@@ -1,10 +1,10 @@
-﻿using End.UI;
+﻿using UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
 
-namespace End.Lobby
+namespace Lobby
 {
 	public class LobbyPlayer : MonoBehaviour
 	{

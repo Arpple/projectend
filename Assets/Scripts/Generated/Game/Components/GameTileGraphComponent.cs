@@ -8,11 +8,11 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.TileGraphComponent tileGraph { get { return (End.Game.TileGraphComponent)GetComponent(GameComponentsLookup.TileGraph); } }
+    public Game.TileGraphComponent tileGraph { get { return (Game.TileGraphComponent)GetComponent(GameComponentsLookup.TileGraph); } }
     public bool hasTileGraph { get { return HasComponent(GameComponentsLookup.TileGraph); } }
 
     public void AddTileGraph(GameEntity newUp, GameEntity newDown, GameEntity newLeft, GameEntity newRight) {
-        var component = CreateComponent<End.Game.TileGraphComponent>(GameComponentsLookup.TileGraph);
+        var component = CreateComponent<Game.TileGraphComponent>(GameComponentsLookup.TileGraph);
         component.Up = newUp;
         component.Down = newDown;
         component.Left = newLeft;
@@ -21,7 +21,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceTileGraph(GameEntity newUp, GameEntity newDown, GameEntity newLeft, GameEntity newRight) {
-        var component = CreateComponent<End.Game.TileGraphComponent>(GameComponentsLookup.TileGraph);
+        var component = CreateComponent<Game.TileGraphComponent>(GameComponentsLookup.TileGraph);
         component.Up = newUp;
         component.Down = newDown;
         component.Left = newLeft;

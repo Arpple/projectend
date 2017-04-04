@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using Entitas.Unity;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	public class TileController : MonoBehaviour, ICustomView
 	{

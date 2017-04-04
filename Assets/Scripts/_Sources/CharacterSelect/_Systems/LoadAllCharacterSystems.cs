@@ -1,9 +1,9 @@
 ﻿using System;
 using Entitas;
 using Entitas.Blueprints;
-using End.Game;
+using Game;
 
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
 	public class LoadAllCharacterSystems : IInitializeSystem
 	{

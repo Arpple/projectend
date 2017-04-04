@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	/// <summary>
 	/// game data holder

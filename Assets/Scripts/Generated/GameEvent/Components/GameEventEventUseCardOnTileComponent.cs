@@ -8,11 +8,11 @@
 //------------------------------------------------------------------------------
 public partial class GameEventEntity {
 
-    public End.Game.EventUseCardOnTile eventUseCardOnTile { get { return (End.Game.EventUseCardOnTile)GetComponent(GameEventComponentsLookup.EventUseCardOnTile); } }
+    public Game.EventUseCardOnTile eventUseCardOnTile { get { return (Game.EventUseCardOnTile)GetComponent(GameEventComponentsLookup.EventUseCardOnTile); } }
     public bool hasEventUseCardOnTile { get { return HasComponent(GameEventComponentsLookup.EventUseCardOnTile); } }
 
     public void AddEventUseCardOnTile(GameEntity newUserEntity, GameEntity newCardEnttiy, GameEntity newTargetEnttiy) {
-        var component = CreateComponent<End.Game.EventUseCardOnTile>(GameEventComponentsLookup.EventUseCardOnTile);
+        var component = CreateComponent<Game.EventUseCardOnTile>(GameEventComponentsLookup.EventUseCardOnTile);
         component.UserEntity = newUserEntity;
         component.CardEnttiy = newCardEnttiy;
         component.TargetEnttiy = newTargetEnttiy;
@@ -20,7 +20,7 @@ public partial class GameEventEntity {
     }
 
     public void ReplaceEventUseCardOnTile(GameEntity newUserEntity, GameEntity newCardEnttiy, GameEntity newTargetEnttiy) {
-        var component = CreateComponent<End.Game.EventUseCardOnTile>(GameEventComponentsLookup.EventUseCardOnTile);
+        var component = CreateComponent<Game.EventUseCardOnTile>(GameEventComponentsLookup.EventUseCardOnTile);
         component.UserEntity = newUserEntity;
         component.CardEnttiy = newCardEnttiy;
         component.TargetEnttiy = newTargetEnttiy;

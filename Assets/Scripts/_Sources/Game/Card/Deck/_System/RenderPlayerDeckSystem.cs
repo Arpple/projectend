@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using Entitas;
-using End.Game.UI;
+using Game.UI;
 
-namespace End.Game
+namespace Game
 {
 	public class RenderPlayerDeckSystem : ReactiveSystem<GameEntity>
 	{

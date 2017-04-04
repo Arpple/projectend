@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace End.Game
+namespace Game
 {
 	public interface IActiveAbility
 	{

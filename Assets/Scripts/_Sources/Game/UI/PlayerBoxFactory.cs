@@ -1,4 +1,4 @@
-﻿namespace End.Game.UI
+﻿namespace Game.UI
 {
 	public class PlayerBoxFactory : CardContainerFactory<PlayerBox>
 	{

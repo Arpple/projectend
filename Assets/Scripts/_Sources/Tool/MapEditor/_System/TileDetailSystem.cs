@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using System.Collections.Generic;
 
-namespace End.MapEditor {
+namespace MapEditor {
     public class TileDetailSystem: ReactiveSystem<GameEntity>, IInitializeSystem {
         //readonly GameContext _context;
 

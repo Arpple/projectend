@@ -2,7 +2,7 @@
 using Entitas;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	public class StartingDeckCardSystem : IInitializeSystem
 	{

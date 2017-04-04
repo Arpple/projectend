@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	[GameEvent]
 	public class EventEndTurn : GameEventComponent

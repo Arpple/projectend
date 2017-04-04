@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	[Game]
 	public class DeckCardComponent : IComponent

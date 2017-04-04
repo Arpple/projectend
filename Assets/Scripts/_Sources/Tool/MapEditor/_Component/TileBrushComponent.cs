@@ -1,8 +1,8 @@
 ﻿using Entitas;
 using Entitas.CodeGenerator.Api;
-using End.Game;
+using Game;
 
-namespace End.MapEditor
+namespace MapEditor
 {
 	public enum BrushAction
 	{

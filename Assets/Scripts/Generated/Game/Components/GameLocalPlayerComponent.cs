@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly End.Game.LocalPlayerComponent localPlayerComponent = new End.Game.LocalPlayerComponent();
+    static readonly Game.LocalPlayerComponent localPlayerComponent = new Game.LocalPlayerComponent();
 
     public bool isLocalPlayer {
         get { return HasComponent(GameComponentsLookup.LocalPlayer); }

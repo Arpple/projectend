@@ -3,7 +3,7 @@ using UnityEngine;
 using Entitas;
 using System.Linq;
 
-namespace End.Game
+namespace Game
 {
 	[Game]
 	public class MapPositionComponent : IComponent

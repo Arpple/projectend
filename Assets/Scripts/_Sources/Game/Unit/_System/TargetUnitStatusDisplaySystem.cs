@@ -3,7 +3,7 @@ using Entitas;
 using System;
 using System.Collections.Generic;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class TargetUnitStatusDisplaySystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{

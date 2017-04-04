@@ -23,9 +23,9 @@ public static class GameEventComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(End.Game.EventEndTurn),
-        typeof(End.Game.EventMoveCard),
-        typeof(End.Game.EventUseCardOnTile),
-        typeof(End.Game.EventUseCardOnUnit)
+        typeof(Game.EventEndTurn),
+        typeof(Game.EventMoveCard),
+        typeof(Game.EventUseCardOnTile),
+        typeof(Game.EventUseCardOnUnit)
     };
 }

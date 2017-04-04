@@ -2,7 +2,7 @@
 using Entitas;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	public class RoleSetupSystem : IInitializeSystem
 	{

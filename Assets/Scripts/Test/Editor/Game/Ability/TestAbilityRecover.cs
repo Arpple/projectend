@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using End.Game;
+using Game;
 
-namespace End.Test.TestAbility
+namespace Test.TestAbility
 {
 	public class TestAbilityRecover : ActiveAbilityTest
 	{

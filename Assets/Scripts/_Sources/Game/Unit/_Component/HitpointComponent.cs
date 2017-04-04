@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	[Game]
 	public class HitpointComponent : IComponent

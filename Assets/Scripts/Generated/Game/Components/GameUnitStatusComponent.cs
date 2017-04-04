@@ -8,11 +8,11 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.UnitStatusComponent unitStatus { get { return (End.Game.UnitStatusComponent)GetComponent(GameComponentsLookup.UnitStatus); } }
+    public Game.UnitStatusComponent unitStatus { get { return (Game.UnitStatusComponent)GetComponent(GameComponentsLookup.UnitStatus); } }
     public bool hasUnitStatus { get { return HasComponent(GameComponentsLookup.UnitStatus); } }
 
     public void AddUnitStatus(int newHitPoint, int newAttackPower, int newAttackRange, int newVisionRange, int newMoveSpeed) {
-        var component = CreateComponent<End.Game.UnitStatusComponent>(GameComponentsLookup.UnitStatus);
+        var component = CreateComponent<Game.UnitStatusComponent>(GameComponentsLookup.UnitStatus);
         component.HitPoint = newHitPoint;
         component.AttackPower = newAttackPower;
         component.AttackRange = newAttackRange;
@@ -22,7 +22,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceUnitStatus(int newHitPoint, int newAttackPower, int newAttackRange, int newVisionRange, int newMoveSpeed) {
-        var component = CreateComponent<End.Game.UnitStatusComponent>(GameComponentsLookup.UnitStatus);
+        var component = CreateComponent<Game.UnitStatusComponent>(GameComponentsLookup.UnitStatus);
         component.HitPoint = newHitPoint;
         component.AttackPower = newAttackPower;
         component.AttackRange = newAttackRange;

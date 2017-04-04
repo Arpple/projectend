@@ -3,7 +3,7 @@ using UnityEngine;
 using Entitas;
 using System.Linq;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class LocalCharacterStatusSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{

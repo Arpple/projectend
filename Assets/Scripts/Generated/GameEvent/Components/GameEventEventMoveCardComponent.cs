@@ -8,11 +8,11 @@
 //------------------------------------------------------------------------------
 public partial class GameEventEntity {
 
-    public End.Game.EventMoveCard eventMoveCard { get { return (End.Game.EventMoveCard)GetComponent(GameEventComponentsLookup.EventMoveCard); } }
+    public Game.EventMoveCard eventMoveCard { get { return (Game.EventMoveCard)GetComponent(GameEventComponentsLookup.EventMoveCard); } }
     public bool hasEventMoveCard { get { return HasComponent(GameEventComponentsLookup.EventMoveCard); } }
 
     public void AddEventMoveCard(GameEntity newCardEntity, GameEntity newTargetPlayerEntity, bool newIsInBox) {
-        var component = CreateComponent<End.Game.EventMoveCard>(GameEventComponentsLookup.EventMoveCard);
+        var component = CreateComponent<Game.EventMoveCard>(GameEventComponentsLookup.EventMoveCard);
         component.CardEntity = newCardEntity;
         component.TargetPlayerEntity = newTargetPlayerEntity;
         component.IsInBox = newIsInBox;
@@ -20,7 +20,7 @@ public partial class GameEventEntity {
     }
 
     public void ReplaceEventMoveCard(GameEntity newCardEntity, GameEntity newTargetPlayerEntity, bool newIsInBox) {
-        var component = CreateComponent<End.Game.EventMoveCard>(GameEventComponentsLookup.EventMoveCard);
+        var component = CreateComponent<Game.EventMoveCard>(GameEventComponentsLookup.EventMoveCard);
         component.CardEntity = newCardEntity;
         component.TargetPlayerEntity = newTargetPlayerEntity;
         component.IsInBox = newIsInBox;

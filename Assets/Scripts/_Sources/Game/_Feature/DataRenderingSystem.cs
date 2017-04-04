@@ -1,7 +1,7 @@
 ﻿using Entitas;
-using End.Game.UI;
+using Game.UI;
 
-namespace End.Game
+namespace Game
 {
 	public class DataRenderingSystem : Feature
 	{

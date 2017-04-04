@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
-using End.UI;
+using UI;
 using UnityEngine.Assertions;
-using End.Game;
+using Game;
 
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
 	public class CreateCharacterSelectionIconSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{

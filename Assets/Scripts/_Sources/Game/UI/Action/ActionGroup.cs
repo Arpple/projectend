@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public abstract class ActionGroup
 	{

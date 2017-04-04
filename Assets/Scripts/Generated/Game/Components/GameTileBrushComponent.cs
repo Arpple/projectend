@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.MapEditor.TileBrushComponent tileBrush { get { return (End.MapEditor.TileBrushComponent)GetComponent(GameComponentsLookup.TileBrush); } }
+    public MapEditor.TileBrushComponent tileBrush { get { return (MapEditor.TileBrushComponent)GetComponent(GameComponentsLookup.TileBrush); } }
     public bool hasTileBrush { get { return HasComponent(GameComponentsLookup.TileBrush); } }
 
-    public void AddTileBrush(End.Game.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
-        var component = CreateComponent<End.MapEditor.TileBrushComponent>(GameComponentsLookup.TileBrush);
+    public void AddTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+        var component = CreateComponent<MapEditor.TileBrushComponent>(GameComponentsLookup.TileBrush);
         component.TileType = newTileType;
         component.Action = newAction;
         component.SpawnpointIndex = newSpawnpointIndex;
         AddComponent(GameComponentsLookup.TileBrush, component);
     }
 
-    public void ReplaceTileBrush(End.Game.Tile newTileType, End.MapEditor.BrushAction newAction, int newSpawnpointIndex) {
-        var component = CreateComponent<End.MapEditor.TileBrushComponent>(GameComponentsLookup.TileBrush);
+    public void ReplaceTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+        var component = CreateComponent<MapEditor.TileBrushComponent>(GameComponentsLookup.TileBrush);
         component.TileType = newTileType;
         component.Action = newAction;
         component.SpawnpointIndex = newSpawnpointIndex;

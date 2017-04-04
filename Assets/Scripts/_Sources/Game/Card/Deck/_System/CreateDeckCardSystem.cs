@@ -2,7 +2,7 @@
 using Entitas;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	/// <summary>
 	/// System for creating card entity from deck

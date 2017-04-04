@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
 	public static class GameEvent
 	{

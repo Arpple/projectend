@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.UI {
+namespace UI {
 
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(Mask))]

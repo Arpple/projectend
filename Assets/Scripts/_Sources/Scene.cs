@@ -1,11 +1,8 @@
-﻿namespace End
+﻿
+public enum Scene
 {
-	public enum Scene
-	{
-		Lounge,
-		Lobby,
-		CharacterSelect,
-		Game,
-	}
+	Lounge,
+	Lobby,
+	CharacterSelect,
+	Game,
 }
-

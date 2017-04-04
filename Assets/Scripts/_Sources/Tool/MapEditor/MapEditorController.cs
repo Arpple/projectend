@@ -2,9 +2,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
-using End.Game;
+using Game;
 
-namespace End.MapEditor
+namespace MapEditor
 {
 	public class MapEditorController : MonoBehaviour
 	{

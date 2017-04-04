@@ -2,7 +2,7 @@
 using Entitas;
 using UnityEngine.Networking;
 
-namespace End.Game
+namespace Game
 {
 	public class GameSetupSystem : Feature
 	{

@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
-using End.Game;
+using Game;
 using Entitas.Unity;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestLoadResourceSystem : ContextsTest
 	{

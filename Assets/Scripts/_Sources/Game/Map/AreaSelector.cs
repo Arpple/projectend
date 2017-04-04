@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using System.Linq;
 
-namespace End.Game
+namespace Game
 {
 	public static class AreaSelector
 	{

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class PlayerSkillCardUISystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{

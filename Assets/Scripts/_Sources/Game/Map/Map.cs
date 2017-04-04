@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	public class Map : ScriptableObject
 	{

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using End.Game.UI;
+using Game.UI;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	public class CreatePlayerDeckSystem : IInitializeSystem
 	{

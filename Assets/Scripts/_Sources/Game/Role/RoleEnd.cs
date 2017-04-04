@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace End.Game
+namespace Game
 {
 	public class RoleEnd : RoleObject
 	{

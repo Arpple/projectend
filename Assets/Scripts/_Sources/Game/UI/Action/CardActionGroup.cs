@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public abstract class CardActionGroup : ActionGroup
 	{

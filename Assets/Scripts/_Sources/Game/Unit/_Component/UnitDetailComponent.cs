@@ -2,7 +2,7 @@
 using System.Collections;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
 	[Game]
 	public class UnitDetailComponent : IComponent

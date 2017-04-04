@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	public class DeadSystem : ReactiveSystem<GameEntity>
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
 	public class CameraSystem : IExecuteSystem
 	{

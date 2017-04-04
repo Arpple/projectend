@@ -2,7 +2,7 @@
 using System.Collections;
 using Entitas;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class GameUISetupSystem : Feature
 	{

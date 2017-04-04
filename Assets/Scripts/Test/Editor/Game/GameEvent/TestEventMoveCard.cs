@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using End.Game;
+using Game;
 
-namespace End.Test.Event
+namespace Test.Event
 {
 	public class TestEventMoveCard : ContextsTest
 	{

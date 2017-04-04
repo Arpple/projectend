@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	public enum Role
 	{

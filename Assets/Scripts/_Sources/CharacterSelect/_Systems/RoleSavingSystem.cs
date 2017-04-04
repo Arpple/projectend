@@ -1,7 +1,7 @@
 ﻿using System;
 using Entitas;
 
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
 	public class RoleSavingSystem : IInitializeSystem
 	{

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	public class AbilityRecover : Ability, IActiveAbility, IReviveAbility
 	{

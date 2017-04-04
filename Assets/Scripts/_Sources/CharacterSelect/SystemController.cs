@@ -1,9 +1,9 @@
 ﻿using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
-using End.Game;
+using Game;
 
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
 	public class SystemController : MonoBehaviour
 	{

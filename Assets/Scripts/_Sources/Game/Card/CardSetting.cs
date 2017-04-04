@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace End.Game
+namespace Game
 {
 	[Serializable]
 	public class CardSetting

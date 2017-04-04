@@ -3,7 +3,7 @@ using System.Collections;
 using Entitas;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	public class CharacterIconLoadingSystem : IInitializeSystem
 	{

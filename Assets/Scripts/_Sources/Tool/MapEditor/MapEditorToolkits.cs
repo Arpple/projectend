@@ -1,9 +1,9 @@
-﻿using End.Game;
+﻿using Game;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.MapEditor {
+namespace MapEditor {
     public class MapEditorToolkits: MonoBehaviour {
         public static MapEditorToolkits Instance{
             get;private set;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
     public abstract class GameEventSystem : ReactiveSystem<GameEventEntity>, ICleanupSystem
     {

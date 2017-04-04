@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace End.Test
+namespace Test
 {
 	public static class TestHelper
 	{

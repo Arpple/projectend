@@ -3,7 +3,7 @@ using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	[GameEvent]
 	public class EventUseCardOnTile : GameEventComponent

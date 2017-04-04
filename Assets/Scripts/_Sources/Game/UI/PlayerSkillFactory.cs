@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class PlayerSkillFactory : CardContainerFactory<CardContainer>
 	{

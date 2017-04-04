@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly End.Game.TileMovableComponent tileMovableComponent = new End.Game.TileMovableComponent();
+    static readonly Game.TileMovableComponent tileMovableComponent = new Game.TileMovableComponent();
 
     public bool isTileMovable {
         get { return HasComponent(GameComponentsLookup.TileMovable); }

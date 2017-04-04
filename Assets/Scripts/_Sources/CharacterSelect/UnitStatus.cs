@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-namespace End.CharacterSelect {
+namespace CharacterSelect {
     public class UnitStatus : MonoBehaviour{
         public Text HitPoint, AttackPower, AttackRange, VisionRange, MoveSpeed
             ,UnitName;

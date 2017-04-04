@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.CharacterSelect {
+namespace CharacterSelect {
     public class RoleAndDescription : MonoBehaviour{
         public Text RoleName, RoleDescription;
 

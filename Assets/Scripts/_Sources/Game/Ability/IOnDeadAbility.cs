@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	public interface IOnDeadAbility
 	{

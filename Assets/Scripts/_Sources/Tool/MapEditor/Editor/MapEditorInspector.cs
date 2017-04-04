@@ -1,8 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using End.Game;
+using Game;
 
-namespace End.MapEditor
+namespace MapEditor
 {
 	[CustomEditor(typeof(MapEditorController))]
 	public class MapEditorInspector : Editor

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using NUnit.Framework;
-using End.Game;
-using End.Game.UI;
+using Game;
+using Game.UI;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestRenderShareDeckSystem : ContextsTest
 	{

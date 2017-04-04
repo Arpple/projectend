@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using Entitas;
-using End.Game.UI;
+using Game.UI;
 using UnityEngine.Assertions;
 
-namespace End.Game
+namespace Game
 {
 	public class PlayerBoxCardSystem : ReactiveSystem<GameEntity>
 	{

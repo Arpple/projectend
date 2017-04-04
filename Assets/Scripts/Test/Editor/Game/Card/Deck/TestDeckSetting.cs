@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Linq;
-using End.Game;
+using Game;
 
-namespace End.Test.Setting
+namespace Test.Setting
 {
 	public class TestDeckSetting
 	{

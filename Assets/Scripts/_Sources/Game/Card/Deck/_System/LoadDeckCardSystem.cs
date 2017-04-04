@@ -4,7 +4,7 @@ using Entitas.Blueprints;
 using UnityEngine.Assertions;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	public class LoadCardSystem : LoadBlueprintSystem
 	{

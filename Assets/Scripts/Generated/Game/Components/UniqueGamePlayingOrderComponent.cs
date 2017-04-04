@@ -11,7 +11,7 @@ using Entitas;
 public partial class GameContext {
 
     public GameEntity playingOrderEntity { get { return GetGroup(GameMatcher.PlayingOrder).GetSingleEntity(); } }
-    public End.Game.PlayingOrderComponent playingOrder { get { return playingOrderEntity.playingOrder; } }
+    public Game.PlayingOrderComponent playingOrder { get { return playingOrderEntity.playingOrder; } }
     public bool hasPlayingOrder { get { return playingOrderEntity != null; } }
 
     public GameEntity SetPlayingOrder(System.Collections.Generic.List<GameEntity> newPlayerOrder) {

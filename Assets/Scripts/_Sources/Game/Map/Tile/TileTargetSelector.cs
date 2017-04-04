@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class TileTargetSelector
 	{

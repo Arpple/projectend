@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using End.Game.UI;
+using Game.UI;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestLocalCharacterHpBarSystem : ContextsTest
 	{

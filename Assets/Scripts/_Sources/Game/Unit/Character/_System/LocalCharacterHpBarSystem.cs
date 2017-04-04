@@ -3,7 +3,7 @@ using Entitas;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class LocalCharacterHpBarSystem : ReactiveSystem<GameEntity>
 	{

@@ -2,7 +2,7 @@
 using Entitas.Blueprints;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	[Serializable]
 	public class TileSetting

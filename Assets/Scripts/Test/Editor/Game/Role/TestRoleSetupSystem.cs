@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
 using Entitas;
-using End.Game;
+using Game;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestRoleSetupSystem : ContextsTest
 	{

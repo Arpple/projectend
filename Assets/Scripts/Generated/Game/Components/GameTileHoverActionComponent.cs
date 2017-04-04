@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.TileHoverActionComponent tileHoverAction { get { return (End.Game.TileHoverActionComponent)GetComponent(GameComponentsLookup.TileHoverAction); } }
+    public Game.TileHoverActionComponent tileHoverAction { get { return (Game.TileHoverActionComponent)GetComponent(GameComponentsLookup.TileHoverAction); } }
     public bool hasTileHoverAction { get { return HasComponent(GameComponentsLookup.TileHoverAction); } }
 
-    public void AddTileHoverAction(GameEntity newSource, GameEntity newTarget, End.Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
-        var component = CreateComponent<End.Game.TileHoverActionComponent>(GameComponentsLookup.TileHoverAction);
+    public void AddTileHoverAction(GameEntity newSource, GameEntity newTarget, Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
+        var component = CreateComponent<Game.TileHoverActionComponent>(GameComponentsLookup.TileHoverAction);
         component.Source = newSource;
         component.Target = newTarget;
         component.HoverAction = newHoverAction;
         AddComponent(GameComponentsLookup.TileHoverAction, component);
     }
 
-    public void ReplaceTileHoverAction(GameEntity newSource, GameEntity newTarget, End.Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
-        var component = CreateComponent<End.Game.TileHoverActionComponent>(GameComponentsLookup.TileHoverAction);
+    public void ReplaceTileHoverAction(GameEntity newSource, GameEntity newTarget, Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
+        var component = CreateComponent<Game.TileHoverActionComponent>(GameComponentsLookup.TileHoverAction);
         component.Source = newSource;
         component.Target = newTarget;
         component.HoverAction = newHoverAction;

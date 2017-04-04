@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public abstract class CardContainerFactory<T> : MonoBehaviour where T : CardContainer
 	{

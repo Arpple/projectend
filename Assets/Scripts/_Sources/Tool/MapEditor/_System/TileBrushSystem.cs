@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Entitas.Blueprints;
-using End.Game;
+using Game;
 
-namespace End.MapEditor
+namespace MapEditor
 {
 	public class TileBrushSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{

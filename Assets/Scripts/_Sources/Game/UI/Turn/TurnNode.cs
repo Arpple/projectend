@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class TurnNode : MonoBehaviour
 	{

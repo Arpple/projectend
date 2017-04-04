@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace End.Game
+namespace Game
 {
 	[Serializable]
 	public class RoleSetting

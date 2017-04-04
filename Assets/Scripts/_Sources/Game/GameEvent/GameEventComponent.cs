@@ -1,7 +1,7 @@
 ﻿using Entitas;
 using Entitas.CodeGenerator.Api;
 
-namespace End.Game
+namespace Game
 {
 	/// <summary>
 	/// Abstract GameEvent class.

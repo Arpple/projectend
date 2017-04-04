@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Linq;
 
-namespace End.UI {
+namespace UI {
     public class SlideMenu: MonoBehaviour {
         #region Setting
         public GameObject SlideItemContainer;

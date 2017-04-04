@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.PlayerBoxComponent playerBox { get { return (End.Game.PlayerBoxComponent)GetComponent(GameComponentsLookup.PlayerBox); } }
+    public Game.PlayerBoxComponent playerBox { get { return (Game.PlayerBoxComponent)GetComponent(GameComponentsLookup.PlayerBox); } }
     public bool hasPlayerBox { get { return HasComponent(GameComponentsLookup.PlayerBox); } }
 
-    public void AddPlayerBox(End.Game.UI.PlayerBox newBoxObject) {
-        var component = CreateComponent<End.Game.PlayerBoxComponent>(GameComponentsLookup.PlayerBox);
+    public void AddPlayerBox(Game.UI.PlayerBox newBoxObject) {
+        var component = CreateComponent<Game.PlayerBoxComponent>(GameComponentsLookup.PlayerBox);
         component.BoxObject = newBoxObject;
         AddComponent(GameComponentsLookup.PlayerBox, component);
     }
 
-    public void ReplacePlayerBox(End.Game.UI.PlayerBox newBoxObject) {
-        var component = CreateComponent<End.Game.PlayerBoxComponent>(GameComponentsLookup.PlayerBox);
+    public void ReplacePlayerBox(Game.UI.PlayerBox newBoxObject) {
+        var component = CreateComponent<Game.PlayerBoxComponent>(GameComponentsLookup.PlayerBox);
         component.BoxObject = newBoxObject;
         ReplaceComponent(GameComponentsLookup.PlayerBox, component);
     }

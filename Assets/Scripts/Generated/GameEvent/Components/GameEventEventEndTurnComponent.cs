@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEventEntity {
 
-    static readonly End.Game.EventEndTurn eventEndTurnComponent = new End.Game.EventEndTurn();
+    static readonly Game.EventEndTurn eventEndTurnComponent = new Game.EventEndTurn();
 
     public bool isEventEndTurn {
         get { return HasComponent(GameEventComponentsLookup.EventEndTurn); }

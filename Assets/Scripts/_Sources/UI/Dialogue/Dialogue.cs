@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.UI {
+namespace UI {
     public class Dialogue :MonoBehaviour{
         public Text DialogueTopic;
         public Text DialogueText;

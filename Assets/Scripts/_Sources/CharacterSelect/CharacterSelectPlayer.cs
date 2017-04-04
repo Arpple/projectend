@@ -1,12 +1,12 @@
-﻿using End.UI;
+﻿using UI;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using End.Game;
+using Game;
 using Entitas;
 using System.Linq;
 
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
 	/// <summary>
 	/// Player instance for CharacterSelect scene

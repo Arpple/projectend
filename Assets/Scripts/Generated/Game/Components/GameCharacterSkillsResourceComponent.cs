@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.CharacterSkillsResourceComponent characterSkillsResource { get { return (End.Game.CharacterSkillsResourceComponent)GetComponent(GameComponentsLookup.CharacterSkillsResource); } }
+    public Game.CharacterSkillsResourceComponent characterSkillsResource { get { return (Game.CharacterSkillsResourceComponent)GetComponent(GameComponentsLookup.CharacterSkillsResource); } }
     public bool hasCharacterSkillsResource { get { return HasComponent(GameComponentsLookup.CharacterSkillsResource); } }
 
-    public void AddCharacterSkillsResource(System.Collections.Generic.List<End.Game.Card> newSkills) {
-        var component = CreateComponent<End.Game.CharacterSkillsResourceComponent>(GameComponentsLookup.CharacterSkillsResource);
+    public void AddCharacterSkillsResource(System.Collections.Generic.List<Game.Card> newSkills) {
+        var component = CreateComponent<Game.CharacterSkillsResourceComponent>(GameComponentsLookup.CharacterSkillsResource);
         component.Skills = newSkills;
         AddComponent(GameComponentsLookup.CharacterSkillsResource, component);
     }
 
-    public void ReplaceCharacterSkillsResource(System.Collections.Generic.List<End.Game.Card> newSkills) {
-        var component = CreateComponent<End.Game.CharacterSkillsResourceComponent>(GameComponentsLookup.CharacterSkillsResource);
+    public void ReplaceCharacterSkillsResource(System.Collections.Generic.List<Game.Card> newSkills) {
+        var component = CreateComponent<Game.CharacterSkillsResourceComponent>(GameComponentsLookup.CharacterSkillsResource);
         component.Skills = newSkills;
         ReplaceComponent(GameComponentsLookup.CharacterSkillsResource, component);
     }

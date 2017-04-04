@@ -1,25 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace End
+public class ClientPlayerLoader : PlayerLoader
 {
-	public class ClientPlayerLoader : PlayerLoader
+	private bool _isReady;
+
+	public ClientPlayerLoader()
 	{
-		private bool _isReady;
+		_isReady = false;
+	}
 
-		public ClientPlayerLoader()
-		{
-			_isReady = false;
-		}
+	public void SetReady()
+	{
+		_isReady = true;
+	}
 
-		public void SetReady()
-		{
-			_isReady = true;
-		}
-
-		public override bool IsReady()
-		{
-			return _isReady;
-		}
+	public override bool IsReady()
+	{
+		return _isReady;
 	}
 }

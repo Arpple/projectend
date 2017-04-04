@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 
-namespace End.Game
+namespace Game
 {
 	public class OnDeadAbilitySystem : ReactiveSystem<GameEntity>
 	{

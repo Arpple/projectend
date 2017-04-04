@@ -1,4 +1,4 @@
-﻿using End.Game;
+﻿using Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.MapEditor {
+namespace MapEditor {
     public class MapEditorFillTile : MonoBehaviour{
         public MapEditorToolkits toolKits;
         public MapEditorController mapEditor;

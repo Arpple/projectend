@@ -4,7 +4,7 @@ using Entitas;
 using System;
 using System.Collections.Generic;
 
-namespace End.Game
+namespace Game
 {
 	public class RoleEndWinningSystem : ReactiveSystem<GameEntity>
 	{

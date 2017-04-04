@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 using System.Linq;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	public class CreatePlayerCharacterSystem : IInitializeSystem
 	{

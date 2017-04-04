@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine.Assertions;
 using System;
 
-namespace End.Game
+namespace Game
 {
 	[GameEvent]
 	public class EventMoveCard : GameEventComponent

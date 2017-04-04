@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using End.Game;
+using Game;
 using System;
 
-namespace End.Test.TestAbility
+namespace Test.TestAbility
 {
 	public class TestAbilityMove : ActiveAbilityTest
 	{

@@ -3,10 +3,10 @@ using System.Linq;
 using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
-using End.Game.UI;
+using Game.UI;
 using Entitas.Unity.VisualDebugging;
 
-namespace End.Game
+namespace Game
 {
 	public class GameController : MonoBehaviour
 	{

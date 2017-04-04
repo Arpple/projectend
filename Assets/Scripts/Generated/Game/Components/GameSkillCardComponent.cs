@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly End.Game.SkillCardComponent skillCardComponent = new End.Game.SkillCardComponent();
+    static readonly Game.SkillCardComponent skillCardComponent = new Game.SkillCardComponent();
 
     public bool isSkillCard {
         get { return HasComponent(GameComponentsLookup.SkillCard); }

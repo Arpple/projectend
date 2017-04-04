@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
-using End.CharacterSelect;
-using End.Game;
-using End.UI;
+using CharacterSelect;
+using Game;
+using UI;
 using UnityEngine;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestCreateCharacterSelectIconSystem : ContextsTest
 	{

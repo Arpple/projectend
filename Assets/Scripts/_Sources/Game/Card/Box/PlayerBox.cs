@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class PlayerBox : CardContainer
 	{

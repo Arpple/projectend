@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
-using End.Game;
+using Game;
 
-namespace End.Test
+namespace Test
 {
 	public class TestMap
 	{

@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace End.Game.Test
+namespace Game.Test
 {
 	public class TestCustomView : MonoBehaviour, ICustomView
 	{

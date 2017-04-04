@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 using UnityEngine;
 using System.Linq;
 
-namespace End.Game
+namespace Game
 {
 	[Game, Unique]
 	public class PlayingOrderComponent : IComponent

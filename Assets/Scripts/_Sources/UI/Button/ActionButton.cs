@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 
 //!? not used
-namespace End.UI.CustomButton{
+namespace UI.CustomButton{
     public class ActionButton {
 
         public string ButtonDescripion;

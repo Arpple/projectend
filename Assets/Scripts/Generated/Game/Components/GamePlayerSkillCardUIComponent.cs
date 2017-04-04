@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.UI.PlayerSkillCardUI playerSkillCardUI { get { return (End.Game.UI.PlayerSkillCardUI)GetComponent(GameComponentsLookup.PlayerSkillCardUI); } }
+    public Game.UI.PlayerSkillCardUI playerSkillCardUI { get { return (Game.UI.PlayerSkillCardUI)GetComponent(GameComponentsLookup.PlayerSkillCardUI); } }
     public bool hasPlayerSkillCardUI { get { return HasComponent(GameComponentsLookup.PlayerSkillCardUI); } }
 
-    public void AddPlayerSkillCardUI(End.Game.UI.CardContainer newContainerObject) {
-        var component = CreateComponent<End.Game.UI.PlayerSkillCardUI>(GameComponentsLookup.PlayerSkillCardUI);
+    public void AddPlayerSkillCardUI(Game.UI.CardContainer newContainerObject) {
+        var component = CreateComponent<Game.UI.PlayerSkillCardUI>(GameComponentsLookup.PlayerSkillCardUI);
         component.ContainerObject = newContainerObject;
         AddComponent(GameComponentsLookup.PlayerSkillCardUI, component);
     }
 
-    public void ReplacePlayerSkillCardUI(End.Game.UI.CardContainer newContainerObject) {
-        var component = CreateComponent<End.Game.UI.PlayerSkillCardUI>(GameComponentsLookup.PlayerSkillCardUI);
+    public void ReplacePlayerSkillCardUI(Game.UI.CardContainer newContainerObject) {
+        var component = CreateComponent<Game.UI.PlayerSkillCardUI>(GameComponentsLookup.PlayerSkillCardUI);
         component.ContainerObject = newContainerObject;
         ReplaceComponent(GameComponentsLookup.PlayerSkillCardUI, component);
     }

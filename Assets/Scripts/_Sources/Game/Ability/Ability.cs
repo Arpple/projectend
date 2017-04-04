@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.Events;
 
-namespace End.Game
+namespace Game
 {
 	public abstract class Ability
 	{

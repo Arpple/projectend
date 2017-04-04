@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using End.Game;
-using End.Game.UI;
+using Game;
+using Game.UI;
 using System.Linq;
 using Entitas;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestCreatePlayerBoxSystem : ContextsTest
 	{

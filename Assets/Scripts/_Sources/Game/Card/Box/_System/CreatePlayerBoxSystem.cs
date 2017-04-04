@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
-using End.Game.UI;
+using Game.UI;
 
-namespace End.Game
+namespace Game
 {
 	public class CreatePlayerBoxSystem : IInitializeSystem
 	{

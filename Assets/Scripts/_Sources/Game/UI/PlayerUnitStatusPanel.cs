@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using End.UI;
+using UI;
 using UnityEngine.Assertions;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class PlayerUnitStatusPanel : MonoBehaviour
 	{

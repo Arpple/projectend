@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using End.Game;
+using Game;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestCreateTileGraphSystem : ContextsTest
 	{

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Entitas.Unity;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class CardObject : MonoBehaviour, ICustomView
 	{

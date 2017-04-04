@@ -1,7 +1,7 @@
-﻿using End.UI;
+﻿using UI;
 using UnityEngine;
 using UnityEngine.UI;
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
     public class FocusPlayerStatus : MonoBehaviour{
 

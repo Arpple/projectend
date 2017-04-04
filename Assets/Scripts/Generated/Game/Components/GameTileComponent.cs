@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.TileComponent tile { get { return (End.Game.TileComponent)GetComponent(GameComponentsLookup.Tile); } }
+    public Game.TileComponent tile { get { return (Game.TileComponent)GetComponent(GameComponentsLookup.Tile); } }
     public bool hasTile { get { return HasComponent(GameComponentsLookup.Tile); } }
 
-    public void AddTile(End.Game.Tile newType) {
-        var component = CreateComponent<End.Game.TileComponent>(GameComponentsLookup.Tile);
+    public void AddTile(Game.Tile newType) {
+        var component = CreateComponent<Game.TileComponent>(GameComponentsLookup.Tile);
         component.Type = newType;
         AddComponent(GameComponentsLookup.Tile, component);
     }
 
-    public void ReplaceTile(End.Game.Tile newType) {
-        var component = CreateComponent<End.Game.TileComponent>(GameComponentsLookup.Tile);
+    public void ReplaceTile(Game.Tile newType) {
+        var component = CreateComponent<Game.TileComponent>(GameComponentsLookup.Tile);
         component.Type = newType;
         ReplaceComponent(GameComponentsLookup.Tile, component);
     }

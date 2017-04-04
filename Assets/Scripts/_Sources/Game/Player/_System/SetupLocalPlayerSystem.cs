@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
 	public class SetupLocalPlayerSystem : IInitializeSystem
 	{

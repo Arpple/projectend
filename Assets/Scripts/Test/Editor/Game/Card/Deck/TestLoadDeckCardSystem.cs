@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using System;
-using End.Game;
+using Game;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestLoadDeckCardSystem : ContextsTest
 	{

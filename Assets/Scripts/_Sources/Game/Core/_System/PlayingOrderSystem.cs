@@ -3,7 +3,7 @@ using Entitas;
 using System.Linq;
 using UnityEngine;
 
-namespace End.Game
+namespace Game
 {
 	public class PlayingOrderSystem : IInitializeSystem
 	{

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly End.Game.WinComponent winComponent = new End.Game.WinComponent();
+    static readonly Game.WinComponent winComponent = new Game.WinComponent();
 
     public bool isWin {
         get { return HasComponent(GameComponentsLookup.Win); }

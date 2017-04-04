@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-namespace End.Game
+namespace Game
 {
 	public class RenderMapPositionSystem : ReactiveSystem<GameEntity>
 	{

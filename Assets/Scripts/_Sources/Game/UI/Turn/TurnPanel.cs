@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace End.Game.UI
+namespace Game.UI
 {
 	public class TurnPanel : MonoBehaviour
 	{

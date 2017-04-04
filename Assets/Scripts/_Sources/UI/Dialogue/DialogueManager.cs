@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace End.UI {
+namespace UI {
     public class DialogueManager : MonoBehaviour{
 
         public Dialogue DefaultDialog;

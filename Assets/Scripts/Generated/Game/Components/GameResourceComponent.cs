@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public End.Game.ResourceComponent resource { get { return (End.Game.ResourceComponent)GetComponent(GameComponentsLookup.Resource); } }
+    public Game.ResourceComponent resource { get { return (Game.ResourceComponent)GetComponent(GameComponentsLookup.Resource); } }
     public bool hasResource { get { return HasComponent(GameComponentsLookup.Resource); } }
 
     public void AddResource(string newSpritePath, string newBasePrefabsPath) {
-        var component = CreateComponent<End.Game.ResourceComponent>(GameComponentsLookup.Resource);
+        var component = CreateComponent<Game.ResourceComponent>(GameComponentsLookup.Resource);
         component.SpritePath = newSpritePath;
         component.BasePrefabsPath = newBasePrefabsPath;
         AddComponent(GameComponentsLookup.Resource, component);
     }
 
     public void ReplaceResource(string newSpritePath, string newBasePrefabsPath) {
-        var component = CreateComponent<End.Game.ResourceComponent>(GameComponentsLookup.Resource);
+        var component = CreateComponent<Game.ResourceComponent>(GameComponentsLookup.Resource);
         component.SpritePath = newSpritePath;
         component.BasePrefabsPath = newBasePrefabsPath;
         ReplaceComponent(GameComponentsLookup.Resource, component);

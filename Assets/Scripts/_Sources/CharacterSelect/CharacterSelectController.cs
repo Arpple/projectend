@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using Entitas.Unity;
-using End.UI;
-using End.Game;
+using UI;
+using Game;
 
-namespace End.CharacterSelect
+namespace CharacterSelect
 {
     public class CharacterSelectController : MonoBehaviour{
 

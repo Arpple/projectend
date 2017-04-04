@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using End.Game;
+using Game;
 using Entitas;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestCreatePlayerSystem : ContextsTest
 	{

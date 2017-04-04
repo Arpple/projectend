@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
-using End.UI;
+using UI;
 
-namespace End.Lounge
+namespace Lounge
 {
 	public class ConnectionDialogue : MonoBehaviour{
 		public InputField IpInputField;

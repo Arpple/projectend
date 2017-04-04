@@ -1,7 +1,7 @@
 ﻿using Entitas;
 
 
-namespace End.Game {
+namespace Game {
 
     [Game]
     public class TileHoverActionComponent : IComponent{

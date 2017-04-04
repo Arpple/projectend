@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace End.Game
+namespace Game
 {
 	public class RoleOriginWinningSystem : ReactiveSystem<GameEntity>
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.UI {
+namespace UI {
     public class Icon :MonoBehaviour {
         public Image IconImage;
         public Image BorderImage;

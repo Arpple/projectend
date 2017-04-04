@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace End.Lobby
+namespace Lobby
 {
 	public class LobbyController : MonoBehaviour
 	{

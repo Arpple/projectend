@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using End.Game;
+using Game;
 
-namespace End.Test.System
+namespace Test.System
 {
 	public class TestLoadAbilitySystem : ContextsTest
 	{
@@ -11,7 +11,7 @@ namespace End.Test.System
 			var system = new LoadAbilitySystem(_contexts);
 
 			var e = _contexts.game.CreateEntity();
-			e.AddAbility("End.Game.AbilityMove", null);
+			e.AddAbility("Game.AbilityMove", null);
 
 			system.Execute();
 
