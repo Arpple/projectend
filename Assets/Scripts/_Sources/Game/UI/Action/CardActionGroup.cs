@@ -10,7 +10,7 @@ namespace End.Game.UI
 	{
 		public abstract void SetAction(CardObject card);
 
-		public void ActivateCard(CardObject card)
+		public void ShowCardTarget(CardObject card)
 		{
 			if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
 

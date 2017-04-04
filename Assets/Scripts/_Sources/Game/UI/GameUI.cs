@@ -16,6 +16,8 @@ namespace End.Game.UI
 		[Space]
 		public BoxCardActionGroup BoxGroup;
 		[Space]
+		public SkillCardActionGroup SkillGroup;
+		[Space]
 		public CancelActionGroup CancelGroup;
 		
 		[Header("Components")]
@@ -38,6 +40,7 @@ namespace End.Game.UI
 			Assert.IsNotNull(MainGroup);
 			Assert.IsNotNull(DeckGroup);
 			Assert.IsNotNull(BoxGroup);
+			Assert.IsNotNull(SkillGroup);
 			Assert.IsNotNull(CancelGroup);
 			Assert.IsNotNull(CardDesc);
 			Assert.IsNotNull(DeckFactory);
@@ -123,6 +126,10 @@ namespace End.Game.UI
 					return BoxGroup;
 				else
 					return DeckGroup;
+			}
+			else if (entity.isSkillCard)
+			{
+				return SkillGroup;
 			}
 			return null;
 		}

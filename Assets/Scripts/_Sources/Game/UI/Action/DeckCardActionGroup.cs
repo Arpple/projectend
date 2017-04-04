@@ -27,7 +27,7 @@ namespace End.Game.UI
 		{
 			BoxButton.onClick.AddListener(() => MoveToBox(card));
 			CancelButton.onClick.AddListener(() => CloseAction());
-			ActivateCard(card);
+			ShowCardTarget(card);
 		}
 
 		public void MoveToBox(CardObject card)

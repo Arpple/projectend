@@ -59,7 +59,8 @@ namespace End.Game
 			var ability = (IActiveAbility)cardEvent.CardEnttiy.ability.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
-			RemovePlayerCard(cardEvent.CardEnttiy);
+			if (cardEvent.CardEnttiy.isDeckCard)
+				RemovePlayerCard(cardEvent.CardEnttiy);
 		}
 
 		private void RemovePlayerCard(GameEntity card)

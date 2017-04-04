@@ -25,7 +25,7 @@ namespace End.Game.UI
 		public override void SetAction(CardObject card)
 		{
 			CancelButton.onClick.AddListener(() => CloseAction());
-			ActivateCard(card);
+			ShowCardTarget(card);
 		}
 
 		public void MoveToBox(CardObject card)

@@ -1190,6 +1190,8 @@ MonoBehaviour:
     MoveLeftButton: {fileID: 946299877}
     ToDeckButton: {fileID: 883535206}
     CloseBoxButton: {fileID: 1978704505}
+  SkillGroup:
+    CancelButton: {fileID: 1332145776}
   CancelGroup:
     CancelButton: {fileID: 1332145776}
   CardDesc: {fileID: 1517447198}
