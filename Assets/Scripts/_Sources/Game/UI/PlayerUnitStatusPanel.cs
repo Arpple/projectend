@@ -12,6 +12,7 @@ namespace End.Game.UI
 		public Text PlayerNameText;
 		public Icon CharacterIcon;
 
+
 		[Header("Character Status")]
 		public Text DeckCardCountText;
 		public Text BoxCardCountText;
@@ -20,6 +21,10 @@ namespace End.Game.UI
 		public Text MoveSpeedText;
 		public Text VisionRangeText;
 		public HpBar HpBar;
+
+        [Header("Role")]
+        public Text RoleText;
+        public Icon RoleImage;
 
 		public GameEntity ShowingCharacter;
 
@@ -33,7 +38,11 @@ namespace End.Game.UI
 			Assert.IsNotNull(AttackRangeText);
 			Assert.IsNotNull(MoveSpeedText);
 			Assert.IsNotNull(VisionRangeText);
-		}
+
+            //Role
+            Assert.IsNotNull(RoleText);
+            Assert.IsNotNull(RoleImage);
+        }
 
 		public void SetCharacter(GameEntity characterEntity)
 		{
