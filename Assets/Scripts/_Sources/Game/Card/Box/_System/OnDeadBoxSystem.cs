@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using Entitas;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace End.Game
 {
-	public class OnDeadBoxSystem : LocalEventSystem
+	public class OnDeadBoxSystem : ReactiveSystem<GameEntity>
 	{
-		public OnDeadBoxSystem(Contexts contexts) : base(contexts)
-		{
+		private readonly GameContext _context;
 
+		public OnDeadBoxSystem(Contexts contexts) : base(contexts.game)
+		{
+			_context = contexts.game;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -21,10 +25,13 @@ namespace End.Game
 			return entity.hitpoint.Value == 0 && entity.unit.OwnerEntity.hasPlayerBox;
 		}
 
-		protected override void Process(GameEntity entity)
+		protected override void Execute(List<GameEntity> entities)
 		{
-			UseReviveCard(entity);
-			UseOnDeadCard(entity);
+			foreach(var e in entities)
+			{
+				UseReviveCard(e);
+				UseOnDeadCard(e);
+			}
 		}
 
 		private void UseReviveCard(GameEntity deadEntity)
@@ -51,5 +58,7 @@ namespace End.Game
 				card.MoveCardToDeck();
 			}
 		}
+
+		
 	}
 }
