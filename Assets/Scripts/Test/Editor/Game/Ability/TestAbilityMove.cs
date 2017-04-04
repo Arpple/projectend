@@ -5,7 +5,7 @@ using System;
 
 namespace End.Test.TestAbility
 {
-	public class TestAbilityMove : AbilityTest
+	public class TestAbilityMove : ActiveAbilityTest
 	{
 		protected override Ability CreateAbility()
 		{
@@ -31,7 +31,7 @@ namespace End.Test.TestAbility
 		[Test]
 		public void MoveToTargetPosition()
 		{
-			_ability.OnTargetSelected(_caster, _target);
+			_activeAbility.OnTargetSelected(_caster, _target);
 			Assert.IsTrue(_target.mapPosition.IsEqual(_caster.mapPosition));
 		}
 	}

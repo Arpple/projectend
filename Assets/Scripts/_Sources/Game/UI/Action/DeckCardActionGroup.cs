@@ -39,7 +39,9 @@ namespace End.Game.UI
 
 			if (cardEntity.hasAbility)
 			{
-				var ability = cardEntity.ability.Ability;
+				var ability = cardEntity.ability.Ability as IActiveAbility;
+				if (ability == null) return;
+
 				var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
 
 				TileTargetSelector tileSelector = new TileTargetSelector(

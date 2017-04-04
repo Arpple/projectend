@@ -5,7 +5,7 @@ using System;
 
 namespace End.Test.TestAbility
 {
-	public class TestAbilityAttack : AbilityTest
+	public class TestAbilityAttack : ActiveAbilityTest
 	{
 		protected override Ability CreateAbility()
 		{
@@ -31,7 +31,7 @@ namespace End.Test.TestAbility
 		[Test]
 		public void DealDamageToTarget()
 		{
-			_ability.OnTargetSelected(_caster, _target);
+			_activeAbility.OnTargetSelected(_caster, _target);
 			Assert.AreEqual(8, _target.hitpoint.Value);
 		}
 	}

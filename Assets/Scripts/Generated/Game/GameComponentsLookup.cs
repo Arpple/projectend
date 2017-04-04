@@ -24,23 +24,24 @@ public static class GameComponentsLookup {
     public const int PlayingOrder = 13;
     public const int Resource = 14;
     public const int Role = 15;
-    public const int Spawnpoint = 16;
-    public const int Tile = 17;
-    public const int TileAction = 18;
-    public const int TileBrush = 19;
-    public const int TileGraph = 20;
-    public const int TileHoverAction = 21;
-    public const int TileMovable = 22;
-    public const int Unit = 23;
-    public const int UnitDetail = 24;
-    public const int UnitIcon = 25;
-    public const int UnitIconResource = 26;
-    public const int UnitStatus = 27;
-    public const int View = 28;
-    public const int ViewContainer = 29;
-    public const int Win = 30;
+    public const int SkillCard = 16;
+    public const int Spawnpoint = 17;
+    public const int Tile = 18;
+    public const int TileAction = 19;
+    public const int TileBrush = 20;
+    public const int TileGraph = 21;
+    public const int TileHoverAction = 22;
+    public const int TileMovable = 23;
+    public const int Unit = 24;
+    public const int UnitDetail = 25;
+    public const int UnitIcon = 26;
+    public const int UnitIconResource = 27;
+    public const int UnitStatus = 28;
+    public const int View = 29;
+    public const int ViewContainer = 30;
+    public const int Win = 31;
 
-    public const int TotalComponents = 31;
+    public const int TotalComponents = 32;
 
     public static readonly string[] componentNames = {
         "Ability",
@@ -59,6 +60,7 @@ public static class GameComponentsLookup {
         "PlayingOrder",
         "Resource",
         "Role",
+        "SkillCard",
         "Spawnpoint",
         "Tile",
         "TileAction",
@@ -93,6 +95,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.PlayingOrderComponent),
         typeof(End.Game.ResourceComponent),
         typeof(End.Game.RoleComponent),
+        typeof(End.Game.SkillCardComponent),
         typeof(End.Game.SpawnpointComponent),
         typeof(End.Game.TileComponent),
         typeof(End.Game.TileActionComponent),
