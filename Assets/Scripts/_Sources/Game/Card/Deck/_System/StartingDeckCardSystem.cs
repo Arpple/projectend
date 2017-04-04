@@ -17,7 +17,7 @@ namespace End.Game
 
 		public void Initialize()
 		{
-			var cards = _context.GetEntities(GameMatcher.Card).Shuffle();
+			var cards = _context.GetEntities(GameMatcher.DeckCard).Shuffle();
 			var players = _context.GetEntities(GameMatcher.Player);
 
 			Assert.IsTrue(players.Count() * _setting.StartCardCount <= cards.Length);

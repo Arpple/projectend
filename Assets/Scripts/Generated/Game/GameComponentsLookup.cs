@@ -22,27 +22,28 @@ public static class GameComponentsLookup {
     public const int PlayerBox = 11;
     public const int PlayerCard = 12;
     public const int PlayerDeck = 13;
-    public const int PlayingOrder = 14;
-    public const int Resource = 15;
-    public const int Role = 16;
-    public const int SkillCard = 17;
-    public const int Spawnpoint = 18;
-    public const int Tile = 19;
-    public const int TileAction = 20;
-    public const int TileBrush = 21;
-    public const int TileGraph = 22;
-    public const int TileHoverAction = 23;
-    public const int TileMovable = 24;
-    public const int Unit = 25;
-    public const int UnitDetail = 26;
-    public const int UnitIcon = 27;
-    public const int UnitIconResource = 28;
-    public const int UnitStatus = 29;
-    public const int View = 30;
-    public const int ViewContainer = 31;
-    public const int Win = 32;
+    public const int PlayerSkillCardUI = 14;
+    public const int PlayingOrder = 15;
+    public const int Resource = 16;
+    public const int Role = 17;
+    public const int SkillCard = 18;
+    public const int Spawnpoint = 19;
+    public const int Tile = 20;
+    public const int TileAction = 21;
+    public const int TileBrush = 22;
+    public const int TileGraph = 23;
+    public const int TileHoverAction = 24;
+    public const int TileMovable = 25;
+    public const int Unit = 26;
+    public const int UnitDetail = 27;
+    public const int UnitIcon = 28;
+    public const int UnitIconResource = 29;
+    public const int UnitStatus = 30;
+    public const int View = 31;
+    public const int ViewContainer = 32;
+    public const int Win = 33;
 
-    public const int TotalComponents = 33;
+    public const int TotalComponents = 34;
 
     public static readonly string[] componentNames = {
         "Ability",
@@ -59,6 +60,7 @@ public static class GameComponentsLookup {
         "PlayerBox",
         "PlayerCard",
         "PlayerDeck",
+        "PlayerSkillCardUI",
         "PlayingOrder",
         "Resource",
         "Role",
@@ -95,6 +97,7 @@ public static class GameComponentsLookup {
         typeof(End.Game.PlayerBoxComponent),
         typeof(End.Game.PlayerCardComponent),
         typeof(End.Game.PlayerDeckComponent),
+        typeof(End.Game.UI.PlayerSkillCardUI),
         typeof(End.Game.PlayingOrderComponent),
         typeof(End.Game.ResourceComponent),
         typeof(End.Game.RoleComponent),

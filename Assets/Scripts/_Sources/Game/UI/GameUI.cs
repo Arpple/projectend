@@ -53,6 +53,7 @@ namespace End.Game.UI
 			CardDesc.Init();
 			DeckFactory.Init();
 			BoxFactory.Init();
+			SkillFactory.Init();
 
 			SetUpMainGroup();
 		}
