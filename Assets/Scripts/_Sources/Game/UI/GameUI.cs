@@ -20,11 +20,14 @@ namespace End.Game.UI
 		
 		[Header("Components")]
 		public CardDescription CardDesc;
-		public PlayerDeckFactory DeckFactory;
-		public PlayerBoxFactory BoxFactory;
 		public PlayerUnitStatusPanel LocalPlayerStatus;
 		public PlayerUnitStatusPanel TargetPlayerStatus;
 		public TurnPanel TurnPanel;
+
+		[Header("Factory")]
+		public PlayerDeckFactory DeckFactory;
+		public PlayerBoxFactory BoxFactory;
+		public PlayerSkillFactory SkillFactory;
 
 		private CardObject _activeCard;
 

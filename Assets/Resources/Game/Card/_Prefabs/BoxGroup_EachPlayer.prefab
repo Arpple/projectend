@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 222875189255746048}
   - component: {fileID: 114365430749639344}
   - component: {fileID: 114835122639598740}
-  - component: {fileID: 114963737539022526}
+  - component: {fileID: 114421517301495556}
   m_Layer: 5
-  m_Name: BoxCardContainer
+  m_Name: BoxGroup_EachPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 224310601004743242}
   - component: {fileID: 114182009141786222}
   - component: {fileID: 114289816504573002}
+  - component: {fileID: 222329548637892026}
+  - component: {fileID: 114801856034040936}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -109,6 +111,45 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114421517301495556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1227802001587710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abcf88a8fb20a149a26cedbb0b15dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectContainer: {fileID: 1868942223894034}
+--- !u!114 &114801856034040936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868942223894034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 282f6a1606c461949b5212a65e1e4e59, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114835122639598740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,18 +181,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114963737539022526
-MonoBehaviour:
+--- !u!222 &222329548637892026
+CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1227802001587710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4abcf88a8fb20a149a26cedbb0b15dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectContainer: {fileID: 1868942223894034}
+  m_GameObject: {fileID: 1868942223894034}
 --- !u!222 &222875189255746048
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -173,8 +208,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.40898895}
-  m_SizeDelta: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0.40899658}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224711370280258776
 RectTransform:

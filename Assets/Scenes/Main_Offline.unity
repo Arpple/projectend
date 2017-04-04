@@ -1193,11 +1193,12 @@ MonoBehaviour:
   CancelGroup:
     CancelButton: {fileID: 1332145776}
   CardDesc: {fileID: 1517447198}
-  DeckFactory: {fileID: 1465027410}
-  BoxFactory: {fileID: 1465027411}
   LocalPlayerStatus: {fileID: 1278553945}
   TargetPlayerStatus: {fileID: 1812729849}
   TurnPanel: {fileID: 399868188}
+  DeckFactory: {fileID: 1465027410}
+  BoxFactory: {fileID: 1465027411}
+  SkillFactory: {fileID: 1465027413}
 --- !u!1 &772018017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,8 +2040,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2005555625}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2962,6 +2962,7 @@ GameObject:
   - component: {fileID: 1465027412}
   - component: {fileID: 1465027411}
   - component: {fileID: 1465027410}
+  - component: {fileID: 1465027413}
   m_Layer: 5
   m_Name: Factory
   m_TagString: Untagged
@@ -2994,7 +2995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a9dd4c8a3b73d45ab0c943adb46916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContainerPrefabs: {fileID: 114963737539022526, guid: 859c985935ebaa642ab3312fded665ee,
+  ContainerPrefabs: {fileID: 114421517301495556, guid: 3e8081f53fa15de498cf74c62a177a2f,
     type: 2}
   CreatingObjectParent: {fileID: 909950545}
 --- !u!224 &1465027412
@@ -3015,6 +3016,20 @@ RectTransform:
   m_AnchoredPosition: {x: 540, y: 347.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1465027413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465027409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eefc4896c3aec647a950cb214fdf744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContainerPrefabs: {fileID: 114479955784923424, guid: e86afea9550d52340a8407757413ae44,
+    type: 2}
+  CreatingObjectParent: {fileID: 493407957}
 --- !u!1 &1498637641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4109,15 +4124,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2005555624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 70129255}
   - {fileID: 793310049}
   - {fileID: 898417222}
-  m_Father: {fileID: 1234237937}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2030665390
 GameObject:
