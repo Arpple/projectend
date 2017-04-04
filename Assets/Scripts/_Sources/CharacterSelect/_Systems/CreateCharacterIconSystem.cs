@@ -24,12 +24,12 @@ namespace CharacterSelect
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Character, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameCharacter, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasCharacter && entity.character.Type != Character.None;
+			return entity.hasGameCharacter && entity.gameCharacter.Type != Character.None;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -37,9 +37,9 @@ namespace CharacterSelect
 			foreach(var e in entities)
 			{
 				var slideItem = _slidemenu.AddItem();
-				var icon = e.unitIcon.IconSprite;
+				var icon = e.gameUnitIcon.IconSprite;
 				slideItem.Content.GetComponent<Icon>().SetImage(icon);
-				slideItem.SetText(e.unitDetail.Name);
+				slideItem.SetText(e.gameUnitDetail.Name);
 				slideItem.gameObject.Link(e, _context);
 				_linkedObjects.Add(slideItem.gameObject);
             }

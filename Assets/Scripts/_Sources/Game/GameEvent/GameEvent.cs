@@ -13,7 +13,7 @@ namespace Game
 			if (GameController.Instance != null && !GameController.Instance.IsOffline)
 			{
 				//Debug.Log("Create Online Event " + typeof(T).ToString());
-				Contexts.sharedInstance.game.localPlayerEntity.player.PlayerObject.CmdCreateEvent(componentId, args);
+				Contexts.sharedInstance.game.gameLocalPlayerEntity.gamePlayer.PlayerObject.CmdCreateEvent(componentId, args);
 			}
 			else
 			{

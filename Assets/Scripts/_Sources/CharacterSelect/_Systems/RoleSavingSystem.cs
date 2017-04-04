@@ -14,9 +14,9 @@ namespace CharacterSelect
 
 		public void Initialize()
 		{
-			foreach(var p in _context.GetEntities(GameMatcher.Player))
+			foreach(var p in _context.GetEntities(GameMatcher.GamePlayer))
 			{
-				p.player.PlayerObject.CmdSetRole((int)p.role.RoleObject.Type);
+				p.gamePlayer.PlayerObject.CmdSetRole((int)p.gameRole.RoleObject.Type);
 			}
 		}
 	}

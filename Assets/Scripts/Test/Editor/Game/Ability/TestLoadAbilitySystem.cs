@@ -11,11 +11,11 @@ namespace Test.System
 			var system = new LoadAbilitySystem(_contexts);
 
 			var e = _contexts.game.CreateEntity();
-			e.AddAbility("Game.AbilityMove", null);
+			e.AddGameAbility("Game.AbilityMove", null);
 
 			system.Execute();
 
-			Assert.IsNotNull(e.ability.Ability);
+			Assert.IsNotNull(e.gameAbility.Ability);
 		}
 	}
 }

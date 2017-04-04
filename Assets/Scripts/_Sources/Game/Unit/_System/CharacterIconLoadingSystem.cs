@@ -16,13 +16,13 @@ namespace Game
 
 		public void Initialize()
 		{
-			var characters = _context.GetEntities(GameMatcher.Character);
+			var characters = _context.GetEntities(GameMatcher.GameCharacter);
 
 			foreach(var character in characters)
 			{
-				if (character.hasUnitIconResource && !character.hasUnitIcon)
+				if (character.hasGameUnitIconResource && !character.hasGameUnitIcon)
 				{
-					character.AddUnitIcon(Resources.Load<Sprite>(character.unitIconResource.IconSpritePath));
+					character.AddGameUnitIcon(Resources.Load<Sprite>(character.gameUnitIconResource.IconSpritePath));
 				}
 			}
 		}

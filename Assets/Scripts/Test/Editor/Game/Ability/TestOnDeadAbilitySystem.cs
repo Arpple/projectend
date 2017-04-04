@@ -25,26 +25,26 @@ namespace Test.System
 		public void Init()
 		{
 			_ownerPlayer = _contexts.game.CreateEntity();
-			_ownerPlayer.AddPlayer(new GameObject().AddComponent<Player>());
+			_ownerPlayer.AddGamePlayer(new GameObject().AddComponent<Player>());
 
 			_unit = _contexts.game.CreateEntity();
-			_unit.AddUnit(0, _ownerPlayer);
+			_unit.AddGameUnit(0, _ownerPlayer);
 		}
 
 		[Test]
 		public void CallOnDeadAbilityFromBox()
 		{
 			var system = new OnDeadAbilitySystem(_contexts);
-			_unit.AddHitpoint(0);
+			_unit.AddGameHitpoint(0);
 
 			var box = new GameObject().AddComponent<PlayerBox>();
-			_ownerPlayer.AddPlayerBox(box);
+			_ownerPlayer.AddGamePlayerBox(box);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddCard(0, Card.Potion);
-			card.AddPlayerCard(_ownerPlayer);
-			card.AddInBox(0);
-			card.AddAbility("", new TestOnDeadAbility());
+			card.AddGameCard(0, Card.Potion);
+			card.AddGamePlayerCard(_ownerPlayer);
+			card.AddGameInBox(0);
+			card.AddGameAbility("", new TestOnDeadAbility());
 
 			system.Execute();
 

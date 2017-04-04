@@ -16,21 +16,21 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Hitpoint, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameHitpoint, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			Assert.IsFalse(entity.hitpoint.Value < 0);
+			Assert.IsFalse(entity.gameHitpoint.Value < 0);
 
-			return entity.hitpoint.Value == 0;
+			return entity.gameHitpoint.Value == 0;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				e.isDead = true;
+				e.isGameDead = true;
 			}
 		}
 	}

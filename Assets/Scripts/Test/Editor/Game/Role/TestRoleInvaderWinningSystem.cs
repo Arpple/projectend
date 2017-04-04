@@ -12,21 +12,21 @@ namespace Test.System
 			var system = new RoleInvaderWinningSystem(_contexts);
 
 			var iPlayer = _contexts.game.CreateEntity();
-			iPlayer.AddRole(new RoleInvader(_contexts.game));
+			iPlayer.AddGameRole(new RoleInvader(_contexts.game));
 			var iChar = _contexts.game.CreateEntity();
-			iChar.AddUnit(0, iPlayer);
-			iChar.AddCharacter(Character.LastBoss);
+			iChar.AddGameUnit(0, iPlayer);
+			iChar.AddGameCharacter(Character.LastBoss);
 
 			var oPlayer = _contexts.game.CreateEntity();
-			oPlayer.AddRole(new RoleOrigin(_contexts.game));
+			oPlayer.AddGameRole(new RoleOrigin(_contexts.game));
 			var oChar = _contexts.game.CreateEntity();
-			oChar.AddUnit(1, oPlayer);
-			oChar.AddCharacter(Character.LastBoss);
-			oChar.isDead = true;
+			oChar.AddGameUnit(1, oPlayer);
+			oChar.AddGameCharacter(Character.LastBoss);
+			oChar.isGameDead = true;
 
 			system.Execute();
 
-			Assert.IsTrue(iPlayer.isWin);
+			Assert.IsTrue(iPlayer.isGameWin);
 		}
 	}
 }

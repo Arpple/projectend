@@ -12,35 +12,35 @@ namespace Game
 	{
 		public static GameEntity[] GetDeckCards(this GameContext context)
 		{
-			return context.GetEntities(GameMatcher.DeckCard);
+			return context.GetEntities(GameMatcher.GameDeckCard);
 		}
 
 		public static GameEntity[] GetPlayerDeckCards(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()
-				.Where(c => c.hasPlayerCard && c.playerCard.OwnerEntity == playerEntity && !c.hasInBox)
+				.Where(c => c.hasGamePlayerCard && c.gamePlayerCard.OwnerEntity == playerEntity && !c.hasGameInBox)
 				.ToArray();
 		}
 
 		public static GameEntity[] GetPlayerDeckCardsIncludeBox(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()
-				.Where(c => c.hasPlayerCard && c.playerCard.OwnerEntity == playerEntity)
+				.Where(c => c.hasGamePlayerCard && c.gamePlayerCard.OwnerEntity == playerEntity)
 				.ToArray();
 		}
 
 		public static void MoveCardToDeck(this GameEntity cardEntity)
 		{
-			Assert.IsTrue(cardEntity.isDeckCard);
+			Assert.IsTrue(cardEntity.isGameDeckCard);
 
-			cardEntity.RemovePlayerCard();
+			cardEntity.RemoveGamePlayerCard();
 			RemoveInbox(cardEntity);
 		}
 
 		private static void RemoveInbox(GameEntity card)
 		{
-			if (card.hasInBox)
-				card.RemoveInBox();
+			if (card.hasGameInBox)
+				card.RemoveGameInBox();
 		}
 	}
 }

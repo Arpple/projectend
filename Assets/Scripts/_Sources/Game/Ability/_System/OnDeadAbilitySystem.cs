@@ -17,12 +17,12 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Hitpoint, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameHitpoint, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hitpoint.Value == 0 && entity.unit.OwnerEntity.hasPlayerBox;
+			return entity.gameHitpoint.Value == 0 && entity.gameUnit.OwnerEntity.hasGamePlayerBox;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -36,12 +36,12 @@ namespace Game
 
 		private void UseBoxReviveCard(GameEntity deadEntity)
 		{
-			var card = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.unit.OwnerEntity)
-				.OrderBy(c => c.inBox.Index)
+			var card = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameUnit.OwnerEntity)
+				.OrderBy(c => c.gameInBox.Index)
 				.FirstOrDefault();
 			if (card != null)
 			{
-				var ability = (IReviveAbility)card.ability.Ability;
+				var ability = (IReviveAbility)card.gameAbility.Ability;
 				ability.OnDead(deadEntity);
 				card.MoveCardToDeck();
 			}
@@ -49,11 +49,11 @@ namespace Game
 
 		private void UseBoxOnDeadCard(GameEntity deadEntity)
 		{
-			var cards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.unit.OwnerEntity);
+			var cards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameUnit.OwnerEntity);
 
 			foreach (var card in cards)
 			{
-				var ability = (IOnDeadAbility)card.ability.Ability;
+				var ability = (IOnDeadAbility)card.gameAbility.Ability;
 				ability.OnDead(deadEntity);
 				card.MoveCardToDeck();
 			}

@@ -36,8 +36,8 @@ namespace Game
 		public GameEntity GetTile()
 		{
 			var context = Contexts.sharedInstance.game;
-			return context.GetEntities(GameMatcher.Tile)
-				.Where(t => t.mapPosition.Equals(this))
+			return context.GetEntities(GameMatcher.GameTile)
+				.Where(t => t.gameMapPosition.Equals(this))
 				.First();
 		}
 	}

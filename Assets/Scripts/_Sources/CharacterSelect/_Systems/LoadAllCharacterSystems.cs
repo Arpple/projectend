@@ -23,7 +23,7 @@ namespace CharacterSelect
 				var c = (Character)character;
                 var entity = _context.CreateEntity();
 				entity.ApplyBlueprint(_setting.GetCharBlueprint(c));
-				entity.AddCharacter(c);
+				entity.AddGameCharacter(c);
 			}
 		}
 	}

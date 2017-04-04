@@ -32,13 +32,13 @@ namespace Game
 					var tile = _map.GetTile(x, y);
 
 					tileEntity.ApplyBlueprint(tileSetting.GetTileBlueprint(tile));
-					tileEntity.AddTile(tile);
-					tileEntity.AddMapPosition(x, y);
-					tileEntity.AddViewContainer(TILE_VIEW_CONTAINER);
+					tileEntity.AddGameTile(tile);
+					tileEntity.AddGameMapPosition(x, y);
+					tileEntity.AddGameViewContainer(TILE_VIEW_CONTAINER);
 
 					if(_map.IsSpawnPoint(x, y))
 					{
-						tileEntity.AddSpawnpoint(spawnpointCounter);
+						tileEntity.AddGameSpawnpoint(spawnpointCounter);
 						spawnpointCounter++;
 					}
 				});

@@ -14,13 +14,13 @@ namespace Test.System
 			var system = new SetupLocalPlayerSystem(_contexts, localPlayer);
 
 			var entity = _contexts.game.CreateEntity();
-			entity.AddPlayer(localPlayer);
+			entity.AddGamePlayer(localPlayer);
 
 			system.Initialize();
 
-			var localPlayers = _contexts.game.GetEntities(GameMatcher.LocalPlayer);
+			var localPlayers = _contexts.game.GetEntities(GameMatcher.GameLocalPlayer);
 			Assert.AreEqual(1, localPlayers.Length);
-			Assert.IsTrue(localPlayers[0].isLocalPlayer);
+			Assert.IsTrue(localPlayers[0].isGameLocalPlayer);
 		}
 	}
 }

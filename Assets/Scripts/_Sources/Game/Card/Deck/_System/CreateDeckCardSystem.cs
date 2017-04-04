@@ -27,7 +27,7 @@ namespace Game
 				cardSet.Count.Loop(() =>
 				{
 					var e = _context.CreateCard(cardSet.Type);
-					e.isDeckCard = true;
+					e.isGameDeckCard = true;
 				});
 			}
 		}

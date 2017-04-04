@@ -48,7 +48,7 @@ namespace UnityTest.IntegrationTests
             titleContent = new GUIContent("Platform runner");
             m_BuildTarget = PlatformRunner.defaultBuildTarget;
             position.Set(position.xMin, position.yMin, 200, position.height);
-            m_AllScenesInProject = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.unity", SearchOption.AllDirectories).ToList();
+            m_AllScenesInProject = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.gameUnity", SearchOption.AllDirectories).ToList();
             m_AllScenesInProject.Sort();
             var currentScene = (Directory.GetCurrentDirectory() + SceneManager.GetActiveScene().path).Replace("\\", "").Replace("/", "");
             var currentScenePath = m_AllScenesInProject.Where(s => s.Replace("\\", "").Replace("/", "") == currentScene);

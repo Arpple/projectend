@@ -22,8 +22,8 @@ namespace Game
 		public static GameEntity GetUnitOnTile(this GameEntity tile)
 		{
 			var context = Contexts.sharedInstance.game;
-			return context.GetEntities(GameMatcher.Unit)
-				.Where(obj => obj.mapPosition.Equals(tile.mapPosition))
+			return context.GetEntities(GameMatcher.GameUnit)
+				.Where(obj => obj.gameMapPosition.Equals(tile.gameMapPosition))
 				.FirstOrDefault();
 		}
 	}

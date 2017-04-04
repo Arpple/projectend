@@ -9,12 +9,12 @@ namespace Game
 
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
-			return AreaSelector.GetMovePathInRange(caster.mapPosition.GetTile(), caster.unitStatus.MoveSpeed);
+			return AreaSelector.GetMovePathInRange(caster.gameMapPosition.GetTile(), caster.gameUnitStatus.MoveSpeed);
 		}
 
 		public void OnTargetSelected(GameEntity caster, GameEntity target)
 		{
-			caster.ReplaceMapPosition(target.mapPosition.x, target.mapPosition.y);
+			caster.ReplaceGameMapPosition(target.gameMapPosition.x, target.gameMapPosition.y);
 		}
 
 		public GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)

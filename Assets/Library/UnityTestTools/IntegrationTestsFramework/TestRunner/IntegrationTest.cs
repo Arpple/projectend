@@ -144,8 +144,8 @@ public static class IntegrationTest
 
         public DynamicTestAttribute(string sceneName)
         {
-            if (sceneName.EndsWith(".unity"))
-                sceneName = sceneName.Substring(0, sceneName.Length - ".unity".Length);
+            if (sceneName.EndsWith(".gameUnity"))
+                sceneName = sceneName.Substring(0, sceneName.Length - ".gameUnity".Length);
             m_SceneName = sceneName;
         }
 

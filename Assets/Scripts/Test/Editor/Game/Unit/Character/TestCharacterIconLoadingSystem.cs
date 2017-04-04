@@ -15,13 +15,13 @@ namespace Test.System
 			var sprite = Resources.Load<Sprite>(spritePath);
 
 			var character = _contexts.game.CreateEntity();
-			character.AddCharacter(Character.LastBoss);
-			character.AddUnitIconResource(spritePath);
+			character.AddGameCharacter(Character.LastBoss);
+			character.AddGameUnitIconResource(spritePath);
 
 			system.Initialize();
 
-			Assert.IsTrue(character.hasUnitIcon);
-			Assert.AreEqual(sprite, character.unitIcon.IconSprite);
+			Assert.IsTrue(character.hasGameUnitIcon);
+			Assert.AreEqual(sprite, character.gameUnitIcon.IconSprite);
 		}
 	}
 }

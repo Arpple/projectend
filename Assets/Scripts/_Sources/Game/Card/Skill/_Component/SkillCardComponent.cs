@@ -12,15 +12,15 @@ namespace Game
 	{
 		public static GameEntity[] GetPlayerSkills(this GameContext context, GameEntity playerEntity)
 		{
-			return context.GetEntities(GameMatcher.SkillCard)
-				.Where(e => e.playerCard.OwnerEntity == playerEntity)
+			return context.GetEntities(GameMatcher.GameSkillCard)
+				.Where(e => e.gamePlayerCard.OwnerEntity == playerEntity)
 				.ToArray();
 		}
 
 		public static GameEntity[] GetPlayerSkills<T>(this GameContext context, GameEntity playerEntity)
 		{
 			return GetPlayerSkills(context, playerEntity)
-				.Where(e => e.ability.Ability is T)
+				.Where(e => e.gameAbility.Ability is T)
 				.ToArray();
 		}
 	}

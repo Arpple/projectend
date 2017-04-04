@@ -33,7 +33,7 @@ namespace Test.System
 
 			foreach (var e in _contexts.game.GetEntities())
 			{
-				Assert.IsTrue(e.hasCharacter);
+				Assert.IsTrue(e.hasGameCharacter);
 			}
 		}
 	}

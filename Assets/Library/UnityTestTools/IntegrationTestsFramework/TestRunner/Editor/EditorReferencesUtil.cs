@@ -68,7 +68,7 @@ namespace UnityTest
             get
             {
                 // get every single one of the files in the Assets folder.
-                List<FileInfo> files = DirSearch(new DirectoryInfo(Application.dataPath), "*.unity");
+                List<FileInfo> files = DirSearch(new DirectoryInfo(Application.dataPath), "*.gameUnity");
                 
                 // now make them all into Asset references.
                 List<Object> assetRefs = new List<Object>();

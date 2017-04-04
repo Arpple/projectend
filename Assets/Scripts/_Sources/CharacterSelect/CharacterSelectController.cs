@@ -41,7 +41,7 @@ namespace CharacterSelect
 		{
             CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
                 var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
-                _focusingCharacter = entity.character.Type;
+                _focusingCharacter = entity.gameCharacter.Type;
 
                 //TODO: get description from entity and show
                 ShowUnitInformationUnit(entity);
@@ -82,16 +82,16 @@ namespace CharacterSelect
         public void ShowUnitInformationUnit(GameEntity unit) {
             //TODO : Set Character Status
             //Debug.Log("Unit null right ?"+(unit==null));
-            Sprite sprite = Resources.Load<Sprite>(unit.resource.SpritePath);
-            UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
-                ,unit.unitStatus.HitPoint
-                ,unit.unitStatus.AttackPower
-                ,unit.unitStatus.AttackRange
-                ,unit.unitStatus.VisionRange
-                ,unit.unitStatus.MoveSpeed);
+            Sprite sprite = Resources.Load<Sprite>(unit.gameResource.SpritePath);
+            UnitStatus.setUnitStatus(unit.gameUnitDetail.Name,sprite
+                ,unit.gameUnitStatus.HitPoint
+                ,unit.gameUnitStatus.AttackPower
+                ,unit.gameUnitStatus.AttackRange
+                ,unit.gameUnitStatus.VisionRange
+                ,unit.gameUnitStatus.MoveSpeed);
             //TODO : Set Character Ability
             /*UnitSkill.SetAbility(
-                unit.ability.Ability
+                unit.gameAbility.Ability
                 );*/
         }
 
@@ -177,7 +177,7 @@ namespace CharacterSelect
 			var item = CharacterSelectSlideMenu.SlideItems.First(i =>
 			{
 				var entity = (GameEntity)i.gameObject.GetEntityLink().entity;
-				return entity.character.Type == character;
+				return entity.gameCharacter.Type == character;
 			});
 
 			//TODO: disable 'item'

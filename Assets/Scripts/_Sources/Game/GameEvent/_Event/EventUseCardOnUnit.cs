@@ -14,25 +14,25 @@ namespace Game
 
 		public static void Create(GameEntity userEntity, GameEntity cardEntity, GameEntity targetEntity)
 		{
-			Assert.IsTrue(userEntity.hasUnit);
-			Assert.IsTrue(cardEntity.hasCard);
-			Assert.IsTrue(targetEntity.hasUnit);
+			Assert.IsTrue(userEntity.hasGameUnit);
+			Assert.IsTrue(cardEntity.hasGameCard);
+			Assert.IsTrue(targetEntity.hasGameUnit);
 
-			GameEvent.CreateEvent<EventUseCardOnUnit>(userEntity.unit.Id, cardEntity.card.Id, targetEntity.unit.Id);
+			GameEvent.CreateEvent<EventUseCardOnUnit>(userEntity.gameUnit.Id, cardEntity.gameCard.Id, targetEntity.gameUnit.Id);
 		}
 
 		public void Decode(int userUnitId, int cardId, int targetUnitId)
 		{
-			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.Unit)
-				.Where(u => u.unit.Id == userUnitId)
+			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
-			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.Card)
-				.Where(c => c.card.Id == cardId)
+			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
+				.Where(c => c.gameCard.Id == cardId)
 				.First();
 
-			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.Unit)
-				.Where(u => u.unit.Id == targetUnitId)
+			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+				.Where(u => u.gameUnit.Id == targetUnitId)
 				.First();
 		}
 	}
@@ -45,28 +45,28 @@ namespace Game
 
 		protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
 		{
-			return context.CreateCollector(GameEventMatcher.EventUseCardOnUnit, GroupEvent.Added);
+			return context.CreateCollector(GameEventMatcher.GameEventUseCardOnUnit, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEventEntity entity)
 		{
-			return entity.hasEventUseCardOnUnit;
+			return entity.hasGameEventUseCardOnUnit;
 		}
 
 		protected override void Process(GameEventEntity entity)
 		{
-			var cardEvent = entity.eventUseCardOnUnit;
-			var ability = (IActiveAbility)cardEvent.CardEnttiy.ability.Ability;
+			var cardEvent = entity.gameEventUseCardOnUnit;
+			var ability = (IActiveAbility)cardEvent.CardEnttiy.gameAbility.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
-			if(cardEvent.CardEnttiy.isDeckCard)
+			if(cardEvent.CardEnttiy.isGameDeckCard)
 				RemovePlayerCard(cardEvent.CardEnttiy);
 		}
 
 		private void RemovePlayerCard(GameEntity card)
 		{
-			card.RemovePlayerCard();
-			if (card.hasInBox) card.RemoveInBox();
+			card.RemoveGamePlayerCard();
+			if (card.hasGameInBox) card.RemoveGameInBox();
 		}
 	}
 }

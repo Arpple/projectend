@@ -11,11 +11,11 @@ namespace MapEditor {
         }
 
         protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-            return context.CreateCollector(GameMatcher.Tile, GroupEvent.Added);
+            return context.CreateCollector(GameMatcher.GameTile, GroupEvent.Added);
         }
 
         protected override bool Filter(GameEntity entity) {
-            return entity.hasTile;
+            return entity.hasGameTile;
         }
 
         public void Initialize() {
@@ -24,7 +24,7 @@ namespace MapEditor {
 
         protected override void Execute(List<GameEntity> entities) {
             foreach(var e in entities) {
-                e.AddTileHoverAction(null,e,HoverTile);
+                e.AddGameTileHoverAction(null,e,HoverTile);
             }
         }
 

@@ -13,21 +13,21 @@ namespace Game
 	{
 		public static GameEntity[] GetBoxCards(this GameContext context)
 		{
-			return context.GetEntities(GameMatcher.InBox);
+			return context.GetEntities(GameMatcher.GameInBox);
 		}
 
 		public static GameEntity[] GetPlayerBoxCards(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetBoxCards()
-				.Where(c => c.playerCard.OwnerEntity == playerEntity)
+				.Where(c => c.gamePlayerCard.OwnerEntity == playerEntity)
 				.ToArray();
 		}
 
 		public static GameEntity[] GetPlayerBoxCards<T>(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetBoxCards()
-				.Where(c => c.playerCard.OwnerEntity == playerEntity)
-				.Where(boxCard => boxCard.ability.Ability is T)
+				.Where(c => c.gamePlayerCard.OwnerEntity == playerEntity)
+				.Where(boxCard => boxCard.gameAbility.Ability is T)
 				.ToArray();
 		}
 	}

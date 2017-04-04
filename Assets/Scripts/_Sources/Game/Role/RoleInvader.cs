@@ -49,10 +49,10 @@ namespace Game
 		//public override bool IsWin(GameEntity playerEntity)
 		//{
 		//	return base.IsWin(playerEntity)
-		//		&& _context.GetEntities(GameMatcher.Role)
-		//			.Where(r => r.role.RoleObject is RoleOrigin)
+		//		&& _context.GetEntities(GameMatcher.GameRole)
+		//			.Where(r => r.gameRole.RoleObject is RoleOrigin)
 		//			.Select(p => GameUtil.GetCharacterFromPlayer(p))
-		//			.All(x => x.isDead);
+		//			.All(x => x.isGameDead);
 		//}
 	}
 }

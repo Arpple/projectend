@@ -20,12 +20,12 @@ namespace Test.System
 			var system = new LoadCardSystem(_contexts, _setting);
 
 			var entity = _contexts.game.CreateEntity();
-			entity.AddCard(0, Card.Move);
-			entity.isDeckCard = true;
+			entity.AddGameCard(0, Card.Move);
+			entity.isGameDeckCard = true;
 
 			system.Execute();
 
-			Assert.IsTrue(entity.hasResource);
+			Assert.IsTrue(entity.hasGameResource);
 		}
 
 		[Test]
@@ -36,12 +36,12 @@ namespace Test.System
 			foreach(Card card in Enum.GetValues(typeof(Card)))
 			{
 				var entity = _contexts.game.CreateEntity();
-				entity.AddCard(0, card);
-				entity.isDeckCard = true;
+				entity.AddGameCard(0, card);
+				entity.isGameDeckCard = true;
 
 				system.Execute();
 
-				Assert.IsTrue(entity.hasResource, card.ToString() + " resource does not have ability");
+				Assert.IsTrue(entity.hasGameResource, card.ToString() + " resource does not have ability");
 			}
 		}
 	}

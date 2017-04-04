@@ -25,20 +25,20 @@ public sealed partial class GameContext : Context<GameEntity>
 		}
 	}
 
-	private GameEntity _localPlayerEntity;
+	private GameEntity _gameLocalPlayerEntity;
 	private GameEntity _localPlayerCharacter;
 
 	public bool IsLocalPlayerTurn
 	{
-		get { return this.localPlayerEntity == this.playingOrder.CurrentPlayer; }
+		get { return this.gameLocalPlayerEntity == this.gamePlayingOrder.CurrentPlayer; }
 	}
 
 	public GameEntity LocalPlayerCharacter
 	{
 		get
 		{
-			return this.GetEntities(GameMatcher.Character)
-				.Where(c => c.unit.OwnerEntity.isLocalPlayer)
+			return this.GetEntities(GameMatcher.GameCharacter)
+				.Where(c => c.gameUnit.OwnerEntity.isGameLocalPlayer)
 				.FirstOrDefault();
 		}
 	}
@@ -46,8 +46,8 @@ public sealed partial class GameContext : Context<GameEntity>
 	public GameEntity GetCharacterFromPlayer(GameEntity playerEntity)
 	{
 		return _cachedPlayerCharacterEntity.Get(playerEntity, (id) =>
-			this.GetEntities(GameMatcher.Character)
-				.Where(c => c.unit.OwnerEntity == playerEntity)
+			this.GetEntities(GameMatcher.GameCharacter)
+				.Where(c => c.gameUnit.OwnerEntity == playerEntity)
 				.FirstOrDefault()
 		);
 	}
@@ -55,8 +55,8 @@ public sealed partial class GameContext : Context<GameEntity>
 	public GameEntity GetPlayerEntity(int playerId)
 	{
 		return _cachedPlayerEntity.Get(playerId, (id) =>
-			this.GetEntities(GameMatcher.Player)
-				.Where(e => e.player.PlayerId == id)
+			this.GetEntities(GameMatcher.GamePlayer)
+				.Where(e => e.gamePlayer.PlayerId == id)
 				.FirstOrDefault()
 		);
 	}

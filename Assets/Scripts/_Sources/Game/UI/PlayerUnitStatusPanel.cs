@@ -46,11 +46,11 @@ namespace Game.UI
 
 		public void SetCharacter(GameEntity characterEntity)
 		{
-			PlayerNameText.text = characterEntity.unit.OwnerEntity.player.PlayerObject.PlayerName;
-			CharacterIcon.IconImage.sprite = characterEntity.unitIcon.IconSprite;
+			PlayerNameText.text = characterEntity.gameUnit.OwnerEntity.gamePlayer.PlayerObject.PlayerName;
+			CharacterIcon.IconImage.sprite = characterEntity.gameUnitIcon.IconSprite;
 
-			UpdateUnitStatus(characterEntity.unitStatus);
-			UpdateUnitHitpoint(characterEntity.hitpoint);
+			UpdateUnitStatus(characterEntity.gameUnitStatus);
+			UpdateUnitHitpoint(characterEntity.gameHitpoint);
 
 			ShowingCharacter = characterEntity;
 		}

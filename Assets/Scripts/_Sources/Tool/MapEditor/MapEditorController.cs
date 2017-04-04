@@ -41,7 +41,6 @@ namespace MapEditor
 		void Start()
 		{
 			_contexts = Contexts.sharedInstance;
-			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
 			_systems.Initialize();
 		}

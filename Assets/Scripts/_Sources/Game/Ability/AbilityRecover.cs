@@ -9,7 +9,7 @@ namespace Game
 	{
 		public GameEntity[] GetTilesArea(GameEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster.mapPosition.GetTile(), caster.unitStatus.VisionRange, true);
+			return AreaSelector.GetAllInRange(caster.gameMapPosition.GetTile(), caster.gameUnitStatus.VisionRange, true);
 		}
 
 		public GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
@@ -20,7 +20,7 @@ namespace Game
 		public void OnTargetSelected(GameEntity caster, GameEntity target)
 		{
 			target.RecoverHitpoint(1);
-			target.isDead = false;
+			target.isGameDead = false;
 		}
 
 		public void OnDead(GameEntity deadEntity)

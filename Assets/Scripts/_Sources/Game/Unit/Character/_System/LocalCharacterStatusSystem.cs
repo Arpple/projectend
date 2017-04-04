@@ -18,26 +18,26 @@ namespace Game.UI
 
 		public void Initialize()
 		{
-			_ui.SetCharacter(_context.GetEntities(GameMatcher.Character)
-				.Where(c => c.unit.OwnerEntity.isLocalPlayer)
+			_ui.SetCharacter(_context.GetEntities(GameMatcher.GameCharacter)
+				.Where(c => c.gameUnit.OwnerEntity.isGameLocalPlayer)
 				.First());
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.UnitStatus, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameUnitStatus, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasUnitStatus && entity.unit.OwnerEntity.isLocalPlayer;
+			return entity.hasGameUnitStatus && entity.gameUnit.OwnerEntity.isGameLocalPlayer;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var entity in entities)
 			{
-				_ui.UpdateUnitStatus(entity.unitStatus);
+				_ui.UpdateUnitStatus(entity.gameUnitStatus);
 			}
 		}
 	}

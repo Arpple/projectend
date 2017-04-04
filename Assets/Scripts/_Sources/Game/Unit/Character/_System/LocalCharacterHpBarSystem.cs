@@ -16,19 +16,19 @@ namespace Game.UI
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Hitpoint);
+			return context.CreateCollector(GameMatcher.GameHitpoint);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasHitpoint && entity.unit.OwnerEntity.isLocalPlayer;
+			return entity.hasGameHitpoint && entity.gameUnit.OwnerEntity.isGameLocalPlayer;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				_hpBar.UpdateHp(e.hitpoint.Value);
+				_hpBar.UpdateHp(e.gameHitpoint.Value);
 			}
 		}
 	}

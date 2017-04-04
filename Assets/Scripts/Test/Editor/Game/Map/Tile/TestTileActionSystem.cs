@@ -21,8 +21,8 @@ namespace Test.System
 			var system = new TileActionSystem(_contexts);
 
 			var tile = _contexts.game.CreateEntity();
-			tile.AddView(_tileCon.gameObject);
-			tile.AddTileAction((e) => Assert.Pass());
+			tile.AddGameView(_tileCon.gameObject);
+			tile.AddGameTileAction((e) => Assert.Pass());
 
 			system.Execute();
 
@@ -35,9 +35,9 @@ namespace Test.System
 			var system = new TileActionSystem(_contexts);
 
 			var tile = _contexts.game.CreateEntity();
-			tile.AddView(_tileCon.gameObject);
-			tile.AddTileAction((e) => Assert.Fail());
-			tile.RemoveTileAction();
+			tile.AddGameView(_tileCon.gameObject);
+			tile.AddGameTileAction((e) => Assert.Fail());
+			tile.RemoveGameTileAction();
 
 			system.Execute();
 

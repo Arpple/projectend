@@ -13,13 +13,13 @@ namespace Test.System
 			var system = new LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
 
-			entity.AddResource("Test/Editor/Sprite", null);
+			entity.AddGameResource("Test/Editor/Sprite", null);
 			system.Execute();
 
 			//then 
-			Assert.IsNotNull(entity.view.GameObject.GetComponent<SpriteRenderer>());
-			Assert.IsTrue(entity.hasView);
-			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
+			Assert.IsNotNull(entity.gameView.GameObject.GetComponent<SpriteRenderer>());
+			Assert.IsTrue(entity.hasGameView);
+			Assert.AreEqual(entity, entity.gameView.GameObject.GetEntityLink().entity);
 		}
 
 		[Test]
@@ -27,14 +27,14 @@ namespace Test.System
 		{
 			var system = new Game.LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Test/Editor/Sprite", "Test/Editor/Prefabs");
+			entity.AddGameResource("Test/Editor/Sprite", "Test/Editor/Prefabs");
 
 			system.Execute();
 
-			Assert.AreEqual("Prefabs(Clone)", entity.view.GameObject.name);
-			Assert.IsNotNull(entity.view.GameObject.GetComponent<SpriteRenderer>());
-			Assert.IsTrue(entity.hasView);
-			Assert.AreEqual(entity, entity.view.GameObject.GetEntityLink().entity);
+			Assert.AreEqual("Prefabs(Clone)", entity.gameView.GameObject.name);
+			Assert.IsNotNull(entity.gameView.GameObject.GetComponent<SpriteRenderer>());
+			Assert.IsTrue(entity.hasGameView);
+			Assert.AreEqual(entity, entity.gameView.GameObject.GetEntityLink().entity);
 		}
 
 		[Test]
@@ -42,11 +42,11 @@ namespace Test.System
 		{
 			var system = new Game.LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
-			entity.AddResource("Test/Editor/Sprite", "Test/Editor/CustomViewPrefabs");
+			entity.AddGameResource("Test/Editor/Sprite", "Test/Editor/CustomViewPrefabs");
 
 			system.Execute();
 
-			Assert.AreEqual("CustomName", entity.view.GameObject.name);
+			Assert.AreEqual("CustomName", entity.gameView.GameObject.name);
 		}
 	}
 

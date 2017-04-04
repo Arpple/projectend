@@ -17,19 +17,19 @@ namespace Test.System
 			player.PlayerId = 1;
 
 			var container = _contexts.game.CreateEntity();
-			container.AddPlayer(player);
+			container.AddGamePlayer(player);
 			var deck = new GameObject().AddComponent<CardContainer>();
 			deck.Init();
-			container.AddPlayerDeck(deck);
+			container.AddGamePlayerDeck(deck);
 			
 			var card = _contexts.game.CreateEntity();
-			card.AddPlayerCard(container);
-			card.isDeckCard = true;
-			card.AddView(new GameObject());
+			card.AddGamePlayerCard(container);
+			card.isGameDeckCard = true;
+			card.AddGameView(new GameObject());
 
 			system.Execute();
 
-			Assert.AreEqual(container.playerDeck.PlayerDeckObject.ObjectContainer, card.view.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(container.gamePlayerDeck.PlayerDeckObject.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
 		}
 	}
 

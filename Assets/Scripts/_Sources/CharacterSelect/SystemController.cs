@@ -32,7 +32,6 @@ namespace CharacterSelect
 
 		public void Initialize()
 		{
-			_contexts.SetAllContexts();
 			_systems = CreateSystems(_contexts);
 
 			_systems.Initialize();

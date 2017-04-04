@@ -15,7 +15,7 @@ namespace Test.TestAbility
 		protected override GameEntity SetupCaster()
 		{
 			var entity = base.SetupCaster();
-			entity.AddUnitStatus(1, 2, 1, 1, 1);
+			entity.AddGameUnitStatus(1, 2, 1, 1, 1);
 
 			return entity;
 		}
@@ -23,7 +23,7 @@ namespace Test.TestAbility
 		protected override GameEntity SetupTarget()
 		{
 			var entity = base.SetupTarget();
-			entity.AddHitpoint(10);
+			entity.AddGameHitpoint(10);
 
 			return entity;
 		}
@@ -32,7 +32,7 @@ namespace Test.TestAbility
 		public void DealDamageToTarget()
 		{
 			_activeAbility.OnTargetSelected(_caster, _target);
-			Assert.AreEqual(8, _target.hitpoint.Value);
+			Assert.AreEqual(8, _target.gameHitpoint.Value);
 		}
 	}
 }

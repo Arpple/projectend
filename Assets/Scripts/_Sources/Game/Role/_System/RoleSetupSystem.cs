@@ -17,10 +17,10 @@ namespace Game
 
 		public void Initialize()
 		{
-			var players = _context.GetEntities(GameMatcher.Player).Shuffle();
+			var players = _context.GetEntities(GameMatcher.GamePlayer).Shuffle();
 
 			int i = 0;
-			Action<RoleObject> assignRole = (r) => { players[i].AddRole(r); i++; };
+			Action<RoleObject> assignRole = (r) => { players[i].AddGameRole(r); i++; };
 
 			_rolesCount.Origin.Loop(() => assignRole(new RoleOrigin(_context)));
 			_rolesCount.Invader.Loop(() => assignRole(new RoleInvader(_context)));

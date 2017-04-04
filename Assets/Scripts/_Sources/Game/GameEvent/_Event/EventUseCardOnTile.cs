@@ -14,25 +14,25 @@ namespace Game
 
 		public static void Create(GameEntity userEntity, GameEntity cardEntity, GameEntity tileEntity)
 		{
-			Assert.IsTrue(userEntity.hasUnit);
-			Assert.IsTrue(cardEntity.hasCard);
-			Assert.IsTrue(tileEntity.hasTile);
+			Assert.IsTrue(userEntity.hasGameUnit);
+			Assert.IsTrue(cardEntity.hasGameCard);
+			Assert.IsTrue(tileEntity.hasGameTile);
 
-			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.unit.Id, cardEntity.card.Id, tileEntity.mapPosition.x, tileEntity.mapPosition.y);
+			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameUnit.Id, cardEntity.gameCard.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
 		}
 
 		public void Decode(int userUnitId, int cardId, int x, int y)
 		{
-			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.Unit)
-				.Where(u => u.unit.Id == userUnitId)
+			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
-			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.Card)
-				.Where(c => c.card.Id == cardId)
+			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
+				.Where(c => c.gameCard.Id == cardId)
 				.First();
 
-			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.Tile)
-				.Where(t => t.mapPosition.x == x && t.mapPosition.y == y)
+			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameTile)
+				.Where(t => t.gameMapPosition.x == x && t.gameMapPosition.y == y)
 				.First();
 		}
 	}
@@ -45,28 +45,28 @@ namespace Game
 
 		protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
 		{
-			return context.CreateCollector(GameEventMatcher.EventUseCardOnTile, GroupEvent.Added);
+			return context.CreateCollector(GameEventMatcher.GameEventUseCardOnTile, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEventEntity entity)
 		{
-			return entity.hasEventUseCardOnTile;
+			return entity.hasGameEventUseCardOnTile;
 		}
 
 		protected override void Process(GameEventEntity entity)
 		{
-			var cardEvent = entity.eventUseCardOnTile;
-			var ability = (IActiveAbility)cardEvent.CardEnttiy.ability.Ability;
+			var cardEvent = entity.gameEventUseCardOnTile;
+			var ability = (IActiveAbility)cardEvent.CardEnttiy.gameAbility.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
-			if (cardEvent.CardEnttiy.isDeckCard)
+			if (cardEvent.CardEnttiy.isGameDeckCard)
 				RemovePlayerCard(cardEvent.CardEnttiy);
 		}
 
 		private void RemovePlayerCard(GameEntity card)
 		{
-			card.RemovePlayerCard();
-			if (card.hasInBox) card.RemoveInBox();
+			card.RemoveGamePlayerCard();
+			if (card.hasGameInBox) card.RemoveGameInBox();
 		}
 	}
 }

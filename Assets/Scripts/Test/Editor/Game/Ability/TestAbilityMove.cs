@@ -15,7 +15,7 @@ namespace Test.TestAbility
 		protected override GameEntity SetupCaster()
 		{
 			var entity = base.SetupCaster();
-			entity.AddMapPosition(0, 0);
+			entity.AddGameMapPosition(0, 0);
 
 			return entity;
 		}
@@ -23,7 +23,7 @@ namespace Test.TestAbility
 		protected override GameEntity SetupTarget()
 		{
 			var entity = base.SetupTarget();
-			entity.AddMapPosition(1, 1);
+			entity.AddGameMapPosition(1, 1);
 
 			return entity;
 		}
@@ -32,7 +32,7 @@ namespace Test.TestAbility
 		public void MoveToTargetPosition()
 		{
 			_activeAbility.OnTargetSelected(_caster, _target);
-			Assert.IsTrue(_target.mapPosition.Equals(_caster.mapPosition));
+			Assert.IsTrue(_target.gameMapPosition.Equals(_caster.gameMapPosition));
 		}
 	}
 }

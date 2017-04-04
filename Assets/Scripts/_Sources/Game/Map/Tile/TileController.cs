@@ -60,7 +60,7 @@ namespace Game
 
 		public GameObject CreateView(GameEntity entity, Sprite sprite)
 		{
-			gameObject.name = "Tile " + entity.mapPosition;
+			gameObject.name = "Tile " + entity.gameMapPosition;
 			TileSprite.sprite = sprite;
 			return gameObject;
 		}

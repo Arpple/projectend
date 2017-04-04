@@ -14,20 +14,20 @@ namespace Game
 
 		public void Initialize()
 		{
-			var tiles = _context.GetEntities(GameMatcher.Tile);
+			var tiles = _context.GetEntities(GameMatcher.GameTile);
 			foreach (var originTile in tiles)
 			{
-				originTile.AddTileGraph(null, null, null, null);
-				foreach(var tile in tiles.Where(t => t.mapPosition.GetDistance(originTile.mapPosition) == 1))
+				originTile.AddGameTileGraph(null, null, null, null);
+				foreach(var tile in tiles.Where(t => t.gameMapPosition.GetDistance(originTile.gameMapPosition) == 1))
 				{
-					if (tile.mapPosition.y < originTile.mapPosition.y)
-						originTile.tileGraph.Down = tile;
-					else if (tile.mapPosition.y > originTile.mapPosition.y)
-						originTile.tileGraph.Up = tile;
-					else if (tile.mapPosition.x > originTile.mapPosition.x)
-						originTile.tileGraph.Right = tile;
+					if (tile.gameMapPosition.y < originTile.gameMapPosition.y)
+						originTile.gameTileGraph.Down = tile;
+					else if (tile.gameMapPosition.y > originTile.gameMapPosition.y)
+						originTile.gameTileGraph.Up = tile;
+					else if (tile.gameMapPosition.x > originTile.gameMapPosition.x)
+						originTile.gameTileGraph.Right = tile;
 					else
-						originTile.tileGraph.Left = tile;
+						originTile.gameTileGraph.Left = tile;
 				}
 			}
 		}

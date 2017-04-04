@@ -12,14 +12,14 @@ namespace Test.System
 			var system = new RoleEndWinningSystem(_contexts);
 
 			var ePlayer = _contexts.game.CreateEntity();
-			ePlayer.AddRole(new RoleEnd(_contexts.game));
+			ePlayer.AddGameRole(new RoleEnd(_contexts.game));
 			var eChar = _contexts.game.CreateEntity();
-			eChar.AddUnit(0, ePlayer);
-			eChar.isDead = true;
+			eChar.AddGameUnit(0, ePlayer);
+			eChar.isGameDead = true;
 
 			system.Execute();
 
-			Assert.IsTrue(ePlayer.isWin);
+			Assert.IsTrue(ePlayer.isGameWin);
 		}
 	}
 }

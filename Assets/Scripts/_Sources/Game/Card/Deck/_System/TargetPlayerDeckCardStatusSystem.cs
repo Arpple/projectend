@@ -19,8 +19,8 @@ namespace Game.UI
 			return new Collector<GameEntity>(
 				new[]
 				{
-					context.GetGroup(GameMatcher.PlayerCard),
-					context.GetGroup(GameMatcher.InBox),
+					context.GetGroup(GameMatcher.GamePlayerCard),
+					context.GetGroup(GameMatcher.GameInBox),
 				},
 				new[]
 				{
@@ -37,9 +37,9 @@ namespace Game.UI
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.unit.OwnerEntity)
+			var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.gameUnit.OwnerEntity)
 				.Length;
-			var boxCardCount = _context.GetPlayerBoxCards(_status.ShowingCharacter.unit.OwnerEntity)
+			var boxCardCount = _context.GetPlayerBoxCards(_status.ShowingCharacter.gameUnit.OwnerEntity)
 				.Length;
 
 			_status.UpdateDeckCardCount(deckCardCount);

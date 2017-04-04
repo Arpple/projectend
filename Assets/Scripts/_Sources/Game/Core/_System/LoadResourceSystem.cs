@@ -22,9 +22,9 @@ namespace Game
 
 		public void Initialize()
 		{
-			foreach(var e in _context.GetEntities(GameMatcher.Resource))
+			foreach(var e in _context.GetEntities(GameMatcher.GameResource))
 			{
-				if(!e.hasView)
+				if(!e.hasGameView)
 				{
 					LoadResource(e);
 				}
@@ -33,12 +33,12 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Resource, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameResource, GroupEvent.Added);
 		}
 
 		protected override bool Filter (GameEntity entity)
 		{
-			return entity.hasResource && !entity.hasView;
+			return entity.hasGameResource && !entity.hasGameView;
 		}
 			
 		protected override void Execute (List<GameEntity> entities)
@@ -58,17 +58,17 @@ namespace Game
 		{
 			//get sprite
 			Sprite sprite = null;
-			if (entity.resource.SpritePath != null)
+			if (entity.gameResource.SpritePath != null)
 			{
-				sprite = _cacheSprite.Get(entity.resource.SpritePath, (path) => Resources.Load<Sprite>(path));
+				sprite = _cacheSprite.Get(entity.gameResource.SpritePath, (path) => Resources.Load<Sprite>(path));
 			}
 
 			//get view object
 			GameObject viewObject = null;
-			if (entity.resource.BasePrefabsPath != null)
+			if (entity.gameResource.BasePrefabsPath != null)
 			{
-				var basePrefabs = Resources.Load<GameObject>(entity.resource.BasePrefabsPath);
-				if (basePrefabs == null) throw new MissingReferenceException("Resource " + entity.resource.BasePrefabsPath);
+				var basePrefabs = Resources.Load<GameObject>(entity.gameResource.BasePrefabsPath);
+				if (basePrefabs == null) throw new MissingReferenceException("Resource " + entity.gameResource.BasePrefabsPath);
 				viewObject = GameObject.Instantiate(basePrefabs);
 			}
 			else
@@ -93,7 +93,7 @@ namespace Game
 				spriteRenderer.sortingOrder = 5;
 			}
 
-			entity.AddView(viewObject);
+			entity.AddGameView(viewObject);
 			viewObject.Link(entity, _context);
 			_linkedObjects.Add(viewObject);
 		}

@@ -48,7 +48,6 @@ namespace Game
 
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
-			_contexts.SetAllContexts();
 
 			if (IsOffline)
 			{

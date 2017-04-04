@@ -127,7 +127,7 @@ namespace Entitas.Migration {
                                               .Split(',')
                                               .Select(m => m.Trim())
                                               .Select(m => m.Split('.')[1])
-                                              .Select(m => "entity.has" + m)
+                                              .Select(m => "entity.hasGame" + m)
                                               .ToArray());
             }
 
@@ -137,7 +137,7 @@ namespace Entitas.Migration {
                                               .Split(',')
                                               .Select(m => m.Trim())
                                               .Select(m => m.Split('.')[1])
-                                              .Select(m => "entity.has" + m)
+                                              .Select(m => "entity.hasGame" + m)
                                               .ToArray());
             }
 
@@ -147,7 +147,7 @@ namespace Entitas.Migration {
                                                .Split(',')
                                                .Select(m => m.Trim())
                                                .Select(m => m.Split('.')[1])
-                                               .Select(m => "entity.has" + m)
+                                               .Select(m => "entity.hasGame" + m)
                                                .ToArray());
             }
 

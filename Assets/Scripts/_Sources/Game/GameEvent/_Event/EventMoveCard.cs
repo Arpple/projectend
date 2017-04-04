@@ -14,12 +14,12 @@ namespace Game
 
 		private static void MoveCard(GameEntity cardEntity, GameEntity playerEntity, bool isMoveTobox)
 		{
-			Assert.IsTrue(cardEntity.hasCard);
+			Assert.IsTrue(cardEntity.hasGameCard);
 
 			GameEvent.CreateEvent<EventMoveCard>(
-				cardEntity.card.Id, 
+				cardEntity.gameCard.Id, 
 				playerEntity != null 
-					? playerEntity.player.PlayerId 
+					? playerEntity.gamePlayer.PlayerId 
 					: 0, 
 				isMoveTobox 
 					? 1 
@@ -29,23 +29,23 @@ namespace Game
 
 		public static void MoveCardToPlayer(GameEntity cardEntity, GameEntity playerEntity)
 		{
-			Assert.IsTrue(cardEntity.hasCard);
+			Assert.IsTrue(cardEntity.hasGameCard);
 
 			MoveCard(cardEntity, playerEntity, false);
 		}
 
 		public static void MoveCardInToBox(GameEntity cardEntity)
 		{
-			Assert.IsFalse(cardEntity.hasInBox);
+			Assert.IsFalse(cardEntity.hasGameInBox);
 
-			MoveCard(cardEntity, cardEntity.playerCard.OwnerEntity, true);
+			MoveCard(cardEntity, cardEntity.gamePlayerCard.OwnerEntity, true);
 		}
 
 		public static void MoveCardOutFromBox(GameEntity cardEntity)
 		{
-			Assert.IsTrue(cardEntity.hasInBox);
+			Assert.IsTrue(cardEntity.hasGameInBox);
 
-			MoveCard(cardEntity, cardEntity.playerCard.OwnerEntity, false);
+			MoveCard(cardEntity, cardEntity.gamePlayerCard.OwnerEntity, false);
 		}
 
 		public static void MoveCardToShareDeck(GameEntity cardEntity)
@@ -55,14 +55,14 @@ namespace Game
 
 		public void Decode(int cardId, int playerId, int isInBox)
 		{
-			CardEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.Card)
-				.Where(c => c.card.Id == cardId)
+			CardEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
+				.Where(c => c.gameCard.Id == cardId)
 				.First();
 
 			TargetPlayerEntity = playerId == 0
 				? null
-				: Contexts.sharedInstance.game.GetEntities(GameMatcher.Player)
-					.Where(e => e.player.PlayerId == playerId)
+				: Contexts.sharedInstance.game.GetEntities(GameMatcher.GamePlayer)
+					.Where(e => e.gamePlayer.PlayerId == playerId)
 					.First();
 
 			IsInBox = isInBox != 0;
@@ -75,36 +75,36 @@ namespace Game
 
 		protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
 		{
-			return context.CreateCollector(GameEventMatcher.EventMoveCard, GroupEvent.Added);
+			return context.CreateCollector(GameEventMatcher.GameEventMoveCard, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEventEntity entity)
 		{
-			return entity.hasEventMoveCard;
+			return entity.hasGameEventMoveCard;
 		}
 
 		protected override void Process(GameEventEntity entity)
 		{
-			var e = entity.eventMoveCard;
+			var e = entity.gameEventMoveCard;
 
 			if (e.TargetPlayerEntity != null)
 			{
-				e.CardEntity.ReplacePlayerCard(e.TargetPlayerEntity);
+				e.CardEntity.ReplaceGamePlayerCard(e.TargetPlayerEntity);
 			}
 			else
 			{
-				e.CardEntity.RemovePlayerCard();
+				e.CardEntity.RemoveGamePlayerCard();
 			}
 
 			if (e.IsInBox)
 			{
-				e.CardEntity.AddInBox(0);
+				e.CardEntity.AddGameInBox(0);
 			}
 			else
 			{
-				if (e.CardEntity.hasInBox)
+				if (e.CardEntity.hasGameInBox)
 				{
-					e.CardEntity.RemoveInBox();
+					e.CardEntity.RemoveGameInBox();
 				}
 			}
 		}

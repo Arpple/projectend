@@ -15,19 +15,19 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Dead, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameDead, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isDead && entity.unit.OwnerEntity.role.RoleObject is RoleEnd;
+			return entity.isGameDead && entity.gameUnit.OwnerEntity.gameRole.RoleObject is RoleEnd;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				e.unit.OwnerEntity.isWin = true;
+				e.gameUnit.OwnerEntity.isGameWin = true;
 			}
 		}
 	}
