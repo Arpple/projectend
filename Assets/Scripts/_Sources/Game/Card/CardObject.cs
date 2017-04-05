@@ -5,7 +5,7 @@ using Entitas.Unity;
 
 namespace Game.UI
 {
-	public class CardObject : MonoBehaviour, IEntityView<GameEntity>
+	public class CardObject : MonoBehaviour, IEntityCustomView<GameEntity>
 	{
 		public Image MainImage;
 

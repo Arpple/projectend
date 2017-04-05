@@ -5,7 +5,7 @@ using System;
 
 namespace Game
 {
-	public class TileController : MonoBehaviour, IEntityView<TileEntity>
+	public class TileController : MonoBehaviour, IEntityCustomView<TileEntity>
 	{
         private static GameObject _parent;
 

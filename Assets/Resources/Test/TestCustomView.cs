@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Test
 {
-	public class TestCustomView : MonoBehaviour, IEntityView<GameEntity>
+	public class TestCustomView : MonoBehaviour, IEntityCustomView<GameEntity>
 	{
 		public GameObject CreateView(GameEntity entity, Sprite sprite)
 		{

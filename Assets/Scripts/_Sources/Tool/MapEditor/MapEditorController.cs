@@ -68,7 +68,7 @@ namespace MapEditor
 				.Add(new CreateMapTileSystem(contexts, EdittingMap, Setting.MapSetting))
 				.Add(new CreateTileGraphSystem(contexts))
 			
-				.Add(new LoadResourceSystem(contexts))
+				.Add(new TileResouceLoadSystem(contexts))
                 .Add(new TileHoverActionSystem(contexts))
                 
 				.Add(new RenderMapPositionSystem(contexts))

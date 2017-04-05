@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using Entitas;
 
 namespace Game
 {
-	public interface IEntityView<TEntity> where TEntity : Entitas.Entity
+	public interface IEntityCustomView<TEntity> where TEntity : class, IEntity, new()
 	{
 		/// <summary>
 		/// modify entity view object

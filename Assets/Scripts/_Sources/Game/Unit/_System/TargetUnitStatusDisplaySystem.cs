@@ -13,6 +13,7 @@ namespace Game.UI
 
 		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.game)
 		{
+			_tileContext = contexts.tile;
 			_gamecontext = contexts.game;
 			_panel = panel;
 		}
