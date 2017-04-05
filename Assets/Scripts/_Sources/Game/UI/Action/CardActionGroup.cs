@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.UI;
+using UnityEngine.Events;
+using Entitas;
 
 namespace Game.UI
 {
@@ -18,31 +19,66 @@ namespace Game.UI
 
 			if (cardEntity.hasGameAbility)
 			{
-				var ability = cardEntity.gameAbility.Ability as ActiveAbility<GameEntity>;
-				if (ability == null) return;
-
 				var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
+				var caller = new CardAbilityCaller(caster, cardEntity);
 
-				TileTargetSelector<GameEntity> tileSelector = new TileTargetSelector<GameEntity>(
-					caster,
-					ability.GetTilesArea(caster),
-					ability.GetTargetFromSelectedTile,
+				if (!caller.TryUseAbility<GameEntity>(
 					(t) =>
 					{
-						if (t.hasGameUnit)
-						{
-							EventUseCardOnUnit.Create(caster, cardEntity, t);
-						}
-						//else if (t.hasGameTile)
-						//{
-						//	EventUseCardOnTile.Create(caster, cardEntity, t);
-						//}
+						EventUseCardOnUnit.Create(caster, cardEntity, t);
 						CloseAction();
 					}
-				);
+				))
+				if (!caller.TryUseAbility<TileEntity>(
+					(t) =>
+					{
+						EventUseCardOnTile.Create(caster, cardEntity, t);
+						CloseAction();
+					}
+				))
+				return;
 
-				OnCloseHandler += tileSelector.ClearSelection;
+				OnCloseHandler += caller.CancelAction;
 			}
+		}
+
+		internal class CardAbilityCaller
+		{
+			private GameEntity _caster;
+			private GameEntity _card;
+			private Ability _ability;
+			public UnityAction CancelAction;
+
+			public CardAbilityCaller(GameEntity caster, GameEntity card)
+			{
+				_caster = caster;
+				_card = card;
+				_ability = _card.gameAbility.Ability;
+			}
+
+			public bool TryUseAbility<TTarget>(UnityAction<TTarget> onComplete) where TTarget : Entity
+			{
+				var ability = _ability as ActiveAbility<TTarget>;
+				if(ability != null)
+				{
+					ShowAbility<TTarget>(ability, onComplete);
+					return true;
+				}
+
+				return false;
+			}
+
+			private void ShowAbility<T>(ActiveAbility<T> ability, UnityAction<T> onComplete) where T : Entity
+			{
+				var selector = new TileTargetSelector<T>(
+					_caster,
+					ability.GetTilesArea(_caster),
+					ability.GetTargetFromSelectedTile,
+					(t) => onComplete(t)
+				);
+				CancelAction = selector.ClearSelection;
+			}
+
 		}
 	}
 }
