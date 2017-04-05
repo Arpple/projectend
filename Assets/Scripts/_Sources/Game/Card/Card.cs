@@ -26,7 +26,7 @@
 
 			if (!_lastCreatedCard.hasGameCard) return 0;
 
-			return _lastCreatedCard.gameCard.Id;
+			return _lastCreatedCard.gameCard.Id + 1;
 		}
 
 	}
