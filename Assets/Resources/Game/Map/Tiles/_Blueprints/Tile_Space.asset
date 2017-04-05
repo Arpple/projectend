@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57916a22b3b2048bb9e68345198807d9, type: 3}
   m_Name: Tile_Space
   m_EditorClassIdentifier: 
-  blueprintData: '{"contextIdentifier":"Tile","name":"Tile_Space","components":[{"index":1,"fullTypeName":"Game.ResourceComponent","members":[{"name":"SpritePath","value":{"$content":"Game/Map/Tiles/_Sprite/Tile_SnowMountain","$type":"System.String"}},{"name":"BasePrefabsPath","value":{"$content":"Game/Map/Tiles/_Prefabs/Tile","$type":"System.String"}}]}]}'
+  blueprintData: '{"contextIdentifier":"Tile","name":"Tile_Space","components":[{"index":2,"fullTypeName":"Game.ResourceComponent","members":[{"name":"SpritePath","value":{"$content":"Game/Map/Tiles/_Sprite/Tile_SnowMountain","$type":"System.String"}},{"name":"BasePrefabsPath","value":{"$content":"Game/Map/Tiles/_Prefabs/Tile","$type":"System.String"}}]}]}'

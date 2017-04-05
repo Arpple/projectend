@@ -48,6 +48,7 @@ namespace Game
 
 			//create entitas system
 			_contexts = Contexts.sharedInstance;
+			new EntityIdGenerator(_contexts);
 
 			if (IsOffline)
 			{
