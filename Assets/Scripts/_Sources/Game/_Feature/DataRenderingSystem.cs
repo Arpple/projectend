@@ -16,6 +16,7 @@ namespace Game
 			Add(new DeadSystem(contexts));
 
 			//map
+			Add(new UnitPositionSystem(contexts));
 			Add(new TilePositionSystem(contexts));
 			Add(new TileActionSystem(contexts));
 

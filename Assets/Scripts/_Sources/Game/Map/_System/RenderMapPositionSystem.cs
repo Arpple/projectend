@@ -24,7 +24,6 @@ namespace Game
 		{
 			foreach(var e in entities)
 			{
-				Debug.Log("TEst");
 				var transform = e.gameView.GameObject.transform;
 				transform.position = e.gameMapPosition.GetWorldPosition();
 			}
