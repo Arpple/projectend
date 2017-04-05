@@ -29,6 +29,7 @@ namespace Test.System
 				
 				var card = _contexts.game.CreateEntity();
 				card.AddGameCard((short)i, Card.Move);
+				card.isGameDeckCard = true;
 			});
 
 			system.Initialize();

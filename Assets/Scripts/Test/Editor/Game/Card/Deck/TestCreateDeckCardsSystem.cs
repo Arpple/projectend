@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Game;
+using Entitas;
 
 namespace Test.System
 {
@@ -18,7 +19,7 @@ namespace Test.System
 			var system = new CreateDeckCardsSystem(_contexts, deck);
 			system.Initialize();
 
-			var cards = _contexts.game.GetGroup(GameMatcher.GameCard).GetEntities();
+			var cards = _contexts.game.GetEntities(GameMatcher.GameCard);
 			Assert.AreEqual(2, cards.Length);
 		}
 	}

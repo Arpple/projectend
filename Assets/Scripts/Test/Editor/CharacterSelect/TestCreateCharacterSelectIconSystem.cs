@@ -30,6 +30,8 @@ namespace Test.System
 			system.Execute();
 
 			Assert.AreEqual(1, _slideMenu.ItemCount);
+
+			system.TearDown();
 		}
 	}
 

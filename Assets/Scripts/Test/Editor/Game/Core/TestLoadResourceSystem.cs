@@ -2,19 +2,28 @@
 using UnityEngine;
 using Game;
 using Entitas.Unity;
+using Entitas;
 
 namespace Test.System
 {
 	public class TestLoadResourceSystem : ContextsTest
 	{
+		private Systems _systems;
+
+		[SetUp]
+		public void Init()
+		{
+			_systems = new Systems();
+			_systems.Add(new LoadResourceSystem(_contexts));
+		}
+
 		[Test]
 		public void LoadResourcesWithSprite()
 		{
-			var system = new LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
 
 			entity.AddGameResource("Test/Editor/Sprite", null);
-			system.Execute();
+			_systems.Execute();
 
 			//then 
 			Assert.IsNotNull(entity.gameView.GameObject.GetComponent<SpriteRenderer>());
@@ -25,11 +34,10 @@ namespace Test.System
 		[Test]
 		public void LoadResourcesWithSpriteAndBasePrefabs()
 		{
-			var system = new Game.LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
 			entity.AddGameResource("Test/Editor/Sprite", "Test/Editor/Prefabs");
 
-			system.Execute();
+			_systems.Execute();
 
 			Assert.AreEqual("Prefabs(Clone)", entity.gameView.GameObject.name);
 			Assert.IsNotNull(entity.gameView.GameObject.GetComponent<SpriteRenderer>());
@@ -40,13 +48,19 @@ namespace Test.System
 		[Test]
 		public void LoadResourcesWithSpriteAndCustomViewBasePrefabs()
 		{
-			var system = new Game.LoadResourceSystem(_contexts);
 			var entity = _contexts.game.CreateEntity();
 			entity.AddGameResource("Test/Editor/Sprite", "Test/Editor/CustomViewPrefabs");
 
-			system.Execute();
+			_systems.Execute();
 
 			Assert.AreEqual("CustomName", entity.gameView.GameObject.name);
+		}
+
+		[TearDown]
+		public void Destroy()
+		{
+			_systems.ClearReactiveSystems();
+			_systems.TearDown();
 		}
 	}
 

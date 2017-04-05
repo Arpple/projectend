@@ -22,9 +22,11 @@
 
 		private static int GetNextCardId()
 		{
-			return _lastCreatedCard == null
-				? 0
-				: _lastCreatedCard.gameCard.Id + 1;
+			if (_lastCreatedCard == null) return 0;
+
+			if (!_lastCreatedCard.hasGameCard) return 0;
+
+			return _lastCreatedCard.gameCard.Id;
 		}
 
 	}
