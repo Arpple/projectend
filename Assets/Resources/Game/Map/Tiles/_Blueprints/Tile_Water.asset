@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57916a22b3b2048bb9e68345198807d9, type: 3}
   m_Name: Tile_Water
   m_EditorClassIdentifier: 
-  blueprintData: '{"contextIdentifier":"Game","name":"Tile_Water","components":[{"index":15,"fullTypeName":"Game.ResourceComponent","members":[{"name":"SpritePath","value":{"$content":"Game/Map/Tile/_Sprite/Tile_Water","$type":"System.String"}},{"name":"BasePrefabsPath","value":{"$content":"Game/Map/Tile/_Prefabs/Tile","$type":"System.String"}}]},{"index":23,"fullTypeName":"Game.TileMovableComponent","members":[]}]}'
+  blueprintData: '{"contextIdentifier":"Game","name":"Tile_Water","components":[{"index":15,"fullTypeName":"Game.ResourceComponent","members":[{"name":"SpritePath","value":{"$content":"Game/Map/Tiles/_Sprite/Tile_Water","$type":"System.String"}},{"name":"BasePrefabsPath","value":{"$content":"Game/Map/Tiles/_Prefabs/Tile","$type":"System.String"}}]},{"index":23,"fullTypeName":"Game.TileMovableComponent","members":[]}]}'
