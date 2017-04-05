@@ -11,6 +11,7 @@ namespace Game
 			//map
 			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
 			Add(new CreateTileGraphSystem(contexts));
+			Add(new TileViewLoadingSystem(contexts, setting.MapSetting.TileSetting));
 
 			//player
 			Add(new CreatePlayerSystem(contexts, players));

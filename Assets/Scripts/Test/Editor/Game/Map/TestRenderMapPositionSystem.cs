@@ -10,7 +10,7 @@ namespace Test.System
 		public void RenderPosition()
 		{
 			//given
-			var system = new RenderMapPositionSystem(_contexts);
+			var system = new UnitPositionSystem(_contexts);
 
 			var entity = _contexts.game.CreateEntity();
 			entity.AddGameView(new GameObject());

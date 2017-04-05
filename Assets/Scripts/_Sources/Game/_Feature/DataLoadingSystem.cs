@@ -8,7 +8,6 @@ namespace Game
 		{
 			Add(new LoadCardSystem(contexts, setting.CardSetting.DeckSetting));
 			Add(new LoadAbilitySystem(contexts));
-			Add(new TileResouceLoadSystem(contexts));
 			Add(new GameResouceLoadSystem(contexts));
 		}
 	}

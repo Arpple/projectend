@@ -15,6 +15,10 @@ MonoBehaviour:
     GameMap: {fileID: 11400000, guid: c53b07a695967c746b76eed30880bfa6, type: 2}
     TileSetting:
       TileBlueprints: {fileID: 11400000, guid: 7b7b69dc23403ba4d8796ec7398f18c9, type: 2}
+      TileController: {fileID: 114797411345630064, guid: e7d98db282ccf124b8cdf87a1d62d60b,
+        type: 2}
+      PathToSpriteFolder: Game/Map/Tiles/_Sprite
+      Container: Tiles
   UnitSetting:
     CharacterSetting:
       CharacterBlueprints: {fileID: 11400000, guid: 4cec7519da8122e49a6e6c5c7e7a9251,

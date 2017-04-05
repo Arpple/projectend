@@ -59,41 +59,6 @@ namespace Game
 		protected abstract void AddViewComponent(TEntity entity, GameObject view);
 	}
 
-	public class TileResouceLoadSystem : LoadResourceSystem<TileEntity>
-	{
-		private TileContext _context;
-
-		public TileResouceLoadSystem(Contexts contexts) : base(contexts.tile)
-		{
-			_context = contexts.tile;
-		}
-
-		protected override void AddViewComponent(TileEntity entity, GameObject view)
-		{
-			entity.AddGameView(view);
-		}
-
-		protected override bool Filter(TileEntity entity)
-		{
-			return entity.hasGameResource && !entity.hasGameView;
-		}
-
-		protected override TileEntity[] GetEntities()
-		{
-			return _context.GetEntities(TileMatcher.GameResource);
-		}
-
-		protected override ResourceComponent GetResourceComponent(TileEntity entity)
-		{
-			return entity.gameResource;
-		}
-
-		protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context)
-		{
-			return context.CreateCollector(TileMatcher.GameResource);
-		}
-	}
-
 	public class GameResouceLoadSystem : LoadResourceSystem<GameEntity>
 	{
 		private GameContext _context;

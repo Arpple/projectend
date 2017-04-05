@@ -5,7 +5,7 @@ using System;
 
 namespace Game
 {
-	public class TileController : MonoBehaviour, IEntityCustomView<TileEntity>
+	public class TileController : MonoBehaviour
 	{
         private static GameObject _parent;
 
@@ -58,11 +58,9 @@ namespace Game
             SelectionBorder.enabled = false;
 		}
 
-		public GameObject CreateView(TileEntity entity, Sprite sprite)
+		public void SetSprite(Sprite sprite)
 		{
-			gameObject.name = "Tile " + entity.gameMapPosition;
 			TileSprite.sprite = sprite;
-			return gameObject;
 		}
 	}
 }
