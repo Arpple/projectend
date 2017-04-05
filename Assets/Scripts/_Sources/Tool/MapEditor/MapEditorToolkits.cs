@@ -79,11 +79,11 @@ namespace MapEditor {
             }
         }
 
-        public static void ShowHoverTile(GameEntity tile) {
+        public static void ShowHoverTile(TileEntity tile) {
             Instance.ShowDetailHoverTile(tile);
         }
 
-        public void ShowDetailHoverTile(GameEntity tile) {
+        public void ShowDetailHoverTile(TileEntity tile) {
             //Debug.Log("Hover Tile >" + tile.gameView.GameObject.name);
             if(Instance.lastType != tile.gameTile.Type) {
                 Instance.lastType = tile.gameTile.Type;

@@ -41,12 +41,12 @@ namespace MapEditor
 					var map = MapEditorController.EdittingMap;
 					var spawnpointCount = 0;
 
-					foreach (var tileEntity in Contexts.sharedInstance.game.GetGroup(GameMatcher.GameTile).GetEntities())
+					foreach (var tile in Contexts.sharedInstance.tile.GetGroup(TileMatcher.GameTile).GetEntities())
 					{
-						map.SetTile(tileEntity.gameMapPosition, tileEntity.gameTile.Type);
-						if(tileEntity.hasGameSpawnpoint)
+						map.SetTile(tile.gameMapPosition, tile.gameTile.Type);
+						if(tile.hasGameSpawnpoint)
 						{
-							map.SetSpawnPoint(tileEntity.gameSpawnpoint.index, tileEntity.gameMapPosition);
+							map.SetSpawnPoint(tile.gameSpawnpoint.index, tile.gameMapPosition);
 							spawnpointCount++;
 						}
 					}

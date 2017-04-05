@@ -3,17 +3,17 @@ using Entitas;
 
 namespace Game
 {
-	[Game]
+	[Tile]
 	public class TileGraphComponent : IComponent
 	{
-		public GameEntity Up;
-		public GameEntity Down;
-		public GameEntity Left;
-		public GameEntity Right;
+		public TileEntity Up;
+		public TileEntity Down;
+		public TileEntity Left;
+		public TileEntity Right;
 
-		public GameEntity[] GetConnectedTiles()
+		public TileEntity[] GetConnectedTiles()
 		{
-			return new GameEntity[] { Up, Down, Left, Right }.Where(t => t != null).ToArray();
+			return new[] { Up, Down, Left, Right }.Where(t => t != null).ToArray();
 		}
 	}
 }

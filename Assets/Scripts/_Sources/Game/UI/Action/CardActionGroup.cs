@@ -26,17 +26,17 @@ namespace Game.UI
 				TileTargetSelector<GameEntity> tileSelector = new TileTargetSelector<GameEntity>(
 					caster,
 					ability.GetTilesArea(caster),
-					ability.GetTargetEntity,
+					ability.GetTargetFromSelectedTile,
 					(t) =>
 					{
 						if (t.hasGameUnit)
 						{
 							EventUseCardOnUnit.Create(caster, cardEntity, t);
 						}
-						else if (t.hasGameTile)
-						{
-							EventUseCardOnTile.Create(caster, cardEntity, t);
-						}
+						//else if (t.hasGameTile)
+						//{
+						//	EventUseCardOnTile.Create(caster, cardEntity, t);
+						//}
 						CloseAction();
 					}
 				);

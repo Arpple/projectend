@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game]
+	[Game, Tile]
 	public class ViewContainerComponent : IComponent
 	{
 		public string ContainerName;

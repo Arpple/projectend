@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Game
 {
-	[Game]
+	[Game, Tile]
 	public class MapPositionComponent : IComponent
 	{
 		const float SIZE = 1f;
@@ -31,14 +31,6 @@ namespace Game
 		public override string ToString()
 		{
 			return "(" + x + "," + y + ")";
-		}
-
-		public GameEntity GetTile()
-		{
-			var context = Contexts.sharedInstance.game;
-			return context.GetEntities(GameMatcher.GameTile)
-				.Where(t => t.gameMapPosition.Equals(this))
-				.First();
 		}
 	}
 }

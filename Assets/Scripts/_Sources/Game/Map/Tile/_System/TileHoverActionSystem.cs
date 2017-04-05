@@ -3,23 +3,23 @@ using Entitas;
 using UnityEngine.Assertions;
 
 namespace Game {
-    public class TileHoverActionSystem: ReactiveSystem<GameEntity>, ITearDownSystem {
-        readonly GameContext _context;
+    public class TileHoverActionSystem: ReactiveSystem<TileEntity>, ITearDownSystem {
+        readonly TileContext _context;
 
         public TileHoverActionSystem(Contexts contexts)
-            : base(contexts.game) {
-            _context = contexts.game;
+            : base(contexts.tile) {
+            _context = contexts.tile;
         }
 
-        protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-            return context.CreateCollector(GameMatcher.GameTileAction, GroupEvent.Added);
+        protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context) {
+            return context.CreateCollector(TileMatcher.GameTileAction, GroupEvent.Added);
         }
 
-        protected override bool Filter(GameEntity entity) {
+        protected override bool Filter(TileEntity entity) {
             return entity.hasGameTileAction;
         }
 
-        protected override void Execute(List<GameEntity> entities) {
+        protected override void Execute(List<TileEntity> entities) {
             foreach(var e in entities) {
                 Assert.IsTrue(e.hasGameView);
                 Assert.IsTrue(e.hasGameTile);
@@ -33,7 +33,7 @@ namespace Game {
         }
 
         public void TearDown() {
-            foreach(var e in _context.GetEntities(GameMatcher.GameTile)) {
+            foreach(var e in _context.GetEntities(TileMatcher.GameTile)) {
                 var tileCon = e.gameView.GameObject.GetComponent<TileController>();
                 Assert.IsNotNull(tileCon);
 

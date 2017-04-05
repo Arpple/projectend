@@ -8,12 +8,9 @@ namespace Test.System
 {
 	public class TestLoadResourceSystem : ContextsTest
 	{
-		private Systems _systems;
-
 		[SetUp]
 		public void Init()
 		{
-			_systems = new Systems();
 			_systems.Add(new LoadResourceSystem(_contexts));
 		}
 
@@ -59,7 +56,6 @@ namespace Test.System
 		[TearDown]
 		public void Destroy()
 		{
-			_systems.ClearReactiveSystems();
 			_systems.TearDown();
 		}
 	}

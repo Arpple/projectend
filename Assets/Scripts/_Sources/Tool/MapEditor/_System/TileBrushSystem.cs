@@ -8,26 +8,26 @@ using Game;
 
 namespace MapEditor
 {
-	public class TileBrushSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class TileBrushSystem : ReactiveSystem<TileEntity>, IInitializeSystem
 	{
 		public static TileBrushComponent TileBrush;
 
-		readonly GameContext _context;
+		readonly TileContext _context;
 		readonly TileSetting _setting;
 
 		public TileBrushSystem(Contexts contexts, TileSetting setting)
-			: base(contexts.game)
+			: base(contexts.tile)
 		{
-			_context = contexts.game;
+			_context = contexts.tile;
 			_setting = setting;
 		}
 
-		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
+		protected override Collector<TileEntity> GetTrigger (IContext<TileEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameTile, GroupEvent.Added);
+			return context.CreateCollector(TileMatcher.GameTile, GroupEvent.Added);
 		}
 
-		protected override bool Filter (GameEntity entity)
+		protected override bool Filter (TileEntity entity)
 		{
 			return entity.hasGameTile;
 		}
@@ -38,7 +38,7 @@ namespace MapEditor
 			TileBrush = _context.mapEditorTileBrush;
 		}
 
-		protected override void Execute (List<GameEntity> entities)
+		protected override void Execute (List<TileEntity> entities)
 		{
 			foreach(var e in entities)
 			{
@@ -46,7 +46,7 @@ namespace MapEditor
 			}
 		}
 
-		void ReplaceTile(GameEntity tileEntity)
+		void ReplaceTile(TileEntity tileEntity)
 		{
 			var brush = _context.mapEditorTileBrush;
 			var brushTile = brush.TileType;
@@ -69,7 +69,7 @@ namespace MapEditor
 			}
 			else if (brush.Action == BrushAction.Spawnpoint)
 			{
-				var oldSpawnpoint = _context.GetEntities(GameMatcher.GameSpawnpoint)
+				var oldSpawnpoint = _context.GetEntities(TileMatcher.GameSpawnpoint)
 					.Where(s => s.gameSpawnpoint.index == brush.SpawnpointIndex)
 					.FirstOrDefault();
 

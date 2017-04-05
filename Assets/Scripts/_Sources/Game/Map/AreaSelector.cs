@@ -5,26 +5,26 @@ namespace Game
 {
 	public static class AreaSelector
 	{
-		public static GameEntity[] GetAllInRange(GameEntity center, int range, bool includeCenter = false)
+		public static TileEntity[] GetAllInRange(TileEntity center, int range, bool includeCenter = false)
 		{
-			var tiles = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameTile)
+			var tiles = Contexts.sharedInstance.tile.GetEntities(TileMatcher.GameTile)
 				.Where(t => t.gameMapPosition.GetDistance(center.gameMapPosition) <= range);
 
 			return includeCenter ? tiles.ToArray() : tiles.Where(t => t != center).ToArray();
 		}
 
-		public static GameEntity[] GetMovePathInRange(GameEntity center, int range, bool includeCenter = false)
+		public static TileEntity[] GetMovePathInRange(TileEntity center, int range, bool includeCenter = false)
 		{
-			var selectedTiles = new GameEntity[0];
-			var leaf = new GameEntity[] { center };
+			var selectedTiles = new TileEntity[0];
+			var leaf = new[] { center };
 
 			range.Loop((i) =>
 			{
-				var newLeaf = new GameEntity[0];
+				var newLeaf = new TileEntity[0];
 
 				foreach (var tile in leaf)
 				{
-					var found = new GameEntity[]
+					var found = new[]
 					{
 						tile.gameTileGraph.Up,
 						tile.gameTileGraph.Down,

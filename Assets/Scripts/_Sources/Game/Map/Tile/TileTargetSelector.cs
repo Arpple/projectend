@@ -8,11 +8,11 @@ namespace Game.UI
 {
 	public class TileTargetSelector<TTarget> where TTarget : Entity
 	{
-		private GameEntity[] _tiles;
+		private TileEntity[] _tiles;
 
 		public TileTargetSelector(
-			GameEntity selector, GameEntity[] tiles, 
-			Func<GameEntity, GameEntity, TTarget> getTargetFromTileFunction, 
+			GameEntity selector, TileEntity[] tiles, 
+			Func<GameEntity, TileEntity, TTarget> getTargetFromTileFunction, 
 			UnityAction<TTarget> onTileSelected
 		)
 		{

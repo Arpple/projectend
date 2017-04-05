@@ -18,7 +18,7 @@ namespace Test.System
 		[Test]
 		public void SetLocalCharacter()
 		{
-			var system = new LocalCharacterStatusSystem(_contexts, _panel);
+			_systems.Add(new LocalCharacterStatusSystem(_contexts, _panel));
 
 			var icon = Resources.Load<Sprite>("Test/Editor/Sprite");
 
@@ -33,7 +33,7 @@ namespace Test.System
 			character.AddGameUnitStatus(1, 1, 1, 1, 1);
 			character.AddGameHitpoint(1);
 
-			system.Initialize();
+			_systems.Initialize();
 
 			Assert.AreEqual("test", _panel.PlayerNameText.text);
 			Assert.AreEqual(icon, _panel.CharacterIcon.IconImage.sprite);
@@ -42,6 +42,8 @@ namespace Test.System
 			Assert.AreEqual("1", _panel.MoveSpeedText.text);
 			Assert.AreEqual("1", _panel.VisionRangeText.text);
 			Assert.AreEqual("1/1", _panel.HpBar.ValueText.text);
+
+			_systems.ClearReactiveSystems();
 		}
 	}
 }

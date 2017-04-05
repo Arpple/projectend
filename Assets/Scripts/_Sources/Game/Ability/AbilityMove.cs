@@ -3,24 +3,23 @@ using UnityEngine.Assertions;
 
 namespace Game
 {
-	public class AbilityMove : ActiveAbility<GameEntity>
+	public class AbilityMove : ActiveAbility<TileEntity>
 	{
 		private MapPositionComponent _targetPosition;
 
-		public override GameEntity[] GetTilesArea(GameEntity caster)
+		public override TileEntity[] GetTilesArea(GameEntity caster)
 		{
-			return AreaSelector.GetMovePathInRange(caster.gameMapPosition.GetTile(), caster.gameUnitStatus.MoveSpeed);
+			return AreaSelector.GetMovePathInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.MoveSpeed);
 		}
 
-		public override void OnTargetSelected(GameEntity caster, GameEntity target)
+		public override TileEntity GetTargetFromSelectedTile(GameEntity caster, TileEntity tile)
+		{
+			return tile;
+		}
+
+		public override void OnTargetSelected(GameEntity caster, TileEntity target)
 		{
 			caster.ReplaceGameMapPosition(target.gameMapPosition.x, target.gameMapPosition.y);
 		}
-
-		public override GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
-		{
-			return targetTile;
-		}
 	}
-
 }

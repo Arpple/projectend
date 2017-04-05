@@ -23,12 +23,14 @@ public partial class Contexts : Entitas.IContexts {
 
     public GameContext game { get; set; }
     public GameEventContext gameEvent { get; set; }
+    public TileContext tile { get; set; }
 
-    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, gameEvent }; } }
+    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, gameEvent, tile }; } }
 
     public Contexts() {
         game = new GameContext();
         gameEvent = new GameEventContext();
+        tile = new TileContext();
 
         var postConstructors = System.Linq.Enumerable.Where(
             GetType().GetMethods(),
@@ -71,5 +73,6 @@ public partial class Contexts {
     public void InitializeContexObservers() {
         CreateContextObserver(game);
         CreateContextObserver(gameEvent);
+        CreateContextObserver(tile);
     }
 }

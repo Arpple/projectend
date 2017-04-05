@@ -17,7 +17,7 @@ namespace Test.System
 
 			var system = new CreatePlayerCharacterSystem(_contexts);
 
-			var tile = _contexts.game.CreateEntity();
+			var tile = _contexts.tile.CreateEntity();
 			tile.AddGameSpawnpoint(1);
 			tile.AddGameMapPosition(0, 0);
 

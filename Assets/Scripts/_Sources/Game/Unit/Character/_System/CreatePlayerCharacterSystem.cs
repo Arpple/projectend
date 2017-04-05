@@ -8,17 +8,19 @@ namespace Game
 {
 	public class CreatePlayerCharacterSystem : IInitializeSystem
 	{
-		readonly GameContext _context;
+		readonly GameContext _gameContext;
+		readonly TileContext _tileContext;
 
 		public CreatePlayerCharacterSystem(Contexts contexts)
 		{
-			_context = contexts.game;
+			_gameContext = contexts.game;
+			_tileContext = contexts.tile;
 		}
 
 		public void Initialize()
 		{
-			var spawnpoints = _context.GetEntities(GameMatcher.GameSpawnpoint);
-			var players = _context.GetEntities(GameMatcher.GamePlayer);
+			var spawnpoints = _tileContext.GetEntities(TileMatcher.GameSpawnpoint);
+			var players = _gameContext.GetEntities(GameMatcher.GamePlayer);
 			Assert.IsTrue(spawnpoints.Length >= players.Length);
 
 			int indexSpawnPoint = 0;
@@ -31,7 +33,7 @@ namespace Game
 				var characterType = (Character)playerEntity.gamePlayer.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);
 
-				var character = _context.CreateEntity();
+				var character = _gameContext.CreateEntity();
 				character.AddGameUnit(id, playerEntity);
 				character.AddGameCharacter(characterType);
 				character.AddGameMapPosition(sp.gameMapPosition.x, sp.gameMapPosition.y);

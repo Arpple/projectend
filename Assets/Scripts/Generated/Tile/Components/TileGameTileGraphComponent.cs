@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
-    public Game.TileGraphComponent gameTileGraph { get { return (Game.TileGraphComponent)GetComponent(GameComponentsLookup.GameTileGraph); } }
-    public bool hasGameTileGraph { get { return HasComponent(GameComponentsLookup.GameTileGraph); } }
+    public Game.TileGraphComponent gameTileGraph { get { return (Game.TileGraphComponent)GetComponent(TileComponentsLookup.GameTileGraph); } }
+    public bool hasGameTileGraph { get { return HasComponent(TileComponentsLookup.GameTileGraph); } }
 
-    public void AddGameTileGraph(GameEntity newUp, GameEntity newDown, GameEntity newLeft, GameEntity newRight) {
-        var index = GameComponentsLookup.GameTileGraph;
+    public void AddGameTileGraph(TileEntity newUp, TileEntity newDown, TileEntity newLeft, TileEntity newRight) {
+        var index = TileComponentsLookup.GameTileGraph;
         var component = CreateComponent<Game.TileGraphComponent>(index);
         component.Up = newUp;
         component.Down = newDown;
@@ -21,8 +21,8 @@ public partial class GameEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceGameTileGraph(GameEntity newUp, GameEntity newDown, GameEntity newLeft, GameEntity newRight) {
-        var index = GameComponentsLookup.GameTileGraph;
+    public void ReplaceGameTileGraph(TileEntity newUp, TileEntity newDown, TileEntity newLeft, TileEntity newRight) {
+        var index = TileComponentsLookup.GameTileGraph;
         var component = CreateComponent<Game.TileGraphComponent>(index);
         component.Up = newUp;
         component.Down = newDown;
@@ -32,7 +32,7 @@ public partial class GameEntity {
     }
 
     public void RemoveGameTileGraph() {
-        RemoveComponent(GameComponentsLookup.GameTileGraph);
+        RemoveComponent(TileComponentsLookup.GameTileGraph);
     }
 }
 
@@ -44,15 +44,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameTileGraph;
+    static Entitas.IMatcher<TileEntity> _matcherGameTileGraph;
 
-    public static Entitas.IMatcher<GameEntity> GameTileGraph {
+    public static Entitas.IMatcher<TileEntity> GameTileGraph {
         get {
             if(_matcherGameTileGraph == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameTileGraph);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.GameTileGraph);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherGameTileGraph = matcher;
             }
 

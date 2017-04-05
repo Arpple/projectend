@@ -5,16 +5,16 @@ namespace Game
 {
 	public class CreateTileGraphSystem : IInitializeSystem
 	{
-		readonly GameContext _context;
+		readonly TileContext _context;
 
 		public CreateTileGraphSystem(Contexts contexts)
 		{
-			_context = contexts.game;
+			_context = contexts.tile;
 		}
 
 		public void Initialize()
 		{
-			var tiles = _context.GetEntities(GameMatcher.GameTile);
+			var tiles = _context.GetEntities(TileMatcher.GameTile);
 			foreach (var originTile in tiles)
 			{
 				originTile.AddGameTileGraph(null, null, null, null);

@@ -6,18 +6,18 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
     static readonly Game.TileMovableComponent gameTileMovableComponent = new Game.TileMovableComponent();
 
     public bool isGameTileMovable {
-        get { return HasComponent(GameComponentsLookup.GameTileMovable); }
+        get { return HasComponent(TileComponentsLookup.GameTileMovable); }
         set {
             if(value != isGameTileMovable) {
                 if(value) {
-                    AddComponent(GameComponentsLookup.GameTileMovable, gameTileMovableComponent);
+                    AddComponent(TileComponentsLookup.GameTileMovable, gameTileMovableComponent);
                 } else {
-                    RemoveComponent(GameComponentsLookup.GameTileMovable);
+                    RemoveComponent(TileComponentsLookup.GameTileMovable);
                 }
             }
         }
@@ -32,15 +32,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameTileMovable;
+    static Entitas.IMatcher<TileEntity> _matcherGameTileMovable;
 
-    public static Entitas.IMatcher<GameEntity> GameTileMovable {
+    public static Entitas.IMatcher<TileEntity> GameTileMovable {
         get {
             if(_matcherGameTileMovable == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameTileMovable);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.GameTileMovable);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherGameTileMovable = matcher;
             }
 

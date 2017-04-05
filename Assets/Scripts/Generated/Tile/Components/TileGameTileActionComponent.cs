@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
-    public Game.TileActionComponent gameTileAction { get { return (Game.TileActionComponent)GetComponent(GameComponentsLookup.GameTileAction); } }
-    public bool hasGameTileAction { get { return HasComponent(GameComponentsLookup.GameTileAction); } }
+    public Game.TileActionComponent gameTileAction { get { return (Game.TileActionComponent)GetComponent(TileComponentsLookup.GameTileAction); } }
+    public bool hasGameTileAction { get { return HasComponent(TileComponentsLookup.GameTileAction); } }
 
     public void AddGameTileAction(UnityEngine.Events.UnityAction newSelectedAction) {
-        var index = GameComponentsLookup.GameTileAction;
+        var index = TileComponentsLookup.GameTileAction;
         var component = CreateComponent<Game.TileActionComponent>(index);
         component.SelectedAction = newSelectedAction;
         AddComponent(index, component);
     }
 
     public void ReplaceGameTileAction(UnityEngine.Events.UnityAction newSelectedAction) {
-        var index = GameComponentsLookup.GameTileAction;
+        var index = TileComponentsLookup.GameTileAction;
         var component = CreateComponent<Game.TileActionComponent>(index);
         component.SelectedAction = newSelectedAction;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameTileAction() {
-        RemoveComponent(GameComponentsLookup.GameTileAction);
+        RemoveComponent(TileComponentsLookup.GameTileAction);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameTileAction;
+    static Entitas.IMatcher<TileEntity> _matcherGameTileAction;
 
-    public static Entitas.IMatcher<GameEntity> GameTileAction {
+    public static Entitas.IMatcher<TileEntity> GameTileAction {
         get {
             if(_matcherGameTileAction == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameTileAction);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.GameTileAction);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherGameTileAction = matcher;
             }
 

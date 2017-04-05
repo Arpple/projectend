@@ -20,7 +20,7 @@ namespace Test.System
 		{
 			var system = new TileActionSystem(_contexts);
 
-			var tile = _contexts.game.CreateEntity();
+			var tile = _contexts.tile.CreateEntity();
 			tile.AddGameView(_tileCon.gameObject);
 			tile.AddGameTileAction(Assert.Pass);
 
@@ -34,7 +34,7 @@ namespace Test.System
 		{
 			var system = new TileActionSystem(_contexts);
 
-			var tile = _contexts.game.CreateEntity();
+			var tile = _contexts.tile.CreateEntity();
 			tile.AddGameView(_tileCon.gameObject);
 			tile.AddGameTileAction(Assert.Fail);
 			tile.RemoveGameTileAction();

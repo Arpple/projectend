@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
-    public Game.SpawnpointComponent gameSpawnpoint { get { return (Game.SpawnpointComponent)GetComponent(GameComponentsLookup.GameSpawnpoint); } }
-    public bool hasGameSpawnpoint { get { return HasComponent(GameComponentsLookup.GameSpawnpoint); } }
+    public Game.SpawnpointComponent gameSpawnpoint { get { return (Game.SpawnpointComponent)GetComponent(TileComponentsLookup.GameSpawnpoint); } }
+    public bool hasGameSpawnpoint { get { return HasComponent(TileComponentsLookup.GameSpawnpoint); } }
 
     public void AddGameSpawnpoint(int newIndex) {
-        var index = GameComponentsLookup.GameSpawnpoint;
+        var index = TileComponentsLookup.GameSpawnpoint;
         var component = CreateComponent<Game.SpawnpointComponent>(index);
         component.index = newIndex;
         AddComponent(index, component);
     }
 
     public void ReplaceGameSpawnpoint(int newIndex) {
-        var index = GameComponentsLookup.GameSpawnpoint;
+        var index = TileComponentsLookup.GameSpawnpoint;
         var component = CreateComponent<Game.SpawnpointComponent>(index);
         component.index = newIndex;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameSpawnpoint() {
-        RemoveComponent(GameComponentsLookup.GameSpawnpoint);
+        RemoveComponent(TileComponentsLookup.GameSpawnpoint);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameSpawnpoint;
+    static Entitas.IMatcher<TileEntity> _matcherGameSpawnpoint;
 
-    public static Entitas.IMatcher<GameEntity> GameSpawnpoint {
+    public static Entitas.IMatcher<TileEntity> GameSpawnpoint {
         get {
             if(_matcherGameSpawnpoint == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameSpawnpoint);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.GameSpawnpoint);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherGameSpawnpoint = matcher;
             }
 

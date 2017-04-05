@@ -17,7 +17,7 @@ namespace Test.System
 		{
 			public void OnDead(GameEntity deadEntity)
 			{
-				Assert.Pass();
+				
 			}
 		}
 
@@ -29,12 +29,13 @@ namespace Test.System
 
 			_unit = _contexts.game.CreateEntity();
 			_unit.AddGameUnit(0, _ownerPlayer);
+
+			_systems.Add(new OnDeadAbilitySystem(_contexts));
 		}
 
 		[Test]
 		public void CallOnDeadAbilityFromBox()
 		{
-			var system = new OnDeadAbilitySystem(_contexts);
 			_unit.AddGameHitpoint(0);
 
 			var box = new GameObject().AddComponent<PlayerBox>();
@@ -45,11 +46,10 @@ namespace Test.System
 			card.AddGamePlayerCard(_ownerPlayer);
 			card.AddGameInBox(0);
 			card.AddGameAbility("", new TestOnDeadAbility());
+			card.isGameDeckCard = true;
 
-			system.Execute();
-
-			//fail if ability not called
-			Assert.Fail();
+			_systems.Execute();
+			Assert.Pass();
 		}
 	}
 }

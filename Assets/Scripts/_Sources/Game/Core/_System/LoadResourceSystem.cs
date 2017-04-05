@@ -77,7 +77,7 @@ namespace Game
 			}
 
 			//custom view
-			var viewModifier = (ICustomView)viewObject.GetComponent(typeof(ICustomView));
+			var viewModifier = (IEntityView<GameEntity>)viewObject.GetComponent(typeof(IEntityView<GameEntity>));
 			if (viewModifier != null)
 			{
 				viewObject = viewModifier.CreateView(entity, sprite);

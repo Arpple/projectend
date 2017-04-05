@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
-    public Game.TileComponent gameTile { get { return (Game.TileComponent)GetComponent(GameComponentsLookup.GameTile); } }
-    public bool hasGameTile { get { return HasComponent(GameComponentsLookup.GameTile); } }
+    public Game.TileComponent gameTile { get { return (Game.TileComponent)GetComponent(TileComponentsLookup.GameTile); } }
+    public bool hasGameTile { get { return HasComponent(TileComponentsLookup.GameTile); } }
 
     public void AddGameTile(Game.Tile newType) {
-        var index = GameComponentsLookup.GameTile;
+        var index = TileComponentsLookup.GameTile;
         var component = CreateComponent<Game.TileComponent>(index);
         component.Type = newType;
         AddComponent(index, component);
     }
 
     public void ReplaceGameTile(Game.Tile newType) {
-        var index = GameComponentsLookup.GameTile;
+        var index = TileComponentsLookup.GameTile;
         var component = CreateComponent<Game.TileComponent>(index);
         component.Type = newType;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameTile() {
-        RemoveComponent(GameComponentsLookup.GameTile);
+        RemoveComponent(TileComponentsLookup.GameTile);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameTile;
+    static Entitas.IMatcher<TileEntity> _matcherGameTile;
 
-    public static Entitas.IMatcher<GameEntity> GameTile {
+    public static Entitas.IMatcher<TileEntity> GameTile {
         get {
             if(_matcherGameTile == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameTile);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.GameTile);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherGameTile = matcher;
             }
 

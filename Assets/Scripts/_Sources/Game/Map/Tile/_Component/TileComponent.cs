@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game]
+	[Tile]
 	public class TileComponent : IComponent
 	{
 		public Tile Type;

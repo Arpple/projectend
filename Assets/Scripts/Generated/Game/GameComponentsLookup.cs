@@ -26,24 +26,17 @@ public static class GameComponentsLookup {
     public const int GameResource = 15;
     public const int GameRole = 16;
     public const int GameSkillCard = 17;
-    public const int GameSpawnpoint = 18;
-    public const int GameTileAction = 19;
-    public const int GameTile = 20;
-    public const int GameTileGraph = 21;
-    public const int GameTileHoverAction = 22;
-    public const int GameTileMovable = 23;
-    public const int GameUIPlayerSkillCardUI = 24;
-    public const int GameUnit = 25;
-    public const int GameUnitDetail = 26;
-    public const int GameUnitIcon = 27;
-    public const int GameUnitIconResource = 28;
-    public const int GameUnitStatus = 29;
-    public const int GameView = 30;
-    public const int GameViewContainer = 31;
-    public const int GameWin = 32;
-    public const int MapEditorTileBrush = 33;
+    public const int GameUIPlayerSkillCardUI = 18;
+    public const int GameUnit = 19;
+    public const int GameUnitDetail = 20;
+    public const int GameUnitIcon = 21;
+    public const int GameUnitIconResource = 22;
+    public const int GameUnitStatus = 23;
+    public const int GameView = 24;
+    public const int GameViewContainer = 25;
+    public const int GameWin = 26;
 
-    public const int TotalComponents = 34;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
         "GameAbility",
@@ -64,12 +57,6 @@ public static class GameComponentsLookup {
         "GameResource",
         "GameRole",
         "GameSkillCard",
-        "GameSpawnpoint",
-        "GameTileAction",
-        "GameTile",
-        "GameTileGraph",
-        "GameTileHoverAction",
-        "GameTileMovable",
         "GameUIPlayerSkillCardUI",
         "GameUnit",
         "GameUnitDetail",
@@ -78,8 +65,7 @@ public static class GameComponentsLookup {
         "GameUnitStatus",
         "GameView",
         "GameViewContainer",
-        "GameWin",
-        "MapEditorTileBrush"
+        "GameWin"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -101,12 +87,6 @@ public static class GameComponentsLookup {
         typeof(Game.ResourceComponent),
         typeof(Game.RoleComponent),
         typeof(Game.SkillCardComponent),
-        typeof(Game.SpawnpointComponent),
-        typeof(Game.TileActionComponent),
-        typeof(Game.TileComponent),
-        typeof(Game.TileGraphComponent),
-        typeof(Game.TileHoverActionComponent),
-        typeof(Game.TileMovableComponent),
         typeof(Game.UI.PlayerSkillCardUI),
         typeof(Game.UnitComponent),
         typeof(Game.UnitDetailComponent),
@@ -115,7 +95,6 @@ public static class GameComponentsLookup {
         typeof(Game.UnitStatusComponent),
         typeof(Game.ViewComponent),
         typeof(Game.ViewContainerComponent),
-        typeof(Game.WinComponent),
-        typeof(MapEditor.TileBrushComponent)
+        typeof(Game.WinComponent)
     };
 }

@@ -10,9 +10,9 @@ namespace Game
 	{
 		public GameEntity UserEntity;
 		public GameEntity CardEnttiy;
-		public GameEntity TargetEnttiy;
+		public TileEntity TargetEnttiy;
 
-		public static void Create(GameEntity userEntity, GameEntity cardEntity, GameEntity tileEntity)
+		public static void Create(GameEntity userEntity, GameEntity cardEntity, TileEntity tileEntity)
 		{
 			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
@@ -31,7 +31,7 @@ namespace Game
 				.Where(c => c.gameCard.Id == cardId)
 				.First();
 
-			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameTile)
+			TargetEnttiy = Contexts.sharedInstance.tile.GetEntities(TileMatcher.GameTile)
 				.Where(t => t.gameMapPosition.x == x && t.gameMapPosition.y == y)
 				.First();
 		}
@@ -56,7 +56,7 @@ namespace Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var cardEvent = entity.gameEventUseCardOnTile;
-			var ability = (ActiveAbility<GameEntity>)cardEvent.CardEnttiy.gameAbility.Ability;
+			var ability = (ActiveAbility<TileEntity>)cardEvent.CardEnttiy.gameAbility.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
 			if (cardEvent.CardEnttiy.isGameDeckCard)

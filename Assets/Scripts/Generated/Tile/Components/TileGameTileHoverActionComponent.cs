@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
-    public Game.TileHoverActionComponent gameTileHoverAction { get { return (Game.TileHoverActionComponent)GetComponent(GameComponentsLookup.GameTileHoverAction); } }
-    public bool hasGameTileHoverAction { get { return HasComponent(GameComponentsLookup.GameTileHoverAction); } }
+    public Game.TileHoverActionComponent gameTileHoverAction { get { return (Game.TileHoverActionComponent)GetComponent(TileComponentsLookup.GameTileHoverAction); } }
+    public bool hasGameTileHoverAction { get { return HasComponent(TileComponentsLookup.GameTileHoverAction); } }
 
-    public void AddGameTileHoverAction(GameEntity newSource, GameEntity newTarget, Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
-        var index = GameComponentsLookup.GameTileHoverAction;
+    public void AddGameTileHoverAction(TileEntity newSource, TileEntity newTarget, Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
+        var index = TileComponentsLookup.GameTileHoverAction;
         var component = CreateComponent<Game.TileHoverActionComponent>(index);
         component.Source = newSource;
         component.Target = newTarget;
@@ -20,8 +20,8 @@ public partial class GameEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceGameTileHoverAction(GameEntity newSource, GameEntity newTarget, Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
-        var index = GameComponentsLookup.GameTileHoverAction;
+    public void ReplaceGameTileHoverAction(TileEntity newSource, TileEntity newTarget, Game.TileHoverActionComponent.TileHoverAction newHoverAction) {
+        var index = TileComponentsLookup.GameTileHoverAction;
         var component = CreateComponent<Game.TileHoverActionComponent>(index);
         component.Source = newSource;
         component.Target = newTarget;
@@ -30,7 +30,7 @@ public partial class GameEntity {
     }
 
     public void RemoveGameTileHoverAction() {
-        RemoveComponent(GameComponentsLookup.GameTileHoverAction);
+        RemoveComponent(TileComponentsLookup.GameTileHoverAction);
     }
 }
 
@@ -42,15 +42,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameTileHoverAction;
+    static Entitas.IMatcher<TileEntity> _matcherGameTileHoverAction;
 
-    public static Entitas.IMatcher<GameEntity> GameTileHoverAction {
+    public static Entitas.IMatcher<TileEntity> GameTileHoverAction {
         get {
             if(_matcherGameTileHoverAction == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameTileHoverAction);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.GameTileHoverAction);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherGameTileHoverAction = matcher;
             }
 

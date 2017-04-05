@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Game
 {
-	[Game]
+	[Tile]
 	public class TileActionComponent : IComponent
 	{
 		public UnityAction SelectedAction;

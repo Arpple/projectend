@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57916a22b3b2048bb9e68345198807d9, type: 3}
   m_Name: Tile_DeepForest
   m_EditorClassIdentifier: 
-  blueprintData: '{"contextIdentifier":"Game","name":"Tile_DeepForest","components":[{"index":15,"fullTypeName":"Game.ResourceComponent","members":[{"name":"SpritePath","value":{"$content":"Game/Map/Tiles/_Sprite/Tile_DeepForest","$type":"System.String"}},{"name":"BasePrefabsPath","value":{"$content":"Game/Map/Tiles/_Prefabs/Tile","$type":"System.String"}}]},{"index":23,"fullTypeName":"Game.TileMovableComponent","members":[]}]}'
+  blueprintData: '{"contextIdentifier":"Tile","name":"Tile_DeepForest","components":[{"index":1,"fullTypeName":"Game.ResourceComponent","members":[{"name":"SpritePath","value":{"$content":"Game/Map/Tiles/_Sprite/Tile_DeepForest","$type":"System.String"}},{"name":"BasePrefabsPath","value":{"$content":"Game/Map/Tiles/_Prefabs/Tile","$type":"System.String"}}]},{"index":7,"fullTypeName":"Game.TileMovableComponent","members":[]}]}'

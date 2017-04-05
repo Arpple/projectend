@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameContext {
+public partial class TileContext {
 
-    public GameEntity mapEditorTileBrushEntity { get { return GetGroup(GameMatcher.MapEditorTileBrush).GetSingleEntity(); } }
+    public TileEntity mapEditorTileBrushEntity { get { return GetGroup(TileMatcher.MapEditorTileBrush).GetSingleEntity(); } }
     public MapEditor.TileBrushComponent mapEditorTileBrush { get { return mapEditorTileBrushEntity.mapEditorTileBrush; } }
     public bool hasMapEditorTileBrush { get { return mapEditorTileBrushEntity != null; } }
 
-    public GameEntity SetMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public TileEntity SetMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         if(hasMapEditorTileBrush) {
             throw new Entitas.EntitasException("Could not set MapEditorTileBrush!\n" + this + " already has an entity with MapEditor.TileBrushComponent!",
                 "You should check if the context already has a mapEditorTileBrushEntity before setting it or use context.ReplaceMapEditorTileBrush().");
@@ -44,13 +44,13 @@ public partial class GameContext {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class TileEntity {
 
-    public MapEditor.TileBrushComponent mapEditorTileBrush { get { return (MapEditor.TileBrushComponent)GetComponent(GameComponentsLookup.MapEditorTileBrush); } }
-    public bool hasMapEditorTileBrush { get { return HasComponent(GameComponentsLookup.MapEditorTileBrush); } }
+    public MapEditor.TileBrushComponent mapEditorTileBrush { get { return (MapEditor.TileBrushComponent)GetComponent(TileComponentsLookup.MapEditorTileBrush); } }
+    public bool hasMapEditorTileBrush { get { return HasComponent(TileComponentsLookup.MapEditorTileBrush); } }
 
     public void AddMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
-        var index = GameComponentsLookup.MapEditorTileBrush;
+        var index = TileComponentsLookup.MapEditorTileBrush;
         var component = CreateComponent<MapEditor.TileBrushComponent>(index);
         component.TileType = newTileType;
         component.Action = newAction;
@@ -59,7 +59,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
-        var index = GameComponentsLookup.MapEditorTileBrush;
+        var index = TileComponentsLookup.MapEditorTileBrush;
         var component = CreateComponent<MapEditor.TileBrushComponent>(index);
         component.TileType = newTileType;
         component.Action = newAction;
@@ -68,7 +68,7 @@ public partial class GameEntity {
     }
 
     public void RemoveMapEditorTileBrush() {
-        RemoveComponent(GameComponentsLookup.MapEditorTileBrush);
+        RemoveComponent(TileComponentsLookup.MapEditorTileBrush);
     }
 }
 
@@ -80,15 +80,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherMapEditorTileBrush;
+    static Entitas.IMatcher<TileEntity> _matcherMapEditorTileBrush;
 
-    public static Entitas.IMatcher<GameEntity> MapEditorTileBrush {
+    public static Entitas.IMatcher<TileEntity> MapEditorTileBrush {
         get {
             if(_matcherMapEditorTileBrush == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.MapEditorTileBrush);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.MapEditorTileBrush);
+                matcher.componentNames = TileComponentsLookup.componentNames;
                 _matcherMapEditorTileBrush = matcher;
             }
 

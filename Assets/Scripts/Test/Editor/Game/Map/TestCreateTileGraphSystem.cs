@@ -33,9 +33,9 @@ namespace Test.System
 			Assert.IsFalse(connectedTiles.Contains(unconnectedTile));
 		}
 
-		private GameEntity CreateTile(int x, int y)
+		private TileEntity CreateTile(int x, int y)
 		{
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.tile.CreateEntity();
 			entity.AddGameTile(Tile.Grass);
 			entity.AddGameMapPosition(x, y);
 			return entity;

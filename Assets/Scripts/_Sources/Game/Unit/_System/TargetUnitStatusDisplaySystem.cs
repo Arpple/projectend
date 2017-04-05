@@ -7,25 +7,26 @@ namespace Game.UI
 {
 	public class TargetUnitStatusDisplaySystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
-		private readonly GameContext _context;
+		private readonly GameContext _gamecontext;
+		private readonly TileContext _tileContext;
 		private readonly PlayerUnitStatusPanel _panel;
 
 		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.game)
 		{
-			_context = contexts.game;
+			_gamecontext = contexts.game;
 			_panel = panel;
 		}
 
 		public void Initialize()
 		{
-			foreach(var tile in _context.GetEntities(GameMatcher.GameTile))
+			foreach(var tile in _tileContext.GetEntities(TileMatcher.GameTile))
 			{
 				var tileCon = tile.gameView.GameObject.GetComponent<TileController>();
 				tileCon.DefaultTileAction = OnTileClicked;
 			}
 		}
 
-		private void OnTileClicked(GameEntity tile)
+		private void OnTileClicked(TileEntity tile)
 		{
 			var unit = tile.GetUnitOnTile();
 			if(unit != null)
@@ -42,8 +43,8 @@ namespace Game.UI
 		{
 			_panel.SetCharacter(unit);
 			_panel.gameObject.SetActive(true);
-			_panel.UpdateBoxCardCount(_context.GetPlayerBoxCards(unit.gameUnit.OwnerEntity).Length);
-			_panel.UpdateDeckCardCount(_context.GetPlayerDeckCards(unit.gameUnit.OwnerEntity).Length);
+			_panel.UpdateBoxCardCount(_gamecontext.GetPlayerBoxCards(unit.gameUnit.OwnerEntity).Length);
+			_panel.UpdateDeckCardCount(_gamecontext.GetPlayerDeckCards(unit.gameUnit.OwnerEntity).Length);
 		}
 
 		private void HideDisplayStatus()

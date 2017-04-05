@@ -7,16 +7,16 @@ namespace Game
 	{
 		private MapPositionComponent _targetPosition;
 
-		public override GameEntity[] GetTilesArea(GameEntity caster)
+		public override TileEntity[] GetTilesArea(GameEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster.gameMapPosition.GetTile(), caster.gameUnitStatus.AttackRange);
+			return AreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.AttackRange);
 		}
 
-		public override GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
+		public override GameEntity GetTargetFromSelectedTile(GameEntity caster, TileEntity tile)
 		{
-			var targetUnit = targetTile.GetUnitOnTile();
+			var targetUnit = tile.GetUnitOnTile();
 
-			if (targetUnit == null) return targetUnit;
+			if (targetUnit == null) return null;
 
 			return targetUnit.gameUnit.OwnerEntity != caster.gameUnit.OwnerEntity ? targetUnit : null;
 		}
@@ -26,5 +26,4 @@ namespace Game
 			target.TakeFatalDamage(caster.gameUnitStatus.AttackPower);
 		}
 	}
-
 }

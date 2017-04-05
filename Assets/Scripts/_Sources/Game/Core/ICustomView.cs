@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	public interface ICustomView
+	public interface IEntityView<TEntity> where TEntity : Entitas.Entity
 	{
 		/// <summary>
 		/// modify entity view object
@@ -10,6 +10,6 @@ namespace Game
 		/// <param name="entity"></param>
 		/// <param name="sprite"></param>
 		/// <returns>view object</returns>
-		GameObject CreateView(GameEntity entity, Sprite sprite);
+		GameObject CreateView(TEntity entity, Sprite sprite);
 	}
 }

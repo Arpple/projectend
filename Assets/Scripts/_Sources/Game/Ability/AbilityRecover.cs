@@ -7,14 +7,14 @@ namespace Game
 {
 	public class AbilityRecover : ActiveAbility<GameEntity>, IReviveAbility
 	{
-		public override GameEntity[] GetTilesArea(GameEntity caster)
+		public override TileEntity[] GetTilesArea(GameEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster.gameMapPosition.GetTile(), caster.gameUnitStatus.VisionRange, true);
+			return AreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.VisionRange, true);
 		}
 
-		public override GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile)
+		public override GameEntity GetTargetFromSelectedTile(GameEntity caster, TileEntity tile)
 		{
-			return targetTile.GetUnitOnTile();
+			return tile.GetUnitOnTile();
 		}
 
 		public override void OnTargetSelected(GameEntity caster, GameEntity target)
@@ -28,5 +28,4 @@ namespace Game
 			OnTargetSelected(deadEntity, deadEntity);
 		}
 	}
-
 }

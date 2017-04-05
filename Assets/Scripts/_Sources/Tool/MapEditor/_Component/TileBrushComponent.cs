@@ -10,7 +10,7 @@ namespace MapEditor
 		Spawnpoint,
 	}
 
-	[Game, Unique]
+	[Tile, Unique]
 	public class TileBrushComponent : IComponent
 	{
 		public Tile TileType;

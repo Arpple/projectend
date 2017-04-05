@@ -7,7 +7,7 @@ namespace Game
 	public class CreateMapTileSystem : IInitializeSystem
 	{
 		const string TILE_VIEW_CONTAINER = "View/Tile";
-		readonly GameContext _context;
+		readonly TileContext _context;
 		readonly MapSetting _setting;
 
 		private Map _map;
@@ -16,7 +16,7 @@ namespace Game
 		{
 			Assert.IsNotNull(map);
 
-			_context = contexts.game;
+			_context = contexts.tile;
 			_map = map;
 			_setting = setting;
 		}

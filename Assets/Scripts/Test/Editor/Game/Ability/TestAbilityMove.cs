@@ -5,7 +5,7 @@ using System;
 
 namespace Test.TestAbility
 {
-	public class TestAbilityMove : ActiveAbilityTest<GameEntity>
+	public class TestAbilityMove : ActiveAbilityTest<TileEntity>
 	{
 		protected override Ability CreateAbility()
 		{
@@ -20,9 +20,9 @@ namespace Test.TestAbility
 			return entity;
 		}
 
-		protected override GameEntity SetupTarget()
+		protected override TileEntity SetupTarget()
 		{
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.tile.CreateEntity();
 			entity.AddGameMapPosition(1, 1);
 
 			return entity;
