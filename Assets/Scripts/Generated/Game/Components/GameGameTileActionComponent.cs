@@ -11,14 +11,14 @@ public partial class GameEntity {
     public Game.TileActionComponent gameTileAction { get { return (Game.TileActionComponent)GetComponent(GameComponentsLookup.GameTileAction); } }
     public bool hasGameTileAction { get { return HasComponent(GameComponentsLookup.GameTileAction); } }
 
-    public void AddGameTileAction(Game.TileActionComponent.TileAction newSelectedAction) {
+    public void AddGameTileAction(UnityEngine.Events.UnityAction newSelectedAction) {
         var index = GameComponentsLookup.GameTileAction;
         var component = CreateComponent<Game.TileActionComponent>(index);
         component.SelectedAction = newSelectedAction;
         AddComponent(index, component);
     }
 
-    public void ReplaceGameTileAction(Game.TileActionComponent.TileAction newSelectedAction) {
+    public void ReplaceGameTileAction(UnityEngine.Events.UnityAction newSelectedAction) {
         var index = GameComponentsLookup.GameTileAction;
         var component = CreateComponent<Game.TileActionComponent>(index);
         component.SelectedAction = newSelectedAction;

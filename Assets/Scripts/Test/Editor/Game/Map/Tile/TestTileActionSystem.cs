@@ -22,7 +22,7 @@ namespace Test.System
 
 			var tile = _contexts.game.CreateEntity();
 			tile.AddGameView(_tileCon.gameObject);
-			tile.AddGameTileAction((e) => Assert.Pass());
+			tile.AddGameTileAction(Assert.Pass);
 
 			system.Execute();
 
@@ -36,7 +36,7 @@ namespace Test.System
 
 			var tile = _contexts.game.CreateEntity();
 			tile.AddGameView(_tileCon.gameObject);
-			tile.AddGameTileAction((e) => Assert.Fail());
+			tile.AddGameTileAction(Assert.Fail);
 			tile.RemoveGameTileAction();
 
 			system.Execute();

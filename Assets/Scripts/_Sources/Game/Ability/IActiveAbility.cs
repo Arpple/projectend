@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Entitas;
 
 namespace Game
 {
-	public interface IActiveAbility
+	public abstract class ActiveAbility<TTarget> : Ability where TTarget : Entity
 	{
 		/// <summary>
 		/// Gets the tiles to show area of ability.
 		/// </summary>
 		/// <param name="caster">The caster.</param>
 		/// <returns></returns>
-		GameEntity[] GetTilesArea(GameEntity caster);
+		public abstract GameEntity[] GetTilesArea(GameEntity caster);
 
 		/// <summary>
 		/// Gets a target for each tile in area
@@ -18,13 +19,13 @@ namespace Game
 		/// <param name="caster">The caster.</param>
 		/// <param name="targetTile">The target tile.</param>
 		/// <returns>target entity or null if this tile can't be target</returns>
-		GameEntity GetTargetEntity(GameEntity caster, GameEntity targetTile);
+		public abstract TTarget GetTargetEntity(GameEntity caster, GameEntity targetTile);
 
 		/// <summary>
 		/// Called when [target selected].
 		/// </summary>
 		/// <param name="caster">The caster.</param>
 		/// <param name="target">The target.</param>
-		void OnTargetSelected(GameEntity caster, GameEntity target);
+		public abstract void OnTargetSelected(GameEntity caster, TTarget target);
 	}
 }

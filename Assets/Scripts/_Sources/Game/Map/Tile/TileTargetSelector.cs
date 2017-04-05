@@ -2,14 +2,19 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using Entitas;
 
 namespace Game.UI
 {
-	public class TileTargetSelector
+	public class TileTargetSelector<TTarget> where TTarget : Entity
 	{
 		private GameEntity[] _tiles;
 
-		public TileTargetSelector(GameEntity selector, GameEntity[] tiles, Func<GameEntity, GameEntity, GameEntity> getTargetFromTileFunction, TileActionComponent.TileAction onTileSelected)
+		public TileTargetSelector(
+			GameEntity selector, GameEntity[] tiles, 
+			Func<GameEntity, GameEntity, TTarget> getTargetFromTileFunction, 
+			UnityAction<TTarget> onTileSelected
+		)
 		{
 			_tiles = tiles;
 
@@ -24,7 +29,7 @@ namespace Game.UI
 				var target = getTargetFromTileFunction(selector, tile);
 				if(target != null)
 				{
-					tile.AddGameTileAction((t) => 
+					tile.AddGameTileAction(() => 
 					{
 						onTileSelected(target);
 						ClearSelection();

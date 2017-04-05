@@ -56,7 +56,7 @@ namespace Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var cardEvent = entity.gameEventUseCardOnUnit;
-			var ability = (IActiveAbility)cardEvent.CardEnttiy.gameAbility.Ability;
+			var ability = (ActiveAbility<GameEntity>)cardEvent.CardEnttiy.gameAbility.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
 			if(cardEvent.CardEnttiy.isGameDeckCard)

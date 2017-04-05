@@ -18,12 +18,12 @@ namespace Game.UI
 
 			if (cardEntity.hasGameAbility)
 			{
-				var ability = cardEntity.gameAbility.Ability as IActiveAbility;
+				var ability = cardEntity.gameAbility.Ability as ActiveAbility<GameEntity>;
 				if (ability == null) return;
 
 				var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
 
-				TileTargetSelector tileSelector = new TileTargetSelector(
+				TileTargetSelector<GameEntity> tileSelector = new TileTargetSelector<GameEntity>(
 					caster,
 					ability.GetTilesArea(caster),
 					ability.GetTargetEntity,

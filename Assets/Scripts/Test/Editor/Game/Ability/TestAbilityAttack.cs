@@ -5,7 +5,7 @@ using System;
 
 namespace Test.TestAbility
 {
-	public class TestAbilityAttack : ActiveAbilityTest
+	public class TestAbilityAttack : ActiveAbilityTest<GameEntity>
 	{
 		protected override Ability CreateAbility()
 		{
@@ -22,7 +22,7 @@ namespace Test.TestAbility
 
 		protected override GameEntity SetupTarget()
 		{
-			var entity = base.SetupTarget();
+			var entity = _contexts.game.CreateEntity();
 			entity.AddGameHitpoint(10);
 
 			return entity;

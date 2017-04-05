@@ -4,22 +4,19 @@ using Game;
 namespace Test.TestAbility
 {
 	[TestFixture]
-	public abstract class ActiveAbilityTest : AbilityTest
+	public abstract class ActiveAbilityTest<TTarget> : AbilityTest where TTarget : Entitas.Entity
 	{
-		protected IActiveAbility _activeAbility;
-		protected GameEntity _target;
+		protected ActiveAbility<TTarget> _activeAbility;
+		protected TTarget _target;
 
 		[SetUp]
 		public void SetupActiveAbililty()
 		{
-			_activeAbility = (IActiveAbility)CreateAbility();
+			_activeAbility = (ActiveAbility<TTarget>)CreateAbility();
 			_target = SetupTarget();
 		}
 
-		protected virtual GameEntity SetupTarget()
-		{
-			return _contexts.game.CreateEntity();
-		}
+		protected abstract TTarget SetupTarget();
 
 		[Test]
 		public void ActivateAbility()

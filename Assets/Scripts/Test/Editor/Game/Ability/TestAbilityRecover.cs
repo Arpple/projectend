@@ -3,7 +3,7 @@ using Game;
 
 namespace Test.TestAbility
 {
-	public class TestAbilityRecover : ActiveAbilityTest
+	public class TestAbilityRecover : ActiveAbilityTest<GameEntity>
 	{
 		protected override Ability CreateAbility()
 		{
@@ -12,7 +12,7 @@ namespace Test.TestAbility
 
 		protected override GameEntity SetupTarget()
 		{
-			var entity = base.SetupTarget();
+			var entity = _contexts.game.CreateEntity();
 			entity.AddGameUnitStatus(10, 1, 1, 1, 1);
 			entity.AddGameHitpoint(0);
 			entity.isGameDead = true;

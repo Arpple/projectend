@@ -42,7 +42,7 @@ namespace MapEditor
 		{
 			foreach(var e in entities)
 			{
-				e.AddGameTileAction((x) => ReplaceTile(x));
+				e.AddGameTileAction(() => ReplaceTile(e));
 			}
 		}
 

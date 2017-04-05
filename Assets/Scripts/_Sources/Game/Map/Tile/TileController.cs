@@ -13,7 +13,7 @@ namespace Game
 		public SpriteRenderer Span;
 		public SpriteRenderer TileSprite;
 		public TileHoverAction MouseEnterAction;
-		public Action<GameEntity> TileAction;
+		public Action TileAction;
 		public Action<GameEntity> DefaultTileAction;
 
         public delegate void TileHoverAction();
@@ -34,7 +34,7 @@ namespace Game
             if(EventSystem.current.IsPointerOverGameObject()) return;
 			if (TileAction != null)
 			{
-				TileAction(Entity);
+				TileAction();
 			}
 			else
 			{
