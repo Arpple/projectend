@@ -22,8 +22,7 @@ namespace Test
 
 			var pos = new MapPositionComponent()
 			{
-				x = 4,
-				y = 4
+				Value = new Position(4, 4)
 			};
 			Assert.AreEqual(Tile.Grass, _map.GetTile(pos));
 		}

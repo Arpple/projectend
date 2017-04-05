@@ -21,15 +21,13 @@ namespace Game
 	{
 		public static GameEntity GetUnitOnTile(this TileEntity tile)
 		{
-			return Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
-				.Where(obj => obj.gameMapPosition.Equals(tile.gameMapPosition))
+			return Contexts.sharedInstance.game.GetEntitiesWithGameMapPosition(tile.gameMapPosition.Value)
 				.FirstOrDefault();
 		}
 
 		public static TileEntity GetTileOfUnit(this GameEntity unit)
 		{
-			return Contexts.sharedInstance.tile.GetEntities()
-				.Where(t => t.gameMapPosition.Equals(unit.gameMapPosition))
+			return Contexts.sharedInstance.tile.GetEntitiesWithGameMapPosition(unit.gameMapPosition.Value)
 				.First();
 		}
 	}

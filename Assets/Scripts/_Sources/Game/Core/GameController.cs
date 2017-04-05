@@ -87,6 +87,11 @@ namespace Game
 		{
 			Assert.IsNotNull(_systems);
 
+			foreach(var c in _contexts.allContexts)
+			{
+				c.ClearGroups();
+				c.DeactivateAndRemoveEntityIndices();
+			}
 			_systems.ClearReactiveSystems();
 			_systems.TearDown();
 		}

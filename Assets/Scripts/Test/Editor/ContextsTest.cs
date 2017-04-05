@@ -13,6 +13,7 @@ namespace Test
 		{
 			_contexts = TestHelper.CreateContexts();
 			_systems = new Systems();
+			_contexts.InitializeEntityIndices();
 		}
 
 		[TearDown]
@@ -21,6 +22,7 @@ namespace Test
 			foreach(var c in _contexts.allContexts)
 			{
 				c.ClearGroups();
+				c.DeactivateAndRemoveEntityIndices();
 			}
 			_systems.ClearReactiveSystems();
 			_contexts.Reset();
