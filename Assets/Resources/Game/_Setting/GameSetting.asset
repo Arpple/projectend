@@ -26,6 +26,8 @@ MonoBehaviour:
       CharacterIconPrefabs: {fileID: 114917532828873708, guid: ea4f123b8ee52c742b5d5650d674d9be,
         type: 2}
   CardSetting:
+    CardObjectPrefabs: {fileID: 114544459095568098, guid: cc4243deb4802334d9b16040e09b565c,
+      type: 2}
     DeckSetting:
       StartCardCount: 5
       CardBlueprints: {fileID: 11400000, guid: e3c1e027606b07d4d95ff6db953aec43, type: 2}

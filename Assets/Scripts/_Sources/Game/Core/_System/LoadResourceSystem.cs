@@ -42,6 +42,7 @@ namespace Game
 		public void TearDown()
 		{
 			_linkedObjects.ForEach(o => o.Unlink());
+			_linkedObjects.Clear();
 		}
 
 		private void LoadResource(TEntity entity)

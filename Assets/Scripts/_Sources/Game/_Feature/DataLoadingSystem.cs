@@ -9,6 +9,7 @@ namespace Game
 			Add(new LoadCardSystem(contexts, setting.CardSetting.DeckSetting));
 			Add(new LoadAbilitySystem(contexts));
 			Add(new GameResouceLoadSystem(contexts));
+			Add(new CardViewLoadingSystem(contexts, setting.CardSetting));
 		}
 	}
 

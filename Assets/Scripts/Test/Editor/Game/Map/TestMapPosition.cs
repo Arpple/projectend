@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Test
+namespace Test.Component
 {
 	public class TestMapPosition
 	{
