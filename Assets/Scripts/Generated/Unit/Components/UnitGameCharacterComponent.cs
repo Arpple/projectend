@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
-    public Game.CharacterComponent gameCharacter { get { return (Game.CharacterComponent)GetComponent(GameComponentsLookup.GameCharacter); } }
-    public bool hasGameCharacter { get { return HasComponent(GameComponentsLookup.GameCharacter); } }
+    public Game.CharacterComponent gameCharacter { get { return (Game.CharacterComponent)GetComponent(UnitComponentsLookup.GameCharacter); } }
+    public bool hasGameCharacter { get { return HasComponent(UnitComponentsLookup.GameCharacter); } }
 
     public void AddGameCharacter(Game.Character newType) {
-        var index = GameComponentsLookup.GameCharacter;
+        var index = UnitComponentsLookup.GameCharacter;
         var component = CreateComponent<Game.CharacterComponent>(index);
         component.Type = newType;
         AddComponent(index, component);
     }
 
     public void ReplaceGameCharacter(Game.Character newType) {
-        var index = GameComponentsLookup.GameCharacter;
+        var index = UnitComponentsLookup.GameCharacter;
         var component = CreateComponent<Game.CharacterComponent>(index);
         component.Type = newType;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameCharacter() {
-        RemoveComponent(GameComponentsLookup.GameCharacter);
+        RemoveComponent(UnitComponentsLookup.GameCharacter);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameCharacter;
+    static Entitas.IMatcher<UnitEntity> _matcherGameCharacter;
 
-    public static Entitas.IMatcher<GameEntity> GameCharacter {
+    public static Entitas.IMatcher<UnitEntity> GameCharacter {
         get {
             if(_matcherGameCharacter == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameCharacter);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameCharacter);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameCharacter = matcher;
             }
 

@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
-    public Game.CharacterSkillsResourceComponent gameCharacterSkillsResource { get { return (Game.CharacterSkillsResourceComponent)GetComponent(GameComponentsLookup.GameCharacterSkillsResource); } }
-    public bool hasGameCharacterSkillsResource { get { return HasComponent(GameComponentsLookup.GameCharacterSkillsResource); } }
+    public Game.CharacterSkillsResourceComponent gameCharacterSkillsResource { get { return (Game.CharacterSkillsResourceComponent)GetComponent(UnitComponentsLookup.GameCharacterSkillsResource); } }
+    public bool hasGameCharacterSkillsResource { get { return HasComponent(UnitComponentsLookup.GameCharacterSkillsResource); } }
 
     public void AddGameCharacterSkillsResource(System.Collections.Generic.List<Game.Card> newSkills) {
-        var index = GameComponentsLookup.GameCharacterSkillsResource;
+        var index = UnitComponentsLookup.GameCharacterSkillsResource;
         var component = CreateComponent<Game.CharacterSkillsResourceComponent>(index);
         component.Skills = newSkills;
         AddComponent(index, component);
     }
 
     public void ReplaceGameCharacterSkillsResource(System.Collections.Generic.List<Game.Card> newSkills) {
-        var index = GameComponentsLookup.GameCharacterSkillsResource;
+        var index = UnitComponentsLookup.GameCharacterSkillsResource;
         var component = CreateComponent<Game.CharacterSkillsResourceComponent>(index);
         component.Skills = newSkills;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameCharacterSkillsResource() {
-        RemoveComponent(GameComponentsLookup.GameCharacterSkillsResource);
+        RemoveComponent(UnitComponentsLookup.GameCharacterSkillsResource);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameCharacterSkillsResource;
+    static Entitas.IMatcher<UnitEntity> _matcherGameCharacterSkillsResource;
 
-    public static Entitas.IMatcher<GameEntity> GameCharacterSkillsResource {
+    public static Entitas.IMatcher<UnitEntity> GameCharacterSkillsResource {
         get {
             if(_matcherGameCharacterSkillsResource == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameCharacterSkillsResource);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameCharacterSkillsResource);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameCharacterSkillsResource = matcher;
             }
 

@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
-    public Game.HitpointComponent gameHitpoint { get { return (Game.HitpointComponent)GetComponent(GameComponentsLookup.GameHitpoint); } }
-    public bool hasGameHitpoint { get { return HasComponent(GameComponentsLookup.GameHitpoint); } }
+    public Game.HitpointComponent gameHitpoint { get { return (Game.HitpointComponent)GetComponent(UnitComponentsLookup.GameHitpoint); } }
+    public bool hasGameHitpoint { get { return HasComponent(UnitComponentsLookup.GameHitpoint); } }
 
     public void AddGameHitpoint(int newValue) {
-        var index = GameComponentsLookup.GameHitpoint;
+        var index = UnitComponentsLookup.GameHitpoint;
         var component = CreateComponent<Game.HitpointComponent>(index);
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceGameHitpoint(int newValue) {
-        var index = GameComponentsLookup.GameHitpoint;
+        var index = UnitComponentsLookup.GameHitpoint;
         var component = CreateComponent<Game.HitpointComponent>(index);
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameHitpoint() {
-        RemoveComponent(GameComponentsLookup.GameHitpoint);
+        RemoveComponent(UnitComponentsLookup.GameHitpoint);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameHitpoint;
+    static Entitas.IMatcher<UnitEntity> _matcherGameHitpoint;
 
-    public static Entitas.IMatcher<GameEntity> GameHitpoint {
+    public static Entitas.IMatcher<UnitEntity> GameHitpoint {
         get {
             if(_matcherGameHitpoint == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameHitpoint);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameHitpoint);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameHitpoint = matcher;
             }
 

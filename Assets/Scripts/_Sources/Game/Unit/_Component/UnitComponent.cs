@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class UnitComponent : IComponent
 	{
 		public int Id;

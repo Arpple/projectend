@@ -8,15 +8,57 @@
 //------------------------------------------------------------------------------
 public static class UnitComponentsLookup {
 
+    public const int GameCharacter = 0;
+    public const int GameCharacterSkillsResource = 1;
+    public const int GameDead = 2;
+    public const int GameHitpoint = 3;
+    public const int GameId = 4;
+    public const int GameLocalPlayer = 5;
+    public const int GameMapPosition = 6;
+    public const int GameOwner = 7;
+    public const int GameResource = 8;
+    public const int GameUnit = 9;
+    public const int GameUnitDetail = 10;
+    public const int GameUnitIcon = 11;
+    public const int GameUnitIconResource = 12;
+    public const int GameUnitStatus = 13;
+    public const int GameView = 14;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
-
+        "GameCharacter",
+        "GameCharacterSkillsResource",
+        "GameDead",
+        "GameHitpoint",
+        "GameId",
+        "GameLocalPlayer",
+        "GameMapPosition",
+        "GameOwner",
+        "GameResource",
+        "GameUnit",
+        "GameUnitDetail",
+        "GameUnitIcon",
+        "GameUnitIconResource",
+        "GameUnitStatus",
+        "GameView"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Game.CharacterComponent),
+        typeof(Game.CharacterSkillsResourceComponent),
+        typeof(Game.DeadComponent),
+        typeof(Game.HitpointComponent),
+        typeof(Game.IdComponent),
+        typeof(Game.LocalPlayerComponent),
+        typeof(Game.MapPositionComponent),
+        typeof(Game.OwnerComponent),
+        typeof(Game.ResourceComponent),
+        typeof(Game.UnitComponent),
+        typeof(Game.UnitDetailComponent),
+        typeof(Game.UnitIconComponent),
+        typeof(Game.UnitIconResourceComponent),
+        typeof(Game.UnitStatusComponent),
+        typeof(Game.ViewComponent)
     };
 }

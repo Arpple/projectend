@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class CharacterComponent : IComponent
 	{
 		public Character Type;

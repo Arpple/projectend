@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
-    public Game.UnitIconResourceComponent gameUnitIconResource { get { return (Game.UnitIconResourceComponent)GetComponent(GameComponentsLookup.GameUnitIconResource); } }
-    public bool hasGameUnitIconResource { get { return HasComponent(GameComponentsLookup.GameUnitIconResource); } }
+    public Game.UnitIconResourceComponent gameUnitIconResource { get { return (Game.UnitIconResourceComponent)GetComponent(UnitComponentsLookup.GameUnitIconResource); } }
+    public bool hasGameUnitIconResource { get { return HasComponent(UnitComponentsLookup.GameUnitIconResource); } }
 
     public void AddGameUnitIconResource(string newIconSpritePath) {
-        var index = GameComponentsLookup.GameUnitIconResource;
+        var index = UnitComponentsLookup.GameUnitIconResource;
         var component = CreateComponent<Game.UnitIconResourceComponent>(index);
         component.IconSpritePath = newIconSpritePath;
         AddComponent(index, component);
     }
 
     public void ReplaceGameUnitIconResource(string newIconSpritePath) {
-        var index = GameComponentsLookup.GameUnitIconResource;
+        var index = UnitComponentsLookup.GameUnitIconResource;
         var component = CreateComponent<Game.UnitIconResourceComponent>(index);
         component.IconSpritePath = newIconSpritePath;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameUnitIconResource() {
-        RemoveComponent(GameComponentsLookup.GameUnitIconResource);
+        RemoveComponent(UnitComponentsLookup.GameUnitIconResource);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameUnitIconResource;
+    static Entitas.IMatcher<UnitEntity> _matcherGameUnitIconResource;
 
-    public static Entitas.IMatcher<GameEntity> GameUnitIconResource {
+    public static Entitas.IMatcher<UnitEntity> GameUnitIconResource {
         get {
             if(_matcherGameUnitIconResource == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameUnitIconResource);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameUnitIconResource);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameUnitIconResource = matcher;
             }
 

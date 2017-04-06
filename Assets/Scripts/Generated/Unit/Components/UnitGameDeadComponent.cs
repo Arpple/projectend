@@ -6,18 +6,18 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
     static readonly Game.DeadComponent gameDeadComponent = new Game.DeadComponent();
 
     public bool isGameDead {
-        get { return HasComponent(GameComponentsLookup.GameDead); }
+        get { return HasComponent(UnitComponentsLookup.GameDead); }
         set {
             if(value != isGameDead) {
                 if(value) {
-                    AddComponent(GameComponentsLookup.GameDead, gameDeadComponent);
+                    AddComponent(UnitComponentsLookup.GameDead, gameDeadComponent);
                 } else {
-                    RemoveComponent(GameComponentsLookup.GameDead);
+                    RemoveComponent(UnitComponentsLookup.GameDead);
                 }
             }
         }
@@ -32,15 +32,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameDead;
+    static Entitas.IMatcher<UnitEntity> _matcherGameDead;
 
-    public static Entitas.IMatcher<GameEntity> GameDead {
+    public static Entitas.IMatcher<UnitEntity> GameDead {
         get {
             if(_matcherGameDead == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameDead);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameDead);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameDead = matcher;
             }
 

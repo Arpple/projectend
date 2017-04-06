@@ -3,7 +3,7 @@ using Entitas.CodeGenerator.Api;
 
 namespace Game
 {
-	[Game, Unique]
+	[Game, Unit, Unique]
 	public class LocalPlayerComponent : IComponent
 	{}
 

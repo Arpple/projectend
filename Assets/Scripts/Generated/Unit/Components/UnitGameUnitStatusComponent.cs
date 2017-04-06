@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
-    public Game.UnitStatusComponent gameUnitStatus { get { return (Game.UnitStatusComponent)GetComponent(GameComponentsLookup.GameUnitStatus); } }
-    public bool hasGameUnitStatus { get { return HasComponent(GameComponentsLookup.GameUnitStatus); } }
+    public Game.UnitStatusComponent gameUnitStatus { get { return (Game.UnitStatusComponent)GetComponent(UnitComponentsLookup.GameUnitStatus); } }
+    public bool hasGameUnitStatus { get { return HasComponent(UnitComponentsLookup.GameUnitStatus); } }
 
     public void AddGameUnitStatus(int newHitPoint, int newAttackPower, int newAttackRange, int newVisionRange, int newMoveSpeed) {
-        var index = GameComponentsLookup.GameUnitStatus;
+        var index = UnitComponentsLookup.GameUnitStatus;
         var component = CreateComponent<Game.UnitStatusComponent>(index);
         component.HitPoint = newHitPoint;
         component.AttackPower = newAttackPower;
@@ -23,7 +23,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceGameUnitStatus(int newHitPoint, int newAttackPower, int newAttackRange, int newVisionRange, int newMoveSpeed) {
-        var index = GameComponentsLookup.GameUnitStatus;
+        var index = UnitComponentsLookup.GameUnitStatus;
         var component = CreateComponent<Game.UnitStatusComponent>(index);
         component.HitPoint = newHitPoint;
         component.AttackPower = newAttackPower;
@@ -34,7 +34,7 @@ public partial class GameEntity {
     }
 
     public void RemoveGameUnitStatus() {
-        RemoveComponent(GameComponentsLookup.GameUnitStatus);
+        RemoveComponent(UnitComponentsLookup.GameUnitStatus);
     }
 }
 
@@ -46,15 +46,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameUnitStatus;
+    static Entitas.IMatcher<UnitEntity> _matcherGameUnitStatus;
 
-    public static Entitas.IMatcher<GameEntity> GameUnitStatus {
+    public static Entitas.IMatcher<UnitEntity> GameUnitStatus {
         get {
             if(_matcherGameUnitStatus == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameUnitStatus);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameUnitStatus);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameUnitStatus = matcher;
             }
 

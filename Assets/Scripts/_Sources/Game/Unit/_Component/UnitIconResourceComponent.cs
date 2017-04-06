@@ -4,7 +4,7 @@ using Entitas;
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class UnitIconResourceComponent : IComponent
 	{
 		public string IconSpritePath;

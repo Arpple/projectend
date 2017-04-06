@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class HitpointComponent : IComponent
 	{
 		public int Value;

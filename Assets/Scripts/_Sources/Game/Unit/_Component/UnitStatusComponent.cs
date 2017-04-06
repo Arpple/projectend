@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class UnitStatusComponent : IComponent
 	{
 		public int HitPoint;

@@ -8,40 +8,25 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int GameCharacter = 0;
-    public const int GameCharacterSkillsResource = 1;
-    public const int GameDead = 2;
-    public const int GameHitpoint = 3;
-    public const int GameId = 4;
-    public const int GameLocalPlayer = 5;
-    public const int GameMapPosition = 6;
-    public const int GameOwner = 7;
-    public const int GamePlayerBox = 8;
-    public const int GamePlayer = 9;
-    public const int GamePlayerDeck = 10;
-    public const int GamePlayingOrder = 11;
-    public const int GameResource = 12;
-    public const int GameRole = 13;
-    public const int GameUIPlayerSkillCardUI = 14;
-    public const int GameUnit = 15;
-    public const int GameUnitDetail = 16;
-    public const int GameUnitIcon = 17;
-    public const int GameUnitIconResource = 18;
-    public const int GameUnitStatus = 19;
-    public const int GameView = 20;
-    public const int GameViewContainer = 21;
-    public const int GameWin = 22;
+    public const int GameId = 0;
+    public const int GameLocalPlayer = 1;
+    public const int GameOwner = 2;
+    public const int GamePlayerBox = 3;
+    public const int GamePlayer = 4;
+    public const int GamePlayerDeck = 5;
+    public const int GamePlayingOrder = 6;
+    public const int GameResource = 7;
+    public const int GameRole = 8;
+    public const int GameUIPlayerSkillCardUI = 9;
+    public const int GameView = 10;
+    public const int GameViewContainer = 11;
+    public const int GameWin = 12;
 
-    public const int TotalComponents = 23;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
-        "GameCharacter",
-        "GameCharacterSkillsResource",
-        "GameDead",
-        "GameHitpoint",
         "GameId",
         "GameLocalPlayer",
-        "GameMapPosition",
         "GameOwner",
         "GamePlayerBox",
         "GamePlayer",
@@ -50,24 +35,14 @@ public static class GameComponentsLookup {
         "GameResource",
         "GameRole",
         "GameUIPlayerSkillCardUI",
-        "GameUnit",
-        "GameUnitDetail",
-        "GameUnitIcon",
-        "GameUnitIconResource",
-        "GameUnitStatus",
         "GameView",
         "GameViewContainer",
         "GameWin"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.CharacterComponent),
-        typeof(Game.CharacterSkillsResourceComponent),
-        typeof(Game.DeadComponent),
-        typeof(Game.HitpointComponent),
         typeof(Game.IdComponent),
         typeof(Game.LocalPlayerComponent),
-        typeof(Game.MapPositionComponent),
         typeof(Game.OwnerComponent),
         typeof(Game.PlayerBoxComponent),
         typeof(Game.PlayerComponent),
@@ -76,11 +51,6 @@ public static class GameComponentsLookup {
         typeof(Game.ResourceComponent),
         typeof(Game.RoleComponent),
         typeof(Game.UI.PlayerSkillCardUI),
-        typeof(Game.UnitComponent),
-        typeof(Game.UnitDetailComponent),
-        typeof(Game.UnitIconComponent),
-        typeof(Game.UnitIconResourceComponent),
-        typeof(Game.UnitStatusComponent),
         typeof(Game.ViewComponent),
         typeof(Game.ViewContainerComponent),
         typeof(Game.WinComponent)

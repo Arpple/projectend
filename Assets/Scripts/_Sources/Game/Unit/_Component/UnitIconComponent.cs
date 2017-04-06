@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class UnitIconComponent : IComponent
 	{
 		public Sprite IconSprite;

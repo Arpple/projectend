@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UnitEntity {
 
-    public Game.MapPositionComponent gameMapPosition { get { return (Game.MapPositionComponent)GetComponent(GameComponentsLookup.GameMapPosition); } }
-    public bool hasGameMapPosition { get { return HasComponent(GameComponentsLookup.GameMapPosition); } }
+    public Game.MapPositionComponent gameMapPosition { get { return (Game.MapPositionComponent)GetComponent(UnitComponentsLookup.GameMapPosition); } }
+    public bool hasGameMapPosition { get { return HasComponent(UnitComponentsLookup.GameMapPosition); } }
 
     public void AddGameMapPosition(Position newValue) {
-        var index = GameComponentsLookup.GameMapPosition;
+        var index = UnitComponentsLookup.GameMapPosition;
         var component = CreateComponent<Game.MapPositionComponent>(index);
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceGameMapPosition(Position newValue) {
-        var index = GameComponentsLookup.GameMapPosition;
+        var index = UnitComponentsLookup.GameMapPosition;
         var component = CreateComponent<Game.MapPositionComponent>(index);
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameMapPosition() {
-        RemoveComponent(GameComponentsLookup.GameMapPosition);
+        RemoveComponent(UnitComponentsLookup.GameMapPosition);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameMapPosition;
+    static Entitas.IMatcher<UnitEntity> _matcherGameMapPosition;
 
-    public static Entitas.IMatcher<GameEntity> GameMapPosition {
+    public static Entitas.IMatcher<UnitEntity> GameMapPosition {
         get {
             if(_matcherGameMapPosition == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameMapPosition);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameMapPosition);
+                matcher.componentNames = UnitComponentsLookup.componentNames;
                 _matcherGameMapPosition = matcher;
             }
 

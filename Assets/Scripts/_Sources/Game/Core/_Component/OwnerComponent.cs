@@ -3,7 +3,7 @@ using Entitas;
 
 namespace Game
 {
-	[Game, Card]
+	[Game, Card, Unit]
 	public class OwnerComponent : IComponent
 	{
 		public GameEntity Entity;
