@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-namespace UI {
+namespace Game.UI {
     public class TurnNotification: MonoBehaviour {
         public Text Turn, Player;
         public Animator AnimaControl;

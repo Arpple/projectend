@@ -15,6 +15,11 @@ namespace Game
 		private int _turn;
 		private int _round;
 
+		public int Turn
+		{
+			get { return (_round - 1) * PlayerOrder.Count + _turn; }
+		}
+
 		public GameEntity CurrentPlayer
 		{
 			get { return PlayerOrder[_turn - 1]; }

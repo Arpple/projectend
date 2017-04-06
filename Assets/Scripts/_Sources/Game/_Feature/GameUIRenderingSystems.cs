@@ -16,6 +16,8 @@ namespace Game.UI
 			Add(new TargetDeckCardStatusRendingSystem(contexts, ui.TargetPlayerStatus));
 
 			Add(new ViewContainerSystem(contexts));
+
+			Add(new TurnNotificationSystem(contexts, ui.TurnNoti));
 		}
 	}
 
