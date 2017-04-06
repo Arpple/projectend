@@ -5,35 +5,35 @@ using System.Linq;
 
 namespace Game.UI
 {
-	public class LocalCharacterStatusSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class LocalCharacterStatusSystem : ReactiveSystem<UnitEntity>, IInitializeSystem
 	{
-		private readonly GameContext _context;
+		private readonly UnitContext _context;
 		private readonly PlayerUnitStatusPanel _ui;
 
-		public LocalCharacterStatusSystem(Contexts contexts, PlayerUnitStatusPanel ui) : base(contexts.game)
+		public LocalCharacterStatusSystem(Contexts contexts, PlayerUnitStatusPanel ui) : base(contexts.unit)
 		{
-			_context = contexts.game;
+			_context = contexts.unit;
 			_ui = ui;
 		}
 
 		public void Initialize()
 		{
-			_ui.SetCharacter(_context.GetEntities(GameMatcher.GameCharacter)
+			_ui.SetCharacter(_context.GetEntities(UnitMatcher.GameCharacter)
 				.Where(c => c.gameUnit.OwnerEntity.isGameLocalPlayer)
 				.First());
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameUnitStatus, GroupEvent.Added);
+			return context.CreateCollector(UnitMatcher.GameUnitStatus, GroupEvent.Added);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(UnitEntity entity)
 		{
 			return entity.hasGameUnitStatus && entity.gameUnit.OwnerEntity.isGameLocalPlayer;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<UnitEntity> entities)
 		{
 			foreach(var entity in entities)
 			{

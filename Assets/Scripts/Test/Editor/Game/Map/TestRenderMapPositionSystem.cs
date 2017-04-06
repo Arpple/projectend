@@ -12,7 +12,7 @@ namespace Test.System
 			//given
 			var system = new UnitPositionSystem(_contexts);
 
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.unit.CreateEntity();
 			entity.AddGameView(new GameObject());
 			entity.AddGameMapPosition(1, 1);
 

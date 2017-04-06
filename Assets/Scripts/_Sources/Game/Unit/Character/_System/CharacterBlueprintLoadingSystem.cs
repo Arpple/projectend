@@ -7,35 +7,32 @@ namespace Game
 {
 	public class CharacterBlueprintLoadingSystem : IInitializeSystem
 	{
-		const string CHARACTER_VIEW_CONTAINER = "View/Character";
-
 		readonly CharacterSetting _setting;
-		private readonly GameContext _context;
+		private readonly UnitContext _context;
 
 		public CharacterBlueprintLoadingSystem(Contexts contexts, CharacterSetting setting)
 		{
 			_setting = setting;
-			_context = contexts.game;
+			_context = contexts.unit;
 		}
 
-		protected Blueprint GetBlueprint(GameEntity entity)
+		protected Blueprint GetBlueprint(UnitEntity entity)
 		{
 			return _setting.GetCharBlueprint(entity.gameCharacter.Type);
 		}
 
-		protected void LoadUnitData(GameEntity[] entities)
+		protected void LoadUnitData(UnitEntity[] entities)
 		{
 			foreach(var e in entities)
 			{
 				e.ApplyBlueprint(GetBlueprint(e));
-				e.AddGameViewContainer(CHARACTER_VIEW_CONTAINER);
 				e.AddGameHitpoint(e.gameUnitStatus.HitPoint);
 			}
 		}
 
 		public void Initialize()
 		{
-			LoadUnitData(_context.GetEntities(GameMatcher.GameCharacter));
+			LoadUnitData(_context.GetEntities(UnitMatcher.GameCharacter));
 		}
 	}
 

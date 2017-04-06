@@ -7,16 +7,16 @@ namespace Game
 {
 	public class CharacterIconLoadingSystem : IInitializeSystem
 	{
-		private readonly GameContext _context;
+		private readonly UnitContext _context;
 
 		public CharacterIconLoadingSystem(Contexts contexts)
 		{
-			_context = contexts.game;
+			_context = contexts.unit;
 		}
 
 		public void Initialize()
 		{
-			var characters = _context.GetEntities(GameMatcher.GameCharacter);
+			var characters = _context.GetEntities(UnitMatcher.GameCharacter);
 
 			foreach(var character in characters)
 			{

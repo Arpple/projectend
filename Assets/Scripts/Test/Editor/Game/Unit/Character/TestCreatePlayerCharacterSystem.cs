@@ -26,7 +26,7 @@ namespace Test.System
 
 			system.Initialize();
 
-			var character = _contexts.game.GetEntities(GameMatcher.GameCharacter).FirstOrDefault();
+			var character = _contexts.unit.GetEntities(UnitMatcher.GameCharacter).FirstOrDefault();
 			Assert.IsNotNull(character);
 			Assert.IsTrue(tile.gameMapPosition.Equals(character.gameMapPosition));
 		}

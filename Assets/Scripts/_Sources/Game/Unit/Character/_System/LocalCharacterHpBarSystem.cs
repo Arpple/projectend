@@ -5,26 +5,26 @@ using System.Collections.Generic;
 
 namespace Game.UI
 {
-	public class LocalCharacterHpBarSystem : ReactiveSystem<GameEntity>
+	public class LocalCharacterHpBarSystem : ReactiveSystem<UnitEntity>
 	{
 		private readonly HpBar _hpBar;
 
-		public LocalCharacterHpBarSystem(Contexts contexts, HpBar hpBar) : base(contexts.game)
+		public LocalCharacterHpBarSystem(Contexts contexts, HpBar hpBar) : base(contexts.unit)
 		{
 			_hpBar = hpBar;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameHitpoint);
+			return context.CreateCollector(UnitMatcher.GameHitpoint);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(UnitEntity entity)
 		{
 			return entity.hasGameHitpoint && entity.gameUnit.OwnerEntity.isGameLocalPlayer;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<UnitEntity> entities)
 		{
 			foreach(var e in entities)
 			{

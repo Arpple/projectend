@@ -3,16 +3,16 @@ using Game;
 
 namespace Test.TestAbility
 {
-	public class TestAbilityRecover : ActiveAbilityTest<GameEntity>
+	public class TestAbilityRecover : ActiveAbilityTest<UnitEntity>
 	{
 		protected override Ability CreateAbility()
 		{
 			return new AbilityRecover();
 		}
 
-		protected override GameEntity SetupTarget()
+		protected override UnitEntity SetupTarget()
 		{
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.unit.CreateEntity();
 			entity.AddGameUnitStatus(10, 1, 1, 1, 1);
 			entity.AddGameHitpoint(0);
 			entity.isGameDead = true;

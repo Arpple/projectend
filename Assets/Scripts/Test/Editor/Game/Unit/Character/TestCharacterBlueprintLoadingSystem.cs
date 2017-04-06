@@ -18,7 +18,7 @@ namespace Test.System
 		{
 			var system = new CharacterBlueprintLoadingSystem(_contexts, _setting);
 
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.unit.CreateEntity();
 			entity.AddGameCharacter(Character.LastBoss);
 
 			system.Initialize();

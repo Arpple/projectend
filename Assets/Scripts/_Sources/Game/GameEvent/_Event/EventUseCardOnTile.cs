@@ -8,11 +8,11 @@ namespace Game
 	[GameEvent]
 	public class EventUseCardOnTile : GameEventComponent
 	{
-		public GameEntity UserEntity;
+		public UnitEntity UserEntity;
 		public CardEntity CardEnttiy;
 		public TileEntity TargetEnttiy;
 
-		public static void Create(GameEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
+		public static void Create(UnitEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
 		{
 			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
@@ -23,7 +23,7 @@ namespace Game
 
 		public void Decode(int userUnitId, int cardId, int x, int y)
 		{
-			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+			UserEntity = Contexts.sharedInstance.unit.GetEntities(UnitMatcher.GameUnit)
 				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 

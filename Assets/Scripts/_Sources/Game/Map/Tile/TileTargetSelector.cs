@@ -11,8 +11,8 @@ namespace Game.UI
 		private TileEntity[] _tiles;
 
 		public TileTargetSelector(
-			GameEntity selector, TileEntity[] tiles, 
-			Func<GameEntity, TileEntity, TTarget> getTargetFromTileFunction, 
+			UnitEntity selector, TileEntity[] tiles, 
+			Func<UnitEntity, TileEntity, TTarget> getTargetFromTileFunction, 
 			UnityAction<TTarget> onTileSelected
 		)
 		{

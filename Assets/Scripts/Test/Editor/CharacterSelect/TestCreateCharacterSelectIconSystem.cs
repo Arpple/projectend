@@ -20,7 +20,7 @@ namespace Test.System
 		public void CreateSlideItemAndAddToSlideMenu()
 		{
 			var system = new CreateCharacterSelectionIconSystem(_contexts, _slideMenu);
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.unit.CreateEntity();
 			entity.AddGameResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
 			entity.AddGameUnitStatus(0, 0, 0, 0, 0);
 			entity.AddGameUnitDetail("", "");

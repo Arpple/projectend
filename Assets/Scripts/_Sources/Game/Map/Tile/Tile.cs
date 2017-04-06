@@ -19,13 +19,13 @@ namespace Game
 
 	public static class TileExtension
 	{
-		public static GameEntity GetUnitOnTile(this TileEntity tile)
+		public static UnitEntity GetUnitOnTile(this TileEntity tile)
 		{
-			return Contexts.sharedInstance.game.GetEntitiesWithGameMapPosition(tile.gameMapPosition.Value)
+			return Contexts.sharedInstance.unit.GetEntitiesWithGameMapPosition(tile.gameMapPosition.Value)
 				.FirstOrDefault();
 		}
 
-		public static TileEntity GetTileOfUnit(this GameEntity unit)
+		public static TileEntity GetTileOfUnit(this UnitEntity unit)
 		{
 			return Contexts.sharedInstance.tile.GetEntitiesWithGameMapPosition(unit.gameMapPosition.Value)
 				.First();

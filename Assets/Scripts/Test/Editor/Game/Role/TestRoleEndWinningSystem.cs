@@ -13,7 +13,7 @@ namespace Test.System
 
 			var ePlayer = _contexts.game.CreateEntity();
 			ePlayer.AddGameRole(new RoleEnd(_contexts.game));
-			var eChar = _contexts.game.CreateEntity();
+			var eChar = _contexts.unit.CreateEntity();
 			eChar.AddGameUnit(0, ePlayer);
 			eChar.isGameDead = true;
 

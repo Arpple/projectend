@@ -12,7 +12,7 @@ namespace Test.TestAbility
 			return new AbilityMove();
 		}
 
-		protected override GameEntity SetupCaster()
+		protected override UnitEntity SetupCaster()
 		{
 			var entity = base.SetupCaster();
 			entity.AddGameMapPosition(0, 0);

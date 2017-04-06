@@ -8,31 +8,31 @@ using Game;
 
 namespace CharacterSelect
 {
-	public class CreateCharacterSelectionIconSystem : ReactiveSystem<GameEntity>, ITearDownSystem
+	public class CreateCharacterSelectionIconSystem : ReactiveSystem<UnitEntity>, ITearDownSystem
 	{
 		private readonly GameContext _context;
 		private readonly SlideMenu _slidemenu;
 		private List<GameObject> _linkedObjects;
 
 		public CreateCharacterSelectionIconSystem(Contexts contexts, SlideMenu slideMenu)
-			: base(contexts.game)
+			: base(contexts.unit)
 		{
 			_context = contexts.game;
 			_slidemenu = slideMenu;
 			_linkedObjects = new List<GameObject>();
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameCharacter, GroupEvent.Added);
+			return context.CreateCollector(UnitMatcher.GameCharacter, GroupEvent.Added);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(UnitEntity entity)
 		{
 			return entity.hasGameCharacter && entity.gameCharacter.Type != Character.None;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<UnitEntity> entities)
 		{
 			foreach(var e in entities)
 			{

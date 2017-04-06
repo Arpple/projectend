@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Game.UI
 {
-	public class TargetUnitStatusDisplaySystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class TargetUnitStatusDisplaySystem : ReactiveSystem<UnitEntity>, IInitializeSystem
 	{
 		private readonly TileContext _tileContext;
 		private readonly CardContext _cardContext;
 		private readonly PlayerUnitStatusPanel _panel;
 
-		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.game)
+		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.unit)
 		{
 			_tileContext = contexts.tile;
 			_cardContext = contexts.card;
@@ -40,7 +40,7 @@ namespace Game.UI
 			}
 		}
 
-		private void ShowDisplayStatus(GameEntity unit)
+		private void ShowDisplayStatus(UnitEntity unit)
 		{
 			_panel.SetCharacter(unit);
 			_panel.gameObject.SetActive(true);
@@ -53,12 +53,12 @@ namespace Game.UI
 			_panel.HideDisplay();
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
 		{
-			return new Collector<GameEntity>(
+			return new Collector<UnitEntity>(
 				new[] {
-					context.GetGroup(GameMatcher.GameHitpoint),
-					context.GetGroup(GameMatcher.GameUnitStatus)
+					context.GetGroup(UnitMatcher.GameHitpoint),
+					context.GetGroup(UnitMatcher.GameUnitStatus)
 				}, 
 				new[] 
 				{
@@ -68,12 +68,12 @@ namespace Game.UI
 			);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(UnitEntity entity)
 		{
 			return _panel.ShowingCharacter == entity && entity.hasGameHitpoint && entity.hasGameUnitStatus;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<UnitEntity> entities)
 		{
 			foreach(var e in entities)
 			{

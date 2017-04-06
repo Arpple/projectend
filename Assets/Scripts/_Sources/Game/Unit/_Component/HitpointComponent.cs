@@ -11,21 +11,21 @@ namespace Game
 
 	public static class HitpointExtension
 	{
-		public static void TakeDamage(this GameEntity entity, int amount)
+		public static void TakeDamage(this UnitEntity entity, int amount)
 		{
 			if (!entity.hasGameHitpoint) return;
 
 			entity.ReplaceGameHitpoint(Mathf.Max(1, entity.gameHitpoint.Value - amount));
 		}
 
-		public static void TakeFatalDamage(this GameEntity entity, int amount)
+		public static void TakeFatalDamage(this UnitEntity entity, int amount)
 		{
 			if (!entity.hasGameHitpoint) return;
 
 			entity.ReplaceGameHitpoint(Mathf.Max(0, entity.gameHitpoint.Value - amount));
 		}
 
-		public static void RecoverHitpoint(this GameEntity entity, int amount)
+		public static void RecoverHitpoint(this UnitEntity entity, int amount)
 		{
 			if (!entity.hasGameHitpoint) return;
 

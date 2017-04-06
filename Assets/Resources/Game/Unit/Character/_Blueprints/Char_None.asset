@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57916a22b3b2048bb9e68345198807d9, type: 3}
   m_Name: Char_None
   m_EditorClassIdentifier: 
-  blueprintData: '{"contextIdentifier":"Game","name":"Char_None","components":[]}'
+  blueprintData: '{"contextIdentifier":"Unit","name":"Char_None","components":[]}'

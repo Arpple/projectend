@@ -71,7 +71,7 @@ namespace Game
 	}
 }
 
-public partial class GameEntity
+public partial class UnitEntity
 {
 	public void AddGameMapPosition(int x, int y)
 	{

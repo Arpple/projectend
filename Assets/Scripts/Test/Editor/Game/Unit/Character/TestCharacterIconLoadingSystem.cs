@@ -14,7 +14,7 @@ namespace Test.System
 			var spritePath = "Test/Editor/Sprite";
 			var sprite = Resources.Load<Sprite>(spritePath);
 
-			var character = _contexts.game.CreateEntity();
+			var character = _contexts.unit.CreateEntity();
 			character.AddGameCharacter(Character.LastBoss);
 			character.AddGameUnitIconResource(spritePath);
 

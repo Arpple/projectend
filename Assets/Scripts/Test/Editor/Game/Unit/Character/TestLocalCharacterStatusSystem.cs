@@ -26,7 +26,7 @@ namespace Test.System
 			player.gamePlayer.PlayerObject.PlayerName = "test";
 			player.isGameLocalPlayer = true;
 
-			var character = _contexts.game.CreateEntity();
+			var character = _contexts.unit.CreateEntity();
 			character.AddGameUnitIcon(icon);
 			character.AddGameUnit(1, player);
 			character.AddGameCharacter(Game.Character.LastBoss);

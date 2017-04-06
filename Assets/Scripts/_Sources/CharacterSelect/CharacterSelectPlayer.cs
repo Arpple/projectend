@@ -54,9 +54,9 @@ namespace CharacterSelect
 
         }
 
-		private GameEntity GetCharacterEntity(int characterTypeId)
+		private UnitEntity GetCharacterEntity(int characterTypeId)
 		{
-			return Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCharacter)
+			return Contexts.sharedInstance.unit.GetEntities(UnitMatcher.GameCharacter)
 				.Where(c => (int)c.gameCharacter.Type == characterTypeId)
 				.First();
 		}

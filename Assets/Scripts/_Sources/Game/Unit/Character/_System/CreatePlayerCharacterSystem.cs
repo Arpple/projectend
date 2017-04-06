@@ -10,11 +10,13 @@ namespace Game
 	{
 		readonly GameContext _gameContext;
 		readonly TileContext _tileContext;
+		readonly UnitContext _unitContext;
 
 		public CreatePlayerCharacterSystem(Contexts contexts)
 		{
 			_gameContext = contexts.game;
 			_tileContext = contexts.tile;
+			_unitContext = contexts.unit;
 		}
 
 		public void Initialize()
@@ -33,7 +35,7 @@ namespace Game
 				var characterType = (Character)playerEntity.gamePlayer.PlayerObject.SelectedCharacterId;
 				Assert.IsTrue(characterType != Character.None);
 
-				var character = _gameContext.CreateEntity();
+				var character = _unitContext.CreateEntity();
 				character.AddGameUnit(id, playerEntity);
 				character.AddGameCharacter(characterType);
 				character.AddGameMapPosition(sp.gameMapPosition.x, sp.gameMapPosition.y);

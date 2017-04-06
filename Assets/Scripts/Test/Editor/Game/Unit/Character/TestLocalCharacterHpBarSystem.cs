@@ -23,7 +23,7 @@ namespace Test.System
 			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
 			player.isGameLocalPlayer = true;
 
-			var ch = _contexts.game.CreateEntity();
+			var ch = _contexts.unit.CreateEntity();
 			ch.AddGameUnit(1, player);
 			ch.AddGameHitpoint(1);
 

@@ -11,11 +11,11 @@ namespace Test.System
 	public class TestOnDeadAbilitySystem : ContextsTest
 	{
 		private GameEntity _ownerPlayer;
-		private GameEntity _unit;
+		private UnitEntity _unit;
 
 		private class TestOnDeadAbility : Ability, IOnDeadAbility
 		{
-			public void OnDead(GameEntity deadEntity)
+			public void OnDead(UnitEntity deadEntity)
 			{
 				
 			}
@@ -27,7 +27,7 @@ namespace Test.System
 			_ownerPlayer = _contexts.game.CreateEntity();
 			_ownerPlayer.AddGamePlayer(new GameObject().AddComponent<Player>());
 
-			_unit = _contexts.game.CreateEntity();
+			_unit = _contexts.unit.CreateEntity();
 			_unit.AddGameUnit(0, _ownerPlayer);
 
 			_systems.Add(new OnDeadAbilitySystem(_contexts));

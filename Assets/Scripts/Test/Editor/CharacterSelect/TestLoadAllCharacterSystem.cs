@@ -22,7 +22,7 @@ namespace Test.System
 
 			var enumCount = Enum.GetNames(typeof(Character)).Length;
 
-			Assert.AreEqual(enumCount, _contexts.game.count);
+			Assert.AreEqual(enumCount, _contexts.unit.count);
 		}
 
 		[Test]
@@ -31,7 +31,7 @@ namespace Test.System
 			var system = new CharacterSelect.LoadAllCharacterSystems(_contexts, _setting);
 			system.Initialize();
 
-			foreach (var e in _contexts.game.GetEntities())
+			foreach (var e in _contexts.unit.GetEntities())
 			{
 				Assert.IsTrue(e.hasGameCharacter);
 			}

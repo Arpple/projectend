@@ -8,11 +8,11 @@ namespace Game
 	[GameEvent]
 	public class EventUseCardOnUnit : GameEventComponent
 	{
-		public GameEntity UserEntity;
+		public UnitEntity UserEntity;
 		public CardEntity CardEntity;
-		public GameEntity TargetEntity;
+		public UnitEntity TargetEntity;
 
-		public static void Create(GameEntity userEntity, CardEntity cardEntity, GameEntity targetEntity)
+		public static void Create(UnitEntity userEntity, CardEntity cardEntity, UnitEntity targetEntity)
 		{
 			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
@@ -23,14 +23,14 @@ namespace Game
 
 		public void Decode(int userUnitId, int cardId, int targetUnitId)
 		{
-			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+			UserEntity = Contexts.sharedInstance.unit.GetEntities(UnitMatcher.GameUnit)
 				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
 			CardEntity = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)
 				.First();
 
-			TargetEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+			TargetEntity = Contexts.sharedInstance.unit.GetEntities(UnitMatcher.GameUnit)
 				.Where(u => u.gameUnit.Id == targetUnitId)
 				.First();
 		}
@@ -55,7 +55,7 @@ namespace Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var cardEvent = entity.gameEventUseCardOnUnit;
-			var ability = (ActiveAbility<GameEntity>)cardEvent.CardEntity.gameAbility.Ability;
+			var ability = (ActiveAbility<UnitEntity>)cardEvent.CardEntity.gameAbility.Ability;
 			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEntity);
 
 			if(cardEvent.CardEntity.isGameDeckCard)

@@ -26,31 +26,6 @@ public sealed partial class GameContext : Context<GameEntity>
 	}
 
 	private GameEntity _gameLocalPlayerEntity;
-	private GameEntity _localPlayerCharacter;
-
-	public bool IsLocalPlayerTurn
-	{
-		get { return this.gameLocalPlayerEntity == this.gamePlayingOrder.CurrentPlayer; }
-	}
-
-	public GameEntity LocalPlayerCharacter
-	{
-		get
-		{
-			return this.GetEntities(GameMatcher.GameCharacter)
-				.Where(c => c.gameUnit.OwnerEntity.isGameLocalPlayer)
-				.FirstOrDefault();
-		}
-	}
-
-	public GameEntity GetCharacterFromPlayer(GameEntity playerEntity)
-	{
-		return _cachedPlayerCharacterEntity.Get(playerEntity, (id) =>
-			this.GetEntities(GameMatcher.GameCharacter)
-				.Where(c => c.gameUnit.OwnerEntity == playerEntity)
-				.FirstOrDefault()
-		);
-	}
 
 	public GameEntity GetPlayerEntity(int playerId)
 	{
@@ -64,5 +39,13 @@ public sealed partial class GameContext : Context<GameEntity>
 	public GameEntity GetPlayerEntity(Player player)
 	{
 		return GetPlayerEntity(player.PlayerId);
+	}
+
+	public bool IsLocalPlayerTurn
+	{
+		get
+		{
+			return gameLocalPlayerEntity == gamePlayingOrder.CurrentPlayer;
+		}
 	}
 }
