@@ -20,14 +20,14 @@ namespace Game
 
 		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.isGameDead && entity.gameUnit.OwnerEntity.gameRole.RoleObject is RoleEnd;
+			return entity.isGameDead && entity.gameOwner.Entity.gameRole.RoleObject is RoleEnd;
 		}
 
 		protected override void Execute(List<UnitEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				e.gameUnit.OwnerEntity.isGameWin = true;
+				e.gameOwner.Entity.isGameWin = true;
 			}
 		}
 	}

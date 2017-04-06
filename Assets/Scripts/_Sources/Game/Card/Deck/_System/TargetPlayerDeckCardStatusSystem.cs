@@ -37,9 +37,9 @@ namespace Game.UI
 
 		protected override void Execute(List<CardEntity> entities)
 		{
-			var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.gameUnit.OwnerEntity)
+			var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.gameOwner.Entity)
 				.Length;
-			var boxCardCount = _context.GetPlayerBoxCards(_status.ShowingCharacter.gameUnit.OwnerEntity)
+			var boxCardCount = _context.GetPlayerBoxCards(_status.ShowingCharacter.gameOwner.Entity)
 				.Length;
 
 			_status.UpdateDeckCardCount(deckCardCount);

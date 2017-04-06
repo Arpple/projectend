@@ -17,14 +17,13 @@ public static class UnitComponentsLookup {
     public const int GameMapPosition = 6;
     public const int GameOwner = 7;
     public const int GameResource = 8;
-    public const int GameUnit = 9;
-    public const int GameUnitDetail = 10;
-    public const int GameUnitIcon = 11;
-    public const int GameUnitIconResource = 12;
-    public const int GameUnitStatus = 13;
-    public const int GameView = 14;
+    public const int GameUnitDetail = 9;
+    public const int GameUnitIcon = 10;
+    public const int GameUnitIconResource = 11;
+    public const int GameUnitStatus = 12;
+    public const int GameView = 13;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "GameCharacter",
@@ -36,7 +35,6 @@ public static class UnitComponentsLookup {
         "GameMapPosition",
         "GameOwner",
         "GameResource",
-        "GameUnit",
         "GameUnitDetail",
         "GameUnitIcon",
         "GameUnitIconResource",
@@ -54,7 +52,6 @@ public static class UnitComponentsLookup {
         typeof(Game.MapPositionComponent),
         typeof(Game.OwnerComponent),
         typeof(Game.ResourceComponent),
-        typeof(Game.UnitComponent),
         typeof(Game.UnitDetailComponent),
         typeof(Game.UnitIconComponent),
         typeof(Game.UnitIconResourceComponent),

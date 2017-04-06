@@ -18,7 +18,7 @@ namespace Game
 
 			if (targetUnit == null) return null;
 
-			return targetUnit.gameUnit.OwnerEntity != caster.gameUnit.OwnerEntity ? targetUnit : null;
+			return targetUnit.gameOwner.Entity != caster.gameOwner.Entity ? targetUnit : null;
 		}
 
 		public override void OnTargetSelected(UnitEntity caster, UnitEntity target)

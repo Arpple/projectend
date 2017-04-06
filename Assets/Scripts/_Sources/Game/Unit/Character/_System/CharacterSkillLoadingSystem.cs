@@ -24,7 +24,7 @@ namespace Game
 				{
 					var skillCard = _cardContext.CreateCard(skill);
 					skillCard.isGameSkillCard = true;
-					skillCard.AddGameOwner(c.gameUnit.OwnerEntity);
+					skillCard.AddGameOwner(c.gameOwner.Entity);
 				}
 			}
 		}
@@ -33,7 +33,7 @@ namespace Game
 		{
 			return _unitContext.GetEntities(UnitMatcher.GameCharacter)
 				.Where(c => c.hasGameCharacterSkillsResource)
-				.OrderBy(c => c.gameUnit.OwnerEntity.gamePlayer.PlayerId)
+				.OrderBy(c => c.gameOwner.Entity.gamePlayer.PlayerId)
 				.ToArray();
 		}
 	}

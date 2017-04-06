@@ -23,7 +23,7 @@ namespace Game
 
 		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.isGameDead && entity.gameUnit.OwnerEntity.gameRole.RoleObject is RoleInvader;
+			return entity.isGameDead && entity.gameOwner.Entity.gameRole.RoleObject is RoleInvader;
 		}
 
 		protected override void Execute(List<UnitEntity> entities)

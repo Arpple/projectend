@@ -46,7 +46,7 @@ namespace Game.UI
 
 		public void SetCharacter(UnitEntity characterEntity)
 		{
-			PlayerNameText.text = characterEntity.gameUnit.OwnerEntity.gamePlayer.PlayerObject.PlayerName;
+			PlayerNameText.text = characterEntity.gameOwner.Entity.gamePlayer.PlayerObject.PlayerName;
 			CharacterIcon.IconImage.sprite = characterEntity.gameUnitIcon.IconSprite;
 
 			UpdateUnitStatus(characterEntity.gameUnitStatus);

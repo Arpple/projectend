@@ -20,7 +20,7 @@ public sealed partial class UnitContext : Context<UnitEntity>
 	public UnitEntity GetCharacterFromPlayer(GameEntity playerEntity)
 	{
 		return this.GetEntities(UnitMatcher.GameCharacter)
-				.Where(c => c.gameUnit.OwnerEntity == playerEntity)
+				.Where(c => c.gameOwner.Entity == playerEntity)
 				.FirstOrDefault();
 	}
 }

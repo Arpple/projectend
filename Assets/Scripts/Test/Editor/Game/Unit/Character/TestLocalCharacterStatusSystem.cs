@@ -28,7 +28,7 @@ namespace Test.System
 
 			var character = _contexts.unit.CreateEntity();
 			character.AddGameUnitIcon(icon);
-			character.AddGameUnit(1, player);
+			character.AddGameOwner(player);
 			character.AddGameCharacter(Game.Character.LastBoss);
 			character.AddGameUnitStatus(1, 1, 1, 1, 1);
 			character.AddGameHitpoint(1);

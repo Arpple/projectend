@@ -16,7 +16,7 @@ namespace Test.System
 			_ownerPlayer.AddGamePlayer(new GameObject().AddComponent<Player>());
 
 			_unit = _contexts.unit.CreateEntity();
-			_unit.AddGameUnit(0, _ownerPlayer);
+			_unit.AddGameOwner(_ownerPlayer);
 		}
 
 		[Test]

@@ -14,17 +14,15 @@ namespace Game
 
 		public static void Create(UnitEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
 		{
-			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
 			Assert.IsTrue(tileEntity.hasGameTile);
 
-			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameUnit.Id, cardEntity.gameId.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
+			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameId.Id, cardEntity.gameId.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
 		}
 
 		public void Decode(int userUnitId, int cardId, int x, int y)
 		{
-			UserEntity = Contexts.sharedInstance.unit.GetEntities(UnitMatcher.GameUnit)
-				.Where(u => u.gameUnit.Id == userUnitId)
+			UserEntity = Contexts.sharedInstance.unit.GetEntitiesWithGameId(userUnitId)
 				.First();
 
 			CardEnttiy = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)

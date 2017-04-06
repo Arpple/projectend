@@ -35,7 +35,7 @@ namespace Test.System
 			var ch = _contexts.unit.CreateEntity();
 			ch.AddGameCharacter(Character.LastBoss);
 			ch.AddGameUnitIcon(sprite);
-			ch.AddGameUnit(0, player);
+			ch.AddGameOwner(player);
 
 			_contexts.game.SetGamePlayingOrder(new List<GameEntity>() { player });
 

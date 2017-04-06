@@ -24,7 +24,7 @@ namespace Test.System
 			player.isGameLocalPlayer = true;
 
 			var ch = _contexts.unit.CreateEntity();
-			ch.AddGameUnit(1, player);
+			ch.AddGameOwner(player);
 			ch.AddGameHitpoint(1);
 
 			_hp.SetMaxValue(10);

@@ -22,7 +22,7 @@ namespace Game
 
 		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.gameHitpoint.Value == 0 && entity.gameUnit.OwnerEntity.hasGamePlayerBox;
+			return entity.gameHitpoint.Value == 0 && entity.gameOwner.Entity.hasGamePlayerBox;
 		}
 
 		protected override void Execute(List<UnitEntity> entities)
@@ -36,7 +36,7 @@ namespace Game
 
 		private void UseBoxReviveCard(UnitEntity deadEntity)
 		{
-			var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameUnit.OwnerEntity)
+			var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameOwner.Entity)
 				.OrderBy(c => c.gameInBox.Index)
 				.FirstOrDefault();
 			if (card != null)
@@ -49,7 +49,7 @@ namespace Game
 
 		private void UseBoxOnDeadCard(UnitEntity deadEntity)
 		{
-			var cards = _cardContext.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameUnit.OwnerEntity);
+			var cards = _cardContext.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameOwner.Entity);
 
 			foreach (var card in cards)
 			{

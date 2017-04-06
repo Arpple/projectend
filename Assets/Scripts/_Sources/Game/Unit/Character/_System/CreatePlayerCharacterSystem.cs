@@ -36,7 +36,7 @@ namespace Game
 				Assert.IsTrue(characterType != Character.None);
 
 				var character = _unitContext.CreateEntity();
-				character.AddGameUnit(id, playerEntity);
+				character.AddGameOwner(playerEntity);
 				character.AddGameCharacter(characterType);
 				character.AddGameMapPosition(sp.gameMapPosition.x, sp.gameMapPosition.y);
 				id++;
