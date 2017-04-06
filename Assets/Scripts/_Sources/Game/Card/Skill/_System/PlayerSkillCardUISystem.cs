@@ -6,28 +6,28 @@ using System;
 
 namespace Game.UI
 {
-	public class PlayerSkillCardUISystem : ReactiveSystem<GameEntity>, IInitializeSystem
+	public class PlayerSkillCardUISystem : ReactiveSystem<CardEntity>, IInitializeSystem
 	{
-		private GameContext _context;
+		private GameContext _gameContext;
 		private PlayerSkillFactory _factory;
 
-		public PlayerSkillCardUISystem(Contexts contexts, PlayerSkillFactory factory) : base(contexts.game)
+		public PlayerSkillCardUISystem(Contexts contexts, PlayerSkillFactory factory) : base(contexts.card)
 		{
-			_context = contexts.game;
+			_gameContext = contexts.game;
 			_factory = factory;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameSkillCard);
+			return context.CreateCollector(CardMatcher.GameSkillCard);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(CardEntity entity)
 		{
 			return entity.isGameSkillCard;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<CardEntity> entities)
 		{
 			foreach(var e in entities)
 			{
@@ -37,7 +37,7 @@ namespace Game.UI
 
 		public void Initialize()
 		{
-			foreach(var p in _context.GetEntities(GameMatcher.GamePlayer))
+			foreach(var p in _gameContext.GetEntities(GameMatcher.GamePlayer))
 			{
 				var cont = _factory.CreateContainer(p.gamePlayer.PlayerId);
 				p.AddGameUIPlayerSkillCardUI(cont);

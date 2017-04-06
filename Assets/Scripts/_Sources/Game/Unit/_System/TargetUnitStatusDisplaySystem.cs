@@ -7,14 +7,14 @@ namespace Game.UI
 {
 	public class TargetUnitStatusDisplaySystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
-		private readonly GameContext _gamecontext;
 		private readonly TileContext _tileContext;
+		private readonly CardContext _cardContext;
 		private readonly PlayerUnitStatusPanel _panel;
 
 		public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.game)
 		{
 			_tileContext = contexts.tile;
-			_gamecontext = contexts.game;
+			_cardContext = contexts.card;
 			_panel = panel;
 		}
 
@@ -44,8 +44,8 @@ namespace Game.UI
 		{
 			_panel.SetCharacter(unit);
 			_panel.gameObject.SetActive(true);
-			_panel.UpdateBoxCardCount(_gamecontext.GetPlayerBoxCards(unit.gameUnit.OwnerEntity).Length);
-			_panel.UpdateDeckCardCount(_gamecontext.GetPlayerDeckCards(unit.gameUnit.OwnerEntity).Length);
+			_panel.UpdateBoxCardCount(_cardContext.GetPlayerBoxCards(unit.gameUnit.OwnerEntity).Length);
+			_panel.UpdateDeckCardCount(_cardContext.GetPlayerDeckCards(unit.gameUnit.OwnerEntity).Length);
 		}
 
 		private void HideDisplayStatus()

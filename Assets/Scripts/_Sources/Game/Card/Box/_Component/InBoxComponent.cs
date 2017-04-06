@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Game
 {
-	[Game]
+	[Card]
 	public class InBoxComponent : IComponent
 	{
 		public int Index;
@@ -11,19 +11,19 @@ namespace Game
 
 	public static class BoxCardExtension
 	{
-		public static GameEntity[] GetBoxCards(this GameContext context)
+		public static CardEntity[] GetBoxCards(this CardContext context)
 		{
-			return context.GetEntities(GameMatcher.GameInBox);
+			return context.GetEntities(CardMatcher.GameInBox);
 		}
 
-		public static GameEntity[] GetPlayerBoxCards(this GameContext context, GameEntity playerEntity)
+		public static CardEntity[] GetPlayerBoxCards(this CardContext context, GameEntity playerEntity)
 		{
 			return context.GetBoxCards()
 				.Where(c => c.gameOwner.Entity == playerEntity)
 				.ToArray();
 		}
 
-		public static GameEntity[] GetPlayerBoxCards<T>(this GameContext context, GameEntity playerEntity)
+		public static CardEntity[] GetPlayerBoxCards<T>(this CardContext context, GameEntity playerEntity)
 		{
 			return context.GetBoxCards()
 				.Where(c => c.gameOwner.Entity == playerEntity)

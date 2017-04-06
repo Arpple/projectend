@@ -41,7 +41,7 @@ namespace Test.System
 			var box = new GameObject().AddComponent<PlayerBox>();
 			_ownerPlayer.AddGamePlayerBox(box);
 
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameCard(Card.Potion);
 			card.AddGameOwner(_ownerPlayer);
 			card.AddGameInBox(0);

@@ -8,47 +8,38 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int GameAbility = 0;
-    public const int GameCard = 1;
-    public const int GameCharacter = 2;
-    public const int GameCharacterSkillsResource = 3;
-    public const int GameDead = 4;
-    public const int GameDeckCard = 5;
-    public const int GameHitpoint = 6;
-    public const int GameId = 7;
-    public const int GameInBox = 8;
-    public const int GameLocalPlayer = 9;
-    public const int GameMapPosition = 10;
-    public const int GameOwner = 11;
-    public const int GamePlayerBox = 12;
-    public const int GamePlayer = 13;
-    public const int GamePlayerDeck = 14;
-    public const int GamePlayingOrder = 15;
-    public const int GameResource = 16;
-    public const int GameRole = 17;
-    public const int GameSkillCard = 18;
-    public const int GameUIPlayerSkillCardUI = 19;
-    public const int GameUnit = 20;
-    public const int GameUnitDetail = 21;
-    public const int GameUnitIcon = 22;
-    public const int GameUnitIconResource = 23;
-    public const int GameUnitStatus = 24;
-    public const int GameView = 25;
-    public const int GameViewContainer = 26;
-    public const int GameWin = 27;
+    public const int GameCharacter = 0;
+    public const int GameCharacterSkillsResource = 1;
+    public const int GameDead = 2;
+    public const int GameHitpoint = 3;
+    public const int GameId = 4;
+    public const int GameLocalPlayer = 5;
+    public const int GameMapPosition = 6;
+    public const int GameOwner = 7;
+    public const int GamePlayerBox = 8;
+    public const int GamePlayer = 9;
+    public const int GamePlayerDeck = 10;
+    public const int GamePlayingOrder = 11;
+    public const int GameResource = 12;
+    public const int GameRole = 13;
+    public const int GameUIPlayerSkillCardUI = 14;
+    public const int GameUnit = 15;
+    public const int GameUnitDetail = 16;
+    public const int GameUnitIcon = 17;
+    public const int GameUnitIconResource = 18;
+    public const int GameUnitStatus = 19;
+    public const int GameView = 20;
+    public const int GameViewContainer = 21;
+    public const int GameWin = 22;
 
-    public const int TotalComponents = 28;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
-        "GameAbility",
-        "GameCard",
         "GameCharacter",
         "GameCharacterSkillsResource",
         "GameDead",
-        "GameDeckCard",
         "GameHitpoint",
         "GameId",
-        "GameInBox",
         "GameLocalPlayer",
         "GameMapPosition",
         "GameOwner",
@@ -58,7 +49,6 @@ public static class GameComponentsLookup {
         "GamePlayingOrder",
         "GameResource",
         "GameRole",
-        "GameSkillCard",
         "GameUIPlayerSkillCardUI",
         "GameUnit",
         "GameUnitDetail",
@@ -71,15 +61,11 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.AbilityComponent),
-        typeof(Game.CardComponent),
         typeof(Game.CharacterComponent),
         typeof(Game.CharacterSkillsResourceComponent),
         typeof(Game.DeadComponent),
-        typeof(Game.DeckCardComponent),
         typeof(Game.HitpointComponent),
         typeof(Game.IdComponent),
-        typeof(Game.InBoxComponent),
         typeof(Game.LocalPlayerComponent),
         typeof(Game.MapPositionComponent),
         typeof(Game.OwnerComponent),
@@ -89,7 +75,6 @@ public static class GameComponentsLookup {
         typeof(Game.PlayingOrderComponent),
         typeof(Game.ResourceComponent),
         typeof(Game.RoleComponent),
-        typeof(Game.SkillCardComponent),
         typeof(Game.UI.PlayerSkillCardUI),
         typeof(Game.UnitComponent),
         typeof(Game.UnitDetailComponent),

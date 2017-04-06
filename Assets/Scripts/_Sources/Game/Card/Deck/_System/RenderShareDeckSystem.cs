@@ -3,28 +3,27 @@ using Entitas;
 
 namespace Game.UI
 {
-	//FIXME: 
-	public class RenderShareDeckSystem : ReactiveSystem<GameEntity>
+	public class RenderShareDeckSystem : ReactiveSystem<CardEntity>
 	{
 		private readonly CardContainer _shareDeck;
 
 		public RenderShareDeckSystem(Contexts contexts, CardContainer shareDeck)
-			: base(contexts.game)
+			: base(contexts.card)
 		{
 			_shareDeck = shareDeck;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameOwner, GroupEvent.Removed);
+			return context.CreateCollector(CardMatcher.GameOwner, GroupEvent.Removed);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(CardEntity entity)
 		{
 			return !entity.hasGameOwner && entity.isGameDeckCard;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<CardEntity> entities)
 		{
 			foreach(var e in entities)
 			{

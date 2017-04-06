@@ -39,7 +39,7 @@ namespace Test.System
 			var p = TestHelper.CreatePlayerEntity(_contexts.game, 1);
 			p.AddGameUIPlayerSkillCardUI(_container);
 
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameView(new GameObject());
 			card.isGameSkillCard = true;
 			card.AddGameOwner(p);

@@ -8,11 +8,11 @@ namespace Game
 {
 	public class OnDeadAbilitySystem : ReactiveSystem<GameEntity>
 	{
-		private readonly GameContext _context;
+		private readonly CardContext _cardContext;
 
 		public OnDeadAbilitySystem(Contexts contexts) : base(contexts.game)
 		{
-			_context = contexts.game;
+			_cardContext = contexts.card;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -36,7 +36,7 @@ namespace Game
 
 		private void UseBoxReviveCard(GameEntity deadEntity)
 		{
-			var card = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameUnit.OwnerEntity)
+			var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameUnit.OwnerEntity)
 				.OrderBy(c => c.gameInBox.Index)
 				.FirstOrDefault();
 			if (card != null)
@@ -49,7 +49,7 @@ namespace Game
 
 		private void UseBoxOnDeadCard(GameEntity deadEntity)
 		{
-			var cards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameUnit.OwnerEntity);
+			var cards = _cardContext.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameUnit.OwnerEntity);
 
 			foreach (var card in cards)
 			{

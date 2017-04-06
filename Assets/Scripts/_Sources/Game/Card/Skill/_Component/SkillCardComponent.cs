@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace Game
 {
-	[Game]
+	[Card]
 	public class SkillCardComponent : IComponent
 	{}
 
 	public static class SkillCardExtension
 	{
-		public static GameEntity[] GetPlayerSkills(this GameContext context, GameEntity playerEntity)
+		public static CardEntity[] GetPlayerSkills(this CardContext context, GameEntity playerEntity)
 		{
-			return context.GetEntities(GameMatcher.GameSkillCard)
+			return context.GetEntities(CardMatcher.GameSkillCard)
 				.Where(e => e.gameOwner.Entity == playerEntity)
 				.ToArray();
 		}
 
-		public static GameEntity[] GetPlayerSkills<T>(this GameContext context, GameEntity playerEntity)
+		public static CardEntity[] GetPlayerSkills<T>(this CardContext context, GameEntity playerEntity)
 		{
 			return GetPlayerSkills(context, playerEntity)
 				.Where(e => e.gameAbility.Ability is T)

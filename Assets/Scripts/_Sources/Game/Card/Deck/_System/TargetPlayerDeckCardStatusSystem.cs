@@ -3,25 +3,24 @@ using System.Collections.Generic;
 
 namespace Game.UI
 {
-	//FIXME : 
-	public class TargetPlayerDeckCardStatusSystem : ReactiveSystem<GameEntity>
+	public class TargetPlayerDeckCardStatusSystem : ReactiveSystem<CardEntity>
 	{
-		private readonly GameContext _context;
+		private readonly CardContext _context;
 		private readonly PlayerUnitStatusPanel _status;
 
-		public TargetPlayerDeckCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel status) : base(contexts.game)
+		public TargetPlayerDeckCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel status) : base(contexts.card)
 		{
-			_context = contexts.game;
+			_context = contexts.card;
 			_status = status;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 		{
-			return new Collector<GameEntity>(
+			return new Collector<CardEntity>(
 				new[]
 				{
-					context.GetGroup(GameMatcher.GameOwner),
-					context.GetGroup(GameMatcher.GameInBox),
+					context.GetGroup(CardMatcher.GameOwner),
+					context.GetGroup(CardMatcher.GameInBox),
 				},
 				new[]
 				{
@@ -31,12 +30,12 @@ namespace Game.UI
 			);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(CardEntity entity)
 		{
 			return _status.ShowingCharacter != null;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<CardEntity> entities)
 		{
 			var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.gameUnit.OwnerEntity)
 				.Length;

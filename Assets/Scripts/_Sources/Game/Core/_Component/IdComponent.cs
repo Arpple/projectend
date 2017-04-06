@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game
 {
-	[Game, Tile]
+	[Game, Tile, Card]
 	public class IdComponent : IComponent
 	{
 		[EntityIndex]

@@ -3,24 +3,26 @@ using System.Collections.Generic;
 
 namespace Game.UI
 {
-	public class LocalPlayerDeckCardStatusSystem : ReactiveSystem<GameEntity>
+	public class LocalPlayerDeckCardStatusSystem : ReactiveSystem<CardEntity>
 	{
-		private readonly GameContext _context;
+		private readonly GameContext _gameContext;
+		private readonly CardContext _context;
 		private readonly PlayerUnitStatusPanel _status;
 
-		public LocalPlayerDeckCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel status) : base(contexts.game)
+		public LocalPlayerDeckCardStatusSystem(Contexts contexts, PlayerUnitStatusPanel status) : base(contexts.card)
 		{
-			_context = contexts.game;
+			_gameContext = contexts.game;
+			_context = contexts.card;
 			_status = status;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 		{
-			return new Collector<GameEntity>(
+			return new Collector<CardEntity>(
 				new[]
 				{
-					context.GetGroup(GameMatcher.GameOwner),
-					context.GetGroup(GameMatcher.GameInBox),
+					context.GetGroup(CardMatcher.GameOwner),
+					context.GetGroup(CardMatcher.GameInBox),
 				},
 				new[]
 				{
@@ -30,16 +32,16 @@ namespace Game.UI
 			);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(CardEntity entity)
 		{
 			return entity.isGameDeckCard;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<CardEntity> entities)
 		{
-			var deckCardCount = _context.GetPlayerDeckCards(_context.gameLocalPlayerEntity)
+			var deckCardCount = _context.GetPlayerDeckCards(_gameContext.gameLocalPlayerEntity)
 				.Length;
-			var boxCardCount = _context.GetPlayerBoxCards(_context.gameLocalPlayerEntity)
+			var boxCardCount = _context.GetPlayerBoxCards(_gameContext.gameLocalPlayerEntity)
 				.Length;
 
 			_status.UpdateDeckCardCount(deckCardCount);

@@ -11,7 +11,7 @@ public partial class GameEventEntity {
     public Game.EventUseCardOnTile gameEventUseCardOnTile { get { return (Game.EventUseCardOnTile)GetComponent(GameEventComponentsLookup.GameEventUseCardOnTile); } }
     public bool hasGameEventUseCardOnTile { get { return HasComponent(GameEventComponentsLookup.GameEventUseCardOnTile); } }
 
-    public void AddGameEventUseCardOnTile(GameEntity newUserEntity, GameEntity newCardEnttiy, TileEntity newTargetEnttiy) {
+    public void AddGameEventUseCardOnTile(GameEntity newUserEntity, CardEntity newCardEnttiy, TileEntity newTargetEnttiy) {
         var index = GameEventComponentsLookup.GameEventUseCardOnTile;
         var component = CreateComponent<Game.EventUseCardOnTile>(index);
         component.UserEntity = newUserEntity;
@@ -20,7 +20,7 @@ public partial class GameEventEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceGameEventUseCardOnTile(GameEntity newUserEntity, GameEntity newCardEnttiy, TileEntity newTargetEnttiy) {
+    public void ReplaceGameEventUseCardOnTile(GameEntity newUserEntity, CardEntity newCardEnttiy, TileEntity newTargetEnttiy) {
         var index = GameEventComponentsLookup.GameEventUseCardOnTile;
         var component = CreateComponent<Game.EventUseCardOnTile>(index);
         component.UserEntity = newUserEntity;

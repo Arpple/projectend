@@ -10,7 +10,7 @@ namespace Test.System
 		{
 			var system = new LoadAbilitySystem(_contexts);
 
-			var e = _contexts.game.CreateEntity();
+			var e = _contexts.card.CreateEntity();
 			e.AddGameAbility("Game.AbilityMove", null);
 
 			system.Execute();

@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game]
+	[Card]
 	public class AbilityComponent : IComponent
 	{
 		public string AbilityClassName;

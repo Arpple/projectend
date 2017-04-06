@@ -9,9 +9,9 @@ namespace Game.UI
 	{
 		public Image MainImage;
 
-		public GameEntity Entity
+		public CardEntity Entity
 		{
-			get { return (GameEntity)gameObject.GetEntityLink().entity; }
+			get { return (CardEntity)gameObject.GetEntityLink().entity; }
 		}
 
 		public GameObject CreateView(GameEntity entity, Sprite sprite)

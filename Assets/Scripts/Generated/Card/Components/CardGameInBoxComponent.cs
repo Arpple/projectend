@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class CardEntity {
 
-    public Game.InBoxComponent gameInBox { get { return (Game.InBoxComponent)GetComponent(GameComponentsLookup.GameInBox); } }
-    public bool hasGameInBox { get { return HasComponent(GameComponentsLookup.GameInBox); } }
+    public Game.InBoxComponent gameInBox { get { return (Game.InBoxComponent)GetComponent(CardComponentsLookup.GameInBox); } }
+    public bool hasGameInBox { get { return HasComponent(CardComponentsLookup.GameInBox); } }
 
     public void AddGameInBox(int newIndex) {
-        var index = GameComponentsLookup.GameInBox;
+        var index = CardComponentsLookup.GameInBox;
         var component = CreateComponent<Game.InBoxComponent>(index);
         component.Index = newIndex;
         AddComponent(index, component);
     }
 
     public void ReplaceGameInBox(int newIndex) {
-        var index = GameComponentsLookup.GameInBox;
+        var index = CardComponentsLookup.GameInBox;
         var component = CreateComponent<Game.InBoxComponent>(index);
         component.Index = newIndex;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameInBox() {
-        RemoveComponent(GameComponentsLookup.GameInBox);
+        RemoveComponent(CardComponentsLookup.GameInBox);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class CardMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameInBox;
+    static Entitas.IMatcher<CardEntity> _matcherGameInBox;
 
-    public static Entitas.IMatcher<GameEntity> GameInBox {
+    public static Entitas.IMatcher<CardEntity> GameInBox {
         get {
             if(_matcherGameInBox == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameInBox);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<CardEntity>)Entitas.Matcher<CardEntity>.AllOf(CardComponentsLookup.GameInBox);
+                matcher.componentNames = CardComponentsLookup.componentNames;
                 _matcherGameInBox = matcher;
             }
 

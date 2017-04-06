@@ -9,10 +9,10 @@ namespace Game
 	public class EventUseCardOnUnit : GameEventComponent
 	{
 		public GameEntity UserEntity;
-		public GameEntity CardEnttiy;
-		public GameEntity TargetEnttiy;
+		public CardEntity CardEntity;
+		public GameEntity TargetEntity;
 
-		public static void Create(GameEntity userEntity, GameEntity cardEntity, GameEntity targetEntity)
+		public static void Create(GameEntity userEntity, CardEntity cardEntity, GameEntity targetEntity)
 		{
 			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
@@ -27,11 +27,11 @@ namespace Game
 				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
-			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
+			CardEntity = Contexts.sharedInstance.card.GetEntities(CardMatcher.GameCard)
 				.Where(c => c.gameId.Id == cardId)
 				.First();
 
-			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
+			TargetEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
 				.Where(u => u.gameUnit.Id == targetUnitId)
 				.First();
 		}
@@ -56,14 +56,14 @@ namespace Game
 		protected override void Process(GameEventEntity entity)
 		{
 			var cardEvent = entity.gameEventUseCardOnUnit;
-			var ability = (ActiveAbility<GameEntity>)cardEvent.CardEnttiy.gameAbility.Ability;
-			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
+			var ability = (ActiveAbility<GameEntity>)cardEvent.CardEntity.gameAbility.Ability;
+			ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEntity);
 
-			if(cardEvent.CardEnttiy.isGameDeckCard)
-				RemovePlayerCard(cardEvent.CardEnttiy);
+			if(cardEvent.CardEntity.isGameDeckCard)
+				RemovePlayerCard(cardEvent.CardEntity);
 		}
 
-		private void RemovePlayerCard(GameEntity card)
+		private void RemovePlayerCard(CardEntity card)
 		{
 			card.RemoveGameOwner();
 			if (card.hasGameInBox) card.RemoveGameInBox();

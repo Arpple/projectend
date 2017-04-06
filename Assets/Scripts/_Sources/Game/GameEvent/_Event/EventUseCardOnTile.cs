@@ -9,10 +9,10 @@ namespace Game
 	public class EventUseCardOnTile : GameEventComponent
 	{
 		public GameEntity UserEntity;
-		public GameEntity CardEnttiy;
+		public CardEntity CardEnttiy;
 		public TileEntity TargetEnttiy;
 
-		public static void Create(GameEntity userEntity, GameEntity cardEntity, TileEntity tileEntity)
+		public static void Create(GameEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
 		{
 			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
@@ -27,7 +27,7 @@ namespace Game
 				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
-			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
+			CardEnttiy = Contexts.sharedInstance.card.GetEntities(CardMatcher.GameCard)
 				.Where(c => c.gameId.Id == cardId)
 				.First();
 
@@ -63,7 +63,7 @@ namespace Game
 				RemovePlayerCard(cardEvent.CardEnttiy);
 		}
 
-		private void RemovePlayerCard(GameEntity card)
+		private void RemovePlayerCard(CardEntity card)
 		{
 			card.RemoveGameOwner();
 			if (card.hasGameInBox) card.RemoveGameInBox();

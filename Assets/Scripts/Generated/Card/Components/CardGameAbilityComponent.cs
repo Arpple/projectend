@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class CardEntity {
 
-    public Game.AbilityComponent gameAbility { get { return (Game.AbilityComponent)GetComponent(GameComponentsLookup.GameAbility); } }
-    public bool hasGameAbility { get { return HasComponent(GameComponentsLookup.GameAbility); } }
+    public Game.AbilityComponent gameAbility { get { return (Game.AbilityComponent)GetComponent(CardComponentsLookup.GameAbility); } }
+    public bool hasGameAbility { get { return HasComponent(CardComponentsLookup.GameAbility); } }
 
     public void AddGameAbility(string newAbilityClassName, Game.Ability newAbility) {
-        var index = GameComponentsLookup.GameAbility;
+        var index = CardComponentsLookup.GameAbility;
         var component = CreateComponent<Game.AbilityComponent>(index);
         component.AbilityClassName = newAbilityClassName;
         component.Ability = newAbility;
@@ -20,7 +20,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceGameAbility(string newAbilityClassName, Game.Ability newAbility) {
-        var index = GameComponentsLookup.GameAbility;
+        var index = CardComponentsLookup.GameAbility;
         var component = CreateComponent<Game.AbilityComponent>(index);
         component.AbilityClassName = newAbilityClassName;
         component.Ability = newAbility;
@@ -28,7 +28,7 @@ public partial class GameEntity {
     }
 
     public void RemoveGameAbility() {
-        RemoveComponent(GameComponentsLookup.GameAbility);
+        RemoveComponent(CardComponentsLookup.GameAbility);
     }
 }
 
@@ -40,15 +40,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class CardMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameAbility;
+    static Entitas.IMatcher<CardEntity> _matcherGameAbility;
 
-    public static Entitas.IMatcher<GameEntity> GameAbility {
+    public static Entitas.IMatcher<CardEntity> GameAbility {
         get {
             if(_matcherGameAbility == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameAbility);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<CardEntity>)Entitas.Matcher<CardEntity>.AllOf(CardComponentsLookup.GameAbility);
+                matcher.componentNames = CardComponentsLookup.componentNames;
                 _matcherGameAbility = matcher;
             }
 

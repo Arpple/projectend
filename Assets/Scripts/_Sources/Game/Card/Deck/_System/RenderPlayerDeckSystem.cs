@@ -5,34 +5,34 @@ using Game.UI;
 
 namespace Game
 {
-	public class RenderPlayerDeckSystem : ReactiveSystem<GameEntity>
+	public class RenderPlayerDeckSystem : ReactiveSystem<CardEntity>
 	{
-		private GameContext _context;
+		private GameContext _gameContext;
 		private CacheList<GameEntity, CardContainer> _playerDeckCache;
 
 		public RenderPlayerDeckSystem(Contexts contexts)
-			: base(contexts.game)
+			: base(contexts.card)
 		{
-			_context = contexts.game;
+			_gameContext = contexts.game;
 			_playerDeckCache = new CacheList<GameEntity, CardContainer>();
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameOwner, GroupEvent.Added);
+			return context.CreateCollector(CardMatcher.GameOwner, GroupEvent.Added);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(CardEntity entity)
 		{
 			return entity.hasGameOwner && entity.isGameDeckCard;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<CardEntity> entities)
 		{
 			foreach(var e in entities)
 			{
 				var deck = _playerDeckCache.Get(e.gameOwner.Entity, (playerEntity) =>
-					_context.GetEntities(GameMatcher.GamePlayerDeck)
+					_gameContext.GetEntities(GameMatcher.GamePlayerDeck)
 						.Where(p => p == playerEntity)
 						.First()
 						.gamePlayerDeck.PlayerDeckObject

@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class CardEntity {
 
-    public Game.CardComponent gameCard { get { return (Game.CardComponent)GetComponent(GameComponentsLookup.GameCard); } }
-    public bool hasGameCard { get { return HasComponent(GameComponentsLookup.GameCard); } }
+    public Game.CardComponent gameCard { get { return (Game.CardComponent)GetComponent(CardComponentsLookup.GameCard); } }
+    public bool hasGameCard { get { return HasComponent(CardComponentsLookup.GameCard); } }
 
     public void AddGameCard(Game.Card newType) {
-        var index = GameComponentsLookup.GameCard;
+        var index = CardComponentsLookup.GameCard;
         var component = CreateComponent<Game.CardComponent>(index);
         component.Type = newType;
         AddComponent(index, component);
     }
 
     public void ReplaceGameCard(Game.Card newType) {
-        var index = GameComponentsLookup.GameCard;
+        var index = CardComponentsLookup.GameCard;
         var component = CreateComponent<Game.CardComponent>(index);
         component.Type = newType;
         ReplaceComponent(index, component);
     }
 
     public void RemoveGameCard() {
-        RemoveComponent(GameComponentsLookup.GameCard);
+        RemoveComponent(CardComponentsLookup.GameCard);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class CardMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameCard;
+    static Entitas.IMatcher<CardEntity> _matcherGameCard;
 
-    public static Entitas.IMatcher<GameEntity> GameCard {
+    public static Entitas.IMatcher<CardEntity> GameCard {
         get {
             if(_matcherGameCard == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameCard);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<CardEntity>)Entitas.Matcher<CardEntity>.AllOf(CardComponentsLookup.GameCard);
+                matcher.componentNames = CardComponentsLookup.componentNames;
                 _matcherGameCard = matcher;
             }
 

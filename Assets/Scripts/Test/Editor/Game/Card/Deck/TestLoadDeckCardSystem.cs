@@ -19,7 +19,7 @@ namespace Test.System
 		{
 			var system = new LoadCardSystem(_contexts, _setting);
 
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.card.CreateEntity();
 			entity.AddGameCard(Card.Move);
 			entity.isGameDeckCard = true;
 
@@ -35,7 +35,7 @@ namespace Test.System
 
 			foreach(Card card in Enum.GetValues(typeof(Card)))
 			{
-				var entity = _contexts.game.CreateEntity();
+				var entity = _contexts.card.CreateEntity();
 				entity.AddGameCard(card);
 				entity.isGameDeckCard = true;
 

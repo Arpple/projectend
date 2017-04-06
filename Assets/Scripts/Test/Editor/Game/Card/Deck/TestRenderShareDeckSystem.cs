@@ -22,7 +22,7 @@ namespace Test.System
 		public void CardMoveToDeckWhenPlayerCardComponentRemoved()
 		{
 			var system = new RenderShareDeckSystem(_contexts, _deck);
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameOwner(null);
 			card.isGameDeckCard = true;
 			card.RemoveGameOwner();

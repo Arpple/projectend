@@ -22,7 +22,7 @@ namespace Test.System
 			deck.Init();
 			container.AddGamePlayerDeck(deck);
 			
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameOwner(container);
 			card.isGameDeckCard = true;
 			card.AddGameView(new GameObject());

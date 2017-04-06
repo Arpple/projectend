@@ -9,7 +9,7 @@
 
 	public static class CardExtension
 	{
-		public static GameEntity CreateCard(this GameContext context, Card type)
+		public static CardEntity CreateCard(this CardContext context, Card type)
 		{
 			var entity = context.CreateEntity();
 			entity.AddGameCard(type);

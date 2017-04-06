@@ -3,7 +3,7 @@ using Entitas;
 
 namespace Game
 {
-	[Game, Tile]
+	[Game, Tile, Card]
 	public class ViewComponent : IComponent
 	{
 		public GameObject GameObject;

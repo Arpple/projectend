@@ -6,23 +6,23 @@ using UnityEngine.Assertions;
 
 namespace Game
 {
-	public class PlayerBoxCardSystem : ReactiveSystem<GameEntity>
+	public class PlayerBoxCardSystem : ReactiveSystem<CardEntity>
 	{
-		public PlayerBoxCardSystem(Contexts contexts) : base(contexts.game)
+		public PlayerBoxCardSystem(Contexts contexts) : base(contexts.card)
 		{
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameInBox, GroupEvent.AddedOrRemoved);
+			return context.CreateCollector(CardMatcher.GameInBox, GroupEvent.AddedOrRemoved);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(CardEntity entity)
 		{
 			return entity.hasGameOwner;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<CardEntity> entities)
 		{
 			foreach (var e in entities)
 			{

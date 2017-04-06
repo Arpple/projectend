@@ -6,18 +6,18 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class CardEntity {
 
-    static readonly Game.DeckCardComponent gameDeckCardComponent = new Game.DeckCardComponent();
+    static readonly Game.SkillCardComponent gameSkillCardComponent = new Game.SkillCardComponent();
 
-    public bool isGameDeckCard {
-        get { return HasComponent(GameComponentsLookup.GameDeckCard); }
+    public bool isGameSkillCard {
+        get { return HasComponent(CardComponentsLookup.GameSkillCard); }
         set {
-            if(value != isGameDeckCard) {
+            if(value != isGameSkillCard) {
                 if(value) {
-                    AddComponent(GameComponentsLookup.GameDeckCard, gameDeckCardComponent);
+                    AddComponent(CardComponentsLookup.GameSkillCard, gameSkillCardComponent);
                 } else {
-                    RemoveComponent(GameComponentsLookup.GameDeckCard);
+                    RemoveComponent(CardComponentsLookup.GameSkillCard);
                 }
             }
         }
@@ -32,19 +32,19 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class CardMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameDeckCard;
+    static Entitas.IMatcher<CardEntity> _matcherGameSkillCard;
 
-    public static Entitas.IMatcher<GameEntity> GameDeckCard {
+    public static Entitas.IMatcher<CardEntity> GameSkillCard {
         get {
-            if(_matcherGameDeckCard == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameDeckCard);
-                matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherGameDeckCard = matcher;
+            if(_matcherGameSkillCard == null) {
+                var matcher = (Entitas.Matcher<CardEntity>)Entitas.Matcher<CardEntity>.AllOf(CardComponentsLookup.GameSkillCard);
+                matcher.componentNames = CardComponentsLookup.componentNames;
+                _matcherGameSkillCard = matcher;
             }
 
-            return _matcherGameDeckCard;
+            return _matcherGameSkillCard;
         }
     }
 }

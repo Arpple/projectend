@@ -12,7 +12,7 @@ namespace Test.Event
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 			var p2 = _contexts.game.CreatePlayerEntity(2);
 
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameCard(Card.Move);
 			card.AddGameOwner(p1);
 
@@ -36,7 +36,7 @@ namespace Test.Event
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 			var p2 = _contexts.game.CreatePlayerEntity(2);
 
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameCard(Card.Move);
 			card.AddGameOwner(p1);
 
@@ -55,7 +55,7 @@ namespace Test.Event
 
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameCard(Card.Move);
 			card.AddGameOwner(p1);
 
@@ -74,7 +74,7 @@ namespace Test.Event
 
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameCard(Card.Move);
 			card.AddGameOwner(p1);
 			card.AddGameInBox(0);
@@ -93,7 +93,7 @@ namespace Test.Event
 			var system = new EventMoveCardSystem(_contexts);
 
 			var p1 = _contexts.game.CreatePlayerEntity(1);
-			var card = _contexts.game.CreateEntity();
+			var card = _contexts.card.CreateEntity();
 			card.AddGameCard(Card.Move);
 			card.AddGameOwner(p1);
 

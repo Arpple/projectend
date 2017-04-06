@@ -7,19 +7,21 @@ namespace Game
 {
 	public class StartingDeckCardSystem : IInitializeSystem
 	{
-		private readonly GameContext _context;
+		private readonly GameContext _gameContext;
+		private readonly CardContext _cardContext;
 		private readonly DeckSetting _setting;
 
 		public StartingDeckCardSystem(Contexts contexts, DeckSetting setting)
 		{
-			_context = contexts.game;
+			_gameContext = contexts.game;
+			_cardContext = contexts.card;
 			_setting = setting;
 		}
 
 		public void Initialize()
 		{
-			var cards = _context.GetEntities(GameMatcher.GameDeckCard).Shuffle();
-			var players = _context.GetEntities(GameMatcher.GamePlayer);
+			var cards = _cardContext.GetEntities(CardMatcher.GameDeckCard).Shuffle();
+			var players = _gameContext.GetEntities(GameMatcher.GamePlayer);
 
 			Assert.IsTrue(players.Count() * _setting.StartCardCount <= cards.Length);
 

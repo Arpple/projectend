@@ -10,12 +10,12 @@ namespace Game
 	/// <seealso cref="Entitas.IInitializeSystem" />
 	public class CreateDeckCardsSystem : IInitializeSystem
 	{
-		readonly GameContext _context;
+		readonly CardContext _context;
 		readonly CardDeck _deck;
 
 		public CreateDeckCardsSystem(Contexts contexts, CardDeck deck)
 		{
-			_context = contexts.game;
+			_context = contexts.card;
 			_deck = deck;
 		}
 

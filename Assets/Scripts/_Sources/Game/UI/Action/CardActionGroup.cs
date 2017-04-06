@@ -45,11 +45,11 @@ namespace Game.UI
 		internal class CardAbilityCaller
 		{
 			private GameEntity _caster;
-			private GameEntity _card;
+			private CardEntity _card;
 			private Ability _ability;
 			public UnityAction CancelAction;
 
-			public CardAbilityCaller(GameEntity caster, GameEntity card)
+			public CardAbilityCaller(GameEntity caster, CardEntity card)
 			{
 				_caster = caster;
 				_card = card;
