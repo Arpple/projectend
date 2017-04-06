@@ -3,9 +3,9 @@ using Game.UI;
 
 namespace Game
 {
-	public class DataRenderingSystem : Feature
+	public class DataRenderingSystems : Feature
 	{
-		public DataRenderingSystem(Contexts contexts) : base("Data Rendering")
+		public DataRenderingSystems(Contexts contexts) : base("Data Rendering")
 		{
 			//deck card
 			Add(new RenderPlayerDeckSystem(contexts));

@@ -11,18 +11,16 @@ public partial class CardEntity {
     public Game.AbilityComponent gameAbility { get { return (Game.AbilityComponent)GetComponent(CardComponentsLookup.GameAbility); } }
     public bool hasGameAbility { get { return HasComponent(CardComponentsLookup.GameAbility); } }
 
-    public void AddGameAbility(string newAbilityClassName, Game.Ability newAbility) {
+    public void AddGameAbility(Game.Ability newAbility) {
         var index = CardComponentsLookup.GameAbility;
         var component = CreateComponent<Game.AbilityComponent>(index);
-        component.AbilityClassName = newAbilityClassName;
         component.Ability = newAbility;
         AddComponent(index, component);
     }
 
-    public void ReplaceGameAbility(string newAbilityClassName, Game.Ability newAbility) {
+    public void ReplaceGameAbility(Game.Ability newAbility) {
         var index = CardComponentsLookup.GameAbility;
         var component = CreateComponent<Game.AbilityComponent>(index);
-        component.AbilityClassName = newAbilityClassName;
         component.Ability = newAbility;
         ReplaceComponent(index, component);
     }

@@ -4,9 +4,9 @@ using UnityEngine.Networking;
 
 namespace Game
 {
-	public class GameSetupSystem : Feature
+	public class GameSetupSystems : Feature
 	{
-		public GameSetupSystem(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
+		public GameSetupSystems(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 		{
 			//map
 			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));

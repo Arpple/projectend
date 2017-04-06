@@ -4,9 +4,9 @@ using Entitas;
 
 namespace Game.UI
 {
-	public class GameUISetupSystem : Feature
+	public class GameUISetupSystems : Feature
 	{
-		public GameUISetupSystem(Contexts contexts, GameUI ui) : base("Game UI Setup")
+		public GameUISetupSystems(Contexts contexts, GameUI ui) : base("Game UI Setup")
 		{
 			Add(new TurnPanelSetupSystem(contexts, ui.TurnPanel));
 			Add(new LocalCharacterStatusSystem(contexts, ui.LocalPlayerStatus));

@@ -45,7 +45,7 @@ namespace Test.System
 			card.AddGameCard(Card.Potion);
 			card.AddGameOwner(_ownerPlayer);
 			card.AddGameInBox(0);
-			card.AddGameAbility("", new TestOnDeadAbility());
+			card.AddGameAbility(new TestOnDeadAbility());
 			card.isGameDeckCard = true;
 
 			_systems.Execute();

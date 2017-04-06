@@ -2,9 +2,9 @@
 
 namespace Game
 {
-	public class DataLoadingSystem : Feature
+	public class DataLoadingSystems : Feature
 	{
-		public DataLoadingSystem(Contexts contexts, GameSetting setting) : base("Data Loading")
+		public DataLoadingSystems(Contexts contexts, GameSetting setting) : base("Data Loading")
 		{
 			///game
 			Add(new GameResouceLoadSystem(contexts));
@@ -19,7 +19,7 @@ namespace Game
 			Add(new LoadCardSystem(contexts, setting.CardSetting.DeckSetting));
 			Add(new CardViewLoadingSystem(contexts, setting.CardSetting));
 
-			Add(new LoadAbilitySystem(contexts));
+			Add(new AbilityResourceLoadingSystem(contexts));
 		}
 	}
 

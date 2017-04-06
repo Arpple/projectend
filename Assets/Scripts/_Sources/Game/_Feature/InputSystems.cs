@@ -1,9 +1,9 @@
 ﻿using Entitas;
 namespace Game
 {
-	public class ControlSystem : Feature
+	public class InputSystems : Feature
 	{
-		public ControlSystem(Contexts contexts) : base("Control")
+		public InputSystems(Contexts contexts) : base("Control")
 		{
 			Add(new CameraSystem(contexts));
 			Add(new CameraKeyboardSystem(contexts));

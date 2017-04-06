@@ -101,16 +101,16 @@ namespace Game
 		{
 			return new Feature("Systems")
 
-				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
-				.Add(new DataLoadingSystem(contexts, Setting))
-				.Add(new GameUISetupSystem(contexts, GameUI.Instance))
+				.Add(new GameSetupSystems(contexts, Setting, _players, _localPlayer))
+				.Add(new DataLoadingSystems(contexts, Setting))
+				.Add(new GameUISetupSystems(contexts, GameUI.Instance))
 
-				.Add(new GameEventFeature(contexts))
-				.Add(new DataRenderingSystem(contexts))
+				.Add(new GameEventSystems(contexts))
+				.Add(new DataRenderingSystems(contexts))
 		
-				.Add(new GameUIRenderingSystem(contexts, GameUI.Instance))
+				.Add(new GameUIRenderingSystems(contexts, GameUI.Instance))
 
-				.Add(new ControlSystem(contexts))
+				.Add(new InputSystems(contexts))
 				.Add(new ClearContextsSystem(contexts));
 		}
 

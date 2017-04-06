@@ -3,9 +3,9 @@ using Entitas;
 
 namespace Game.UI
 {
-	public class GameUIRenderingSystem : Feature
+	public class GameUIRenderingSystems : Feature
 	{
-		public GameUIRenderingSystem(Contexts contexts, GameUI ui) : base("UI")
+		public GameUIRenderingSystems(Contexts contexts, GameUI ui) : base("UI")
 		{
 			Add(new NewDeckCardToShareDeckSystem(contexts, ui.DeckFactory.AllContainers[0]));
 			Add(new RenderShareDeckSystem(contexts, ui.DeckFactory.AllContainers[0]));

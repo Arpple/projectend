@@ -3,9 +3,9 @@ using Game.Offline;
 
 namespace Game
 {
-	public class GameEventFeature : Feature
+	public class GameEventSystems : Feature
 	{
-		public GameEventFeature(Contexts contexts) : base("Game Event")
+		public GameEventSystems(Contexts contexts) : base("Game Event")
 		{
 			Add(new EventUseCardOnUnitSystem(contexts));
 			Add(new EventUseCardOnTileSystem(contexts));
