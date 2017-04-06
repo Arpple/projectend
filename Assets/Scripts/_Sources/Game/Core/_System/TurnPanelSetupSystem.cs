@@ -22,7 +22,7 @@ namespace Game.UI
 			{
 				var character = _unitContext.GetCharacterFromPlayer(player);
 				var turnNode = _turnPanel.CreateTurnNode();
-				turnNode.SetPlayer(player);
+				turnNode.SetCharacter(character);
 				if(character.hasGameUnitIcon)
 					turnNode.SetTurnIcon(character.gameUnitIcon.IconSprite);
 			}
