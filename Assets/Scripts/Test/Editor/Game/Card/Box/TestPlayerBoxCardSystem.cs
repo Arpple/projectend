@@ -28,7 +28,7 @@ namespace Test.System
 			var system = new PlayerBoxCardSystem(_contexts);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGamePlayerCard(_player);
+			card.AddGameOwner(_player);
 			card.isGameDeckCard = true;
 			card.AddGameView(new GameObject());
 			card.AddGameInBox(0);
@@ -44,7 +44,7 @@ namespace Test.System
 			var system = new PlayerBoxCardSystem(_contexts);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGamePlayerCard(_player);
+			card.AddGameOwner(_player);
 			card.isGameDeckCard = true;
 			card.AddGameView(new GameObject());
 			card.AddGameInBox(0);

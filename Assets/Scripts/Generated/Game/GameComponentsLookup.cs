@@ -19,8 +19,8 @@ public static class GameComponentsLookup {
     public const int GameInBox = 8;
     public const int GameLocalPlayer = 9;
     public const int GameMapPosition = 10;
-    public const int GamePlayerBox = 11;
-    public const int GamePlayerCard = 12;
+    public const int GameOwner = 11;
+    public const int GamePlayerBox = 12;
     public const int GamePlayer = 13;
     public const int GamePlayerDeck = 14;
     public const int GamePlayingOrder = 15;
@@ -51,8 +51,8 @@ public static class GameComponentsLookup {
         "GameInBox",
         "GameLocalPlayer",
         "GameMapPosition",
+        "GameOwner",
         "GamePlayerBox",
-        "GamePlayerCard",
         "GamePlayer",
         "GamePlayerDeck",
         "GamePlayingOrder",
@@ -82,8 +82,8 @@ public static class GameComponentsLookup {
         typeof(Game.InBoxComponent),
         typeof(Game.LocalPlayerComponent),
         typeof(Game.MapPositionComponent),
+        typeof(Game.OwnerComponent),
         typeof(Game.PlayerBoxComponent),
-        typeof(Game.PlayerCardComponent),
         typeof(Game.PlayerComponent),
         typeof(Game.PlayerDeckComponent),
         typeof(Game.PlayingOrderComponent),

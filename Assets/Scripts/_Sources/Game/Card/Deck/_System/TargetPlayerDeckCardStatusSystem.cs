@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Game.UI
 {
+	//FIXME : 
 	public class TargetPlayerDeckCardStatusSystem : ReactiveSystem<GameEntity>
 	{
 		private readonly GameContext _context;
@@ -19,7 +20,7 @@ namespace Game.UI
 			return new Collector<GameEntity>(
 				new[]
 				{
-					context.GetGroup(GameMatcher.GamePlayerCard),
+					context.GetGroup(GameMatcher.GameOwner),
 					context.GetGroup(GameMatcher.GameInBox),
 				},
 				new[]

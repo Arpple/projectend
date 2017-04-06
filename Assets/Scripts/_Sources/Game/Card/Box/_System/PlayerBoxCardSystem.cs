@@ -19,7 +19,7 @@ namespace Game
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasGamePlayerCard;
+			return entity.hasGameOwner;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -28,11 +28,11 @@ namespace Game
 			{
 				if(e.hasGameInBox)
 				{
-					e.gamePlayerCard.OwnerEntity.gamePlayerBox.BoxObject.AddCard(e.gameView.GameObject, e.gameInBox.Index);
+					e.gameOwner.Entity.gamePlayerBox.BoxObject.AddCard(e.gameView.GameObject, e.gameInBox.Index);
 				}
 				else
 				{
-					e.gamePlayerCard.OwnerEntity.gamePlayerDeck.PlayerDeckObject.AddCard(e.gameView.GameObject);
+					e.gameOwner.Entity.gamePlayerDeck.PlayerDeckObject.AddCard(e.gameView.GameObject);
 				}
 			}
 		}

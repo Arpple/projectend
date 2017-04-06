@@ -38,14 +38,14 @@ namespace Game
 		{
 			Assert.IsFalse(cardEntity.hasGameInBox);
 
-			MoveCard(cardEntity, cardEntity.gamePlayerCard.OwnerEntity, true);
+			MoveCard(cardEntity, cardEntity.gameOwner.Entity, true);
 		}
 
 		public static void MoveCardOutFromBox(GameEntity cardEntity)
 		{
 			Assert.IsTrue(cardEntity.hasGameInBox);
 
-			MoveCard(cardEntity, cardEntity.gamePlayerCard.OwnerEntity, false);
+			MoveCard(cardEntity, cardEntity.gameOwner.Entity, false);
 		}
 
 		public static void MoveCardToShareDeck(GameEntity cardEntity)
@@ -89,11 +89,11 @@ namespace Game
 
 			if (e.TargetPlayerEntity != null)
 			{
-				e.CardEntity.ReplaceGamePlayerCard(e.TargetPlayerEntity);
+				e.CardEntity.ReplaceGameOwner(e.TargetPlayerEntity);
 			}
 			else
 			{
-				e.CardEntity.RemoveGamePlayerCard();
+				e.CardEntity.RemoveGameOwner();
 			}
 
 			if (e.IsInBox)

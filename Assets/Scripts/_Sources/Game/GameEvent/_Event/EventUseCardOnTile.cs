@@ -65,7 +65,7 @@ namespace Game
 
 		private void RemovePlayerCard(GameEntity card)
 		{
-			card.RemoveGamePlayerCard();
+			card.RemoveGameOwner();
 			if (card.hasGameInBox) card.RemoveGameInBox();
 		}
 	}

@@ -13,7 +13,7 @@ namespace Game
 		public static GameEntity[] GetPlayerSkills(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetEntities(GameMatcher.GameSkillCard)
-				.Where(e => e.gamePlayerCard.OwnerEntity == playerEntity)
+				.Where(e => e.gameOwner.Entity == playerEntity)
 				.ToArray();
 		}
 

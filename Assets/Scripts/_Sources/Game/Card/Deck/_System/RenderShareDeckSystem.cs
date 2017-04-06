@@ -3,6 +3,7 @@ using Entitas;
 
 namespace Game.UI
 {
+	//FIXME: 
 	public class RenderShareDeckSystem : ReactiveSystem<GameEntity>
 	{
 		private readonly CardContainer _shareDeck;
@@ -15,12 +16,12 @@ namespace Game.UI
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GamePlayerCard, GroupEvent.Removed);
+			return context.CreateCollector(GameMatcher.GameOwner, GroupEvent.Removed);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return !entity.hasGamePlayerCard && entity.isGameDeckCard;
+			return !entity.hasGameOwner && entity.isGameDeckCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

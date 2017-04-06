@@ -42,7 +42,7 @@ namespace Test.System
 			var card = _contexts.game.CreateEntity();
 			card.AddGameView(new GameObject());
 			card.isGameSkillCard = true;
-			card.AddGamePlayerCard(p);
+			card.AddGameOwner(p);
 
 			_system.Execute();
 

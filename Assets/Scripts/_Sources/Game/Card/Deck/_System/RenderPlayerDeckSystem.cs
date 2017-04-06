@@ -19,19 +19,19 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GamePlayerCard, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameOwner, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasGamePlayerCard && entity.isGameDeckCard;
+			return entity.hasGameOwner && entity.isGameDeckCard;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				var deck = _playerDeckCache.Get(e.gamePlayerCard.OwnerEntity, (playerEntity) =>
+				var deck = _playerDeckCache.Get(e.gameOwner.Entity, (playerEntity) =>
 					_context.GetEntities(GameMatcher.GamePlayerDeck)
 						.Where(p => p == playerEntity)
 						.First()

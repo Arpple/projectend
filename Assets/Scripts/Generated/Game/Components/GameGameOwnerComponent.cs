@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Game.CardComponent gameCard { get { return (Game.CardComponent)GetComponent(GameComponentsLookup.GameCard); } }
-    public bool hasGameCard { get { return HasComponent(GameComponentsLookup.GameCard); } }
+    public Game.OwnerComponent gameOwner { get { return (Game.OwnerComponent)GetComponent(GameComponentsLookup.GameOwner); } }
+    public bool hasGameOwner { get { return HasComponent(GameComponentsLookup.GameOwner); } }
 
-    public void AddGameCard(Game.Card newType) {
-        var index = GameComponentsLookup.GameCard;
-        var component = CreateComponent<Game.CardComponent>(index);
-        component.Type = newType;
+    public void AddGameOwner(GameEntity newEntity) {
+        var index = GameComponentsLookup.GameOwner;
+        var component = CreateComponent<Game.OwnerComponent>(index);
+        component.Entity = newEntity;
         AddComponent(index, component);
     }
 
-    public void ReplaceGameCard(Game.Card newType) {
-        var index = GameComponentsLookup.GameCard;
-        var component = CreateComponent<Game.CardComponent>(index);
-        component.Type = newType;
+    public void ReplaceGameOwner(GameEntity newEntity) {
+        var index = GameComponentsLookup.GameOwner;
+        var component = CreateComponent<Game.OwnerComponent>(index);
+        component.Entity = newEntity;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveGameCard() {
-        RemoveComponent(GameComponentsLookup.GameCard);
+    public void RemoveGameOwner() {
+        RemoveComponent(GameComponentsLookup.GameOwner);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherGameCard;
+    static Entitas.IMatcher<GameEntity> _matcherGameOwner;
 
-    public static Entitas.IMatcher<GameEntity> GameCard {
+    public static Entitas.IMatcher<GameEntity> GameOwner {
         get {
-            if(_matcherGameCard == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameCard);
+            if(_matcherGameOwner == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.GameOwner);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherGameCard = matcher;
+                _matcherGameOwner = matcher;
             }
 
-            return _matcherGameCard;
+            return _matcherGameOwner;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Game
 				{
 					var skillCard = _context.CreateCard(skill);
 					skillCard.isGameSkillCard = true;
-					skillCard.AddGamePlayerCard(c.gameUnit.OwnerEntity);
+					skillCard.AddGameOwner(c.gameUnit.OwnerEntity);
 				}
 			}
 		}

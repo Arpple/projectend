@@ -31,7 +31,7 @@ namespace Game.UI
 		{
 			foreach(var e in entities)
 			{
-				e.gamePlayerCard.OwnerEntity.gameUIPlayerSkillCardUI.ContainerObject.AddCard(e.gameView.GameObject);
+				e.gameOwner.Entity.gameUIPlayerSkillCardUI.ContainerObject.AddCard(e.gameView.GameObject);
 			}
 		}
 

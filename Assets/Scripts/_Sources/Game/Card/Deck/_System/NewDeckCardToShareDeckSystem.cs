@@ -20,7 +20,7 @@ namespace Game.UI
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isGameDeckCard && !entity.hasGamePlayerCard;
+			return entity.isGameDeckCard && !entity.hasGameOwner;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

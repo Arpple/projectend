@@ -18,14 +18,14 @@ namespace Game
 		public static GameEntity[] GetPlayerDeckCards(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()
-				.Where(c => c.hasGamePlayerCard && c.gamePlayerCard.OwnerEntity == playerEntity && !c.hasGameInBox)
+				.Where(c => c.hasGameOwner && c.gameOwner.Entity == playerEntity && !c.hasGameInBox)
 				.ToArray();
 		}
 
 		public static GameEntity[] GetPlayerDeckCardsIncludeBox(this GameContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()
-				.Where(c => c.hasGamePlayerCard && c.gamePlayerCard.OwnerEntity == playerEntity)
+				.Where(c => c.hasGameOwner && c.gameOwner.Entity == playerEntity)
 				.ToArray();
 		}
 
@@ -33,7 +33,7 @@ namespace Game
 		{
 			Assert.IsTrue(cardEntity.isGameDeckCard);
 
-			cardEntity.RemoveGamePlayerCard();
+			cardEntity.RemoveGameOwner();
 			RemoveInbox(cardEntity);
 		}
 

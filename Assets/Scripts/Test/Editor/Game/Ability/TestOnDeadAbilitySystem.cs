@@ -43,7 +43,7 @@ namespace Test.System
 
 			var card = _contexts.game.CreateEntity();
 			card.AddGameCard(Card.Potion);
-			card.AddGamePlayerCard(_ownerPlayer);
+			card.AddGameOwner(_ownerPlayer);
 			card.AddGameInBox(0);
 			card.AddGameAbility("", new TestOnDeadAbility());
 			card.isGameDeckCard = true;
