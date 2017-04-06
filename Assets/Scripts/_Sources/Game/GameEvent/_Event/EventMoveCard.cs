@@ -55,8 +55,7 @@ namespace Game
 
 		public void Decode(int cardId, int playerId, int isInBox)
 		{
-			CardEntity = Contexts.sharedInstance.card.GetEntities(CardMatcher.GameCard)
-				.Where(c => c.gameId.Id == cardId)
+			CardEntity = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)
 				.First();
 
 			TargetPlayerEntity = playerId == 0

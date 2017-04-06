@@ -27,8 +27,7 @@ namespace Game
 				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
-			CardEntity = Contexts.sharedInstance.card.GetEntities(CardMatcher.GameCard)
-				.Where(c => c.gameId.Id == cardId)
+			CardEntity = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)
 				.First();
 
 			TargetEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)

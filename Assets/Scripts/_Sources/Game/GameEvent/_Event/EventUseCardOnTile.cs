@@ -27,12 +27,10 @@ namespace Game
 				.Where(u => u.gameUnit.Id == userUnitId)
 				.First();
 
-			CardEnttiy = Contexts.sharedInstance.card.GetEntities(CardMatcher.GameCard)
-				.Where(c => c.gameId.Id == cardId)
+			CardEnttiy = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)
 				.First();
 
-			TargetEnttiy = Contexts.sharedInstance.tile.GetEntities(TileMatcher.GameTile)
-				.Where(t => t.gameMapPosition.x == x && t.gameMapPosition.y == y)
+			TargetEnttiy = Contexts.sharedInstance.tile.GetEntitiesWithGameMapPosition(new Position(x, y))
 				.First();
 		}
 	}
