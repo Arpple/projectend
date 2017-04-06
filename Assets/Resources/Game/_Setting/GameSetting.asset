@@ -20,6 +20,8 @@ MonoBehaviour:
       PathToSpriteFolder: Game/Map/Tiles/_Sprite
       Container: Tiles
   UnitSetting:
+    UnitContainerPrefabs: {fileID: 1692081249266806, guid: 9e36673981f16ce49a48a8e4e47c6a12,
+      type: 2}
     CharacterSetting:
       CharacterBlueprints: {fileID: 11400000, guid: 4cec7519da8122e49a6e6c5c7e7a9251,
         type: 2}
