@@ -45,7 +45,7 @@ public sealed partial class GameContext : Context<GameEntity>
 	{
 		get
 		{
-			return gameLocalPlayerEntity == gamePlayingOrder.CurrentPlayer;
+			return gameLocalEntity == gamePlayingOrder.CurrentPlayer;
 		}
 	}
 }

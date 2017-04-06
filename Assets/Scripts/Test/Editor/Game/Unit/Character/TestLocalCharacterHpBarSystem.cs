@@ -21,7 +21,7 @@ namespace Test.System
 			var system = new LocalCharacterHpBarSystem(_contexts, _hp);
 
 			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
-			player.isGameLocalPlayer = true;
+			player.isGameLocal = true;
 
 			var ch = _contexts.unit.CreateEntity();
 			ch.AddGameOwner(player);

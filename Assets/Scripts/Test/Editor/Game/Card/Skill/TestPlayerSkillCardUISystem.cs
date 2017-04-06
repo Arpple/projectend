@@ -30,14 +30,14 @@ namespace Test.System
 
 			_system.Initialize();
 
-			Assert.IsTrue(p.hasGameUIPlayerSkillCardUI);
+			Assert.IsTrue(p.hasGamePlayerSkillCardUI);
 		}
 
 		[Test]
 		public void AddNewSkillToUI()
 		{
 			var p = TestHelper.CreatePlayerEntity(_contexts.game, 1);
-			p.AddGameUIPlayerSkillCardUI(_container);
+			p.AddGamePlayerSkillCardUI(_container);
 
 			var card = _contexts.card.CreateEntity();
 			card.AddGameView(new GameObject());
@@ -46,7 +46,7 @@ namespace Test.System
 
 			_system.Execute();
 
-			Assert.AreEqual(p.gameUIPlayerSkillCardUI.ContainerObject.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
+			Assert.AreEqual(p.gamePlayerSkillCardUI.ContainerObject.ObjectContainer, card.gameView.GameObject.transform.parent.gameObject);
 		}
 	}
 

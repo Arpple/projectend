@@ -13,7 +13,7 @@ public static class UnitComponentsLookup {
     public const int GameDead = 2;
     public const int GameHitpoint = 3;
     public const int GameId = 4;
-    public const int GameLocalPlayer = 5;
+    public const int GameLocal = 5;
     public const int GameMapPosition = 6;
     public const int GameOwner = 7;
     public const int GameResource = 8;
@@ -31,7 +31,7 @@ public static class UnitComponentsLookup {
         "GameDead",
         "GameHitpoint",
         "GameId",
-        "GameLocalPlayer",
+        "GameLocal",
         "GameMapPosition",
         "GameOwner",
         "GameResource",
@@ -48,7 +48,7 @@ public static class UnitComponentsLookup {
         typeof(Game.DeadComponent),
         typeof(Game.HitpointComponent),
         typeof(Game.IdComponent),
-        typeof(Game.LocalPlayerComponent),
+        typeof(Game.LocalComponent),
         typeof(Game.MapPositionComponent),
         typeof(Game.OwnerComponent),
         typeof(Game.ResourceComponent),

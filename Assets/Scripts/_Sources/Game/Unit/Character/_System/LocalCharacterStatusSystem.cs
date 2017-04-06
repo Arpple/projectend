@@ -19,7 +19,7 @@ namespace Game.UI
 		public void Initialize()
 		{
 			_ui.SetCharacter(_context.GetEntities(UnitMatcher.GameCharacter)
-				.Where(c => c.gameOwner.Entity.isGameLocalPlayer)
+				.Where(c => c.gameOwner.Entity.isGameLocal)
 				.First());
 		}
 
@@ -30,7 +30,7 @@ namespace Game.UI
 
 		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.hasGameUnitStatus && entity.gameOwner.Entity.isGameLocalPlayer;
+			return entity.hasGameUnitStatus && entity.gameOwner.Entity.isGameLocal;
 		}
 
 		protected override void Execute(List<UnitEntity> entities)

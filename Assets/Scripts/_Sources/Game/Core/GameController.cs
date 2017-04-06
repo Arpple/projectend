@@ -102,14 +102,12 @@ namespace Game
 			return new Feature("Systems")
 
 				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
-				
 				.Add(new DataLoadingSystem(contexts, Setting))
+				.Add(new GameUISetupSystem(contexts, GameUI.Instance))
+
+				.Add(new GameEventFeature(contexts))
 				.Add(new DataRenderingSystem(contexts))
 		
-				.Add(new ViewContainerSystem(contexts))
-				.Add(new GameEventFeature(contexts))
-
-				.Add(new GameUISetupSystem(contexts, GameUI.Instance))
 				.Add(new GameUIRenderingSystem(contexts, GameUI.Instance))
 
 				.Add(new ControlSystem(contexts))

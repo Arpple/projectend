@@ -22,11 +22,6 @@ namespace Game
 			{
 				var playerDeck = _cardDecks.CreateContainer(player.gamePlayer.PlayerId);
 				player.AddGamePlayerDeck(playerDeck);
-
-				if(player.isGameLocalPlayer)
-				{
-					playerDeck.gameObject.SetActive(true);
-				}
 			}
 		}
 	}

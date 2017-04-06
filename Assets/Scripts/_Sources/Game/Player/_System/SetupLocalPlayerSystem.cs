@@ -19,7 +19,7 @@ namespace Game
 			var gameLocalPlayerEntity = _context.GetEntities(GameMatcher.GamePlayer).Where(p => p.gamePlayer.PlayerObject == _localPlayer)
 				.First();
 
-			gameLocalPlayerEntity.isGameLocalPlayer = true;
+			gameLocalPlayerEntity.isGameLocal = true;
 		}
 	}
 }

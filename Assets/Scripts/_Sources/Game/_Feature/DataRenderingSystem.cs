@@ -14,6 +14,7 @@ namespace Game
 			//unit
 			Add(new OnDeadAbilitySystem(contexts));
 			Add(new DeadSystem(contexts));
+			Add(new LocalCharacterFlagSystem(contexts));
 
 			//map
 			Add(new UnitPositionSystem(contexts));

@@ -24,7 +24,7 @@ namespace Test.System
 
 			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
 			player.gamePlayer.PlayerObject.PlayerName = "test";
-			player.isGameLocalPlayer = true;
+			player.isGameLocal = true;
 
 			var character = _contexts.unit.CreateEntity();
 			character.AddGameUnitIcon(icon);

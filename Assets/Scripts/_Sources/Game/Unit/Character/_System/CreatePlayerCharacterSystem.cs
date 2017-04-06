@@ -40,11 +40,6 @@ namespace Game
 				character.AddGameCharacter(characterType);
 				character.AddGameMapPosition(sp.gameMapPosition.x, sp.gameMapPosition.y);
 				id++;
-
-				if(playerEntity.isGameLocalPlayer)
-				{
-					character.isGameLocalPlayer = true;
-				}
 			}
 		}
 	}

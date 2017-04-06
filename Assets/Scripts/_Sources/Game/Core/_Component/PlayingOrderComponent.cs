@@ -48,7 +48,7 @@ namespace Game
 
 		public override string ToString()
 		{
-			return "R:" + _round + ", T:" + _turn;
+			return "R:" + _round + ", T:" + _turn + ", P:" + CurrentPlayer.gamePlayer.PlayerId;
 		}
 
 		private bool IsRoundEnd()

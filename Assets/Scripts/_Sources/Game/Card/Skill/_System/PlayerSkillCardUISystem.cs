@@ -31,7 +31,7 @@ namespace Game.UI
 		{
 			foreach(var e in entities)
 			{
-				e.gameOwner.Entity.gameUIPlayerSkillCardUI.ContainerObject.AddCard(e.gameView.GameObject);
+				e.gameOwner.Entity.gamePlayerSkillCardUI.ContainerObject.AddCard(e.gameView.GameObject);
 			}
 		}
 
@@ -40,8 +40,8 @@ namespace Game.UI
 			foreach(var p in _gameContext.GetEntities(GameMatcher.GamePlayer))
 			{
 				var cont = _factory.CreateContainer(p.gamePlayer.PlayerId);
-				p.AddGameUIPlayerSkillCardUI(cont);
-				if (p.isGameLocalPlayer) cont.gameObject.SetActive(true);
+				p.AddGamePlayerSkillCardUI(cont);
+				if (p.isGameLocal) cont.gameObject.SetActive(true);
 			}
 		}
 	}

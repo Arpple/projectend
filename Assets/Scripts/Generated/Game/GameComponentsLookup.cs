@@ -9,15 +9,15 @@
 public static class GameComponentsLookup {
 
     public const int GameId = 0;
-    public const int GameLocalPlayer = 1;
+    public const int GameLocal = 1;
     public const int GameOwner = 2;
     public const int GamePlayerBox = 3;
     public const int GamePlayer = 4;
     public const int GamePlayerDeck = 5;
-    public const int GamePlayingOrder = 6;
-    public const int GameResource = 7;
-    public const int GameRole = 8;
-    public const int GameUIPlayerSkillCardUI = 9;
+    public const int GamePlayerSkillCardUI = 6;
+    public const int GamePlayingOrder = 7;
+    public const int GameResource = 8;
+    public const int GameRole = 9;
     public const int GameView = 10;
     public const int GameViewContainer = 11;
     public const int GameWin = 12;
@@ -26,15 +26,15 @@ public static class GameComponentsLookup {
 
     public static readonly string[] componentNames = {
         "GameId",
-        "GameLocalPlayer",
+        "GameLocal",
         "GameOwner",
         "GamePlayerBox",
         "GamePlayer",
         "GamePlayerDeck",
+        "GamePlayerSkillCardUI",
         "GamePlayingOrder",
         "GameResource",
         "GameRole",
-        "GameUIPlayerSkillCardUI",
         "GameView",
         "GameViewContainer",
         "GameWin"
@@ -42,15 +42,15 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(Game.IdComponent),
-        typeof(Game.LocalPlayerComponent),
+        typeof(Game.LocalComponent),
         typeof(Game.OwnerComponent),
         typeof(Game.PlayerBoxComponent),
         typeof(Game.PlayerComponent),
         typeof(Game.PlayerDeckComponent),
+        typeof(Game.PlayerSkillCardUI),
         typeof(Game.PlayingOrderComponent),
         typeof(Game.ResourceComponent),
         typeof(Game.RoleComponent),
-        typeof(Game.UI.PlayerSkillCardUI),
         typeof(Game.ViewComponent),
         typeof(Game.ViewContainerComponent),
         typeof(Game.WinComponent)

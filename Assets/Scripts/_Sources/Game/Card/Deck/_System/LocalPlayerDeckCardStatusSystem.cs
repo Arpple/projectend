@@ -39,9 +39,9 @@ namespace Game.UI
 
 		protected override void Execute(List<CardEntity> entities)
 		{
-			var deckCardCount = _context.GetPlayerDeckCards(_gameContext.gameLocalPlayerEntity)
+			var deckCardCount = _context.GetPlayerDeckCards(_gameContext.gameLocalEntity)
 				.Length;
-			var boxCardCount = _context.GetPlayerBoxCards(_gameContext.gameLocalPlayerEntity)
+			var boxCardCount = _context.GetPlayerBoxCards(_gameContext.gameLocalEntity)
 				.Length;
 
 			_status.UpdateDeckCardCount(deckCardCount);

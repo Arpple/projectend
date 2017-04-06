@@ -19,7 +19,7 @@ namespace Game.UI
 
 			if (cardEntity.hasGameAbility)
 			{
-				var caster = Contexts.sharedInstance.unit.gameLocalPlayerEntity;
+				var caster = Contexts.sharedInstance.unit.gameLocalEntity;
 				var caller = new CardAbilityCaller(caster, cardEntity);
 
 				if (!caller.TryUseAbility<UnitEntity>(

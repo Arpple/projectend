@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 public partial class UnitContext {
 
-    public UnitEntity gameLocalPlayerEntity { get { return GetGroup(UnitMatcher.GameLocalPlayer).GetSingleEntity(); } }
+    public UnitEntity gameLocalEntity { get { return GetGroup(UnitMatcher.GameLocal).GetSingleEntity(); } }
 
-    public bool isGameLocalPlayer {
-        get { return gameLocalPlayerEntity != null; }
+    public bool isGameLocal {
+        get { return gameLocalEntity != null; }
         set {
-            var entity = gameLocalPlayerEntity;
+            var entity = gameLocalEntity;
             if(value != (entity != null)) {
                 if(value) {
-                    CreateEntity().isGameLocalPlayer = true;
+                    CreateEntity().isGameLocal = true;
                 } else {
                     DestroyEntity(entity);
                 }
@@ -35,16 +35,16 @@ public partial class UnitContext {
 //------------------------------------------------------------------------------
 public partial class UnitEntity {
 
-    static readonly Game.LocalPlayerComponent gameLocalPlayerComponent = new Game.LocalPlayerComponent();
+    static readonly Game.LocalComponent gameLocalComponent = new Game.LocalComponent();
 
-    public bool isGameLocalPlayer {
-        get { return HasComponent(UnitComponentsLookup.GameLocalPlayer); }
+    public bool isGameLocal {
+        get { return HasComponent(UnitComponentsLookup.GameLocal); }
         set {
-            if(value != isGameLocalPlayer) {
+            if(value != isGameLocal) {
                 if(value) {
-                    AddComponent(UnitComponentsLookup.GameLocalPlayer, gameLocalPlayerComponent);
+                    AddComponent(UnitComponentsLookup.GameLocal, gameLocalComponent);
                 } else {
-                    RemoveComponent(UnitComponentsLookup.GameLocalPlayer);
+                    RemoveComponent(UnitComponentsLookup.GameLocal);
                 }
             }
         }
@@ -61,17 +61,17 @@ public partial class UnitEntity {
 //------------------------------------------------------------------------------
 public sealed partial class UnitMatcher {
 
-    static Entitas.IMatcher<UnitEntity> _matcherGameLocalPlayer;
+    static Entitas.IMatcher<UnitEntity> _matcherGameLocal;
 
-    public static Entitas.IMatcher<UnitEntity> GameLocalPlayer {
+    public static Entitas.IMatcher<UnitEntity> GameLocal {
         get {
-            if(_matcherGameLocalPlayer == null) {
-                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameLocalPlayer);
+            if(_matcherGameLocal == null) {
+                var matcher = (Entitas.Matcher<UnitEntity>)Entitas.Matcher<UnitEntity>.AllOf(UnitComponentsLookup.GameLocal);
                 matcher.componentNames = UnitComponentsLookup.componentNames;
-                _matcherGameLocalPlayer = matcher;
+                _matcherGameLocal = matcher;
             }
 
-            return _matcherGameLocalPlayer;
+            return _matcherGameLocal;
         }
     }
 }

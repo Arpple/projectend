@@ -18,9 +18,9 @@ namespace Test.System
 
 			system.Initialize();
 
-			var localPlayers = _contexts.game.GetEntities(GameMatcher.GameLocalPlayer);
+			var localPlayers = _contexts.game.GetEntities(GameMatcher.GameLocal);
 			Assert.AreEqual(1, localPlayers.Length);
-			Assert.IsTrue(localPlayers[0].isGameLocalPlayer);
+			Assert.IsTrue(localPlayers[0].isGameLocal);
 		}
 	}
 }

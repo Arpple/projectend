@@ -24,7 +24,7 @@ namespace Game
 				var playerbox = _boxContainer.CreateContainer(player.gamePlayer.PlayerId);
 				player.AddGamePlayerBox(playerbox);
 
-				if (player.isGameLocalPlayer)
+				if (player.isGameLocal)
 				{
 					playerbox.gameObject.SetActive(true);
 				}

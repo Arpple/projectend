@@ -21,7 +21,7 @@ namespace Game.UI
 
 		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.hasGameHitpoint && entity.gameOwner.Entity.isGameLocalPlayer;
+			return entity.hasGameHitpoint && entity.gameOwner.Entity.isGameLocal;
 		}
 
 		protected override void Execute(List<UnitEntity> entities)
