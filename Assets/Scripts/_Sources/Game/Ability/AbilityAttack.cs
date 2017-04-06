@@ -9,7 +9,7 @@ namespace Game
 
 		public override TileEntity[] GetTilesArea(UnitEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.AttackRange);
+			return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.AttackRange);
 		}
 
 		public override UnitEntity GetTargetFromSelectedTile(UnitEntity caster, TileEntity tile)

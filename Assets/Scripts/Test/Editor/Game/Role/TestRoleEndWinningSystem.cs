@@ -19,7 +19,7 @@ namespace Test.System
 
 			system.Execute();
 
-			Assert.IsTrue(ePlayer.isGameWin);
+			Assert.IsTrue(ePlayer.isGameWinner);
 		}
 	}
 }

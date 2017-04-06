@@ -5,12 +5,12 @@ using Game;
 
 namespace Test.System
 {
-	public class TestCardViewLoadingSystem : ContextsTest
+	public class TestCardResoucesLoadingSystem : ContextsTest
 	{
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new CardViewLoadingSystem(_contexts, TestHelper.GetGameSetting().CardSetting));
+			_systems.Add(new CardResoucesLoadingSystem(_contexts, TestHelper.GetGameSetting().CardSetting));
 		}
 
 		[Test]

@@ -11,7 +11,7 @@ namespace Test.System
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new GameResouceLoadSystem(_contexts));
+			_systems.Add(new GameResouceLoadingSystem(_contexts));
 		}
 
 		[Test]

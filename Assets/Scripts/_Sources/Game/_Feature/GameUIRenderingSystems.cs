@@ -7,14 +7,13 @@ namespace Game.UI
 	{
 		public GameUIRenderingSystems(Contexts contexts, GameUI ui) : base("UI")
 		{
-			Add(new NewDeckCardToShareDeckSystem(contexts, ui.DeckFactory.AllContainers[0]));
-			Add(new RenderShareDeckSystem(contexts, ui.DeckFactory.AllContainers[0]));
+			Add(new ShareDeckRenderingSystem(contexts, ui.DeckFactory.AllContainers[0]));
 
-			Add(new LocalPlayerDeckSystem(contexts));
-			Add(new LocalPlayerBoxSystem(contexts));
-			Add(new LocalPlayerSkillCardContainerSystem(contexts));
-			Add(new LocalPlayerDeckCardStatusSystem(contexts, ui.LocalPlayerStatus));
-			Add(new TargetPlayerDeckCardStatusSystem(contexts, ui.TargetPlayerStatus));
+			Add(new LocalPlayerDeckRenderingSystem(contexts));
+			Add(new LocalPlayerBoxRenderingSystem(contexts));
+			Add(new LocalSkillCardContainerRenderingSystem(contexts));
+			Add(new LocalDeckCardStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
+			Add(new TargetDeckCardStatusRendingSystem(contexts, ui.TargetPlayerStatus));
 
 			Add(new ViewContainerSystem(contexts));
 		}

@@ -27,7 +27,7 @@ namespace Test.System
 
 			system.Execute();
 
-			Assert.IsTrue(oPlayer.isGameWin);
+			Assert.IsTrue(oPlayer.isGameWinner);
 		}
 	}
 }

@@ -3,7 +3,7 @@
 namespace Game
 {
 	[Game]
-	public class WinComponent : IComponent
+	public class WinnerComponent : IComponent
 	{
 	}
 }

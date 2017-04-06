@@ -14,13 +14,13 @@ public static class GameComponentsLookup {
     public const int GamePlayerBox = 3;
     public const int GamePlayer = 4;
     public const int GamePlayerDeck = 5;
-    public const int GamePlayerSkillCardUI = 6;
-    public const int GamePlayingOrder = 7;
-    public const int GameResource = 8;
-    public const int GameRole = 9;
+    public const int GamePlayingOrder = 6;
+    public const int GameResource = 7;
+    public const int GameRole = 8;
+    public const int GameSkillCardContainer = 9;
     public const int GameView = 10;
     public const int GameViewContainer = 11;
-    public const int GameWin = 12;
+    public const int GameWinner = 12;
 
     public const int TotalComponents = 13;
 
@@ -31,13 +31,13 @@ public static class GameComponentsLookup {
         "GamePlayerBox",
         "GamePlayer",
         "GamePlayerDeck",
-        "GamePlayerSkillCardUI",
         "GamePlayingOrder",
         "GameResource",
         "GameRole",
+        "GameSkillCardContainer",
         "GameView",
         "GameViewContainer",
-        "GameWin"
+        "GameWinner"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -47,12 +47,12 @@ public static class GameComponentsLookup {
         typeof(Game.PlayerBoxComponent),
         typeof(Game.PlayerComponent),
         typeof(Game.PlayerDeckComponent),
-        typeof(Game.PlayerSkillCardUI),
         typeof(Game.PlayingOrderComponent),
         typeof(Game.ResourceComponent),
         typeof(Game.RoleComponent),
+        typeof(Game.SkillCardContainerComponent),
         typeof(Game.ViewComponent),
         typeof(Game.ViewContainerComponent),
-        typeof(Game.WinComponent)
+        typeof(Game.WinnerComponent)
     };
 }

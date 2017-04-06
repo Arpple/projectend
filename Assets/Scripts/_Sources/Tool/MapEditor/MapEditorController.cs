@@ -65,13 +65,13 @@ namespace MapEditor
 			EdittingMap = InitMap();
 
 			return new Feature("Systems")
-				.Add(new CreateMapTileSystem(contexts, EdittingMap, Setting.MapSetting))
-				.Add(new CreateTileGraphSystem(contexts))
+				.Add(new TileMapCreatingSystem(contexts, EdittingMap, Setting.MapSetting))
+				.Add(new TileGraphCreatingSystem(contexts))
 			
 				.Add(new TileViewLoadingSystem(contexts, Setting.MapSetting.TileSetting))
                 .Add(new TileHoverActionSystem(contexts))
                 
-				.Add(new TilePositionSystem(contexts))
+				.Add(new TilePositionRenderingSystem(contexts))
 				.Add(new TileBrushSystem(contexts, Setting.MapSetting.TileSetting))
                 .Add(new TileDetailSystem(contexts))
 

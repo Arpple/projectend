@@ -7,7 +7,7 @@ namespace Game
 		public DataLoadingSystems(Contexts contexts, GameSetting setting) : base("Data Loading")
 		{
 			///game
-			Add(new GameResouceLoadSystem(contexts));
+			Add(new GameResouceLoadingSystem(contexts));
 
 			//tile
 			Add(new TileViewLoadingSystem(contexts, setting.MapSetting.TileSetting));
@@ -16,8 +16,8 @@ namespace Game
 			Add(new UnitViewLoadingSystem(contexts, setting.UnitSetting));
 
 			//card
-			Add(new LoadCardSystem(contexts, setting.CardSetting.DeckSetting));
-			Add(new CardViewLoadingSystem(contexts, setting.CardSetting));
+			Add(new CardBlueprintLoadingSystem(contexts, setting.CardSetting.DeckSetting));
+			Add(new CardResoucesLoadingSystem(contexts, setting.CardSetting));
 
 			Add(new AbilityResourceLoadingSystem(contexts));
 		}

@@ -26,7 +26,7 @@ namespace Test.System
 
 			system.Execute();
 
-			Assert.IsTrue(iPlayer.isGameWin);
+			Assert.IsTrue(iPlayer.isGameWinner);
 		}
 	}
 }

@@ -36,7 +36,7 @@ namespace Game
 			foreach (var i in _gameContext.GetEntities(GameMatcher.GameRole)
 				.Where(r => r.gameRole.RoleObject is RoleInvader))
 			{
-				i.isGameWin = true;
+				i.isGameWinner = true;
 			}
 		}
 	}

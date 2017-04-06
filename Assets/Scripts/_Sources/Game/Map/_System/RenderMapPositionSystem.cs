@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Game
 {
-	public class UnitPositionSystem : ReactiveSystem<UnitEntity>
+	public class UnitPositionRenderingSystem : ReactiveSystem<UnitEntity>
 	{
 
-		public UnitPositionSystem(Contexts contexts): base(contexts.unit)
+		public UnitPositionRenderingSystem(Contexts contexts): base(contexts.unit)
 		{}
 
 		protected override Collector<UnitEntity> GetTrigger (IContext<UnitEntity> context)
@@ -30,10 +30,10 @@ namespace Game
 		}
 	}
 
-	public class TilePositionSystem : ReactiveSystem<TileEntity>
+	public class TilePositionRenderingSystem : ReactiveSystem<TileEntity>
 	{
 
-		public TilePositionSystem(Contexts contexts) : base(contexts.tile)
+		public TilePositionRenderingSystem(Contexts contexts) : base(contexts.tile)
 		{ }
 
 		protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context)

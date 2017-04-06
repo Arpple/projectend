@@ -11,7 +11,7 @@ namespace Test.System
 		[Test]
 		public void CardViewObjectMovedToDeckObject()
 		{
-			var system = new RenderPlayerDeckSystem(_contexts);
+			var system = new PlayerDeckRenderingSystem(_contexts);
 
 			var player = new GameObject().AddComponent<Player>();
 			player.PlayerId = 1;

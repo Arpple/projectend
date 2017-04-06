@@ -27,7 +27,7 @@ namespace Game
 		{
 			foreach(var e in entities)
 			{
-				e.gameOwner.Entity.isGameWin = true;
+				e.gameOwner.Entity.isGameWinner = true;
 			}
 		}
 	}

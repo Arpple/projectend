@@ -12,7 +12,7 @@ namespace Game.UI
 			Add(new LocalCharacterStatusSystem(contexts, ui.LocalPlayerStatus));
 			Add(new LocalCharacterHpBarSystem(contexts, ui.LocalPlayerStatus.HpBar));
 			Add(new TargetUnitStatusDisplaySystem(contexts, ui.TargetPlayerStatus));
-			Add(new PlayerSkillCardUISystem(contexts, ui.SkillFactory));
+			Add(new SkillCardContainerRenderingSystem(contexts, ui.SkillFactory));
 		}
 	}
 }

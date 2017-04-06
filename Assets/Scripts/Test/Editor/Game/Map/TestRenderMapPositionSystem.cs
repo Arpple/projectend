@@ -4,13 +4,13 @@ using Game;
 
 namespace Test.System
 {
-	public class TestRenderMapPositionSystem : ContextsTest
+	public class TestPositionRenderingSystem : ContextsTest
 	{
 		[Test]
 		public void RenderPosition()
 		{
 			//given
-			var system = new UnitPositionSystem(_contexts);
+			var system = new UnitPositionRenderingSystem(_contexts);
 
 			var entity = _contexts.unit.CreateEntity();
 			entity.AddGameView(new GameObject());

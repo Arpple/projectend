@@ -8,8 +8,8 @@ namespace Game
 		public DataRenderingSystems(Contexts contexts) : base("Data Rendering")
 		{
 			//deck card
-			Add(new RenderPlayerDeckSystem(contexts));
-			Add(new PlayerBoxCardSystem(contexts));
+			Add(new PlayerDeckRenderingSystem(contexts));
+			Add(new BoxCardRenderingSystem(contexts));
 			
 			//unit
 			Add(new OnDeadAbilitySystem(contexts));
@@ -17,8 +17,8 @@ namespace Game
 			Add(new LocalCharacterFlagSystem(contexts));
 
 			//map
-			Add(new UnitPositionSystem(contexts));
-			Add(new TilePositionSystem(contexts));
+			Add(new UnitPositionRenderingSystem(contexts));
+			Add(new TilePositionRenderingSystem(contexts));
 			Add(new TileActionSystem(contexts));
 
 			//event

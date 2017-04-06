@@ -9,12 +9,12 @@ namespace Game
 		public GameSetupSystems(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 		{
 			//map
-			Add(new CreateMapTileSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
-			Add(new CreateTileGraphSystem(contexts));
+			Add(new TileMapCreatingSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
+			Add(new TileGraphCreatingSystem(contexts));
 
 			//player
-			Add(new CreatePlayerSystem(contexts, players));
-			Add(new SetupLocalPlayerSystem(contexts, localPlayer));
+			Add(new PlayerCreatingSystem(contexts, players));
+			Add(new LocalPlayerSetupSystem(contexts, localPlayer));
 			Add(new CreatePlayerCharacterSystem(contexts));	
 
 			//unit
@@ -22,18 +22,18 @@ namespace Game
 			Add(new CharacterIconLoadingSystem(contexts));
 
 			//card
-			Add(new CreatePlayerDeckSystem(contexts, UI.GameUI.Instance.DeckFactory));
-			Add(new CreatePlayerBoxSystem(contexts, UI.GameUI.Instance.BoxFactory));
-			Add(new CreateDeckCardsSystem(contexts, setting.CardSetting.DeckSetting.Deck));
+			Add(new PlayerDeckCreatingSystem(contexts, UI.GameUI.Instance.DeckFactory));
+			Add(new PlayerBoxCreatingSystem(contexts, UI.GameUI.Instance.BoxFactory));
+			Add(new DeckCardCreatingSystem(contexts, setting.CardSetting.DeckSetting.Deck));
 
 			Add(new CharacterSkillLoadingSystem(contexts));
 
 			//turn
-			Add(new gamePlayingOrderSystem(contexts));
+			Add(new PlayingOrderSetupSystem(contexts));
 
 			if(IsServer())
 			{
-				Add(new StartingDeckCardSystem(contexts, setting.CardSetting.DeckSetting));
+				Add(new StartDeckCardDrawingSystem(contexts, setting.CardSetting.DeckSetting));
 			}
 
 			if (IsOffline())

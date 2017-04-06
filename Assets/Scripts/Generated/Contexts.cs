@@ -86,13 +86,13 @@ public partial class Contexts {
             card.GetGroup(CardMatcher.GameId),
             (e, c) => ((Game.IdComponent)c).Id));
 
-        tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, Position>(
-            GameMapPosition,
-            tile.GetGroup(TileMatcher.GameMapPosition),
-            (e, c) => ((Game.MapPositionComponent)c).Value));
         unit.AddEntityIndex(new Entitas.EntityIndex<UnitEntity, Position>(
             GameMapPosition,
             unit.GetGroup(UnitMatcher.GameMapPosition),
+            (e, c) => ((Game.MapPositionComponent)c).Value));
+        tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, Position>(
+            GameMapPosition,
+            tile.GetGroup(TileMatcher.GameMapPosition),
             (e, c) => ((Game.MapPositionComponent)c).Value));
     }
 }
@@ -115,12 +115,12 @@ public static class ContextsExtensions {
         return ((Entitas.EntityIndex<CardEntity, int>)context.GetEntityIndex(Contexts.GameId)).GetEntities(Id);
     }
 
-    public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithGameMapPosition(this TileContext context, Position Value) {
-        return ((Entitas.EntityIndex<TileEntity, Position>)context.GetEntityIndex(Contexts.GameMapPosition)).GetEntities(Value);
-    }
-
     public static System.Collections.Generic.HashSet<UnitEntity> GetEntitiesWithGameMapPosition(this UnitContext context, Position Value) {
         return ((Entitas.EntityIndex<UnitEntity, Position>)context.GetEntityIndex(Contexts.GameMapPosition)).GetEntities(Value);
+    }
+
+    public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithGameMapPosition(this TileContext context, Position Value) {
+        return ((Entitas.EntityIndex<TileEntity, Position>)context.GetEntityIndex(Contexts.GameMapPosition)).GetEntities(Value);
     }
 }
 //------------------------------------------------------------------------------

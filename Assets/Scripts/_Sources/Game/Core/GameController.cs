@@ -111,7 +111,7 @@ namespace Game
 				.Add(new GameUIRenderingSystems(contexts, GameUI.Instance))
 
 				.Add(new InputSystems(contexts))
-				.Add(new ClearContextsSystem(contexts));
+				.Add(new ContextsResetSystem(contexts));
 		}
 
 		#region Network

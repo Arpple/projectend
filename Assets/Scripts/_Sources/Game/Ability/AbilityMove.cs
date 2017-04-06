@@ -9,7 +9,7 @@ namespace Game
 
 		public override TileEntity[] GetTilesArea(UnitEntity caster)
 		{
-			return AreaSelector.GetMovePathInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.MoveSpeed);
+			return TileAreaSelector.GetMovePathInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.MoveSpeed);
 		}
 
 		public override TileEntity GetTargetFromSelectedTile(UnitEntity caster, TileEntity tile)
