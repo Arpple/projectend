@@ -28,7 +28,7 @@ namespace Test.System
 				_contexts.game.CreatePlayerEntity((short)(i + 1));
 				
 				var card = _contexts.game.CreateEntity();
-				card.AddGameCard((short)i, Card.Move);
+				card.AddGameCard(Card.Move);
 				card.isGameDeckCard = true;
 			});
 

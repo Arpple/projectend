@@ -13,7 +13,7 @@ namespace Test.Event
 			var p2 = _contexts.game.CreatePlayerEntity(2);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(1, Card.Move);
+			card.AddGameCard(Card.Move);
 			card.AddGamePlayerCard(p1);
 
 			EventMoveCard.MoveCardToPlayer(card, p2);
@@ -37,7 +37,7 @@ namespace Test.Event
 			var p2 = _contexts.game.CreatePlayerEntity(2);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(1, Card.Move);
+			card.AddGameCard(Card.Move);
 			card.AddGamePlayerCard(p1);
 
 
@@ -56,7 +56,7 @@ namespace Test.Event
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(1, Card.Move);
+			card.AddGameCard(Card.Move);
 			card.AddGamePlayerCard(p1);
 
 			EventMoveCard.MoveCardInToBox(card);
@@ -75,7 +75,7 @@ namespace Test.Event
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(1, Card.Move);
+			card.AddGameCard(Card.Move);
 			card.AddGamePlayerCard(p1);
 			card.AddGameInBox(0);
 
@@ -94,7 +94,7 @@ namespace Test.Event
 
 			var p1 = _contexts.game.CreatePlayerEntity(1);
 			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(1, Card.Move);
+			card.AddGameCard(Card.Move);
 			card.AddGamePlayerCard(p1);
 
 			EventMoveCard.MoveCardToShareDeck(card);

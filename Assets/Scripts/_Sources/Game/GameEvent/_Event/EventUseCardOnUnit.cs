@@ -18,7 +18,7 @@ namespace Game
 			Assert.IsTrue(cardEntity.hasGameCard);
 			Assert.IsTrue(targetEntity.hasGameUnit);
 
-			GameEvent.CreateEvent<EventUseCardOnUnit>(userEntity.gameUnit.Id, cardEntity.gameCard.Id, targetEntity.gameUnit.Id);
+			GameEvent.CreateEvent<EventUseCardOnUnit>(userEntity.gameUnit.Id, cardEntity.gameId.Id, targetEntity.gameUnit.Id);
 		}
 
 		public void Decode(int userUnitId, int cardId, int targetUnitId)
@@ -28,7 +28,7 @@ namespace Game
 				.First();
 
 			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
-				.Where(c => c.gameCard.Id == cardId)
+				.Where(c => c.gameId.Id == cardId)
 				.First();
 
 			TargetEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)

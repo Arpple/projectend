@@ -7,12 +7,6 @@ namespace Test
 {
 	public class TestEntityIdGenerator : ContextsTest
 	{
-		[SetUp]
-		public void Init()
-		{
-			new EntityIdGenerator(_contexts);
-		}
-
 		[Test]
 		public void GenerateGameContextId()
 		{

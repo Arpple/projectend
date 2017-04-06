@@ -17,7 +17,7 @@ namespace Game
 			Assert.IsTrue(cardEntity.hasGameCard);
 
 			GameEvent.CreateEvent<EventMoveCard>(
-				cardEntity.gameCard.Id, 
+				cardEntity.gameId.Id,
 				playerEntity != null 
 					? playerEntity.gamePlayer.PlayerId 
 					: 0, 
@@ -56,7 +56,7 @@ namespace Game
 		public void Decode(int cardId, int playerId, int isInBox)
 		{
 			CardEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
-				.Where(c => c.gameCard.Id == cardId)
+				.Where(c => c.gameId.Id == cardId)
 				.First();
 
 			TargetPlayerEntity = playerId == 0

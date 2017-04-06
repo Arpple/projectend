@@ -18,7 +18,7 @@ namespace Game
 			Assert.IsTrue(cardEntity.hasGameCard);
 			Assert.IsTrue(tileEntity.hasGameTile);
 
-			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameUnit.Id, cardEntity.gameCard.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
+			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameUnit.Id, cardEntity.gameId.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
 		}
 
 		public void Decode(int userUnitId, int cardId, int x, int y)
@@ -28,7 +28,7 @@ namespace Game
 				.First();
 
 			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
-				.Where(c => c.gameCard.Id == cardId)
+				.Where(c => c.gameId.Id == cardId)
 				.First();
 
 			TargetEnttiy = Contexts.sharedInstance.tile.GetEntities(TileMatcher.GameTile)

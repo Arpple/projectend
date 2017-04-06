@@ -42,7 +42,7 @@ namespace Test.System
 			_ownerPlayer.AddGamePlayerBox(box);
 
 			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(0, Card.Potion);
+			card.AddGameCard(Card.Potion);
 			card.AddGamePlayerCard(_ownerPlayer);
 			card.AddGameInBox(0);
 			card.AddGameAbility("", new TestOnDeadAbility());
