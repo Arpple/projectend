@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Game
 {
-	public class PlayingOrderSetupSystem : IInitializeSystem
+	public class GamePlayingOrderSystem : IInitializeSystem
 	{
 		readonly GameContext _context;
 
-		public PlayingOrderSetupSystem(Contexts contexts)
+		public GamePlayingOrderSystem(Contexts contexts)
 		{
 			_context = contexts.game;
 		}

@@ -36,7 +36,7 @@ namespace Test.System
 				TestHelper.CreatePlayerEntity(_contexts.game, i + 1);
 			});
 
-			var system = new Game.PlayingOrderSetupSystem(_contexts);
+			var system = new Game.GamePlayingOrderSystem(_contexts);
 
 			system.Initialize();
 
