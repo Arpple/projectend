@@ -1,5 +1,5 @@
 ﻿using Entitas;
-using Game.UI;
+using Game.Offline;
 
 namespace Game
 {
@@ -24,7 +24,13 @@ namespace Game
 			//event
 			Add(new RoleOriginWinningSystem(contexts));
 			Add(new WinSystem(contexts));
+			Add(new RoundEndPlayingOrderReOrderingSystem(contexts));
 			Add(new PlayingFlagSystem(contexts));
+
+			if (GameController.Instance.IsOffline)
+			{
+				Add(new LocalFlagPassingSystem(contexts));
+			}
 		}
 	}
 
