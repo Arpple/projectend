@@ -14,7 +14,7 @@ namespace Game.UI {
         }
 
         public void Play() {
-            AnimaControl.Play("Show");
+            AnimaControl.Play("Show", -1, 0f);
         }
     }
 }
