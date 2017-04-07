@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using Game;
 using NUnit.Framework;
 using System.Collections.Generic;

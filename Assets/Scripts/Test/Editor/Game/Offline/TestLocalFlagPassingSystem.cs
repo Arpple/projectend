@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using UnityEditor;
-using NUnit.Framework;
 using Game.Offline;
+using NUnit.Framework;
 using System.Collections.Generic;
-using Game;
 
 namespace Test.System
 {
@@ -16,23 +14,34 @@ namespace Test.System
 		}
 
 		[Test]
-		public void EndTurn()
+		public void SetFlag()
+		{
+			var p1 = _contexts.game.CreateEntity();
+
+			_contexts.game.SetGamePlayingOrder(new List<GameEntity>() { p1 });
+
+			_contexts.game.SetGameRoundIndex(0);
+			_systems.Execute();
+
+			Assert.IsTrue(p1.isGameLocal);
+		}
+
+		[Test]
+		public void PassFlag()
 		{
 			var p1 = _contexts.game.CreateEntity();
 			p1.isGameLocal = true;
 
 			var p2 = _contexts.game.CreateEntity();
 
-			var e = _contexts.gameEvent.CreateEntity();
-			e.isGameEventEndTurn = true;
+			_contexts.game.SetGamePlayingOrder(new List<GameEntity>() { p1, p2 });
 
-			var order = _contexts.game.SetGamePlayingOrder(new List<GameEntity>() { p1, p2 });
-			order.gamePlayingOrder.Initialize();
-			order.gamePlayingOrder.GetNextPlayerEntity();
-
+			_contexts.game.SetGameRoundIndex(1);
 			_systems.Execute();
 
+			Assert.IsFalse(p1.isGameLocal);
 			Assert.IsTrue(p2.isGameLocal);
 		}
 	}
 }
+

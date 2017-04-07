@@ -4,32 +4,43 @@ using UnityEngine;
 
 namespace Game.Offline
 {
-	public class LocalFlagPassingSystem : ReactiveSystem<GameEventEntity>
+	public class LocalFlagPassingSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
 
-		public LocalFlagPassingSystem(Contexts contexts) : base(contexts.gameEvent)
+		public LocalFlagPassingSystem(Contexts contexts) : base(contexts.game)
 		{
 			_context = contexts.game;
 		}
 
-		protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
+		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameEventMatcher.GameEventEndTurn);
+			return context.CreateCollector(GameMatcher.GameRoundIndex);
 		}
 
-		protected override bool Filter(GameEventEntity entity)
+		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isGameEventEndTurn;
+			return entity.hasGameRoundIndex;
 		}
 
-		protected override void Execute(List<GameEventEntity> entities)
+		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach(var e in entities)
 			{
-				_context.gameLocalEntity.isGameLocal = false;
-				_context.gamePlayingOrder.CurrentPlayer.isGameLocal = true;
+				RemoveOldFlag();
+				SetNewFlag(e);
 			}
+		}
+
+		private void RemoveOldFlag()
+		{
+			if(_context.isGameLocal)
+				_context.gameLocalEntity.isGameLocal = false;
+		}
+
+		private void SetNewFlag(GameEntity e)
+		{
+			_context.gamePlayingOrder.PlayerOrder[e.gameRoundIndex.Index].isGameLocal = true;
 		}
 	}
 }
