@@ -12,6 +12,7 @@ namespace Game
 
 		public PlayingFlagSystem(Contexts contexts) : base(contexts.game)
 		{
+			Debug.Log("create flag");
 			_context = contexts.game;
 		}
 
@@ -27,6 +28,7 @@ namespace Game
 
 		protected override void Execute(List<GameEntity> entities)
 		{
+			Debug.Log("flag execute");
 			foreach(var e in entities)
 			{
 				RemoveOldFlag();

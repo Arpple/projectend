@@ -30,7 +30,7 @@ namespace Game.UI
 		protected override void Execute(List<GameEntity> entities)
 		{
 			var e = entities[entities.Count - 1];
-			_noti.Show(e.gameTurn.Count.ToString(), _context.gamePlayingEntity.gamePlayer.PlayerObject.name.ToString());
+			_noti.Show(e.gameTurn.Count.ToString(), _context.gamePlayingEntity.gamePlayer.PlayerObject.PlayerName.ToString());
 		}
 	}
 }
