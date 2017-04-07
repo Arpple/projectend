@@ -17,7 +17,7 @@ namespace Test.Event
 			var p1 = _contexts.game.CreateEntity();
 			p1.isGamePlaying = true;
 			var p2 = _contexts.game.CreateEntity();
-			var order = _contexts.game.SetGamePlayingOrder(new List<GameEntity>() { p1, p2 });
+			_contexts.game.SetGamePlayingOrder(new List<GameEntity>() { p1, p2 });
 		}
 
 		[Test]

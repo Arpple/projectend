@@ -20,7 +20,6 @@ namespace Game
 
 			_context.SetGamePlayingOrder(players.OrderBy(p => p.gamePlayer.PlayerId).ToList());
 			_context.gamePlayingOrder.Initialize();
-			Debug.Log(_context.gamePlayingOrder);
 		}
 	}
 

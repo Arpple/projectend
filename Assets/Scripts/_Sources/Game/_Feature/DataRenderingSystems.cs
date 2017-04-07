@@ -24,6 +24,7 @@ namespace Game
 			//event
 			Add(new RoleOriginWinningSystem(contexts));
 			Add(new WinSystem(contexts));
+			Add(new PlayingFlagSystem(contexts));
 		}
 	}
 

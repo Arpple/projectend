@@ -30,8 +30,9 @@ namespace Game
 
 			//turn
 			Add(new GamePlayingOrderSystem(contexts));
+			Add(new TurnAndRoundSetupSystem(contexts));
 
-			if(IsServer())
+			if (IsServer())
 			{
 				Add(new StartDeckCardDrawingSystem(contexts, setting.CardSetting.DeckSetting));
 			}
