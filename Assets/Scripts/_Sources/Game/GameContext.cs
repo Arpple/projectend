@@ -5,16 +5,6 @@ using UnityEngine;
 
 public sealed partial class GameContext : Context<GameEntity>
 {
-	private CacheList<GameEntity, GameEntity> __cachedPlayerCharacterEntity;
-	private CacheList<GameEntity, GameEntity> _cachedPlayerCharacterEntity
-	{
-		get
-		{
-			if (__cachedPlayerCharacterEntity == null) __cachedPlayerCharacterEntity = new CacheList<GameEntity, GameEntity>();
-			return __cachedPlayerCharacterEntity;
-		}
-	}
-
 	private CacheList<int, GameEntity> __cachedPlayerEntity;
 	private CacheList<int, GameEntity> _cachedPlayerEntity
 	{
@@ -24,8 +14,6 @@ public sealed partial class GameContext : Context<GameEntity>
 			return __cachedPlayerEntity;
 		}
 	}
-
-	private GameEntity _gameLocalPlayerEntity;
 
 	public GameEntity GetPlayerEntity(int playerId)
 	{
@@ -45,7 +33,7 @@ public sealed partial class GameContext : Context<GameEntity>
 	{
 		get
 		{
-			return gameLocalEntity == gamePlayingOrder.CurrentPlayer;
+			return gameLocalEntity.isGamePlaying;
 		}
 	}
 }
