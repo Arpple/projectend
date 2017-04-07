@@ -12,7 +12,6 @@ namespace Test.System
 			_systems.Add(new RoundSetupSystem(_contexts));
 			_systems.Initialize();
 
-			Assert.AreEqual(0, _contexts.game.gameRound.Index);
 			Assert.AreEqual(1, _contexts.game.gameRound.Count);
 		}
 	}

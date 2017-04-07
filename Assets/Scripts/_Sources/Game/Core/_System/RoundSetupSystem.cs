@@ -14,7 +14,7 @@ namespace Game
 
 		public void Initialize()
 		{
-			_context.SetGameRound(1, 0);
+			_context.SetGameRound(1);
 		}
 	}
 }

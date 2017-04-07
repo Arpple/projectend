@@ -12,22 +12,22 @@ public partial class GameContext {
     public Game.RoundComponent gameRound { get { return gameRoundEntity.gameRound; } }
     public bool hasGameRound { get { return gameRoundEntity != null; } }
 
-    public GameEntity SetGameRound(int newCount, int newIndex) {
+    public GameEntity SetGameRound(int newCount) {
         if(hasGameRound) {
             throw new Entitas.EntitasException("Could not set GameRound!\n" + this + " already has an entity with Game.RoundComponent!",
                 "You should check if the context already has a gameRoundEntity before setting it or use context.ReplaceGameRound().");
         }
         var entity = CreateEntity();
-        entity.AddGameRound(newCount, newIndex);
+        entity.AddGameRound(newCount);
         return entity;
     }
 
-    public void ReplaceGameRound(int newCount, int newIndex) {
+    public void ReplaceGameRound(int newCount) {
         var entity = gameRoundEntity;
         if(entity == null) {
-            entity = SetGameRound(newCount, newIndex);
+            entity = SetGameRound(newCount);
         } else {
-            entity.ReplaceGameRound(newCount, newIndex);
+            entity.ReplaceGameRound(newCount);
         }
     }
 
@@ -49,19 +49,17 @@ public partial class GameEntity {
     public Game.RoundComponent gameRound { get { return (Game.RoundComponent)GetComponent(GameComponentsLookup.GameRound); } }
     public bool hasGameRound { get { return HasComponent(GameComponentsLookup.GameRound); } }
 
-    public void AddGameRound(int newCount, int newIndex) {
+    public void AddGameRound(int newCount) {
         var index = GameComponentsLookup.GameRound;
         var component = CreateComponent<Game.RoundComponent>(index);
         component.Count = newCount;
-        component.Index = newIndex;
         AddComponent(index, component);
     }
 
-    public void ReplaceGameRound(int newCount, int newIndex) {
+    public void ReplaceGameRound(int newCount) {
         var index = GameComponentsLookup.GameRound;
         var component = CreateComponent<Game.RoundComponent>(index);
         component.Count = newCount;
-        component.Index = newIndex;
         ReplaceComponent(index, component);
     }
 
