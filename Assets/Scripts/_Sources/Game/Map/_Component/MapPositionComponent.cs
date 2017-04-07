@@ -39,7 +39,7 @@ public struct Position : IEquatable<Position>
 
 namespace Game
 {
-	[Game, Tile]
+	[Unit, Tile]
 	public class MapPositionComponent : IComponent
 	{
 		const float SIZE = 1f;
@@ -71,7 +71,7 @@ namespace Game
 	}
 }
 
-public partial class GameEntity
+public partial class UnitEntity
 {
 	public void AddGameMapPosition(int x, int y)
 	{

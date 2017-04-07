@@ -5,14 +5,14 @@ using System;
 
 namespace Test.TestAbility
 {
-	public class TestAbilityAttack : ActiveAbilityTest<GameEntity>
+	public class TestAbilityAttack : ActiveAbilityTest<UnitEntity>
 	{
 		protected override Ability CreateAbility()
 		{
 			return new AbilityAttack();
 		}
 
-		protected override GameEntity SetupCaster()
+		protected override UnitEntity SetupCaster()
 		{
 			var entity = base.SetupCaster();
 			entity.AddGameUnitStatus(1, 2, 1, 1, 1);
@@ -20,9 +20,9 @@ namespace Test.TestAbility
 			return entity;
 		}
 
-		protected override GameEntity SetupTarget()
+		protected override UnitEntity SetupTarget()
 		{
-			var entity = _contexts.game.CreateEntity();
+			var entity = _contexts.unit.CreateEntity();
 			entity.AddGameHitpoint(10);
 
 			return entity;

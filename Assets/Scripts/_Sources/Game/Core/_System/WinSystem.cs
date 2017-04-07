@@ -13,12 +13,12 @@ namespace Game
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameWin, GroupEvent.Added);
+			return context.CreateCollector(GameMatcher.GameWinner, GroupEvent.Added);
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isGameWin;
+			return entity.isGameWinner;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

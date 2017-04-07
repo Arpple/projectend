@@ -2,7 +2,7 @@
 using Game;
 using Entitas.Unity;
 
-namespace Test
+namespace Test.System
 {
 	public class TestTileViewLoadingSystem : ContextsTest
 	{

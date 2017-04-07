@@ -14,20 +14,20 @@ namespace Test.System
 			var iPlayer = _contexts.game.CreateEntity();
 			iPlayer.AddGameRole(new RoleInvader(_contexts.game));
 
-			var iChar = _contexts.game.CreateEntity();
-			iChar.AddGameUnit(0, iPlayer);
+			var iChar = _contexts.unit.CreateEntity();
+			iChar.AddGameOwner(iPlayer);
 			iChar.AddGameCharacter(Character.LastBoss);
 			iChar.isGameDead = true;
 
 			var oPlayer = _contexts.game.CreateEntity();
 			oPlayer.AddGameRole(new RoleOrigin(_contexts.game));
-			var oChar = _contexts.game.CreateEntity();
-			oChar.AddGameUnit(1, oPlayer);
+			var oChar = _contexts.unit.CreateEntity();
+			oChar.AddGameOwner(oPlayer);
 			oChar.AddGameCharacter(Character.LastBoss);
 
 			system.Execute();
 
-			Assert.IsTrue(oPlayer.isGameWin);
+			Assert.IsTrue(oPlayer.isGameWinner);
 		}
 	}
 }

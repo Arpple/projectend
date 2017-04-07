@@ -26,6 +26,9 @@ namespace Game.UI
 		public PlayerUnitStatusPanel TargetPlayerStatus;
 		public TurnPanel TurnPanel;
 
+		[Header("Notification")]
+		public TurnNotification TurnNoti;
+
 		[Header("Factory")]
 		public PlayerDeckFactory DeckFactory;
 		public PlayerBoxFactory BoxFactory;
@@ -48,6 +51,7 @@ namespace Game.UI
 			Assert.IsNotNull(LocalPlayerStatus);
 			Assert.IsNotNull(TargetPlayerStatus);
 			Assert.IsNotNull(TurnPanel);
+			Assert.IsNotNull(TurnNoti);
 		}
 
 		private void Start()

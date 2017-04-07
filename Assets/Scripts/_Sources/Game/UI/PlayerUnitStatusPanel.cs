@@ -26,7 +26,7 @@ namespace Game.UI
         public Text RoleText;
         public Icon RoleImage;
 
-		public GameEntity ShowingCharacter;
+		public UnitEntity ShowingCharacter;
 
 		private void Awake()
 		{
@@ -44,9 +44,9 @@ namespace Game.UI
             Assert.IsNotNull(RoleImage);
         }
 
-		public void SetCharacter(GameEntity characterEntity)
+		public void SetCharacter(UnitEntity characterEntity)
 		{
-			PlayerNameText.text = characterEntity.gameUnit.OwnerEntity.gamePlayer.PlayerObject.PlayerName;
+			PlayerNameText.text = characterEntity.gameOwner.Entity.gamePlayer.PlayerObject.PlayerName;
 			CharacterIcon.IconImage.sprite = characterEntity.gameUnitIcon.IconSprite;
 
 			UpdateUnitStatus(characterEntity.gameUnitStatus);

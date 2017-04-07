@@ -8,16 +8,16 @@ namespace Game
 	[GameEvent]
 	public class EventMoveCard : GameEventComponent
 	{
-		public GameEntity CardEntity;
+		public CardEntity CardEntity;
 		public GameEntity TargetPlayerEntity;
 		public bool IsInBox;
 
-		private static void MoveCard(GameEntity cardEntity, GameEntity playerEntity, bool isMoveTobox)
+		private static void MoveCard(CardEntity cardEntity, GameEntity playerEntity, bool isMoveTobox)
 		{
 			Assert.IsTrue(cardEntity.hasGameCard);
 
 			GameEvent.CreateEvent<EventMoveCard>(
-				cardEntity.gameCard.Id, 
+				cardEntity.gameId.Id,
 				playerEntity != null 
 					? playerEntity.gamePlayer.PlayerId 
 					: 0, 
@@ -27,36 +27,35 @@ namespace Game
 			);
 		}
 
-		public static void MoveCardToPlayer(GameEntity cardEntity, GameEntity playerEntity)
+		public static void MoveCardToPlayer(CardEntity cardEntity, GameEntity playerEntity)
 		{
 			Assert.IsTrue(cardEntity.hasGameCard);
 
 			MoveCard(cardEntity, playerEntity, false);
 		}
 
-		public static void MoveCardInToBox(GameEntity cardEntity)
+		public static void MoveCardInToBox(CardEntity cardEntity)
 		{
 			Assert.IsFalse(cardEntity.hasGameInBox);
 
-			MoveCard(cardEntity, cardEntity.gamePlayerCard.OwnerEntity, true);
+			MoveCard(cardEntity, cardEntity.gameOwner.Entity, true);
 		}
 
-		public static void MoveCardOutFromBox(GameEntity cardEntity)
+		public static void MoveCardOutFromBox(CardEntity cardEntity)
 		{
 			Assert.IsTrue(cardEntity.hasGameInBox);
 
-			MoveCard(cardEntity, cardEntity.gamePlayerCard.OwnerEntity, false);
+			MoveCard(cardEntity, cardEntity.gameOwner.Entity, false);
 		}
 
-		public static void MoveCardToShareDeck(GameEntity cardEntity)
+		public static void MoveCardToShareDeck(CardEntity cardEntity)
 		{
 			MoveCard(cardEntity, null, false);
 		}
 
 		public void Decode(int cardId, int playerId, int isInBox)
 		{
-			CardEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
-				.Where(c => c.gameCard.Id == cardId)
+			CardEntity = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)
 				.First();
 
 			TargetPlayerEntity = playerId == 0
@@ -89,11 +88,11 @@ namespace Game
 
 			if (e.TargetPlayerEntity != null)
 			{
-				e.CardEntity.ReplaceGamePlayerCard(e.TargetPlayerEntity);
+				e.CardEntity.ReplaceGameOwner(e.TargetPlayerEntity);
 			}
 			else
 			{
-				e.CardEntity.RemoveGamePlayerCard();
+				e.CardEntity.RemoveGameOwner();
 			}
 
 			if (e.IsInBox)

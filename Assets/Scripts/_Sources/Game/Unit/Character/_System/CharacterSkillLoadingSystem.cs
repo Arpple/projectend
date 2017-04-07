@@ -7,11 +7,13 @@ namespace Game
 {
 	public class CharacterSkillLoadingSystem : IInitializeSystem
 	{
-		private GameContext _context;
+		private UnitContext _unitContext;
+		private CardContext _cardContext;
 
 		public CharacterSkillLoadingSystem(Contexts contexts)
 		{
-			_context = contexts.game;
+			_unitContext = contexts.unit;
+			_cardContext = contexts.card;
 		}
 
 		public void Initialize()
@@ -20,18 +22,18 @@ namespace Game
 			{
 				foreach (var skill in c.gameCharacterSkillsResource.Skills)
 				{
-					var skillCard = _context.CreateCard(skill);
+					var skillCard = _cardContext.CreateCard(skill);
 					skillCard.isGameSkillCard = true;
-					skillCard.AddGamePlayerCard(c.gameUnit.OwnerEntity);
+					skillCard.AddGameOwner(c.gameOwner.Entity);
 				}
 			}
 		}
 
-		private GameEntity[] GetCharacters()
+		private UnitEntity[] GetCharacters()
 		{
-			return _context.GetEntities(GameMatcher.GameCharacter)
+			return _unitContext.GetEntities(UnitMatcher.GameCharacter)
 				.Where(c => c.hasGameCharacterSkillsResource)
-				.OrderBy(c => c.gameUnit.OwnerEntity.gamePlayer.PlayerId)
+				.OrderBy(c => c.gameOwner.Entity.gamePlayer.PlayerId)
 				.ToArray();
 		}
 	}

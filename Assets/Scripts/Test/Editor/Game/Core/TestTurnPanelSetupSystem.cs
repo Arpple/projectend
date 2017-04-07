@@ -30,12 +30,14 @@ namespace Test.System
 
 			var sprite = Resources.Load<Sprite>("Test/Editor/Sprite");
 
-			var ch = _contexts.game.CreateEntity();
+			var player = _contexts.game.CreateEntity();
+
+			var ch = _contexts.unit.CreateEntity();
 			ch.AddGameCharacter(Character.LastBoss);
 			ch.AddGameUnitIcon(sprite);
-			ch.AddGameUnit(0, ch);
+			ch.AddGameOwner(player);
 
-			_contexts.game.SetGamePlayingOrder(new List<GameEntity>() { ch });
+			_contexts.game.SetGamePlayingOrder(new List<GameEntity>() { player });
 
 			system.Initialize();
 

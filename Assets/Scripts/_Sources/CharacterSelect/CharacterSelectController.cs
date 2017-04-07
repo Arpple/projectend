@@ -40,7 +40,7 @@ namespace CharacterSelect
 		void Start()
 		{
             CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
-                var entity = (GameEntity)item.gameObject.GetEntityLink().entity;
+                var entity = (UnitEntity)item.gameObject.GetEntityLink().entity;
                 _focusingCharacter = entity.gameCharacter.Type;
 
                 //TODO: get description from entity and show
@@ -79,7 +79,7 @@ namespace CharacterSelect
         /// <summary>
         /// Show Unit Info 
         /// </summary>
-        public void ShowUnitInformationUnit(GameEntity unit) {
+        public void ShowUnitInformationUnit(UnitEntity unit) {
             //TODO : Set Character Status
             //Debug.Log("Unit null right ?"+(unit==null));
             Sprite sprite = Resources.Load<Sprite>(unit.gameResource.SpritePath);
@@ -176,7 +176,7 @@ namespace CharacterSelect
 
 			var item = CharacterSelectSlideMenu.SlideItems.First(i =>
 			{
-				var entity = (GameEntity)i.gameObject.GetEntityLink().entity;
+				var entity = (UnitEntity)i.gameObject.GetEntityLink().entity;
 				return entity.gameCharacter.Type == character;
 			});
 

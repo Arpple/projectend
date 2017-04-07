@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using Entitas;
+using System;
 
 namespace Game
 {
@@ -9,40 +10,47 @@ namespace Game
 		internal class ContextEntityIdGenerator
 		{
 			private int _id;
+			private int _index;
 
-			public ContextEntityIdGenerator()
+			public ContextEntityIdGenerator(int componentIndex)
 			{
 				_id = 0;
+				_index = componentIndex;
 			}
 
-			public int GenerateId()
+			public void GenerateId(IEntity entity)
 			{
-				return _id++;
+				IdComponent component = entity.CreateComponent(_index, typeof(IdComponent)) as IdComponent;
+				component.Id = _id++;
+
+				entity.AddComponent(_index, component);
 			}
 		}
 
-		private ContextEntityIdGenerator _gameGen;
-		private ContextEntityIdGenerator _tileGen;
+		private Dictionary<Type, ContextEntityIdGenerator> _generators;
 
 		public EntityIdGenerator(Contexts contexts)
 		{
-			_gameGen = new ContextEntityIdGenerator();
-			_tileGen = new ContextEntityIdGenerator();
+			_generators = new Dictionary<Type, ContextEntityIdGenerator>();
 
-			contexts.game.OnEntityCreated += GenerateGameId;
-			contexts.tile.OnEntityCreated += GenerateTileId;
+			//! add this when create new context
+			CreateGenerator<GameEntity>(contexts.game, GameComponentsLookup.GameId);
+			CreateGenerator<TileEntity>(contexts.tile, TileComponentsLookup.GameId);
+			CreateGenerator<CardEntity>(contexts.card, CardComponentsLookup.GameId);
+			CreateGenerator<UnitEntity>(contexts.unit, UnitComponentsLookup.GameId);
 		}
 
-		public void GenerateGameId(IContext context, IEntity entity)
+		private void CreateGenerator<TEntity>(IContext context, int idComponentIndex) where TEntity : class, IEntity, new()
 		{
-			var e = (GameEntity)entity;
-			e.AddGameId(_gameGen.GenerateId());
+			_generators.Add(typeof(TEntity), new ContextEntityIdGenerator(idComponentIndex));
+			context.OnEntityCreated += (c, e) => GenerateId<TEntity>(e);
 		}
 
-		public void GenerateTileId(IContext context, IEntity entity)
+		private void GenerateId<TEntity>(IEntity entity) where TEntity : class, IEntity, new()
 		{
-			var e = (TileEntity)entity;
-			e.AddGameId(_tileGen.GenerateId());
+			ContextEntityIdGenerator gen;
+			_generators.TryGetValue(typeof(TEntity), out gen);
+			gen.GenerateId(entity);
 		}
 	}
 }

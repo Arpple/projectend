@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	[Game, Tile]
+	[Game, Tile, Card, Unit]
 	public class ResourceComponent : IComponent
 	{
 		public string SpritePath;

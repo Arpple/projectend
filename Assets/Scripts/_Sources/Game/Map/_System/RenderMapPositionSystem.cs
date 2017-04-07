@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace Game
 {
-	public class UnitPositionSystem : ReactiveSystem<GameEntity>
+	public class UnitPositionRenderingSystem : ReactiveSystem<UnitEntity>
 	{
 
-		public UnitPositionSystem(Contexts contexts): base(contexts.game)
+		public UnitPositionRenderingSystem(Contexts contexts): base(contexts.unit)
 		{}
 
-		protected override Collector<GameEntity> GetTrigger (IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger (IContext<UnitEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameMapPosition, GroupEvent.Added);
+			return context.CreateCollector(UnitMatcher.GameMapPosition, GroupEvent.Added);
 		}
 
-		protected override bool Filter (GameEntity entity)
+		protected override bool Filter (UnitEntity entity)
 		{
 			return entity.hasGameMapPosition && entity.hasGameView;
 		}
 
-		protected override void Execute (List<GameEntity> entities)
+		protected override void Execute (List<UnitEntity> entities)
 		{
 			foreach(var e in entities)
 			{
@@ -30,10 +30,10 @@ namespace Game
 		}
 	}
 
-	public class TilePositionSystem : ReactiveSystem<TileEntity>
+	public class TilePositionRenderingSystem : ReactiveSystem<TileEntity>
 	{
 
-		public TilePositionSystem(Contexts contexts) : base(contexts.tile)
+		public TilePositionRenderingSystem(Contexts contexts) : base(contexts.tile)
 		{ }
 
 		protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context)

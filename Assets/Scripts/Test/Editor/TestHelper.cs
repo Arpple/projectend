@@ -9,7 +9,9 @@ namespace Test
 			var _contexts = Contexts.sharedInstance;
 			_contexts.game = new GameContext();
 			_contexts.gameEvent = new GameEventContext();
+			_contexts.card = new CardContext();
 			_contexts.tile = new TileContext();
+			_contexts.unit = new UnitContext();
 			return _contexts;
 		}
 

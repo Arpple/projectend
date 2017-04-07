@@ -7,7 +7,7 @@ namespace Test.TestAbility
 	public abstract class AbilityTest : ContextsTest
 	{
 		protected Ability _ability;
-		protected GameEntity _caster;
+		protected UnitEntity _caster;
 
 		[SetUp]
 		public void SetupAbility()
@@ -16,9 +16,9 @@ namespace Test.TestAbility
 			_caster = SetupCaster();
 		}
 
-		protected virtual GameEntity SetupCaster()
+		protected virtual UnitEntity SetupCaster()
 		{
-			return _contexts.game.CreateEntity();
+			return _contexts.unit.CreateEntity();
 		}
 
 		protected abstract Ability CreateAbility();

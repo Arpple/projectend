@@ -5,25 +5,25 @@ using UnityEngine;
 
 namespace Game
 {
-	public class AbilityRecover : ActiveAbility<GameEntity>, IReviveAbility
+	public class AbilityRecover : ActiveAbility<UnitEntity>, IReviveAbility
 	{
-		public override TileEntity[] GetTilesArea(GameEntity caster)
+		public override TileEntity[] GetTilesArea(UnitEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.VisionRange, true);
+			return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.VisionRange, true);
 		}
 
-		public override GameEntity GetTargetFromSelectedTile(GameEntity caster, TileEntity tile)
+		public override UnitEntity GetTargetFromSelectedTile(UnitEntity caster, TileEntity tile)
 		{
 			return tile.GetUnitOnTile();
 		}
 
-		public override void OnTargetSelected(GameEntity caster, GameEntity target)
+		public override void OnTargetSelected(UnitEntity caster, UnitEntity target)
 		{
 			target.RecoverHitpoint(1);
 			target.isGameDead = false;
 		}
 
-		public void OnDead(GameEntity deadEntity)
+		public void OnDead(UnitEntity deadEntity)
 		{
 			OnTargetSelected(deadEntity, deadEntity);
 		}

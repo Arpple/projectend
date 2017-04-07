@@ -101,19 +101,17 @@ namespace Game
 		{
 			return new Feature("Systems")
 
-				.Add(new GameSetupSystem(contexts, Setting, _players, _localPlayer))
-				
-				.Add(new DataLoadingSystem(contexts, Setting))
-				.Add(new DataRenderingSystem(contexts))
+				.Add(new GameSetupSystems(contexts, Setting, _players, _localPlayer))
+				.Add(new DataLoadingSystems(contexts, Setting))
+				.Add(new GameUISetupSystems(contexts, GameUI.Instance))
+
+				.Add(new GameEventSystems(contexts))
+				.Add(new DataRenderingSystems(contexts))
 		
-				.Add(new ViewContainerSystem(contexts))
-				.Add(new GameEventFeature(contexts))
+				.Add(new GameUIRenderingSystems(contexts, GameUI.Instance))
 
-				.Add(new GameUISetupSystem(contexts, GameUI.Instance))
-				.Add(new GameUIRenderingSystem(contexts, GameUI.Instance))
-
-				.Add(new ControlSystem(contexts))
-				.Add(new ClearContextsSystem(contexts));
+				.Add(new InputSystems(contexts))
+				.Add(new ContextsResetSystem(contexts));
 		}
 
 		#region Network

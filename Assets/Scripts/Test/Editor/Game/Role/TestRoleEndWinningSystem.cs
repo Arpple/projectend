@@ -13,13 +13,13 @@ namespace Test.System
 
 			var ePlayer = _contexts.game.CreateEntity();
 			ePlayer.AddGameRole(new RoleEnd(_contexts.game));
-			var eChar = _contexts.game.CreateEntity();
-			eChar.AddGameUnit(0, ePlayer);
+			var eChar = _contexts.unit.CreateEntity();
+			eChar.AddGameOwner(ePlayer);
 			eChar.isGameDead = true;
 
 			system.Execute();
 
-			Assert.IsTrue(ePlayer.isGameWin);
+			Assert.IsTrue(ePlayer.isGameWinner);
 		}
 	}
 }

@@ -6,26 +6,26 @@ using System.Collections.Generic;
 
 namespace Game
 {
-	public class OnDeadAbilitySystem : ReactiveSystem<GameEntity>
+	public class OnDeadAbilitySystem : ReactiveSystem<UnitEntity>
 	{
-		private readonly GameContext _context;
+		private readonly CardContext _cardContext;
 
-		public OnDeadAbilitySystem(Contexts contexts) : base(contexts.game)
+		public OnDeadAbilitySystem(Contexts contexts) : base(contexts.unit)
 		{
-			_context = contexts.game;
+			_cardContext = contexts.card;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameHitpoint, GroupEvent.Added);
+			return context.CreateCollector(UnitMatcher.GameHitpoint, GroupEvent.Added);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.gameHitpoint.Value == 0 && entity.gameUnit.OwnerEntity.hasGamePlayerBox;
+			return entity.gameHitpoint.Value == 0 && entity.gameOwner.Entity.hasGamePlayerBox;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<UnitEntity> entities)
 		{
 			foreach(var e in entities)
 			{
@@ -34,9 +34,9 @@ namespace Game
 			}
 		}
 
-		private void UseBoxReviveCard(GameEntity deadEntity)
+		private void UseBoxReviveCard(UnitEntity deadEntity)
 		{
-			var card = _context.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameUnit.OwnerEntity)
+			var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.gameOwner.Entity)
 				.OrderBy(c => c.gameInBox.Index)
 				.FirstOrDefault();
 			if (card != null)
@@ -47,9 +47,9 @@ namespace Game
 			}
 		}
 
-		private void UseBoxOnDeadCard(GameEntity deadEntity)
+		private void UseBoxOnDeadCard(UnitEntity deadEntity)
 		{
-			var cards = _context.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameUnit.OwnerEntity);
+			var cards = _cardContext.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.gameOwner.Entity);
 
 			foreach (var card in cards)
 			{

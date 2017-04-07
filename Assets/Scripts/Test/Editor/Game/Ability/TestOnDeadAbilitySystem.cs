@@ -11,11 +11,11 @@ namespace Test.System
 	public class TestOnDeadAbilitySystem : ContextsTest
 	{
 		private GameEntity _ownerPlayer;
-		private GameEntity _unit;
+		private UnitEntity _unit;
 
 		private class TestOnDeadAbility : Ability, IOnDeadAbility
 		{
-			public void OnDead(GameEntity deadEntity)
+			public void OnDead(UnitEntity deadEntity)
 			{
 				
 			}
@@ -27,8 +27,8 @@ namespace Test.System
 			_ownerPlayer = _contexts.game.CreateEntity();
 			_ownerPlayer.AddGamePlayer(new GameObject().AddComponent<Player>());
 
-			_unit = _contexts.game.CreateEntity();
-			_unit.AddGameUnit(0, _ownerPlayer);
+			_unit = _contexts.unit.CreateEntity();
+			_unit.AddGameOwner(_ownerPlayer);
 
 			_systems.Add(new OnDeadAbilitySystem(_contexts));
 		}
@@ -41,11 +41,11 @@ namespace Test.System
 			var box = new GameObject().AddComponent<PlayerBox>();
 			_ownerPlayer.AddGamePlayerBox(box);
 
-			var card = _contexts.game.CreateEntity();
-			card.AddGameCard(0, Card.Potion);
-			card.AddGamePlayerCard(_ownerPlayer);
+			var card = _contexts.card.CreateEntity();
+			card.AddGameCard(Card.Potion);
+			card.AddGameOwner(_ownerPlayer);
 			card.AddGameInBox(0);
-			card.AddGameAbility("", new TestOnDeadAbility());
+			card.AddGameAbility(new TestOnDeadAbility());
 			card.isGameDeckCard = true;
 
 			_systems.Execute();

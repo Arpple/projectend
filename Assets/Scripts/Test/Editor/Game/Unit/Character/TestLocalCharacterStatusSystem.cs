@@ -24,11 +24,11 @@ namespace Test.System
 
 			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
 			player.gamePlayer.PlayerObject.PlayerName = "test";
-			player.isGameLocalPlayer = true;
+			player.isGameLocal = true;
 
-			var character = _contexts.game.CreateEntity();
+			var character = _contexts.unit.CreateEntity();
 			character.AddGameUnitIcon(icon);
-			character.AddGameUnit(1, player);
+			character.AddGameOwner(player);
 			character.AddGameCharacter(Game.Character.LastBoss);
 			character.AddGameUnitStatus(1, 1, 1, 1, 1);
 			character.AddGameHitpoint(1);

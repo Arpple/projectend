@@ -19,10 +19,10 @@ namespace Game.UI
 
 			if (cardEntity.hasGameAbility)
 			{
-				var caster = Contexts.sharedInstance.game.LocalPlayerCharacter;
+				var caster = Contexts.sharedInstance.unit.gameLocalEntity;
 				var caller = new CardAbilityCaller(caster, cardEntity);
 
-				if (!caller.TryUseAbility<GameEntity>(
+				if (!caller.TryUseAbility<UnitEntity>(
 					(t) =>
 					{
 						EventUseCardOnUnit.Create(caster, cardEntity, t);
@@ -44,12 +44,12 @@ namespace Game.UI
 
 		internal class CardAbilityCaller
 		{
-			private GameEntity _caster;
-			private GameEntity _card;
+			private UnitEntity _caster;
+			private CardEntity _card;
 			private Ability _ability;
 			public UnityAction CancelAction;
 
-			public CardAbilityCaller(GameEntity caster, GameEntity card)
+			public CardAbilityCaller(UnitEntity caster, CardEntity card)
 			{
 				_caster = caster;
 				_card = card;

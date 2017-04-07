@@ -7,17 +7,17 @@ namespace Game
 	{
 		private MapPositionComponent _targetPosition;
 
-		public override TileEntity[] GetTilesArea(GameEntity caster)
+		public override TileEntity[] GetTilesArea(UnitEntity caster)
 		{
-			return AreaSelector.GetMovePathInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.MoveSpeed);
+			return TileAreaSelector.GetMovePathInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.MoveSpeed);
 		}
 
-		public override TileEntity GetTargetFromSelectedTile(GameEntity caster, TileEntity tile)
+		public override TileEntity GetTargetFromSelectedTile(UnitEntity caster, TileEntity tile)
 		{
 			return tile;
 		}
 
-		public override void OnTargetSelected(GameEntity caster, TileEntity target)
+		public override void OnTargetSelected(UnitEntity caster, TileEntity target)
 		{
 			caster.ReplaceGameMapPosition(target.gameMapPosition.x, target.gameMapPosition.y);
 		}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
-	[Game]
+	[Unit]
 	public class CharacterSkillsResourceComponent : IComponent
 	{
 		public List<Card> Skills;

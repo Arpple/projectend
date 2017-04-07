@@ -3,25 +3,25 @@ using UnityEngine.Assertions;
 
 namespace Game
 {
-	public class AbilityAttack : ActiveAbility<GameEntity>
+	public class AbilityAttack : ActiveAbility<UnitEntity>
 	{
 		private MapPositionComponent _targetPosition;
 
-		public override TileEntity[] GetTilesArea(GameEntity caster)
+		public override TileEntity[] GetTilesArea(UnitEntity caster)
 		{
-			return AreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.AttackRange);
+			return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.gameUnitStatus.AttackRange);
 		}
 
-		public override GameEntity GetTargetFromSelectedTile(GameEntity caster, TileEntity tile)
+		public override UnitEntity GetTargetFromSelectedTile(UnitEntity caster, TileEntity tile)
 		{
 			var targetUnit = tile.GetUnitOnTile();
 
 			if (targetUnit == null) return null;
 
-			return targetUnit.gameUnit.OwnerEntity != caster.gameUnit.OwnerEntity ? targetUnit : null;
+			return targetUnit.gameOwner.Entity != caster.gameOwner.Entity ? targetUnit : null;
 		}
 
-		public override void OnTargetSelected(GameEntity caster, GameEntity target)
+		public override void OnTargetSelected(UnitEntity caster, UnitEntity target)
 		{
 			target.TakeFatalDamage(caster.gameUnitStatus.AttackPower);
 		}

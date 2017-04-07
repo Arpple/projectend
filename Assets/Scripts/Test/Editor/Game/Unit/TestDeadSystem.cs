@@ -7,7 +7,7 @@ namespace Test.System
 	public class TestDeadSystem : ContextsTest
 	{
 		private GameEntity _ownerPlayer;
-		private GameEntity _unit;
+		private UnitEntity _unit;
 
 		[SetUp]
 		public void Init()
@@ -15,8 +15,8 @@ namespace Test.System
 			_ownerPlayer = _contexts.game.CreateEntity();
 			_ownerPlayer.AddGamePlayer(new GameObject().AddComponent<Player>());
 
-			_unit = _contexts.game.CreateEntity();
-			_unit.AddGameUnit(0, _ownerPlayer);
+			_unit = _contexts.unit.CreateEntity();
+			_unit.AddGameOwner(_ownerPlayer);
 		}
 
 		[Test]

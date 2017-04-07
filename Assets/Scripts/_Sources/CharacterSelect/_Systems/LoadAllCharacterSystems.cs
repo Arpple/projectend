@@ -7,12 +7,12 @@ namespace CharacterSelect
 {
 	public class LoadAllCharacterSystems : IInitializeSystem
 	{
-		readonly GameContext _context;
+		readonly UnitContext _context;
 		readonly CharacterSetting _setting;
 
 		public LoadAllCharacterSystems(Contexts contexts, CharacterSetting setting)
 		{
-			_context = contexts.game;
+			_context = contexts.unit;
 			_setting = setting;
 		}
 

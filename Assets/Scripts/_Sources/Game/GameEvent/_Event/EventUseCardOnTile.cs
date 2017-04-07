@@ -8,31 +8,27 @@ namespace Game
 	[GameEvent]
 	public class EventUseCardOnTile : GameEventComponent
 	{
-		public GameEntity UserEntity;
-		public GameEntity CardEnttiy;
+		public UnitEntity UserEntity;
+		public CardEntity CardEnttiy;
 		public TileEntity TargetEnttiy;
 
-		public static void Create(GameEntity userEntity, GameEntity cardEntity, TileEntity tileEntity)
+		public static void Create(UnitEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
 		{
-			Assert.IsTrue(userEntity.hasGameUnit);
 			Assert.IsTrue(cardEntity.hasGameCard);
 			Assert.IsTrue(tileEntity.hasGameTile);
 
-			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameUnit.Id, cardEntity.gameCard.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
+			GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.gameId.Id, cardEntity.gameId.Id, tileEntity.gameMapPosition.x, tileEntity.gameMapPosition.y);
 		}
 
 		public void Decode(int userUnitId, int cardId, int x, int y)
 		{
-			UserEntity = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameUnit)
-				.Where(u => u.gameUnit.Id == userUnitId)
+			UserEntity = Contexts.sharedInstance.unit.GetEntitiesWithGameId(userUnitId)
 				.First();
 
-			CardEnttiy = Contexts.sharedInstance.game.GetEntities(GameMatcher.GameCard)
-				.Where(c => c.gameCard.Id == cardId)
+			CardEnttiy = Contexts.sharedInstance.card.GetEntitiesWithGameId(cardId)
 				.First();
 
-			TargetEnttiy = Contexts.sharedInstance.tile.GetEntities(TileMatcher.GameTile)
-				.Where(t => t.gameMapPosition.x == x && t.gameMapPosition.y == y)
+			TargetEnttiy = Contexts.sharedInstance.tile.GetEntitiesWithGameMapPosition(new Position(x, y))
 				.First();
 		}
 	}
@@ -63,9 +59,9 @@ namespace Game
 				RemovePlayerCard(cardEvent.CardEnttiy);
 		}
 
-		private void RemovePlayerCard(GameEntity card)
+		private void RemovePlayerCard(CardEntity card)
 		{
-			card.RemoveGamePlayerCard();
+			card.RemoveGameOwner();
 			if (card.hasGameInBox) card.RemoveGameInBox();
 		}
 	}

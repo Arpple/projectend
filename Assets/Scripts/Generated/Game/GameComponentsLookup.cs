@@ -8,96 +8,63 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int GameAbility = 0;
-    public const int GameCard = 1;
-    public const int GameCharacter = 2;
-    public const int GameCharacterSkillsResource = 3;
-    public const int GameDead = 4;
-    public const int GameDeckCard = 5;
-    public const int GameHitpoint = 6;
-    public const int GameId = 7;
-    public const int GameInBox = 8;
-    public const int GameLocalPlayer = 9;
-    public const int GameMapPosition = 10;
-    public const int GamePlayerBox = 11;
-    public const int GamePlayerCard = 12;
-    public const int GamePlayer = 13;
-    public const int GamePlayerDeck = 14;
-    public const int GamePlayingOrder = 15;
-    public const int GameResource = 16;
-    public const int GameRole = 17;
-    public const int GameSkillCard = 18;
-    public const int GameUIPlayerSkillCardUI = 19;
-    public const int GameUnit = 20;
-    public const int GameUnitDetail = 21;
-    public const int GameUnitIcon = 22;
-    public const int GameUnitIconResource = 23;
-    public const int GameUnitStatus = 24;
-    public const int GameView = 25;
-    public const int GameViewContainer = 26;
-    public const int GameWin = 27;
+    public const int GameId = 0;
+    public const int GameLocal = 1;
+    public const int GameOwner = 2;
+    public const int GamePlayerBox = 3;
+    public const int GamePlayer = 4;
+    public const int GamePlayerDeck = 5;
+    public const int GamePlaying = 6;
+    public const int GamePlayingOrder = 7;
+    public const int GameResource = 8;
+    public const int GameRole = 9;
+    public const int GameRound = 10;
+    public const int GameRoundIndex = 11;
+    public const int GameSkillCardContainer = 12;
+    public const int GameTurn = 13;
+    public const int GameView = 14;
+    public const int GameViewContainer = 15;
+    public const int GameWinner = 16;
 
-    public const int TotalComponents = 28;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
-        "GameAbility",
-        "GameCard",
-        "GameCharacter",
-        "GameCharacterSkillsResource",
-        "GameDead",
-        "GameDeckCard",
-        "GameHitpoint",
         "GameId",
-        "GameInBox",
-        "GameLocalPlayer",
-        "GameMapPosition",
+        "GameLocal",
+        "GameOwner",
         "GamePlayerBox",
-        "GamePlayerCard",
         "GamePlayer",
         "GamePlayerDeck",
+        "GamePlaying",
         "GamePlayingOrder",
         "GameResource",
         "GameRole",
-        "GameSkillCard",
-        "GameUIPlayerSkillCardUI",
-        "GameUnit",
-        "GameUnitDetail",
-        "GameUnitIcon",
-        "GameUnitIconResource",
-        "GameUnitStatus",
+        "GameRound",
+        "GameRoundIndex",
+        "GameSkillCardContainer",
+        "GameTurn",
         "GameView",
         "GameViewContainer",
-        "GameWin"
+        "GameWinner"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.AbilityComponent),
-        typeof(Game.CardComponent),
-        typeof(Game.CharacterComponent),
-        typeof(Game.CharacterSkillsResourceComponent),
-        typeof(Game.DeadComponent),
-        typeof(Game.DeckCardComponent),
-        typeof(Game.HitpointComponent),
         typeof(Game.IdComponent),
-        typeof(Game.InBoxComponent),
-        typeof(Game.LocalPlayerComponent),
-        typeof(Game.MapPositionComponent),
+        typeof(Game.LocalComponent),
+        typeof(Game.OwnerComponent),
         typeof(Game.PlayerBoxComponent),
-        typeof(Game.PlayerCardComponent),
         typeof(Game.PlayerComponent),
         typeof(Game.PlayerDeckComponent),
+        typeof(Game.PlayingComponent),
         typeof(Game.PlayingOrderComponent),
         typeof(Game.ResourceComponent),
         typeof(Game.RoleComponent),
-        typeof(Game.SkillCardComponent),
-        typeof(Game.UI.PlayerSkillCardUI),
-        typeof(Game.UnitComponent),
-        typeof(Game.UnitDetailComponent),
-        typeof(Game.UnitIconComponent),
-        typeof(Game.UnitIconResourceComponent),
-        typeof(Game.UnitStatusComponent),
+        typeof(Game.RoundComponent),
+        typeof(Game.RoundIndexComponent),
+        typeof(Game.SkillCardContainerComponent),
+        typeof(Game.TurnComponent),
         typeof(Game.ViewComponent),
         typeof(Game.ViewContainerComponent),
-        typeof(Game.WinComponent)
+        typeof(Game.WinnerComponent)
     };
 }

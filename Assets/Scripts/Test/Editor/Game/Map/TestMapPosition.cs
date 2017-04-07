@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Test
+namespace Test.Component
 {
 	public class TestMapPosition
 	{
@@ -17,7 +17,7 @@ namespace Test
 		[Test]
 		public void GetWorldPosition()
 		{
-			var e = _contexts.game.CreateEntity();
+			var e = _contexts.unit.CreateEntity();
 
 			e.AddGameMapPosition(1, 1);
 			var worldPos = e.gameMapPosition.GetWorldPosition();
@@ -28,10 +28,10 @@ namespace Test
 		[Test]
 		public void GetDistance()
 		{
-			var e1 = _contexts.game.CreateEntity();
+			var e1 = _contexts.unit.CreateEntity();
 			e1.AddGameMapPosition(1, 1);
 
-			var e2 = _contexts.game.CreateEntity();
+			var e2 = _contexts.unit.CreateEntity();
 			e2.AddGameMapPosition(-2, 2);
 
 			Assert.AreEqual(4, e1.gameMapPosition.GetDistance(e2.gameMapPosition));
@@ -40,9 +40,9 @@ namespace Test
 		[Test]
 		public void Equal()
 		{
-			var e1 = _contexts.game.CreateEntity();
-			var e2 = _contexts.game.CreateEntity();
-			var e3 = _contexts.game.CreateEntity();
+			var e1 = _contexts.unit.CreateEntity();
+			var e2 = _contexts.unit.CreateEntity();
+			var e3 = _contexts.unit.CreateEntity();
 
 			e1.AddGameMapPosition(1, 1);
 			e2.AddGameMapPosition(1, 1);

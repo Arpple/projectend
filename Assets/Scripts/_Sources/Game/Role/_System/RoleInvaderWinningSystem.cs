@@ -5,36 +5,38 @@ using System.Linq;
 
 namespace Game
 {
-	public class RoleInvaderWinningSystem : ReactiveSystem<GameEntity>
+	public class RoleInvaderWinningSystem : ReactiveSystem<UnitEntity>
 	{
-		private readonly GameContext _context;
+		private readonly GameContext _gameContext;
+		private readonly UnitContext _unitContext;
 
-		public RoleInvaderWinningSystem(Contexts contexts) : base(contexts.game)
+		public RoleInvaderWinningSystem(Contexts contexts) : base(contexts.unit)
 		{
-			_context = contexts.game;
+			_gameContext = contexts.game;
+			_unitContext = contexts.unit;
 		}
 
-		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.GameDead, GroupEvent.Added);
+			return context.CreateCollector(UnitMatcher.GameDead, GroupEvent.Added);
 		}
 
-		protected override bool Filter(GameEntity entity)
+		protected override bool Filter(UnitEntity entity)
 		{
-			return entity.isGameDead && entity.gameUnit.OwnerEntity.gameRole.RoleObject is RoleOrigin;
+			return entity.isGameDead && entity.gameOwner.Entity.gameRole.RoleObject is RoleOrigin;
 		}
 
-		protected override void Execute(List<GameEntity> entities)
+		protected override void Execute(List<UnitEntity> entities)
 		{
-			var origins = _context.GetEntities(GameMatcher.GameRole)
+			var origins = _gameContext.GetEntities(GameMatcher.GameRole)
 				.Where(r => r.gameRole.RoleObject is RoleOrigin);
 
-			if (!origins.All(i => _context.GetCharacterFromPlayer(i).isGameDead)) return;
+			if (!origins.All(i => _unitContext.GetCharacterFromPlayer(i).isGameDead)) return;
 
-			foreach (var i in _context.GetEntities(GameMatcher.GameRole)
+			foreach (var i in _gameContext.GetEntities(GameMatcher.GameRole)
 				.Where(r => r.gameRole.RoleObject is RoleInvader))
 			{
-				i.isGameWin = true;
+				i.isGameWinner = true;
 			}
 		}
 	}
