@@ -15,7 +15,7 @@ namespace Game.UI
 			this.Hide();
 			action.Show();
 			action.OnCloseHandler += () => this.Show();
-
+			GameUI.Instance.SetCurrentGroup(this);
 			return action;
 		}
 
@@ -28,6 +28,7 @@ namespace Game.UI
 		
 		protected virtual void Show()
 		{
+			GameUI.Instance.SetCurrentGroup(this);
 			foreach (var btn in Buttons)
 			{
 				btn.gameObject.SetActive(true);

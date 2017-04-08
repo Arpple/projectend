@@ -69,9 +69,16 @@ namespace Game.UI
 
 		public void OnCardClicked(CardObject card)
 		{
-			var group = (CardActionGroup)GetCardGroup(card);
-			_currentGroup.ShowSubAction(group);
-			group.OnCardClick(card);
+			var cardGroup = _currentGroup as CardActionGroup;
+			if(cardGroup != null)
+			{
+				cardGroup.OnCardClick(card);
+			}
+		}
+
+		public void SetCurrentGroup(ActionGroup group)
+		{
+			_currentGroup = group;
 		}
 
 
@@ -94,22 +101,5 @@ namespace Game.UI
 		//		});
 		//	}
 		//}
-
-		private ActionGroup GetCardGroup(CardObject card)
-		{
-			var entity = card.Entity;
-			if (entity.isGameDeckCard)
-			{
-				if (entity.hasGameInBox)
-					return BoxGroup;
-				else
-					return DeckGroup;
-			}
-			else if (entity.isGameSkillCard)
-			{
-				return SkillGroup;
-			}
-			return null;
-		}
 	}
 }

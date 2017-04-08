@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Game.UI
 {
 	[Serializable]
-	public class MainActionGroup : ActionGroup
+	public class MainActionGroup : CardActionGroup
 	{
 		[Serializable]
 		public class PanelToggleButton
@@ -96,6 +96,34 @@ namespace Game.UI
 		protected override void Hide()
 		{
 			ToggleButtons(false);
+		}
+
+		private CardActionGroup GetCardGroup(CardObject card)
+		{
+			var entity = card.Entity;
+			var ui = GameUI.Instance;
+			if (entity.isGameDeckCard)
+			{
+				if (entity.hasGameInBox)
+					return ui.BoxGroup;
+				else
+					return ui.DeckGroup;
+			}
+			else if (entity.isGameSkillCard)
+			{
+				return ui.SkillGroup;
+			}
+			return null;
+		}
+
+		public override void OnCardClick(CardObject card)
+		{
+			var group = GetCardGroup(card);
+			if(group != null)
+			{
+				ShowSubAction(group);
+				group.OnCardClick(card);
+			}
 		}
 	}
 }

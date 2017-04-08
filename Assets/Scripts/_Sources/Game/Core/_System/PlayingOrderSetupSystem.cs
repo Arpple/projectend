@@ -12,7 +12,6 @@ namespace Game
 
 		public PlayingOrderSetupSystem(Contexts contexts)
 		{
-			Debug.Log("create order");
 			_context = contexts.game;
 		}
 

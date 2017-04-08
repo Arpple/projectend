@@ -12,7 +12,6 @@ namespace Game
 
 		public PlayingFlagSystem(Contexts contexts) : base(contexts.game)
 		{
-			Debug.Log("create flag");
 			_context = contexts.game;
 		}
 
