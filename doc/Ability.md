@@ -8,7 +8,10 @@ then implement interface for type of ability
 ## Available Ability Type
 
 ### Active
-- [IActiveAbility](Assets/Scripts/_Sources/Game/Ability/IActiveAbility.cs)
+- [ActiveAbility<TTarget>](Assets/Scripts/_Sources/Game/Ability/ActiveAbility.cs)
+    - active ability on target of type TTarget (:IEntity)
+- [SelfActiveAbility](Assets/Scripts/_Sources/Game/Ability/SelfActiveAbility.cs)
+	- active ability on self
 
 ### Passive
 - [IOnDeadAbility](Assets/Scripts/_Sources/Game/Ability/IOnDead.cs)  
