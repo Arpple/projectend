@@ -8,6 +8,7 @@ namespace Game.UI
 	public class CardObject : MonoBehaviour
 	{
 		public Image MainImage;
+        public Animator Animator;
 
 		public CardEntity Entity
 		{
@@ -22,7 +23,16 @@ namespace Game.UI
 		public void OnClick()
 		{
 			GameUI.Instance.OnCardClicked(this);
-		}
+            this.ShowHighlight(); //! TEST
+        }
+        
+        public void ShowHighlight() {
+            this.Animator.Play("ShowHighlight");
+        }
+
+        public void HideHighlight() {
+            this.Animator.Play("Idle");
+        }
 	}
 
 }
