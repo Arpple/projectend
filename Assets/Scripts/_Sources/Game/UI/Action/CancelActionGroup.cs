@@ -10,6 +10,17 @@ namespace Game.UI
 	{
 		public Button CancelButton;
 
+		private Button[] _buttons;
+		public override Button[] Buttons
+		{
+			get
+			{
+				if (_buttons == null)
+					_buttons = new[] { CancelButton };
+				return _buttons;
+			}
+		}
+
 		public void SetAction(UnityAction onCancel)
 		{
 			CancelButton.onClick.AddListener(onCancel);

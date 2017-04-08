@@ -13,7 +13,8 @@ namespace Game.UI
 		public Button ToDeckButton;
 		public Button CloseBoxButton;
 
-		public Button[] Buttons
+		private Button[] _buttons;
+		public override Button[] Buttons
 		{
 			get
 			{
@@ -22,8 +23,6 @@ namespace Game.UI
 				return _buttons;
 			}
 		}
-
-		private Button[] _buttons;
 
 		public override void SetAction(CardObject card)
 		{
@@ -61,23 +60,5 @@ namespace Game.UI
 		{
 			return card.transform.GetSiblingIndex() == 0;
 		}
-
-		protected override void Show()
-		{
-			foreach (var btn in Buttons)
-			{
-				btn.gameObject.SetActive(true);
-			}
-		}
-
-		protected override void Hide()
-		{
-			foreach (var btn in Buttons)
-			{
-				btn.onClick.RemoveAllListeners();
-				btn.gameObject.SetActive(false);
-			}
-		}
 	}
-
 }

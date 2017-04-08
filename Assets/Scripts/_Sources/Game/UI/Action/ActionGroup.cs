@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 namespace Game.UI
 {
 	public abstract class ActionGroup
 	{
-		protected abstract void Show();
-		protected abstract void Hide();
+		public abstract Button[] Buttons { get; }
 
 		public event UnityAction OnCloseHandler;
 
@@ -25,6 +25,22 @@ namespace Game.UI
 			OnCloseHandler = null;
 			Hide();
 		}
-	}
+		
+		protected virtual void Show()
+		{
+			foreach (var btn in Buttons)
+			{
+				btn.gameObject.SetActive(true);
+			}
+		}
 
+		protected virtual void Hide()
+		{
+			foreach (var btn in Buttons)
+			{
+				btn.onClick.RemoveAllListeners();
+				btn.gameObject.SetActive(false);
+			}
+		}
+	}
 }

@@ -10,7 +10,8 @@ namespace Game.UI
 	{
 		public Button CancelButton;
 
-		public Button[] Buttons
+		private Button[] _buttons;
+		public override Button[] Buttons
 		{
 			get
 			{
@@ -19,8 +20,6 @@ namespace Game.UI
 				return _buttons;
 			}
 		}
-
-		private Button[] _buttons;
 
 		public override void SetAction(CardObject card)
 		{
@@ -33,23 +32,5 @@ namespace Game.UI
 			EventMoveCard.MoveCardInToBox(card.Entity);
 			CloseAction();
 		}
-
-		protected override void Show()
-		{
-			foreach (var btn in Buttons)
-			{
-				btn.gameObject.SetActive(true);
-			}
-		}
-
-		protected override void Hide()
-		{
-			foreach (var btn in Buttons)
-			{
-				btn.onClick.RemoveAllListeners();
-				btn.gameObject.SetActive(false);
-			}
-		}
 	}
-
 }

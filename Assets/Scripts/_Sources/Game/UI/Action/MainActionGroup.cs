@@ -52,6 +52,11 @@ namespace Game.UI
 			}
 		}
 
+		public override Button[] Buttons
+		{
+			get { return PanelButtons.Select(p => p.Button).ToArray(); }
+		}
+
 		private PanelToggleButton[] _panelButtons;
 
 		public void Init()
