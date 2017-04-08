@@ -2,9 +2,13 @@
 {
 	public enum Card
 	{
+		//Deck
 		Move,
 		Attack,
 		Potion,
+
+		//Skill
+		Test
 	}
 
 	public static class CardExtension

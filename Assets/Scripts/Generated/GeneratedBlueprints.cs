@@ -20,6 +20,9 @@ public static class BlueprintsExtension {
     public static Blueprint Card_Potion(this JsonBlueprints blueprints) {
         return blueprints.GetBlueprint("Card_Potion");
     }
+    public static Blueprint Card_Test(this JsonBlueprints blueprints) {
+        return blueprints.GetBlueprint("Card_Test");
+    }
     public static Blueprint Char_CurseSword(this JsonBlueprints blueprints) {
         return blueprints.GetBlueprint("Char_CurseSword");
     }
