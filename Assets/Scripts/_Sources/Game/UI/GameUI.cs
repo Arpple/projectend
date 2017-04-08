@@ -19,7 +19,9 @@ namespace Game.UI
 		public SkillCardActionGroup SkillGroup;
 		[Space]
 		public CancelActionGroup CancelGroup;
-		
+		[Space]
+		public CardDiscardGroup DiscardGroup;
+
 		[Header("Components")]
 		public CardDescription CardDesc;
 		public PlayerUnitStatusPanel LocalPlayerStatus;
@@ -63,6 +65,7 @@ namespace Game.UI
 			DeckFactory.Init();
 			BoxFactory.Init();
 			SkillFactory.Init();
+			DiscardGroup.Init();
 		}
 
 		private ActionGroup _currentGroup;

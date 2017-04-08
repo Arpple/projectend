@@ -10,13 +10,16 @@ namespace Game.UI
 		private UnitEntity _caster;
 		private CardEntity _card;
 		private Ability _ability;
+		private CardActionGroup _callerGroup;
+
 		public UnityAction CancelAction;
 
-		public CardAbilityCaller(UnitEntity caster, CardEntity card)
+		public CardAbilityCaller(CardActionGroup callerActionGroup, UnitEntity caster, CardEntity card)
 		{
 			_caster = caster;
 			_card = card;
 			_ability = _card.gameAbility.Ability;
+			_callerGroup = callerActionGroup;
 		}
 
 		public bool TryUseAbility<TTarget>(UnityAction<TTarget> onComplete) where TTarget : Entity
@@ -24,22 +27,43 @@ namespace Game.UI
 			var ability = _ability as ActiveAbility<TTarget>;
 			if (ability != null)
 			{
-				ShowAbility<TTarget>(ability, onComplete);
+				ShowAbilityArea<TTarget>(ability, onComplete);
 				return true;
 			}
 
 			return false;
 		}
 
-		private void ShowAbility<T>(ActiveAbility<T> ability, UnityAction<T> onComplete) where T : Entity
+		private void ShowAbilityArea<T>(ActiveAbility<T> ability, UnityAction<T> onComplete) where T : Entity
 		{
 			var selector = new TileTargetSelector<T>(
 				_caster,
 				ability.GetTilesArea(_caster),
 				ability.GetTargetFromSelectedTile,
-				(t) => onComplete(t)
+				(t) =>
+				{
+					CheckCardCost(() => 
+					{
+						onComplete(t);
+						_callerGroup.CloseAction();
+					});
+				}
 			);
 			CancelAction = selector.ClearSelection;
+		}
+
+		private void CheckCardCost(UnityAction onComplete)
+		{
+			var disAbility = _ability as IDiscardCardAbility;
+			if (disAbility != null)
+			{
+				var disGroup = (CardDiscardGroup)_callerGroup.ShowSubAction(GameUI.Instance.DiscardGroup);
+				disGroup.Setup(_callerGroup.CardPanel, disAbility.Count, onComplete);
+			}
+			else
+			{
+				onComplete();
+			}
 		}
 
 	}

@@ -54,7 +54,7 @@ namespace Game.UI
 
 		public override Button[] Buttons
 		{
-			get { return PanelButtons.Select(p => p.Button).ToArray(); }
+			get { return PanelButtons.Select(p => p.Button).Union(new[] { EndButton }).ToArray(); }
 		}
 
 		private PanelToggleButton[] _panelButtons;
@@ -77,25 +77,6 @@ namespace Game.UI
 			{
 				pb.Panel.gameObject.SetActive(false);
 			}
-		}
-
-		public void ToggleButtons(bool isVisible)
-		{
-			foreach(var pb in PanelButtons)
-			{
-				pb.Button.gameObject.SetActive(isVisible);
-			}
-			EndButton.gameObject.SetActive(isVisible);
-		}
-
-		protected override void Show()
-		{
-			ToggleButtons(true);
-		}
-
-		protected override void Hide()
-		{
-			ToggleButtons(false);
 		}
 
 		private CardActionGroup GetCardGroup(CardObject card)

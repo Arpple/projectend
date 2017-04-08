@@ -371,6 +371,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -680}
   m_SizeDelta: {x: 1080, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &265448382 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114563209373353876, guid: 5fd5bdf60727bfa4e8320da8ea6664dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1419789583}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &295235364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainGroup:
+    CardPanel: {fileID: 1377177146}
     EndButton: {fileID: 1517352090}
     BoxButton:
       Button: {fileID: 1529524448}
@@ -1189,16 +1196,23 @@ MonoBehaviour:
       Button: {fileID: 191250034}
       Panel: {fileID: 399868187}
   DeckGroup:
+    CardPanel: {fileID: 1377177146}
     BoxButton: {fileID: 2002197587}
     CancelButton: {fileID: 1956758860}
   BoxGroup:
+    CardPanel: {fileID: 909950545}
     DiscardButton: {fileID: 835407946}
     MoveLeftButton: {fileID: 946299877}
     ToDeckButton: {fileID: 883535206}
     CloseBoxButton: {fileID: 1978704505}
   SkillGroup:
+    CardPanel: {fileID: 493407957}
     CancelButton: {fileID: 1332145776}
   CancelGroup:
+    CancelButton: {fileID: 1332145776}
+  DiscardGroup:
+    CardPanel: {fileID: 1377177146}
+    ConfirmButton: {fileID: 265448382}
     CancelButton: {fileID: 1332145776}
   CardDesc: {fileID: 1517447198}
   LocalPlayerStatus: {fileID: 1278553945}

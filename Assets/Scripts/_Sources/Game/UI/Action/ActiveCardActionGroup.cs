@@ -10,28 +10,25 @@ namespace Game.UI
 	{
 		private CardObject _focusedCard;
 
-		protected UnityAction OnStopFocusingCard;
-
 		protected override void Show()
 		{
 			base.Show();
-			OnCloseHandler += () => GameUI.Instance.CardDesc.gameObject.SetActive(false);
 		}
 
 		protected override void Hide()
 		{
+			if(HasPreviousFocusCard())
+				StopFocusingCard();
 			base.Hide();
-			StopFocusingCard();
 		}
 
 		public override void OnCardClick(CardObject card)
 		{
 			if(!IsFocusedCard(card))
 			{
-				if(_focusedCard != null)
-				{
+				if(HasPreviousFocusCard())
 					StopFocusingCard();
-				}
+
 				FocusOnCard(card);
 			}
 			else
@@ -46,16 +43,19 @@ namespace Game.UI
 			GameUI.Instance.CardDesc.SetDescription(card);
 			GameUI.Instance.CardDesc.gameObject.SetActive(false);
 			SetActionForCard(card);
+			card.ShowHighlight();
 		}
 
 		protected void StopFocusingCard()
 		{
-			if (OnStopFocusingCard != null) OnStopFocusingCard();
+			_focusedCard.HideHighlight();
 			_focusedCard = null;
+			GameUI.Instance.CardDesc.gameObject.SetActive(false);
+			ClearButtonAction();
 
-			foreach (var btn in Buttons)
+			if (_cardCaller != null)
 			{
-				btn.onClick.RemoveAllListeners();
+				_cardCaller.CancelAction();
 			}
 		}
 
@@ -64,7 +64,22 @@ namespace Game.UI
 			return _focusedCard == card && card != null;
 		}
 
+		private bool HasPreviousFocusCard()
+		{
+			return _focusedCard != null;
+		}
+
 		protected abstract void SetActionForCard(CardObject card);
+
+		protected void ClearButtonAction()
+		{
+			foreach(var btn in Buttons)
+			{
+				btn.onClick.RemoveAllListeners();
+			}
+		}
+
+		private CardAbilityCaller _cardCaller;
 
 		protected void ShowCardTarget(CardObject card)
 		{
@@ -75,25 +90,21 @@ namespace Game.UI
 			if (cardEntity.hasGameAbility)
 			{
 				var caster = Contexts.sharedInstance.unit.gameLocalEntity;
-				var caller = new CardAbilityCaller(caster, cardEntity);
+				_cardCaller = new CardAbilityCaller(this, caster, cardEntity);
 
-				if (!caller.TryUseAbility<UnitEntity>(
+				if (!_cardCaller.TryUseAbility<UnitEntity>(
 					(t) =>
 					{
 						EventUseCardOnUnit.Create(caster, cardEntity, t);
-						CloseAction();
 					}
 				))
-				if (!caller.TryUseAbility<TileEntity>(
+				if (!_cardCaller.TryUseAbility<TileEntity>(
 					(t) =>
 					{
 						EventUseCardOnTile.Create(caster, cardEntity, t);
-						CloseAction();
 					}
 				))
 					return;
-
-				OnStopFocusingCard += caller.CancelAction;
 			}
 		}
 	}

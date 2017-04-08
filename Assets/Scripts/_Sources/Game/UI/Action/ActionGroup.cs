@@ -6,24 +6,22 @@ namespace Game.UI
 {
 	public abstract class ActionGroup
 	{
-		public abstract Button[] Buttons { get; }
+		public ActionGroup PreviousGroup;
 
-		public event UnityAction OnCloseHandler;
+		public abstract Button[] Buttons { get; }
 
 		public ActionGroup ShowSubAction(ActionGroup action)
 		{
-			this.Hide();
+			Hide();
 			action.Show();
-			action.OnCloseHandler += () => this.Show();
-			GameUI.Instance.SetCurrentGroup(this);
+			action.PreviousGroup = this;
 			return action;
 		}
 
 		public void CloseAction()
 		{
-			if (OnCloseHandler != null) OnCloseHandler();
-			OnCloseHandler = null;
 			Hide();
+			PreviousGroup.Show();
 		}
 		
 		protected virtual void Show()
@@ -39,7 +37,6 @@ namespace Game.UI
 		{
 			foreach (var btn in Buttons)
 			{
-				btn.onClick.RemoveAllListeners();
 				btn.gameObject.SetActive(false);
 			}
 		}

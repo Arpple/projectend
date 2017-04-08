@@ -23,7 +23,6 @@ namespace Game.UI
 		public void OnClick()
 		{
 			GameUI.Instance.OnCardClicked(this);
-            this.ShowHighlight(); //! TEST
         }
         
         public void ShowHighlight() {
