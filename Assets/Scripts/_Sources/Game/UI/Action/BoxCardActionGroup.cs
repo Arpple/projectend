@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Game.UI
 {
 	[Serializable]
-	public class BoxCardActionGroup : CardActionGroup
+	public class BoxCardActionGroup : ActiveCardActionGroup
 	{
 		public Button DiscardButton;
 		public Button MoveLeftButton;
@@ -24,7 +24,7 @@ namespace Game.UI
 			}
 		}
 
-		public override void SetAction(CardObject card)
+		protected override void SetActionForCard(CardObject card)
 		{
 			DiscardButton.onClick.AddListener(() => DiscardCard(card));
 			MoveLeftButton.onClick.AddListener(() => MoveBoxCard(card, -1));
@@ -60,5 +60,7 @@ namespace Game.UI
 		{
 			return card.transform.GetSiblingIndex() == 0;
 		}
+
+		
 	}
 }

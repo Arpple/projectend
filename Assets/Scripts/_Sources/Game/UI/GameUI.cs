@@ -52,6 +52,8 @@ namespace Game.UI
 			Assert.IsNotNull(TargetPlayerStatus);
 			Assert.IsNotNull(TurnPanel);
 			Assert.IsNotNull(TurnNoti);
+
+			_currentGroup = MainGroup;
 		}
 
 		private void Start()
@@ -61,65 +63,37 @@ namespace Game.UI
 			DeckFactory.Init();
 			BoxFactory.Init();
 			SkillFactory.Init();
-
-			SetUpMainGroup();
 		}
+
+		private ActionGroup _currentGroup;
 
 		public void OnCardClicked(CardObject card)
 		{
-			var cardEntity = card.Entity;
-			if (!IsFocusingOnCard(card))
-			{
-				FocusOnCard(card);
-			}
-			else
-			{
-				CardDesc.ToggleVisibility();
-			}
+			var group = (CardActionGroup)GetCardGroup(card);
+			_currentGroup.ShowSubAction(group);
+			group.OnCardClick(card);
 		}
 
-		public void FocusOnCard(CardObject card)
-		{
-			var group = GetCardGroup(card);
-			if (group != null)
-			{
-				if (IsFocusingOtherCardFrom(card))
-				{
-					group.CloseAction();
-				}
 
-				MainGroup.ShowSubAction(group);
-				if (group is CardActionGroup)
-				{
-					var cardGroup = (CardActionGroup)group;
-					cardGroup.SetAction(card);
-				}
-				group.OnCloseHandler += HideCardDescription;
-			}
+		//public void HideCardDescription()
+		//{
+		//	CardDesc.gameObject.SetActive(false);
+		//	_activeCard = null;
+		//}
 
-			_activeCard = card;
-			CardDesc.SetDescription(card);
-		}
-
-		public void HideCardDescription()
-		{
-			CardDesc.gameObject.SetActive(false);
-			_activeCard = null;
-		}
-
-		private void SetUpMainGroup()
-		{
-			foreach(var p in MainGroup.PanelButtons)
-			{
-				p.Button.onClick.AddListener(() =>
-				{
-					if (!p.Panel.activeSelf)
-					{
-						HideCardDescription();
-					}
-				});
-			}
-		}
+		//private void SetUpMainGroup()
+		//{
+		//	foreach(var p in MainGroup.PanelButtons)
+		//	{
+		//		p.Button.onClick.AddListener(() =>
+		//		{
+		//			if (!p.Panel.activeSelf)
+		//			{
+		//				HideCardDescription();
+		//			}
+		//		});
+		//	}
+		//}
 
 		private ActionGroup GetCardGroup(CardObject card)
 		{
@@ -136,16 +110,6 @@ namespace Game.UI
 				return SkillGroup;
 			}
 			return null;
-		}
-
-		private bool IsFocusingOnCard(CardObject card)
-		{
-			return _activeCard == card && _activeCard != null;
-		}
-
-		private bool IsFocusingOtherCardFrom(CardObject newFocusingCard)
-		{
-			return _activeCard != newFocusingCard && _activeCard != null;
 		}
 	}
 }

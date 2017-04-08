@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Game.UI
 {
 	[Serializable]
-	public class DeckCardActionGroup : CardActionGroup
+	public class DeckCardActionGroup : ActiveCardActionGroup//CardActionGroup
 	{
 		public Button BoxButton;
 		public Button CancelButton;
@@ -22,17 +22,24 @@ namespace Game.UI
 			}
 		}
 
-		public override void SetAction(CardObject card)
-		{
-			BoxButton.onClick.AddListener(() => MoveToBox(card));
-			CancelButton.onClick.AddListener(() => CloseAction());
-			ShowCardTarget(card);
-		}
+		//public override void SetAction(CardObject card)
+		//{
+		//	BoxButton.onClick.AddListener(() => MoveToBox(card));
+		//	CancelButton.onClick.AddListener(() => CloseAction());
+		//	ShowCardTarget(card);
+		//}
 
 		public void MoveToBox(CardObject card)
 		{
 			EventMoveCard.MoveCardInToBox(card.Entity);
 			CloseAction();
+		}
+
+		protected override void SetActionForCard(CardObject card)
+		{
+			BoxButton.onClick.AddListener(() => MoveToBox(card));
+			CancelButton.onClick.AddListener(() => CloseAction());
+			ShowCardTarget(card);
 		}
 	}
 }

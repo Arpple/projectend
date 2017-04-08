@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Game.UI
 {
 	[Serializable]
-	public class SkillCardActionGroup : CardActionGroup
+	public class SkillCardActionGroup : ActiveCardActionGroup
 	{
 		public Button CancelButton;
 
@@ -21,16 +21,10 @@ namespace Game.UI
 			}
 		}
 
-		public override void SetAction(CardObject card)
+		protected override void SetActionForCard(CardObject card)
 		{
 			CancelButton.onClick.AddListener(() => CloseAction());
 			ShowCardTarget(card);
-		}
-
-		public void MoveToBox(CardObject card)
-		{
-			EventMoveCard.MoveCardInToBox(card.Entity);
-			CloseAction();
 		}
 	}
 }
