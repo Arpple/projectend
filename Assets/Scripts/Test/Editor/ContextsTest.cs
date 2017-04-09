@@ -28,5 +28,10 @@ namespace Test
 			_systems.ClearReactiveSystems();
 			_contexts.Reset();
 		}
+
+		protected GameEntity CreatePlayerEntity(int playerId)
+		{
+			return TestHelper.CreatePlayerEntity(_contexts.game, playerId);
+		}
 	}
 }

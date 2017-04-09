@@ -17,8 +17,8 @@ namespace Test.System
 		[Test]
 		public void Setup()
 		{
-			var p1 = TestHelper.CreatePlayerEntity(_contexts.game, 1);
-			var p2 = TestHelper.CreatePlayerEntity(_contexts.game, 2);
+			var p1 = CreatePlayerEntity(1);
+			var p2 = CreatePlayerEntity(2);
 
 			_systems.Initialize();
 			var order = _contexts.game.gamePlayingOrder;

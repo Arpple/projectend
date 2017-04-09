@@ -15,6 +15,13 @@ namespace Game
 			return context.GetEntities(CardMatcher.GameDeckCard);
 		}
 
+		public static CardEntity[] GetShareDeckCards(this CardContext context)
+		{
+			return context.GetEntities(CardMatcher.GameDeckCard)
+				.Where(c => !c.hasGameOwner)
+				.ToArray();
+		}
+
 		public static CardEntity[] GetPlayerDeckCards(this CardContext context, GameEntity playerEntity)
 		{
 			return context.GetDeckCards()

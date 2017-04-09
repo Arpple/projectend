@@ -12,7 +12,7 @@ namespace Test.System
 		[SetUp]
 		public void Init()
 		{
-			_player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
+			_player = CreatePlayerEntity(1);
 			var box = new GameObject().AddComponent<PlayerBox>();
 			box.Init();
 			_player.AddGamePlayerBox(box);

@@ -20,7 +20,7 @@ namespace Test.System
 		{
 			var system = new LocalCharacterHpBarSystem(_contexts, _hp);
 
-			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
+			var player = CreatePlayerEntity(1);
 			player.isGameLocal = true;
 
 			var ch = _contexts.unit.CreateEntity();

@@ -106,7 +106,7 @@ namespace Game
 				.Add(new GameUISetupSystems(contexts, GameUI.Instance))
 
 				.Add(new GameEventSystems(contexts))
-				.Add(new DataRenderingSystems(contexts))
+				.Add(new DataRenderingSystems(contexts, Setting))
 		
 				.Add(new GameUIRenderingSystems(contexts, GameUI.Instance))
 

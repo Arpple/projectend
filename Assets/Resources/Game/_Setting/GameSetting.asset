@@ -32,6 +32,7 @@ MonoBehaviour:
       type: 2}
     DeckSetting:
       StartCardCount: 5
+      StartTurnDrawCount: 2
       CardBlueprints: {fileID: 11400000, guid: e3c1e027606b07d4d95ff6db953aec43, type: 2}
       Deck:
         SettingList:

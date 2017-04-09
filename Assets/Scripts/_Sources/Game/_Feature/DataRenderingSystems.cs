@@ -5,7 +5,7 @@ namespace Game
 {
 	public class DataRenderingSystems : Feature
 	{
-		public DataRenderingSystems(Contexts contexts) : base("Data Rendering")
+		public DataRenderingSystems(Contexts contexts, GameSetting _setting) : base("Data Rendering")
 		{
 			//deck card
 			Add(new PlayerDeckRenderingSystem(contexts));
@@ -31,6 +31,8 @@ namespace Game
 			{
 				Add(new LocalFlagPassingSystem(contexts));
 			}
+
+			Add(new StartTurnDrawSystem(contexts, _setting.CardSetting.DeckSetting));
 		}
 	}
 

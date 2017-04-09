@@ -9,6 +9,7 @@ namespace Game
 	{
 		const string BLUEPRINT_ENUM_PREFIX = "Card_";
 		public int StartCardCount;
+		public int StartTurnDrawCount;
 		public JsonBlueprints CardBlueprints;
 		public DeckCardData Deck;
 

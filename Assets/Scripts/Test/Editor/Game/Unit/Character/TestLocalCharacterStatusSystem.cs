@@ -22,7 +22,7 @@ namespace Test.System
 
 			var icon = Resources.Load<Sprite>("Test/Editor/Sprite");
 
-			var player = TestHelper.CreatePlayerEntity(_contexts.game, 1);
+			var player = CreatePlayerEntity( 1);
 			player.gamePlayer.PlayerObject.PlayerName = "test";
 			player.isGameLocal = true;
 

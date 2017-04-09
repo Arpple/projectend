@@ -25,7 +25,7 @@ namespace Test.System
 			_setting.StartCardCount = 1;
 
 			2.Loop((i) => {
-				_contexts.game.CreatePlayerEntity((short)(i + 1));
+				CreatePlayerEntity(i + 1);
 				
 				var card = _contexts.card.CreateEntity();
 				card.AddGameCard(Card.Move);

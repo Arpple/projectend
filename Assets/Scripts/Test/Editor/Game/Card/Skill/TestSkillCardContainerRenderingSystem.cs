@@ -26,7 +26,7 @@ namespace Test.System
 		[Test]
 		public void Initialize()
 		{
-			var p = TestHelper.CreatePlayerEntity(_contexts.game, 1);
+			var p = CreatePlayerEntity(1);
 
 			_system.Initialize();
 
@@ -36,7 +36,7 @@ namespace Test.System
 		[Test]
 		public void AddNewSkillToUI()
 		{
-			var p = TestHelper.CreatePlayerEntity(_contexts.game, 1);
+			var p = CreatePlayerEntity(1);
 			p.AddGameSkillCardContainer(_container);
 
 			var card = _contexts.card.CreateEntity();
