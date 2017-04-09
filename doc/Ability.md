@@ -18,3 +18,7 @@ then implement interface for type of ability
     - called all of these ability when hp drop to zero
 - [IReviveAbility](Assets/Scripts/_Sources/Game/Ability/IReviveAbility.cs)
     - called one of these ability when hp drop to zero
+
+### Extra
+- [IDiscardAbility](Assets/Scripts/_Sources/Game/Ability/IDiscardAbility.cs)
+    - ability that need to discard a number of card to use
