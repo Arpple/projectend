@@ -14,7 +14,7 @@ MonoBehaviour:
   MapSetting:
     GameMap: {fileID: 11400000, guid: c53b07a695967c746b76eed30880bfa6, type: 2}
     TileSetting:
-      TileBlueprints: {fileID: 11400000, guid: 7b7b69dc23403ba4d8796ec7398f18c9, type: 2}
+      TileBlueprints: {fileID: 11400000, guid: 0c628141d728dc2419e65dbc2abae15e, type: 2}
       TileController: {fileID: 114797411345630064, guid: e7d98db282ccf124b8cdf87a1d62d60b,
         type: 2}
       PathToSpriteFolder: Game/Map/Tiles/_Sprite
@@ -23,7 +23,7 @@ MonoBehaviour:
     UnitContainerPrefabs: {fileID: 1692081249266806, guid: 9e36673981f16ce49a48a8e4e47c6a12,
       type: 2}
     CharacterSetting:
-      CharacterBlueprints: {fileID: 11400000, guid: 4cec7519da8122e49a6e6c5c7e7a9251,
+      CharacterBlueprints: {fileID: 11400000, guid: 4c2c5633d72b04240b63478b7eea5757,
         type: 2}
       CharacterIconPrefabs: {fileID: 114917532828873708, guid: ea4f123b8ee52c742b5d5650d674d9be,
         type: 2}
@@ -33,7 +33,7 @@ MonoBehaviour:
     DeckSetting:
       StartCardCount: 5
       StartTurnDrawCount: 2
-      CardBlueprints: {fileID: 11400000, guid: e3c1e027606b07d4d95ff6db953aec43, type: 2}
+      CardBlueprints: {fileID: 11400000, guid: eba5523b828f1644ebeab873704be1be, type: 2}
       Deck:
         SettingList:
         - Type: 0

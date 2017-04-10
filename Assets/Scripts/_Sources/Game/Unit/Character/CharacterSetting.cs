@@ -1,5 +1,5 @@
-﻿using Entitas.Blueprints;
-using Entitas.Unity.Blueprints;
+using Entitas.Blueprints;
+using Entitas.Blueprints.Unity;
 using System;
 using UI;
 

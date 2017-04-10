@@ -1,4 +1,4 @@
-﻿using Entitas.Unity.Blueprints;
+using Entitas.Blueprints.Unity;
 using Entitas.Blueprints;
 using System;
 using UnityEngine;

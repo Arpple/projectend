@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Game.UI;
-using Entitas.Unity.VisualDebugging;
+using Entitas.VisualDebugging.Unity;
 
 namespace Game
 {
@@ -88,11 +88,6 @@ namespace Game
 		{
 			Assert.IsNotNull(_systems);
 
-			foreach(var c in _contexts.allContexts)
-			{
-				c.ClearGroups();
-				c.DeactivateAndRemoveEntityIndices();
-			}
 			_systems.ClearReactiveSystems();
 			_systems.TearDown();
 		}

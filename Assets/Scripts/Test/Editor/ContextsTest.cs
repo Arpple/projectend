@@ -20,13 +20,8 @@ namespace Test
 		[TearDown]
 		public void TeardownContexts()
 		{
-			foreach(var c in _contexts.allContexts)
-			{
-				c.ClearGroups();
-				c.DeactivateAndRemoveEntityIndices();
-			}
-			_systems.ClearReactiveSystems();
-			_contexts.Reset();
+			//_systems.ClearReactiveSystems();
+			//_contexts.Reset();
 		}
 
 		protected GameEntity CreatePlayerEntity(int playerId)
