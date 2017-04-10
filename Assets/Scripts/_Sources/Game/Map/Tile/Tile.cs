@@ -14,7 +14,7 @@ namespace Game
         Snow,
         SnowMountain,
         Space,
-        TownField,
+        //TownField,
 	}
 
 	public static class TileExtension

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using Entitas.Blueprints;
-using Entitas.Unity.Blueprints;
+using Entitas.Blueprints.Unity;
 
 namespace Game
 {

@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using UI;
 using UnityEngine.Networking;
 using System;
 using System.Collections;
-using Entitas.Unity.VisualDebugging;
+using Entitas.VisualDebugging.Unity;
 
 namespace Lounge
 {

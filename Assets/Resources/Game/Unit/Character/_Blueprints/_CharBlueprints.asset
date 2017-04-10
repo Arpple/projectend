@@ -8,13 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab3e4dd8e96f647a080d650e2bd3ba74, type: 3}
+  m_Script: {fileID: 11500000, guid: 12a84758b2cdeac4ea96c8403da079fe, type: 3}
   m_Name: _CharBlueprints
   m_EditorClassIdentifier: 
   blueprints:
-  - {fileID: 11400000, guid: 8462053a73cf06446b8d479cf6ab0520, type: 2}
-  - {fileID: 11400000, guid: 588c065de6a6534459a328d301a6f8d4, type: 2}
-  - {fileID: 11400000, guid: 38c6915cd6948c44ca3ddc4d28ed85fd, type: 2}
-  - {fileID: 11400000, guid: a9411959d5973974fb988da4a255b68b, type: 2}
-  - {fileID: 11400000, guid: 66747df7a47e59d49afe0fb63cbc1ad2, type: 2}
-  - {fileID: 11400000, guid: 8f044d32eefbfb34d98537fbcdb1b644, type: 2}
+  - {fileID: 11400000, guid: a52ceee051047c7469c05f491075b020, type: 2}
+  - {fileID: 11400000, guid: 749558c198488b745b604f497f286b55, type: 2}
+  - {fileID: 11400000, guid: 69cc66213729117499d01f95f3f5f9fa, type: 2}
+  - {fileID: 11400000, guid: f57ea26623cbb1c4080c22feda6790a2, type: 2}
+  - {fileID: 11400000, guid: 6faeb7e58a64fe64e89519f727acff22, type: 2}

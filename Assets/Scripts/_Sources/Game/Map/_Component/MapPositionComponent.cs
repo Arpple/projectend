@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using UnityEngine;
 using Entitas;
 using System.Linq;
-using Entitas.CodeGenerator.Api;
+using Entitas.CodeGeneration.Attributes;
 
 public struct Position : IEquatable<Position>
 {

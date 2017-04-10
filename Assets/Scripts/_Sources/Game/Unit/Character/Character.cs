@@ -10,7 +10,7 @@ namespace Game
 		SharpShooter,
 		WhiteRabbit,
 		Mimic,
-		CurseSword,
+		//CurseSword,
 		LastBoss,
 	}
 }
