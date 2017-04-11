@@ -27,6 +27,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+cli
 Assets/StreamingAssets/build_info\.txt
 end_Data/
 
