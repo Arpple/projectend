@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using Entitas;
+using Network;
 using NUnit.Framework;
-using Game;
-using Entitas;
+using UnityEngine;
 
-namespace Test.System
+namespace Test.GameTest.PlayerTest
 {
 	public class TestLocalPlayerSetupSystem : ContextsTest
 	{
@@ -14,13 +14,13 @@ namespace Test.System
 			var system = new LocalPlayerSetupSystem(_contexts, localPlayer);
 
 			var entity = _contexts.game.CreateEntity();
-			entity.AddGamePlayer(localPlayer);
+			entity.AddPlayer(localPlayer);
 
 			system.Initialize();
 
-			var localPlayers = _contexts.game.GetEntities(GameMatcher.GameLocal);
+			var localPlayers = _contexts.game.GetEntities(GameMatcher.Local);
 			Assert.AreEqual(1, localPlayers.Length);
-			Assert.IsTrue(localPlayers[0].isGameLocal);
+			Assert.IsTrue(localPlayers[0].isLocal);
 		}
 	}
 }

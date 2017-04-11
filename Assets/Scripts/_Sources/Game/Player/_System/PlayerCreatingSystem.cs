@@ -1,27 +1,24 @@
-﻿using Entitas;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Entitas;
+using Network;
 
-namespace Game
+public class PlayerCreatingSystem : IInitializeSystem
 {
-	public class PlayerCreatingSystem : IInitializeSystem
+	readonly GameContext _context;
+	readonly List<Player> _players;
+
+	public PlayerCreatingSystem(Contexts contexts, List<Player> players)
 	{
-		readonly GameContext _context;
-		readonly List<Player> _players;
-
-		public PlayerCreatingSystem(Contexts contexts, List<Player> players)
-		{
-			_context = contexts.game;
-			_players = players;
-		}
-
-		public void Initialize()
-		{
-			foreach(var p in _players)
-			{
-				var playerEntity = _context.CreateEntity();
-				playerEntity.AddGamePlayer(p);
-			}
-		}
+		_context = contexts.game;
+		_players = players;
 	}
 
+	public void Initialize()
+	{
+		foreach (var p in _players)
+		{
+			var playerEntity = _context.CreateEntity();
+			playerEntity.AddPlayer(p);
+		}
+	}
 }

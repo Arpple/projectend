@@ -1,26 +1,23 @@
 ﻿using System.Linq;
 using Entitas;
+using Network;
 
-namespace Game
+public class LocalPlayerSetupSystem : IInitializeSystem
 {
-	public class LocalPlayerSetupSystem : IInitializeSystem
+	private readonly Player _localPlayer;
+	private readonly GameContext _context;
+
+	public LocalPlayerSetupSystem(Contexts contexts, Player localPlayer)
 	{
-		private readonly Player _localPlayer;
-		private readonly GameContext _context;
+		_localPlayer = localPlayer;
+		_context = contexts.game;
+	}
 
-		public LocalPlayerSetupSystem(Contexts contexts, Player localPlayer)
-		{
-			_localPlayer = localPlayer;
-			_context = contexts.game;
-		}
+	public void Initialize()
+	{
+		var gameLocalPlayerEntity = _context.GetEntities(GameMatcher.Player).Where(p => p.player.PlayerObject == _localPlayer)
+			.First();
 
-		public void Initialize()
-		{
-			var gameLocalPlayerEntity = _context.GetEntities(GameMatcher.GamePlayer).Where(p => p.gamePlayer.PlayerObject == _localPlayer)
-				.First();
-
-			gameLocalPlayerEntity.isGameLocal = true;
-		}
+		gameLocalPlayerEntity.isLocal = true;
 	}
 }
-

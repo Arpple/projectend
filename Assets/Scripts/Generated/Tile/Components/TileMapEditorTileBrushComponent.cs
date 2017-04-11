@@ -12,7 +12,7 @@ public partial class TileContext {
     public MapEditor.TileBrushComponent mapEditorTileBrush { get { return mapEditorTileBrushEntity.mapEditorTileBrush; } }
     public bool hasMapEditorTileBrush { get { return mapEditorTileBrushEntity != null; } }
 
-    public TileEntity SetMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public TileEntity SetMapEditorTileBrush(Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         if(hasMapEditorTileBrush) {
             throw new Entitas.EntitasException("Could not set MapEditorTileBrush!\n" + this + " already has an entity with MapEditor.TileBrushComponent!",
                 "You should check if the context already has a mapEditorTileBrushEntity before setting it or use context.ReplaceMapEditorTileBrush().");
@@ -22,7 +22,7 @@ public partial class TileContext {
         return entity;
     }
 
-    public void ReplaceMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public void ReplaceMapEditorTileBrush(Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         var entity = mapEditorTileBrushEntity;
         if(entity == null) {
             entity = SetMapEditorTileBrush(newTileType, newAction, newSpawnpointIndex);
@@ -49,7 +49,7 @@ public partial class TileEntity {
     public MapEditor.TileBrushComponent mapEditorTileBrush { get { return (MapEditor.TileBrushComponent)GetComponent(TileComponentsLookup.MapEditorTileBrush); } }
     public bool hasMapEditorTileBrush { get { return HasComponent(TileComponentsLookup.MapEditorTileBrush); } }
 
-    public void AddMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public void AddMapEditorTileBrush(Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         var index = TileComponentsLookup.MapEditorTileBrush;
         var component = CreateComponent<MapEditor.TileBrushComponent>(index);
         component.TileType = newTileType;
@@ -58,7 +58,7 @@ public partial class TileEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceMapEditorTileBrush(Game.Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
+    public void ReplaceMapEditorTileBrush(Tile newTileType, MapEditor.BrushAction newAction, int newSpawnpointIndex) {
         var index = TileComponentsLookup.MapEditorTileBrush;
         var component = CreateComponent<MapEditor.TileBrushComponent>(index);
         component.TileType = newTileType;

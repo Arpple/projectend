@@ -1,16 +1,13 @@
 ﻿using Entitas;
+using Network;
 
-namespace Game
+[Game]
+public class PlayerComponent : IComponent
 {
-	[Game]
-	public class PlayerComponent : IComponent
+	public Player PlayerObject;
+
+	public short PlayerId
 	{
-		public Player PlayerObject;
-
-		public short PlayerId
-		{
-			get { return PlayerObject.PlayerId; }
-		}
+		get { return PlayerObject.PlayerId; }
 	}
-
 }

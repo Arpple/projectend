@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661f9bee0ba6fbc40ae59f94530421ad, type: 3}
+  m_Name: Setting
+  m_EditorClassIdentifier: 
+  MapSetting:
+    GameMap: {fileID: 0}
+    TileSetting:
+      TileDatas: []
+      TileController: {fileID: 0}
+      PathToSpriteFolder: 
+      Container: 
+  UnitSetting:
+    UnitContainerPrefabs: {fileID: 0}
+    CharacterSetting:
+      CharacterIconPrefabs: {fileID: 0}
+  CardSetting:
+    CardObjectPrefabs: {fileID: 0}
+    DeckSetting:
+      StartCardCount: 0
+      StartTurnDrawCount: 0
+      Deck:
+        SettingList: []
+  RoleSetting:
+    RoleCount: []

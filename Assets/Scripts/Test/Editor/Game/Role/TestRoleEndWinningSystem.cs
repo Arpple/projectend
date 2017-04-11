@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using NUnit.Framework;
-using Game;
+﻿using NUnit.Framework;
 
-namespace Test.System
+
+namespace Test.GameTest.RoleTest
 {
 	public class TestRoleEndWinningSystem : ContextsTest
 	{
@@ -12,14 +11,14 @@ namespace Test.System
 			var system = new RoleEndWinningSystem(_contexts);
 
 			var ePlayer = _contexts.game.CreateEntity();
-			ePlayer.AddGameRole(new RoleEnd(_contexts.game));
+			ePlayer.AddRole(new RoleEnd(_contexts.game));
 			var eChar = _contexts.unit.CreateEntity();
-			eChar.AddGameOwner(ePlayer);
-			eChar.isGameDead = true;
+			eChar.AddOwner(ePlayer);
+			eChar.isDead = true;
 
 			system.Execute();
 
-			Assert.IsTrue(ePlayer.isGameWinner);
+			Assert.IsTrue(ePlayer.isWinner);
 		}
 	}
 }

@@ -1,58 +1,42 @@
 ﻿using System;
-using System.Linq;
-using Entitas;
-using UnityEngine;
 
-namespace Game
+public class RoleOrigin : RoleObject
 {
-	//TODO: implement
-	public class RoleOrigin : RoleObject
+	public RoleOrigin(GameContext context) : base(context)
 	{
-		public RoleOrigin(GameContext context) : base(context)
-		{
-		}
+	}
 
-		public override string Name
-		{
-			get { return "End"; }
-		}
+	public override string Name
+	{
+		get { return "End"; }
+	}
 
-		public override Role Type
-		{
-			get { return Role.Origin; }
-		}
+	public override Role Type
+	{
+		get { return Role.Origin; }
+	}
 
-		public override string Description
+	public override string Description
+	{
+		get
 		{
-			get
-			{
-				return "Origin is ...";
-			}
+			return "Origin is ...";
 		}
+	}
 
-		public override string GoalDescription
+	public override string GoalDescription
+	{
+		get
 		{
-			get
-			{
-				return "To win ...";
-			}
+			return "To win ...";
 		}
+	}
 
-		public override string IconPath
+	public override string IconPath
+	{
+		get
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			throw new NotImplementedException();
 		}
-
-		//public override bool IsWin(GameEntity playerEntity)
-		//{
-		//	return base.IsWin(playerEntity)
-		//		&& _context.GetEntities(GameMatcher.GameRole)
-		//		.Where(r => r.gameRole.RoleObject is RoleInvader)
-		//		.All(x => x.isGameDead);
-		//}
 	}
 }
-

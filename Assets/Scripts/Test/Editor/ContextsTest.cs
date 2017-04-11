@@ -13,7 +13,7 @@ namespace Test
 		{
 			_contexts = TestHelper.CreateContexts();
 			_systems = new Systems();
-			new Game.EntityIdGenerator(_contexts);
+			new EntityIdGenerator(_contexts);
 			_contexts.InitializeEntityIndices();
 		}
 

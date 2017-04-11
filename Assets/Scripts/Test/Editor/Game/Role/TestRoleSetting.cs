@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using Game;
 
-namespace Test.Setting
+
+namespace Test.GameTest.RoleTest
 {
 	public class TestRoleSetting
 	{

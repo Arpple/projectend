@@ -1,47 +1,42 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 
-namespace Game
+public class RoleSeed : RoleObject
 {
-	public class RoleSeed : RoleObject
+	public RoleSeed(GameContext context) : base(context)
 	{
-		public RoleSeed(GameContext context) : base(context)
-		{
-		}
+	}
 
-		public override string Name
-		{
-			get { return "End"; }
-		}
+	public override string Name
+	{
+		get { return "End"; }
+	}
 
-		public override Role Type
-		{
-			get { return Role.Seed; }
-		}
+	public override Role Type
+	{
+		get { return Role.Seed; }
+	}
 
-		public override string Description
+	public override string Description
+	{
+		get
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-		}
-
-		public override string GoalDescription
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-		}
-
-		public override string IconPath
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			throw new NotImplementedException();
 		}
 	}
 
+	public override string GoalDescription
+	{
+		get
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public override string IconPath
+	{
+		get
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

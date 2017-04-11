@@ -1,44 +1,39 @@
-﻿using Entitas;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Entitas;
 
-namespace Game
+public class RoleOriginWinningSystem : ReactiveSystem<UnitEntity>
 {
-	public class RoleOriginWinningSystem : ReactiveSystem<UnitEntity>
+	private readonly GameContext _gameContext;
+	private readonly UnitContext _unitContext;
+
+	public RoleOriginWinningSystem(Contexts contexts) : base(contexts.unit)
 	{
-		private readonly GameContext _gameContext;
-		private readonly UnitContext _unitContext;
-
-		public RoleOriginWinningSystem(Contexts contexts) : base(contexts.unit)
-		{
-			_gameContext = contexts.game;
-			_unitContext = contexts.unit;
-		}
-
-		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
-		{
-			return context.CreateCollector(UnitMatcher.GameDead, GroupEvent.Added);
-		}
-
-		protected override bool Filter(UnitEntity entity)
-		{
-			return entity.isGameDead && entity.gameOwner.Entity.gameRole.RoleObject is RoleInvader;
-		}
-
-		protected override void Execute(List<UnitEntity> entities)
-		{
-			var invaders = _gameContext.GetEntities(GameMatcher.GameRole)
-				.Where(r => r.gameRole.RoleObject is RoleInvader);
-
-			if (!invaders.All(i => _unitContext.GetCharacterFromPlayer(i).isGameDead)) return;
-
-			foreach (var o in _gameContext.GetEntities(GameMatcher.GameRole)
-				.Where(r => r.gameRole.RoleObject is RoleOrigin))
-			{
-				o.isGameWinner = true;
-			}
-		}
+		_gameContext = contexts.game;
+		_unitContext = contexts.unit;
 	}
 
+	protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
+	{
+		return context.CreateCollector(UnitMatcher.Dead, GroupEvent.Added);
+	}
+
+	protected override bool Filter(UnitEntity entity)
+	{
+		return entity.isDead && entity.owner.Entity.role.RoleObject is RoleInvader;
+	}
+
+	protected override void Execute(List<UnitEntity> entities)
+	{
+		var invaders = _gameContext.GetEntities(GameMatcher.Role)
+			.Where(r => r.role.RoleObject is RoleInvader);
+
+		if (!invaders.All(i => _unitContext.GetCharacterFromPlayer(i).isDead)) return;
+
+		foreach (var o in _gameContext.GetEntities(GameMatcher.Role)
+			.Where(r => r.role.RoleObject is RoleOrigin))
+		{
+			o.isWinner = true;
+		}
+	}
 }

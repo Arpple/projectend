@@ -1,26 +1,20 @@
-﻿using Entitas;
-
-namespace Game
+﻿public class DataLoadingSystems : Feature
 {
-	public class DataLoadingSystems : Feature
+	public DataLoadingSystems(Contexts contexts, Setting setting) : base("Data Loading")
 	{
-		public DataLoadingSystems(Contexts contexts, GameSetting setting) : base("Data Loading")
-		{
-			///game
-			Add(new GameResouceLoadingSystem(contexts));
+		///game
+		Add(new GameResouceLoadingSystem(contexts));
 
-			//tile
-			Add(new TileViewLoadingSystem(contexts, setting.MapSetting.TileSetting));
+		//tile
+		Add(new TileViewLoadingSystem(contexts, setting.MapSetting.TileSetting));
 
-			//unit
-			Add(new UnitViewLoadingSystem(contexts, setting.UnitSetting));
+		//unit
+		Add(new UnitViewLoadingSystem(contexts, setting.UnitSetting));
 
-			//card
-			Add(new CardBlueprintLoadingSystem(contexts, setting.CardSetting.DeckSetting));
-			Add(new CardResoucesLoadingSystem(contexts, setting.CardSetting));
+		//card
+		Add(new CardBlueprintLoadingSystem(contexts, setting.CardSetting.DeckSetting));
+		Add(new CardResoucesLoadingSystem(contexts, setting.CardSetting));
 
-			Add(new AbilityResourceLoadingSystem(contexts));
-		}
+		Add(new AbilityResourceLoadingSystem(contexts));
 	}
-
 }

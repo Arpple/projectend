@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Test
+namespace Test.ExtensionTest
 {
 	public class TestCacheList
 	{

@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using NUnit.Framework;
-using Game;
+﻿using NUnit.Framework;
 
-namespace Test.System
+
+namespace Test.GameTest.RoleTest
 {
 	public class TestRoleInvaderWinningSystem : ContextsTest
 	{
@@ -12,21 +11,21 @@ namespace Test.System
 			var system = new RoleInvaderWinningSystem(_contexts);
 
 			var iPlayer = _contexts.game.CreateEntity();
-			iPlayer.AddGameRole(new RoleInvader(_contexts.game));
+			iPlayer.AddRole(new RoleInvader(_contexts.game));
 			var iChar = _contexts.unit.CreateEntity();
-			iChar.AddGameOwner(iPlayer);
-			iChar.AddGameCharacter(Character.LastBoss);
+			iChar.AddOwner(iPlayer);
+			iChar.AddCharacter(Character.LastBoss);
 
 			var oPlayer = _contexts.game.CreateEntity();
-			oPlayer.AddGameRole(new RoleOrigin(_contexts.game));
+			oPlayer.AddRole(new RoleOrigin(_contexts.game));
 			var oChar = _contexts.unit.CreateEntity();
-			oChar.AddGameOwner(oPlayer);
-			oChar.AddGameCharacter(Character.LastBoss);
-			oChar.isGameDead = true;
+			oChar.AddOwner(oPlayer);
+			oChar.AddCharacter(Character.LastBoss);
+			oChar.isDead = true;
 
 			system.Execute();
 
-			Assert.IsTrue(iPlayer.isGameWinner);
+			Assert.IsTrue(iPlayer.isWinner);
 		}
 	}
 }

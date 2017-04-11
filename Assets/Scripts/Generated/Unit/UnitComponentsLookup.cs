@@ -8,54 +8,54 @@
 //------------------------------------------------------------------------------
 public static class UnitComponentsLookup {
 
-    public const int GameCharacter = 0;
-    public const int GameCharacterSkillsResource = 1;
-    public const int GameDead = 2;
-    public const int GameHitpoint = 3;
-    public const int GameId = 4;
-    public const int GameLocal = 5;
-    public const int GameMapPosition = 6;
-    public const int GameOwner = 7;
-    public const int GameResource = 8;
-    public const int GameUnitDetail = 9;
-    public const int GameUnitIcon = 10;
-    public const int GameUnitIconResource = 11;
-    public const int GameUnitStatus = 12;
-    public const int GameView = 13;
+    public const int Character = 0;
+    public const int CharacterSkillsResource = 1;
+    public const int Dead = 2;
+    public const int Hitpoint = 3;
+    public const int Id = 4;
+    public const int Local = 5;
+    public const int MapPosition = 6;
+    public const int Owner = 7;
+    public const int Resource = 8;
+    public const int UnitDetail = 9;
+    public const int UnitIcon = 10;
+    public const int UnitIconResource = 11;
+    public const int UnitStatus = 12;
+    public const int View = 13;
 
     public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
-        "GameCharacter",
-        "GameCharacterSkillsResource",
-        "GameDead",
-        "GameHitpoint",
-        "GameId",
-        "GameLocal",
-        "GameMapPosition",
-        "GameOwner",
-        "GameResource",
-        "GameUnitDetail",
-        "GameUnitIcon",
-        "GameUnitIconResource",
-        "GameUnitStatus",
-        "GameView"
+        "Character",
+        "CharacterSkillsResource",
+        "Dead",
+        "Hitpoint",
+        "Id",
+        "Local",
+        "MapPosition",
+        "Owner",
+        "Resource",
+        "UnitDetail",
+        "UnitIcon",
+        "UnitIconResource",
+        "UnitStatus",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.CharacterComponent),
-        typeof(Game.CharacterSkillsResourceComponent),
-        typeof(Game.DeadComponent),
-        typeof(Game.HitpointComponent),
-        typeof(Game.IdComponent),
-        typeof(Game.LocalComponent),
-        typeof(Game.MapPositionComponent),
-        typeof(Game.OwnerComponent),
-        typeof(Game.ResourceComponent),
-        typeof(Game.UnitDetailComponent),
-        typeof(Game.UnitIconComponent),
-        typeof(Game.UnitIconResourceComponent),
-        typeof(Game.UnitStatusComponent),
-        typeof(Game.ViewComponent)
+        typeof(CharacterComponent),
+        typeof(CharacterSkillsResourceComponent),
+        typeof(DeadComponent),
+        typeof(HitpointComponent),
+        typeof(IdComponent),
+        typeof(LocalComponent),
+        typeof(MapPositionComponent),
+        typeof(OwnerComponent),
+        typeof(ResourceComponent),
+        typeof(UnitDetailComponent),
+        typeof(UnitIconComponent),
+        typeof(UnitIconResourceComponent),
+        typeof(UnitStatusComponent),
+        typeof(ViewComponent)
     };
 }

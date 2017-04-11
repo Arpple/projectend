@@ -8,63 +8,63 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int GameId = 0;
-    public const int GameLocal = 1;
-    public const int GameOwner = 2;
-    public const int GamePlayerBox = 3;
-    public const int GamePlayer = 4;
-    public const int GamePlayerDeck = 5;
-    public const int GamePlaying = 6;
-    public const int GamePlayingOrder = 7;
-    public const int GameResource = 8;
-    public const int GameRole = 9;
-    public const int GameRound = 10;
-    public const int GameRoundIndex = 11;
-    public const int GameSkillCardContainer = 12;
-    public const int GameTurn = 13;
-    public const int GameView = 14;
-    public const int GameViewContainer = 15;
-    public const int GameWinner = 16;
+    public const int Id = 0;
+    public const int Local = 1;
+    public const int Owner = 2;
+    public const int PlayerBox = 3;
+    public const int Player = 4;
+    public const int PlayerDeck = 5;
+    public const int Playing = 6;
+    public const int PlayingOrder = 7;
+    public const int Resource = 8;
+    public const int Role = 9;
+    public const int Round = 10;
+    public const int RoundIndex = 11;
+    public const int SkillCardContainer = 12;
+    public const int Turn = 13;
+    public const int View = 14;
+    public const int ViewContainer = 15;
+    public const int Winner = 16;
 
     public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
-        "GameId",
-        "GameLocal",
-        "GameOwner",
-        "GamePlayerBox",
-        "GamePlayer",
-        "GamePlayerDeck",
-        "GamePlaying",
-        "GamePlayingOrder",
-        "GameResource",
-        "GameRole",
-        "GameRound",
-        "GameRoundIndex",
-        "GameSkillCardContainer",
-        "GameTurn",
-        "GameView",
-        "GameViewContainer",
-        "GameWinner"
+        "Id",
+        "Local",
+        "Owner",
+        "PlayerBox",
+        "Player",
+        "PlayerDeck",
+        "Playing",
+        "PlayingOrder",
+        "Resource",
+        "Role",
+        "Round",
+        "RoundIndex",
+        "SkillCardContainer",
+        "Turn",
+        "View",
+        "ViewContainer",
+        "Winner"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.IdComponent),
-        typeof(Game.LocalComponent),
-        typeof(Game.OwnerComponent),
-        typeof(Game.PlayerBoxComponent),
-        typeof(Game.PlayerComponent),
-        typeof(Game.PlayerDeckComponent),
-        typeof(Game.PlayingComponent),
-        typeof(Game.PlayingOrderComponent),
-        typeof(Game.ResourceComponent),
-        typeof(Game.RoleComponent),
-        typeof(Game.RoundComponent),
-        typeof(Game.RoundIndexComponent),
-        typeof(Game.SkillCardContainerComponent),
-        typeof(Game.TurnComponent),
-        typeof(Game.ViewComponent),
-        typeof(Game.ViewContainerComponent),
-        typeof(Game.WinnerComponent)
+        typeof(IdComponent),
+        typeof(LocalComponent),
+        typeof(OwnerComponent),
+        typeof(PlayerBoxComponent),
+        typeof(PlayerComponent),
+        typeof(PlayerDeckComponent),
+        typeof(PlayingComponent),
+        typeof(PlayingOrderComponent),
+        typeof(ResourceComponent),
+        typeof(RoleComponent),
+        typeof(RoundComponent),
+        typeof(RoundIndexComponent),
+        typeof(SkillCardContainerComponent),
+        typeof(TurnComponent),
+        typeof(ViewComponent),
+        typeof(ViewContainerComponent),
+        typeof(WinnerComponent)
     };
 }

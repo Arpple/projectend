@@ -8,51 +8,51 @@
 //------------------------------------------------------------------------------
 public static class TileComponentsLookup {
 
-    public const int GameId = 0;
-    public const int GameMapPosition = 1;
-    public const int GameResource = 2;
-    public const int GameSpawnpoint = 3;
-    public const int GameSprite = 4;
-    public const int GameTileAction = 5;
-    public const int GameTile = 6;
-    public const int GameTileGraph = 7;
-    public const int GameTileHoverAction = 8;
-    public const int GameTileMovable = 9;
-    public const int GameView = 10;
-    public const int GameViewContainer = 11;
-    public const int MapEditorTileBrush = 12;
+    public const int Id = 0;
+    public const int MapEditorTileBrush = 1;
+    public const int MapPosition = 2;
+    public const int Resource = 3;
+    public const int Spawnpoint = 4;
+    public const int Sprite = 5;
+    public const int TileAction = 6;
+    public const int Tile = 7;
+    public const int TileGraph = 8;
+    public const int TileHoverAction = 9;
+    public const int TileMovable = 10;
+    public const int View = 11;
+    public const int ViewContainer = 12;
 
     public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
-        "GameId",
-        "GameMapPosition",
-        "GameResource",
-        "GameSpawnpoint",
-        "GameSprite",
-        "GameTileAction",
-        "GameTile",
-        "GameTileGraph",
-        "GameTileHoverAction",
-        "GameTileMovable",
-        "GameView",
-        "GameViewContainer",
-        "MapEditorTileBrush"
+        "Id",
+        "MapEditorTileBrush",
+        "MapPosition",
+        "Resource",
+        "Spawnpoint",
+        "Sprite",
+        "TileAction",
+        "Tile",
+        "TileGraph",
+        "TileHoverAction",
+        "TileMovable",
+        "View",
+        "ViewContainer"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.IdComponent),
-        typeof(Game.MapPositionComponent),
-        typeof(Game.ResourceComponent),
-        typeof(Game.SpawnpointComponent),
-        typeof(Game.SpriteComponent),
-        typeof(Game.TileActionComponent),
-        typeof(Game.TileComponent),
-        typeof(Game.TileGraphComponent),
-        typeof(Game.TileHoverActionComponent),
-        typeof(Game.TileMovableComponent),
-        typeof(Game.ViewComponent),
-        typeof(Game.ViewContainerComponent),
-        typeof(MapEditor.TileBrushComponent)
+        typeof(IdComponent),
+        typeof(MapEditor.TileBrushComponent),
+        typeof(MapPositionComponent),
+        typeof(ResourceComponent),
+        typeof(SpawnpointComponent),
+        typeof(SpriteComponent),
+        typeof(TileActionComponent),
+        typeof(TileComponent),
+        typeof(TileGraphComponent),
+        typeof(TileHoverActionComponent),
+        typeof(TileMovableComponent),
+        typeof(ViewComponent),
+        typeof(ViewContainerComponent)
     };
 }

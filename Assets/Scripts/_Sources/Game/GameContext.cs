@@ -1,7 +1,5 @@
 ﻿using System.Linq;
 using Entitas;
-using UnityEngine.Assertions;
-using UnityEngine;
 
 public sealed partial class GameContext : Context<GameEntity>
 {
@@ -18,22 +16,17 @@ public sealed partial class GameContext : Context<GameEntity>
 	public GameEntity GetPlayerEntity(int playerId)
 	{
 		return _cachedPlayerEntity.Get(playerId, (id) =>
-			this.GetEntities(GameMatcher.GamePlayer)
-				.Where(e => e.gamePlayer.PlayerId == id)
+			this.GetEntities(GameMatcher.Player)
+				.Where(e => e.player.PlayerId == id)
 				.FirstOrDefault()
 		);
-	}
-
-	public GameEntity GetPlayerEntity(Player player)
-	{
-		return GetPlayerEntity(player.PlayerId);
 	}
 
 	public bool IsLocalPlayerTurn
 	{
 		get
 		{
-			return gameLocalEntity.isGamePlaying;
+			return localEntity.isPlaying;
 		}
 	}
 }

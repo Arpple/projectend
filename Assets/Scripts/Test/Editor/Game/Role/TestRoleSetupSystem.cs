@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using NUnit.Framework;
+﻿using System.Linq;
 using Entitas;
-using Game;
-using System.Collections.Generic;
-using System.Linq;
+using Network;
+using NUnit.Framework;
+using UnityEngine;
 
-namespace Test.System
+namespace Test.GameTest.RoleTest
 {
 	public class TestRoleSetupSystem : ContextsTest
 	{
@@ -19,16 +18,16 @@ namespace Test.System
 			4.Loop(() =>
 			{
 				var p = _contexts.game.CreateEntity();
-				p.AddGamePlayer(new GameObject().AddComponent<Player>());
+				p.AddPlayer(new GameObject().AddComponent<Player>());
 			});
 
 			system.Initialize();
 
-			var roles = _contexts.game.GetEntities(GameMatcher.GameRole);
-			Assert.AreEqual(rc.Origin, roles.Where(r => r.gameRole.RoleObject is RoleOrigin).Count());
-			Assert.AreEqual(rc.Invader, roles.Where(r => r.gameRole.RoleObject is RoleInvader).Count());
-			Assert.AreEqual(rc.End, roles.Where(r => r.gameRole.RoleObject is RoleEnd).Count());
-			Assert.AreEqual(rc.Seed, roles.Where(r => r.gameRole.RoleObject is RoleSeed).Count());
+			var roles = _contexts.game.GetEntities(GameMatcher.Role);
+			Assert.AreEqual(rc.Origin, roles.Where(r => r.role.RoleObject is RoleOrigin).Count());
+			Assert.AreEqual(rc.Invader, roles.Where(r => r.role.RoleObject is RoleInvader).Count());
+			Assert.AreEqual(rc.End, roles.Where(r => r.role.RoleObject is RoleEnd).Count());
+			Assert.AreEqual(rc.Seed, roles.Where(r => r.role.RoleObject is RoleSeed).Count());
 		}
 	}
 

@@ -8,42 +8,42 @@
 //------------------------------------------------------------------------------
 public static class CardComponentsLookup {
 
-    public const int GameAbility = 0;
-    public const int GameAbilityResources = 1;
-    public const int GameCard = 2;
-    public const int GameDeckCard = 3;
-    public const int GameId = 4;
-    public const int GameInBox = 5;
-    public const int GameOwner = 6;
-    public const int GameResource = 7;
-    public const int GameSkillCard = 8;
-    public const int GameView = 9;
+    public const int Ability = 0;
+    public const int AbilityResources = 1;
+    public const int Card = 2;
+    public const int DeckCard = 3;
+    public const int Id = 4;
+    public const int InBox = 5;
+    public const int Owner = 6;
+    public const int Resource = 7;
+    public const int SkillCard = 8;
+    public const int View = 9;
 
     public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
-        "GameAbility",
-        "GameAbilityResources",
-        "GameCard",
-        "GameDeckCard",
-        "GameId",
-        "GameInBox",
-        "GameOwner",
-        "GameResource",
-        "GameSkillCard",
-        "GameView"
+        "Ability",
+        "AbilityResources",
+        "Card",
+        "DeckCard",
+        "Id",
+        "InBox",
+        "Owner",
+        "Resource",
+        "SkillCard",
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Game.AbilityComponent),
-        typeof(Game.AbilityResourcesComponent),
-        typeof(Game.CardComponent),
-        typeof(Game.DeckCardComponent),
-        typeof(Game.IdComponent),
-        typeof(Game.InBoxComponent),
-        typeof(Game.OwnerComponent),
-        typeof(Game.ResourceComponent),
-        typeof(Game.SkillCardComponent),
-        typeof(Game.ViewComponent)
+        typeof(AbilityComponent),
+        typeof(AbilityResourcesComponent),
+        typeof(CardComponent),
+        typeof(DeckCardComponent),
+        typeof(IdComponent),
+        typeof(InBoxComponent),
+        typeof(OwnerComponent),
+        typeof(ResourceComponent),
+        typeof(SkillCardComponent),
+        typeof(ViewComponent)
     };
 }

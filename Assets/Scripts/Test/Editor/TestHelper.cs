@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Network;
 
 namespace Test
 {
@@ -15,9 +16,9 @@ namespace Test
 			return _contexts;
 		}
 
-		public static Game.GameSetting GetGameSetting()
+		public static Setting GetGameSetting()
 		{
-			return Object.Instantiate<Game.GameSetting>(Resources.Load<Game.GameSetting>("Game/_Setting/GameSetting"));
+			return Object.Instantiate<Setting>(Resources.Load<Setting>("Game/_Setting/GameSetting"));
 		}
 
 		public static GameEntity CreatePlayerEntity(this GameContext context, int playerId)
@@ -26,7 +27,7 @@ namespace Test
 			var p = new GameObject().AddComponent<Player>();
 			p.PlayerId = (short)playerId;
 
-			e.AddGamePlayer(p);
+			e.AddPlayer(p);
 			return e;
 		}
 	}

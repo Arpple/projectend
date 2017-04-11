@@ -1,16 +1,10 @@
-﻿using Entitas;
-
-namespace Game
+﻿public class EventSystems : Feature
 {
-	public class GameEventSystems : Feature
+	public EventSystems(Contexts contexts) : base("Game Event")
 	{
-		public GameEventSystems(Contexts contexts) : base("Game Event")
-		{
-			Add(new EventUseCardOnUnitSystem(contexts));
-			Add(new EventUseCardOnTileSystem(contexts));
-			Add(new EventEndTurnSystem(contexts));
-			Add(new EventMoveCardSystem(contexts));
-		}
+		Add(new EventUseCardOnUnitSystem(contexts));
+		Add(new EventUseCardOnTileSystem(contexts));
+		Add(new EventEndTurnSystem(contexts));
+		Add(new EventMoveCardSystem(contexts));
 	}
 }
-

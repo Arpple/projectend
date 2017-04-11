@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using Entitas;
+using Network;
 using NUnit.Framework;
 using UnityEngine;
-using Game;
-using Entitas;
 
-namespace Test.System
+namespace Test.GameTest.PlayerTest
 {
 	public class TestPlayerCreatingSystem : ContextsTest
 	{
@@ -18,7 +18,7 @@ namespace Test.System
 
 			system.Initialize();
 
-			Assert.AreEqual(1, _contexts.game.GetEntities(GameMatcher.GamePlayer).Length);
+			Assert.AreEqual(1, _contexts.game.GetEntities(GameMatcher.Player).Length);
 		}
 	}
 }
