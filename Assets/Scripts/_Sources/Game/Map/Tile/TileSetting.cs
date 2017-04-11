@@ -1,6 +1,6 @@
-using Entitas.Blueprints.Unity;
-using Entitas.Blueprints;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -11,15 +11,17 @@ namespace Game
 		const string BLUEPRINT_ENUM_PREFIX = "Tile_";
 		const string SPRITE_ENUM_PREFIX = "Tile_";
 
-		public JsonBlueprints TileBlueprints;
+		public List<TileData> TileDatas;
 
 		public TileController TileController;
 		public string PathToSpriteFolder;
 		public string Container;
 
-		public Blueprint GetTileBlueprint(Tile tile)
+		public TileData GetTileData(Tile tile)
 		{
-			return TileBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + tile.ToString());
+			var data = TileDatas.FirstOrDefault(t => t.TileType == tile);
+			if (data == null) throw new MissingReferenceException("Tile data not found : " + tile.ToString());
+			return data;
 		}
 
 		public Sprite GetSprite(Tile tile)
@@ -32,10 +34,6 @@ namespace Game
 			}
 			return sprite;
 		}
-
-        public Blueprint GetTileBlueprint(string tile) {
-            return TileBlueprints.GetBlueprint(BLUEPRINT_ENUM_PREFIX + tile);
-        }
 
 		private string GetSpritePath(Tile tile)
 		{

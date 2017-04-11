@@ -20,7 +20,7 @@ namespace Test
 		[Test]
 		public void CreateEntity_SpriteDataNull_NoSpriteComponent()
 		{
-			var entity = _factory.CreateEntity(_data);
+			var entity = _factory.CreateEntityWithComponents(_data);
 
 			Assert.IsFalse(entity.hasGameSprite);
 		}
@@ -30,7 +30,7 @@ namespace Test
 		{
 			_data.Sprite = Resources.Load<Sprite>("Test/Editor/Sprite");
 
-			var entity = _factory.CreateEntity(_data);
+			var entity = _factory.CreateEntityWithComponents(_data);
 
 			Assert.IsTrue(entity.hasGameSprite);
 			Assert.AreEqual(_data.Sprite, entity.gameSprite.Sprite);
@@ -46,7 +46,7 @@ namespace Test
 		public void CreateEntity_IsWalkableOnTrue_IsMovableComponentAdded()
 		{
 			_data.IsWalkableOn = true;
-			var entity = _factory.CreateEntity(_data);
+			var entity = _factory.CreateEntityWithComponents(_data);
 
 			Assert.IsTrue(entity.isGameTileMovable);
 		}
@@ -55,7 +55,7 @@ namespace Test
 		public void CreateEntity_IsWalkableOnFalse_NoIsMovableComponent()
 		{
 			_data.IsWalkableOn = false;
-			var entity = _factory.CreateEntity(_data);
+			var entity = _factory.CreateEntityWithComponents(_data);
 
 			Assert.IsFalse(entity.isGameTileMovable);
 		}

@@ -15,11 +15,11 @@ namespace Test.Setting
 		}
 
 		[Test]
-		public void CheckEnumBlueprint()
+		public void CheckEnumData()
 		{
 			foreach(Tile t in Enum.GetValues(typeof(Tile)))
 			{
-				Assert.IsNotNull(_setting.GetTileBlueprint(t), "Tile blueprint not fonud for " + t.ToString());
+				Assert.IsNotNull(_setting.GetTileData(t), "Tile blueprint not fonud for " + t.ToString());
 			}
 		}
 	}

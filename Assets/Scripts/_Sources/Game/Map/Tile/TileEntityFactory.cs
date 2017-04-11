@@ -12,12 +12,18 @@ namespace Game
 			_context = context;
 		}
 
-		public TileEntity CreateEntity(TileData data)
+		public TileEntity CreateEntityWithComponents(TileData data)
 		{
 			var e = _context.CreateEntity();
-			var compFac = new TileComponentFactory(e, data);
-			compFac.AddComponents();
+			AddComponents(e, data);
 			return e;
+		}
+
+		public TileEntity AddComponents(TileEntity entity, TileData data)
+		{
+			var compFac = new TileComponentFactory(entity, data);
+			compFac.AddComponents();
+			return entity;
 		}
 
 		internal class TileComponentFactory

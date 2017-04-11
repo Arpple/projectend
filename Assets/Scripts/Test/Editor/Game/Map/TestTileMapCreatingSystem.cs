@@ -9,13 +9,13 @@ namespace Test.System
 	public class TestTileMapCreatingSystem : ContextsTest
 	{
 		private Map _map;
-		private MapSetting _setting;
+		private TileSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
 			_map = ScriptableObject.CreateInstance<Map>();
-			_setting = TestHelper.GetGameSetting().MapSetting;
+			_setting = TestHelper.GetGameSetting().MapSetting.TileSetting;
 		}
 
 		[Test]

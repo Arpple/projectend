@@ -12,6 +12,7 @@ namespace MapEditor
 	{
 		public static TileBrushComponent TileBrush;
 
+		readonly TileEntityFactory _factory;
 		readonly TileContext _context;
 		readonly TileSetting _setting;
 
@@ -20,6 +21,7 @@ namespace MapEditor
 		{
 			_context = contexts.tile;
 			_setting = setting;
+			_factory = new TileEntityFactory(_context); ;
 		}
 
 		protected override Collector<TileEntity> GetTrigger (IContext<TileEntity> context)
@@ -63,7 +65,7 @@ namespace MapEditor
 				var pos = tileEntity.gameMapPosition;
 				tileEntity.RemoveAllComponents();
 
-				tileEntity.ApplyBlueprint(_setting.GetTileBlueprint(brushTile));
+				_factory.AddComponents(tileEntity, _setting.GetTileData(brushTile));
 				tileEntity.AddGameTile(brushTile);
 				tileEntity.AddGameMapPosition(pos.x, pos.y);
 			}

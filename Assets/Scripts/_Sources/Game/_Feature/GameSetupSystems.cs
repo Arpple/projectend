@@ -9,7 +9,7 @@ namespace Game
 		public GameSetupSystems(Contexts contexts, GameSetting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 		{
 			//map
-			Add(new TileMapCreatingSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting));
+			Add(new TileMapCreatingSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting.TileSetting));
 			Add(new TileGraphCreatingSystem(contexts));
 
 			//player
