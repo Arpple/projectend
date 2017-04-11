@@ -1,29 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Entitas;
+using System;
 
 namespace Game
 {
-	public class TileEntityFactory
+	public class TileEntityFactory : EntityFactory<TileEntity, TileData>
 	{
-		private TileContext _context;
-
-		public TileEntityFactory(TileContext context)
+		public TileEntityFactory(IContext<TileEntity> context) : base(context)
 		{
-			_context = context;
 		}
 
-		public TileEntity CreateEntityWithComponents(TileData data)
+		public override TileEntity CreateEntityWithComponents(TileData data)
 		{
 			var e = _context.CreateEntity();
 			AddComponents(e, data);
 			return e;
 		}
 
-		public TileEntity AddComponents(TileEntity entity, TileData data)
+		public override void AddComponents(TileEntity entity, TileData data)
 		{
 			var compFac = new TileComponentFactory(entity, data);
 			compFac.AddComponents();
-			return entity;
 		}
 
 		internal class TileComponentFactory

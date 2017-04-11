@@ -16,6 +16,7 @@ namespace Test.System
 		public void LoadTileView()
 		{
 			var tile = _contexts.tile.CreateEntity();
+			tile.AddGameSprite(null);
 			tile.AddGameTile(Tile.Grass);
 			tile.AddGameMapPosition(1, 1);
 

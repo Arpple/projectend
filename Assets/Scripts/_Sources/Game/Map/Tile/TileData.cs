@@ -4,7 +4,7 @@ using System.Collections;
 namespace Game
 {
 	[CreateAssetMenu(menuName = "End/Tile", fileName = "new_tile.asset")]
-	public class TileData : ScriptableObject
+	public class TileData : EntityData
 	{
 		public Tile TileType;
 
