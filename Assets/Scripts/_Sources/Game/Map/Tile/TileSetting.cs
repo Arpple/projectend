@@ -17,22 +17,18 @@ namespace Game
 		public string PathToSpriteFolder;
 		public string Container;
 
-		public TileData GetTileData(Tile tile)
+		private CacheList<Tile, TileData> _cacheData;
+
+		public TileSetting()
 		{
-			var data = TileDatas.FirstOrDefault(t => t.TileType == tile);
-			if (data == null) throw new MissingReferenceException("Tile data not found : " + tile.ToString());
-			return data;
+			_cacheData = new CacheList<Tile, TileData>();
 		}
 
-		public Sprite GetSprite(Tile tile)
+		public TileData GetTileData(Tile tile)
 		{
-			var path = GetSpritePath(tile);
-			var sprite = Resources.Load<Sprite>(path);
-			if(sprite == null)
-			{
-				throw new MissingReferenceException("Missing Tile Sprite: " + path);
-			}
-			return sprite;
+			var data = _cacheData.Get(tile,(t) => TileDatas.FirstOrDefault(d => d.TileType == t));
+			if (data == null) throw new MissingReferenceException("Tile data not found : " + tile.ToString());
+			return data;
 		}
 
 		private string GetSpritePath(Tile tile)

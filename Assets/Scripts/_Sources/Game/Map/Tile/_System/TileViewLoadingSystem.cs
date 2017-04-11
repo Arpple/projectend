@@ -21,7 +21,7 @@ namespace Game
 			foreach(var entity in _context.GetEntities(TileMatcher.GameTile))
 			{
 				var view = UnityEngine.Object.Instantiate(_setting.TileController);
-				view.SetSprite(_setting.GetSprite(entity.gameTile.Type));
+				view.SetSprite(entity.gameSprite.Sprite);
 				view.name = "Tile " + entity.gameMapPosition;
 				entity.AddGameView(view.gameObject);
 				view.gameObject.Link(entity, _context);
