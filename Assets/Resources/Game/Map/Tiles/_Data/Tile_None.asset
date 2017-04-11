@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c04f184c4202bb459c8581b60953116, type: 3}
-  m_Name: Tile_Water
+  m_Name: Tile_None
   m_EditorClassIdentifier: 
-  TileType: 3
-  Sprite: {fileID: 21300000, guid: 9bfb048d01e3e544782c84cd142582fd, type: 3}
+  TileType: 0
+  Sprite: {fileID: 21300000, guid: 282f6a1606c461949b5212a65e1e4e59, type: 3}
   IsWalkableOn: 1
