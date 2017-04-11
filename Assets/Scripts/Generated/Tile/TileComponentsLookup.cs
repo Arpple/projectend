@@ -12,22 +12,24 @@ public static class TileComponentsLookup {
     public const int GameMapPosition = 1;
     public const int GameResource = 2;
     public const int GameSpawnpoint = 3;
-    public const int GameTileAction = 4;
-    public const int GameTile = 5;
-    public const int GameTileGraph = 6;
-    public const int GameTileHoverAction = 7;
-    public const int GameTileMovable = 8;
-    public const int GameView = 9;
-    public const int GameViewContainer = 10;
-    public const int MapEditorTileBrush = 11;
+    public const int GameSprite = 4;
+    public const int GameTileAction = 5;
+    public const int GameTile = 6;
+    public const int GameTileGraph = 7;
+    public const int GameTileHoverAction = 8;
+    public const int GameTileMovable = 9;
+    public const int GameView = 10;
+    public const int GameViewContainer = 11;
+    public const int MapEditorTileBrush = 12;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "GameId",
         "GameMapPosition",
         "GameResource",
         "GameSpawnpoint",
+        "GameSprite",
         "GameTileAction",
         "GameTile",
         "GameTileGraph",
@@ -43,6 +45,7 @@ public static class TileComponentsLookup {
         typeof(Game.MapPositionComponent),
         typeof(Game.ResourceComponent),
         typeof(Game.SpawnpointComponent),
+        typeof(Game.SpriteComponent),
         typeof(Game.TileActionComponent),
         typeof(Game.TileComponent),
         typeof(Game.TileGraphComponent),
