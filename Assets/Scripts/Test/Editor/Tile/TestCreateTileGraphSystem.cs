@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Test.TileTest
 {
-	public class TestTileGraphCreatingSystem : ContextsTest
+	public class TileGraphCreatingSystem : ContextsTest
 	{
 		[Test]
 		public void GetConnectedTiles()
@@ -16,7 +16,7 @@ namespace Test.TileTest
 			var downTile = CreateTile(2, 1);
 			var unconnectedTile = CreateTile(1, 1);
 
-			var system = new TileGraphCreatingSystem(_contexts);
+			var system = new global::TileGraphCreatingSystem(_contexts);
 			system.Initialize();
 
 			Assert.AreEqual(leftTile, originTile.tileGraph.Left);

@@ -16,15 +16,6 @@ namespace Test.CardTest.DeckTest
 
 			Assert.IsNotNull(_setting.Deck);
 		}
-
-		[Test]
-		public void CheckEnumBlueprint()
-		{
-			foreach (Card c in Enum.GetValues(typeof(Card)))
-			{
-				Assert.IsNotNull(_setting.GetCardBlueprint(c), "Card blueprint not fonud for " + c.ToString());
-			}
-		}
 	}
 }
 

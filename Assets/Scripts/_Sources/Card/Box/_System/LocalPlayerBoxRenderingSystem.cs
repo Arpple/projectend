@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-public class LocalPlayerBoxComponentRenderingSystem : ReactiveSystem<GameEntity>
+public class LocalPlayerBoxRenderingSystem : ReactiveSystem<GameEntity>
 {
-	public LocalPlayerBoxComponentRenderingSystem(Contexts contexts) : base(contexts.game)
+	public LocalPlayerBoxRenderingSystem(Contexts contexts) : base(contexts.game)
 	{
 	}
 

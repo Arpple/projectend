@@ -8,7 +8,7 @@ public abstract class DataLoadingSystem<TEntity, TData> : ReactiveSystem<TEntity
 	where TEntity : class, IEntity, new()
 	where TData : EntityData
 {
-	private EntityFactory<TEntity, TData> _factory;
+	private IEntityFactory<TEntity, TData> _factory;
 	private IContext<TEntity> _context;
 
 	public DataLoadingSystem(IContext<TEntity> context) : base(context)
@@ -16,7 +16,7 @@ public abstract class DataLoadingSystem<TEntity, TData> : ReactiveSystem<TEntity
 		_factory = CreateEntityFactory(context);
 	}
 
-	protected abstract EntityFactory<TEntity, TData> CreateEntityFactory(IContext<TEntity> context);
+	protected abstract IEntityFactory<TEntity, TData> CreateEntityFactory(IContext<TEntity> context);
 	protected abstract TData GetData(TEntity entity);
 
 	protected override void Execute(List<TEntity> entities)

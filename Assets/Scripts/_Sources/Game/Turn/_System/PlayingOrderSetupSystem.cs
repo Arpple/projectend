@@ -14,6 +14,6 @@ public class PlayingOrderSetupSystem : IInitializeSystem
 	{
 		var players = _context.GetEntities(GameMatcher.Player);
 
-		_context.SetPlayingOrder(players.OrderBy(p => p.player.PlayerId).ToList());
+		_context.SetPlayingOrder(players.OrderBy(p => p.id.Id).ToList());
 	}
 }

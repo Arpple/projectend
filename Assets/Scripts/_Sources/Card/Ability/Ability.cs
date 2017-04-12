@@ -1,4 +1,6 @@
-﻿public abstract class Ability
+﻿using UnityEngine;
+
+public abstract class Ability
 {
 
 }

@@ -11,6 +11,6 @@ public partial class UnitEntityFactory : EntityFactory<UnitEntity, UnitData>
 
 	protected override ComponentFactory<UnitEntity, UnitData> CreateComponentFactory(UnitEntity entity, UnitData data)
 	{
-		throw new NotImplementedException();
+		return new UnitComponentFactory(entity, data);
 	}
 }

@@ -9,7 +9,7 @@ public class DataRenderingSystems : Feature
 		Add(new BoxCardRenderingSystem(contexts));
 
 		//unit
-		Add(new OnDeadAbilitySystem(contexts));
+		Add(new EventHpDepleteSystem(contexts));
 		Add(new DeadSystem(contexts));
 		Add(new LocalCharacterFlagSystem(contexts));
 

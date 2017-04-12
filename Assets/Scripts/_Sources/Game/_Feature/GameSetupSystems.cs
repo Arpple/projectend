@@ -6,21 +6,17 @@ public class GameSetupSystems : Feature
 	public GameSetupSystems(Contexts contexts, Setting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 	{
 		//map
-		Add(new TileMapCreatingSystem(contexts, setting.MapSetting.GameMap.Load()));
+		Add(new TileMapCreatingSystem(contexts, setting.TileSetting.GameMap.Load()));
 		Add(new TileGraphCreatingSystem(contexts));
 
 		//player
 		Add(new PlayerCreatingSystem(contexts, players));
 		Add(new LocalPlayerSetupSystem(contexts, localPlayer));
-		Add(new CreatePlayerCharacterSystem(contexts));
-
-		//unit
-		Add(new CharacterBlueprintLoadingSystem(contexts, setting.UnitSetting.CharacterSetting));
-		Add(new CharacterIconLoadingSystem(contexts));
+		Add(new PlayerCharacterCreatingSystem(contexts));
 
 		//card
 		Add(new PlayerDeckCreatingSystem(contexts, GameUI.Instance.DeckFactory));
-		Add(new PlayerBoxComponentCreatingSystem(contexts, GameUI.Instance.BoxFactory));
+		Add(new PlayerBoxCreatingSystem(contexts, GameUI.Instance.BoxFactory));
 		Add(new DeckCardCreatingSystem(contexts, setting.CardSetting.DeckSetting.Deck));
 
 		Add(new CharacterSkillLoadingSystem(contexts));

@@ -22,7 +22,7 @@ namespace Test.CardTest.BoxTest
 		[Test]
 		public void CreateBox()
 		{
-			var system = new PlayerBoxComponentCreatingSystem(_contexts, _factory);
+			var system = new PlayerBoxCreatingSystem(_contexts, _factory);
 			var entity = _contexts.game.CreateEntity();
 
 			var player = new GameObject().AddComponent<Player>();

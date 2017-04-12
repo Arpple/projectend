@@ -5,7 +5,7 @@
 		Add(new ShareDeckRenderingSystem(contexts, ui.DeckFactory.AllContainers[0]));
 
 		Add(new LocalPlayerDeckRenderingSystem(contexts));
-		Add(new LocalPlayerBoxComponentRenderingSystem(contexts));
+		Add(new LocalPlayerBoxRenderingSystem(contexts));
 		Add(new LocalSkillCardContainerRenderingSystem(contexts));
 		Add(new LocalDeckCardStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
 		Add(new TargetDeckCardStatusRendingSystem(contexts, ui.TargetPlayerStatus));

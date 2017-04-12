@@ -22,11 +22,12 @@ public static class GameComponentsLookup {
     public const int RoundIndex = 11;
     public const int SkillCardContainer = 12;
     public const int Turn = 13;
-    public const int View = 14;
-    public const int ViewContainer = 15;
-    public const int Winner = 16;
+    public const int TurnNode = 14;
+    public const int View = 15;
+    public const int ViewContainer = 16;
+    public const int Winner = 17;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "Id",
@@ -43,6 +44,7 @@ public static class GameComponentsLookup {
         "RoundIndex",
         "SkillCardContainer",
         "Turn",
+        "TurnNode",
         "View",
         "ViewContainer",
         "Winner"
@@ -63,6 +65,7 @@ public static class GameComponentsLookup {
         typeof(RoundIndexComponent),
         typeof(SkillCardContainerComponent),
         typeof(TurnComponent),
+        typeof(TurnNodeComponent),
         typeof(ViewComponent),
         typeof(ViewContainerComponent),
         typeof(WinnerComponent)

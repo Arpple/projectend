@@ -26,7 +26,7 @@ namespace Test.CardTest.AbilityTest
 			_unit = _contexts.unit.CreateEntity();
 			_unit.AddOwner(_ownerPlayer);
 
-			_systems.Add(new OnDeadAbilitySystem(_contexts));
+			_systems.Add(new EventHpDepleteSystem(_contexts));
 		}
 
 		[Test]

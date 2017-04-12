@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Test.GameTest.TurnTest
 {
-	public class TestTurnPanelSetupSystem : ContextsTest
+	public class TurnPanelSystemTest : ContextsTest
 	{
 		private TurnPanel _panel;
 
@@ -19,28 +19,61 @@ namespace Test.GameTest.TurnTest
 
 			_panel.TurnNodePrefabs = node;
 			_panel.TurnNodes = new List<TurnNode>();
+			_panel.TurnNodeParent = new GameObject().transform;
+
+			_systems.Add(new TurnPanelSystem(_contexts, _panel));
 		}
 
 		[Test]
-		public void CreateNodeAndAddToTurnPanel()
+		public void Initialize_PlayerEntityCreated_TurnNodeCreated()
 		{
-			var system = new TurnPanelSetupSystem(_contexts, _panel);
-
-			var sprite = Resources.Load<Sprite>("Test/Editor/Sprite");
-
-			var player = _contexts.game.CreateEntity();
-
-			var ch = _contexts.unit.CreateEntity();
-			ch.AddCharacter(Character.LastBoss);
-			ch.AddUnitIcon(sprite);
-			ch.AddOwner(player);
-
+			var player = CreatePlayerEntity(1);
 			_contexts.game.SetPlayingOrder(new List<GameEntity>() { player });
 
-			system.Initialize();
+			_systems.Initialize();
 
 			Assert.AreEqual(1, _panel.TurnNodes.Count);
-			Assert.AreEqual(sprite, _panel.TurnNodes[0].IconImage.sprite);
+			Assert.IsTrue(player.hasTurnNode);
+			Assert.AreEqual(_panel.TurnNodes[0], player.turnNode.Object);
+		}
+
+		[Test]
+		public void Initialize_PlayerEntitiesCreated_TurnNodesCreatedOrderByPlayOrder()
+		{
+			var p1 = CreatePlayerEntity(1);
+			var p2 = CreatePlayerEntity(2);
+			_contexts.game.SetPlayingOrder(new List<GameEntity>
+			{
+				p1, p2
+			});
+
+			_systems.Initialize();
+
+			Assert.AreEqual(p1.turnNode.Object, _panel.TurnNodes[0]);
+			Assert.AreEqual(p2.turnNode.Object, _panel.TurnNodes[1]);
+		}
+
+		[Test]
+		public void Execute_PlayOrderChange_TurnNodeOrderChange()
+		{
+			var p1 = CreatePlayerEntity(1);
+			var p2 = CreatePlayerEntity(2);
+			_contexts.game.SetPlayingOrder(new List<GameEntity>
+			{
+				p1, p2
+			});
+
+			_systems.Initialize();
+
+			_contexts.game.ReplacePlayingOrder(new List<GameEntity>
+			{
+				p2, p1
+			});
+
+			_systems.Execute();
+
+			Assert.AreEqual(p2.turnNode.Object, _panel.TurnNodes[0]);
+			Assert.AreEqual(p1.turnNode.Object, _panel.TurnNodes[1]);
 		}
 	}
 }

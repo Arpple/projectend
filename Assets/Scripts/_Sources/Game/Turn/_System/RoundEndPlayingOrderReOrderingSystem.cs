@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Entitas;
 
 public class RoundEndPlayingOrderReOrderingSystem : ReactiveSystem<GameEntity>
@@ -24,7 +25,18 @@ public class RoundEndPlayingOrderReOrderingSystem : ReactiveSystem<GameEntity>
 	{
 		foreach (var e in entities)
 		{
-			_context.playingOrder.ReOrder();
+			var newOrder = ReOrder(_context.playingOrder);
+			_context.ReplacePlayingOrder(newOrder);
 		}
+	}
+
+	private List<GameEntity> ReOrder(PlayingOrderComponent playOrder)
+	{
+		var order = playOrder.PlayerOrder;
+		var first = order[0];
+		order.RemoveAt(0);
+		order.Add(first);
+
+		return order;
 	}
 }

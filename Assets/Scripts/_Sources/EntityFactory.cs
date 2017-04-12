@@ -11,7 +11,7 @@ public abstract class EntityFactory<TEntity, TData>
 		_context = context;
 	}
 
-	public virtual TEntity CreateEntityWithComponents(TData data)
+	public TEntity CreateEntityWithComponents(TData data)
 	{
 		var entity = _context.CreateEntity();
 		AddComponents(entity, data);

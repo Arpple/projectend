@@ -9,7 +9,7 @@ public class TileDataLoadingSystem : DataLoadingSystem<TileEntity, TileData>
 		_setting = setting;
 	}
 
-	protected override EntityFactory<TileEntity, TileData> CreateEntityFactory(IContext<TileEntity> context)
+	protected override IEntityFactory<TileEntity, TileData> CreateEntityFactory(IContext<TileEntity> context)
 	{
 		return new TileEntityFactory(context);
 	}

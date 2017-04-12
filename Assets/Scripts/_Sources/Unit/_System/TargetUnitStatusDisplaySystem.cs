@@ -1,52 +1,13 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-public class TargetUnitStatusDisplaySystem : ReactiveSystem<UnitEntity>, IInitializeSystem
+public class TargetUnitStatusDisplaySystem : ReactiveSystem<UnitEntity>
 {
-	private readonly TileContext _tileContext;
-	private readonly CardContext _cardContext;
 	private readonly PlayerUnitStatusPanel _panel;
 
 	public TargetUnitStatusDisplaySystem(Contexts contexts, PlayerUnitStatusPanel panel) : base(contexts.unit)
 	{
-		_tileContext = contexts.tile;
-		_cardContext = contexts.card;
 		_panel = panel;
-	}
-
-	public void Initialize()
-	{
-		foreach (var tile in _tileContext.GetEntities(TileMatcher.Tile))
-		{
-			var tileCon = tile.view.GameObject.GetComponent<TileController>();
-			tileCon.DefaultTileAction = OnTileClicked;
-		}
-	}
-
-	private void OnTileClicked(TileEntity tile)
-	{
-		var unit = tile.GetUnitOnTile();
-		if (unit != null)
-		{
-			ShowDisplayStatus(unit);
-		}
-		else
-		{
-			HideDisplayStatus();
-		}
-	}
-
-	private void ShowDisplayStatus(UnitEntity unit)
-	{
-		_panel.SetCharacter(unit);
-		_panel.gameObject.SetActive(true);
-		_panel.UpdateBoxCardCount(_cardContext.GetPlayerBoxComponentCards(unit.owner.Entity).Length);
-		_panel.UpdateDeckCardCount(_cardContext.GetPlayerDeckCards(unit.owner.Entity).Length);
-	}
-
-	private void HideDisplayStatus()
-	{
-		_panel.HideDisplay();
 	}
 
 	protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)

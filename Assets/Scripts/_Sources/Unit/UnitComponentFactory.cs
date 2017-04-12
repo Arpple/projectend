@@ -1,6 +1,6 @@
 ﻿public partial class UnitEntityFactory : EntityFactory<UnitEntity, UnitData>
 {
-	private class UnitComponentFactory : ComponentFactory<UnitEntity, UnitData>
+	protected class UnitComponentFactory : ComponentFactory<UnitEntity, UnitData>
 	{
 		public UnitComponentFactory(UnitEntity entity, UnitData data) : base(entity, data)
 		{
@@ -44,6 +44,8 @@
 				_data.VisionRange,
 				_data.MoveSpeed
 			);
+
+			_entity.AddHitpoint(_data.HitPoint);
 		}
 	}
 }

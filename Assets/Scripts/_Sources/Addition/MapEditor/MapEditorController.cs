@@ -67,11 +67,11 @@ namespace MapEditor
 				.Add(new TileMapCreatingSystem(contexts, EdittingMap))
 				.Add(new TileGraphCreatingSystem(contexts))
 			
-				.Add(new TileViewLoadingSystem(contexts, Setting.MapSetting.TileSetting))
+				.Add(new TileViewCreatingSystem(contexts, Setting.TileSetting, new GameObject("Tile")))
                 .Add(new TileHoverActionSystem(contexts))
                 
 				.Add(new TilePositionRenderingSystem(contexts))
-				.Add(new TileBrushSystem(contexts, Setting.MapSetting.TileSetting))
+				.Add(new TileBrushSystem(contexts, Setting.TileSetting))
                 .Add(new TileDetailSystem(contexts))
 
                 .Add(new CameraSystem(contexts))

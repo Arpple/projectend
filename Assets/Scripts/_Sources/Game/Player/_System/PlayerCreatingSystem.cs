@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using Entitas.Unity;
 using Network;
+using UnityEngine;
 
-public class PlayerCreatingSystem : IInitializeSystem
+public class PlayerCreatingSystem : IInitializeSystem, ITearDownSystem
 {
 	readonly GameContext _context;
 	readonly List<Player> _players;
@@ -17,8 +19,29 @@ public class PlayerCreatingSystem : IInitializeSystem
 	{
 		foreach (var p in _players)
 		{
-			var playerEntity = _context.CreateEntity();
-			playerEntity.AddPlayer(p);
+			var entity = CreatePlayerEntity(p);
+			LinkPlayerObject(entity, p.gameObject);
+		}
+	}
+
+	private GameEntity CreatePlayerEntity(Player player)
+	{
+		var entity = _context.CreateEntity();
+		entity.AddPlayer(player);
+		entity.AddId(player.PlayerId);
+		return entity;
+	}
+
+	private void LinkPlayerObject(GameEntity entity, GameObject obj)
+	{
+		obj.Link(entity, _context);
+	}
+
+	public void TearDown()
+	{
+		foreach(var p in _players)
+		{
+			p.gameObject.Unlink();
 		}
 	}
 }

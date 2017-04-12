@@ -6,22 +6,21 @@ namespace Test.UnitTest
 {
 	public class TestCharacterSetting
 	{
-		private CharacterSetting _setting;
+		private UnitSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			_setting = TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
+			_setting = TestHelper.GetGameSetting().UnitSetting;
 		}
 
 		[Test]
-		public void CheckEnumBlueprint()
+		public void CheckEnumData()
 		{
 			foreach (Character c in Enum.GetValues(typeof(Character)))
 			{
-				Assert.IsNotNull(_setting.GetCharBlueprint(c), "Character blueprint not fonud for " + c.ToString());
+				Assert.IsNotNull(_setting.GetCharData(c));
 			}
 		}
 	}
-
 }

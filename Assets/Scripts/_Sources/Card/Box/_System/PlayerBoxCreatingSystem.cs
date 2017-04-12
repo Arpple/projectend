@@ -1,21 +1,21 @@
 ﻿using Entitas;
 
-public class PlayerBoxComponentCreatingSystem : IInitializeSystem
+public class PlayerBoxCreatingSystem : IInitializeSystem
 {
 	private GameContext _context;
-	private PlayerBoxFactory _boxContainer;
+	private PlayerBoxFactory _factory;
 
-	public PlayerBoxComponentCreatingSystem(Contexts contexts, PlayerBoxFactory boxContainer)
+	public PlayerBoxCreatingSystem(Contexts contexts, PlayerBoxFactory boxFactory)
 	{
 		_context = contexts.game;
-		_boxContainer = boxContainer;
+		_factory = boxFactory;
 	}
 
 	public void Initialize()
 	{
 		foreach (var player in _context.GetEntities(GameMatcher.Player))
 		{
-			var playerbox = _boxContainer.CreateContainer(player.player.PlayerId);
+			var playerbox = _factory.CreateContainer(player.player.PlayerId);
 			player.AddPlayerBox(playerbox);
 
 			if (player.isLocal)

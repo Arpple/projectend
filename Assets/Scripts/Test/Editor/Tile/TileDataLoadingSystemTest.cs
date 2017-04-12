@@ -7,7 +7,7 @@ namespace Test.TileTest
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new TileDataLoadingSystem(_contexts, TestHelper.GetGameSetting().MapSetting.TileSetting));
+			_systems.Add(new TileDataLoadingSystem(_contexts, TestHelper.GetGameSetting().TileSetting));
 		}
 
 		[Test]

@@ -26,8 +26,8 @@ namespace Test
 			var e = context.CreateEntity();
 			var p = new GameObject().AddComponent<Player>();
 			p.PlayerId = (short)playerId;
-
 			e.AddPlayer(p);
+			e.AddId(playerId);
 			return e;
 		}
 	}

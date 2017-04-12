@@ -8,11 +8,4 @@ using Entitas.CodeGeneration.Attributes;
 public class PlayingOrderComponent : IComponent
 {
 	public List<GameEntity> PlayerOrder;
-
-	public void ReOrder()
-	{
-		var first = PlayerOrder.First();
-		PlayerOrder.RemoveAt(0);
-		PlayerOrder.Add(first);
-	}
 }

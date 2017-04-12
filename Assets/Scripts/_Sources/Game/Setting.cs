@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// game data holder
@@ -6,7 +7,7 @@
 [CreateAssetMenu(menuName = "End/Setting", fileName = "new_setting.asset")]
 public class Setting : ScriptableObject
 {
-	public MapSetting MapSetting;
+	public TileSetting TileSetting;
 
 	[Space(15)]
 	public UnitSetting UnitSetting;
@@ -16,4 +17,12 @@ public class Setting : ScriptableObject
 
 	[Space(15)]
 	public RoleSetting RoleSetting;
+
+	public void OnEnable()
+	{
+		Assert.IsNotNull(TileSetting);
+		Assert.IsNotNull(UnitSetting);
+		Assert.IsNotNull(CardSetting);
+		Assert.IsNotNull(RoleSetting);
+	}
 }

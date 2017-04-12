@@ -61,8 +61,7 @@ namespace Lounge
 			var systems = new Feature("Systems")
 				.Add(new PlayerCreatingSystem(contexts, players))
 				.Add(new LocalPlayerSetupSystem(contexts, NetworkController.Instance.LocalPlayer))
-				.Add(new CharacterLoadingSystems(contexts, Setting.UnitSetting.CharacterSetting))
-				.Add(new CharacterIconLoadingSystem(contexts))
+				.Add(new CharacterLoadingSystems(contexts))
 				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
 				.Add(new ContextsResetSystem(contexts))
 				;

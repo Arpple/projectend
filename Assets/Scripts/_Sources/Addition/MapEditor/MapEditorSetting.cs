@@ -5,7 +5,7 @@ namespace MapEditor
 {
 	public class MapEditorSetting : ScriptableObject
 	{
-		public MapSetting MapSetting;
+		public TileSetting TileSetting;
 	}
 
 }

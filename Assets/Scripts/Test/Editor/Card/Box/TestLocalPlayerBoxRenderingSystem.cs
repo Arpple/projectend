@@ -10,7 +10,7 @@ namespace Test.CardTest.BoxTest
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new LocalPlayerBoxComponentRenderingSystem(_contexts));
+			_systems.Add(new LocalPlayerBoxRenderingSystem(_contexts));
 			_container = new GameObject().AddComponent<PlayerBox>();
 			_container.Init();
 		}

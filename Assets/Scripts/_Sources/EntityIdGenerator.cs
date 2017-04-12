@@ -32,7 +32,6 @@ public class EntityIdGenerator
 		_generators = new Dictionary<Type, ContextEntityIdGenerator>();
 
 		//! add this when create new context
-		CreateGenerator<GameEntity>(contexts.game, GameComponentsLookup.Id);
 		CreateGenerator<TileEntity>(contexts.tile, TileComponentsLookup.Id);
 		CreateGenerator<CardEntity>(contexts.card, CardComponentsLookup.Id);
 		CreateGenerator<UnitEntity>(contexts.unit, UnitComponentsLookup.Id);

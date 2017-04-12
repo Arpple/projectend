@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d793a191f7a3664f9225282db9521df, type: 3}
+  m_Name: SharpShooter
+  m_EditorClassIdentifier: 
+  BodySprite: {fileID: 21300000, guid: b74825899d997aa429b3b9d7d23c5a08, type: 3}
+  IconSprite: {fileID: 21300000, guid: 3102f8f0cb4cc3444ba5117634ccc045, type: 3}
+  Name: SharpShooter
+  Description: 
+  HitPoint: 1
+  AttackPower: 1
+  AttackRange: 1
+  VisionRange: 1
+  MoveSpeed: 1
+  Type: 1
+  SkillCards: 

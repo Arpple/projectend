@@ -15,9 +15,10 @@ public class LocalPlayerSetupSystem : IInitializeSystem
 
 	public void Initialize()
 	{
-		var gameLocalPlayerEntity = _context.GetEntities(GameMatcher.Player).Where(p => p.player.PlayerObject == _localPlayer)
+		var localEntity = _context.GetEntities(GameMatcher.Player)
+			.Where(p => p.player.PlayerObject == _localPlayer)
 			.First();
 
-		gameLocalPlayerEntity.isLocal = true;
+		localEntity.isLocal = true;
 	}
 }

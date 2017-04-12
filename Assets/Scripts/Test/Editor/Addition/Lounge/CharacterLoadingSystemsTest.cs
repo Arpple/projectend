@@ -6,18 +6,10 @@ namespace Test.AdditionTest.LoungeTest
 {
 	public class CharacterLoadingSystemsTest : ContextsTest
 	{
-		private CharacterSetting _setting;
-
-		[SetUp]
-		public void Init()
-		{
-			_setting = TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
-		}
-
 		[Test]
 		public void Initialize_UsingGameSetting_CreateCharacterCountEqualEnum()
 		{
-			var system = new CharacterLoadingSystems(_contexts, _setting);
+			var system = new CharacterLoadingSystems(_contexts);
 			system.Initialize();
 
 			var enumCount = Enum.GetNames(typeof(Character)).Length;
@@ -28,7 +20,7 @@ namespace Test.AdditionTest.LoungeTest
 		[Test]
 		public void Initialize_UsingGameSetting_AllHaveCharacterComponent()
 		{
-			var system = new CharacterLoadingSystems(_contexts, _setting);
+			var system = new CharacterLoadingSystems(_contexts);
 			system.Initialize();
 
 			foreach (var e in _contexts.unit.GetEntities())
