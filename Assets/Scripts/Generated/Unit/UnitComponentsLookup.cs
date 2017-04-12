@@ -17,13 +17,14 @@ public static class UnitComponentsLookup {
     public const int MapPosition = 6;
     public const int Owner = 7;
     public const int Resource = 8;
-    public const int UnitDetail = 9;
-    public const int UnitIcon = 10;
-    public const int UnitIconResource = 11;
-    public const int UnitStatus = 12;
-    public const int View = 13;
+    public const int Sprite = 9;
+    public const int UnitDetail = 10;
+    public const int UnitIcon = 11;
+    public const int UnitIconResource = 12;
+    public const int UnitStatus = 13;
+    public const int View = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "Character",
@@ -35,6 +36,7 @@ public static class UnitComponentsLookup {
         "MapPosition",
         "Owner",
         "Resource",
+        "Sprite",
         "UnitDetail",
         "UnitIcon",
         "UnitIconResource",
@@ -52,6 +54,7 @@ public static class UnitComponentsLookup {
         typeof(MapPositionComponent),
         typeof(OwnerComponent),
         typeof(ResourceComponent),
+        typeof(SpriteComponent),
         typeof(UnitDetailComponent),
         typeof(UnitIconComponent),
         typeof(UnitIconResourceComponent),

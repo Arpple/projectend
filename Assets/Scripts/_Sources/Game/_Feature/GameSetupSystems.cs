@@ -6,7 +6,7 @@ public class GameSetupSystems : Feature
 	public GameSetupSystems(Contexts contexts, Setting setting, List<Player> players, Player localPlayer) : base("Game Setup")
 	{
 		//map
-		Add(new TileMapCreatingSystem(contexts, setting.MapSetting.GameMap.Load(), setting.MapSetting.TileSetting));
+		Add(new TileMapCreatingSystem(contexts, setting.MapSetting.GameMap.Load()));
 		Add(new TileGraphCreatingSystem(contexts));
 
 		//player

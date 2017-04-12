@@ -1,6 +1,7 @@
-﻿using Entitas;
+﻿using System;
+using Entitas;
 
-public class TileEntityFactory : EntityFactory<TileEntity, TileData>
+public partial class TileEntityFactory : EntityFactory<TileEntity, TileData>
 {
 	public TileEntityFactory(IContext<TileEntity> context) : base(context)
 	{
@@ -13,40 +14,8 @@ public class TileEntityFactory : EntityFactory<TileEntity, TileData>
 		return e;
 	}
 
-	public override void AddComponents(TileEntity entity, TileData data)
+	protected override ComponentFactory<TileEntity, TileData> CreateComponentFactory(TileEntity entity, TileData data)
 	{
-		var compFac = new TileComponentFactory(entity, data);
-		compFac.AddComponents();
-	}
-
-	internal class TileComponentFactory
-	{
-		private TileEntity _entity;
-		private TileData _data;
-
-		public TileComponentFactory(TileEntity entity, TileData data)
-		{
-			_entity = entity;
-			_data = data;
-		}
-
-		public void AddComponents()
-		{
-			AddSprite();
-			AddMovableComponent();
-		}
-
-		private void AddSprite()
-		{
-			if (_data.Sprite != null)
-			{
-				_entity.AddSprite(_data.Sprite);
-			}
-		}
-
-		private void AddMovableComponent()
-		{
-			_entity.isTileMovable = _data.IsWalkableOn;
-		}
+		return new TileComponentFactory(entity, data);
 	}
 }

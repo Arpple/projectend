@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using Entitas;
+﻿using Entitas;
 
 public abstract class EntityFactory<TEntity, TData>
 	where TEntity : class, IEntity, new()
@@ -20,5 +18,11 @@ public abstract class EntityFactory<TEntity, TData>
 		return entity;
 	}
 
-	public abstract void AddComponents(TEntity entity, TData data);
+	public virtual void AddComponents(TEntity entity, TData data)
+	{
+		var componentFactory = CreateComponentFactory(entity, data);
+		componentFactory.AddComponents();
+	}
+
+	protected abstract ComponentFactory<TEntity, TData> CreateComponentFactory(TEntity entity, TData data);
 }
