@@ -16,6 +16,7 @@ public class TileSystems : Feature
 		Add(new TileActionSystem(contexts));
 		Add(new DefaultTileActionSetupSystem(contexts, ui.TargetPlayerStatus));
 		Add(new TileResourceChargeSetupSystem(contexts, setting.TileResourceChargeWeigth));
+		Add(new TileResourceSpriteUpdateSystem(contexts));
 	}
 }
 

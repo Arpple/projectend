@@ -6,8 +6,8 @@ public partial class Map : ScriptableObject
 	[Serializable]
 	private class SpawnPoint
 	{
-		public int x;
-		public int y;
+		[SerializeField] public int x;
+		[SerializeField] public int y;
 
 		public SpawnPoint(int x, int y)
 		{

@@ -31,6 +31,10 @@
 			if(_data.Resource != Resource.None)
 			{
 				_entity.AddResource(_data.Resource, _data.EmptyResourceSprite);
+				if(_entity.hasSprite)
+				{
+					_entity.resource.SetOriginalSprite(_entity.sprite.Sprite);
+				}
 			}
 		}
 	}

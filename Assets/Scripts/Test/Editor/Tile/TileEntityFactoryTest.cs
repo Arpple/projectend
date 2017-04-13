@@ -73,5 +73,19 @@ namespace Test.TileTest
 			Assert.AreEqual(_data.Resource, entity.resource.Type);
 			Assert.AreEqual(_data.EmptyResourceSprite, entity.resource.EmptySprite);
 		}
+
+		[Test]
+		public void AddComponents_DataHasResourceAndEntityHaveSprite_OriginalSpriteSaved()
+		{
+			var sprite = Resources.Load<Sprite>("Test/Editor/Sprite");
+
+			_data.Resource = Resource.Wood;
+			_data.EmptyResourceSprite = sprite;
+			var entity = _contexts.tile.CreateEntity();
+			entity.AddSprite(sprite);
+			_factory.AddComponents(entity, _data);
+
+			Assert.AreEqual(sprite, entity.resource.GetOriginalSprite());
+		}
 	}
 }

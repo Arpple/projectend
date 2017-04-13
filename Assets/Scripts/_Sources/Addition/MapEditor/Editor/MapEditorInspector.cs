@@ -39,6 +39,7 @@ namespace MapEditor
 				if (GUILayout.Button("Save"))
 				{
 					var map = MapEditorController.EdittingMap;
+					EditorUtility.SetDirty(map);
 					var spawnpointCount = 0;
 
 					foreach (var tile in Contexts.sharedInstance.tile.GetGroup(TileMatcher.Tile).GetEntities())
@@ -64,6 +65,7 @@ namespace MapEditor
                         //TODO : New File
                         //ProjectWindowUtil.CreateAsset(map, "Assets/Resources/Game/Map/NewMap.asset");
                         AssetDatabase.CreateAsset(map, path);
+						AssetDatabase.SaveAssets();
                     } else {
                         //Overwrite..
                         EditorUtility.CopySerialized(map, saveFile);
