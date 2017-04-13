@@ -14,11 +14,17 @@ namespace Test.CardTest
 		}
 
 		[Test]
-		public void LoadPrefabs()
+		public void CheckSetting_CardObjectPrefabsSet()
 		{
 			Assert.IsNotNull(_setting.CardObjectPrefabs);
 			var card = Object.Instantiate(_setting.CardObjectPrefabs) as CardObject;
 			Assert.IsNotNull(card);
+		}
+
+		[Test]
+		public void CheckSetting_CardDataAdded()
+		{
+			Assert.IsNotNull(_setting.CardsData);
 		}
 	}
 }
