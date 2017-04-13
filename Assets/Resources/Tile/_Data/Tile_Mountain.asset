@@ -15,3 +15,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: cf0be9bc9ad93514383336472bfd655a, type: 3}
   IsWalkableOn: 1
   Resource: 3
+  EmptyResourceSprite: {fileID: 21300000, guid: 3fc97ed39d6148b4c86427889d8ef78f,
+    type: 3}
