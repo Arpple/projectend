@@ -11,7 +11,7 @@ namespace Test.TileTest
 		}
 
 		[Test]
-		public void Execute_TileEntityAdded_ComponentFromDataLoaded()
+		public void Execute_TileEntity_ComponentFromDataLoaded()
 		{
 			var tile = _contexts.tile.CreateEntity();
 			tile.AddTile(Tile.Grass);

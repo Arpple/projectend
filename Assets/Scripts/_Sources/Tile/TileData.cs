@@ -8,4 +8,7 @@ public class TileData : EntityData
 
 	public Sprite Sprite;
 	public bool IsWalkableOn;
+	[Header("Resource")]
+	public Resource Resource;
+	public Sprite EmptyResourceSprite;
 }

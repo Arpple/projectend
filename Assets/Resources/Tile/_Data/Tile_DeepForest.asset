@@ -14,3 +14,4 @@ MonoBehaviour:
   TileType: 2
   Sprite: {fileID: 21300000, guid: 06827b4f8ace9994081198216a4e43e6, type: 3}
   IsWalkableOn: 1
+  Resource: 1

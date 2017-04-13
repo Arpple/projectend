@@ -35,12 +35,6 @@ namespace Test.TileTest
 			Assert.AreEqual(_data.Sprite, entity.sprite.Sprite);
 		}
 
-		//[Test]
-		//public void CreateEntity_SpriteDataNotFound_ThrowError()
-		//{
-			
-		//}
-
 		[Test]
 		public void CreateEntity_IsWalkableOnTrue_IsMovableComponentAdded()
 		{
@@ -57,6 +51,27 @@ namespace Test.TileTest
 			var entity = _factory.CreateEntityWithComponents(_data);
 
 			Assert.IsFalse(entity.isTileMovable);
+		}
+
+		[Test]
+		public void CreateEntity_ResourceIsNone_NoResourceComponent()
+		{
+			_data.Resource = Resource.None;
+			var entity = _factory.CreateEntityWithComponents(_data);
+
+			Assert.IsFalse(entity.hasResource);
+		}
+
+		[Test]
+		public void CreateEntity_ResourceIsNotNone_ResouceComponentAdded()
+		{
+			_data.Resource = Resource.Wood;
+			_data.EmptyResourceSprite = Resources.Load<Sprite>("Test/Editor/Sprite");
+			var entity = _factory.CreateEntityWithComponents(_data);
+
+			Assert.IsTrue(entity.hasResource);
+			Assert.AreEqual(_data.Resource, entity.resource.Type);
+			Assert.AreEqual(_data.EmptyResourceSprite, entity.resource.EmptySprite);
 		}
 	}
 }

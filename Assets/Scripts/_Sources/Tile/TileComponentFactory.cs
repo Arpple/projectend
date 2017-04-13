@@ -10,6 +10,7 @@
 		{
 			AddSprite();
 			AddMovableComponent();
+			AddResource();
 		}
 
 		private void AddSprite()
@@ -23,6 +24,14 @@
 		private void AddMovableComponent()
 		{
 			_entity.isTileMovable = _data.IsWalkableOn;
+		}
+
+		private void AddResource()
+		{
+			if(_data.Resource != Resource.None)
+			{
+				_entity.AddResource(_data.Resource, _data.EmptyResourceSprite);
+			}
 		}
 	}
 }

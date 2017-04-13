@@ -11,17 +11,19 @@ public partial class TileEntity {
     public ResourceComponent resource { get { return (ResourceComponent)GetComponent(TileComponentsLookup.Resource); } }
     public bool hasResource { get { return HasComponent(TileComponentsLookup.Resource); } }
 
-    public void AddResource(Resource newType) {
+    public void AddResource(Resource newType, UnityEngine.Sprite newEmptySprite) {
         var index = TileComponentsLookup.Resource;
         var component = CreateComponent<ResourceComponent>(index);
         component.Type = newType;
+        component.EmptySprite = newEmptySprite;
         AddComponent(index, component);
     }
 
-    public void ReplaceResource(Resource newType) {
+    public void ReplaceResource(Resource newType, UnityEngine.Sprite newEmptySprite) {
         var index = TileComponentsLookup.Resource;
         var component = CreateComponent<ResourceComponent>(index);
         component.Type = newType;
+        component.EmptySprite = newEmptySprite;
         ReplaceComponent(index, component);
     }
 

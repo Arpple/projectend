@@ -47,6 +47,18 @@ namespace Test.TileTest
 			Assert.IsNotNull(_setting.TileResourceChargeWeigth);
 			Assert.IsTrue(_setting.TileResourceChargeWeigth.Count > 0);
 		}
+
+		[Test]
+		public void CheckSetting_TileWithResourceHaveEmptySResourceSprite()
+		{
+			foreach(var data in _setting.TileDatas)
+			{
+				if(data.Resource != Resource.None)
+				{
+					Assert.IsTrue(data.EmptyResourceSprite != null);
+				}
+			}
+		}
 	}
 }
 
