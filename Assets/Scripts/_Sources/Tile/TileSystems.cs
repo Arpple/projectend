@@ -7,6 +7,8 @@ public class TileSystems : Feature
 		//init
 		Add(new TileMapCreatingSystem(contexts, setting.GameMap));
 		Add(new TileGraphCreatingSystem(contexts));
+		Add(new TileResourceCreatingSystem(contexts));
+		Add(new TileResourceChargeSetupSystem(contexts, setting.TileResourceChargeWeigth));
 
 		//execute
 		Add(new TileDataLoadingSystem(contexts, setting));

@@ -8,24 +8,26 @@
 //------------------------------------------------------------------------------
 public static class TileComponentsLookup {
 
-    public const int Id = 0;
-    public const int MapEditorTileBrush = 1;
-    public const int MapPosition = 2;
-    public const int Resource = 3;
-    public const int ResourceCount = 4;
-    public const int Spawnpoint = 5;
-    public const int Sprite = 6;
-    public const int TileAction = 7;
-    public const int Tile = 8;
-    public const int TileGraph = 9;
-    public const int TileHoverAction = 10;
-    public const int TileMovable = 11;
-    public const int View = 12;
-    public const int ViewContainer = 13;
+    public const int Charge = 0;
+    public const int Id = 1;
+    public const int MapEditorTileBrush = 2;
+    public const int MapPosition = 3;
+    public const int Resource = 4;
+    public const int ResourceCount = 5;
+    public const int Spawnpoint = 6;
+    public const int Sprite = 7;
+    public const int TileAction = 8;
+    public const int Tile = 9;
+    public const int TileGraph = 10;
+    public const int TileHoverAction = 11;
+    public const int TileMovable = 12;
+    public const int View = 13;
+    public const int ViewContainer = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
+        "Charge",
         "Id",
         "MapEditorTileBrush",
         "MapPosition",
@@ -43,6 +45,7 @@ public static class TileComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ChargeComponent),
         typeof(IdComponent),
         typeof(MapEditor.TileBrushComponent),
         typeof(MapPositionComponent),

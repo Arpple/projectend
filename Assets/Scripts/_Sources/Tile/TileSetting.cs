@@ -6,12 +6,15 @@ using UnityEngine;
 [Serializable]
 public class TileSetting
 {
-	const string BLUEPRINT_ENUM_PREFIX = "Tile_";
-	const string SPRITE_ENUM_PREFIX = "Tile_";
-
 	public Map GameMap;
-	public List<TileData> TileDatas;
 	public TileController TileController;
+	public List<TileData> TileDatas;
+
+	/// <summary>
+	/// random weigth for tile resource charge index i equals i+1 charge
+	/// </summary>
+	[Tooltip("random weigth for tile resource charge index i equals i+1 charge")]
+	public List<int> TileResourceChargeWeigth;
 
 	private CacheList<Tile, TileData> _cacheData;
 

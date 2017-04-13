@@ -22,6 +22,13 @@ namespace Test.TileTest
 				Assert.IsNotNull(_setting.GetTileData(t), "Tile blueprint not fonud for " + t.ToString());
 			}
 		}
+
+		[Test]
+		public void CheckSetting_HaveResourceChargeWeigth()
+		{
+			Assert.IsNotNull(_setting.TileResourceChargeWeigth);
+			Assert.IsTrue(_setting.TileResourceChargeWeigth.Count > 0);
+		}
 	}
 }
 
