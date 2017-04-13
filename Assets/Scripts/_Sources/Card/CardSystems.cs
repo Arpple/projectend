@@ -5,9 +5,12 @@
 		Add(new DeckCardCreatingSystem(contexts, setting.DeckSetting.Deck));
 		Add(new CardDataLoadingSystem(contexts, setting));
 		Add(new CardViewCreatingSystem(contexts, setting));
+
 		CreateDeckCardSystems(contexts, setting.DeckSetting, ui);
 		CreateBoxCardSystems(contexts, ui);
 		CreateSkillCardSystems(contexts, ui);
+
+		Add(new ResourceCardDestroySystem(contexts));
 	}
 
 	private void CreateDeckCardSystems(Contexts contexts, DeckSetting setting, GameUI ui)

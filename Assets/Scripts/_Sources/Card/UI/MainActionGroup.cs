@@ -81,7 +81,7 @@ public class MainActionGroup : CardActionGroup
 	{
 		var entity = card.Entity;
 		var ui = GameUI.Instance;
-		if (entity.isDeckCard)
+		if (entity.isDeckCard || entity.hasCardResource)
 		{
 			if (entity.hasInBox)
 				return ui.BoxGroup;

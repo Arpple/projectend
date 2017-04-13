@@ -33,6 +33,12 @@ public class DeckCardActionGroup : ActiveCardActionGroup
 	public override void OnCardClick(CardObject card)
 	{
 		base.OnCardClick(card);
-		ShowCardTarget(card);
+		if(IsActiveCard(card))
+			ShowCardTarget(card);
+	}
+
+	private bool IsActiveCard(CardObject card)
+	{
+		return card.Entity.ability.Ability is IActiveAbility;
 	}
 }
