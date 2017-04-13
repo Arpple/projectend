@@ -29,10 +29,6 @@ public class TileViewCreatingSystem : EntityViewCreatingSystem<TileEntity>
 	protected override GameObject CreateViewObject(TileEntity entity)
 	{
 		var obj = UnityEngine.Object.Instantiate(_setting.TileControllerPrefabs);
-		if(entity.sprite.Sprite != null)
-		{
-			obj.SetSprite(entity.sprite.Sprite);
-		}
 		obj.name = "Tile " + entity.mapPosition;
 		obj.transform.SetParent(_container.transform, false);
 		return obj.gameObject;

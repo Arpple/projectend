@@ -11,6 +11,7 @@ public class TileSystems : Feature
 		//execute
 		Add(new TileDataLoadingSystem(contexts, setting));
 		Add(new TileViewCreatingSystem(contexts, setting, tileContainer));
+		Add(new TileSpriteUpdateSystem(contexts));
 		Add(new TilePositionRenderingSystem(contexts));
 		Add(new TileActionSystem(contexts));
 		Add(new DefaultTileActionSetupSystem(contexts, ui.TargetPlayerStatus));
