@@ -78,8 +78,7 @@ namespace MapEditor
 
 		private void RemoveMapSpawnpoint(int index)
 		{
-			var spawnpoint = _context.GetEntities(TileMatcher.Spawnpoint)
-					.Where(s => s.spawnpoint.index == index)
+			var spawnpoint = _context.GetEntitiesWithSpawnpoint(index)
 					.FirstOrDefault();
 
 			if (spawnpoint != null)
