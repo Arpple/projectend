@@ -1,6 +1,4 @@
-﻿using System;
-
-public partial class CardEntityFactory : EntityFactory<CardEntity, CardData>, IEntityFactory<CardEntity, CardData>
+﻿public partial class CardEntityFactory : EntityFactory<CardEntity, CardData>, IEntityFactory<CardEntity, CardData>
 {
 	private class CardComponentFactory : ComponentFactory<CardEntity, CardData>
 	{

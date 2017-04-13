@@ -30,10 +30,10 @@
 		{
 			if(_data.Resource != Resource.None)
 			{
-				_entity.AddResource(_data.Resource, _data.EmptyResourceSprite);
+				_entity.AddTileResource(_data.Resource, _data.EmptyResourceSprite);
 				if(_entity.hasSprite)
 				{
-					_entity.resource.SetOriginalSprite(_entity.sprite.Sprite);
+					_entity.tileResource.SetOriginalSprite(_entity.sprite.Sprite);
 				}
 			}
 		}

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd8b30313004cdd478df826c36d58cea, type: 3}
-  m_Name: Attack
+  m_Name: Deck_Attack
   m_EditorClassIdentifier: 
   Type: 1
   MainSprite: {fileID: 21300000, guid: 61850c105db8c15469ea844a16737d32, type: 3}

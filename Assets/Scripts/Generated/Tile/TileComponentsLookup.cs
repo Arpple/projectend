@@ -12,15 +12,15 @@ public static class TileComponentsLookup {
     public const int Id = 1;
     public const int MapEditorTileBrush = 2;
     public const int MapPosition = 3;
-    public const int Resource = 4;
-    public const int ResourceCount = 5;
-    public const int Spawnpoint = 6;
-    public const int Sprite = 7;
-    public const int TileAction = 8;
-    public const int Tile = 9;
-    public const int TileGraph = 10;
-    public const int TileHoverAction = 11;
-    public const int TileMovable = 12;
+    public const int ResourceCount = 4;
+    public const int Spawnpoint = 5;
+    public const int Sprite = 6;
+    public const int TileAction = 7;
+    public const int Tile = 8;
+    public const int TileGraph = 9;
+    public const int TileHoverAction = 10;
+    public const int TileMovable = 11;
+    public const int TileResource = 12;
     public const int View = 13;
     public const int ViewContainer = 14;
 
@@ -31,7 +31,6 @@ public static class TileComponentsLookup {
         "Id",
         "MapEditorTileBrush",
         "MapPosition",
-        "Resource",
         "ResourceCount",
         "Spawnpoint",
         "Sprite",
@@ -40,6 +39,7 @@ public static class TileComponentsLookup {
         "TileGraph",
         "TileHoverAction",
         "TileMovable",
+        "TileResource",
         "View",
         "ViewContainer"
     };
@@ -49,7 +49,6 @@ public static class TileComponentsLookup {
         typeof(IdComponent),
         typeof(MapEditor.TileBrushComponent),
         typeof(MapPositionComponent),
-        typeof(ResourceComponent),
         typeof(ResourceCountComponent),
         typeof(SpawnpointComponent),
         typeof(SpriteComponent),
@@ -58,6 +57,7 @@ public static class TileComponentsLookup {
         typeof(TileGraphComponent),
         typeof(TileHoverActionComponent),
         typeof(TileMovableComponent),
+        typeof(TileResourceComponent),
         typeof(ViewComponent),
         typeof(ViewContainerComponent)
     };

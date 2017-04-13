@@ -12,7 +12,7 @@ namespace Test.TileTest
 			_systems.Add(new TileResourceChargeSetupSystem(_contexts, randomRange));
 
 			var entity = _contexts.tile.CreateEntity();
-			entity.AddResource(Resource.Coal, null);
+			entity.AddTileResource(Resource.Coal, null);
 
 			_systems.Execute();
 

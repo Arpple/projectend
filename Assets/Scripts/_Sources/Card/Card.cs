@@ -6,6 +6,11 @@
 	Potion,
 	Collect,
 
+	//Resource
+	Wood,
+	Coal,
+	Water,
+
 	//Skill
 	Test
 }

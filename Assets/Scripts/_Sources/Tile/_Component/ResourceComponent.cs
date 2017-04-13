@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Tile]
-public class ResourceComponent : IComponent
+public class TileResourceComponent : IComponent
 {
 	public Resource Type;
 	public Sprite EmptySprite;

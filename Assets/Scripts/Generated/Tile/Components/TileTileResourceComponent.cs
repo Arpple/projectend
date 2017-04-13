@@ -8,27 +8,27 @@
 //------------------------------------------------------------------------------
 public partial class TileEntity {
 
-    public ResourceComponent resource { get { return (ResourceComponent)GetComponent(TileComponentsLookup.Resource); } }
-    public bool hasResource { get { return HasComponent(TileComponentsLookup.Resource); } }
+    public TileResourceComponent tileResource { get { return (TileResourceComponent)GetComponent(TileComponentsLookup.TileResource); } }
+    public bool hasTileResource { get { return HasComponent(TileComponentsLookup.TileResource); } }
 
-    public void AddResource(Resource newType, UnityEngine.Sprite newEmptySprite) {
-        var index = TileComponentsLookup.Resource;
-        var component = CreateComponent<ResourceComponent>(index);
+    public void AddTileResource(Resource newType, UnityEngine.Sprite newEmptySprite) {
+        var index = TileComponentsLookup.TileResource;
+        var component = CreateComponent<TileResourceComponent>(index);
         component.Type = newType;
         component.EmptySprite = newEmptySprite;
         AddComponent(index, component);
     }
 
-    public void ReplaceResource(Resource newType, UnityEngine.Sprite newEmptySprite) {
-        var index = TileComponentsLookup.Resource;
-        var component = CreateComponent<ResourceComponent>(index);
+    public void ReplaceTileResource(Resource newType, UnityEngine.Sprite newEmptySprite) {
+        var index = TileComponentsLookup.TileResource;
+        var component = CreateComponent<TileResourceComponent>(index);
         component.Type = newType;
         component.EmptySprite = newEmptySprite;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveResource() {
-        RemoveComponent(TileComponentsLookup.Resource);
+    public void RemoveTileResource() {
+        RemoveComponent(TileComponentsLookup.TileResource);
     }
 }
 
@@ -42,17 +42,17 @@ public partial class TileEntity {
 //------------------------------------------------------------------------------
 public sealed partial class TileMatcher {
 
-    static Entitas.IMatcher<TileEntity> _matcherResource;
+    static Entitas.IMatcher<TileEntity> _matcherTileResource;
 
-    public static Entitas.IMatcher<TileEntity> Resource {
+    public static Entitas.IMatcher<TileEntity> TileResource {
         get {
-            if(_matcherResource == null) {
-                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.Resource);
+            if(_matcherTileResource == null) {
+                var matcher = (Entitas.Matcher<TileEntity>)Entitas.Matcher<TileEntity>.AllOf(TileComponentsLookup.TileResource);
                 matcher.componentNames = TileComponentsLookup.componentNames;
-                _matcherResource = matcher;
+                _matcherTileResource = matcher;
             }
 
-            return _matcherResource;
+            return _matcherTileResource;
         }
     }
 }

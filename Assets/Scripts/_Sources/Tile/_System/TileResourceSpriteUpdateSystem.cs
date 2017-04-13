@@ -40,11 +40,11 @@ public class TileResourceSpriteUpdateSystem : ReactiveSystem<TileEntity>
 
 	private void SwitchToEmptyChargeSprite(TileEntity entity)
 	{
-		entity.ReplaceSprite(entity.resource.EmptySprite);
+		entity.ReplaceSprite(entity.tileResource.EmptySprite);
 	}
 
 	private void SwitchToOriginalSprite(TileEntity entity)
 	{
-		entity.ReplaceSprite(entity.resource.GetOriginalSprite());
+		entity.ReplaceSprite(entity.tileResource.GetOriginalSprite());
 	}
 }

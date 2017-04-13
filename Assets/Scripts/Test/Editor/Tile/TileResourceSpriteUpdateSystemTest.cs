@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using NUnit.Framework;
-using System.Text;
+﻿using NUnit.Framework;
 using UnityEngine;
 
 namespace Test.TileTest
@@ -21,8 +17,8 @@ namespace Test.TileTest
 			_sprite = Resources.Load<Sprite>("Test/Editor/Sprite");
 			_spriteEmpty = Resources.Load<Sprite>("Test/Editor/Sprite2");
 			_entity.AddSprite(null);
-			_entity.AddResource(Resource.Wood, _spriteEmpty);
-			_entity.resource.SetOriginalSprite(_sprite);
+			_entity.AddTileResource(Resource.Wood, _spriteEmpty);
+			_entity.tileResource.SetOriginalSprite(_sprite);
 		}
 
 		[Test]

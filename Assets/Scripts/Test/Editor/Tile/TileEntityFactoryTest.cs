@@ -59,7 +59,7 @@ namespace Test.TileTest
 			_data.Resource = Resource.None;
 			var entity = _factory.CreateEntityWithComponents(_data);
 
-			Assert.IsFalse(entity.hasResource);
+			Assert.IsFalse(entity.hasTileResource);
 		}
 
 		[Test]
@@ -69,9 +69,9 @@ namespace Test.TileTest
 			_data.EmptyResourceSprite = Resources.Load<Sprite>("Test/Editor/Sprite");
 			var entity = _factory.CreateEntityWithComponents(_data);
 
-			Assert.IsTrue(entity.hasResource);
-			Assert.AreEqual(_data.Resource, entity.resource.Type);
-			Assert.AreEqual(_data.EmptyResourceSprite, entity.resource.EmptySprite);
+			Assert.IsTrue(entity.hasTileResource);
+			Assert.AreEqual(_data.Resource, entity.tileResource.Type);
+			Assert.AreEqual(_data.EmptyResourceSprite, entity.tileResource.EmptySprite);
 		}
 
 		[Test]
@@ -85,7 +85,7 @@ namespace Test.TileTest
 			entity.AddSprite(sprite);
 			_factory.AddComponents(entity, _data);
 
-			Assert.AreEqual(sprite, entity.resource.GetOriginalSprite());
+			Assert.AreEqual(sprite, entity.tileResource.GetOriginalSprite());
 		}
 	}
 }

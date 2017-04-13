@@ -41,6 +41,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d8e9c6d7250a74744b1872e797ec5ab3, type: 2}
     - {fileID: 11400000, guid: ab4625d726d153e4d94fba33e643acb9, type: 2}
     - {fileID: 11400000, guid: 8b877b1f97f4702479bbd681c45df779, type: 2}
+    - {fileID: 11400000, guid: d921698ff241d0948b3529dfa7f126b5, type: 2}
+    - {fileID: 11400000, guid: 84fe7b8bef4a8a040a4d4ab452c1d6f1, type: 2}
+    - {fileID: 11400000, guid: 030637ba2c2bd884eb54951c20302906, type: 2}
     DeckSetting:
       StartCardCount: 5
       StartTurnDrawCount: 2
