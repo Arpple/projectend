@@ -2,7 +2,7 @@
 {
 	public override TileEntity[] GetTilesArea(UnitEntity caster)
 	{
-		return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), 1);
+		return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), 1, true);
 	}
 
 	public override TileEntity GetTargetFromSelectedTile(UnitEntity caster, TileEntity tile)
