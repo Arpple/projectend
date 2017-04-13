@@ -58,7 +58,7 @@ namespace MapEditor
 					map.Save();
 
                     //TODO : Have map?
-                    string path = "Assets/Resources/Game/Map/" + mapEditor.MapName + ".asset";
+                    string path = "Assets/Resources/Tile/Map/" + mapEditor.MapName + ".asset";
                     Map saveFile = AssetDatabase.LoadMainAssetAtPath(path) as Map;
                     if(saveFile==null) {
                         //TODO : New File
