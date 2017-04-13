@@ -1,9 +1,6 @@
 fileFormatVersion: 2
-guid: e56f069d534ec3b4eadcb0dc1aa4bd69
-labels:
-- Core
-- Script
-timeCreated: 1488822417
+guid: 4c7e3f8e3c417e74cb0847da82a6f117
+timeCreated: 1492087757
 licenseType: Free
 MonoImporter:
   serializedVersion: 2

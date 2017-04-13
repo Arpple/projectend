@@ -3,16 +3,14 @@
 
 namespace Test
 {
-	public class TestEntityIdGenerator : ContextsTest
+	public class EntityIdGeneratorTest : ContextsTest
 	{
 		[Test]
-		public void GenerateGameContextId()
+		public void CreateEntity_GameContext_NoIdAdded()
 		{
 			var e1 = _contexts.game.CreateEntity();
-			var e2 = _contexts.game.CreateEntity();
 
-			Assert.AreEqual(0, e1.id.Id);
-			Assert.AreEqual(1, e2.id.Id);
+			Assert.IsFalse(e1.hasId);
 		}
 
 		[Test]
@@ -26,9 +24,9 @@ namespace Test
 		}
 
 		[Test]
-		public void GenerateMixedContextId()
+		public void CreateEntity_MultipleContext_IdIsSeperate()
 		{
-			var e1 = _contexts.game.CreateEntity();
+			var e1 = _contexts.unit.CreateEntity();
 			var e2 = _contexts.tile.CreateEntity();
 
 			Assert.AreEqual(0, e1.id.Id);

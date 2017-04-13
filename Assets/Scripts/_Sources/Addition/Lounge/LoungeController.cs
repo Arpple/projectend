@@ -82,7 +82,7 @@ namespace Lounge
         public void ShowUnitInformationUnit(UnitEntity unit) {
             //TODO : Set Character Status
             //Debug.Log("Unit null right ?"+(unit==null));
-            Sprite sprite = Resources.Load<Sprite>(unit.resource.SpritePath);
+            Sprite sprite = unit.unitIcon.IconSprite;
             UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
                 ,unit.unitStatus.HitPoint
                 ,unit.unitStatus.AttackPower

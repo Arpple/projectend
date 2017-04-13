@@ -20,7 +20,7 @@ namespace Test.AdditionTest.LoungeTest
 		{
 			var system = new CharacterIconCreatingSystem(_contexts, _slideMenu);
 			var entity = _contexts.unit.CreateEntity();
-			entity.AddResource("Game/Unit/Character/LastBoss/[Character]Image_Lastboss", null);
+			entity.AddSprite(Resources.Load<Sprite>("Test/Editor/Sprite"));
 			entity.AddUnitStatus(0, 0, 0, 0, 0);
 			entity.AddUnitDetail("", "");
 			entity.AddCharacter(Character.LastBoss);

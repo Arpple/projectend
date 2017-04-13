@@ -11,19 +11,17 @@ public partial class TileEntity {
     public ResourceComponent resource { get { return (ResourceComponent)GetComponent(TileComponentsLookup.Resource); } }
     public bool hasResource { get { return HasComponent(TileComponentsLookup.Resource); } }
 
-    public void AddResource(string newSpritePath, string newBasePrefabsPath) {
+    public void AddResource(Resource newType) {
         var index = TileComponentsLookup.Resource;
         var component = CreateComponent<ResourceComponent>(index);
-        component.SpritePath = newSpritePath;
-        component.BasePrefabsPath = newBasePrefabsPath;
+        component.Type = newType;
         AddComponent(index, component);
     }
 
-    public void ReplaceResource(string newSpritePath, string newBasePrefabsPath) {
+    public void ReplaceResource(Resource newType) {
         var index = TileComponentsLookup.Resource;
         var component = CreateComponent<ResourceComponent>(index);
-        component.SpritePath = newSpritePath;
-        component.BasePrefabsPath = newBasePrefabsPath;
+        component.Type = newType;
         ReplaceComponent(index, component);
     }
 

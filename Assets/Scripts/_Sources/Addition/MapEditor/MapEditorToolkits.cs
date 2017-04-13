@@ -87,7 +87,7 @@ namespace MapEditor {
             //Debug.Log("Hover Tile >" + tile.View.GameObject.name);
             if(Instance.lastType != tile.tile.Type) {
                 Instance.lastType = tile.tile.Type;
-                Instance.TileImage.sprite = Resources.Load<Sprite>(tile.resource.SpritePath);
+                Instance.TileImage.sprite = tile.sprite.Sprite;
             }
             Instance.TileName.text = tile.tile.Type.ToString();
             Instance.TilePosition.text = "[ " + tile.mapPosition.x + " , " + tile.mapPosition.y + " ]";
