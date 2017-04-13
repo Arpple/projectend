@@ -5,22 +5,20 @@ namespace MapEditor {
     public class TileDetailSystem : IInitializeSystem
 	{
 		readonly TileContext _context;
+		readonly MapEditorToolkits _toolKit;
 
-        public TileDetailSystem(Contexts contexts)
+        public TileDetailSystem(Contexts contexts, MapEditorToolkits toolKit)
 		{
 			_context = contexts.tile;
+			_toolKit = toolKit;
         }
 
         public void Initialize()
 		{
 			foreach (var e in _context.GetEntities(TileMatcher.Tile))
 			{
-				e.AddTileHoverAction(() => HoverTile(e));
+				e.AddTileHoverAction(() => _toolKit.ShowTileDetail(e));
 			}
 		}
-
-        void HoverTile(TileEntity tile) {
-            MapEditorToolkits.ShowHoverTile(tile);
-        }
     }
 }

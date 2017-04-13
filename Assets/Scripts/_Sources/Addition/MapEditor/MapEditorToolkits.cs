@@ -21,33 +21,18 @@ namespace MapEditor {
 		readonly Color ACTIVE_BUTTON_COLOR = new Color(0, 1f, 0);
 
 		[Header("Hover")]
-        public Image TileImage;
-        public Text TileName,TilePosition;
+		public Image TileImage;
+		public Text TileName,TilePosition;
 
-        private Tile lastType;
+		private Tile lastType;
 
-        void Awake() {
-            MapEditorToolkits.Instance = this;
-        }
+		void Awake() {
+			MapEditorToolkits.Instance = this;
+		}
 
-        // Use this for initialization
-        void Start() {
-			//TODO : SpawnButton :D
-			//var tiles = MapEditorController.Setting.MapSetting.TileSetting.TileBlueprints;
-			//var brush = TileBrushSystem.TileBrush;
-			//foreach(Tile tile in Enum.GetValues(typeof(Tile))) {
-			//    //Debug.Log(tile.ToString());
-			//    Tile buttonTile = tile;
-			//    Button b = Instantiate<Button>(ButtonPrefabs,TileButtonContent.transform,false);
-			//    b.onClick.RemoveAllListeners();
-			//    b.onClick.AddListener(()=>{
-			//        TileButton(buttonTile);
-			//    });
-			//    b.GetComponentInChildren<Text>().text = tile.ToString();
-			//    b.gameObject.SetActive(true);
-			//}
+		void Start() {
 			_defaultColor = ButtonPrefabs.image.color;
-        }
+		}
 
 		public Button CreateButton(Tile tileType)
 		{
@@ -68,38 +53,34 @@ namespace MapEditor {
 			_activeTileBrushButton = button;
 		}
 
-        void Update() {
-            Zoom();
-        }
+		void Update() {
+			Zoom();
+		}
 
-        private void Zoom(){
-            if(Input.GetAxis("Mouse ScrollWheel") > 0f) {
-                if(this.CameraObject.orthographicSize > 1) {
-                    this.CameraObject.orthographicSize--;
-                }
-            } else if(Input.GetAxis("Mouse ScrollWheel") < 0f){
-                if(this.CameraObject.orthographicSize < 30) {
-                    this.CameraObject.orthographicSize++;
-                }
-            }
-        }
+		private void Zoom(){
+			if(Input.GetAxis("Mouse ScrollWheel") > 0f) {
+				if(this.CameraObject.orthographicSize > 1) {
+					this.CameraObject.orthographicSize--;
+				}
+			} else if(Input.GetAxis("Mouse ScrollWheel") < 0f){
+				if(this.CameraObject.orthographicSize < 30) {
+					this.CameraObject.orthographicSize++;
+				}
+			}
+		}
 
-        public static void ShowHoverTile(TileEntity tile) {
-            Instance.ShowDetailHoverTile(tile);
-        }
+		public void ShowTileDetail(TileEntity tile) {
+			//Debug.Log("Hover Tile >" + tile.View.GameObject.name);
+			if(lastType != tile.tile.Type) {
+				lastType = tile.tile.Type;
+				TileImage.sprite = tile.sprite.Sprite;
+			}
+			TileName.text = tile.tile.Type.ToString();
+			TilePosition.text = tile.mapPosition.ToString();
+		}
 
-        public void ShowDetailHoverTile(TileEntity tile) {
-            //Debug.Log("Hover Tile >" + tile.View.GameObject.name);
-            if(Instance.lastType != tile.tile.Type) {
-                Instance.lastType = tile.tile.Type;
-                Instance.TileImage.sprite = tile.sprite.Sprite;
-            }
-            Instance.TileName.text = tile.tile.Type.ToString();
-            Instance.TilePosition.text = "[ " + tile.mapPosition.x + " , " + tile.mapPosition.y + " ]";
-        }
-
-        public void GodFillRectangle(int from_x,int from_y,int to_x,int to_y) {
-            
-        }
-    }
+		public void GodFillRectangle(int from_x,int from_y,int to_x,int to_y) {
+			
+		}
+	}
 }

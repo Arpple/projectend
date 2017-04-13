@@ -29,6 +29,11 @@ namespace MapEditor
 					ChangeTileBrush(tile);
 					_toolKits.SetActiveTileBrushButton(button);
 				});
+
+				if(tile == _context.mapEditorTileBrush.TileType)
+				{
+					_toolKits.SetActiveTileBrushButton(button);
+				}
 			}
 		}
 

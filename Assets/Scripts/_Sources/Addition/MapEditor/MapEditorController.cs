@@ -66,7 +66,6 @@ namespace MapEditor
 			return new Feature("Systems")
 				.Add(new TileMapCreatingSystem(contexts, EdittingMap))
 				.Add(new TileGraphCreatingSystem(contexts))
-				.Add(new ToolKitsButtonSetupSystem(_contexts, MapEditorToolkits.Instance))
 
 				.Add(new TileDataLoadingSystem(contexts, Setting.TileSetting))
 				.Add(new TileViewCreatingSystem(contexts, Setting.TileSetting, new GameObject("Tile")))
@@ -75,8 +74,10 @@ namespace MapEditor
 				.Add(new TileActionSystem(contexts))
 				.Add(new TileHoverActionSystem(contexts))
 				.Add(new TilePositionRenderingSystem(contexts))
-				.Add(new TileDetailSystem(contexts))
+				.Add(new TileDetailSystem(contexts, MapEditorToolkits.Instance))
 				.Add(new TileBrushSystem(contexts))
+				.Add(new ToolKitsButtonSetupSystem(_contexts, MapEditorToolkits.Instance))
+
 				.Add(new CameraSystem(contexts))
 				.Add(new CameraKeyboardSystem(contexts));
 
