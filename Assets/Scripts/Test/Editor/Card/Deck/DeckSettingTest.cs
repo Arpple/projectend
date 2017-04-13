@@ -7,12 +7,14 @@ namespace Test.CardTest.DeckTest
 {
 	public class DeckSettingTest
 	{
+		private CardSetting _cardSetting;
 		private DeckSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			_setting = TestHelper.GetGameSetting().CardSetting.DeckSetting;
+			_cardSetting = TestHelper.GetGameSetting().CardSetting;
+			_setting = _cardSetting.DeckSetting;
 		}
 
 		[Test]
@@ -30,6 +32,15 @@ namespace Test.CardTest.DeckTest
 				.Distinct()
 				.Count()
 			);
+		}
+
+		[Test]
+		public void CheckSetting_AllDeckCardHaveData()
+		{
+			foreach(var set in _setting.Deck.SettingList)
+			{
+				Assert.IsNotNull(_cardSetting.GetCardData(set.Type));
+			}
 		}
 	}
 }

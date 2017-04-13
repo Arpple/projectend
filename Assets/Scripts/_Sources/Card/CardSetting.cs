@@ -20,7 +20,7 @@ public class CardSetting
 	public CardData GetCardData(Card card)
 	{
 		var data = _cacheData.Get(card, (c) => CardsData.FirstOrDefault(d => d.Type == card));
-		if (data == null) throw new MissingReferenceException("Character data not found : " + card.ToString());
+		if (data == null) throw new MissingReferenceException("Card data not found : " + card.ToString());
 		return data;
 	}
 }
