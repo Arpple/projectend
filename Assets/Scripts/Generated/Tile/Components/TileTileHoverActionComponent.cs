@@ -11,21 +11,17 @@ public partial class TileEntity {
     public TileHoverActionComponent tileHoverAction { get { return (TileHoverActionComponent)GetComponent(TileComponentsLookup.TileHoverAction); } }
     public bool hasTileHoverAction { get { return HasComponent(TileComponentsLookup.TileHoverAction); } }
 
-    public void AddTileHoverAction(TileEntity newSource, TileEntity newTarget, TileHoverActionComponent.TileHoverAction newHoverAction) {
+    public void AddTileHoverAction(UnityEngine.Events.UnityAction newTileHoverAction) {
         var index = TileComponentsLookup.TileHoverAction;
         var component = CreateComponent<TileHoverActionComponent>(index);
-        component.Source = newSource;
-        component.Target = newTarget;
-        component.HoverAction = newHoverAction;
+        component.TileHoverAction = newTileHoverAction;
         AddComponent(index, component);
     }
 
-    public void ReplaceTileHoverAction(TileEntity newSource, TileEntity newTarget, TileHoverActionComponent.TileHoverAction newHoverAction) {
+    public void ReplaceTileHoverAction(UnityEngine.Events.UnityAction newTileHoverAction) {
         var index = TileComponentsLookup.TileHoverAction;
         var component = CreateComponent<TileHoverActionComponent>(index);
-        component.Source = newSource;
-        component.Target = newTarget;
-        component.HoverAction = newHoverAction;
+        component.TileHoverAction = newTileHoverAction;
         ReplaceComponent(index, component);
     }
 

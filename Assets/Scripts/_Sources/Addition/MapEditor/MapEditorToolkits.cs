@@ -4,24 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace MapEditor {
-    public class MapEditorToolkits: MonoBehaviour {
-        public static MapEditorToolkits Instance{
-            get;private set;
-        }
-        public Camera CameraObject;
-        
-        public MapEditorController MapEditorController;
+	public class MapEditorToolkits : MonoBehaviour {
+		public static MapEditorToolkits Instance {
+			get; private set;
+		}
+		public Camera CameraObject;
 
-        #region TileMenu
-        public Button ButtonPrefabs;
-        public GameObject TileButtonContent;
-        #endregion
+		public MapEditorController MapEditorController;
 
-        #region Hover
+		[Header("TileMenu")]
+		public Button ButtonPrefabs;
+		public GameObject TileButtonContent;
+
+		private Button _activeTileBrushButton;
+		private Color _defaultColor;
+		readonly Color ACTIVE_BUTTON_COLOR = new Color(0, 1f, 0);
+
+		[Header("Hover")]
         public Image TileImage;
         public Text TileName,TilePosition;
+
         private Tile lastType;
-        #endregion
 
         void Awake() {
             MapEditorToolkits.Instance = this;
@@ -29,39 +32,41 @@ namespace MapEditor {
 
         // Use this for initialization
         void Start() {
-            //TODO : SpawnButton :D
-            //var tiles = MapEditorController.Setting.MapSetting.TileSetting.TileBlueprints;
-            //var brush = TileBrushSystem.TileBrush;
-            foreach(Tile tile in Enum.GetValues(typeof(Tile))) {
-                //Debug.Log(tile.ToString());
-                Tile buttonTile = tile;
-                Button b = Instantiate<Button>(ButtonPrefabs,TileButtonContent.transform,false);
-                b.onClick.RemoveAllListeners();
-                b.onClick.AddListener(()=>{
-                    TileButton(buttonTile);
-                });
-                b.GetComponentInChildren<Text>().text = tile.ToString();
-                b.gameObject.SetActive(true);
-            }
+			//TODO : SpawnButton :D
+			//var tiles = MapEditorController.Setting.MapSetting.TileSetting.TileBlueprints;
+			//var brush = TileBrushSystem.TileBrush;
+			//foreach(Tile tile in Enum.GetValues(typeof(Tile))) {
+			//    //Debug.Log(tile.ToString());
+			//    Tile buttonTile = tile;
+			//    Button b = Instantiate<Button>(ButtonPrefabs,TileButtonContent.transform,false);
+			//    b.onClick.RemoveAllListeners();
+			//    b.onClick.AddListener(()=>{
+			//        TileButton(buttonTile);
+			//    });
+			//    b.GetComponentInChildren<Text>().text = tile.ToString();
+			//    b.gameObject.SetActive(true);
+			//}
+			_defaultColor = ButtonPrefabs.image.color;
         }
-        public void TileButton(Tile t) {
-            //Debug.Log("Tile "+t.ToString()+" Select ");
-            TileBrushSystem.TileBrush.TileType = t;
-            Text text;
-            var col = ButtonPrefabs.GetComponent<Button>().colors;
-            var selectedCol = ButtonPrefabs.GetComponent<Button>().colors;
 
-            selectedCol.normalColor = new Color(0,1f,0);
+		public Button CreateButton(Tile tileType)
+		{
+			var button = Instantiate(ButtonPrefabs, TileButtonContent.transform, false);
+			button.GetComponentInChildren<Text>().text = tileType.ToString();
+			button.gameObject.SetActive(true);
+			return button;
+		}
 
-            foreach(Button button in Instance.TileButtonContent.GetComponentsInChildren<Button>()) {
-                text = button.GetComponentInChildren<Text>();
-                if(text.text.Equals(t.ToString())) {
-                    button.colors = selectedCol;
-                } else {
-                    button.colors = col;
-                }
-            }
-        }
+		public void SetActiveTileBrushButton(Button button)
+		{
+			if(_activeTileBrushButton != null)
+			{
+				_activeTileBrushButton.image.color = _defaultColor;
+			}
+
+			button.image.color = ACTIVE_BUTTON_COLOR;
+			_activeTileBrushButton = button;
+		}
 
         void Update() {
             Zoom();

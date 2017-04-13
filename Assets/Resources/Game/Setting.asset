@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileSetting:
     GameMap: {fileID: 11400000, guid: c53b07a695967c746b76eed30880bfa6, type: 2}
-    TileController: {fileID: 114797411345630064, guid: e7d98db282ccf124b8cdf87a1d62d60b,
+    TileControllerPrefabs: {fileID: 114797411345630064, guid: e7d98db282ccf124b8cdf87a1d62d60b,
       type: 2}
     TileDatas:
     - {fileID: 11400000, guid: 94d564e951d09b943875a97c8b1dc571, type: 2}

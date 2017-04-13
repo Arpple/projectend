@@ -7,41 +7,32 @@ using UnityEngine;
 
 namespace MapEditor
 {
-	public class TileBrushSystem : ReactiveSystem<TileEntity>, IInitializeSystem
+	public class TileBrushSystem : IInitializeSystem
 	{
 		public static TileBrushComponent TileBrush;
 
-		readonly TileEntityFactory _factory;
 		readonly TileContext _context;
-		readonly TileSetting _setting;
 
-		public TileBrushSystem(Contexts contexts, TileSetting setting)
-			: base(contexts.tile)
+		public TileBrushSystem(Contexts contexts)
 		{
 			_context = contexts.tile;
-			_setting = setting;
-			_factory = new TileEntityFactory(_context); ;
-		}
-
-		protected override Collector<TileEntity> GetTrigger (IContext<TileEntity> context)
-		{
-			return context.CreateCollector(TileMatcher.Tile, GroupEvent.Added);
-		}
-
-		protected override bool Filter (TileEntity entity)
-		{
-			return entity.hasTile;
 		}
 
 		public void Initialize()
+		{
+			SetupBrush();
+			SetupTileBrushAction();
+		}
+
+		private void SetupBrush()
 		{
 			_context.SetMapEditorTileBrush(Tile.DeepForest, BrushAction.Tile, 1);
 			TileBrush = _context.mapEditorTileBrush;
 		}
 
-		protected override void Execute (List<TileEntity> entities)
+		private void SetupTileBrushAction()
 		{
-			foreach(var e in entities)
+			foreach(var e in _context.GetEntities(TileMatcher.Tile))
 			{
 				e.AddTileAction(() => ReplaceTile(e));
 			}
@@ -56,17 +47,8 @@ namespace MapEditor
 			{
 				if (tileEntity.tile.Type == brushTile) return;
 
-				//remove old view
-				var link = tileEntity.view.GameObject.GetEntityLink();
-				link.Unlink();
-				GameObject.Destroy(tileEntity.view.GameObject);
-
-				var pos = tileEntity.mapPosition;
-				tileEntity.RemoveAllComponents();
-
-				_factory.AddComponents(tileEntity, _setting.GetTileData(brushTile));
-				tileEntity.AddTile(brushTile);
-				tileEntity.AddMapPosition(pos.x, pos.y);
+				tileEntity.RemoveSprite();
+				tileEntity.ReplaceTile(brushTile);
 			}
 			else if (brush.Action == BrushAction.Spawnpoint)
 			{

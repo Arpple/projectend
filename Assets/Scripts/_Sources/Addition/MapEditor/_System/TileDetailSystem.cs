@@ -2,34 +2,25 @@
 using System.Collections.Generic;
 
 namespace MapEditor {
-    public class TileDetailSystem: ReactiveSystem<TileEntity>, IInitializeSystem {
-        //readonly GameContext _context;
+    public class TileDetailSystem : IInitializeSystem
+	{
+		readonly TileContext _context;
 
         public TileDetailSystem(Contexts contexts)
-            : base(contexts.tile) {
-            //this._context = contexts.game;
+		{
+			_context = contexts.tile;
         }
 
-        protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context) {
-            return context.CreateCollector(TileMatcher.Tile, GroupEvent.Added);
-        }
+        public void Initialize()
+		{
+			foreach (var e in _context.GetEntities(TileMatcher.Tile))
+			{
+				e.AddTileHoverAction(() => HoverTile(e));
+			}
+		}
 
-        protected override bool Filter(TileEntity entity) {
-            return entity.hasTile;
-        }
-
-        public void Initialize() {
-
-        }
-
-        protected override void Execute(List<TileEntity> entities) {
-            foreach(var e in entities) {
-                e.AddTileHoverAction(null,e,HoverTile);
-            }
-        }
-
-        void HoverTile(TileEntity none,TileEntity b) {
-            MapEditorToolkits.ShowHoverTile(b);
+        void HoverTile(TileEntity tile) {
+            MapEditorToolkits.ShowHoverTile(tile);
         }
     }
 }

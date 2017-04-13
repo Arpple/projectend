@@ -15,12 +15,30 @@ namespace Test.TileTest
 		}
 
 		[Test]
-		public void CheckEnumData()
+		public void CheckSetting_GameMapAdded()
+		{
+			Assert.IsNotNull(_setting.GameMap);
+		}
+
+		[Test]
+		public void CheckSetting_TileControllerPrefabsAdded()
+		{
+			Assert.IsNotNull(_setting.TileControllerPrefabs);
+		}
+
+		[Test]
+		public void CheckSetting_AllTileEnumHaveData()
 		{
 			foreach(Tile t in Enum.GetValues(typeof(Tile)))
 			{
-				Assert.IsNotNull(_setting.GetTileData(t), "Tile blueprint not fonud for " + t.ToString());
+				Assert.IsNotNull(_setting.GetTileData(t));
 			}
+		}
+
+		[Test]
+		public void CheckSetting_AllTileDataTypeDistinct()
+		{
+			Assert.AreEqual(Enum.GetNames(typeof(Tile)).Length, _setting.TileDatas.Count);
 		}
 
 		[Test]

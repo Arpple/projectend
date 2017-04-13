@@ -27,7 +27,7 @@ namespace MapEditor
 		public MapInfo CreatingMap;
 
 		[Header("Setting")]
-		public MapEditorSetting Setting;
+		public Setting Setting;
 
 		private Systems _systems;
 		private Contexts _contexts;
@@ -66,15 +66,18 @@ namespace MapEditor
 			return new Feature("Systems")
 				.Add(new TileMapCreatingSystem(contexts, EdittingMap))
 				.Add(new TileGraphCreatingSystem(contexts))
-			
-				.Add(new TileViewCreatingSystem(contexts, Setting.TileSetting, new GameObject("Tile")))
-                .Add(new TileHoverActionSystem(contexts))
-                
-				.Add(new TilePositionRenderingSystem(contexts))
-				.Add(new TileBrushSystem(contexts, Setting.TileSetting))
-                .Add(new TileDetailSystem(contexts))
+				.Add(new ToolKitsButtonSetupSystem(_contexts, MapEditorToolkits.Instance))
 
-                .Add(new CameraSystem(contexts))
+				.Add(new TileDataLoadingSystem(contexts, Setting.TileSetting))
+				.Add(new TileViewCreatingSystem(contexts, Setting.TileSetting, new GameObject("Tile")))
+				.Add(new TileSpriteUpdateSystem(contexts))
+				
+				.Add(new TileActionSystem(contexts))
+				.Add(new TileHoverActionSystem(contexts))
+				.Add(new TilePositionRenderingSystem(contexts))
+				.Add(new TileDetailSystem(contexts))
+				.Add(new TileBrushSystem(contexts))
+				.Add(new CameraSystem(contexts))
 				.Add(new CameraKeyboardSystem(contexts));
 
 		}

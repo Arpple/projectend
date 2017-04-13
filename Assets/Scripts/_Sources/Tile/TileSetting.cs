@@ -7,7 +7,7 @@ using UnityEngine;
 public class TileSetting
 {
 	public Map GameMap;
-	public TileController TileController;
+	public TileController TileControllerPrefabs;
 	public List<TileData> TileDatas;
 
 	/// <summary>

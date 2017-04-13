@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using Entitas.Unity;
 using System;
+using UnityEngine.Events;
 
 public class TileController : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class TileController : MonoBehaviour
 	public SpriteRenderer SelectionBorder;
 	public SpriteRenderer Span;
 	public SpriteRenderer TileSprite;
-	public TileHoverAction MouseEnterAction;
-	public Action TileAction;
-	public Action<TileEntity> DefaultTileAction;
+	public UnityAction MouseEnterAction;
+	public UnityAction TileAction;
+	public UnityAction<TileEntity> DefaultTileAction;
 
 	public delegate void TileHoverAction();
 
