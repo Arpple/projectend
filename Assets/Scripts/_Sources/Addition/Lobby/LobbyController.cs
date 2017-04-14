@@ -82,12 +82,13 @@ namespace Lobby
 		public void Back()
 		{
 			NetworkController.Instance.Stop();
+			UnityEngine.SceneManagement.SceneManager.LoadScene(Scene.Title.ToString());
 		}
 
 		public void MoveToCharacterSelection()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.ServerChangeScene(Scene.CharacterSelect.ToString());
+			netCon.ServerChangeScene(Scene.Lounge.ToString());
 			netCon.StartGame();
 		}
 	}

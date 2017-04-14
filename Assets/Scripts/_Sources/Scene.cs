@@ -3,6 +3,6 @@ public enum Scene
 {
 	Lounge,
 	Lobby,
-	CharacterSelect,
+	Title,
 	Game,
 }
