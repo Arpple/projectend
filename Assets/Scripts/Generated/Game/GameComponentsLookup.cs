@@ -64,7 +64,6 @@ public static class GameComponentsLookup {
         typeof(TurnComponent),
         typeof(TurnNodeComponent),
         typeof(ViewComponent),
-        typeof(ViewContainerComponent),
         typeof(WinnerComponent)
     };
 }

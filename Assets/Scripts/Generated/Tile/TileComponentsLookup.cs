@@ -59,6 +59,5 @@ public static class TileComponentsLookup {
         typeof(TileMovableComponent),
         typeof(TileResourceComponent),
         typeof(ViewComponent),
-        typeof(ViewContainerComponent)
     };
 }
