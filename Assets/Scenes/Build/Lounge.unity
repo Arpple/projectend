@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1057840762}
+      - m_Target: {fileID: 0}
         m_MethodName: GodRole
         m_Mode: 1
         m_Arguments:
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1057840762}
+      - m_Target: {fileID: 0}
         m_MethodName: Lock
         m_Mode: 1
         m_Arguments:
@@ -3423,7 +3423,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1057840762}
+      objectReference: {fileID: 0}
     - target: {fileID: 114748066703966600, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3532,7 +3532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1057840762}
+      - m_Target: {fileID: 0}
         m_MethodName: ApostleRole
         m_Mode: 1
         m_Arguments:
@@ -4041,40 +4041,38 @@ GameObject:
 --- !u!114 &1057840761
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114843588656063942, guid: 2174d58a37d08cd4080a407b4ff7c5a2,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1057840760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186c93eb80ff2fa40877b6f09d7af673, type: 3}
+  m_Script: {fileID: 11500000, guid: 615b727ddd7321448b3b77d6c78b81f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Setting: {fileID: 11400000, guid: a37d1cb7269f72d489ade8dd032c8a28, type: 2}
+  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
 --- !u!114 &1057840762
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114164669433684820, guid: 2174d58a37d08cd4080a407b4ff7c5a2,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1057840760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4a9cb26432f174bb6a742d2d3ba42b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e101761754d9104980331dc538526fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnitStatus: {fileID: 2143756470}
   UnitSkill: {fileID: 1509941318}
-  RoleContent: {fileID: 1634312134}
+  RoleContent: {fileID: 0}
   CharacterContent: {fileID: 687803276}
   PlayerListContent: {fileID: 300619419}
-  CharacterSelectSlideMenu: {fileID: 2066450521}
+  CharacterSelectSlideMenu: {fileID: 0}
   LockButton: {fileID: 416273992}
-  CharacterSelectPlayerPrefabs: {fileID: 114665875941433822, guid: 23c3107ee3e277845b36dfde56505ae3,
+  CharacterSelectPlayerPrefabs: {fileID: 114336928755106530, guid: 23c3107ee3e277845b36dfde56505ae3,
     type: 2}
-  RoleTitle: {fileID: 692773584}
-  RoleDesciption: {fileID: 384860475}
-  RoleImage: {fileID: 428487662}
+  RoleTitle: {fileID: 0}
+  RoleDesciption: {fileID: 0}
+  RoleImage: {fileID: 0}
 --- !u!114 &1057840763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4506,7 +4504,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1057840762}
+      - m_Target: {fileID: 0}
         m_MethodName: PriestRole
         m_Mode: 1
         m_Arguments:
@@ -4915,7 +4913,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1057840762}
+      - m_Target: {fileID: 0}
         m_MethodName: AtheistRole
         m_Mode: 1
         m_Arguments:
@@ -5012,19 +5010,15 @@ CanvasRenderer:
 --- !u!114 &1509941318
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114538572034353556, guid: 2174d58a37d08cd4080a407b4ff7c5a2,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1509941315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7bb663db573e24f97eba7e669bc492, type: 3}
+  m_Script: {fileID: 11500000, guid: 583f16aeac34c13498577d3b204fb7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityIcon:
-  - {fileID: 1045617396}
-  - {fileID: 0}
-  - {fileID: 0}
+  AbilityIcon: []
   TextAbilityName: {fileID: 580605020}
   TextDescription: {fileID: 1529250358}
 --- !u!1 &1517682029
@@ -6935,13 +6929,12 @@ CanvasRenderer:
 --- !u!114 &2143756470
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114017387411187294, guid: 2174d58a37d08cd4080a407b4ff7c5a2,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2143756466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8282a66628885744a937c87ca1ac1d6f, type: 3}
+  m_Script: {fileID: 11500000, guid: dc2f28f5f99ce18438ff820306b68361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoint: {fileID: 567008080}

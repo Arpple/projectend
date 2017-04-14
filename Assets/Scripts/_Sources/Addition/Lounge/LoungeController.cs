@@ -9,20 +9,24 @@ using UI;
 
 namespace Lounge
 {
-    public class LoungeController : MonoBehaviour{
+	public class LoungeController : MonoBehaviour{
 
 		public static LoungeController Instance;	
 
-        public UnitStatusPanel UnitStatus;
-        public UnitSkillPanel UnitSkill;
+		public UnitStatusPanel UnitStatus;
+		public UnitSkillPanel UnitSkill;
 
-        public GameObject RoleContent,CharacterContent,PlayerListContent;
+		public GameObject RoleContent,CharacterContent,PlayerListContent;
 		public SlideMenu CharacterSelectSlideMenu;
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
 
 		private Character _focusingCharacter;
 		private Player _localPlayer;
+		private NetworkController _networkController
+		{
+			get { return NetworkController.Instance; }
+		}
 
 		private void Awake()
 		{
@@ -39,25 +43,25 @@ namespace Lounge
 
 		void Start()
 		{
-            CharacterSelectSlideMenu.OnFocusItemChangedCallback += (item) => {
-                var entity = (UnitEntity)item.gameObject.GetEntityLink().entity;
-                _focusingCharacter = entity.character.Type;
+			SetLocalPlayer(_networkController.LocalPlayer);
 
-                //TODO: get description from entity and show
-                ShowUnitInformationUnit(entity);
-            };
+			CharacterSelectSlideMenu.OnFocusItemChangedCallback += FocusCharacterIcon;
+			_networkController.ServerSceneChangedCallback = _networkController.LocalPlayer.RpcResetReadyStatus;
 
-			var netCon = NetworkController.Instance;
-			netCon.ServerSceneChangedCallback = netCon.LocalPlayer.RpcResetReadyStatus;
-
-			SetLocalPlayer(netCon.LocalPlayer);
-
-			foreach(var player in netCon.AllPlayers)
+			foreach(var player in _networkController.AllPlayers)
 			{
 				AddPlayer(player);
 			}
 
-			netCon.OnAllPlayerReadyCallback += MoveToGame;
+			_networkController.OnAllPlayerReadyCallback += LoadGameScene;
+		}
+
+		private void FocusCharacterIcon(SlideItem characterIcon)
+		{
+			var entity = (UnitEntity)characterIcon.gameObject.GetEntityLink().entity;
+			_focusingCharacter = entity.character.Type;
+
+			ShowUnitInformationUnit(entity);
 		}
 
 		private void OnDestroy()
@@ -65,7 +69,7 @@ namespace Lounge
 			var netCon = NetworkController.Instance;
 
 			netCon.ServerSceneChangedCallback = null;
-			netCon.OnAllPlayerReadyCallback -= MoveToGame;
+			netCon.OnAllPlayerReadyCallback -= LoadGameScene;
 		}
 
 		/// <summary>
@@ -76,63 +80,59 @@ namespace Lounge
 			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
 		}
 
-        /// <summary>
-        /// Show Unit Info 
-        /// </summary>
-        public void ShowUnitInformationUnit(UnitEntity unit) {
-            //TODO : Set Character Status
-            //Debug.Log("Unit null right ?"+(unit==null));
-            Sprite sprite = unit.unitIcon.IconSprite;
-            UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
-                ,unit.unitStatus.HitPoint
-                ,unit.unitStatus.AttackPower
-                ,unit.unitStatus.AttackRange
-                ,unit.unitStatus.VisionRange
-                ,unit.unitStatus.MoveSpeed);
-            //TODO : Set Character Ability
-            /*UnitSkill.SetAbility(
-                unit.Ability.Ability
-                );*/
-        }
+		/// <summary>
+		/// Show Unit Info 
+		/// </summary>
+		public void ShowUnitInformationUnit(UnitEntity unit) {
+			Sprite sprite = unit.unitIcon.IconSprite;
+			UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
+				,unit.unitStatus.HitPoint
+				,unit.unitStatus.AttackPower
+				,unit.unitStatus.AttackRange
+				,unit.unitStatus.VisionRange
+				,unit.unitStatus.MoveSpeed);
 
-        #region UI RoleContent
+			//TODO: show skill
+		}
+
+		#region UI RoleContent
 		[Header("Role")]
-        public Text RoleTitle, RoleDesciption;
-        public Image RoleImage;
+		public Text RoleTitle, RoleDesciption;
+		public Image RoleImage;
 
-        public void ToggleViewRole() {
-            bool isActive = this.RoleContent.activeInHierarchy;
-            this.RoleContent.SetActive(!isActive);
-            //this.CharacterContent.SetActive(isActive);
-        }
+		public void ToggleViewRole() {
+			bool isActive = this.RoleContent.activeInHierarchy;
+			this.RoleContent.SetActive(!isActive);
+			//this.CharacterContent.SetActive(isActive);
+		}
 
-        public void GodRole() {
-            RoleTitle.text = "- "+RoleAndDescription.GOD_NAME+" -";
-            RoleDesciption.text = "Win Condition"+ Environment.NewLine
-                + RoleAndDescription.GOD_WIN_CONDITION;
-            RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_GOD);
-        }
+		public void GodRole() {
+			RoleTitle.text = "- "+RoleAndDescription.GOD_NAME+" -";
+			RoleDesciption.text = "Win Condition"+ Environment.NewLine
+				+ RoleAndDescription.GOD_WIN_CONDITION;
+			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_GOD);
+		}
 
-        public void ApostleRole() {
-            RoleTitle.text = "- " + RoleAndDescription.APOSTLE_NAME + " -";
-            RoleDesciption.text = "Win Condition" + Environment.NewLine
-                + RoleAndDescription.APOSTLE_WIN_CONDITION;
-            RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_APOSTLE);
-        }
+		public void ApostleRole() {
+			RoleTitle.text = "- " + RoleAndDescription.APOSTLE_NAME + " -";
+			RoleDesciption.text = "Win Condition" + Environment.NewLine
+				+ RoleAndDescription.APOSTLE_WIN_CONDITION;
+			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_APOSTLE);
+		}
 
-        public void PriestRole() {
-            RoleTitle.text = "- " + RoleAndDescription.PRIEST_NAME + " -";
-            RoleDesciption.text = "Win Condition" + Environment.NewLine
-                + RoleAndDescription.PRIEST_WIN_CONDITION;
-            RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_PRIEST);
-        }
+		public void PriestRole() {
+			RoleTitle.text = "- " + RoleAndDescription.PRIEST_NAME + " -";
+			RoleDesciption.text = "Win Condition" + Environment.NewLine
+				+ RoleAndDescription.PRIEST_WIN_CONDITION;
+			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_PRIEST);
+		}
 
-        public void AtheistRole() {
-            RoleTitle.text = "- " + RoleAndDescription.ATHEIST_NAME + " -";
-            RoleDesciption.text = "Win Condition" + Environment.NewLine
-                + RoleAndDescription.ATHEIST_WIN_CONDITION;
-            RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_ATHEIST);
-        }
+		public void AtheistRole() {
+			RoleTitle.text = "- " + RoleAndDescription.ATHEIST_NAME + " -";
+			RoleDesciption.text = "Win Condition" + Environment.NewLine
+				+ RoleAndDescription.ATHEIST_WIN_CONDITION;
+			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_ATHEIST);
+		}
 		#endregion
 
 		private void AddPlayer(Player player)
@@ -187,7 +187,7 @@ namespace Lounge
 		/// <summary>
 		/// Moves to game. (Server)
 		/// </summary>
-		public void MoveToGame()
+		public void LoadGameScene()
 		{
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(Scene.Game.ToString());

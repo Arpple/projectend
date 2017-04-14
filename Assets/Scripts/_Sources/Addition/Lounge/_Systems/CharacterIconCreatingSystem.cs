@@ -1,24 +1,18 @@
-﻿using Entitas;
-using Entitas.Unity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Entitas;
 using UI;
-
 using UnityEngine;
 
 namespace Lounge
 {
-	public class CharacterIconCreatingSystem : ReactiveSystem<UnitEntity>, ITearDownSystem
+	public class CharacterIconCreatingSystem : EntityViewCreatingSystem<UnitEntity>
 	{
-		private readonly GameContext _context;
-		private readonly SlideMenu _slidemenu;
-		private List<GameObject> _linkedObjects;
+		private readonly SlideMenu _characterSelectionList;
 
-		public CharacterIconCreatingSystem(Contexts contexts, SlideMenu slideMenu)
+		public CharacterIconCreatingSystem(Contexts contexts, SlideMenu characterSelectionList)
 			: base(contexts.unit)
 		{
-			_context = contexts.game;
-			_slidemenu = slideMenu;
-			_linkedObjects = new List<GameObject>();
+			_characterSelectionList = characterSelectionList;
 		}
 
 		protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
@@ -33,23 +27,23 @@ namespace Lounge
 
 		protected override void Execute(List<UnitEntity> entities)
 		{
-			foreach(var e in entities)
-			{
-				var slideItem = _slidemenu.AddItem();
-				var icon = e.unitIcon.IconSprite;
-				slideItem.Content.GetComponent<Icon>().SetImage(icon);
-				slideItem.SetText(e.unitDetail.Name);
-				slideItem.gameObject.Link(e, _context);
-				_linkedObjects.Add(slideItem.gameObject);
-            }
+			base.Execute(entities);
+            _characterSelectionList.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object 
+												   //? but none is filtered out :\
+		}
 
-            this._slidemenu.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object
-            //Debug.Log("Init Focus on > "+_slidemenu.FocusingIndex);
-        }
-
-		public void TearDown()
+		protected override GameObject CreateViewObject(UnitEntity entity)
 		{
-			_linkedObjects.ForEach(e => e.Unlink());
+			var charSelectIcon = _characterSelectionList.AddItem();
+			var charIcon = entity.unitIcon.IconSprite;
+			charSelectIcon.Content.GetComponent<Icon>().SetImage(charIcon);
+			charSelectIcon.SetText(entity.unitDetail.Name);
+			return charSelectIcon.gameObject;
+		}
+
+		protected override void AddViewObject(UnitEntity entity, GameObject viewObject)
+		{
+			entity.AddView(viewObject);
 		}
 	}
 }
