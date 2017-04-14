@@ -18,9 +18,9 @@ namespace Title
 		public Button JoinButton;
 		public Text VersionText;
 		public ConnectionDialogue ConnectionDialogue;
-        public Dialogue WarningDialog, ConnectingDialog;
+		public Dialogue WarningDialog, ConnectingDialog;
 
-        public NetworkController NetCon
+		public NetworkController NetCon
 		{
 			get { return NetworkController.Instance; }
 		}
@@ -54,24 +54,17 @@ namespace Title
 			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
 
 			//set dialogue event
-			ToggleButton(true);
-			ConnectionDialogue.OnBackButton += () => ToggleButton(true);
+			SetMenuButtonVisible(true);
+			ConnectionDialogue.OnBackButton += () => SetMenuButtonVisible(true);
 			ConnectionDialogue.OnJoinButton += () =>
 			{
-				ToggleButton(true);
+				SetMenuButtonVisible(true);
 
 				Connect(false);
 			};
 
-			NetCon.OnClientErrorCallback += ConnectError;
-
-			this.WarningDialog.OnDialogueClose += () => ToggleButton(true);
-			this.ConnectingDialog.OnDialogueClose += () => ToggleButton(true);
-		}
-
-		private void OnDestroy()
-		{
-			NetCon.OnClientErrorCallback -= ConnectError;
+			WarningDialog.OnDialogueClose += () => SetMenuButtonVisible(true);
+			ConnectingDialog.OnDialogueClose += () => SetMenuButtonVisible(true);
 		}
 
 		public void Host()
@@ -82,14 +75,14 @@ namespace Title
 		public void Join()
 		{
 			ConnectionDialogue.gameObject.SetActive(true);
-			ToggleButton(false);
+			SetMenuButtonVisible(false);
 		}
 
 		/// <summary>
 		/// Toggles button interactable.
 		/// </summary>
 		/// <param name="isEnable">if set to <c>true</c> [is enable].</param>
-		private void ToggleButton(bool isEnable)
+		private void SetMenuButtonVisible(bool isEnable)
 		{
 			JoinButton.interactable = isEnable;
 			HostButton.interactable = isEnable;
@@ -97,59 +90,60 @@ namespace Title
 
 		private void Connect(bool isHost)
 		{
-			ToggleButton(false);
+			ShowConnectingDialog();
+			SetMenuButtonVisible(false);
 			if (isHost)
 			{
 				Debug.Log("Starting Host");
 				if (NetCon.StartHost() == null)
 				{
-					ToggleButton(true);
-                    this.WarningDialog.Open("Alert!", "You can't be Host!" + Environment.NewLine + "Why ? Don't Ask me!!!");
-                }
+					ShowHostError();
+				}
 			}
 			else
 			{
-
-                //TODO: show connecting dialogue fake 3sec :D
-                this.ConnectingDialog.Open();
-                StartCoroutine(Wait3Sec());
-
-                //TODO : then try to real connect
-                var ip = ConnectionDialogue.IpAddress;
+				var ip = ConnectionDialogue.IpAddress;
 				Debug.Log("Connecting to " + ip);
 				NetCon.networkAddress = ip;
 				var client = NetCon.StartClient();
-				client.RegisterHandler(NetMessage .MsgServerFull, ServerFullHandler);
+				client.RegisterHandler(NetMessage.MsgServerFull, ServerFullHandler);
 				client.RegisterHandler(NetMessage.MsgGameStarted, ServerIsPlayingHandler);
+				client.RegisterHandler(MsgType.Disconnect, OnDisconnected);
 			}
 		}
 
-        private IEnumerator Wait3Sec() {
-            yield return new WaitForSeconds(3f);
-        }
-
-        public void ConnectError(int errorCode)
+		private void ShowConnectingDialog()
 		{
-			if (errorCode == (int)NetworkError.Timeout)
-			{
-				Debug.Log("Time Out");
-                this.WarningDialog.Open("Alert!", "I think your connection has an error." + Environment.NewLine + "But, Don't Ask me why.");
-            }
+			ConnectingDialog.Open();
+			ConnectingDialog.OnDialogueClose = NetCon.Stop;
 		}
 
-		public void ServerFullHandler(NetworkMessage msg)
+		private void OnDisconnected(NetworkMessage netMsg)
+		{
+			Debug.Log("Connection Error");
+			WarningDialog.Open("Alert!", "Disconnected from Host");
+			WarningDialog.OnDialogueClose = ConnectingDialog.Close;
+		}
+
+		private void ShowHostError()
+		{
+			WarningDialog.Open("Alert!", "Cannot start server");
+			WarningDialog.OnDialogueClose = ConnectingDialog.Close;
+		}
+
+		private void ServerFullHandler(NetworkMessage msg)
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is full");
-            this.WarningDialog.Open("Alert!", "Hey ! Server is full !" + Environment.NewLine + "Go other room");
-        }
+			WarningDialog.Open("Alert!", "Hey ! Server is full !" + Environment.NewLine + "Go other room");
+		}
 
-		public void ServerIsPlayingHandler(NetworkMessage msg)
+		private void ServerIsPlayingHandler(NetworkMessage msg)
 		{
 			msg.conn.Disconnect();
 			Debug.Log("Server is playing");
-            this.WarningDialog.Open("Alert!", "This room are playing now..." + Environment.NewLine + "Why you don't ask your friends");
-        }
-    }
+			WarningDialog.Open("Alert!", "This room are playing now..." + Environment.NewLine + "Why you don't ask your friends");
+		}
+	}
 
 }

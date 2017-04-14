@@ -5,11 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Lounge.unity
-  - enabled: 0
-    path: Assets/Scenes/Lobby.unity
-  - enabled: 0
-    path: Assets/Scenes/CharacterSelect.unity
-  - enabled: 0
-    path: Assets/Scenes/Game.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Title.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Lobby.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Lounge.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Game.unity

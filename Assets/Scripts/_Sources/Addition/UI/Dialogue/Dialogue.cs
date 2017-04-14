@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace UI {
@@ -6,8 +7,7 @@ namespace UI {
         public Text DialogueTopic;
         public Text DialogueText;
 
-		public delegate void CloseDialogueCallback();
-		public event CloseDialogueCallback OnDialogueClose;
+		public UnityAction OnDialogueClose;
 
         public void SetDialogue(string topic,string text) {
             DialogueText.text = text;
