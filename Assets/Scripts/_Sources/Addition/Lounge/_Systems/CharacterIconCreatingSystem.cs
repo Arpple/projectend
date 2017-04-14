@@ -28,8 +28,8 @@ namespace Lounge
 		protected override void Execute(List<UnitEntity> entities)
 		{
 			base.Execute(entities);
-            _characterSelectionList.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object 
-												   //? but none is filtered out :\
+			_characterSelectionList.FocusIndex(1); //because 0 is ... umm ... None (Deactive) Object 
+			                                       //? but none is filtered out :\
 		}
 
 		protected override GameObject CreateViewObject(UnitEntity entity)
