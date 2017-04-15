@@ -13,7 +13,7 @@ namespace MapEditor
         public InputField from_x, from_y, to_x, to_y;
         
         public void FillTile() {
-            int from_x=Int32.Parse(this.from_x.text), from_y=Int32.Parse(this.from_y.text);
+            int from_x=Int32.Parse(this.from_x.text),from_y=Int32.Parse(this.from_y.text);
             int to_x=Int32.Parse(this.to_x.text),to_y=Int32.Parse(this.to_y.text);
 
             Tile tile = TileBrushSystem.TileBrush.TileType;
