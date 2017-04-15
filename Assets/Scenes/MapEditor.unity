@@ -1128,6 +1128,8 @@ MonoBehaviour:
     Heigth: 35
     DefaultTileType: 1
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
+  SpawnpointPrefabs: {fileID: 1524851852571594, guid: c7343d26601bd8449a3a3616c03d4740,
+    type: 2}
 --- !u!4 &467225166
 Transform:
   m_ObjectHideFlags: 0
