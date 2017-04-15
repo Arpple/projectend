@@ -58,6 +58,7 @@ namespace MapEditor
 		{
 			entity.RemoveSprite();
 			entity.ReplaceTile(type);
+			if (entity.hasTileResource) entity.RemoveTileResource();
 		}
 
 		private void SetTileSpawnpoint(TileEntity entity, int index)

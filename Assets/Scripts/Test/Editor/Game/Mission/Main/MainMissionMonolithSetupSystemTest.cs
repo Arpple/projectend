@@ -9,6 +9,9 @@ namespace Test.GameTest.MissionTest
 		{
 			_systems.Add(new MainMissionMonolithSetupSystem(_contexts));
 			_contexts.game.SetMainMission(MainMission.BossMonolith);
+			var sp = _contexts.tile.CreateEntity();
+			sp.AddMapPosition(1, 1);
+			sp.AddSpawnpoint(-1);
 		}
 
 		[Test]
@@ -23,7 +26,11 @@ namespace Test.GameTest.MissionTest
 		{
 			_systems.Execute();
 			Assert.IsTrue(_contexts.unit.hasBossUnit);
-			Assert.AreEqual(Boss.Monolith, _contexts.unit.bossUnitEntity.bossUnit.Type);
+
+			var e = _contexts.unit.bossUnitEntity;
+			Assert.AreEqual(Boss.Monolith, e.bossUnit.Type);
+			Assert.AreEqual(1, e.mapPosition.x);
+			Assert.AreEqual(1, e.mapPosition.y);
 		}
 	}
 }

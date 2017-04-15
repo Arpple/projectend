@@ -9,6 +9,7 @@ public partial class Map : ScriptableObject
 
 	[SerializeField] private MapRow[] _rows;
 	[SerializeField] private List<SpawnPoint> _spawnPoints;
+	[SerializeField] private SpawnPoint _bossSpawnpoint;
 
 	[NonSerialized] private Dictionary<int, SpawnPoint> _indexedSpawnpoints;
 
@@ -83,6 +84,12 @@ public partial class Map : ScriptableObject
 
 	public Map SetSpawnPoint(int index, int x, int y)
 	{
+		if(index == -1)
+		{
+			_bossSpawnpoint = new SpawnPoint(x, y);
+			return this;
+		}
+
 		if (_indexedSpawnpoints == null)
 		{
 			Debug.Log("_indexedSpawnpoints==null");
@@ -116,6 +123,16 @@ public partial class Map : ScriptableObject
 			}
 		}
 		return false;
+	}
+
+	public bool HasBossSpawnpoint()
+	{
+		return _bossSpawnpoint != null;
+	}
+
+	public bool IsBossSpawnpoint(int x, int y)
+	{
+		return _bossSpawnpoint.x == x && _bossSpawnpoint.y == y;
 	}
 
 	public Map Save()

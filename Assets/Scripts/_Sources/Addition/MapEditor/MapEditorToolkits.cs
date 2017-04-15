@@ -71,6 +71,7 @@ namespace MapEditor {
 
 		public void ShowTileDetail(TileEntity tile) {
 			//Debug.Log("Hover Tile >" + tile.View.GameObject.name);
+			if (!tile.hasSprite) return;
 			if(lastType != tile.tile.Type) {
 				lastType = tile.tile.Type;
 				TileImage.sprite = tile.sprite.Sprite;

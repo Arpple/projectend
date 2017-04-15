@@ -24,11 +24,12 @@ namespace MapEditor
 				}
 				else if(brush.Action == BrushAction.Spawnpoint)
 				{
+					EditorGUILayout.LabelField("Spawnpoint index 0~ for player, -1 for boss");
 					brush.SpawnpointIndex = EditorGUILayout.IntField("Spawnpoint Index", brush.SpawnpointIndex);
-					if (brush.SpawnpointIndex < 0 || brush.SpawnpointIndex > 8)//Player.MAX_PLAYER)
+					if (brush.SpawnpointIndex < -1 || brush.SpawnpointIndex > 8)//Player.MAX_PLAYER)
 					{
 						brush.SpawnpointIndex = 1;
-						Debug.LogWarning("spawn point index should be player id (1-" + 8 + ")");
+						Debug.LogWarning("spawn point index should be player id (0-" + 8 + ") or boss (-1)");
 					}
 				}
 			}

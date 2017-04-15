@@ -45,5 +45,20 @@ namespace Test.TileTest
 			Assert.AreEqual(1, spawnPoints.First().mapPosition.y);
 		}
 
+		[Test]
+		public void Initialize_MapHasBossSpawnpoint_BossSpawnpointCreated()
+		{
+			_map.SetMap(5, 5, Tile.Grass);
+			_map.SetSpawnPoint(-1, 1, 1);
+			_map.Save();
+			var system = new TileMapCreatingSystem(_contexts, _map);
+			system.Initialize();
+
+			var sp = _contexts.tile.GetEntitiesWithSpawnpoint(-1).FirstOrDefault();
+
+			Assert.IsNotNull(sp);
+			Assert.AreEqual(1, sp.mapPosition.x);
+			Assert.AreEqual(1, sp.mapPosition.y);
+		}
 	}
 }

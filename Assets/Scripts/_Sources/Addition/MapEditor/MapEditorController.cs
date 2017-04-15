@@ -29,6 +29,7 @@ namespace MapEditor
 		[Header("Setting")]
 		public Setting Setting;
 		public GameObject SpawnpointPrefabs;
+		public GameObject BossSpawnpointPrefabs;
 
 		private Systems _systems;
 		private Contexts _contexts;
@@ -70,7 +71,7 @@ namespace MapEditor
 
 				.Add(new TileDataLoadingSystem(contexts, Setting.TileSetting))
 				.Add(new TileViewCreatingSystem(contexts, Setting.TileSetting, new GameObject("Tile")))
-				.Add(new SpawnpointViewCreatingSystem(contexts, SpawnpointPrefabs))
+				.Add(new SpawnpointViewCreatingSystem(contexts, SpawnpointPrefabs, BossSpawnpointPrefabs))
 				.Add(new SpawnpointViewDestroySystem(contexts))
 				.Add(new TileSpriteUpdateSystem(contexts))
 				

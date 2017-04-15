@@ -11,7 +11,7 @@ namespace Test.AdditionTest.MapEditorTest
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new SpawnpointViewCreatingSystem(_contexts, new GameObject()));
+			_systems.Add(new SpawnpointViewCreatingSystem(_contexts, new GameObject(), new GameObject()));
 			_spawnpoint = _contexts.tile.CreateEntity();
 			_spawnpoint.AddSpawnpoint(1);
 			_spawnpoint.AddView(new GameObject());

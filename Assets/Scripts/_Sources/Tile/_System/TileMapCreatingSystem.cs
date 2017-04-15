@@ -33,6 +33,11 @@ public class TileMapCreatingSystem : IInitializeSystem
 					entity.AddSpawnpoint(spawnpointIndex);
 					spawnpointIndex++;
 				}
+
+				if(_map.HasBossSpawnpoint() && _map.IsBossSpawnpoint(x, y))
+				{
+					entity.AddSpawnpoint(-1);
+				}
 			});
 		});
 	}

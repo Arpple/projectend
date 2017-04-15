@@ -6,10 +6,12 @@ namespace MapEditor
 	public class SpawnpointViewCreatingSystem : EntityViewCreatingSystem<TileEntity>
 	{
 		private GameObject _spawnpointPrefabs;
+		private GameObject _bossspawnpointPrefabs;
 
-		public SpawnpointViewCreatingSystem(Contexts contexts, GameObject spawnpointPrefabs) : base(contexts.tile)
+		public SpawnpointViewCreatingSystem(Contexts contexts, GameObject spawnpointPrefabs, GameObject bossSpawnpointPrefabs) : base(contexts.tile)
 		{
 			_spawnpointPrefabs = spawnpointPrefabs;
+			_bossspawnpointPrefabs = bossSpawnpointPrefabs;
 		}
 
 		protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context)
@@ -29,7 +31,10 @@ namespace MapEditor
 
 		protected override GameObject CreateViewObject(TileEntity entity)
 		{
-			var view = Object.Instantiate(_spawnpointPrefabs) as GameObject;
+			var prefabs = entity.spawnpoint.index > 0
+				? _spawnpointPrefabs
+				: _bossspawnpointPrefabs;
+			var view = Object.Instantiate(prefabs) as GameObject;
 			view.transform.SetParent(entity.view.GameObject.transform, false);
 			return view;
 		}
