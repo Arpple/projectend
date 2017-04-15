@@ -21,8 +21,6 @@ namespace Test.AdditionTest.MapEditorTest
 		[Test]
 		public void Execute_SpawnpointRemoved_SpawnpointViewRemoved()
 		{
-			var spView = _spawnpoint.mapEditorSpawnpointView.GameObject;
-
 			_spawnpoint.RemoveSpawnpoint();
 			_systems.Execute();
 

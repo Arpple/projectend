@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8f6b9cbce74084d9721c5a9bae32d9, type: 3}
   m_Name: Monolith
   m_EditorClassIdentifier: 
-  BodySprite: {fileID: 21300000, guid: fd8319616092c3a46ac1bf3855f4b44b, type: 3}
+  BodySprite: {fileID: 21300000, guid: 99451e188f477954a89c1734e559c75a, type: 3}
   IconSprite: {fileID: 21300000, guid: 99451e188f477954a89c1734e559c75a, type: 3}
   Name: The Great Monolith
   Description: 

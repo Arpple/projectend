@@ -41,15 +41,14 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 		Assert.IsNotNull(RoleImage);
 	}
 
-	public void SetCharacter(UnitEntity characterEntity)
+	public void SetCharacter(UnitEntity entity)
 	{
-		PlayerNameText.text = characterEntity.owner.Entity.player.PlayerObject.PlayerName;
-		CharacterIcon.IconImage.sprite = characterEntity.unitIcon.IconSprite;
+		UpdatePlayerName(entity);
+		CharacterIcon.IconImage.sprite = entity.unitIcon.IconSprite;
+		UpdateUnitStatus(entity.unitStatus);
+		UpdateUnitHitpoint(entity.hitpoint);
 
-		UpdateUnitStatus(characterEntity.unitStatus);
-		UpdateUnitHitpoint(characterEntity.hitpoint);
-
-		ShowingCharacter = characterEntity;
+		ShowingCharacter = entity;
 	}
 
 	public void UpdateUnitStatus(UnitStatusComponent status)
@@ -80,5 +79,12 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 		ShowingCharacter = null;
+	}
+
+	private void UpdatePlayerName(UnitEntity entity)
+	{
+		PlayerNameText.text = entity.owner.Entity.hasPlayer
+			? entity.owner.Entity.player.PlayerObject.PlayerName
+			: "-Boss-";
 	}
 }
