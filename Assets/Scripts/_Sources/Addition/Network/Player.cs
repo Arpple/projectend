@@ -21,6 +21,12 @@ namespace Network
 		public bool IsReady;
 
 		[SyncVar]
+		public int MainMissionId;
+
+		[SyncVar]
+		public int SubMissionId;
+
+		[SyncVar]
 		public int RoleId;
 
 		public delegate void ChangeNameCallback(string name);
@@ -160,6 +166,15 @@ namespace Network
 		public void CmdSetRole(int roleId)
 		{
 			RoleId = roleId;
+		}
+
+		[Command]
+		public void CmdSetMainMission(int missionId)
+		{
+			foreach(var p in NetworkController.Instance.AllPlayers)
+			{
+				p.MainMissionId = missionId;
+			}
 		}
 
 		[ClientRpc]

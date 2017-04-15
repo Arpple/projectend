@@ -22,9 +22,8 @@ public static class TileComponentsLookup {
     public const int TileMovable = 11;
     public const int TileResource = 12;
     public const int View = 13;
-    public const int ViewContainer = 14;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "Charge",
@@ -40,8 +39,7 @@ public static class TileComponentsLookup {
         "TileHoverAction",
         "TileMovable",
         "TileResource",
-        "View",
-        "ViewContainer"
+        "View"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -58,6 +56,6 @@ public static class TileComponentsLookup {
         typeof(TileHoverActionComponent),
         typeof(TileMovableComponent),
         typeof(TileResourceComponent),
-        typeof(ViewComponent),
+        typeof(ViewComponent)
     };
 }

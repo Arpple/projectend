@@ -15,6 +15,8 @@ namespace Lobby
 		public Button WaitButton;
 		public LobbyPlayer LobbyPlayerPrefabs;
 
+		private Player _localPlayer;
+
 		private void Awake()
 		{
 			Instance = this;
@@ -61,6 +63,8 @@ namespace Lobby
 
 		public void SetLocalPlayer(Player player)
 		{
+			_localPlayer = player;
+
 			ReadyButton.onClick.AddListener(() =>
 			{
 				player.CmdSetReadyStatus(true);
@@ -90,6 +94,12 @@ namespace Lobby
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(Scene.Lounge.ToString());
 			netCon.StartGame();
+		}
+
+		//TODO: use this for mission selection
+		public void SetMainMission(MainMission mission)
+		{
+			_localPlayer.CmdSetMainMission((int)mission);
 		}
 	}
 }

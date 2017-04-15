@@ -10,27 +10,30 @@ public static class GameComponentsLookup {
 
     public const int Id = 0;
     public const int Local = 1;
-    public const int Owner = 2;
-    public const int PlayerBox = 3;
-    public const int Player = 4;
-    public const int PlayerDeck = 5;
-    public const int Playing = 6;
-    public const int PlayingOrder = 7;
-    public const int Role = 8;
-    public const int Round = 9;
-    public const int RoundIndex = 10;
-    public const int SkillCardContainer = 11;
-    public const int Turn = 12;
-    public const int TurnNode = 13;
-    public const int View = 14;
-    public const int ViewContainer = 15;
-    public const int Winner = 16;
+    public const int MainMissionCompletedCopmonent = 2;
+    public const int MainMission = 3;
+    public const int Owner = 4;
+    public const int PlayerBox = 5;
+    public const int Player = 6;
+    public const int PlayerDeck = 7;
+    public const int Playing = 8;
+    public const int PlayingOrder = 9;
+    public const int Role = 10;
+    public const int Round = 11;
+    public const int RoundIndex = 12;
+    public const int SkillCardContainer = 13;
+    public const int Turn = 14;
+    public const int TurnNode = 15;
+    public const int View = 16;
+    public const int Winner = 17;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "Id",
         "Local",
+        "MainMissionCompletedCopmonent",
+        "MainMission",
         "Owner",
         "PlayerBox",
         "Player",
@@ -44,13 +47,14 @@ public static class GameComponentsLookup {
         "Turn",
         "TurnNode",
         "View",
-        "ViewContainer",
         "Winner"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(IdComponent),
         typeof(LocalComponent),
+        typeof(MainMissionCompletedCopmonent),
+        typeof(MainMissionComponent),
         typeof(OwnerComponent),
         typeof(PlayerBoxComponent),
         typeof(PlayerComponent),
