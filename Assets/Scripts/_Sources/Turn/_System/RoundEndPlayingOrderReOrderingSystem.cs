@@ -33,9 +33,21 @@ public class RoundEndPlayingOrderReOrderingSystem : ReactiveSystem<GameEntity>
 	private List<GameEntity> ReOrder(PlayingOrderComponent playOrder)
 	{
 		var order = playOrder.PlayerOrder;
+
+		var boss = order.FirstOrDefault(p => p.isBossPlayer);
+		if(boss != null)
+		{
+			order.Remove(boss);
+		}
+
 		var first = order[0];
 		order.RemoveAt(0);
 		order.Add(first);
+
+		if(boss != null)
+		{
+			order.Add(boss);
+		}
 
 		return order;
 	}

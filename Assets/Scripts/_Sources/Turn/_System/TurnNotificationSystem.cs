@@ -28,6 +28,13 @@ public class TurnNotificationSystem : ReactiveSystem<GameEntity>
 	protected override void Execute(List<GameEntity> entities)
 	{
 		var e = entities[entities.Count - 1];
-		_noti.Show(e.turn.Count.ToString(), _context.playingEntity.player.PlayerObject.PlayerName.ToString());
+		_noti.Show(e.turn.Count.ToString(), GetPlayerName());
+	}
+
+	private string GetPlayerName()
+	{
+		return _context.playingEntity.isBossPlayer
+			? "-Boss-"
+			: _context.playingEntity.player.PlayerObject.PlayerName;
 	}
 }

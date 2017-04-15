@@ -28,7 +28,7 @@ namespace MapEditor
 				var spView = e.mapEditorSpawnpointView.GameObject;
 				if(spView.GetComponent<EntityLink>() != null)
 					spView.Unlink();
-				Object.Destroy(spView);
+				Object.DestroyImmediate(spView);
 				e.RemoveMapEditorSpawnpointView();
 			}
 		}

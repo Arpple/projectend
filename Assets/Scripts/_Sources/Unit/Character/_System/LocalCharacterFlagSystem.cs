@@ -24,7 +24,7 @@ public class LocalCharacterFlagSystem : ReactiveSystem<GameEntity>
 	{
 		foreach (var e in entities)
 		{
-			_context.GetCharacterFromPlayer(e)
+			_context.GetEntityOwnedBy(e)
 				.isLocal = e.isLocal;
 		}
 	}

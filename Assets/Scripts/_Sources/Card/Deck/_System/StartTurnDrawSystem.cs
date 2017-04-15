@@ -21,7 +21,7 @@ public class StartTurnDrawSystem : ReactiveSystem<GameEntity>
 
 	protected override bool Filter(GameEntity entity)
 	{
-		return entity.isPlaying && entity.isLocal;
+		return entity.isPlaying && entity.isLocal && !entity.isBossPlayer;
 	}
 
 	protected override void Execute(List<GameEntity> entities)

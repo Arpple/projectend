@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entitas;
-using UnityEngine;
-using UnityEngine.Assertions;
-
 using Entitas.VisualDebugging.Unity;
 using Network;
+using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameController : MonoBehaviour
 {
@@ -102,10 +101,11 @@ public class GameController : MonoBehaviour
 		return new Feature("Systems")
 			.Add(new InputSystems(contexts))
 			.Add(new GameEventSystems(contexts))
-			.Add(new GameSystems(contexts, Players, _localPlayer, GameUI.Instance))
+			.Add(new GameSystems(contexts, Players, _localPlayer))
 			.Add(new TileSystems(contexts, Setting.TileSetting, TileContainer, GameUI.Instance))
 			.Add(new UnitSystems(contexts, Setting.UnitSetting, UnitContainer, GameUI.Instance))
-			.Add(new CardSystems(contexts, Setting.CardSetting, GameUI.Instance));
+			.Add(new CardSystems(contexts, Setting.CardSetting, GameUI.Instance))
+			.Add(new TurnSystems(contexts, GameUI.Instance));
 	}
 
 	#region Network

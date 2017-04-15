@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Network;
+using Offline;
 
 public class GameSystems : Feature
 {
-	public GameSystems(Contexts contexts, List<Player> players, Player localPlayer, GameUI ui)
+	public GameSystems(Contexts contexts, List<Player> players, Player localPlayer)
 		: base("Game System")
 	{
 		CreatePlayerSystems(contexts, players, localPlayer);
-		CreateTurnSystems(contexts, ui);
 		CreateMissionSystem(contexts);
 		Add(new WinSystem(contexts));
 	}
@@ -18,28 +18,14 @@ public class GameSystems : Feature
 		Add(new LocalPlayerSetupSystem(contexts, localPlayer));
 	}
 
-	private void CreateTurnSystems(Contexts contexts, GameUI ui)
-	{
-		Add(new PlayingOrderSetupSystem(contexts));
-		Add(new TurnAndRoundSetupSystem(contexts));
-		Add(new RoundEndPlayingOrderReOrderingSystem(contexts));
-		Add(new PlayingFlagSystem(contexts));
-		Add(new TurnPanelSystem(contexts, ui.TurnPanel));
-		Add(new TurnNotificationSystem(contexts, ui.TurnNoti));
-
-		if (GameController.Instance.IsOffline)
-		{
-			Add(new LocalCharacterFlagSystem(contexts));
-		}
-	}
-
 	private void CreateMissionSystem(Contexts contexts)
 	{
 		Add(new MainMissionSetupSystem(contexts));
 
 		//main-monolith
 		{
-			Add(new MainMissionMonolithSetupSystem(contexts));
+			Add(new MissionBossMonolithSetupSystem(contexts));
+			Add(new MissionBossMonolithCompletingSystem(contexts));
 		}
 	}
 }

@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 public partial class GameContext {
 
-    public GameEntity mainMissionCompletedCopmonentEntity { get { return GetGroup(GameMatcher.MainMissionCompletedCopmonent).GetSingleEntity(); } }
+    public GameEntity mainMissionCompletedEntity { get { return GetGroup(GameMatcher.MainMissionCompleted).GetSingleEntity(); } }
 
-    public bool isMainMissionCompletedCopmonent {
-        get { return mainMissionCompletedCopmonentEntity != null; }
+    public bool isMainMissionCompleted {
+        get { return mainMissionCompletedEntity != null; }
         set {
-            var entity = mainMissionCompletedCopmonentEntity;
+            var entity = mainMissionCompletedEntity;
             if(value != (entity != null)) {
                 if(value) {
-                    CreateEntity().isMainMissionCompletedCopmonent = true;
+                    CreateEntity().isMainMissionCompleted = true;
                 } else {
                     DestroyEntity(entity);
                 }
@@ -35,16 +35,16 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly MainMissionCompletedCopmonent mainMissionCompletedCopmonentComponent = new MainMissionCompletedCopmonent();
+    static readonly MainMissionCompletedComponent mainMissionCompletedComponent = new MainMissionCompletedComponent();
 
-    public bool isMainMissionCompletedCopmonent {
-        get { return HasComponent(GameComponentsLookup.MainMissionCompletedCopmonent); }
+    public bool isMainMissionCompleted {
+        get { return HasComponent(GameComponentsLookup.MainMissionCompleted); }
         set {
-            if(value != isMainMissionCompletedCopmonent) {
+            if(value != isMainMissionCompleted) {
                 if(value) {
-                    AddComponent(GameComponentsLookup.MainMissionCompletedCopmonent, mainMissionCompletedCopmonentComponent);
+                    AddComponent(GameComponentsLookup.MainMissionCompleted, mainMissionCompletedComponent);
                 } else {
-                    RemoveComponent(GameComponentsLookup.MainMissionCompletedCopmonent);
+                    RemoveComponent(GameComponentsLookup.MainMissionCompleted);
                 }
             }
         }
@@ -61,17 +61,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherMainMissionCompletedCopmonent;
+    static Entitas.IMatcher<GameEntity> _matcherMainMissionCompleted;
 
-    public static Entitas.IMatcher<GameEntity> MainMissionCompletedCopmonent {
+    public static Entitas.IMatcher<GameEntity> MainMissionCompleted {
         get {
-            if(_matcherMainMissionCompletedCopmonent == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.MainMissionCompletedCopmonent);
+            if(_matcherMainMissionCompleted == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.MainMissionCompleted);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherMainMissionCompletedCopmonent = matcher;
+                _matcherMainMissionCompleted = matcher;
             }
 
-            return _matcherMainMissionCompletedCopmonent;
+            return _matcherMainMissionCompleted;
         }
     }
 }

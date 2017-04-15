@@ -2,5 +2,5 @@
 using Entitas.CodeGeneration.Attributes;
 
 [Game, Unique]
-public class MainMissionCompletedCopmonent : IComponent
+public class MainMissionCompletedComponent : IComponent
 {}

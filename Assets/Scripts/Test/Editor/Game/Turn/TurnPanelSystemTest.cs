@@ -25,45 +25,12 @@ namespace Test.GameTest.TurnTest
 		}
 
 		[Test]
-		public void Initialize_PlayerEntityCreated_TurnNodeCreated()
-		{
-			var player = CreatePlayerEntity(1);
-			_contexts.game.SetPlayingOrder(new List<GameEntity>() { player });
-
-			_systems.Initialize();
-
-			Assert.AreEqual(1, _panel.TurnNodes.Count);
-			Assert.IsTrue(player.hasTurnNode);
-			Assert.AreEqual(_panel.TurnNodes[0], player.turnNode.Object);
-		}
-
-		[Test]
-		public void Initialize_PlayerEntitiesCreated_TurnNodesCreatedOrderByPlayOrder()
+		public void Execute_PlayingOrder_NodeOrderByPlayingOrder()
 		{
 			var p1 = CreatePlayerEntity(1);
 			var p2 = CreatePlayerEntity(2);
-			_contexts.game.SetPlayingOrder(new List<GameEntity>
-			{
-				p1, p2
-			});
-
-			_systems.Initialize();
-
-			Assert.AreEqual(p1.turnNode.Object, _panel.TurnNodes[0]);
-			Assert.AreEqual(p2.turnNode.Object, _panel.TurnNodes[1]);
-		}
-
-		[Test]
-		public void Execute_PlayOrderChange_TurnNodeOrderChange()
-		{
-			var p1 = CreatePlayerEntity(1);
-			var p2 = CreatePlayerEntity(2);
-			_contexts.game.SetPlayingOrder(new List<GameEntity>
-			{
-				p1, p2
-			});
-
-			_systems.Initialize();
+			p1.AddTurnNode(_panel.CreateTurnNode());
+			p2.AddTurnNode(_panel.CreateTurnNode());
 
 			_contexts.game.ReplacePlayingOrder(new List<GameEntity>
 			{

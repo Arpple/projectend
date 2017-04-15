@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Entitas;
 
-public class TurnPanelSystem : ReactiveSystem<GameEntity>, IInitializeSystem
+public class TurnPanelSystem : ReactiveSystem<GameEntity>
 {
-	private readonly GameContext _gameContext;
 	private readonly TurnPanel _turnPanel;
 
 	public TurnPanelSystem(Contexts contexts, TurnPanel turnPanel) : base(contexts.game)
 	{
-		_gameContext = contexts.game;
 		_turnPanel = turnPanel;
-	}
-
-	public void Initialize()
-	{
-		foreach (var player in _gameContext.GetEntities(GameMatcher.Player))
-		{
-			var turnNode = _turnPanel.CreateTurnNode();
-			player.AddTurnNode(turnNode);
-		}
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)

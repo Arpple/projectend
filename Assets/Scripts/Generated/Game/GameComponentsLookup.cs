@@ -11,7 +11,7 @@ public static class GameComponentsLookup {
     public const int BossPlayer = 0;
     public const int Id = 1;
     public const int Local = 2;
-    public const int MainMissionCompletedCopmonent = 3;
+    public const int MainMissionCompleted = 3;
     public const int MainMission = 4;
     public const int Owner = 5;
     public const int PlayerBox = 6;
@@ -34,7 +34,7 @@ public static class GameComponentsLookup {
         "BossPlayer",
         "Id",
         "Local",
-        "MainMissionCompletedCopmonent",
+        "MainMissionCompleted",
         "MainMission",
         "Owner",
         "PlayerBox",
@@ -56,7 +56,7 @@ public static class GameComponentsLookup {
         typeof(BossPlayerComponent),
         typeof(IdComponent),
         typeof(LocalComponent),
-        typeof(MainMissionCompletedCopmonent),
+        typeof(MainMissionCompletedComponent),
         typeof(MainMissionComponent),
         typeof(OwnerComponent),
         typeof(PlayerBoxComponent),

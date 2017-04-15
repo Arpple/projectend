@@ -14,9 +14,16 @@ public enum Character
 
 public sealed partial class UnitContext : Context<UnitEntity>
 {
-	public UnitEntity GetCharacterFromPlayer(GameEntity playerEntity)
+	//public UnitEntity GetCharacterFromPlayer(GameEntity playerEntity)
+	//{
+	//	return this.GetEntities(UnitMatcher.Character)
+	//			.Where(c => c.owner.Entity == playerEntity)
+	//			.FirstOrDefault();
+	//}
+
+	public UnitEntity GetEntityOwnedBy(GameEntity playerEntity)
 	{
-		return this.GetEntities(UnitMatcher.Character)
+		return GetEntities()
 				.Where(c => c.owner.Entity == playerEntity)
 				.FirstOrDefault();
 	}
