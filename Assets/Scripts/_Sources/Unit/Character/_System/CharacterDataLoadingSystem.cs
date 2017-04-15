@@ -2,9 +2,9 @@
 
 public class CharacterDataLoadingSystem : DataLoadingSystem<UnitEntity, CharacterData>
 {
-	UnitSetting _setting;
+	CharacterSetting _setting;
 
-	public CharacterDataLoadingSystem(Contexts contexts, UnitSetting setting) : base(contexts.unit)
+	public CharacterDataLoadingSystem(Contexts contexts, CharacterSetting setting) : base(contexts.unit)
 	{
 		_setting = setting;
 	}

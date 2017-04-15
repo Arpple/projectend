@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
 
-namespace Test.UnitTest
+namespace Test.UnitTest.CharTest
 {
 	public class LocalCharacterStatusSetupSystemTest : ContextsTest
 	{

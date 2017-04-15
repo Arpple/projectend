@@ -1,11 +1,11 @@
 ﻿using Entitas;
 using UnityEngine;
 
-public class CharacterViewCreatingSystem : EntityViewCreatingSystem<UnitEntity>
+public class UnitViewCreatingSystem : EntityViewCreatingSystem<UnitEntity>
 {
 	private GameObject _container;
 
-	public CharacterViewCreatingSystem(Contexts contexts, GameObject container) : base(contexts.unit)
+	public UnitViewCreatingSystem(Contexts contexts, GameObject container) : base(contexts.unit)
 	{
 		_container = container;
 	}
@@ -22,7 +22,7 @@ public class CharacterViewCreatingSystem : EntityViewCreatingSystem<UnitEntity>
 
 	protected override GameObject CreateViewObject(UnitEntity entity)
 	{
-		var obj = new GameObject(entity.character.Type.ToString());
+		var obj = new GameObject();
 		var spriteRenderer = obj.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = entity.sprite.Sprite;
 		spriteRenderer.sortingLayerName = "Unit";

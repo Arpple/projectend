@@ -8,24 +8,26 @@
 //------------------------------------------------------------------------------
 public static class UnitComponentsLookup {
 
-    public const int Character = 0;
-    public const int CharacterSkillsResource = 1;
-    public const int Dead = 2;
-    public const int Hitpoint = 3;
-    public const int Id = 4;
-    public const int Local = 5;
-    public const int MapPosition = 6;
-    public const int Owner = 7;
-    public const int Sprite = 8;
-    public const int UnitDetail = 9;
-    public const int UnitIcon = 10;
-    public const int UnitIconResource = 11;
-    public const int UnitStatus = 12;
-    public const int View = 13;
+    public const int BossUnit = 0;
+    public const int Character = 1;
+    public const int CharacterSkillsResource = 2;
+    public const int Dead = 3;
+    public const int Hitpoint = 4;
+    public const int Id = 5;
+    public const int Local = 6;
+    public const int MapPosition = 7;
+    public const int Owner = 8;
+    public const int Sprite = 9;
+    public const int UnitDetail = 10;
+    public const int UnitIcon = 11;
+    public const int UnitIconResource = 12;
+    public const int UnitStatus = 13;
+    public const int View = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
+        "BossUnit",
         "Character",
         "CharacterSkillsResource",
         "Dead",
@@ -43,6 +45,7 @@ public static class UnitComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(BossUnitComponent),
         typeof(CharacterComponent),
         typeof(CharacterSkillsResourceComponent),
         typeof(DeadComponent),

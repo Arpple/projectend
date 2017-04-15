@@ -5,8 +5,11 @@ public class UnitSystems : Feature
 	public UnitSystems(Contexts contexts, UnitSetting setting, GameObject characterContainer, GameUI ui) : base("Unit System")
 	{
 		Add(new PlayerCharacterCreatingSystem(contexts));
-		Add(new CharacterDataLoadingSystem(contexts, setting));
-		Add(new CharacterViewCreatingSystem(contexts, characterContainer));
+		Add(new CharacterDataLoadingSystem(contexts, setting.CharacterSetting));
+		Add(new BossDataLoadingSystem(contexts, setting.BossSetting));
+		Add(new UnitViewCreatingSystem(contexts, characterContainer));
+		Add(new CharacterGameObjectRenameSystem(contexts));
+		Add(new BossGameobjectRenameSystem(contexts));
 		Add(new DeadSystem(contexts));
 		Add(new UnitPositionRenderingSystem(contexts));
 		Add(new LocalCharacterFlagSystem(contexts));

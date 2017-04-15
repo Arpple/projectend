@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Test.UnitTest
+namespace Test.UnitTest.CharTest
 {
 	public class TestLocalCharacterHpBarSystem : ContextsTest
 	{

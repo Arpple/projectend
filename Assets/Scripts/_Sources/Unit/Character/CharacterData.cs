@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "End/Character", fileName = "new_character.asset")]
 public class CharacterData : UnitData
 {
-	[Header("--Characer--")]
+	[Header("--Character--")]
 	public Character Type;
 
 	[Header("CharacterSkill")]

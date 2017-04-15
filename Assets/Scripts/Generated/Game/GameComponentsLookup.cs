@@ -8,28 +8,30 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Id = 0;
-    public const int Local = 1;
-    public const int MainMissionCompletedCopmonent = 2;
-    public const int MainMission = 3;
-    public const int Owner = 4;
-    public const int PlayerBox = 5;
-    public const int Player = 6;
-    public const int PlayerDeck = 7;
-    public const int Playing = 8;
-    public const int PlayingOrder = 9;
-    public const int Role = 10;
-    public const int Round = 11;
-    public const int RoundIndex = 12;
-    public const int SkillCardContainer = 13;
-    public const int Turn = 14;
-    public const int TurnNode = 15;
-    public const int View = 16;
-    public const int Winner = 17;
+    public const int BossPlayer = 0;
+    public const int Id = 1;
+    public const int Local = 2;
+    public const int MainMissionCompletedCopmonent = 3;
+    public const int MainMission = 4;
+    public const int Owner = 5;
+    public const int PlayerBox = 6;
+    public const int Player = 7;
+    public const int PlayerDeck = 8;
+    public const int Playing = 9;
+    public const int PlayingOrder = 10;
+    public const int Role = 11;
+    public const int Round = 12;
+    public const int RoundIndex = 13;
+    public const int SkillCardContainer = 14;
+    public const int Turn = 15;
+    public const int TurnNode = 16;
+    public const int View = 17;
+    public const int Winner = 18;
 
-    public const int TotalComponents = 18;
+    public const int TotalComponents = 19;
 
     public static readonly string[] componentNames = {
+        "BossPlayer",
         "Id",
         "Local",
         "MainMissionCompletedCopmonent",
@@ -51,6 +53,7 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(BossPlayerComponent),
         typeof(IdComponent),
         typeof(LocalComponent),
         typeof(MainMissionCompletedCopmonent),

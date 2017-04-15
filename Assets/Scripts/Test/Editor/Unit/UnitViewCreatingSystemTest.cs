@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Test.UnitTest
 {
-	public class CharacterViewCreatingSystemTest : EntityViewCreatingSystemTest
+	public class UnitViewCreatingSystemTest : EntityViewCreatingSystemTest
 	{
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new CharacterViewCreatingSystem(_contexts, new GameObject()));
+			_systems.Add(new UnitViewCreatingSystem(_contexts, new GameObject()));
 		}
 
 		[Test]

@@ -3,11 +3,12 @@ using Network;
 
 public class GameSystems : Feature
 {
-	public GameSystems(Contexts contexts, List<Player> players, Player localPlayer, GameUI ui) 
+	public GameSystems(Contexts contexts, List<Player> players, Player localPlayer, GameUI ui)
 		: base("Game System")
 	{
 		CreatePlayerSystems(contexts, players, localPlayer);
 		CreateTurnSystems(contexts, ui);
+		CreateMissionSystem(contexts);
 		Add(new WinSystem(contexts));
 	}
 
@@ -26,9 +27,19 @@ public class GameSystems : Feature
 		Add(new TurnPanelSystem(contexts, ui.TurnPanel));
 		Add(new TurnNotificationSystem(contexts, ui.TurnNoti));
 
-		if(GameController.Instance.IsOffline)
+		if (GameController.Instance.IsOffline)
 		{
 			Add(new LocalCharacterFlagSystem(contexts));
+		}
+	}
+
+	private void CreateMissionSystem(Contexts contexts)
+	{
+		Add(new MainMissionSetupSystem(contexts));
+
+		//main-monolith
+		{
+			Add(new MainMissionMonolithSetupSystem(contexts));
 		}
 	}
 }

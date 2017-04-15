@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
 
-namespace Test.UnitTest
+namespace Test.UnitTest.CharTest
 {
 	public class CharacterDataLoadingSystemTest : ContextsTest
 	{
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new CharacterDataLoadingSystem(_contexts, TestHelper.GetGameSetting().UnitSetting));
+			_systems.Add(new CharacterDataLoadingSystem(_contexts, TestHelper.GetGameSetting().UnitSetting.CharacterSetting));
 		}
 
 		[Test]

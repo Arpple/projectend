@@ -27,12 +27,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0db02708986578f438cb196ca0fd9973, type: 2}
     TileResourceChargeWeigth: 0a0000001400000028000000140000000a000000
   UnitSetting:
-    CharactersData:
-    - {fileID: 11400000, guid: ddb0f86edcfbee440bd1849c9a8bb0ff, type: 2}
-    - {fileID: 11400000, guid: f66543694e2041d44bebba3453ce706f, type: 2}
-    - {fileID: 11400000, guid: 975921bbf26dd694f8e44b8550c1d92b, type: 2}
-    - {fileID: 11400000, guid: b5a78eab5f1b61e4889caff04227e661, type: 2}
-    - {fileID: 11400000, guid: 80e3467feabab6947a1ee71c5a4bec5f, type: 2}
+    CharacterSetting:
+      CharactersData:
+      - {fileID: 11400000, guid: f66543694e2041d44bebba3453ce706f, type: 2}
+      - {fileID: 11400000, guid: ddb0f86edcfbee440bd1849c9a8bb0ff, type: 2}
+      - {fileID: 11400000, guid: 975921bbf26dd694f8e44b8550c1d92b, type: 2}
+      - {fileID: 11400000, guid: b5a78eab5f1b61e4889caff04227e661, type: 2}
+      - {fileID: 11400000, guid: 80e3467feabab6947a1ee71c5a4bec5f, type: 2}
+    BossSetting:
+      BossData:
+      - {fileID: 11400000, guid: d5585d467915bd84b8bdcd1f2b040fb8, type: 2}
   CardSetting:
     CardObjectPrefabs: {fileID: 114544459095568098, guid: cc4243deb4802334d9b16040e09b565c,
       type: 2}
