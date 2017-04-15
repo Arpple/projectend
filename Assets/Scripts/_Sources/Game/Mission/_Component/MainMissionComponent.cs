@@ -1,6 +1,7 @@
 ﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
-[Game]
+[Game, Unique]
 public class MainMissionComponent : IComponent
 {
 	public MainMission Type;

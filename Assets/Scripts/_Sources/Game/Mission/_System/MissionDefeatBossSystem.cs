@@ -22,9 +22,6 @@
 
 //	protected override void Execute(List<UnitEntity> entities)
 //	{
-//		foreach(var p in _context.GetEntities(GameMatcher.Player))
-//		{
-//			p.isMainMissionComplete = true;
-//		}
+//		_context.isMainMissionCompleted = true;
 //	}
 //}
