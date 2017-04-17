@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Entitas;
+using UnityEngine;
 
 namespace Test
 {
@@ -27,6 +28,11 @@ namespace Test
 		protected GameEntity CreatePlayerEntity(int playerId)
 		{
 			return TestHelper.CreatePlayerEntity(_contexts.game, playerId);
+		}
+
+		protected SystemController CreateSystemController()
+		{
+			return new GameObject().AddComponent<SystemController>();
 		}
 	}
 }

@@ -2,7 +2,7 @@
 
 public class TurnSystems : Feature
 {
-	public TurnSystems(Contexts contexts, GameUI ui) : base("Turn System")
+	public TurnSystems(Contexts contexts, GameUI ui, SystemController syscon) : base("Turn System")
 	{
 		Add(new PlayingOrderSetupSystem(contexts));
 		Add(new TurnAndRoundSetupSystem(contexts));
@@ -12,9 +12,6 @@ public class TurnSystems : Feature
 		Add(new TurnPanelSystem(contexts, ui.TurnPanel));
 		Add(new TurnNotificationSystem(contexts, ui.TurnNoti));
 
-		if (GameController.Instance.IsOffline)
-		{
-			Add(new LocalFlagPassingSystem(contexts));
-		}
+		Add(new LocalFlagPassingSystem(contexts, syscon));
 	}
 }

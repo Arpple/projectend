@@ -7,10 +7,12 @@ namespace Offline
 	public class LocalFlagPassingSystem : ReactiveSystem<GameEntity>
 	{
 		private GameContext _context;
+		private SystemController _syscon;
 
-		public LocalFlagPassingSystem(Contexts contexts) : base(contexts.game)
+		public LocalFlagPassingSystem(Contexts contexts, SystemController syscon) : base(contexts.game)
 		{
 			_context = contexts.game;
+			_syscon = syscon;
 		}
 
 		protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -25,10 +27,13 @@ namespace Offline
 
 		protected override void Execute(List<GameEntity> entities)
 		{
-			foreach(var e in entities)
+			if(_syscon.AutoPassLocalFlag)
 			{
-				RemoveOldFlag();
-				SetNewFlag(e);
+				foreach (var e in entities)
+				{
+					RemoveOldFlag();
+					SetNewFlag(e);
+				}
 			}
 		}
 

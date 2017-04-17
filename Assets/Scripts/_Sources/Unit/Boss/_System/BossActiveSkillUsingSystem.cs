@@ -9,15 +9,15 @@ public class BossActiveSkillUsingSystem : GameReactiveSystem
 	private UnitContext _unitContext;
 	private GameEventContext _eventContext;
 	private TurnNotification _noti;
-	private bool _isAutoEndTurn;
+	private SystemController _syscon;
 
-	public BossActiveSkillUsingSystem(Contexts contexts, TurnNotification noti, bool isAutoEndTurn = true) : base(contexts)
+	public BossActiveSkillUsingSystem(Contexts contexts, TurnNotification noti, SystemController syscon) : base(contexts)
 	{
 		_cardContext = contexts.card;
 		_unitContext = contexts.unit;
 		_eventContext = contexts.gameEvent;
 		_noti = noti;
-		_isAutoEndTurn = isAutoEndTurn;
+		_syscon = syscon;
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -43,7 +43,7 @@ public class BossActiveSkillUsingSystem : GameReactiveSystem
 			}
 		}
 
-		if(_isAutoEndTurn)
+		if(_syscon.AutoEndTurnForBoss)
 		{
 			_noti.AnimationEndAction = () =>
 			{

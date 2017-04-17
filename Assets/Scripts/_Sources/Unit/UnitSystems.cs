@@ -2,8 +2,16 @@
 
 public class UnitSystems : Feature
 {
-	public UnitSystems(Contexts contexts, UnitSetting setting, GameObject characterContainer, GameUI ui) : base("Unit System")
+	Contexts _contexts;
+	GameUI _ui;
+	SystemController _syscon;
+
+	public UnitSystems(Contexts contexts, UnitSetting setting, GameObject characterContainer, GameUI ui, SystemController syscon) : base("Unit System")
 	{
+		_contexts = contexts;
+		_ui = ui;
+		_syscon = syscon;
+
 		Add(new PlayerCharacterCreatingSystem(contexts));
 		Add(new CharacterDataLoadingSystem(contexts, setting.CharacterSetting));
 		Add(new BossDataLoadingSystem(contexts, setting.BossSetting));
@@ -18,12 +26,12 @@ public class UnitSystems : Feature
 		Add(new LocalCharacterStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
 		Add(new TargetUnitStatusDisplaySystem(contexts, ui.TargetPlayerStatus));
 
-		CreateBossSystems(contexts, ui);
+		CreateBossSystems();
 	}
 
-	private void CreateBossSystems(Contexts contexts, GameUI ui)
+	private void CreateBossSystems()
 	{
-		Add(new BossGameobjectRenameSystem(contexts));
-		Add(new BossActiveSkillUsingSystem(contexts, ui.TurnNoti));
+		Add(new BossGameobjectRenameSystem(_contexts));
+		Add(new BossActiveSkillUsingSystem(_contexts, _ui.TurnNoti, _syscon));
 	}
 }

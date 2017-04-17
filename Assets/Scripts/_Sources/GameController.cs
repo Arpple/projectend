@@ -13,10 +13,10 @@ public class GameController : MonoBehaviour
 
 	[Header("Test")]
 	public bool IsOffline = false;
-	public bool BossAutoEndTurn = false;
 
 	[Header("Config")]
 	public Setting Setting;
+	public SystemController SystemController;
 
 	[Header("Object Container")]
 	public GameObject PlayerContainer;
@@ -104,9 +104,9 @@ public class GameController : MonoBehaviour
 			.Add(new GameEventSystems(contexts))
 			.Add(new GameSystems(contexts, Players, _localPlayer))
 			.Add(new TileSystems(contexts, Setting.TileSetting, TileContainer, GameUI.Instance))
-			.Add(new UnitSystems(contexts, Setting.UnitSetting, UnitContainer, GameUI.Instance))
+			.Add(new UnitSystems(contexts, Setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
 			.Add(new CardSystems(contexts, Setting.CardSetting, GameUI.Instance))
-			.Add(new TurnSystems(contexts, GameUI.Instance));
+			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController));
 	}
 
 	#region Network
