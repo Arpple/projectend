@@ -9,19 +9,21 @@
 public static class CardComponentsLookup {
 
     public const int Ability = 0;
-    public const int DeckCard = 1;
-    public const int Id = 2;
-    public const int InBox = 3;
-    public const int Owner = 4;
-    public const int ResourceCard = 5;
-    public const int SkillCard = 6;
-    public const int Sprite = 7;
-    public const int View = 8;
+    public const int CardDescription = 1;
+    public const int DeckCard = 2;
+    public const int Id = 3;
+    public const int InBox = 4;
+    public const int Owner = 5;
+    public const int ResourceCard = 6;
+    public const int SkillCard = 7;
+    public const int Sprite = 8;
+    public const int View = 9;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
         "Ability",
+        "CardDescription",
         "DeckCard",
         "Id",
         "InBox",
@@ -34,6 +36,7 @@ public static class CardComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(AbilityComponent),
+        typeof(CardDescriptionComponent),
         typeof(DeckCardComponent),
         typeof(IdComponent),
         typeof(InBoxComponent),

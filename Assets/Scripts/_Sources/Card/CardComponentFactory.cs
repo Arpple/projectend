@@ -10,9 +10,10 @@
 	public override void AddComponents()
 	{
 		AddSprite();
+		AddCardDescription();
 	}
 
-	public void AddSprite()
+	private void AddSprite()
 	{
 		if (_data.MainSprite != null)
 		{
@@ -20,5 +21,8 @@
 		}
 	}
 
-	
+	private void AddCardDescription()
+	{
+		_entity.AddCardDescription(_data.Name, _data.ActiveDesc, _data.PassiveDesc);
+	}
 }
