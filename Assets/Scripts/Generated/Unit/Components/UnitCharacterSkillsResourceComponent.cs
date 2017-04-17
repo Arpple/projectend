@@ -11,14 +11,14 @@ public partial class UnitEntity {
     public CharacterSkillsResourceComponent characterSkillsResource { get { return (CharacterSkillsResourceComponent)GetComponent(UnitComponentsLookup.CharacterSkillsResource); } }
     public bool hasCharacterSkillsResource { get { return HasComponent(UnitComponentsLookup.CharacterSkillsResource); } }
 
-    public void AddCharacterSkillsResource(System.Collections.Generic.List<Card> newSkills) {
+    public void AddCharacterSkillsResource(System.Collections.Generic.List<SkillCard> newSkills) {
         var index = UnitComponentsLookup.CharacterSkillsResource;
         var component = CreateComponent<CharacterSkillsResourceComponent>(index);
         component.Skills = newSkills;
         AddComponent(index, component);
     }
 
-    public void ReplaceCharacterSkillsResource(System.Collections.Generic.List<Card> newSkills) {
+    public void ReplaceCharacterSkillsResource(System.Collections.Generic.List<SkillCard> newSkills) {
         var index = UnitComponentsLookup.CharacterSkillsResource;
         var component = CreateComponent<CharacterSkillsResourceComponent>(index);
         component.Skills = newSkills;

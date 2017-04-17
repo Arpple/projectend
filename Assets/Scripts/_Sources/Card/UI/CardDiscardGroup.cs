@@ -94,7 +94,7 @@ public class CardDiscardGroup : CardActionGroup
 		foreach (var card in _discardingCards)
 		{
 			card.HideHighlight();
-			EventMoveCard.MoveCardToShareDeck(card.Entity);
+			EventMoveDeckCard.MoveCardToShareDeck(card.Entity);
 		}
 	}
 

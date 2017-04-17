@@ -3,12 +3,14 @@
 	public CardSystems(Contexts contexts, CardSetting setting, GameUI ui) : base("Card System")
 	{
 		Add(new DeckCardCreatingSystem(contexts, setting.DeckSetting.Deck));
-		Add(new CardDataLoadingSystem(contexts, setting));
+		Add(new DeckCardDataLoadingSystem(contexts, setting.DeckSetting));
+		Add(new ResourceCardDataLoadingSystem(contexts, setting.ResourceCardSetting));
 		Add(new CardViewCreatingSystem(contexts, setting));
 
 		CreateDeckCardSystems(contexts, setting.DeckSetting, ui);
 		CreateBoxCardSystems(contexts, ui);
 		CreateSkillCardSystems(contexts, ui);
+		CreateResourceCardSystems(contexts, setting.ResourceCardSetting);
 
 		Add(new ResourceCardDestroySystem(contexts));
 	}
@@ -36,5 +38,10 @@
 	{
 		Add(new SkillCardContainerRenderingSystem(contexts, ui.SkillFactory));
 		Add(new LocalSkillCardContainerRenderingSystem(contexts));
+	}
+
+	private void CreateResourceCardSystems(Contexts contexts, ResourceCardSetting setting)
+	{
+		
 	}
 }

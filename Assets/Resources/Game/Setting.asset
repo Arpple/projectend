@@ -40,14 +40,6 @@ MonoBehaviour:
   CardSetting:
     CardObjectPrefabs: {fileID: 114544459095568098, guid: cc4243deb4802334d9b16040e09b565c,
       type: 2}
-    CardsData:
-    - {fileID: 11400000, guid: 98b74bf1a26ebd84a8a2143a6a5380f2, type: 2}
-    - {fileID: 11400000, guid: d8e9c6d7250a74744b1872e797ec5ab3, type: 2}
-    - {fileID: 11400000, guid: ab4625d726d153e4d94fba33e643acb9, type: 2}
-    - {fileID: 11400000, guid: 8b877b1f97f4702479bbd681c45df779, type: 2}
-    - {fileID: 11400000, guid: d921698ff241d0948b3529dfa7f126b5, type: 2}
-    - {fileID: 11400000, guid: 84fe7b8bef4a8a040a4d4ab452c1d6f1, type: 2}
-    - {fileID: 11400000, guid: 030637ba2c2bd884eb54951c20302906, type: 2}
     DeckSetting:
       StartCardCount: 5
       StartTurnDrawCount: 2
@@ -61,5 +53,15 @@ MonoBehaviour:
           Count: 10
         - Type: 3
           Count: 10
+      DeckCardsData:
+      - {fileID: 11400000, guid: a33c56aab165e4442815e872a563cc43, type: 2}
+      - {fileID: 11400000, guid: 5c9c482aacd992d41bd53db346a9861f, type: 2}
+      - {fileID: 11400000, guid: cfa6c69379582664683700e62e560aae, type: 2}
+      - {fileID: 11400000, guid: fc72877eab47e7f438ad1d71e3701c79, type: 2}
+    ResourceCardSetting:
+      ResourceCardsData:
+      - {fileID: 11400000, guid: 7ba0625830e8f2949a069229306d6a2e, type: 2}
+      - {fileID: 11400000, guid: 96cffd529a383904ea05d8dbfabcb3b5, type: 2}
+      - {fileID: 11400000, guid: abdf57a998e151f4fbd41f3494ba10c9, type: 2}
   RoleSetting:
     RoleCount: []

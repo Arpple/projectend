@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
-[Serializable]
-public class DeckCardData
+[CreateAssetMenu(menuName = "End/Card - Deck", fileName = "new_card.asset")]
+public class DeckCardData : CardData
 {
-	[Serializable]
-	public class CardDeckCount
-	{
-		public Card Type;
-		public int Count;
-	}
-
-	public List<CardDeckCount> SettingList;
-
-	public DeckCardData()
-	{
-		SettingList = new List<CardDeckCount>();
-	}
+	[Header("DeckCard")]
+	public DeckCard Type;
+	[Space]
+	public string AbilityClassFullName;
 }

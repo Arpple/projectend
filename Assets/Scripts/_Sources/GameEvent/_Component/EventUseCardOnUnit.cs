@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using UnityEngine.Assertions;
 
 [GameEvent]
 public class EventUseCardOnUnit : GameEventComponent
@@ -10,8 +9,6 @@ public class EventUseCardOnUnit : GameEventComponent
 
 	public static void Create(UnitEntity userEntity, CardEntity cardEntity, UnitEntity targetEntity)
 	{
-		Assert.IsTrue(cardEntity.hasCard);
-
 		GameEvent.CreateEvent<EventUseCardOnUnit>(userEntity.id.Id, cardEntity.id.Id, targetEntity.id.Id);
 	}
 

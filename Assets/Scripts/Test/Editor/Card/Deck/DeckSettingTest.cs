@@ -7,24 +7,22 @@ namespace Test.CardTest.DeckTest
 {
 	public class DeckSettingTest
 	{
-		private CardSetting _cardSetting;
 		private DeckSetting _setting;
 
 		[SetUp]
 		public void Init()
 		{
-			_cardSetting = TestHelper.GetGameSetting().CardSetting;
-			_setting = _cardSetting.DeckSetting;
+			_setting = TestHelper.GetGameSetting().CardSetting.DeckSetting;
 		}
 
 		[Test]
-		public void CheckSetting_DeckSettingAdded()
+		public void CheckSetting_DeckAdded()
 		{
 			Assert.IsNotNull(_setting.Deck);
 		}
 
 		[Test]
-		public void CheckSetting_DeckSettingIsNotDupplicate()
+		public void CheckSetting_CardInDeckIsNotDupplicate()
 		{
 			var setCount = _setting.Deck.SettingList.Count;
 			Assert.AreEqual(setCount, _setting.Deck.SettingList
@@ -39,7 +37,7 @@ namespace Test.CardTest.DeckTest
 		{
 			foreach(var set in _setting.Deck.SettingList)
 			{
-				Assert.IsNotNull(_cardSetting.GetCardData(set.Type));
+				Assert.IsNotNull(_setting.GetCardData(set.Type));
 			}
 		}
 	}

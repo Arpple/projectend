@@ -19,7 +19,7 @@ public class SkillCardContainerRenderingSystem : ReactiveSystem<CardEntity>, IIn
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.isSkillCard;
+		return entity.hasSkillCard;
 	}
 
 	protected override void Execute(List<CardEntity> entities)

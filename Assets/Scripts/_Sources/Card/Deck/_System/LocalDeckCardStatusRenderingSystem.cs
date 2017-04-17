@@ -32,7 +32,7 @@ public class LocalDeckCardStatusRenderingSystem : ReactiveSystem<CardEntity>
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.isDeckCard;
+		return entity.hasDeckCard;
 	}
 
 	protected override void Execute(List<CardEntity> entities)

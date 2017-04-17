@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Card", fileName = "new_card.asset")]
-public class CardData : EntityData
+public abstract class CardData : EntityData
 {
-	public Card Type;
-
-	[Header("Sprite")]
+	[Header("Card")]
 	public Sprite MainSprite;
-
-	[Header("Ability")]
-	public string AbilityClassFullName;
 }

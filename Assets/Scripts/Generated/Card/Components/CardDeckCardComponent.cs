@@ -8,19 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class CardEntity {
 
-    static readonly DeckCardComponent deckCardComponent = new DeckCardComponent();
+    public DeckCardComponent deckCard { get { return (DeckCardComponent)GetComponent(CardComponentsLookup.DeckCard); } }
+    public bool hasDeckCard { get { return HasComponent(CardComponentsLookup.DeckCard); } }
 
-    public bool isDeckCard {
-        get { return HasComponent(CardComponentsLookup.DeckCard); }
-        set {
-            if(value != isDeckCard) {
-                if(value) {
-                    AddComponent(CardComponentsLookup.DeckCard, deckCardComponent);
-                } else {
-                    RemoveComponent(CardComponentsLookup.DeckCard);
-                }
-            }
-        }
+    public void AddDeckCard(DeckCard newType) {
+        var index = CardComponentsLookup.DeckCard;
+        var component = CreateComponent<DeckCardComponent>(index);
+        component.Type = newType;
+        AddComponent(index, component);
+    }
+
+    public void ReplaceDeckCard(DeckCard newType) {
+        var index = CardComponentsLookup.DeckCard;
+        var component = CreateComponent<DeckCardComponent>(index);
+        component.Type = newType;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveDeckCard() {
+        RemoveComponent(CardComponentsLookup.DeckCard);
     }
 }
 

@@ -6,17 +6,17 @@ public class EventMoveCardSystem : EventSystem
 
 	protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
 	{
-		return context.CreateCollector(GameEventMatcher.EventMoveCard, GroupEvent.Added);
+		return context.CreateCollector(GameEventMatcher.EventMoveDeckCard, GroupEvent.Added);
 	}
 
 	protected override bool Filter(GameEventEntity entity)
 	{
-		return entity.hasEventMoveCard;
+		return entity.hasEventMoveDeckCard;
 	}
 
 	protected override void Process(GameEventEntity entity)
 	{
-		var e = entity.eventMoveCard;
+		var e = entity.eventMoveDeckCard;
 
 		if (e.TargetPlayerEntity != null)
 		{

@@ -27,7 +27,7 @@ public class StartDeckCardDrawingSystem : IInitializeSystem
 		{
 			_setting.StartCardCount.Loop(() =>
 			{
-				EventMoveCard.MoveCardToPlayer(cards[i], p);
+				EventMoveDeckCard.MoveCardToPlayer(cards[i], p);
 				i++;
 			});
 		}

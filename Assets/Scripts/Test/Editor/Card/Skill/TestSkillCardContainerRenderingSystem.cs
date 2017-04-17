@@ -40,7 +40,7 @@ namespace Test.CardTest.SkillTest
 
 			var card = _contexts.card.CreateEntity();
 			card.AddView(new GameObject());
-			card.isSkillCard = true;
+			card.AddSkillCard(SkillCard.Test);
 			card.AddOwner(p);
 
 			_system.Execute();

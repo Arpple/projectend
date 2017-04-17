@@ -20,11 +20,5 @@ namespace Test.CardTest
 			var card = Object.Instantiate(_setting.CardObjectPrefabs) as CardObject;
 			Assert.IsNotNull(card);
 		}
-
-		[Test]
-		public void CheckSetting_CardDataAdded()
-		{
-			Assert.IsNotNull(_setting.CardsData);
-		}
 	}
 }

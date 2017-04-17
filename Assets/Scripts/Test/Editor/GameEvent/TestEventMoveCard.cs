@@ -12,17 +12,17 @@ namespace Test.EventTest
 			var p2 = CreatePlayerEntity(2);
 
 			var card = _contexts.card.CreateEntity();
-			card.AddCard(Card.Move);
+			card.AddDeckCard(DeckCard.Move);
 			card.AddOwner(p1);
 
-			EventMoveCard.MoveCardToPlayer(card, p2);
+			EventMoveDeckCard.MoveCardToPlayer(card, p2);
 
 			var eventEntity = _contexts.gameEvent.GetEntities();
 
 			Assert.AreEqual(1, eventEntity.Length);
-			Assert.IsTrue(eventEntity[0].hasEventMoveCard);
+			Assert.IsTrue(eventEntity[0].hasEventMoveDeckCard);
 
-			var e = eventEntity[0].eventMoveCard;
+			var e = eventEntity[0].eventMoveDeckCard;
 			Assert.AreEqual(card, e.CardEntity);
 			Assert.AreEqual(p2, e.TargetPlayerEntity);
 		}
@@ -36,11 +36,11 @@ namespace Test.EventTest
 			var p2 = CreatePlayerEntity(2);
 
 			var card = _contexts.card.CreateEntity();
-			card.AddCard(Card.Move);
+			card.AddDeckCard(DeckCard.Move);
 			card.AddOwner(p1);
 
 
-			EventMoveCard.MoveCardToPlayer(card, p2);
+			EventMoveDeckCard.MoveCardToPlayer(card, p2);
 
 			system.Execute();
 
@@ -55,10 +55,10 @@ namespace Test.EventTest
 			var p1 = CreatePlayerEntity(1);
 
 			var card = _contexts.card.CreateEntity();
-			card.AddCard(Card.Move);
+			card.AddDeckCard(DeckCard.Move);
 			card.AddOwner(p1);
 
-			EventMoveCard.MoveCardInToBox(card);
+			EventMoveDeckCard.MoveCardInToBox(card);
 
 			system.Execute();
 
@@ -74,11 +74,11 @@ namespace Test.EventTest
 			var p1 = CreatePlayerEntity(1);
 
 			var card = _contexts.card.CreateEntity();
-			card.AddCard(Card.Move);
+			card.AddDeckCard(DeckCard.Move);
 			card.AddOwner(p1);
 			card.AddInBox(0);
 
-			EventMoveCard.MoveCardOutFromBox(card);
+			EventMoveDeckCard.MoveCardOutFromBox(card);
 
 			system.Execute();
 
@@ -93,10 +93,10 @@ namespace Test.EventTest
 
 			var p1 = CreatePlayerEntity(1);
 			var card = _contexts.card.CreateEntity();
-			card.AddCard(Card.Move);
+			card.AddDeckCard(DeckCard.Move);
 			card.AddOwner(p1);
 
-			EventMoveCard.MoveCardToShareDeck(card);
+			EventMoveDeckCard.MoveCardToShareDeck(card);
 
 			system.Execute();
 

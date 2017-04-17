@@ -1,9 +1,9 @@
 ﻿public static class CardExtension
 {
-	public static CardEntity CreateCard(this CardContext context, Card type)
+	public static CardEntity CreateDeckCard(this CardContext context, DeckCard type)
 	{
 		var entity = context.CreateEntity();
-		entity.AddCard(type);
+		entity.AddDeckCard(type);
 		return entity;
 	}
 }

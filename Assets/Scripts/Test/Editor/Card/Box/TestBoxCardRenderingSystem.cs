@@ -27,7 +27,7 @@ namespace Test.CardTest.BoxTest
 
 			var card = _contexts.card.CreateEntity();
 			card.AddOwner(_player);
-			card.isDeckCard = true;
+			card.AddDeckCard(DeckCard.Move);
 			card.AddView(new GameObject());
 			card.AddInBox(0);
 
@@ -43,7 +43,7 @@ namespace Test.CardTest.BoxTest
 
 			var card = _contexts.card.CreateEntity();
 			card.AddOwner(_player);
-			card.isDeckCard = true;
+			card.AddDeckCard(DeckCard.Move);
 			card.AddView(new GameObject());
 			card.AddInBox(0);
 			card.RemoveInBox();

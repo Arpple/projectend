@@ -23,7 +23,7 @@ namespace Test.CardTest.DeckTest
 			var system = new ShareDeckRenderingSystem(_contexts, _deck);
 			var card = _contexts.card.CreateEntity();
 			card.AddOwner(null);
-			card.isDeckCard = true;
+			card.AddDeckCard(DeckCard.Move);
 			card.RemoveOwner();
 			card.AddView(new GameObject());
 

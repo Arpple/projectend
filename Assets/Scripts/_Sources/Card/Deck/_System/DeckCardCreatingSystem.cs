@@ -7,9 +7,9 @@
 public class DeckCardCreatingSystem : IInitializeSystem
 {
 	readonly CardContext _context;
-	readonly DeckCardData _deck;
+	readonly DeckData _deck;
 
-	public DeckCardCreatingSystem(Contexts contexts, DeckCardData deck)
+	public DeckCardCreatingSystem(Contexts contexts, DeckData deck)
 	{
 		_context = contexts.card;
 		_deck = deck;
@@ -22,8 +22,7 @@ public class DeckCardCreatingSystem : IInitializeSystem
 		{
 			cardSet.Count.Loop(() =>
 			{
-				var e = _context.CreateCard(cardSet.Type);
-				e.isDeckCard = true;
+				_context.CreateDeckCard(cardSet.Type);
 			});
 		}
 	}

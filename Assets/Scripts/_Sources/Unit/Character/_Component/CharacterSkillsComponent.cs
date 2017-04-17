@@ -4,5 +4,5 @@ using Entitas;
 [Unit]
 public class CharacterSkillsResourceComponent : IComponent
 {
-	public List<Card> Skills;
+	public List<SkillCard> Skills;
 }

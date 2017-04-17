@@ -22,7 +22,7 @@ namespace Test.CardTest.DeckTest
 			
 			var card = _contexts.card.CreateEntity();
 			card.AddOwner(container);
-			card.isDeckCard = true;
+			card.AddDeckCard(DeckCard.Move);
 			card.AddView(new GameObject());
 
 			system.Execute();

@@ -8,5 +8,5 @@ public class CharacterData : UnitData
 	public Character Type;
 
 	[Header("CharacterSkill")]
-	public List<Card> SkillCards;
+	public List<SkillCard> SkillCards;
 }

@@ -22,7 +22,7 @@ public class EventUseCardOnUnitSystem : EventSystem
 		var ability = (ActiveAbility<UnitEntity>)cardEvent.CardEntity.ability.Ability;
 		ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEntity);
 
-		if (cardEvent.CardEntity.isDeckCard)
+		if (cardEvent.CardEntity.hasDeckCard)
 			RemovePlayerCard(cardEvent.CardEntity);
 	}
 

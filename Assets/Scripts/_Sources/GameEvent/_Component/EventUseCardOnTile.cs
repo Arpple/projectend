@@ -10,7 +10,6 @@ public class EventUseCardOnTile : GameEventComponent
 
 	public static void Create(UnitEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
 	{
-		Assert.IsTrue(cardEntity.hasCard);
 		Assert.IsTrue(tileEntity.hasTile);
 
 		GameEvent.CreateEvent<EventUseCardOnTile>(userEntity.id.Id, cardEntity.id.Id, tileEntity.mapPosition.x, tileEntity.mapPosition.y);

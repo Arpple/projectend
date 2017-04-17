@@ -9,17 +9,17 @@ namespace Test.CardTest.DeckTest
 		[Test]
 		public void CreatedEntityCount()
 		{
-			var deck = new DeckCardData();
-			deck.SettingList.Add(new DeckCardData.CardDeckCount()
+			var deck = new DeckData();
+			deck.SettingList.Add(new DeckData.CardDeckCount()
 			{
-				Type = Card.Move,
+				Type = DeckCard.Move,
 				Count = 2
 			});
 
 			var system = new DeckCardCreatingSystem(_contexts, deck);
 			system.Initialize();
 
-			var cards = _contexts.card.GetEntities(CardMatcher.Card);
+			var cards = _contexts.card.GetEntities(CardMatcher.DeckCard);
 			Assert.AreEqual(2, cards.Length);
 		}
 	}

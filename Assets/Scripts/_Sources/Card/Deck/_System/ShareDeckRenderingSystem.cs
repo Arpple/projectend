@@ -27,7 +27,7 @@ public class ShareDeckRenderingSystem : ReactiveSystem<CardEntity>
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.isDeckCard && !entity.hasOwner;
+		return entity.hasDeckCard && !entity.hasOwner;
 	}
 
 	protected override void Execute(List<CardEntity> entities)

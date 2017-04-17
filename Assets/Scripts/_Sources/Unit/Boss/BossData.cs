@@ -8,5 +8,5 @@ public class BossData : UnitData
 	public Boss Type;
 
 	[Header("Skill")]
-	public List<Card> SkillCards;
+	public List<SkillCard> SkillCards;
 }

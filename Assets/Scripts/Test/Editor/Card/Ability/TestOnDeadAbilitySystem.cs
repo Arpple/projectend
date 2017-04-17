@@ -38,11 +38,10 @@ namespace Test.CardTest.AbilityTest
 			_ownerPlayer.AddPlayerBox(box);
 
 			var card = _contexts.card.CreateEntity();
-			card.AddCard(Card.Potion);
+			card.AddDeckCard(DeckCard.Potion);
 			card.AddOwner(_ownerPlayer);
 			card.AddInBox(0);
 			card.AddAbility(new TestOnDeadAbility());
-			card.isDeckCard = true;
 
 			_systems.Execute();
 			Assert.Pass();

@@ -18,8 +18,8 @@ public class CharacterSkillLoadingSystem : IInitializeSystem
 		{
 			foreach (var skill in c.characterSkillsResource.Skills)
 			{
-				var skillCard = _cardContext.CreateCard(skill);
-				skillCard.isSkillCard = true;
+				var skillCard = _cardContext.CreateEntity();
+				skillCard.AddSkillCard(skill);
 				skillCard.AddOwner(c.owner.Entity);
 			}
 		}

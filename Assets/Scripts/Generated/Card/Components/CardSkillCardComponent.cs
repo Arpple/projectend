@@ -8,19 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class CardEntity {
 
-    static readonly SkillCardComponent skillCardComponent = new SkillCardComponent();
+    public SkillCardComponent skillCard { get { return (SkillCardComponent)GetComponent(CardComponentsLookup.SkillCard); } }
+    public bool hasSkillCard { get { return HasComponent(CardComponentsLookup.SkillCard); } }
 
-    public bool isSkillCard {
-        get { return HasComponent(CardComponentsLookup.SkillCard); }
-        set {
-            if(value != isSkillCard) {
-                if(value) {
-                    AddComponent(CardComponentsLookup.SkillCard, skillCardComponent);
-                } else {
-                    RemoveComponent(CardComponentsLookup.SkillCard);
-                }
-            }
-        }
+    public void AddSkillCard(SkillCard newType) {
+        var index = CardComponentsLookup.SkillCard;
+        var component = CreateComponent<SkillCardComponent>(index);
+        component.Type = newType;
+        AddComponent(index, component);
+    }
+
+    public void ReplaceSkillCard(SkillCard newType) {
+        var index = CardComponentsLookup.SkillCard;
+        var component = CreateComponent<SkillCardComponent>(index);
+        component.Type = newType;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveSkillCard() {
+        RemoveComponent(CardComponentsLookup.SkillCard);
     }
 }
 

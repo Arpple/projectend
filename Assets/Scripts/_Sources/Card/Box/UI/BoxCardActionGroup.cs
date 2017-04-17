@@ -30,13 +30,13 @@ public class BoxCardActionGroup : ActiveCardActionGroup
 
 	public void DiscardCard(CardObject card)
 	{
-		EventMoveCard.MoveCardToShareDeck(card.Entity);
+		EventMoveDeckCard.MoveCardToShareDeck(card.Entity);
 		CloseAction();
 	}
 
 	public void MoveToDeck(CardObject card)
 	{
-		EventMoveCard.MoveCardOutFromBox(card.Entity);
+		EventMoveDeckCard.MoveCardOutFromBox(card.Entity);
 		CloseAction();
 	}
 

@@ -20,7 +20,7 @@ public class DeckCardActionGroup : ActiveCardActionGroup
 
 	public void MoveToBox(CardObject card)
 	{
-		EventMoveCard.MoveCardInToBox(card.Entity);
+		EventMoveDeckCard.MoveCardInToBox(card.Entity);
 		CloseAction();
 	}
 

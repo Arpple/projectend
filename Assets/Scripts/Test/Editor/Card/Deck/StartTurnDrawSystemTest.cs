@@ -23,8 +23,7 @@ namespace Test.CardTest.DeckTest
 			count.Loop(
 				() =>
 				{
-					var card = _contexts.card.CreateCard(Card.Test);
-					card.isDeckCard = true;
+					_contexts.card.CreateDeckCard(DeckCard.Move);
 				}
 			);
 		}
@@ -40,12 +39,12 @@ namespace Test.CardTest.DeckTest
 
 			_systems.Execute();
 
-			var events = _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveCard);
+			var events = _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveDeckCard);
 			Assert.AreEqual(TEST_DRAW_COUNT, events.Length);
 			
 			foreach(var e in events)
 			{
-				Assert.AreEqual(p, e.eventMoveCard.TargetPlayerEntity);
+				Assert.AreEqual(p, e.eventMoveDeckCard.TargetPlayerEntity);
 			}
 		}
 
@@ -59,7 +58,7 @@ namespace Test.CardTest.DeckTest
 
 			_systems.Execute();
 
-			var events = _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveCard);
+			var events = _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveDeckCard);
 			Assert.IsEmpty(events);
 		}
 	}

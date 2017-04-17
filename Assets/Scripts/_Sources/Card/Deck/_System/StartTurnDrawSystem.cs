@@ -34,7 +34,7 @@ public class StartTurnDrawSystem : ReactiveSystem<GameEntity>
 				var drawCards = cards.Take(Math.Min(cards.Length, _setting.StartTurnDrawCount));
 				foreach (var c in drawCards)
 				{
-					EventMoveCard.MoveCardToPlayer(c, e);
+					EventMoveDeckCard.MoveCardToPlayer(c, e);
 				}
 			}
 		}

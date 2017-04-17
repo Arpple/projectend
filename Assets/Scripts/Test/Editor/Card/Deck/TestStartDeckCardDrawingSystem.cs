@@ -25,16 +25,15 @@ namespace Test.CardTest.DeckTest
 				CreatePlayerEntity(i + 1);
 				
 				var card = _contexts.card.CreateEntity();
-				card.AddCard(Card.Move);
-				card.isDeckCard = true;
+				card.AddDeckCard(DeckCard.Move);
 			});
 
 			system.Initialize();
 
 			foreach (var p in _contexts.game.GetEntities(GameMatcher.Player))
 			{
-				Assert.AreEqual(1, _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveCard)
-					.Where(c => c.eventMoveCard.TargetPlayerEntity == p)
+				Assert.AreEqual(1, _contexts.gameEvent.GetEntities(GameEventMatcher.EventMoveDeckCard)
+					.Where(c => c.eventMoveDeckCard.TargetPlayerEntity == p)
 					.Count()
 				);
 			}

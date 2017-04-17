@@ -27,23 +27,7 @@ public class AbilityCollect : ActiveAbility<TileEntity>
 	private CardEntity CreateResourceCard(Resource type)
 	{
 		var entity = Contexts.sharedInstance.card.CreateEntity();
-		entity.AddCard(GetCardTypeOfResource(type));
 		entity.AddCardResource(type);
 		return entity;
-	}
-
-	private Card GetCardTypeOfResource(Resource type)
-	{
-		switch(type)
-		{
-			case Resource.Coal:
-				return Card.Coal;
-			case Resource.Water:
-				return Card.Water;
-			case Resource.Wood:
-				return Card.Wood;
-		}
-
-		throw new MissingReferenceException("Card and Resource type not match");
 	}
 }
