@@ -17,7 +17,7 @@ public class ResourceCardDestroySystem : ReactiveSystem<CardEntity>
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.hasCardResource && !entity.hasOwner;
+		return entity.hasResourceCard && !entity.hasOwner;
 	}
 
 	protected override void Execute(List<CardEntity> entities)

@@ -1,7 +1,7 @@
 ﻿using Entitas;
 
 [Card]
-public class CardResourceComponent : IComponent
+public class ResourceCardComponent : IComponent
 {
 	public Resource Type;
 }

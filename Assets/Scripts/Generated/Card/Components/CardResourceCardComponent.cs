@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class CardEntity {
 
-    public CardResourceComponent cardResource { get { return (CardResourceComponent)GetComponent(CardComponentsLookup.CardResource); } }
-    public bool hasCardResource { get { return HasComponent(CardComponentsLookup.CardResource); } }
+    public ResourceCardComponent resourceCard { get { return (ResourceCardComponent)GetComponent(CardComponentsLookup.ResourceCard); } }
+    public bool hasResourceCard { get { return HasComponent(CardComponentsLookup.ResourceCard); } }
 
-    public void AddCardResource(Resource newType) {
-        var index = CardComponentsLookup.CardResource;
-        var component = CreateComponent<CardResourceComponent>(index);
+    public void AddResourceCard(Resource newType) {
+        var index = CardComponentsLookup.ResourceCard;
+        var component = CreateComponent<ResourceCardComponent>(index);
         component.Type = newType;
         AddComponent(index, component);
     }
 
-    public void ReplaceCardResource(Resource newType) {
-        var index = CardComponentsLookup.CardResource;
-        var component = CreateComponent<CardResourceComponent>(index);
+    public void ReplaceResourceCard(Resource newType) {
+        var index = CardComponentsLookup.ResourceCard;
+        var component = CreateComponent<ResourceCardComponent>(index);
         component.Type = newType;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveCardResource() {
-        RemoveComponent(CardComponentsLookup.CardResource);
+    public void RemoveResourceCard() {
+        RemoveComponent(CardComponentsLookup.ResourceCard);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class CardEntity {
 //------------------------------------------------------------------------------
 public sealed partial class CardMatcher {
 
-    static Entitas.IMatcher<CardEntity> _matcherCardResource;
+    static Entitas.IMatcher<CardEntity> _matcherResourceCard;
 
-    public static Entitas.IMatcher<CardEntity> CardResource {
+    public static Entitas.IMatcher<CardEntity> ResourceCard {
         get {
-            if(_matcherCardResource == null) {
-                var matcher = (Entitas.Matcher<CardEntity>)Entitas.Matcher<CardEntity>.AllOf(CardComponentsLookup.CardResource);
+            if(_matcherResourceCard == null) {
+                var matcher = (Entitas.Matcher<CardEntity>)Entitas.Matcher<CardEntity>.AllOf(CardComponentsLookup.ResourceCard);
                 matcher.componentNames = CardComponentsLookup.componentNames;
-                _matcherCardResource = matcher;
+                _matcherResourceCard = matcher;
             }
 
-            return _matcherCardResource;
+            return _matcherResourceCard;
         }
     }
 }

@@ -27,7 +27,7 @@ public class AbilityCollect : ActiveAbility<TileEntity>
 	private CardEntity CreateResourceCard(Resource type)
 	{
 		var entity = Contexts.sharedInstance.card.CreateEntity();
-		entity.AddCardResource(type);
+		entity.AddResourceCard(type);
 		return entity;
 	}
 }

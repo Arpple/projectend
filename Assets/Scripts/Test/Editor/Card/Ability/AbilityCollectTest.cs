@@ -39,10 +39,10 @@ namespace Test.CardTest.AbilityTest
 		{
 			_activeAbility.OnTargetSelected(_caster, _target);
 
-			var cards = _contexts.card.GetEntities(CardMatcher.CardResource);
+			var cards = _contexts.card.GetEntities(CardMatcher.ResourceCard);
 			Assert.AreEqual(1, cards.Length);
 			Assert.AreEqual(_caster.owner.Entity, cards[0].owner.Entity);
-			Assert.AreEqual(_target.tileResource.Type, cards[0].cardResource.Type);
+			Assert.AreEqual(_target.tileResource.Type, cards[0].resourceCard.Type);
 		}
 	}
 }

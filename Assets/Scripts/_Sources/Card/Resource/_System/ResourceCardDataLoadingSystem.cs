@@ -16,16 +16,16 @@ public class ResourceCardDataLoadingSystem : DataLoadingSystem<CardEntity, Resou
 
 	protected override ResourceCardData GetData(CardEntity entity)
 	{
-		return _setting.GetCardData(entity.cardResource.Type);
+		return _setting.GetCardData(entity.resourceCard.Type);
 	}
 
 	protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)
 	{
-		return context.CreateCollector(CardMatcher.CardResource);
+		return context.CreateCollector(CardMatcher.ResourceCard);
 	}
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.hasCardResource;
+		return entity.hasResourceCard;
 	}
 }

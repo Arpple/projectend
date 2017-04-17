@@ -21,7 +21,7 @@ public class PlayerDeckRenderingSystem : ReactiveSystem<CardEntity>
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.hasOwner && (entity.hasDeckCard || entity.hasCardResource);
+		return entity.hasOwner && (entity.hasDeckCard || entity.hasResourceCard);
 	}
 
 	protected override void Execute(List<CardEntity> entities)
