@@ -12,6 +12,6 @@ public class MainMissionSetupSystem : IInitializeSystem
 	public void Initialize()
 	{
 		var player = _context.localEntity;
-		_context.SetMainMission((MainMission)player.player.PlayerObject.MainMissionId);
+		_context.SetMainMission((MainMission)player.player.GetNetworkPlayer().MainMissionId);
 	}
 }

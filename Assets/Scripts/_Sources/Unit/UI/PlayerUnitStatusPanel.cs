@@ -83,8 +83,6 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 
 	private void UpdatePlayerName(UnitEntity entity)
 	{
-		PlayerNameText.text = entity.hasBossUnit
-			? "-Boss-"
-			: entity.owner.Entity.player.PlayerObject.PlayerName;	 
+		PlayerNameText.text = entity.owner.Entity.player.PlayerObject.GetName();
 	}
 }

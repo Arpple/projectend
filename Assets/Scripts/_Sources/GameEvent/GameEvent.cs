@@ -12,7 +12,7 @@ public static class GameEvent
 		if (GameController.Instance != null && !GameController.Instance.IsOffline)
 		{
 			//Debug.Log("Create Online Event " + typeof(T).ToString());
-			Contexts.sharedInstance.game.localEntity.player.PlayerObject.CmdCreateEvent(componentId, args);
+			Contexts.sharedInstance.game.localEntity.player.GetNetworkPlayer().CmdCreateEvent(componentId, args);
 		}
 		else
 		{

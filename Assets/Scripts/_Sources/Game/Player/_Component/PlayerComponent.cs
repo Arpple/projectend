@@ -4,10 +4,15 @@ using Network;
 [Game]
 public class PlayerComponent : IComponent
 {
-	public Player PlayerObject;
+	public IPlayer PlayerObject;
 
-	public short PlayerId
+	public int PlayerId
 	{
-		get { return PlayerObject.PlayerId; }
+		get { return PlayerObject.GetId(); }
+	}
+
+	public Player GetNetworkPlayer()
+	{
+		return PlayerObject as Player;
 	}
 }

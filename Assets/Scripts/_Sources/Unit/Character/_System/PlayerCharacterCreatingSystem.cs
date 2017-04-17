@@ -26,7 +26,7 @@ public class PlayerCharacterCreatingSystem : IInitializeSystem
 		{
 			var sp = spawnpoints[i];
 
-			var characterType = (Character)playerEntity.player.PlayerObject.SelectedCharacterId;
+			var characterType = (Character)playerEntity.player.GetNetworkPlayer().SelectedCharacterId;
 			Assert.IsTrue(characterType != Character.None);
 
 			var character = _unitContext.CreateEntity();

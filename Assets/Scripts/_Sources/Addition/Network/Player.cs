@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 
 namespace Network
 {
-	public class Player : NetworkBehaviour
+	public class Player : NetworkBehaviour, IPlayer
 	{
-		[SyncVar] public short PlayerId;
+		[SyncVar] public int PlayerId;
 
 		#region SyncProperties
 		[SyncVar(hook = "OnNameChanged")]
@@ -200,7 +201,16 @@ namespace Network
 		{
 			GameController.Instance.SetClientReady();
 		}
-
 		#endregion
+
+		public int GetId()
+		{
+			return PlayerId;
+		}
+
+		public string GetName()
+		{
+			return PlayerName;
+		}
 	}
 }

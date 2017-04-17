@@ -14,7 +14,7 @@ public class RoleLoadingSystem : IInitializeSystem
 	{
 		foreach (var p in _context.GetEntities(GameMatcher.Player))
 		{
-			switch ((Role)p.player.PlayerObject.RoleId)
+			switch ((Role)p.player.GetNetworkPlayer().RoleId)
 			{
 				case Role.End:
 					p.AddRole(new RoleEnd(_context));
@@ -33,7 +33,7 @@ public class RoleLoadingSystem : IInitializeSystem
 					break;
 
 				default:
-					throw new Exception("cannot load role " + p.player.PlayerObject.RoleId);
+					throw new Exception("cannot load role " + p.player.GetNetworkPlayer().RoleId);
 			}
 		}
 	}

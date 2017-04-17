@@ -20,7 +20,7 @@ namespace Test.UnitTest.CharTest
 			var icon = Resources.Load<Sprite>("Test/Editor/Sprite");
 
 			var player = CreatePlayerEntity(1);
-			player.player.PlayerObject.PlayerName = "test";
+			player.player.GetNetworkPlayer().PlayerName = "test";
 			player.isLocal = true;
 
 			var character = _contexts.unit.CreateEntity();

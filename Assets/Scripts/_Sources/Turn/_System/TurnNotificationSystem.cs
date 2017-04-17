@@ -33,8 +33,6 @@ public class TurnNotificationSystem : ReactiveSystem<GameEntity>
 
 	private string GetPlayerName()
 	{
-		return _context.playingEntity.isBossPlayer
-			? "-Boss-"
-			: _context.playingEntity.player.PlayerObject.PlayerName;
+		return _context.playingEntity.player.PlayerObject.GetName();
 	}
 }

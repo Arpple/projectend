@@ -23,7 +23,7 @@ public class WinSystem : ReactiveSystem<GameEntity>
 		foreach (var e in entities)
 		{
 			var player = e.player.PlayerObject;
-			Debug.Log(player.PlayerName + "(" + player.PlayerId + ") win");
+			Debug.Log(player.GetName() + "(" + player.GetId() + ") win");
 		}
 	}
 }

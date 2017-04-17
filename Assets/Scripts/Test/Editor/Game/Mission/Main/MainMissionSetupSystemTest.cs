@@ -15,7 +15,7 @@ namespace Test.GameTest.MissionTest
 		{
 			var p = CreatePlayerEntity(1);
 			p.isLocal = true;
-			p.player.PlayerObject.MainMissionId = (int)MainMission.BossMonolith;
+			p.player.GetNetworkPlayer().MainMissionId = (int)MainMission.BossMonolith;
 
 			_systems.Initialize();
 

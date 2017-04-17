@@ -1,5 +1,5 @@
-﻿using System;
-using Entitas;
+﻿using Entitas;
+using Network;
 
 namespace Lounge
 {
@@ -16,7 +16,7 @@ namespace Lounge
 		{
 			foreach(var p in _context.GetEntities(GameMatcher.Player))
 			{
-				p.player.PlayerObject.CmdSetRole((int)p.role.RoleObject.Type);
+				p.player.GetNetworkPlayer().CmdSetRole((int)p.role.RoleObject.Type);
 			}
 		}
 	}
