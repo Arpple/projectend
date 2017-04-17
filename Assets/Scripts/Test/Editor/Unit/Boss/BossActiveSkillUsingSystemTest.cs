@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using UnityEngine;
 
 namespace Test.UnitTest.BossTest
 {
@@ -15,13 +16,16 @@ namespace Test.UnitTest.BossTest
 		}
 
 		GameEntity _player;
+		TurnNotification _noti;
 
 		[SetUp]
 		public void Init()
 		{
 			_isAbilityCalled = false;
 
-			_systems.Add(new BossActiveSkillUsingSystem(_contexts));
+			_noti = new GameObject().AddComponent<TurnNotification>();
+
+			_systems.Add(new BossActiveSkillUsingSystem(_contexts, _noti));
 
 			_player = CreatePlayerEntity(-1);
 			_player.isBossPlayer = true;

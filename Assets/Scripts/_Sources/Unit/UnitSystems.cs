@@ -18,12 +18,12 @@ public class UnitSystems : Feature
 		Add(new LocalCharacterStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
 		Add(new TargetUnitStatusDisplaySystem(contexts, ui.TargetPlayerStatus));
 
-		CreateBossSystems(contexts);
+		CreateBossSystems(contexts, ui);
 	}
 
-	private void CreateBossSystems(Contexts contexts)
+	private void CreateBossSystems(Contexts contexts, GameUI ui)
 	{
 		Add(new BossGameobjectRenameSystem(contexts));
-		Add(new BossActiveSkillUsingSystem(contexts));
+		Add(new BossActiveSkillUsingSystem(contexts, ui.TurnNoti));
 	}
 }

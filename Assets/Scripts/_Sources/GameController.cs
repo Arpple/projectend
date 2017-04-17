@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
 	[Header("Test")]
 	public bool IsOffline = false;
+	public bool BossAutoEndTurn = false;
 
 	[Header("Config")]
 	public Setting Setting;

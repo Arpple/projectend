@@ -2108,6 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOffline: 1
+  BossAutoEndTurn: 1
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}
