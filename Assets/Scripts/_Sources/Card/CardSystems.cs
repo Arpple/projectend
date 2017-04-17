@@ -37,7 +37,8 @@
 
 	private void CreateSkillCardSystems(Contexts contexts, GameUI ui)
 	{
-		Add(new SkillCardContainerRenderingSystem(contexts, ui.SkillFactory));
+		Add(new SkillCardContainerCreatingSystem(contexts, ui.SkillFactory));
+		Add(new SkillCardContainerRenderingSystem(contexts));
 		Add(new LocalSkillCardContainerRenderingSystem(contexts));
 	}
 

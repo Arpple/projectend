@@ -78,7 +78,6 @@
 		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
 
 		var cardEntity = card.Entity;
-        UnityEngine.Debug.Log("ShowCardTarget...");
 		if (cardEntity.hasAbility)
 		{
 			var caster = Contexts.sharedInstance.unit.localEntity;

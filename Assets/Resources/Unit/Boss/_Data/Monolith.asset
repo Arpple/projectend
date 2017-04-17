@@ -16,9 +16,9 @@ MonoBehaviour:
   Name: The Great Monolith
   Description: 
   HitPoint: 150
-  AttackPower: 0
-  AttackRange: 0
-  VisionRange: 0
-  MoveSpeed: 0
+  AttackPower: 1
+  AttackRange: 1
+  VisionRange: 1
+  MoveSpeed: 1
   Type: 0
   SkillCards: 01000000

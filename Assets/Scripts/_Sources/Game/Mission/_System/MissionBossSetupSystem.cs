@@ -41,7 +41,7 @@ public abstract class MissionBossSetupSystem : GameReactiveSystem
 	{
 		var e = _context.CreateEntity();
 		e.isBossPlayer = true;
-		e.AddPlayer(null);
+		e.AddPlayer(new BossPlayer());
 		return e;
 	}
 

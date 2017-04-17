@@ -70,6 +70,10 @@ public partial class Contexts {
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
+            Id,
+            game.GetGroup(GameMatcher.Id),
+            (e, c) => ((IdComponent)c).Id));
         unit.AddEntityIndex(new Entitas.EntityIndex<UnitEntity, int>(
             Id,
             unit.GetGroup(UnitMatcher.Id),
@@ -77,10 +81,6 @@ public partial class Contexts {
         card.AddEntityIndex(new Entitas.EntityIndex<CardEntity, int>(
             Id,
             card.GetGroup(CardMatcher.Id),
-            (e, c) => ((IdComponent)c).Id));
-        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
-            Id,
-            game.GetGroup(GameMatcher.Id),
             (e, c) => ((IdComponent)c).Id));
         tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, int>(
             Id,
@@ -105,16 +105,16 @@ public partial class Contexts {
 
 public static class ContextsExtensions {
 
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithId(this GameContext context, int Id) {
+        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
+    }
+
     public static System.Collections.Generic.HashSet<UnitEntity> GetEntitiesWithId(this UnitContext context, int Id) {
         return ((Entitas.EntityIndex<UnitEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
     public static System.Collections.Generic.HashSet<CardEntity> GetEntitiesWithId(this CardContext context, int Id) {
         return ((Entitas.EntityIndex<CardEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
-    }
-
-    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithId(this GameContext context, int Id) {
-        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
     public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithId(this TileContext context, int Id) {

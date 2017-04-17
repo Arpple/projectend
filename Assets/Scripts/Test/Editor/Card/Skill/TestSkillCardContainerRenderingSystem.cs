@@ -19,17 +19,7 @@ namespace Test.CardTest.SkillTest
 			factory.Init();
 			factory.ContainerPrefabs = _container;
 
-			_system = new SkillCardContainerRenderingSystem(_contexts, factory);
-		}
-
-		[Test]
-		public void Initialize()
-		{
-			var p = CreatePlayerEntity(1);
-
-			_system.Initialize();
-
-			Assert.IsTrue(p.hasSkillCardContainer);
+			_system = new SkillCardContainerRenderingSystem(_contexts);
 		}
 
 		[Test]

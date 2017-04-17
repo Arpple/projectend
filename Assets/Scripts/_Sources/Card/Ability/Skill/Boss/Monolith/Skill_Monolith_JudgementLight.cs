@@ -1,4 +1,6 @@
-﻿public class Skill_Monolith_JudgementLight : SelfActiveAbility
+﻿using UnityEngine;
+
+public class Skill_Monolith_JudgementLight : SelfActiveAbility
 {
 	public override void OnTargetSelected(UnitEntity caster, UnitEntity target)
 	{

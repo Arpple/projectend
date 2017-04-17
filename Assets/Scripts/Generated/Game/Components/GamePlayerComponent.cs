@@ -11,14 +11,14 @@ public partial class GameEntity {
     public PlayerComponent player { get { return (PlayerComponent)GetComponent(GameComponentsLookup.Player); } }
     public bool hasPlayer { get { return HasComponent(GameComponentsLookup.Player); } }
 
-    public void AddPlayer(Network.Player newPlayerObject) {
+    public void AddPlayer(IPlayer newPlayerObject) {
         var index = GameComponentsLookup.Player;
         var component = CreateComponent<PlayerComponent>(index);
         component.PlayerObject = newPlayerObject;
         AddComponent(index, component);
     }
 
-    public void ReplacePlayer(Network.Player newPlayerObject) {
+    public void ReplacePlayer(IPlayer newPlayerObject) {
         var index = GameComponentsLookup.Player;
         var component = CreateComponent<PlayerComponent>(index);
         component.PlayerObject = newPlayerObject;
