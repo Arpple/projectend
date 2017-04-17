@@ -2,7 +2,7 @@
 
 public abstract class GameReactiveSystem : ReactiveSystem<GameEntity>
 {
-	protected GameContext _context;
+	protected readonly GameContext _context;
 
 	public GameReactiveSystem(Contexts contexts) : base(contexts.game)
 	{

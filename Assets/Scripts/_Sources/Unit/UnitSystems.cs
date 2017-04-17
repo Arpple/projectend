@@ -10,7 +10,6 @@ public class UnitSystems : Feature
 		Add(new SkillResourceLoadingSystem(contexts));
 		Add(new UnitViewCreatingSystem(contexts, characterContainer));
 		Add(new CharacterGameObjectRenameSystem(contexts));
-		Add(new BossGameobjectRenameSystem(contexts));
 		Add(new DeadSystem(contexts));
 		Add(new UnitPositionRenderingSystem(contexts));
 		Add(new LocalCharacterFlagSystem(contexts));
@@ -18,6 +17,13 @@ public class UnitSystems : Feature
 		Add(new LocalCharacterStatusSetupSystem(contexts, ui.LocalPlayerStatus));
 		Add(new LocalCharacterStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
 		Add(new TargetUnitStatusDisplaySystem(contexts, ui.TargetPlayerStatus));
-		
+
+		CreateBossSystems(contexts);
+	}
+
+	private void CreateBossSystems(Contexts contexts)
+	{
+		Add(new BossGameobjectRenameSystem(contexts));
+		Add(new BossActiveSkillUsingSystem(contexts));
 	}
 }
