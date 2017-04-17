@@ -28,12 +28,7 @@ public class DeckCardActionGroup : ActiveCardActionGroup
 	{
 		BoxButton.onClick.AddListener(() => MoveToBox(card));
 		CancelButton.onClick.AddListener(CloseAction);
-	}
-
-	public override void OnCardClick(CardObject card)
-	{
-		base.OnCardClick(card);
-		if(IsActiveCard(card))
+		if (IsActiveCard(card))
 			ShowCardTarget(card);
 	}
 
