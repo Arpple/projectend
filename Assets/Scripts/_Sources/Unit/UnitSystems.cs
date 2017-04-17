@@ -7,6 +7,7 @@ public class UnitSystems : Feature
 		Add(new PlayerCharacterCreatingSystem(contexts));
 		Add(new CharacterDataLoadingSystem(contexts, setting.CharacterSetting));
 		Add(new BossDataLoadingSystem(contexts, setting.BossSetting));
+		Add(new SkillResourceLoadingSystem(contexts));
 		Add(new UnitViewCreatingSystem(contexts, characterContainer));
 		Add(new CharacterGameObjectRenameSystem(contexts));
 		Add(new BossGameobjectRenameSystem(contexts));
@@ -17,5 +18,6 @@ public class UnitSystems : Feature
 		Add(new LocalCharacterStatusSetupSystem(contexts, ui.LocalPlayerStatus));
 		Add(new LocalCharacterStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
 		Add(new TargetUnitStatusDisplaySystem(contexts, ui.TargetPlayerStatus));
+		
 	}
 }

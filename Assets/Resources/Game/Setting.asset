@@ -63,5 +63,8 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 7ba0625830e8f2949a069229306d6a2e, type: 2}
       - {fileID: 11400000, guid: 96cffd529a383904ea05d8dbfabcb3b5, type: 2}
       - {fileID: 11400000, guid: abdf57a998e151f4fbd41f3494ba10c9, type: 2}
+    SkillCardSetting:
+      SkillCardsData:
+      - {fileID: 11400000, guid: ede3541b273f4e24e8e33497e2c7a72d, type: 2}
   RoleSetting:
     RoleCount: []

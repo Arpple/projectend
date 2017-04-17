@@ -5,6 +5,7 @@
 		Add(new DeckCardCreatingSystem(contexts, setting.DeckSetting.Deck));
 		Add(new DeckCardDataLoadingSystem(contexts, setting.DeckSetting));
 		Add(new ResourceCardDataLoadingSystem(contexts, setting.ResourceCardSetting));
+		Add(new SkillCardDataLoadingSystem(contexts, setting.SkillCardSetting));
 		Add(new CardViewCreatingSystem(contexts, setting));
 
 		CreateDeckCardSystems(contexts, setting.DeckSetting, ui);
