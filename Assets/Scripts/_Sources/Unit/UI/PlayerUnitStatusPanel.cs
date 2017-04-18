@@ -9,7 +9,6 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 	public Text PlayerNameText;
 	public Icon CharacterIcon;
 
-
 	[Header("Character Status")]
 	public Text DeckCardCountText;
 	public Text BoxCardCountText;
@@ -22,6 +21,9 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 	[Header("Role")]
 	public Text RoleText;
 	public Icon RoleImage;
+
+    [Header("Animation")]
+    public Animator AnimeCon;
 
 	public UnitEntity ShowingCharacter;
 
@@ -39,10 +41,13 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 		//Role
 		Assert.IsNotNull(RoleText);
 		Assert.IsNotNull(RoleImage);
+
+        Assert.IsNotNull(AnimeCon);
 	}
 
 	public void SetCharacter(UnitEntity entity)
 	{
+        AnimeCon.Play("ShowDisplayStatus");
 		UpdatePlayerName(entity);
 		CharacterIcon.IconImage.sprite = entity.unitIcon.IconSprite;
 		UpdateUnitStatus(entity.unitStatus);
@@ -77,6 +82,7 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 
 	public void HideDisplay()
 	{
+        AnimeCon.Play("HideDisplayStatus");
 		gameObject.SetActive(false);
 		ShowingCharacter = null;
 	}
