@@ -7,14 +7,14 @@
 
 ## Game Scene
 
-#### Lounge
+#### Title
 title screen and menu
 
 #### Lobby
 player matching scene
 
-#### CharacterSelect
-yes, just character select
+#### Lounge
+personal mission setting and character select
 
 
 #### Game
