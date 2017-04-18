@@ -20,6 +20,9 @@ namespace Title
 		public ConnectionDialogue ConnectionDialogue;
 		public Dialogue WarningDialog, ConnectingDialog;
 
+		[Header("Setting")]
+		public TitleSetting Setting;
+
 		public NetworkController NetCon
 		{
 			get { return NetworkController.Instance; }
