@@ -7,7 +7,7 @@ namespace Test.MissionTest
 	{
 		protected override IndexDataList<MainMission, MainMissionData> GetDataList()
 		{
-			return TestHelper.GetGameSetting().MainMissionSetting;
+			return TestHelper.GetGameSetting().MissionSetting.MainMission;
 		}
 
 		[Test]

@@ -15,6 +15,7 @@ namespace Lobby
 		public Button WaitButton;
 		public LobbyPlayer LobbyPlayerPrefabs;
 		public Title.TitleSetting TitleSetting;
+		public MissionSetting MissionSetting;
 
 		private Player _localPlayer;
 
@@ -27,6 +28,8 @@ namespace Lobby
 			Assert.IsNotNull(ReadyButton);
 			Assert.IsNotNull(WaitButton);
 			Assert.IsNotNull(LobbyPlayerPrefabs);
+			Assert.IsNotNull(TitleSetting);
+			Assert.IsNotNull(MissionSetting);
 		}
 
 		private void Start()

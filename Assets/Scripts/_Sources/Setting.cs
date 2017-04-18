@@ -16,7 +16,7 @@ public class Setting : ScriptableObject
 	public CardSetting CardSetting;
 
 	[Space(15)]
-	public MainMissionSetting MainMissionSetting;
+	public MissionSetting MissionSetting;
 
 	[Space(15)]
 	public WeatherSetting WeatherSetting;
