@@ -52,7 +52,7 @@ namespace Title
 			}
 
 			//set profile
-			var playerIconImage = Resources.Load<Sprite>(NetCon.LocalPlayerIconPath);
+			var playerIconImage = Setting.PlayerIconList.GetData(NetCon.LocalPlayerIconType).Icon;
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
 			PlayerNameInputField.text = NetCon.LocalPlayerName;
 			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);

@@ -14,6 +14,7 @@ namespace Lobby
 		public Button ReadyButton;
 		public Button WaitButton;
 		public LobbyPlayer LobbyPlayerPrefabs;
+		public Title.TitleSetting TitleSetting;
 
 		private Player _localPlayer;
 
@@ -53,6 +54,7 @@ namespace Lobby
 		public void AddPlayer(Player player)
 		{
 			var lobbyPlayer = Instantiate(LobbyPlayerPrefabs).GetComponent<LobbyPlayer>();
+			lobbyPlayer.Init(this);
 			lobbyPlayer.transform.SetParent(PlayerContainer.transform, false);
 			lobbyPlayer.SetPlayer(player);
 
@@ -80,7 +82,7 @@ namespace Lobby
 			});
 
 			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
-			player.CmdSetIconPath(NetworkController.Instance.LocalPlayerIconPath);
+			player.CmdSetIcon((int)NetworkController.Instance.LocalPlayerIconType);
 		}
 
 		public void Back()
@@ -100,6 +102,11 @@ namespace Lobby
 		public void SetMainMission(MainMission mission)
 		{
 			_localPlayer.CmdSetMainMission((int)mission);
+		}
+
+		public Sprite GetPlayerIcon(Title.PlayerIcon icon)
+		{
+			return TitleSetting.PlayerIconList.GetData(icon).Icon;
 		}
 	}
 }

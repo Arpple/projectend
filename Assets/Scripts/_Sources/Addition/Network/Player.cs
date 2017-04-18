@@ -12,8 +12,8 @@ namespace Network
 		[SyncVar(hook = "OnNameChanged")]
 		public string PlayerName;
 
-		[SyncVar(hook = "OnIconPathChanged")]
-		public string PlayerIconPath;
+		[SyncVar(hook = "OnIconChanged")]
+		public int PlayerIconId;
 
 		[SyncVar(hook = "OnCharacterIdChanged")]
 		public int SelectedCharacterId;
@@ -31,12 +31,12 @@ namespace Network
 		public int RoleId;
 
 		public delegate void ChangeNameCallback(string name);
-		public delegate void ChangeIconPathCallback(string iconPath);
+		public delegate void ChangeIconCallback(int iconId);
 		public delegate void ChangeSelectedCharacterCallback(int charId);
 		public delegate void ChangeReadyStateCallback(bool ready);
 
 		public event ChangeNameCallback OnNameChangedCallback;
-		public event ChangeIconPathCallback OnIconPathChangedCallback;
+		public event ChangeIconCallback OnIconChangedCallback;
 		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
 
@@ -49,10 +49,10 @@ namespace Network
 			if (OnNameChangedCallback != null) OnNameChangedCallback(name);
 		}
 
-		public void OnIconPathChanged(string iconPath)
+		public void OnIconChanged(int iconId)
 		{
-			PlayerIconPath = iconPath;
-			if (OnIconPathChangedCallback != null) OnIconPathChangedCallback(iconPath);
+			PlayerIconId = iconId;
+			if (OnIconChangedCallback != null) OnIconChangedCallback(iconId);
 		}
 
 		public void OnCharacterIdChanged(int charId)
@@ -136,9 +136,9 @@ namespace Network
 		}
 
 		[Command]
-		public void CmdSetIconPath(string iconPath)
+		public void CmdSetIcon(int iconId)
 		{
-			PlayerIconPath = iconPath;
+			PlayerIconId = iconId;
 		}
 
 		[Command]

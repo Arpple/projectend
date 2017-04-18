@@ -33,7 +33,6 @@ namespace Network
 
 		[Header("Local Player")]
 		public string LocalPlayerName;
-		public string LocalPlayerIconPath;
 		public PlayerIcon LocalPlayerIconType;
 		public Player LocalPlayer;
 
