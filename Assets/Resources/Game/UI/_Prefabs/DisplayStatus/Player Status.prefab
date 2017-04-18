@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 222205440048603614}
   - component: {fileID: 114222502304885512}
   - component: {fileID: 114110132012043028}
+  - component: {fileID: 95150096459323364}
   m_Layer: 5
   m_Name: Player Status
   m_TagString: Untagged
@@ -1486,6 +1487,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95150096459323364
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435129149037990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acbe141fe126fa047b2625e3f7a9c1b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114004257079098966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1837,6 +1855,7 @@ MonoBehaviour:
   HpBar: {fileID: 114340846977634928}
   RoleText: {fileID: 114503485316552744}
   RoleImage: {fileID: 114365172318214268}
+  AnimeCon: {fileID: 95150096459323364}
 --- !u!114 &114112561449556356
 MonoBehaviour:
   m_ObjectHideFlags: 1
