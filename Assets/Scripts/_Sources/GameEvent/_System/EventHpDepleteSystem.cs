@@ -32,7 +32,7 @@ public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 
 	private void UseBoxReviveCard(UnitEntity deadEntity)
 	{
-		var card = _cardContext.GetPlayerBoxComponentCards<IReviveAbility>(deadEntity.owner.Entity)
+		var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.owner.Entity)
 			.OrderBy(c => c.inBox.Index)
 			.FirstOrDefault();
 		if (card != null)
@@ -45,7 +45,7 @@ public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 
 	private void UseBoxOnDeadCard(UnitEntity deadEntity)
 	{
-		var cards = _cardContext.GetPlayerBoxComponentCards<IOnDeadAbility>(deadEntity.owner.Entity);
+		var cards = _cardContext.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.owner.Entity);
 
 		foreach (var card in cards)
 		{

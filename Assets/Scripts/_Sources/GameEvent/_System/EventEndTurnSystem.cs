@@ -25,7 +25,7 @@ public class EventEndTurnSystem : EventSystem
 		cycler.Cycle();
 	}
 
-	internal class TurnRoundCycler
+	private class TurnRoundCycler
 	{
 		private GameContext _context;
 		private int _currentRoundIndex;

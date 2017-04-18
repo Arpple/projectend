@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Test.EventTest
 {
-	public class TestEventEndTurn : ContextsTest
+	public class EventEndTurnSystemTest : ContextsTest
 	{
 		[SetUp]
 		public void Init()

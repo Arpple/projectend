@@ -49,7 +49,7 @@ public class DefaultTileActionSetupSystem : ReactiveSystem<TileEntity>
 	{
 		_panel.SetCharacter(unit);
 		_panel.gameObject.SetActive(true);
-		_panel.UpdateBoxCardCount(_cardContext.GetPlayerBoxComponentCards(unit.owner.Entity).Length);
+		_panel.UpdateBoxCardCount(_cardContext.GetPlayerBoxCards(unit.owner.Entity).Length);
 		_panel.UpdateDeckCardCount(_cardContext.GetPlayerDeckCards(unit.owner.Entity).Length);
 	}
 

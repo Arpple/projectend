@@ -7,11 +7,11 @@ public class EventSyncBoxCard : GameEventComponent
 	public CardEntity Card;
 	public int BoxIndex;
 
-	public static void SetCardIndex(CardEntity entity, int boxIndex)
+	public static void SyncBoxIndex(CardEntity entity)
 	{
 		Assert.IsTrue(entity.hasInBox);
 
-		GameEvent.CreateEvent<EventSyncBoxCard>(entity.id.Id, boxIndex);
+		GameEvent.CreateEvent<EventSyncBoxCard>(entity.id.Id, entity.inBox.Index);
 	}
 
 	public void Decode(int cardId, int boxIndex)
