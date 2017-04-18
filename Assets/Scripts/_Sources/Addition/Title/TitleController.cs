@@ -19,6 +19,7 @@ namespace Title
 		public Text VersionText;
 		public ConnectionDialogue ConnectionDialogue;
 		public Dialogue WarningDialog, ConnectingDialog;
+		public PlayerIconSelector IconSelector;
 
 		[Header("Setting")]
 		public TitleSetting Setting;
@@ -68,6 +69,16 @@ namespace Title
 
 			WarningDialog.OnDialogueClose += () => SetMenuButtonVisible(true);
 			ConnectingDialog.OnDialogueClose += () => SetMenuButtonVisible(true);
+
+			CreatePlayerIconForSelector();
+		}
+
+		private void CreatePlayerIconForSelector()
+		{
+			foreach (var iconData in Setting.PlayerIconList.DataList)
+			{
+				IconSelector.AddIcon(iconData);
+			}
 		}
 
 		public void Host()

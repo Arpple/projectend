@@ -6,7 +6,7 @@ namespace Title
 	public class PlayerIconData : ScriptableObject, IIndexData<PlayerIcon>
 	{
 		public PlayerIcon Type;
-		public string IconPath;
+		public Sprite Icon;
 
 		public PlayerIcon GetIndex()
 		{

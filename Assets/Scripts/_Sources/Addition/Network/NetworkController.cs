@@ -4,6 +4,7 @@ using UnityEngine.Assertions;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using Title;
 
 namespace Network
 {
@@ -33,6 +34,7 @@ namespace Network
 		[Header("Local Player")]
 		public string LocalPlayerName;
 		public string LocalPlayerIconPath;
+		public PlayerIcon LocalPlayerIconType;
 		public Player LocalPlayer;
 
 		public List<Player> AllPlayers;

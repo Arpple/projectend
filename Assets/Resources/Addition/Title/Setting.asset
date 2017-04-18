@@ -14,3 +14,4 @@ MonoBehaviour:
   PlayerIconList:
     DataList:
     - {fileID: 11400000, guid: f6010ba0cb8d56a4fb9edb95d5fdea5c, type: 2}
+    - {fileID: 11400000, guid: 2a9dd13e706ecc24ab73ed87894156ec, type: 2}

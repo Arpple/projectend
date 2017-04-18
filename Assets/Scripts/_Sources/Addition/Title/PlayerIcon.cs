@@ -2,6 +2,7 @@
 {
 	public enum PlayerIcon
 	{
-		Box
+		Box,
+		Wood,
 	}
 }

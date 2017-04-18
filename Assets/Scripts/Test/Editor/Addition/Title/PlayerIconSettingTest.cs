@@ -1,6 +1,4 @@
 ﻿using Title;
-using NUnit.Framework;
-using UnityEngine;
 
 namespace Test.AdditionTest.TitleTest
 {
@@ -9,15 +7,6 @@ namespace Test.AdditionTest.TitleTest
 		protected override IndexDataList<PlayerIcon, PlayerIconData> GetDataList()
 		{
 			return TestHelper.GetTitleSetting().PlayerIconList;
-		}
-
-		[Test]
-		public void CheckSetting_AllDataCanLoadSpriteFromPath()
-		{
-			foreach(var d in _data.DataList)
-			{
-				Assert.IsNotNull(Resources.Load<Sprite>(d.IconPath));
-			}
 		}
 	}
 }
