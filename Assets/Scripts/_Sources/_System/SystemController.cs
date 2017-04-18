@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class SystemController : MonoBehaviour
+[Serializable]
+public class SystemController
 {
 	public bool AutoEndTurnForBoss;
 	public bool AutoPassLocalFlag;

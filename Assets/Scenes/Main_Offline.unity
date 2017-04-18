@@ -1997,7 +1997,7 @@ Prefab:
     - target: {fileID: 224824269347636454, guid: 8aa11d0684cc58d449c8b2c14e5c44be,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 366
+      value: 360
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8aa11d0684cc58d449c8b2c14e5c44be, type: 2}
@@ -2108,8 +2108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOffline: 1
+  SystemController:
+    AutoEndTurnForBoss: 1
+    AutoPassLocalFlag: 1
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
-  SystemController: {fileID: 1483567433}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}
   UnitContainer: {fileID: 238646442}
@@ -3240,7 +3242,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1483567434}
-  - component: {fileID: 1483567433}
   m_Layer: 0
   m_Name: SystemController
   m_TagString: Untagged
@@ -3248,19 +3249,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1483567433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1483567432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424f42ebdbf12dd4e9c28dce53a80e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoEndTurnForBoss: 1
-  AutoPassLocalFlag: 1
 --- !u!4 &1483567434
 Transform:
   m_ObjectHideFlags: 0

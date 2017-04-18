@@ -11,12 +11,12 @@ public class GameController : MonoBehaviour
 	public static GameController Instance;
 	public static bool IsTest;
 
-	[Header("Test")]
-	public bool IsOffline = false;
-
 	[Header("Config")]
-	public Setting Setting;
+	public bool IsOffline = false;
 	public SystemController SystemController;
+
+	[Header("Data")]
+	public Setting Setting;
 
 	[Header("Object Container")]
 	public GameObject PlayerContainer;
