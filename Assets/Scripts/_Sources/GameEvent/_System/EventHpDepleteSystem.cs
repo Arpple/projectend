@@ -25,12 +25,41 @@ public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 	{
 		foreach (var e in entities)
 		{
-			UseBoxReviveCard(e);
+			UseOnDeadSkill(e);
 			UseBoxOnDeadCard(e);
+
+			UseReviveSkill(e);
+			if(IsDead(e))
+				UseFirstReviveCardFromBox(e);
 		}
 	}
 
-	private void UseBoxReviveCard(UnitEntity deadEntity)
+	private bool IsDead(UnitEntity unit)
+	{
+		return unit.hitpoint.Value == 0;
+	}
+
+	private void UseReviveSkill(UnitEntity entity)
+	{
+		var skills = _cardContext.GetPlayerSkills<IReviveAbility>(entity.owner.Entity);
+		foreach (var s in skills)
+		{
+			var ability = s.ability.Ability as IReviveAbility;
+			ability.OnDead(entity);
+		}
+	}
+
+	private void UseOnDeadSkill(UnitEntity entity)
+	{
+		var skills = _cardContext.GetPlayerSkills<IOnDeadAbility>(entity.owner.Entity);
+		foreach(var s in skills)
+		{
+			var ability = s.ability.Ability as IOnDeadAbility;
+			ability.OnDead(entity);
+		}
+	}
+
+	private void UseFirstReviveCardFromBox(UnitEntity deadEntity)
 	{
 		var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.owner.Entity)
 			.OrderBy(c => c.inBox.Index)
