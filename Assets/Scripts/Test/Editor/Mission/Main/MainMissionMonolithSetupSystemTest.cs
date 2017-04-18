@@ -2,7 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 
-namespace Test.GameTest.MissionTest
+namespace Test.MissionTest
 {
 	public class MissionMonolithSetupSystemTest : ContextsTest
 	{

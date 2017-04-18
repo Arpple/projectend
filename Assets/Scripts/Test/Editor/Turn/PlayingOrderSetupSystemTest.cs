@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 
 
-namespace Test.GameTest.TurnTest
+namespace Test.TurnTest
 {
 	public class PlayingOrderSetupSystemTest : ContextsTest
 	{

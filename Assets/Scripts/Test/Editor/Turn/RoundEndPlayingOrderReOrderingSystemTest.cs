@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace Test.GameTest.TurnTest
+namespace Test.TurnTest
 {
 	public class RoundEndPlayingOrderReOrderingSystemTest : ContextsTest
 	{

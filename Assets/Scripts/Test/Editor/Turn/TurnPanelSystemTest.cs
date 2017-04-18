@@ -3,9 +3,9 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Test.GameTest.TurnTest
+namespace Test.TurnTest
 {
-	public class TurnNodeCreatingSystemTest : ContextsTest
+	public class TurnPanelSystemTest : ContextsTest
 	{
 		private TurnPanel _panel;
 
@@ -13,6 +13,7 @@ namespace Test.GameTest.TurnTest
 		public void Init()
 		{
 			_panel = new GameObject().AddComponent<TurnPanel>();
+			
 			var node = new GameObject().AddComponent<TurnNode>();
 			node.IconImage = new GameObject().AddComponent<Image>();
 
@@ -20,22 +21,26 @@ namespace Test.GameTest.TurnTest
 			_panel.TurnNodes = new List<TurnNode>();
 			_panel.TurnNodeParent = new GameObject().transform;
 
-			_systems.Add(new TurnNodeCreatingSystem(_contexts, _panel));
+			_systems.Add(new TurnPanelSystem(_contexts, _panel));
 		}
 
 		[Test]
-		public void Execute_PlayerEntity_TurnNodeCreted()
+		public void Execute_PlayingOrder_NodeOrderByPlayingOrder()
 		{
 			var p1 = CreatePlayerEntity(1);
+			var p2 = CreatePlayerEntity(2);
+			p1.AddTurnNode(_panel.CreateTurnNode());
+			p2.AddTurnNode(_panel.CreateTurnNode());
 
-			var unit = _contexts.unit.CreateEntity();
-			unit.AddOwner(p1);
+			_contexts.game.ReplacePlayingOrder(new List<GameEntity>
+			{
+				p2, p1
+			});
 
 			_systems.Execute();
 
-			Assert.IsTrue(p1.hasTurnNode);
-			Assert.AreEqual(1, _panel.TurnNodes.Count);
-			Assert.AreEqual(_panel.TurnNodes[0], p1.turnNode.Object);
+			Assert.AreEqual(p2.turnNode.Object, _panel.TurnNodes[0]);
+			Assert.AreEqual(p1.turnNode.Object, _panel.TurnNodes[1]);
 		}
 	}
 }
