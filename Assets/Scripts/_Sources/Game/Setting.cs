@@ -16,13 +16,13 @@ public class Setting : ScriptableObject
 	public CardSetting CardSetting;
 
 	[Space(15)]
-	public RoleSetting RoleSetting;
+	public WeatherSetting WeatherSetting;
 
 	public void OnEnable()
 	{
 		Assert.IsNotNull(TileSetting);
 		Assert.IsNotNull(UnitSetting);
 		Assert.IsNotNull(CardSetting);
-		Assert.IsNotNull(RoleSetting);
+		Assert.IsNotNull(WeatherSetting);
 	}
 }

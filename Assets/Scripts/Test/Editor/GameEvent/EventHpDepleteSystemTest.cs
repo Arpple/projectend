@@ -98,8 +98,8 @@ namespace Test.EventTest
 			bool isCard1Used = false;
 			bool isCard2Used = false;
 
-			var card1 = CreateBoxCard(new TestReviveAbility(() => isCard1Used = true), 1);
-			var card2 = CreateBoxCard(new TestReviveAbility(() => isCard2Used = true), 2);
+			CreateBoxCard(new TestReviveAbility(() => isCard1Used = true), 1);
+			CreateBoxCard(new TestReviveAbility(() => isCard2Used = true), 2);
 
 			_systems.Execute();
 			Assert.IsTrue(isCard1Used);
