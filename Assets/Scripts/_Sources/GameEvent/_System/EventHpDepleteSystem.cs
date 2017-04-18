@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Entitas;
+using UnityEngine;
 
 public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 {
@@ -18,7 +19,7 @@ public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 
 	protected override bool Filter(UnitEntity entity)
 	{
-		return entity.hitpoint.Value == 0 && entity.owner.Entity.hasPlayerBox;
+		return entity.hitpoint.Value == 0;
 	}
 
 	protected override void Execute(List<UnitEntity> entities)
