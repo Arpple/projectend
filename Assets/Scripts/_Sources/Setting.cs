@@ -16,6 +16,9 @@ public class Setting : ScriptableObject
 	public CardSetting CardSetting;
 
 	[Space(15)]
+	public MainMissionSetting MainMissionSetting;
+
+	[Space(15)]
 	public WeatherSetting WeatherSetting;
 
 	public void OnEnable()
