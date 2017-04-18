@@ -26,6 +26,6 @@ public class DeckCardDataLoadingSystem : DataLoadingSystem<CardEntity, DeckCardD
 
 	protected override DeckCardData GetData(CardEntity entity)
 	{
-		return _setting.GetCardData(entity.deckCard.Type);
+		return _setting.GetData(entity.deckCard.Type);
 	}
 }

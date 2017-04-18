@@ -5,9 +5,14 @@ using System.Linq;
 
 namespace Test.CardTest.DeckTest
 {
-	public class DeckSettingTest
+	public class DeckSettingTest : IndexDataListTest<DeckCard, DeckCardData>
 	{
 		private DeckSetting _setting;
+
+		protected override IndexDataList<DeckCard, DeckCardData> GetDataList()
+		{
+			return TestHelper.GetGameSetting().CardSetting.DeckSetting;
+		}
 
 		[SetUp]
 		public void Init()
@@ -37,7 +42,7 @@ namespace Test.CardTest.DeckTest
 		{
 			foreach(var set in _setting.Deck.SettingList)
 			{
-				Assert.IsNotNull(_setting.GetCardData(set.Type));
+				Assert.IsNotNull(_setting.GetData(set.Type));
 			}
 		}
 	}

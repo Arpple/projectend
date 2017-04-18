@@ -26,7 +26,7 @@ public class BossDataLoadingSystem : DataLoadingSystem<UnitEntity, BossData>
 
 	protected override BossData GetData(UnitEntity entity)
 	{
-		return _setting.GetBossData(entity.bossUnit.Type);
+		return _setting.GetData(entity.bossUnit.Type);
 	}
 
 

@@ -16,7 +16,7 @@ public class SkillCardDataLoadingSystem : DataLoadingSystem<CardEntity, SkillCar
 
 	protected override SkillCardData GetData(CardEntity entity)
 	{
-		return _setting.GetCardData(entity.skillCard.Type);
+		return _setting.GetData(entity.skillCard.Type);
 	}
 
 	protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)

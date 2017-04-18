@@ -16,7 +16,7 @@ public class ResourceCardDataLoadingSystem : DataLoadingSystem<CardEntity, Resou
 
 	protected override ResourceCardData GetData(CardEntity entity)
 	{
-		return _setting.GetCardData(entity.resourceCard.Type);
+		return _setting.GetData(entity.resourceCard.Type);
 	}
 
 	protected override Collector<CardEntity> GetTrigger(IContext<CardEntity> context)

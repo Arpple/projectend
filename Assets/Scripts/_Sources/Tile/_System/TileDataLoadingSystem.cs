@@ -21,7 +21,7 @@ public class TileDataLoadingSystem : DataLoadingSystem<TileEntity, TileData>
 
 	protected override TileData GetData(TileEntity entity)
 	{
-		return _setting.GetTileData(entity.tile.Type);
+		return _setting.GetData(entity.tile.Type);
 	}
 
 	protected override Collector<TileEntity> GetTrigger(IContext<TileEntity> context)

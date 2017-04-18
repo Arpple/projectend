@@ -1,27 +1,10 @@
-﻿using System.Linq;
-using NUnit.Framework;
-
-namespace Test.CardTest.SkillTest
+﻿namespace Test.CardTest.SkillTest
 {
-	public class SkillCardSettingTest
+	public class SkillCardSettingTest : IndexDataListTest<SkillCard, SkillCardData>
 	{
-		private SkillCardSetting _setting;
-
-		[SetUp]
-		public void Init()
+		protected override IndexDataList<SkillCard, SkillCardData> GetDataList()
 		{
-			_setting = TestHelper.GetGameSetting().CardSetting.SkillCardSetting;
-		}
-
-		[Test]
-		public void CheckSetting_AllDataTypeNotDupplicate()
-		{
-			var count = _setting.SkillCardsData.Count;
-			Assert.AreEqual(count, _setting.SkillCardsData
-				.Select(d => d.Type)
-				.Distinct()
-				.Count()
-			);
+			return TestHelper.GetGameSetting().CardSetting.SkillCardSetting;
 		}
 	}
 }
