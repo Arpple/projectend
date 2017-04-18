@@ -3,7 +3,7 @@
 
 namespace Test.GameTest
 {
-	public class TestGameSetting
+	public class GameSettingTest
 	{
 		private Setting _setting;
 

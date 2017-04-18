@@ -3,7 +3,7 @@ using Network;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Test.GameTest.PlayerTest
+namespace Test.PlayerTest
 {
 	public class LocalPlayerSetupSystemTest : ContextsTest
 	{

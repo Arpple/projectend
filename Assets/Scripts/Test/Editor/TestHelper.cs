@@ -18,7 +18,7 @@ namespace Test
 
 		public static Setting GetGameSetting()
 		{
-			return Object.Instantiate<Setting>(Resources.Load<Setting>("Game/Setting"));
+			return Object.Instantiate<Setting>(Resources.Load<Setting>("Setting"));
 		}
 
 		public static GameEntity CreatePlayerEntity(this GameContext context, int playerId)

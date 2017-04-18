@@ -5,7 +5,7 @@ using NUnit.Framework;
 using UnityEngine;
 using Entitas.Unity;
 
-namespace Test.GameTest.PlayerTest
+namespace Test.PlayerTest
 {
 	public class PlayerCreatingSystemTest : ContextsTest
 	{
