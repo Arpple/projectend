@@ -39,7 +39,7 @@ public class LocalDeckCardStatusRenderingSystem : ReactiveSystem<CardEntity>
 	{
 		var deckCardCount = _context.GetPlayerDeckCards(_gameContext.localEntity)
 			.Length;
-		var boxCardCount = _context.GetPlayerBoxComponentCards(_gameContext.localEntity)
+		var boxCardCount = _context.GetPlayerBoxCards(_gameContext.localEntity)
 			.Length;
 
 		_status.UpdateDeckCardCount(deckCardCount);

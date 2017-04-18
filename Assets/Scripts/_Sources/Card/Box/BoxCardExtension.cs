@@ -8,14 +8,14 @@ public static class BoxCardExtension
 		return context.GetEntities(CardMatcher.InBox);
 	}
 
-	public static CardEntity[] GetPlayerBoxComponentCards(this CardContext context, GameEntity playerEntity)
+	public static CardEntity[] GetPlayerBoxCards(this CardContext context, GameEntity playerEntity)
 	{
 		return context.GetBoxCards()
 			.Where(c => c.owner.Entity == playerEntity)
 			.ToArray();
 	}
 
-	public static CardEntity[] GetPlayerBoxComponentCards<T>(this CardContext context, GameEntity playerEntity)
+	public static CardEntity[] GetPlayerBoxCards<T>(this CardContext context, GameEntity playerEntity)
 	{
 		return context.GetBoxCards()
 			.Where(c => c.owner.Entity == playerEntity)

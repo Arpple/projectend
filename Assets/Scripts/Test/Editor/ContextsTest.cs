@@ -29,10 +29,5 @@ namespace Test
 		{
 			return TestHelper.CreatePlayerEntity(_contexts.game, playerId);
 		}
-
-		protected SystemController CreateSystemController()
-		{
-			return new GameObject().AddComponent<SystemController>();
-		}
 	}
 }

@@ -37,7 +37,7 @@ public class TargetDeckCardStatusRendingSystem : ReactiveSystem<CardEntity>
 	{
 		var deckCardCount = _context.GetPlayerDeckCards(_status.ShowingCharacter.owner.Entity)
 			.Length;
-		var boxCardCount = _context.GetPlayerBoxComponentCards(_status.ShowingCharacter.owner.Entity)
+		var boxCardCount = _context.GetPlayerBoxCards(_status.ShowingCharacter.owner.Entity)
 			.Length;
 
 		_status.UpdateDeckCardCount(deckCardCount);

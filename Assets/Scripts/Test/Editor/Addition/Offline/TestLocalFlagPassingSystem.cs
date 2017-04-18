@@ -9,7 +9,7 @@ namespace Test.AdditionTest.OfflineTest
 		[SetUp]
 		public void Init()
 		{
-			var syscon = CreateSystemController();
+			var syscon = new SystemController();
 			syscon.AutoPassLocalFlag = true;
 			_systems.Add(new LocalFlagPassingSystem(_contexts, syscon));
 		}

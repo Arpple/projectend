@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Entitas;
+using UnityEngine;
 
 public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 {
@@ -18,21 +19,50 @@ public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 
 	protected override bool Filter(UnitEntity entity)
 	{
-		return entity.hitpoint.Value == 0 && entity.owner.Entity.hasPlayerBox;
+		return entity.hitpoint.Value == 0;
 	}
 
 	protected override void Execute(List<UnitEntity> entities)
 	{
 		foreach (var e in entities)
 		{
-			UseBoxReviveCard(e);
+			UseOnDeadSkill(e);
 			UseBoxOnDeadCard(e);
+
+			UseReviveSkill(e);
+			if(IsDead(e))
+				UseFirstReviveCardFromBox(e);
 		}
 	}
 
-	private void UseBoxReviveCard(UnitEntity deadEntity)
+	private bool IsDead(UnitEntity unit)
 	{
-		var card = _cardContext.GetPlayerBoxComponentCards<IReviveAbility>(deadEntity.owner.Entity)
+		return unit.hitpoint.Value == 0;
+	}
+
+	private void UseReviveSkill(UnitEntity entity)
+	{
+		var skills = _cardContext.GetPlayerSkills<IReviveAbility>(entity.owner.Entity);
+		foreach (var s in skills)
+		{
+			var ability = s.ability.Ability as IReviveAbility;
+			ability.OnDead(entity);
+		}
+	}
+
+	private void UseOnDeadSkill(UnitEntity entity)
+	{
+		var skills = _cardContext.GetPlayerSkills<IOnDeadAbility>(entity.owner.Entity);
+		foreach(var s in skills)
+		{
+			var ability = s.ability.Ability as IOnDeadAbility;
+			ability.OnDead(entity);
+		}
+	}
+
+	private void UseFirstReviveCardFromBox(UnitEntity deadEntity)
+	{
+		var card = _cardContext.GetPlayerBoxCards<IReviveAbility>(deadEntity.owner.Entity)
 			.OrderBy(c => c.inBox.Index)
 			.FirstOrDefault();
 		if (card != null)
@@ -45,7 +75,7 @@ public class EventHpDepleteSystem : ReactiveSystem<UnitEntity>
 
 	private void UseBoxOnDeadCard(UnitEntity deadEntity)
 	{
-		var cards = _cardContext.GetPlayerBoxComponentCards<IOnDeadAbility>(deadEntity.owner.Entity);
+		var cards = _cardContext.GetPlayerBoxCards<IOnDeadAbility>(deadEntity.owner.Entity);
 
 		foreach (var card in cards)
 		{
