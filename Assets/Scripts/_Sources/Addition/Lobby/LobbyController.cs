@@ -1,4 +1,5 @@
-﻿using Network;
+﻿using System.Linq;
+using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace Lobby
 		public Button WaitButton;
 		public LobbyPlayer LobbyPlayerPrefabs;
 		public MainMissionSelector MissionSelector;
+		public MainMissionDisplay MissionDisplay;
 
 		[Header("Setting")]
 		public Title.TitleSetting TitleSetting;
@@ -33,6 +35,7 @@ namespace Lobby
 			Assert.IsNotNull(LobbyPlayerPrefabs);
 			Assert.IsNotNull(TitleSetting);
 			Assert.IsNotNull(MissionSetting);
+			Assert.IsNotNull(MissionDisplay);
 		}
 
 		private void Start()
@@ -73,6 +76,12 @@ namespace Lobby
 			player.OnPlayerDisconnectCallback += () => {
 				if (lobbyPlayer != null) Destroy(lobbyPlayer.gameObject);
 			};
+
+			if(NetworkController.IsServer)
+			{
+				if(_localPlayer != null)
+					player.MainMissionId = _localPlayer.MainMissionId;
+			}
 		}
 
 		public void SetLocalPlayer(Player player)
@@ -95,10 +104,14 @@ namespace Lobby
 
 			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
 			player.CmdSetIcon((int)NetworkController.Instance.LocalPlayerIconType);
-			MissionSelector.ShowMission((MainMission)player.MainMissionId);
-
+			
 			player.OnReadyStateChangedCallback += UpdateMissionSelector;
-			player.OnMainMissionChangedCallback = MissionSelector.ShowMission;
+			player.OnMainMissionChangedCallback = UpdateMissionDisplay;
+
+			if (NetworkController.IsServer)
+			{
+				MissionSelector.SetMission((MainMission)player.MainMissionId);
+			}
 		}
 
 		public void Back()
@@ -126,17 +139,43 @@ namespace Lobby
 
 		private void CreateMissionSelection()
 		{
-			MissionSelector.LoadDatas(MissionSetting.MainMission.DataList);
-			MissionSelector.OnMissionSelected = SetMainMission;
-			UpdateMissionSelector(false);
+			foreach(var data in MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
+			{
+				MissionSelector.AddMission(data.Type);
+			}
+			MissionSelector.OnMissionChanged = ChangeMission;
+		}
+
+		private void ChangeMission(MainMission mission)
+		{
+			_localPlayer.CmdSetMainMission((int)mission);
+		}
+
+		private MainMissionData GetMissionData(MainMission mission)
+		{
+			return MissionSetting.MainMission.GetData(mission);
+		}
+
+		private MainMissionData GetMissionData(int mission)
+		{
+			return GetMissionData((MainMission)mission);
 		}
 
 		private void UpdateMissionSelector(bool isPlayerReady)
 		{
-			if(NetworkController.IsServer)
+			if(isPlayerReady)
 			{
-				MissionSelector.SetConfigurable(!isPlayerReady);
+				MissionSelector.Hide();
 			}
+			else
+			{
+				MissionSelector.Show();
+			}
+		}
+
+		private void UpdateMissionDisplay(MainMission mission)
+		{
+			MissionDisplay.ShowMission(GetMissionData(mission));
 		}
 	}
 }
