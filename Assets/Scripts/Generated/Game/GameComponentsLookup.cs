@@ -66,7 +66,6 @@ public static class GameComponentsLookup {
         typeof(PlayerDeckComponent),
         typeof(PlayingComponent),
         typeof(PlayingOrderComponent),
-        typeof(RoleComponent),
         typeof(RoundComponent),
         typeof(RoundIndexComponent),
         typeof(SkillCardContainerComponent),

@@ -4,9 +4,14 @@ using NUnit.Framework;
 
 namespace Test.TileTest
 {
-	public class TileSettingTest
+	public class TileSettingTest : IndexDataListTest<Tile, TileData>
 	{
 		private TileSetting _setting;
+
+		protected override IndexDataList<Tile, TileData> GetDataList()
+		{
+			return TestHelper.GetGameSetting().TileSetting;
+		}
 
 		[SetUp]
 		public void Init()
@@ -31,14 +36,8 @@ namespace Test.TileTest
 		{
 			foreach(Tile t in Enum.GetValues(typeof(Tile)))
 			{
-				Assert.IsNotNull(_setting.GetTileData(t));
+				Assert.IsNotNull(_setting.GetData(t));
 			}
-		}
-
-		[Test]
-		public void CheckSetting_AllTileDataTypeDistinct()
-		{
-			Assert.AreEqual(Enum.GetNames(typeof(Tile)).Length, _setting.TileDatas.Count);
 		}
 
 		[Test]
@@ -51,7 +50,7 @@ namespace Test.TileTest
 		[Test]
 		public void CheckSetting_TileWithResourceHaveEmptySResourceSprite()
 		{
-			foreach(var data in _setting.TileDatas)
+			foreach(var data in _setting.DataList)
 			{
 				if(data.Resource != Resource.None)
 				{

@@ -26,7 +26,7 @@ public class CharacterDataLoadingSystem : DataLoadingSystem<UnitEntity, Characte
 
 	protected override CharacterData GetData(UnitEntity entity)
 	{
-		return _setting.GetCharData(entity.character.Type);
+		return _setting.GetData(entity.character.Type);
 	}
 
 	

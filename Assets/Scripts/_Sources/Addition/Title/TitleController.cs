@@ -19,6 +19,10 @@ namespace Title
 		public Text VersionText;
 		public ConnectionDialogue ConnectionDialogue;
 		public Dialogue WarningDialog, ConnectingDialog;
+		public PlayerIconSelector IconSelector;
+
+		[Header("Setting")]
+		public TitleSetting Setting;
 
 		public NetworkController NetCon
 		{
@@ -48,7 +52,7 @@ namespace Title
 			}
 
 			//set profile
-			var playerIconImage = Resources.Load<Sprite>(NetCon.LocalPlayerIconPath);
+			var playerIconImage = Setting.PlayerIconList.GetData(NetCon.LocalPlayerIconType).Icon;
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
 			PlayerNameInputField.text = NetCon.LocalPlayerName;
 			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
@@ -65,6 +69,16 @@ namespace Title
 
 			WarningDialog.OnDialogueClose += () => SetMenuButtonVisible(true);
 			ConnectingDialog.OnDialogueClose += () => SetMenuButtonVisible(true);
+
+			CreatePlayerIconForSelector();
+		}
+
+		private void CreatePlayerIconForSelector()
+		{
+			foreach (var iconData in Setting.PlayerIconList.DataList)
+			{
+				IconSelector.AddIcon(iconData);
+			}
 		}
 
 		public void Host()

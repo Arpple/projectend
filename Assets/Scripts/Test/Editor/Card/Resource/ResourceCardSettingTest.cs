@@ -4,9 +4,14 @@ using NUnit.Framework;
 
 namespace Test.CardTest.ResourceTest
 {
-	public class ResourceCardSettingTest
+	public class ResourceCardSettingTest : IndexDataListTest<Resource, ResourceCardData>
 	{
 		private ResourceCardSetting _setting;
+
+		protected override IndexDataList<Resource, ResourceCardData> GetDataList()
+		{
+			return TestHelper.GetGameSetting().CardSetting.ResourceCardSetting;
+		}
 
 		[SetUp]
 		public void Init()
@@ -15,24 +20,15 @@ namespace Test.CardTest.ResourceTest
 		}
 
 		[Test]
-		public void CheckSetting_AllDataTypeNotDupplicate()
-		{
-			var count = _setting.ResourceCardsData.Count;
-			Assert.AreEqual(count, _setting.ResourceCardsData
-				.Select(d => d.Type)
-				.Distinct()
-				.Count()
-			);
-		}
-
-		[Test]
-		public void CheckSetting_AllResourceTypeHaveDataExceptResourceNone()
+		public void CheckSetting_ResourceIsNotNone_ResourceTypeHaveData()
 		{
 			foreach(Resource res in Enum.GetValues(typeof(Resource)))
 			{
 				if(res != Resource.None)
-					_setting.GetCardData(res);
+					_setting.GetData(res);
 			}
 		}
+
+		
 	}
 }

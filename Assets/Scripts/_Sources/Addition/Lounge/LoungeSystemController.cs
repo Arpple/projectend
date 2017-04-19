@@ -68,8 +68,6 @@ namespace Lounge
 
 			if (IsServer())
 			{
-				systems.Add(new RoleSetupSystem(contexts, Setting.RoleSetting.GetRolesCount(players.Count)));
-				systems.Add(new RoleDataSavingSystem(contexts));
 			}
 
 			return systems;

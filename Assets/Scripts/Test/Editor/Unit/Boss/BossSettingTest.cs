@@ -18,14 +18,8 @@ namespace Test.UnitTest.BossTest
 		{
 			foreach (Boss b in Enum.GetValues(typeof(Boss)))
 			{
-				Assert.IsNotNull(_setting.GetBossData(b));
+				Assert.IsNotNull(_setting.GetData(b));
 			}
-		}
-
-		[Test]
-		public void CheckSetting_AllDataTypeDistinct()
-		{
-			Assert.AreEqual(Enum.GetNames(typeof(Boss)).Length, _setting.BossData.Count);
 		}
 	}
 }

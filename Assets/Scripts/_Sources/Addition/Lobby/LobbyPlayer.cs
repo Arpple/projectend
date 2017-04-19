@@ -17,6 +17,7 @@ namespace Lobby
 		public Icon PlayerIcon;
 
 		private Player _player;
+		private LobbyController _controller;
 
 		private void Awake()
 		{
@@ -25,13 +26,18 @@ namespace Lobby
 			Assert.IsNotNull(PlayerIcon);
 		}
 
+		public void Init(LobbyController controller)
+		{
+			_controller = controller;
+		}
+
 		public void SetPlayer(Player player)
 		{
 			_player = player;
 
 			_player.OnNameChangedCallback += SetName;
 			_player.OnReadyStateChangedCallback += SetStatus;
-			_player.OnIconPathChangedCallback += SetIcon;
+			_player.OnIconChangedCallback += SetIcon;
 		}
 
 		private void OnDestroy()
@@ -40,7 +46,7 @@ namespace Lobby
 
 			_player.OnNameChangedCallback -= SetName;
 			_player.OnReadyStateChangedCallback -= SetStatus;
-			_player.OnIconPathChangedCallback -= SetIcon;
+			_player.OnIconChangedCallback -= SetIcon;
 		}
 
 		private void Update()
@@ -66,9 +72,9 @@ namespace Lobby
 			}
 		}
 
-		public void SetIcon(string iconPath)
+		public void SetIcon(int iconId)
 		{
-			PlayerIcon.SetImage(Resources.Load<Sprite>(iconPath));
+			PlayerIcon.SetImage(_controller.GetPlayerIcon((Title.PlayerIcon)iconId));
 		}
 	}
 }

@@ -4,9 +4,14 @@ using NUnit.Framework;
 
 namespace Test.UnitTest.CharTest
 {
-	public class CharacterSettingTest
+	public class CharacterSettingTest : IndexDataListTest<Character, CharacterData>
 	{
 		private CharacterSetting _setting;
+
+		protected override IndexDataList<Character, CharacterData> GetDataList()
+		{
+			return TestHelper.GetGameSetting().UnitSetting.CharacterSetting;
+		}
 
 		[SetUp]
 		public void Init()
@@ -15,18 +20,12 @@ namespace Test.UnitTest.CharTest
 		}
 
 		[Test]
-		public void CheckData_AllEnumHaveData()
+		public void CheckSetting_AllEnumHaveData()
 		{
 			foreach (Character c in Enum.GetValues(typeof(Character)))
 			{
-				Assert.IsNotNull(_setting.GetCharData(c));
+				Assert.IsNotNull(_setting.GetData(c));
 			}
-		}
-
-		[Test]
-		public void CheckSetting_AllDataTypeDistinct()
-		{
-			Assert.AreEqual(Enum.GetNames(typeof(Character)).Length, _setting.CharactersData.Count);
-		}
+		}	
 	}
 }
