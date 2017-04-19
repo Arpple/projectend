@@ -17,6 +17,8 @@ namespace Lobby
 		public LobbyPlayer LobbyPlayerPrefabs;
 		public MainMissionSelector MissionSelector;
 		public MainMissionDisplay MissionDisplay;
+		public RoundLimitSelector RoundSelector;
+		public RoundLimitDisplay RoundDisplay;
 
 		[Header("Setting")]
 		public Title.TitleSetting TitleSetting;
@@ -36,6 +38,8 @@ namespace Lobby
 			Assert.IsNotNull(TitleSetting);
 			Assert.IsNotNull(MissionSetting);
 			Assert.IsNotNull(MissionDisplay);
+			Assert.IsNotNull(RoundSelector);
+			Assert.IsNotNull(RoundDisplay);
 		}
 
 		private void Start()
@@ -52,6 +56,7 @@ namespace Lobby
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
 
 			CreateMissionSelection();
+			RoundSelector.OnRoundLimitChanged = SetRound;
 		}
 
 		private void OnDestroy()
@@ -63,6 +68,8 @@ namespace Lobby
 
 			_localPlayer.OnReadyStateChangedCallback -= UpdateMissionSelector;
 			_localPlayer.OnMainMissionChangedCallback = null;
+			_localPlayer.OnReadyStateChangedCallback -= UpdateRoundSelector;
+			_localPlayer.OnRoundLimitChangedCallback = null;
 		}
 
 		public void AddPlayer(Player player)
@@ -79,8 +86,11 @@ namespace Lobby
 
 			if(NetworkController.IsServer)
 			{
-				if(_localPlayer != null)
+				if (_localPlayer != null)
+				{
 					player.MainMissionId = _localPlayer.MainMissionId;
+					player.RoundLimit = _localPlayer.RoundLimit;
+				}
 			}
 		}
 
@@ -108,9 +118,13 @@ namespace Lobby
 			player.OnReadyStateChangedCallback += UpdateMissionSelector;
 			player.OnMainMissionChangedCallback = UpdateMissionDisplay;
 
+			player.OnReadyStateChangedCallback += UpdateRoundSelector;
+			player.OnRoundLimitChangedCallback = UpdateRoundDisplay;
+
 			if (NetworkController.IsServer)
 			{
 				MissionSelector.SetMission((MainMission)player.MainMissionId);
+				RoundSelector.SetRound(player.RoundLimit);
 			}
 		}
 
@@ -127,16 +141,12 @@ namespace Lobby
 			netCon.StartGame();
 		}
 
-		public void SetMainMission(MainMission mission)
-		{
-			_localPlayer.CmdSetMainMission((int)mission);
-		}
-
 		public Sprite GetPlayerIcon(Title.PlayerIcon icon)
 		{
 			return TitleSetting.PlayerIconList.GetData(icon).Icon;
 		}
 
+		#region Mission
 		private void CreateMissionSelection()
 		{
 			foreach(var data in MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
@@ -176,6 +186,29 @@ namespace Lobby
 		private void UpdateMissionDisplay(MainMission mission)
 		{
 			MissionDisplay.ShowMission(GetMissionData(mission));
+		}
+		#endregion
+
+		public void UpdateRoundSelector(bool isPlayerReady)
+		{
+			if (isPlayerReady)
+			{
+				RoundSelector.Hide();
+			}
+			else
+			{
+				RoundSelector.Show();
+			}
+		}
+
+		public void UpdateRoundDisplay(int round)
+		{
+			RoundDisplay.ShowRoundLimit(round);
+		}
+
+		public void SetRound(int round)
+		{
+			_localPlayer.CmdSetRound(round);
 		}
 	}
 }

@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &103838173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -276,18 +276,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 103838175}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1206803184}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Mi
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &103838175
@@ -340,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &230624618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -398,18 +387,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 230624620}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1206803184}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &230624620
@@ -1196,6 +1174,8 @@ MonoBehaviour:
     type: 2}
   MissionSelector: {fileID: 2044375488}
   MissionDisplay: {fileID: 2044375489}
+  RoundSelector: {fileID: 1835078713}
+  RoundDisplay: {fileID: 1835078714}
   TitleSetting: {fileID: 11400000, guid: 084cfe4398871d44d82180466f4e1de7, type: 2}
   MissionSetting: {fileID: 11400000, guid: 543ce6b7db736f349a4608b1c428b0aa, type: 2}
 --- !u!114 &1240917381
@@ -1596,7 +1576,7 @@ Prefab:
     - target: {fileID: 224564795052040690, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -176.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224564795052040690, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
@@ -1964,7 +1944,7 @@ Prefab:
     - target: {fileID: 224564795052040690, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -176.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224564795052040690, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
@@ -2043,6 +2023,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1835078712}
+  - component: {fileID: 1835078714}
+  - component: {fileID: 1835078713}
   m_Layer: 5
   m_Name: RoundSetting
   m_TagString: Untagged
@@ -2072,6 +2054,31 @@ RectTransform:
   m_AnchoredPosition: {x: 323, y: 167}
   m_SizeDelta: {x: 331, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1835078713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835078711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb48f52153990e42adf2a406365de59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftButton: {fileID: 103838174}
+  RightButton: {fileID: 230624619}
+--- !u!114 &1835078714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835078711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab522b2064d12b34b9313772e7e25348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoundLimitText: {fileID: 1206803186}
 --- !u!1001 &1837411931
 Prefab:
   m_ObjectHideFlags: 0
