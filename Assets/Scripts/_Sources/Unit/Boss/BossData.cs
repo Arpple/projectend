@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Boss", fileName = "new_boss.asset")]
+[CreateAssetMenu(menuName = "End/Unit/Boss", fileName = "new_boss.asset")]
 public class BossData : UnitData, IIndexData<Boss>
 {
 	[Header("--Boss--")]

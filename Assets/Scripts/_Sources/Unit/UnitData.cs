@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Unit", fileName = "new_unit.asset")]
+[CreateAssetMenu(menuName = "End/Unit/Unit", fileName = "new_unit.asset")]
 public class UnitData : EntityData
 {
 	[Header("Sprite")]

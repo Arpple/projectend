@@ -26,7 +26,9 @@ namespace Network
 		public int MainMissionId;
 
 		[SyncVar]
-		public int SubMissionId;
+		public int PersonalMissionId;
+		[SyncVar]
+		public int PerosnalMissionTarget;
 
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;

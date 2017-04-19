@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Main Mission", fileName = "mainMission.asset")]
+[CreateAssetMenu(menuName = "End/Mission/Main Mission", fileName = "mainMission.asset")]
 public class MainMissionData : EntityData, IIndexData<MainMission>
 {
 	public MainMission Type;

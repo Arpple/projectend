@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 /// <summary>
 /// game data holder
 /// </summary>
-[CreateAssetMenu(menuName = "End/Setting", fileName = "new_setting.asset")]
+[CreateAssetMenu(menuName = "End/Setting/Main Setting", fileName = "new_setting.asset")]
 public class Setting : ScriptableObject
 {
 	public TileSetting TileSetting;
