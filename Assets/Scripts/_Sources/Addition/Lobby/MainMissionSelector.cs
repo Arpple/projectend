@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Network;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -9,114 +7,74 @@ namespace Lobby
 {
 	public class MainMissionSelector : MonoBehaviour
 	{
-		public MainMissionSelectorObject MissionObjectPrefabs;
-		public Transform MissionObjectParent;
-		public Button LeftArrow;
-		public Button RightArrow;
+		public Button LeftButton;
+		public Button RightButton;
+		public UnityAction<MainMission> OnMissionChanged;
 
-		public UnityAction<MainMission> OnMissionSelected;
-
-		private Dictionary<MainMission, MainMissionSelectorObject> _missionObjects;
-		private int _missionCount;
-		private int _selectedIndex;
+		private TwoWayObjectSelector<MainMission> _missions;
 
 		private void Awake()
 		{
-			_missionObjects = new Dictionary<MainMission, MainMissionSelectorObject>();
-			_missionCount = Enum.GetNames(typeof(MainMission)).Length;
-			Assert.IsTrue(_missionCount > 0);
-			_selectedIndex = 0;
-
-			SetConfigurable(false);
+			_missions = new TwoWayObjectSelector<MainMission>();
 		}
 
 		private void Start()
 		{
-			LeftArrow.onClick.AddListener(MoveLeft);
-			RightArrow.onClick.AddListener(MoveRight);
-		}
-
-		public void SetConfigurable(bool isEnable)
-		{
-			LeftArrow.gameObject.SetActive(isEnable);
-			RightArrow.gameObject.SetActive(isEnable);
-		}
-
-		public void AddMission(MainMissionData data)
-		{
-			var missionObj = Instantiate(MissionObjectPrefabs, MissionObjectParent, false);
-			missionObj.SetMissionData(data);
-			missionObj.gameObject.SetActive(false);
-			_missionObjects.Add(data.Type, missionObj);
-
-			UpdateSelection();
-		}
-
-		public void ShowMission(MainMission mission)
-		{
-			MainMissionSelectorObject missionObject;
-			if (_missionObjects.TryGetValue(mission, out missionObject))
+			if(!NetworkController.IsServer)
 			{
-				ChangeSelectedMission((int)mission);
-				UpdateSelection();
+				Hide();
 			}
+			LeftButton.onClick.AddListener(ChangeToLeftMission);
+			RightButton.onClick.AddListener(ChangeToRigthMission);
 		}
 
-		private void MoveLeft()
+		public void AddMission(MainMission mission)
 		{
-			if (!CanMoveLeft()) return;
-			SelectMission(GetSelectedMission() - 1);
+			_missions.AddItem(mission);
 		}
 
-		private void MoveRight()
+		public void UpdateButtonInteractable()
 		{
-			if (!CanMoveRight()) return;
-			SelectMission(GetSelectedMission() + 1);
+			LeftButton.interactable = _missions.CanMoveDown();
+			RightButton.interactable = _missions.CanMoveUp();
 		}
 
-		private void ChangeSelectedMission(int newIndex)
+		public void SetMission(MainMission mission)
 		{
-			HideSelectedMission();
-			_selectedIndex = newIndex;
-			ShowSelectedMission();
+			_missions.SetSelectedItem(mission);
+			UpdateMission();
 		}
 
-		private void UpdateSelection()
+		public void ChangeToLeftMission()
 		{
-			LeftArrow.interactable = CanMoveLeft();
-			RightArrow.interactable = CanMoveRight();
+			_missions.MoveIndexDown();
+			UpdateMission();
 		}
 
-		private bool CanMoveLeft()
+		public void ChangeToRigthMission()
 		{
-			return _selectedIndex > 0;
+			_missions.MoveIndexUp();
+			UpdateMission();
 		}
 
-		private bool CanMoveRight()
+		public void Hide()
 		{
-			return _selectedIndex < _missionCount - 1;
+			LeftButton.gameObject.SetActive(false);
+			RightButton.gameObject.SetActive(false);
 		}
 
-		private void HideSelectedMission()
+		public void Show()
 		{
-			_missionObjects[GetSelectedMission()].gameObject.SetActive(false);
+			LeftButton.gameObject.SetActive(true);
+			LeftButton.gameObject.SetActive(true);
 		}
 
-		private MainMission GetSelectedMission()
+		private void UpdateMission()
 		{
-			return (MainMission)_selectedIndex;
-		}
-
-		private void ShowSelectedMission()
-		{
-			_missionObjects[GetSelectedMission()].gameObject.SetActive(true);
-		}
-
-		private void SelectMission(MainMission mission)
-		{
-			if (OnMissionSelected != null)
+			UpdateButtonInteractable();
+			if (OnMissionChanged != null)
 			{
-				OnMissionSelected(mission);
+				OnMissionChanged(_missions.GetCurrentITem());
 			}
 		}
 	}

@@ -1,4 +1,5 @@
-﻿using Network;
+﻿using System.Linq;
+using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ namespace Lobby
 		public Button WaitButton;
 		public LobbyPlayer LobbyPlayerPrefabs;
 		public MainMissionSelector MissionSelector;
+		public MainMissionDisplay MissionDisplay;
+		public RoundLimitSelector RoundSelector;
+		public RoundLimitDisplay RoundDisplay;
 
 		[Header("Setting")]
 		public Title.TitleSetting TitleSetting;
@@ -33,14 +37,17 @@ namespace Lobby
 			Assert.IsNotNull(LobbyPlayerPrefabs);
 			Assert.IsNotNull(TitleSetting);
 			Assert.IsNotNull(MissionSetting);
+			Assert.IsNotNull(MissionDisplay);
+			Assert.IsNotNull(RoundSelector);
+			Assert.IsNotNull(RoundDisplay);
 		}
 
 		private void Start()
 		{
 			ReadyButton.onClick.RemoveAllListeners();
 			WaitButton.onClick.RemoveAllListeners();
-
 			BackButton.onClick.RemoveAllListeners();
+
 			BackButton.onClick.AddListener(Back);
 
 			var netCon = NetworkController.Instance;
@@ -49,6 +56,7 @@ namespace Lobby
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
 
 			CreateMissionSelection();
+			RoundSelector.OnRoundLimitChanged = SetRound;
 		}
 
 		private void OnDestroy()
@@ -60,6 +68,8 @@ namespace Lobby
 
 			_localPlayer.OnReadyStateChangedCallback -= UpdateMissionSelector;
 			_localPlayer.OnMainMissionChangedCallback = null;
+			_localPlayer.OnReadyStateChangedCallback -= UpdateRoundSelector;
+			_localPlayer.OnRoundLimitChangedCallback = null;
 		}
 
 		public void AddPlayer(Player player)
@@ -68,10 +78,20 @@ namespace Lobby
 			lobbyPlayer.Init(this);
 			lobbyPlayer.transform.SetParent(PlayerContainer.transform, false);
 			lobbyPlayer.SetPlayer(player);
+			lobbyPlayer.SetIcon(GetPlayerIcon((Title.PlayerIcon)player.PlayerIconId));
 
 			player.OnPlayerDisconnectCallback += () => {
 				if (lobbyPlayer != null) Destroy(lobbyPlayer.gameObject);
 			};
+
+			if(NetworkController.IsServer)
+			{
+				if (_localPlayer != null)
+				{
+					player.MainMissionId = _localPlayer.MainMissionId;
+					player.RoundLimit = _localPlayer.RoundLimit;
+				}
+			}
 		}
 
 		public void SetLocalPlayer(Player player)
@@ -94,9 +114,18 @@ namespace Lobby
 
 			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
 			player.CmdSetIcon((int)NetworkController.Instance.LocalPlayerIconType);
-			player.OnMainMissionChangedCallback = MissionSelector.ShowMission;
-			MissionSelector.ShowMission((MainMission)player.MainMissionId);
+			
 			player.OnReadyStateChangedCallback += UpdateMissionSelector;
+			player.OnMainMissionChangedCallback = UpdateMissionDisplay;
+
+			player.OnReadyStateChangedCallback += UpdateRoundSelector;
+			player.OnRoundLimitChangedCallback = UpdateRoundDisplay;
+
+			if (NetworkController.IsServer)
+			{
+				MissionSelector.SetMission((MainMission)player.MainMissionId);
+				RoundSelector.SetRound(player.RoundLimit);
+			}
 		}
 
 		public void Back()
@@ -112,32 +141,74 @@ namespace Lobby
 			netCon.StartGame();
 		}
 
-		public void SetMainMission(MainMission mission)
-		{
-			_localPlayer.CmdSetMainMission((int)mission);
-		}
-
 		public Sprite GetPlayerIcon(Title.PlayerIcon icon)
 		{
 			return TitleSetting.PlayerIconList.GetData(icon).Icon;
 		}
 
+		#region Mission
 		private void CreateMissionSelection()
 		{
-			foreach(var mainMission in MissionSetting.MainMission.DataList)
+			foreach(var data in MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
 			{
-				MissionSelector.AddMission(mainMission);
+				MissionSelector.AddMission(data.Type);
 			}
-			MissionSelector.OnMissionSelected = SetMainMission;
-			UpdateMissionSelector(false);
+			MissionSelector.OnMissionChanged = ChangeMission;
+		}
+
+		private void ChangeMission(MainMission mission)
+		{
+			_localPlayer.CmdSetMainMission((int)mission);
+		}
+
+		private MainMissionData GetMissionData(MainMission mission)
+		{
+			return MissionSetting.MainMission.GetData(mission);
+		}
+
+		private MainMissionData GetMissionData(int mission)
+		{
+			return GetMissionData((MainMission)mission);
 		}
 
 		private void UpdateMissionSelector(bool isPlayerReady)
 		{
-			if(NetworkController.IsServer)
+			if(isPlayerReady)
 			{
-				MissionSelector.SetConfigurable(!isPlayerReady);
+				MissionSelector.Hide();
 			}
+			else
+			{
+				MissionSelector.Show();
+			}
+		}
+
+		private void UpdateMissionDisplay(MainMission mission)
+		{
+			MissionDisplay.ShowMission(GetMissionData(mission));
+		}
+		#endregion
+
+		public void UpdateRoundSelector(bool isPlayerReady)
+		{
+			if (isPlayerReady)
+			{
+				RoundSelector.Hide();
+			}
+			else
+			{
+				RoundSelector.Show();
+			}
+		}
+
+		public void UpdateRoundDisplay(int round)
+		{
+			RoundDisplay.ShowRoundLimit(round);
+		}
+
+		public void SetRound(int round)
+		{
+			_localPlayer.CmdSetRound(round);
 		}
 	}
 }

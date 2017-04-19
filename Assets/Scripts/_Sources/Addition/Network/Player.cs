@@ -28,8 +28,8 @@ namespace Network
 		[SyncVar]
 		public int SubMissionId;
 
-		[SyncVar]
-		public int RoleId;
+		[SyncVar(hook = "OnRoundLimitChanged")]
+		public int RoundLimit;
 
 		public delegate void ChangeNameCallback(string name);
 		public delegate void ChangeIconCallback(int iconId);
@@ -42,6 +42,7 @@ namespace Network
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
 
 		public UnityAction<MainMission> OnMainMissionChangedCallback;
+		public UnityAction<int> OnRoundLimitChangedCallback;
 
 		public delegate void PlayerDisconnectCallback();
 		public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
@@ -80,6 +81,15 @@ namespace Network
 			MainMissionId = mainMissionId;
 			if (OnMainMissionChangedCallback != null)
 				OnMainMissionChangedCallback((MainMission)mainMissionId);
+		}
+
+		public void OnRoundLimitChanged(int round)
+		{
+			RoundLimit = round;
+			if (OnRoundLimitChangedCallback != null)
+			{
+				OnRoundLimitChangedCallback(round);
+			}
 		}
 		#endregion
 
@@ -174,9 +184,12 @@ namespace Network
 		}
 
 		[Command]
-		public void CmdSetRole(int roleId)
+		public void CmdSetRound(int round)
 		{
-			RoleId = roleId;
+			foreach (var p in NetworkController.Instance.AllPlayers)
+			{
+				p.RoundLimit = round;
+			}
 		}
 
 		[Command]
