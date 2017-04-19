@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 namespace Network
@@ -21,7 +22,7 @@ namespace Network
 		[SyncVar(hook = "OnReadyStateChanged")]
 		public bool IsReady;
 
-		[SyncVar]
+		[SyncVar(hook = "OnMainMissionChanged")]
 		public int MainMissionId;
 
 		[SyncVar]
@@ -39,6 +40,8 @@ namespace Network
 		public event ChangeIconCallback OnIconChangedCallback;
 		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
+
+		public UnityAction<MainMission> OnMainMissionChangedCallback;
 
 		public delegate void PlayerDisconnectCallback();
 		public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
@@ -70,6 +73,13 @@ namespace Network
 			{
 				if (NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsReady)) { NetworkController.Instance.OnServerAllPlayerReady(); }
 			}
+		}
+
+		public void OnMainMissionChanged(int mainMissionId)
+		{
+			MainMissionId = mainMissionId;
+			if (OnMainMissionChangedCallback != null)
+				OnMainMissionChangedCallback((MainMission)mainMissionId);
 		}
 		#endregion
 

@@ -14,6 +14,9 @@ namespace Lobby
 		public Button ReadyButton;
 		public Button WaitButton;
 		public LobbyPlayer LobbyPlayerPrefabs;
+		public MainMissionSelector MissionSelector;
+
+		[Header("Setting")]
 		public Title.TitleSetting TitleSetting;
 		public MissionSetting MissionSetting;
 
@@ -44,6 +47,8 @@ namespace Lobby
 			netCon.OnAllPlayerReadyCallback += MoveToCharacterSelection;
 			netCon.OnClientPlayerStartCallback += AddPlayer;
 			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
+
+			CreateMissionSelection();
 		}
 
 		private void OnDestroy()
@@ -52,6 +57,9 @@ namespace Lobby
 			netCon.OnAllPlayerReadyCallback -= MoveToCharacterSelection;
 			netCon.OnClientPlayerStartCallback -= AddPlayer;
 			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
+
+			_localPlayer.OnReadyStateChangedCallback -= UpdateMissionSelector;
+			_localPlayer.OnMainMissionChangedCallback = null;
 		}
 
 		public void AddPlayer(Player player)
@@ -86,6 +94,9 @@ namespace Lobby
 
 			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
 			player.CmdSetIcon((int)NetworkController.Instance.LocalPlayerIconType);
+			player.OnMainMissionChangedCallback = MissionSelector.ShowMission;
+			MissionSelector.ShowMission((MainMission)player.MainMissionId);
+			player.OnReadyStateChangedCallback += UpdateMissionSelector;
 		}
 
 		public void Back()
@@ -101,7 +112,6 @@ namespace Lobby
 			netCon.StartGame();
 		}
 
-		//TODO: use this for mission selection
 		public void SetMainMission(MainMission mission)
 		{
 			_localPlayer.CmdSetMainMission((int)mission);
@@ -110,6 +120,24 @@ namespace Lobby
 		public Sprite GetPlayerIcon(Title.PlayerIcon icon)
 		{
 			return TitleSetting.PlayerIconList.GetData(icon).Icon;
+		}
+
+		private void CreateMissionSelection()
+		{
+			foreach(var mainMission in MissionSetting.MainMission.DataList)
+			{
+				MissionSelector.AddMission(mainMission);
+			}
+			MissionSelector.OnMissionSelected = SetMainMission;
+			UpdateMissionSelector(false);
+		}
+
+		private void UpdateMissionSelector(bool isPlayerReady)
+		{
+			if(NetworkController.IsServer)
+			{
+				MissionSelector.SetConfigurable(!isPlayerReady);
+			}
 		}
 	}
 }
