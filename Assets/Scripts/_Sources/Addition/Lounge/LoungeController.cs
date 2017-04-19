@@ -21,6 +21,8 @@ namespace Lounge
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
 
+		public Setting Setting;
+
 		private Character _focusingCharacter;
 		private Player _localPlayer;
 		private NetworkController _networkController
@@ -39,6 +41,7 @@ namespace Lounge
 			Assert.IsNotNull(CharacterSelectSlideMenu);
 			Assert.IsNotNull(LockButton);
 			Assert.IsNotNull(CharacterSelectPlayerPrefabs);
+			Assert.IsNotNull(Setting);
 		}
 
 		void Start()
@@ -54,6 +57,8 @@ namespace Lounge
 			}
 
 			_networkController.OnAllPlayerReadyCallback += LoadGameScene;
+
+			UnitSkill.Initialize(Setting.CardSetting.SkillCardSetting);
 		}
 
 		private void FocusCharacterIcon(SlideItem characterIcon)
@@ -84,15 +89,8 @@ namespace Lounge
 		/// Show Unit Info 
 		/// </summary>
 		public void ShowUnitInformationUnit(UnitEntity unit) {
-			Sprite sprite = unit.sprite.Sprite;
-			UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
-				,unit.unitStatus.HitPoint
-				,unit.unitStatus.AttackPower
-				,unit.unitStatus.AttackRange
-				,unit.unitStatus.VisionRange
-				,unit.unitStatus.MoveSpeed);
-
-			//TODO: show skill
+			UnitStatus.SetUnit(unit);
+			UnitSkill.SetUnit(unit);
 		}
 
 		#region UI RoleContent

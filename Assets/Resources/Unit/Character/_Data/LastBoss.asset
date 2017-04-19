@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d793a191f7a3664f9225282db9521df, type: 3}
   m_Name: LastBoss
   m_EditorClassIdentifier: 
-  BodySprite: {fileID: 21300000, guid: be20e84e387bd7c479cd19f638f1ac94, type: 3}
+  BodySprite: {fileID: 21300000, guid: 58960a459dcd779479a957729d9b3bf9, type: 3}
   IconSprite: {fileID: 21300000, guid: be20e84e387bd7c479cd19f638f1ac94, type: 3}
   Name: LastBoss
   Description: 
