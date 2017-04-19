@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UI;
 
-namespace Lounge {
-    public class UnitSkillPanel : MonoBehaviour{
+namespace Lounge
+{
+	public class UnitSkillPanel : MonoBehaviour{
 
 		public UnitSkillObject SkillObjectPrefabs;
 		public Transform SkillObjectParent;
@@ -35,7 +35,7 @@ namespace Lounge {
 		{
 			foreach(var s in _skills)
 			{
-				Destroy(s);
+				Destroy(s.gameObject);
 			}
 			_skills.Clear();
 		}

@@ -1,8 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
-
-
 using Network;
 
 namespace Lounge
