@@ -38,7 +38,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224182819050281178}
   - component: {fileID: 222374625811889848}
-  - component: {fileID: 114538572034353556}
   m_Layer: 5
   m_Name: CharactorAbility
   m_TagString: Untagged
@@ -480,7 +479,6 @@ GameObject:
   - component: {fileID: 224172449961676826}
   - component: {fileID: 222414681070997938}
   - component: {fileID: 114487585266106718}
-  - component: {fileID: 114017387411187294}
   m_Layer: 5
   m_Name: CharactorStatus
   m_TagString: Untagged
@@ -1741,7 +1739,6 @@ GameObject:
   - component: {fileID: 224981192918998796}
   - component: {fileID: 222475108386612126}
   - component: {fileID: 114514187914200572}
-  - component: {fileID: 114608021173148630}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -1972,24 +1969,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114017387411187294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297895988712032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8282a66628885744a937c87ca1ac1d6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPoint: {fileID: 114544501979130430}
-  AttackPower: {fileID: 114389868352256876}
-  AttackRange: {fileID: 114620739971747198}
-  VisionRange: {fileID: 114728405985945674}
-  MoveSpeed: {fileID: 114748622132047970}
-  UnitName: {fileID: 114099803852541296}
-  UnitImage: {fileID: 114895609939928858}
 --- !u!114 &114033557443766082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4218,23 +4197,6 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
---- !u!114 &114538572034353556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1047741688075694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7bb663db573e24f97eba7e669bc492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityIcon:
-  - {fileID: 114337348030611464}
-  - {fileID: 114616725659105524}
-  - {fileID: 114319854424483196}
-  TextAbilityName: {fileID: 114136383130062034}
-  TextDescription: {fileID: 114099606737627002}
 --- !u!114 &114544501979130430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4328,21 +4290,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '- Priest - '
---- !u!114 &114608021173148630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976100038973726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef11889fc3b1d2408f6fd143fd54069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerName: {fileID: 114613661734733368}
-  PlayerLockedStatus: {fileID: 114854802865491006}
-  PlayerRole: {fileID: 114943677771189526}
-  CharacterSelectedIcon: {fileID: 114463407893823224}
 --- !u!114 &114609962985148484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7000,7 +6947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 220.40001, y: 0}
+  m_AnchoredPosition: {x: 222.5, y: 0}
   m_SizeDelta: {x: 0, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224275511990729604
