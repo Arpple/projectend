@@ -39,8 +39,8 @@ namespace Lobby
 		{
 			ReadyButton.onClick.RemoveAllListeners();
 			WaitButton.onClick.RemoveAllListeners();
-
 			BackButton.onClick.RemoveAllListeners();
+
 			BackButton.onClick.AddListener(Back);
 
 			var netCon = NetworkController.Instance;
@@ -68,6 +68,7 @@ namespace Lobby
 			lobbyPlayer.Init(this);
 			lobbyPlayer.transform.SetParent(PlayerContainer.transform, false);
 			lobbyPlayer.SetPlayer(player);
+			lobbyPlayer.SetIcon(GetPlayerIcon((Title.PlayerIcon)player.PlayerIconId));
 
 			player.OnPlayerDisconnectCallback += () => {
 				if (lobbyPlayer != null) Destroy(lobbyPlayer.gameObject);
@@ -94,9 +95,10 @@ namespace Lobby
 
 			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
 			player.CmdSetIcon((int)NetworkController.Instance.LocalPlayerIconType);
-			player.OnMainMissionChangedCallback = MissionSelector.ShowMission;
 			MissionSelector.ShowMission((MainMission)player.MainMissionId);
+
 			player.OnReadyStateChangedCallback += UpdateMissionSelector;
+			player.OnMainMissionChangedCallback = MissionSelector.ShowMission;
 		}
 
 		public void Back()
@@ -124,10 +126,7 @@ namespace Lobby
 
 		private void CreateMissionSelection()
 		{
-			foreach(var mainMission in MissionSetting.MainMission.DataList)
-			{
-				MissionSelector.AddMission(mainMission);
-			}
+			MissionSelector.LoadDatas(MissionSetting.MainMission.DataList);
 			MissionSelector.OnMissionSelected = SetMainMission;
 			UpdateMissionSelector(false);
 		}

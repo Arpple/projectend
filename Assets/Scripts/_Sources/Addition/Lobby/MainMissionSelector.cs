@@ -36,6 +36,14 @@ namespace Lobby
 			RightArrow.onClick.AddListener(MoveRight);
 		}
 
+		public void LoadDatas(List<MainMissionData> datas)
+		{
+			foreach (var mainMission in datas)
+			{
+				AddMission(mainMission);
+			}
+		}
+
 		public void SetConfigurable(bool isEnable)
 		{
 			LeftArrow.gameObject.SetActive(isEnable);
