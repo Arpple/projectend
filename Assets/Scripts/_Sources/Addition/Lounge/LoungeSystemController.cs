@@ -68,6 +68,7 @@ namespace Lounge
 
 			if (IsServer())
 			{
+				systems.Add(new PersonalMissionAssignSystem(contexts, Setting.MissionSetting.PersonalMission));
 			}
 
 			return systems;

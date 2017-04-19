@@ -70,10 +70,6 @@ public partial class Contexts {
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
-        card.AddEntityIndex(new Entitas.EntityIndex<CardEntity, int>(
-            Id,
-            card.GetGroup(CardMatcher.Id),
-            (e, c) => ((IdComponent)c).Id));
         tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, int>(
             Id,
             tile.GetGroup(TileMatcher.Id),
@@ -86,14 +82,18 @@ public partial class Contexts {
             Id,
             unit.GetGroup(UnitMatcher.Id),
             (e, c) => ((IdComponent)c).Id));
+        card.AddEntityIndex(new Entitas.EntityIndex<CardEntity, int>(
+            Id,
+            card.GetGroup(CardMatcher.Id),
+            (e, c) => ((IdComponent)c).Id));
 
-        unit.AddEntityIndex(new Entitas.EntityIndex<UnitEntity, Position>(
-            MapPosition,
-            unit.GetGroup(UnitMatcher.MapPosition),
-            (e, c) => ((MapPositionComponent)c).Value));
         tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, Position>(
             MapPosition,
             tile.GetGroup(TileMatcher.MapPosition),
+            (e, c) => ((MapPositionComponent)c).Value));
+        unit.AddEntityIndex(new Entitas.EntityIndex<UnitEntity, Position>(
+            MapPosition,
+            unit.GetGroup(UnitMatcher.MapPosition),
             (e, c) => ((MapPositionComponent)c).Value));
 
         tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, int>(
@@ -104,10 +104,6 @@ public partial class Contexts {
 }
 
 public static class ContextsExtensions {
-
-    public static System.Collections.Generic.HashSet<CardEntity> GetEntitiesWithId(this CardContext context, int Id) {
-        return ((Entitas.EntityIndex<CardEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
-    }
 
     public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithId(this TileContext context, int Id) {
         return ((Entitas.EntityIndex<TileEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
@@ -121,12 +117,16 @@ public static class ContextsExtensions {
         return ((Entitas.EntityIndex<UnitEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
-    public static System.Collections.Generic.HashSet<UnitEntity> GetEntitiesWithMapPosition(this UnitContext context, Position Value) {
-        return ((Entitas.EntityIndex<UnitEntity, Position>)context.GetEntityIndex(Contexts.MapPosition)).GetEntities(Value);
+    public static System.Collections.Generic.HashSet<CardEntity> GetEntitiesWithId(this CardContext context, int Id) {
+        return ((Entitas.EntityIndex<CardEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
     public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithMapPosition(this TileContext context, Position Value) {
         return ((Entitas.EntityIndex<TileEntity, Position>)context.GetEntityIndex(Contexts.MapPosition)).GetEntities(Value);
+    }
+
+    public static System.Collections.Generic.HashSet<UnitEntity> GetEntitiesWithMapPosition(this UnitContext context, Position Value) {
+        return ((Entitas.EntityIndex<UnitEntity, Position>)context.GetEntityIndex(Contexts.MapPosition)).GetEntities(Value);
     }
 
     public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithSpawnpoint(this TileContext context, int index) {

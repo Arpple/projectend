@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -28,7 +29,7 @@ namespace Network
 		[SyncVar]
 		public int PersonalMissionId;
 		[SyncVar]
-		public int PerosnalMissionTarget;
+		public int PersonalMissionTarget;
 
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
@@ -201,6 +202,14 @@ namespace Network
 			{
 				p.MainMissionId = missionId;
 			}
+		}
+
+		[Command]
+		public void CmdSetPersonalMission(int playerId, int missionId, int target)
+		{
+			var player = NetworkController.Instance.AllPlayers.First(p => p.PlayerId == playerId);
+			player.PersonalMissionId = missionId;
+			player.PersonalMissionTarget = target;
 		}
 
 		[ClientRpc]

@@ -7,6 +7,10 @@ public class PersonalMissionData : EntityData, IIndexData<PersonalMission>
 	public string Name;
 	[TextArea] public string Description;
 
+	[Header("Target")]
+	public bool RandomPlayer;
+	public int Constant;
+
 	public PersonalMission GetIndex()
 	{
 		return Type;
