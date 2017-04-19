@@ -84,7 +84,7 @@ namespace Lounge
 		/// Show Unit Info 
 		/// </summary>
 		public void ShowUnitInformationUnit(UnitEntity unit) {
-			Sprite sprite = unit.unitIcon.IconSprite;
+			Sprite sprite = unit.sprite.Sprite;
 			UnitStatus.setUnitStatus(unit.unitDetail.Name,sprite
 				,unit.unitStatus.HitPoint
 				,unit.unitStatus.AttackPower

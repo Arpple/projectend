@@ -62,6 +62,7 @@ namespace Lounge
 				.Add(new PlayerCreatingSystem(contexts, players))
 				.Add(new LocalPlayerSetupSystem(contexts, NetworkController.Instance.LocalPlayer))
 				.Add(new CharacterLoadingSystems(contexts))
+				.Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
 				.Add(new ContextsResetSystem(contexts))
 				;
