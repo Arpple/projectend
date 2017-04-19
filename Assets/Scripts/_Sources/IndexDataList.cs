@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public abstract class IndexDataList<TIndex, TData>
 	where TData : IIndexData<TIndex>
@@ -16,12 +16,14 @@ public abstract class IndexDataList<TIndex, TData>
 	public TData GetData(TIndex index)
 	{
 		var data = _cacheData.Get(index, (i) => DataList.FirstOrDefault(d => d.IsIndexEquals(i)));
-		if (data == null) OnDataNotFound(index);
+		if (data == null) throw new DataNotFoundException(index);
 		return data;
 	}
 
-	protected virtual void OnDataNotFound(TIndex index)
+	public class DataNotFoundException : Exception
 	{
-		throw new MissingReferenceException("Data not found : " + index.ToString());
+		public DataNotFoundException(TIndex index)
+			: base("Data not found at " + index.ToString())
+		{ }
 	}
 }
