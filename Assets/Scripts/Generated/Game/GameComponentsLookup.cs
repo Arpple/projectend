@@ -19,9 +19,9 @@ public static class GameComponentsLookup {
     public const int PlayerDeck = 8;
     public const int Playing = 9;
     public const int PlayingOrder = 10;
-    public const int Role = 11;
-    public const int Round = 12;
-    public const int RoundIndex = 13;
+    public const int Round = 11;
+    public const int RoundIndex = 12;
+    public const int RoundLimit = 13;
     public const int SkillCardContainer = 14;
     public const int Turn = 15;
     public const int TurnNode = 16;
@@ -43,9 +43,9 @@ public static class GameComponentsLookup {
         "PlayerDeck",
         "Playing",
         "PlayingOrder",
-        "Role",
         "Round",
         "RoundIndex",
+        "RoundLimit",
         "SkillCardContainer",
         "Turn",
         "TurnNode",
@@ -68,6 +68,7 @@ public static class GameComponentsLookup {
         typeof(PlayingOrderComponent),
         typeof(RoundComponent),
         typeof(RoundIndexComponent),
+        typeof(RoundLimitComponent),
         typeof(SkillCardContainerComponent),
         typeof(TurnComponent),
         typeof(TurnNodeComponent),
