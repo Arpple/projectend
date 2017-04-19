@@ -2073,9 +2073,9 @@ RectTransform:
   m_Father: {fileID: 488998049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 222.5, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -41}
   m_SizeDelta: {x: 0, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &333700308
@@ -8750,9 +8750,8 @@ MonoBehaviour:
   SkillObjectPrefabs: {fileID: 114356107958635516, guid: 98f3918a44847ec47b2bf7af2750a33a,
     type: 2}
   SkillObjectParent: {fileID: 58537791}
-  AbilityIcon: []
-  TextAbilityName: {fileID: 580605020}
-  TextDescription: {fileID: 1529250358}
+  SkillNameText: {fileID: 580605020}
+  SkillDescriptionText: {fileID: 1529250358}
 --- !u!1 &1517682029
 GameObject:
   m_ObjectHideFlags: 0

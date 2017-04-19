@@ -9,10 +9,10 @@ namespace Lounge {
 		public UnitSkillObject SkillObjectPrefabs;
 		public Transform SkillObjectParent;
 
-        public Icon[] AbilityIcon;
-        public Text TextAbilityName,TextDescription;
-		private List<UnitSkillObject> _skills;
+		public Text SkillNameText;
+		public Text SkillDescriptionText;
 
+		private List<UnitSkillObject> _skills;
 		private SkillCardSetting _setting;
 
 		private void Awake()
@@ -28,11 +28,7 @@ namespace Lounge {
 		public void SetUnit(UnitEntity unit)
 		{
 			ClearOldUnitSkill();
-			if (!unit.hasCharacterSkillsResource) return;
-			foreach(var skill in unit.characterSkillsResource.Skills)
-			{
-				CreateSkillObject(skill);
-			}
+			LoadUnitSkills(unit);
 		}
 
 		private void ClearOldUnitSkill()
@@ -44,11 +40,28 @@ namespace Lounge {
 			_skills.Clear();
 		}
 
+		private void LoadUnitSkills(UnitEntity unit)
+		{
+			if (!unit.hasCharacterSkillsResource) return;
+			foreach (var skill in unit.characterSkillsResource.Skills)
+			{
+				CreateSkillObject(skill);
+			}
+		}
+
 		private void CreateSkillObject(SkillCard skill)
 		{
 			var obj = Instantiate(SkillObjectPrefabs, SkillObjectParent, false);
-			obj.SetSkill(_setting.GetData(skill));
+			obj.SetSkillData(_setting.GetData(skill));
 			_skills.Add(obj);
+
+			obj.Button.onClick.AddListener(() => ShowSkillDetail(obj));
+		}
+
+		private void ShowSkillDetail(UnitSkillObject obj)
+		{
+			SkillNameText.text = obj.GetSkillName();
+			SkillDescriptionText.text = obj.GetSkillDescription();
 		}
 
         //public void SetAbility(List<object> ability) {
