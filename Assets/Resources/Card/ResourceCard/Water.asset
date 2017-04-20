@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f445aa263e0a43438afaa2a677a0dea, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  MainSprite: {fileID: 21300000, guid: 9bfb048d01e3e544782c84cd142582fd, type: 3}
+  MainSprite: {fileID: 21300000, guid: 89e1230e490d90c449b84c9671d18d17, type: 3}
+  Name: 
+  ActiveDesc: Target other Water card in your hand to combine charge
+  PassiveDesc: pay weather cost
   Type: 2
