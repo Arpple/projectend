@@ -35,7 +35,7 @@ public class CardDiscardGroup : CardActionGroup
 	{
 		base.Show();
 		ConfirmButton.onClick.AddListener(DiscardAndDoAction);
-		CancelButton.onClick.AddListener(CloseAction);
+		CancelButton.onClick.AddListener(Cancel);
 		CardPanel.SetActive(true);
 	}
 
@@ -105,5 +105,15 @@ public class CardDiscardGroup : CardActionGroup
 	private bool IsTargetCountReached()
 	{
 		return _targetCount == _discardingCards.Count;
+	}
+
+	private void Cancel()
+	{
+		foreach(var card in _discardingCards)
+		{
+			card.HideHighlight();
+		}
+		_discardingCards.Clear();
+		CloseAction();
 	}
 }
