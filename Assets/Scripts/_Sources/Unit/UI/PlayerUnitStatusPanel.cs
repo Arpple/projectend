@@ -9,6 +9,9 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 	public Text PlayerNameText;
 	public Icon CharacterIcon;
 
+    [Header("Turn")]
+    public Image CrownImage;
+
 	[Header("Character Status")]
 	public Text DeckCardCountText;
 	public Text BoxCardCountText;
@@ -54,7 +57,10 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 		UpdateUnitHitpoint(entity.hitpoint);
 
 		ShowingCharacter = entity;
-	}
+
+        //Show Crown when current Turn.
+        CrownImage.gameObject.SetActive(entity.owner.Entity.isPlaying);
+    }
 
 	public void UpdateUnitStatus(UnitStatusComponent status)
 	{
