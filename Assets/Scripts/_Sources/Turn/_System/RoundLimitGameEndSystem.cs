@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-public class RoundLimitSystem : GameReactiveSystem
+public class RoundLimitGameEndSystem : GameReactiveSystem
 {
 	private GameEventContext _eventContext;
 
-	public RoundLimitSystem(Contexts contexts) : base(contexts)
+	public RoundLimitGameEndSystem(Contexts contexts) : base(contexts)
 	{
 		_eventContext = contexts.gameEvent;
 	}

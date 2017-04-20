@@ -7,12 +7,12 @@ using NUnit.Framework;
 
 namespace Test.TurnTest
 {
-	public class RoundLimitSystemTest : ContextsTest
+	public class RoundLimitGameEndSystemTest : ContextsTest
 	{
 		[SetUp]
 		public void Init()
 		{
-			_systems.Add(new RoundLimitSystem(_contexts));
+			_systems.Add(new RoundLimitGameEndSystem(_contexts));
 		}
 
 		[Test]

@@ -358,6 +358,7 @@ MonoBehaviour:
     type: 2}
   TurnNodes: []
   TurnNodeParent: {fileID: 224951006380464582}
+  RoundText: {fileID: 114947789652602722}
 --- !u!114 &114852997492158096
 MonoBehaviour:
   m_ObjectHideFlags: 1

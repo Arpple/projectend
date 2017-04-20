@@ -9,8 +9,9 @@ public class TurnSystems : Feature
 		Add(new RoundEndPlayingOrderReOrderingSystem(contexts));
 		Add(new PlayingFlagSystem(contexts));
 		Add(new TurnNodeCreatingSystem(contexts, ui.TurnPanel));
-		Add(new TurnPanelSystem(contexts, ui.TurnPanel));
+		Add(new TurnPanelPlayingOrderSystem(contexts, ui.TurnPanel));
 		Add(new TurnNotificationSystem(contexts, ui.TurnNoti));
+		Add(new TurnPanelRoundDisplaySystem(contexts, ui.TurnPanel));
 
 		Add(new LocalFlagPassingSystem(contexts, syscon));
 	}

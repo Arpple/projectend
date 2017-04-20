@@ -2,11 +2,11 @@
 using System.Linq;
 using Entitas;
 
-public class TurnPanelSystem : ReactiveSystem<GameEntity>
+public class TurnPanelPlayingOrderSystem : ReactiveSystem<GameEntity>
 {
 	private readonly TurnPanel _turnPanel;
 
-	public TurnPanelSystem(Contexts contexts, TurnPanel turnPanel) : base(contexts.game)
+	public TurnPanelPlayingOrderSystem(Contexts contexts, TurnPanel turnPanel) : base(contexts.game)
 	{
 		_turnPanel = turnPanel;
 	}

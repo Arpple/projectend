@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Test.TurnTest
 {
-	public class TurnPanelSystemTest : ContextsTest
+	public class TurnPanelPlayingOrderSystemTest : ContextsTest
 	{
 		private TurnPanel _panel;
 
@@ -21,7 +21,7 @@ namespace Test.TurnTest
 			_panel.TurnNodes = new List<TurnNode>();
 			_panel.TurnNodeParent = new GameObject().transform;
 
-			_systems.Add(new TurnPanelSystem(_contexts, _panel));
+			_systems.Add(new TurnPanelPlayingOrderSystem(_contexts, _panel));
 		}
 
 		[Test]
