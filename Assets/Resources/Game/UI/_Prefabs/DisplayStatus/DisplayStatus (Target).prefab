@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerNameText: {fileID: 114667028252154318}
   CharacterIcon: {fileID: 114632297193420080}
-  CrownImage: {fileID: 114115583629072720}
+  PlayingTurnImage: {fileID: 114115583629072720}
   DeckCardCountText: {fileID: 114459736417001150}
   BoxCardCountText: {fileID: 114604533549008360}
   AttackPowerText: {fileID: 114282839025510234}
