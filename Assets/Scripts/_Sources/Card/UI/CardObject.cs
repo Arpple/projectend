@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class CardObject : MonoBehaviour
 {
 	public Text CardNameText;
+	public Text CardChargeText;
 	public Image MainImage;
     public Image Highlight;
     public Animator Animator;
@@ -18,6 +19,11 @@ public class CardObject : MonoBehaviour
 	{
 		MainImage.sprite = card.sprite.Sprite;
 		CardNameText.text = card.cardDescription.Name;
+	}
+
+	public void SetCharge(int charge)
+	{
+		CardChargeText.text = charge.ToString();
 	}
 
 	public void OnClick()

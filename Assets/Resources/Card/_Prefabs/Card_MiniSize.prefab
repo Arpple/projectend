@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardNameText: {fileID: 114449548407710974}
+  CardChargeText: {fileID: 114674473132141492}
   MainImage: {fileID: 114356657927169516}
   Highlight: {fileID: 114092614417958806}
   Animator: {fileID: 95037903061721152}

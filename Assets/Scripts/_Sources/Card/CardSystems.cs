@@ -7,6 +7,7 @@
 		Add(new ResourceCardDataLoadingSystem(contexts, setting.ResourceCardSetting));
 		Add(new SkillCardDataLoadingSystem(contexts, setting.SkillCardSetting));
 		Add(new CardViewCreatingSystem(contexts, setting));
+		Add(new CardChargeRenderingSystem(contexts));
 
 		CreateDeckCardSystems(contexts, setting.DeckSetting, ui);
 		CreateBoxCardSystems(contexts, ui);
