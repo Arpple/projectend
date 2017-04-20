@@ -15,4 +15,9 @@ public class PlayerComponent : IComponent
 	{
 		return PlayerObject as Player;
 	}
+
+	public override string ToString()
+	{
+		return PlayerObject.GetName();
+	}
 }

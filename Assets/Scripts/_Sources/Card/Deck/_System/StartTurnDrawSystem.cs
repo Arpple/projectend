@@ -36,6 +36,10 @@ public class StartTurnDrawSystem : ReactiveSystem<GameEntity>
 				{
 					EventMoveDeckCard.MoveCardToPlayer(c, e);
 				}
+				EventLogger.ShowMessge(string.Format("{0} draw {1} card(s)",
+					e.player.PlayerObject.GetName(),
+					drawCards.Count()
+				));
 			}
 		}
 	}
