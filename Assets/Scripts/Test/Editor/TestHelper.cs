@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using Network;
+﻿using Network;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Test
 {
@@ -34,6 +35,24 @@ namespace Test
 			e.AddPlayer(p);
 			e.AddId(playerId);
 			return e;
+		}
+
+		public static WeatherStatusPanel CreateWeatherPanel()
+		{
+			var panel = new GameObject().AddComponent<WeatherStatusPanel>();
+			panel.Awake();
+			panel.CostObjectParent = panel.transform;
+			panel.CostObjectPrefabs = CreateCostObject();
+			panel.WeatherNameText = new GameObject().AddComponent<Text>();
+			return panel;
+		}
+
+		private static WeatherCostObject CreateCostObject()
+		{
+			var obj = new GameObject().AddComponent<WeatherCostObject>();
+			obj.CostImage = new GameObject().AddComponent<Image>();
+			obj.CostCountText = new GameObject().AddComponent<Text>();
+			return obj;
 		}
 	}
 }

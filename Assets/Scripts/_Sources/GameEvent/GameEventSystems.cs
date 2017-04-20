@@ -7,5 +7,6 @@
 		Add(new EventUseCardOnTileSystem(contexts));
 		Add(new EventUseCardOnUnitSystem(contexts));
 		Add(new EventHpDepleteSystem(contexts));
+		Add(new EventGameEndSystem(contexts));
 	}
 }

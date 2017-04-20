@@ -68,4 +68,8 @@ MonoBehaviour:
       - {fileID: 11400000, guid: ede3541b273f4e24e8e33497e2c7a72d, type: 2}
   MissionSetting: {fileID: 11400000, guid: 543ce6b7db736f349a4608b1c428b0aa, type: 2}
   WeatherSetting:
+    DataList:
+    - {fileID: 11400000, guid: ab14a2042b8cce54fbdf5cf8268d05f4, type: 2}
+    - {fileID: 11400000, guid: f7e546149adaf1940bbd878fcb996e5b, type: 2}
+    - {fileID: 11400000, guid: bd064d6693a756346a21daa94325cf7b, type: 2}
     CostCountWeigthList: 0a000000280000001e0000000f00000005000000

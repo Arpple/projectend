@@ -1,10 +1,16 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Test.WeatherTest
 {
-	public class WeatherSettingTest
+	public class WeatherSettingTest : IndexDataListTest<Weather, WeatherData>
 	{
 		WeatherSetting _setting;
+
+		protected override IndexDataList<Weather, WeatherData> GetDataList()
+		{
+			return TestHelper.GetGameSetting().WeatherSetting;
+		}
 
 		[SetUp]
 		public void Init()

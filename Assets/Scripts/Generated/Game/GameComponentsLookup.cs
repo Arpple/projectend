@@ -18,19 +18,21 @@ public static class GameComponentsLookup {
     public const int Player = 7;
     public const int PlayerDeck = 8;
     public const int PlayerMission = 9;
-    public const int Playing = 10;
-    public const int PlayingOrder = 11;
-    public const int Round = 12;
-    public const int RoundIndex = 13;
-    public const int RoundLimit = 14;
-    public const int SkillCardContainer = 15;
-    public const int Turn = 16;
-    public const int TurnNode = 17;
-    public const int View = 18;
-    public const int Weather = 19;
-    public const int Winner = 20;
+    public const int PlayerMissionTarget = 10;
+    public const int Playing = 11;
+    public const int PlayingOrder = 12;
+    public const int Round = 13;
+    public const int RoundIndex = 14;
+    public const int RoundLimit = 15;
+    public const int SkillCardContainer = 16;
+    public const int Turn = 17;
+    public const int TurnNode = 18;
+    public const int View = 19;
+    public const int Weather = 20;
+    public const int WeatherCost = 21;
+    public const int Winner = 22;
 
-    public const int TotalComponents = 21;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "BossPlayer",
@@ -43,6 +45,7 @@ public static class GameComponentsLookup {
         "Player",
         "PlayerDeck",
         "PlayerMission",
+        "PlayerMissionTarget",
         "Playing",
         "PlayingOrder",
         "Round",
@@ -53,6 +56,7 @@ public static class GameComponentsLookup {
         "TurnNode",
         "View",
         "Weather",
+        "WeatherCost",
         "Winner"
     };
 
@@ -67,6 +71,7 @@ public static class GameComponentsLookup {
         typeof(PlayerComponent),
         typeof(PlayerDeckComponent),
         typeof(PlayerMissionComponent),
+        typeof(PlayerMissionTargetComponent),
         typeof(PlayingComponent),
         typeof(PlayingOrderComponent),
         typeof(RoundComponent),
@@ -77,6 +82,7 @@ public static class GameComponentsLookup {
         typeof(TurnNodeComponent),
         typeof(ViewComponent),
         typeof(WeatherComponent),
+        typeof(WeatherCostComponent),
         typeof(WinnerComponent)
     };
 }
