@@ -13,7 +13,7 @@ public class PlayerMissionSetupSystem : IInitializeSystem
 	{
 		foreach(var e in _context.GetEntities(GameMatcher.Player))
 		{
-			//e.AddMainMission((MainMission)e.player.PlayerObject.MainMissionId);
+			e.AddPlayerMission((PlayerMission)e.player.GetNetworkPlayer().PlayerMissionId);
 		}
 	}
 }

@@ -3,11 +3,11 @@ using Entitas;
 
 namespace Lounge
 {
-	public class PersonalMissionAssignSystem : GameReactiveSystem
+	public class PlayerMissionAssignSystem : GameReactiveSystem
 	{
-		private PersonalMissionSetting _setting;
+		private PlayerMissionSetting _setting;
 
-		public PersonalMissionAssignSystem(Contexts contexts, PersonalMissionSetting setting) : base(contexts)
+		public PlayerMissionAssignSystem(Contexts contexts, PlayerMissionSetting setting) : base(contexts)
 		{
 			_setting = setting;
 		}

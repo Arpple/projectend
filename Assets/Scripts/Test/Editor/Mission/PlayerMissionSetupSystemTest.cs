@@ -10,15 +10,15 @@ namespace Test.MissionTest
 			_systems.Add(new PlayerMissionSetupSystem(_contexts));
 		}
 
-		//[Test]
-		//public void Initialize_PlayerWithMissionId_MissionComponentAdded()
-		//{
-		//	var p = CreatePlayerEntity(1);
-		//	p.player.PlayerObject.MainMissionId = (int)MainMission.BossMonolith;
+		[Test]
+		public void Initialize_PlayerWithMissionId_MissionComponentAdded()
+		{
+			var p = CreatePlayerEntity(1);
+			p.player.GetNetworkPlayer().PlayerMissionId = (int)PlayerMission.Hunter;
 
-		//	_systems.Initialize();
+			_systems.Initialize();
 
-		//	Assert.AreEqual(MainMission.BossMonolith, p.mainMission.Type);
-		//}
+			Assert.AreEqual(PlayerMission.Hunter, p.playerMission.MisisonType);
+		}
 	}
 }

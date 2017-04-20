@@ -17,19 +17,20 @@ public static class GameComponentsLookup {
     public const int PlayerBox = 6;
     public const int Player = 7;
     public const int PlayerDeck = 8;
-    public const int Playing = 9;
-    public const int PlayingOrder = 10;
-    public const int Round = 11;
-    public const int RoundIndex = 12;
-    public const int RoundLimit = 13;
-    public const int SkillCardContainer = 14;
-    public const int Turn = 15;
-    public const int TurnNode = 16;
-    public const int View = 17;
-    public const int Weather = 18;
-    public const int Winner = 19;
+    public const int PlayerMission = 9;
+    public const int Playing = 10;
+    public const int PlayingOrder = 11;
+    public const int Round = 12;
+    public const int RoundIndex = 13;
+    public const int RoundLimit = 14;
+    public const int SkillCardContainer = 15;
+    public const int Turn = 16;
+    public const int TurnNode = 17;
+    public const int View = 18;
+    public const int Weather = 19;
+    public const int Winner = 20;
 
-    public const int TotalComponents = 20;
+    public const int TotalComponents = 21;
 
     public static readonly string[] componentNames = {
         "BossPlayer",
@@ -41,6 +42,7 @@ public static class GameComponentsLookup {
         "PlayerBox",
         "Player",
         "PlayerDeck",
+        "PlayerMission",
         "Playing",
         "PlayingOrder",
         "Round",
@@ -64,6 +66,7 @@ public static class GameComponentsLookup {
         typeof(PlayerBoxComponent),
         typeof(PlayerComponent),
         typeof(PlayerDeckComponent),
+        typeof(PlayerMissionComponent),
         typeof(PlayingComponent),
         typeof(PlayingOrderComponent),
         typeof(RoundComponent),

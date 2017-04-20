@@ -1,7 +1,7 @@
 ﻿using Entitas;
+using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Network;
 
 namespace Lounge
 {
@@ -67,7 +67,7 @@ namespace Lounge
 
 			if (IsServer())
 			{
-				systems.Add(new PersonalMissionAssignSystem(contexts, Setting.MissionSetting.PersonalMission));
+				systems.Add(new PlayerMissionAssignSystem(contexts, Setting.MissionSetting.PlayerMission));
 			}
 
 			return systems;

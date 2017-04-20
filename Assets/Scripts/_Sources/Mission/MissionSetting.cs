@@ -4,5 +4,5 @@
 public class MissionSetting : ScriptableObject
 {
 	public MainMissionSetting MainMission;
-	public PersonalMissionSetting PersonalMission;
+	public PlayerMissionSetting PlayerMission;
 }

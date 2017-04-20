@@ -27,9 +27,9 @@ namespace Network
 		public int MainMissionId;
 
 		[SyncVar]
-		public int PersonalMissionId;
+		public int PlayerMissionId;
 		[SyncVar]
-		public int PersonalMissionTarget;
+		public int PlayerMissionTarget;
 
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
@@ -208,8 +208,8 @@ namespace Network
 		public void CmdSetPersonalMission(int playerId, int missionId, int target)
 		{
 			var player = NetworkController.Instance.AllPlayers.First(p => p.PlayerId == playerId);
-			player.PersonalMissionId = missionId;
-			player.PersonalMissionTarget = target;
+			player.PlayerMissionId = missionId;
+			player.PlayerMissionTarget = target;
 		}
 
 		[ClientRpc]
