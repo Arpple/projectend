@@ -56,14 +56,17 @@ namespace Lounge
 		{
 			var players = NetworkController.Instance.AllPlayers;
 
-			var systems = new Feature("Systems")
-				.Add(new PlayerCreatingSystem(contexts, players))
-				.Add(new LocalPlayerSetupSystem(contexts, NetworkController.Instance.LocalPlayer))
-				.Add(new CharacterLoadingSystems(contexts))
-				.Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
-				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
-				.Add(new ContextsResetSystem(contexts))
-				;
+            var systems = new Feature("Systems")
+                .Add(new PlayerCreatingSystem(contexts, players))
+                .Add(new LocalPlayerSetupSystem(contexts, NetworkController.Instance.LocalPlayer))
+                .Add(new CharacterLoadingSystems(contexts))
+                .Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
+                .Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
+                .Add(new ContextsResetSystem(contexts))
+                .Add(new MissionLoadingSystem(contexts
+                    ,LoungeController.Instance.MissionBookController
+                    ,LoungeController.Instance.Setting.MissionSetting))
+                ;
 
 			if (IsServer())
 			{
