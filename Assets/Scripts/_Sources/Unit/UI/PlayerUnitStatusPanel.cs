@@ -10,7 +10,7 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 	public Icon CharacterIcon;
 
     [Header("Turn")]
-    public Image CrownImage;
+    public Image PlayingTurnImage;
 
 	[Header("Character Status")]
 	public Text DeckCardCountText;
@@ -61,6 +61,11 @@ public class PlayerUnitStatusPanel : MonoBehaviour
         //Show Crown when current Turn.
         //CrownImage.gameObject.SetActive(entity.owner.Entity.isPlaying);
     }
+
+	public void UpdatePlayingTurn(bool isPlaying)
+	{
+		PlayingTurnImage.gameObject.SetActive(isPlaying);
+	}
 
 	public void UpdateUnitStatus(UnitStatusComponent status)
 	{

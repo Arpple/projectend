@@ -16,5 +16,6 @@ public class TurnSystems : Feature
 		Add(new TurnPanelRoundDisplaySystem(contexts, ui.TurnPanel));
 		Add(new CurrentPlayerTurnIconSystem(contexts));
 		Add(new LocalFlagPassingSystem(contexts, syscon));
+		Add(new LocalPlayerPlayingStatusSystem(contexts, ui.LocalPlayerStatus));
 	}
 }
