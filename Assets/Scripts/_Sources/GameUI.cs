@@ -24,6 +24,7 @@ public class GameUI : MonoBehaviour
 	[Header("Components")]
 	public CardDescription CardDesc;
 	public PlayerUnitStatusPanel LocalPlayerStatus;
+	public WeatherStatusPanel WeatherStatus;
 	public PlayerUnitStatusPanel TargetPlayerStatus;
 	public TurnPanel TurnPanel;
 
@@ -50,6 +51,7 @@ public class GameUI : MonoBehaviour
 		Assert.IsNotNull(DeckFactory);
 		Assert.IsNotNull(BoxFactory);
 		Assert.IsNotNull(LocalPlayerStatus);
+		Assert.IsNotNull(WeatherStatus);
 		Assert.IsNotNull(TargetPlayerStatus);
 		Assert.IsNotNull(TurnPanel);
 		Assert.IsNotNull(TurnNoti);

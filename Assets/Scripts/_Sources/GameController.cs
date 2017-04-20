@@ -106,7 +106,8 @@ public class GameController : MonoBehaviour
 			.Add(new TileSystems(contexts, Setting.TileSetting, TileContainer, GameUI.Instance))
 			.Add(new UnitSystems(contexts, Setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
 			.Add(new CardSystems(contexts, Setting.CardSetting, GameUI.Instance))
-			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController));
+			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
+			.Add(new WeatherSystems(contexts, Setting, GameUI.Instance));
 	}
 
 	#region Network

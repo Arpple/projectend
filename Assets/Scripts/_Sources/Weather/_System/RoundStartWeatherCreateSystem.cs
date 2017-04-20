@@ -56,9 +56,10 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem
 		private void InitRandom()
 		{
 			int i = 0;
-			foreach(var cost in _setting.CostCountWeigthList)
+			foreach(var weigth in _setting.CostCountWeigthList)
 			{
-				_costRandomizer.AddItem(i + 1, cost);
+				_costRandomizer.AddItem(i + 1, weigth);
+				i++;
 			}
 		}
 

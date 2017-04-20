@@ -7,6 +7,7 @@ public class TurnSystems : Feature
 		Add(new PlayingOrderSetupSystem(contexts));
 		Add(new TurnAndRoundSetupSystem(contexts));
 		Add(new RoundLimitSetupSystem(contexts));
+		Add(new RoundLimitGameEndSystem(contexts));
 		Add(new RoundEndPlayingOrderReOrderingSystem(contexts));
 		Add(new PlayingFlagSystem(contexts));
 		Add(new TurnNodeCreatingSystem(contexts, ui.TurnPanel));

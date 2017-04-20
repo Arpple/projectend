@@ -24,7 +24,7 @@ public class RoundLimitGameEndSystem : GameReactiveSystem
 	{
 		foreach(var e in entities)
 		{
-			if(e.round.Count == _context.roundLimit.Count)
+			if(e.round.Count >= _context.roundLimit.Count)
 			{
 				var eventEntity = _eventContext.CreateEntity();
 				eventEntity.isEventEndGame = true;
