@@ -25,6 +25,7 @@ public class TurnNode : MonoBehaviour
 	public void SetAsCurrentTurn()
 	{
 		CurrentTurnIndicator.gameObject.SetActive(true);
+        this.GetComponent<Animator>().Play("CrownSpin");
 	}
 
 	public void RemoveCurrentTurn()
