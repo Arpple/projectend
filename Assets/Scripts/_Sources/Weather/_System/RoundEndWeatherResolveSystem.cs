@@ -85,9 +85,10 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 				paySum += _playersResources[p].GetResourcePayCount(type);
 			}
 
-			if(paySum < _costMap[type])
+			var costRequire = _costMap[type];
+			if (paySum < costRequire)
 			{
-				Debug.Log(type + ":" + paySum + "/" + _costMap[type]);
+				Debug.Log(type + ":" + paySum + "/" + costRequire);
 				_isPass = false;
 			}
 		}
@@ -108,7 +109,7 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 			public void PayResources(Resource type)
 			{
 				var cards = GetPlayerResourceCard(type);
-				_resourceCounts[type] = cards.Length;
+				_resourceCounts[type] = cards.Sum(c => c.charge.Count);
 				foreach (var card in cards)
 				{
 					card.MoveCardToDeck();

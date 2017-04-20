@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Entitas;
 
-public class RoundStartWeatherCreateSystem : GameReactiveSystem
+public class RoundStartWeatherCreateSystem : GameReactiveSystem, IInitializeSystem
 {
 	private WeatherSetter _setter;
+	private WeatherSetting _setting;
 
 	public RoundStartWeatherCreateSystem(Contexts contexts, WeatherSetting setting) : base(contexts)
 	{
-		_setter = new WeatherSetter(_context, setting);
+		_setting = setting;
+	}
+
+	public void Initialize()
+	{
+		_setter = new WeatherSetter(_context, _setting);
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -24,6 +30,7 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem
 
 	protected override void Execute(List<GameEntity> entities)
 	{
+		
 		foreach(var e in entities)
 		{
 			_setter.CreateWeather();
@@ -35,6 +42,7 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem
 		private WeatherSetting _setting;
 		private GameContext _context;
 		private WeigthRandomizer<int> _costRandomizer;
+		private int _playerCount;
 
 		public WeatherSetter(GameContext context, WeatherSetting setting)
 		{
@@ -42,6 +50,9 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem
 			_setting = setting;
 			_costRandomizer = new WeigthRandomizer<int>();
 			InitRandom();
+
+			_playerCount = _context.GetEntities(GameMatcher.Player)
+				.Count(e => !e.isBossPlayer);
 		}
 
 		public void CreateWeather()
@@ -70,7 +81,7 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem
 
 		private int GetRandomCost()
 		{
-			return _costRandomizer.GetRandomItem();
+			return _costRandomizer.GetRandomItem() * _playerCount;
 		}
 
 		private void CreateWeatherCost(Resource costType)

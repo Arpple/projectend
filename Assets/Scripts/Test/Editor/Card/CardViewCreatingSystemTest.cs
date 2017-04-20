@@ -14,6 +14,7 @@ namespace Test.CardTest
 		public void Execute_EntityHasSprite_ViewCreated()
 		{
 			var card = _contexts.card.CreateEntity();
+			card.AddCardDescription("card", "", "");
 			card.AddSprite(null);
 
 			_systems.Execute();

@@ -24,6 +24,11 @@ public class EventUseCardOnTileSystem : EventSystem
 
 		if (cardEvent.CardEnttiy.hasDeckCard)
 			RemovePlayerCard(cardEvent.CardEnttiy);
+
+		EventLogger.ShowMessge(string.Format("{0} use {1}",
+			cardEvent.UserEntity.owner.Entity.player,
+			cardEvent.CardEnttiy.cardDescription.Name
+		));
 	}
 
 	private void RemovePlayerCard(CardEntity card)

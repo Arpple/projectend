@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class CardObject : MonoBehaviour
 {
+	public Text CardNameText;
+	public Text CardChargeText;
 	public Image MainImage;
     public Image Highlight;
     public Animator Animator;
@@ -13,9 +15,15 @@ public class CardObject : MonoBehaviour
 		get { return (CardEntity)gameObject.GetEntityLink().entity; }
 	}
 
-	public void SetAbilityImage(Sprite sprite)
+	public void SetCard(CardEntity card)
 	{
-		MainImage.sprite = sprite;
+		MainImage.sprite = card.sprite.Sprite;
+		CardNameText.text = card.cardDescription.Name;
+	}
+
+	public void SetCharge(int charge)
+	{
+		CardChargeText.text = charge.ToString();
 	}
 
 	public void OnClick()
@@ -23,32 +31,25 @@ public class CardObject : MonoBehaviour
 		GameUI.Instance.OnCardClicked(this);
     }
 
-    private bool isFocus;
-    private static Color highlightColor;
+    private bool _isFocus;
 
-    void Update() {
-        
-        CardObject.highlightColor = Color.Lerp(
-            new Color(1f, 0.855f, 0f, 0.627f)
-            , new Color(1f, 0.855f, 0f, 0.137f)
-            , Mathf.PingPong(Time.time, 1f));
-
-        if(isFocus) {
-            Debug.Log("Card ["+this.gameObject.name+"] on Focus...");
-            this.Highlight.color = highlightColor;
+    void Update()
+	{
+        if(_isFocus)
+		{
+			Highlight.color = CardObjectsHightlightController.CurrentColor;
         }
     }
 
     public void ShowHighlight() {
-        //this.Animator.Play("ShowHighlight");
-        Debug.Log("Show High");
-        this.isFocus = true;
-        this.Highlight.gameObject.SetActive(true);
+        //Animator.Play("ShowHighlight");
+        _isFocus = true;
+        Highlight.gameObject.SetActive(true);
     }
 
     public void HideHighlight() {
-        //this.Animator.Play("Idle");
-        this.isFocus = false;
-        this.Highlight.gameObject.SetActive(false);
+        //Animator.Play("Idle");
+        _isFocus = false;
+        Highlight.gameObject.SetActive(false);
     }
 }

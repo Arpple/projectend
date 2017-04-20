@@ -24,7 +24,7 @@ public class CardViewCreatingSystem : EntityViewCreatingSystem<CardEntity>
 	protected override GameObject CreateViewObject(CardEntity entity)
 	{
 		var view = UnityEngine.Object.Instantiate(_setting.CardObjectPrefabs) as CardObject;
-		view.SetAbilityImage(entity.sprite.Sprite);
+		view.SetCard(entity);
 		return view.gameObject;
 	}
 

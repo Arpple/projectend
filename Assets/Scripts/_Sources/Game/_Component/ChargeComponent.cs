@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-[Tile]
+[Tile, Card]
 public class ChargeComponent : IComponent
 {
 	public int Count;

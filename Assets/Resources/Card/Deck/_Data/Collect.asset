@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Collect
   m_EditorClassIdentifier: 
   MainSprite: {fileID: 21300000, guid: 71eb67dd57b01464fa07cc615f4fc812, type: 3}
-  Name: 
+  Name: Collect
   ActiveDesc: 
   PassiveDesc: 
   Type: 3

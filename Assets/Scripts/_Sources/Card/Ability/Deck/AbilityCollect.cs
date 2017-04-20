@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class AbilityCollect : ActiveAbility<TileEntity>
+﻿public class AbilityCollect : ActiveAbility<TileEntity>
 {
 	public override TileEntity[] GetTilesArea(UnitEntity caster)
 	{

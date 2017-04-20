@@ -18,6 +18,14 @@ namespace Test
 			_contexts.InitializeEntityIndices();
 		}
 
+		[SetUp]
+		public void CreateLogger()
+		{
+			var logger = new GameObject().AddComponent<EventLogger>();
+			logger.LogText = new GameObject().AddComponent<UnityEngine.UI.Text>();
+			EventLogger.Instance = logger;
+		}
+
 		[TearDown]
 		public void TeardownContexts()
 		{

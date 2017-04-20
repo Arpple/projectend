@@ -47,6 +47,14 @@ namespace Test
 			return panel;
 		}
 
+		public static CardObject CreateCardObject()
+		{
+			var obj = new GameObject().AddComponent<CardObject>();
+			obj.CardNameText = new GameObject().AddComponent<Text>();
+			obj.CardChargeText = new GameObject().AddComponent<Text>();
+			return obj;
+		}
+
 		private static WeatherCostObject CreateCostObject()
 		{
 			var obj = new GameObject().AddComponent<WeatherCostObject>();
@@ -54,5 +62,7 @@ namespace Test
 			obj.CostCountText = new GameObject().AddComponent<Text>();
 			return obj;
 		}
+
+		
 	}
 }

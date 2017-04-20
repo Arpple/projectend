@@ -1331,6 +1331,7 @@ GameObject:
   - component: {fileID: 766729634}
   - component: {fileID: 766729633}
   - component: {fileID: 766729638}
+  - component: {fileID: 766729637}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -1422,6 +1423,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &766729637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766729632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64572b7a36c768b43a93b08ccb808d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinColor: {r: 1, g: 0.85490197, b: 0, a: 0.62352943}
+  MaxColor: {r: 1, g: 0.85490197, b: 0, a: 0.13333334}
 --- !u!114 &766729638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2612,7 +2626,7 @@ MonoBehaviour:
   IsOffline: 1
   SystemController:
     AutoEndTurnForBoss: 1
-    AutoPassLocalFlag: 0
+    AutoPassLocalFlag: 1
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}

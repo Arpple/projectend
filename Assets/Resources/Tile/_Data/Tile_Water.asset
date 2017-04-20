@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileType: 3
   Sprite: {fileID: 21300000, guid: 9bfb048d01e3e544782c84cd142582fd, type: 3}
-  IsWalkableOn: 1
+  IsWalkableOn: 0
   Resource: 2
   EmptyResourceSprite: {fileID: 21300000, guid: 3fc97ed39d6148b4c86427889d8ef78f,
     type: 3}
