@@ -59,7 +59,7 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 		ShowingCharacter = entity;
 
         //Show Crown when current Turn.
-        CrownImage.gameObject.SetActive(entity.owner.Entity.isPlaying);
+        //CrownImage.gameObject.SetActive(entity.owner.Entity.isPlaying);
     }
 
 	public void UpdateUnitStatus(UnitStatusComponent status)

@@ -15,6 +15,7 @@ namespace Test.TurnTest
 			_panel = new GameObject().AddComponent<TurnPanel>();
 			var node = new GameObject().AddComponent<TurnNode>();
 			node.IconImage = new GameObject().AddComponent<Image>();
+			node.CurrentTurnIndicator = new GameObject();
 
 			_panel.TurnNodePrefabs = node;
 			_panel.TurnNodes = new List<TurnNode>();
