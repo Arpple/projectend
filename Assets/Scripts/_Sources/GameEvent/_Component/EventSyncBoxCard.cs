@@ -11,7 +11,9 @@ public class EventSyncBoxCard : GameEventComponent
 	{
 		Assert.IsTrue(entity.hasInBox);
 
-		GameEvent.CreateEvent<EventSyncBoxCard>(entity.id.Id, entity.inBox.Index);
+		var cardIndex = entity.view.GameObject.transform.GetSiblingIndex();
+
+		GameEvent.CreateEvent<EventSyncBoxCard>(entity.id.Id, cardIndex);
 	}
 
 	public void Decode(int cardId, int boxIndex)
