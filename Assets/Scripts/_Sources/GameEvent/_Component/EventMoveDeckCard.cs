@@ -11,8 +11,6 @@ public class EventMoveDeckCard : GameEventComponent
 
 	private static void MoveCard(CardEntity cardEntity, GameEntity playerEntity, bool isMoveTobox)
 	{
-		Assert.IsTrue(cardEntity.hasDeckCard);
-
 		GameEvent.CreateEvent<EventMoveDeckCard>(
 			cardEntity.id.Id,
 			playerEntity != null
