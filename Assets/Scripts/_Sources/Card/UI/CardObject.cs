@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class CardObject : MonoBehaviour
 {
+	public Text CardNameText;
 	public Image MainImage;
     public Image Highlight;
     public Animator Animator;
@@ -13,9 +14,10 @@ public class CardObject : MonoBehaviour
 		get { return (CardEntity)gameObject.GetEntityLink().entity; }
 	}
 
-	public void SetAbilityImage(Sprite sprite)
+	public void SetCard(CardEntity card)
 	{
-		MainImage.sprite = sprite;
+		MainImage.sprite = card.sprite.Sprite;
+		CardNameText.text = card.cardDescription.Name;
 	}
 
 	public void OnClick()

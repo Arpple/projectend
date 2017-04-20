@@ -495,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de38cf4611f5cc4382bc04f394ad69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardNameText: {fileID: 114449548407710974}
   MainImage: {fileID: 114356657927169516}
   Highlight: {fileID: 114092614417958806}
   Animator: {fileID: 95037903061721152}
