@@ -32,8 +32,6 @@ public static class DeckCardExtension
 
 	public static void MoveCardToDeck(this CardEntity cardEntity)
 	{
-		Assert.IsTrue(cardEntity.hasDeckCard);
-
 		cardEntity.RemoveOwner();
 		RemoveInbox(cardEntity);
 	}

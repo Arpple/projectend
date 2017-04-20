@@ -34,6 +34,6 @@ public class DeckCardActionGroup : ActiveCardActionGroup
 
 	private bool IsActiveCard(CardObject card)
 	{
-		return card.Entity.ability.Ability is IActiveAbility;
+		return card.Entity.hasAbility && card.Entity.ability.Ability is IActiveAbility;
 	}
 }
