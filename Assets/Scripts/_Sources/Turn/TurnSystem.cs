@@ -17,5 +17,6 @@ public class TurnSystems : Feature
 		Add(new CurrentPlayerTurnIconSystem(contexts));
 		Add(new LocalFlagPassingSystem(contexts, syscon));
 		Add(new LocalPlayerPlayingStatusSystem(contexts, ui.LocalPlayerStatus));
+		Add(new TargetPlayerPlayingStatusSystem(contexts, ui.TargetPlayerStatus));
 	}
 }

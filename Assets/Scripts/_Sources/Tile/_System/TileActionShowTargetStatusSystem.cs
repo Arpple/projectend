@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Entitas;
 
-public class DefaultTileActionSetupSystem : ReactiveSystem<TileEntity>
+public class TileActionShowTargetStatusSystem : ReactiveSystem<TileEntity>
 {
 	private PlayerUnitStatusPanel _panel;
 	private CardContext _cardContext;
 
-	public DefaultTileActionSetupSystem(Contexts contexts, PlayerUnitStatusPanel statusPanel) : base(contexts.tile)
+	public TileActionShowTargetStatusSystem(Contexts contexts, PlayerUnitStatusPanel statusPanel) : base(contexts.tile)
 	{
 		_panel = statusPanel;
 		_cardContext = contexts.card;
@@ -51,6 +51,7 @@ public class DefaultTileActionSetupSystem : ReactiveSystem<TileEntity>
 		_panel.gameObject.SetActive(true);
 		_panel.UpdateBoxCardCount(_cardContext.GetPlayerBoxCards(unit.owner.Entity).Length);
 		_panel.UpdateDeckCardCount(_cardContext.GetPlayerDeckCards(unit.owner.Entity).Length);
+		_panel.UpdatePlayingTurn(unit.owner.Entity.isPlaying);
 	}
 
 	private void HideDisplayStatus()
