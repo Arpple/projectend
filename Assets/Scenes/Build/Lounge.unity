@@ -1334,6 +1334,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 148054150}
+--- !u!114 &152417096 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114871538806938294, guid: 3490b166eb7bc224497c7f510f081957,
+    type: 2}
+  m_PrefabInternal: {fileID: 416273989}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &157959173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,9 +2079,9 @@ RectTransform:
   m_Father: {fileID: 488998049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -41}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 222.5, y: 0}
   m_SizeDelta: {x: 0, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &333700308
@@ -2558,11 +2564,11 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 416273993}
+  m_TargetGraphic: {fileID: 152417096}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1057840762}
         m_MethodName: Lock
         m_Mode: 1
         m_Arguments:
@@ -2575,12 +2581,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &416273993 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114367638778541684, guid: 3490b166eb7bc224497c7f510f081957,
-    type: 2}
-  m_PrefabInternal: {fileID: 416273989}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &418559355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,12 +5547,12 @@ Prefab:
         type: 2}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 2013426080}
+      objectReference: {fileID: 996974818}
     - target: {fileID: 114748066703966600, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 647836558}
+      objectReference: {fileID: 1634312134}
     - target: {fileID: 114748066703966600, guid: 3490b166eb7bc224497c7f510f081957,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -6159,6 +6159,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995913416}
+--- !u!114 &996974818 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114871538806938294, guid: 3490b166eb7bc224497c7f510f081957,
+    type: 2}
+  m_PrefabInternal: {fileID: 880655097}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &999386702
 GameObject:
   m_ObjectHideFlags: 0
@@ -6637,10 +6643,10 @@ RectTransform:
   m_Father: {fileID: 1304655147}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -14}
-  m_SizeDelta: {x: -150, y: -112}
+  m_SizeDelta: {x: 680, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037533465
 MonoBehaviour:
@@ -8051,10 +8057,10 @@ RectTransform:
   m_Father: {fileID: 1509941316}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -200, y: -844}
+  m_SizeDelta: {x: 830, y: 218}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1304655148
 MonoBehaviour:
@@ -10342,29 +10348,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 1634312134}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 647836558}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 647836558}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1731142737
@@ -10556,7 +10551,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 647836558}
+      - m_Target: {fileID: 1634312134}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -12093,12 +12088,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007032708}
---- !u!114 &2013426080 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114367638778541684, guid: 3490b166eb7bc224497c7f510f081957,
-    type: 2}
-  m_PrefabInternal: {fileID: 880655097}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &2024952605
 GameObject:
   m_ObjectHideFlags: 0
