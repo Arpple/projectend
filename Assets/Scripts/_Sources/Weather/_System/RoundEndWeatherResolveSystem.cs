@@ -108,7 +108,7 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 			public void PayResources(Resource type)
 			{
 				var cards = GetPlayerResourceCard(type);
-				_resourceCounts[type] = cards.Length;
+				_resourceCounts[type] = cards.Sum(c => c.charge.Count);
 				foreach (var card in cards)
 				{
 					card.MoveCardToDeck();

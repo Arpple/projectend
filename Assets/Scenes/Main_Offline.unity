@@ -2626,7 +2626,7 @@ MonoBehaviour:
   IsOffline: 1
   SystemController:
     AutoEndTurnForBoss: 1
-    AutoPassLocalFlag: 0
+    AutoPassLocalFlag: 1
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}

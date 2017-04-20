@@ -44,6 +44,6 @@
 
 	private void CreateResourceCardSystems(Contexts contexts, ResourceCardSetting setting)
 	{
-		
+		Add(new ResourceCardChargeRandomSystem(contexts, setting));
 	}
 }

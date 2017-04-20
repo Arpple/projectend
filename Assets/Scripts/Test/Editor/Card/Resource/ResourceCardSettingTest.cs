@@ -29,6 +29,12 @@ namespace Test.CardTest.ResourceTest
 			}
 		}
 
+		[Test]
+		public void CheckSetting_HaveRandomChargeWeigth()
+		{
+			Assert.IsNotNull(_setting.CardChargeWeigth);
+			Assert.IsTrue(_setting.CardChargeWeigth.Count > 0);
+		}
 		
 	}
 }
