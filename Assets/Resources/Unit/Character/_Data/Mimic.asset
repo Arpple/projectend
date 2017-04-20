@@ -15,10 +15,10 @@ MonoBehaviour:
   IconSprite: {fileID: 21300000, guid: b96a65aa99eb5ba42b6bd1ad9e6d9739, type: 3}
   Name: Mimic
   Description: 
-  HitPoint: 1
+  HitPoint: 8
   AttackPower: 1
-  AttackRange: 1
-  VisionRange: 1
-  MoveSpeed: 1
+  AttackRange: 2
+  VisionRange: 3
+  MoveSpeed: 3
   Type: 3
   SkillCards: 

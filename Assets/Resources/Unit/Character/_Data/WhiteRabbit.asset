@@ -15,10 +15,10 @@ MonoBehaviour:
   IconSprite: {fileID: 21300000, guid: 205180ad626bcef43b6801b43dc18e7d, type: 3}
   Name: WhiteRabbit
   Description: 
-  HitPoint: 1
+  HitPoint: 8
   AttackPower: 1
   AttackRange: 1
-  VisionRange: 1
-  MoveSpeed: 1
+  VisionRange: 3
+  MoveSpeed: 4
   Type: 2
   SkillCards: 01000000
