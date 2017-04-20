@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class WeatherSetting
+public class WeatherSetting : IndexDataList<Weather, WeatherData>
 {
 	/// <summary>
 	/// random weigth for resource count to cost for resolving weather,
