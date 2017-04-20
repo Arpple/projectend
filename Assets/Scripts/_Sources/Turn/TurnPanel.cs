@@ -13,6 +13,7 @@ public class TurnPanel : MonoBehaviour
 	private void Awake()
 	{
 		Assert.IsNotNull(TurnNodePrefabs);
+		Assert.IsNotNull(RoundText);
 		TurnNodes = new List<TurnNode>();
 		TurnNodeParent = TurnNodeParent ?? transform;
 	}
@@ -22,6 +23,7 @@ public class TurnPanel : MonoBehaviour
 		var node = Instantiate(TurnNodePrefabs);
 		TurnNodes.Add(node);
 		node.transform.SetParent(TurnNodeParent, false);
+		node.RemoveCurrentTurn();
 		return node;
 	}
 

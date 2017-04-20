@@ -5,6 +5,7 @@ using System.Collections;
 public class TurnNode : MonoBehaviour
 {
 	public Image IconImage;
+	public GameObject CurrentTurnIndicator;
 
 	private UnitEntity _unit;
 
@@ -23,7 +24,12 @@ public class TurnNode : MonoBehaviour
 
 	public void SetAsCurrentTurn()
 	{
-		//show border or pointer
+		CurrentTurnIndicator.gameObject.SetActive(true);
+	}
+
+	public void RemoveCurrentTurn()
+	{
+		CurrentTurnIndicator.gameObject.SetActive(false);
 	}
 
 	public void FocusPlayer()

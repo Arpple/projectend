@@ -509,6 +509,7 @@ MonoBehaviour:
   TurnNodes: []
   TurnNodeParent: {fileID: 224951006380464582}
   RoundText: {fileID: 114947789652602722}
+  PlayingPlayerIndicatorImage: {fileID: 114208699566850404}
 --- !u!114 &114852997492158096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -826,7 +827,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567111113213040}
-  m_LocalRotation: {x: 0, y: 0.008726558, z: 0, w: 0.999962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
