@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Entitas;
 using UnityEngine.Assertions;
 
@@ -28,6 +29,13 @@ public class DeadSystem : ReactiveSystem<UnitEntity>
 		foreach (var e in entities)
 		{
 			e.isDead = true;
+		}
+
+		if(entities.Count > 0)
+		{
+			EventLogger.ShowMessge(
+				string.Join(",", entities.Select(e => e.owner.Entity.player.ToString()).ToArray())
+				+ " dead");
 		}
 	}
 }
