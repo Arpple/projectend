@@ -66,7 +66,7 @@ public class MainActionGroup : CardActionGroup
 			button.Button.onClick.AddListener(() => HideAllExcept(button));
 		}
 
-		EndButton.onClick.AddListener(() => EventEndTurn.TryEndTurn());
+		EndButton.onClick.AddListener(TryEndTurn);
 	}
 
 	public void HideAllExcept(PanelToggleButton panelButton)
@@ -103,5 +103,42 @@ public class MainActionGroup : CardActionGroup
 			ShowSubAction(group);
 			group.OnCardClick(card);
 		}
+	}
+
+	private void TryEndTurn()
+	{
+		var local = Contexts.sharedInstance.game.localEntity;
+		if (!local.isPlaying) return;
+
+		var overCount = GetOverMaxCardCount(local);
+		if(overCount > 0)
+		{
+			HideAllExcept(CardButton);
+			var disGroup = (CardDiscardGroup)ShowSubAction(GameUI.Instance.DiscardGroup);
+			disGroup.Setup(CardButton.Panel, overCount, EndTurn);
+		}
+		else
+		{
+			EndTurn();
+		}
+	}
+
+	private int GetOverMaxCardCount(GameEntity player)
+	{
+		var playerCards = Contexts.sharedInstance.card.GetPlayerDeckCards(player);
+		var setting = GameController.Instance.Setting.CardSetting.DeckSetting;
+
+		return playerCards.Length - setting.MaxHandCardCount;
+	}
+
+	private void EndTurn()
+	{
+		EventEndTurn.TryEndTurn();
+	}
+
+	private GameObject GetCurrentActivePanel()
+	{
+		return PanelButtons.Select(p => p.Panel)
+			.FirstOrDefault(p => p.activeSelf);
 	}
 }

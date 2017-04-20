@@ -26,7 +26,7 @@ public class CardDiscardGroup : CardActionGroup
 		}
 	}
 
-	public void Init()
+	public CardDiscardGroup()
 	{
 		_discardingCards = new List<CardObject>();
 	}
@@ -44,7 +44,8 @@ public class CardDiscardGroup : CardActionGroup
 		_targetCount = discardCount;
 		_onCardsDiscarded = onCardsDiscarded;
 		_previousCardPanel = previousCardPanel;
-		_previousCardPanel.SetActive(false);
+		if (_previousCardPanel != null && _previousCardPanel != CardPanel)
+			_previousCardPanel.SetActive(false);
 	}
 
 	protected override void Hide()
@@ -52,7 +53,8 @@ public class CardDiscardGroup : CardActionGroup
 		base.Hide();
 		_discardingCards.Clear();
 		CardPanel.SetActive(false);
-		_previousCardPanel.SetActive(true);
+		if(_previousCardPanel != null)
+			_previousCardPanel.SetActive(true);
 	}
 
 	public override void OnCardClick(CardObject card)
@@ -84,6 +86,8 @@ public class CardDiscardGroup : CardActionGroup
 
 	private void DiscardAndDoAction()
 	{
+		if (!IsTargetCountReached()) return;
+
 		DiscardCards();
 		CloseAction();
 		_onCardsDiscarded();

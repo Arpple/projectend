@@ -66,7 +66,6 @@ public class GameUI : MonoBehaviour
 		DeckFactory.Init();
 		BoxFactory.Init();
 		SkillFactory.Init();
-		DiscardGroup.Init();
 	}
 
 	private ActionGroup _currentGroup;

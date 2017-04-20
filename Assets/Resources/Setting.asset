@@ -46,6 +46,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 5c9c482aacd992d41bd53db346a9861f, type: 2}
       - {fileID: 11400000, guid: cfa6c69379582664683700e62e560aae, type: 2}
       - {fileID: 11400000, guid: fc72877eab47e7f438ad1d71e3701c79, type: 2}
+      MaxHandCardCount: 3
       StartCardCount: 5
       StartTurnDrawCount: 2
       Deck:
