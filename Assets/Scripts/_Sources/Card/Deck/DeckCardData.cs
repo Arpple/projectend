@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Card - Deck", fileName = "new_card.asset")]
+[CreateAssetMenu(menuName = "End/Card/Deck", fileName = "new_card.asset")]
 public class DeckCardData : CardData, IIndexData<DeckCard>
 {
 	[Header("DeckCard")]

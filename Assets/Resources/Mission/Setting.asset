@@ -15,3 +15,6 @@ MonoBehaviour:
     DataList:
     - {fileID: 11400000, guid: 42975ed9761392147b584ba870168ff9, type: 2}
     - {fileID: 11400000, guid: 565ce01337b628b43857053f6f6c62cd, type: 2}
+  PersonalMission:
+    DataList:
+    - {fileID: 11400000, guid: ae503d9c480046b46b753f20c6445aed, type: 2}

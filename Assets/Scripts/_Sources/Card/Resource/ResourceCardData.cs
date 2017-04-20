@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Card - Resource", fileName = "new_card.asset")]
+[CreateAssetMenu(menuName = "End/Card/Resource", fileName = "new_card.asset")]
 public class ResourceCardData : CardData, IIndexData<Resource>
 {
 	[Header("ResourceCard")]

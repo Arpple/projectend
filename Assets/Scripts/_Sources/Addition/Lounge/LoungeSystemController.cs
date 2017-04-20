@@ -1,8 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
-
-
 using Network;
 
 namespace Lounge
@@ -62,12 +60,14 @@ namespace Lounge
 				.Add(new PlayerCreatingSystem(contexts, players))
 				.Add(new LocalPlayerSetupSystem(contexts, NetworkController.Instance.LocalPlayer))
 				.Add(new CharacterLoadingSystems(contexts))
+				.Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
 				.Add(new ContextsResetSystem(contexts))
 				;
 
 			if (IsServer())
 			{
+				systems.Add(new PersonalMissionAssignSystem(contexts, Setting.MissionSetting.PersonalMission));
 			}
 
 			return systems;

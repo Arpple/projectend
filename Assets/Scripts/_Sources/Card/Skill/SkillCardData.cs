@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Card - Skill", fileName = "new_card.asset")]
+[CreateAssetMenu(menuName = "End/Card/Skill", fileName = "new_card.asset")]
 public class SkillCardData : CardData, IIndexData<SkillCard>
 {
 	[Header("SkillCard")]

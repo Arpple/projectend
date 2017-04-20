@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Tile_DeepForest
   m_EditorClassIdentifier: 
   TileType: 2
-  Sprite: {fileID: 21300000, guid: 06827b4f8ace9994081198216a4e43e6, type: 3}
+  Sprite: {fileID: 21300000, guid: 8be0d419deadccf46b549ac20fcd3f7e, type: 3}
   IsWalkableOn: 1
   Resource: 1
-  EmptyResourceSprite: {fileID: 21300000, guid: 3fc97ed39d6148b4c86427889d8ef78f,
+  EmptyResourceSprite: {fileID: 21300000, guid: 77266d9303360ee4ebb2ee0dc2215618,
     type: 3}

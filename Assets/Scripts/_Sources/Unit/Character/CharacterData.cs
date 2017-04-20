@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "End/Character", fileName = "new_character.asset")]
+[CreateAssetMenu(menuName = "End/Unit/Character", fileName = "new_character.asset")]
 public class CharacterData : UnitData, IIndexData<Character>
 {
 	[Header("--Character--")]

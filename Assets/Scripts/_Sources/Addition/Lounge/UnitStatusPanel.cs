@@ -4,27 +4,45 @@ using UnityEngine.UI;
 namespace Lounge
 {
 	public class UnitStatusPanel : MonoBehaviour{
-        public Text HitPoint, AttackPower, AttackRange, VisionRange, MoveSpeed
-            ,UnitName;
-        public Image UnitImage;
 
-        /// <summary>
-        /// show unit status by parameter
-        /// </summary>
-        /// <param name="charName"></param>
-        /// <param name="hp"></param>
-        /// <param name="ap"></param>
-        /// <param name="ar"></param>
-        /// <param name="vs"></param>
-        /// <param name="ms"></param>
-        public void setUnitStatus(string charName,Sprite charImage,int hp,int ap,int ar,int vs,int ms) {
-            this.UnitName.text = charName;
-            this.HitPoint.text = hp.ToString();
-            this.AttackPower.text = ap.ToString();
-            this.AttackRange.text = ar.ToString();
-            this.VisionRange.text = vs.ToString();
-            this.MoveSpeed.text = ms.ToString();
-            this.UnitImage.sprite = charImage;
-        }
-    }
+		public Image UnitImage;
+
+		[Header("Status")]
+		public Text HitPoint;
+		public Text AttackPower;
+		public Text AttackRange;
+		public Text VisionRange;
+		public Text MoveSpeed;
+		public Text UnitName;
+
+		[Header("Skill")]
+		UnitSkillPanel SkillPanel;
+		
+
+		public void SetUnit(UnitEntity unit)
+		{
+			SetUnitDetail(unit.unitDetail);
+			SetUnitStatus(unit.unitStatus);
+			SetUnitSprite(unit.sprite.Sprite);
+		}
+
+		private void SetUnitDetail(UnitDetailComponent detail)
+		{
+			UnitName.text = detail.Name;
+		}
+
+		private void SetUnitStatus(UnitStatusComponent status)
+		{
+			HitPoint.text = status.HitPoint.ToString();
+			AttackPower.text = status.AttackPower.ToString();
+			AttackRange.text = status.AttackRange.ToString();
+			VisionRange.text = status.VisionRange.ToString();
+			MoveSpeed.text = status.MoveSpeed.ToString();
+		}
+
+		private void SetUnitSprite(Sprite sprite)
+		{
+			UnitImage.sprite = sprite;
+		}
+	}
 }
