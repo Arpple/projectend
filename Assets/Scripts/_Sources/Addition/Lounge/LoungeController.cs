@@ -25,6 +25,10 @@ namespace Lounge
 
 		private Character _focusingCharacter;
 		private Player _localPlayer;
+
+        [Header("MissionBook")]
+        public MissionBookController MissionBookController;
+
 		private NetworkController _networkController
 		{
 			get { return NetworkController.Instance; }
@@ -93,46 +97,7 @@ namespace Lounge
 			UnitSkill.SetUnit(unit);
 		}
 
-		#region UI RoleContent
-		[Header("Role")]
-		public Text RoleTitle, RoleDesciption;
-		public Image RoleImage;
-
-		public void ToggleViewRole() {
-			bool isActive = this.RoleContent.activeInHierarchy;
-			this.RoleContent.SetActive(!isActive);
-			//this.CharacterContent.SetActive(isActive);
-		}
-
-		public void GodRole() {
-			RoleTitle.text = "- "+RoleAndDescription.GOD_NAME+" -";
-			RoleDesciption.text = "Win Condition"+ Environment.NewLine
-				+ RoleAndDescription.GOD_WIN_CONDITION;
-			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_GOD);
-		}
-
-		public void ApostleRole() {
-			RoleTitle.text = "- " + RoleAndDescription.APOSTLE_NAME + " -";
-			RoleDesciption.text = "Win Condition" + Environment.NewLine
-				+ RoleAndDescription.APOSTLE_WIN_CONDITION;
-			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_APOSTLE);
-		}
-
-		public void PriestRole() {
-			RoleTitle.text = "- " + RoleAndDescription.PRIEST_NAME + " -";
-			RoleDesciption.text = "Win Condition" + Environment.NewLine
-				+ RoleAndDescription.PRIEST_WIN_CONDITION;
-			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_PRIEST);
-		}
-
-		public void AtheistRole() {
-			RoleTitle.text = "- " + RoleAndDescription.ATHEIST_NAME + " -";
-			RoleDesciption.text = "Win Condition" + Environment.NewLine
-				+ RoleAndDescription.ATHEIST_WIN_CONDITION;
-			RoleImage.sprite = Resources.Load<Sprite>(RoleAndDescription.ICON_PATH_ATHEIST);
-		}
-		#endregion
-
+		
 		private void AddPlayer(Player player)
 		{
 			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs,PlayerListContent.transform,false);
