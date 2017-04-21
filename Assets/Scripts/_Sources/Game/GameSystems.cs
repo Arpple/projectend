@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Network;
-using Offline;
 
 public class GameSystems : Feature
 {
@@ -21,11 +20,17 @@ public class GameSystems : Feature
 	private void CreateMissionSystem(Contexts contexts)
 	{
 		Add(new MainMissionSetupSystem(contexts));
+		Add(new PlayerMissionSetupSystem(contexts));
 
 		//main-monolith
 		{
 			Add(new MissionBossMonolithSetupSystem(contexts));
 			Add(new MissionBossMonolithCompletingSystem(contexts));
+		}
+
+		//player
+		{
+			Add(new PlayerMissionHunterCompletingSystem(contexts));
 		}
 	}
 }
