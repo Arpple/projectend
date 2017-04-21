@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "End/Mission/Player Mission", fileName = "new_mission.asset")]
-public class PlayerMissionData : EntityData, IIndexData<PlayerMission>
+public class PlayerMissionData : MissionData, IIndexData<PlayerMission>
 {
 	public PlayerMission Type;
-	public string Name;
-	[TextArea] public string Description;
 
 	[Header("Target")]
 	public bool RandomPlayer;

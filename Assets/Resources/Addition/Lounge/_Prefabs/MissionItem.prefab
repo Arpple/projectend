@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 224521983872673108}
   - component: {fileID: 222901257598007418}
   - component: {fileID: 114694601387512166}
-  - component: {fileID: 114633254021558808}
   - component: {fileID: 114807093566952422}
+  - component: {fileID: 114915436447057466}
   m_Layer: 5
-  m_Name: MissionListItem
+  m_Name: MissionItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,24 +95,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
---- !u!114 &114633254021558808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032102359115586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb2b9b19c4c147439037d8e99056c4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MissionNameText: {fileID: 114448316898659264}
-  Background: {fileID: 114694601387512166}
-  isWorldMission: 0
-  Description: 
-  Target: 
-  FocusColor: {r: 1, g: 0.8901961, b: 0, a: 1}
-  NonFocusColor: {r: 0.27058825, g: 0.27058825, b: 0, a: 1}
 --- !u!114 &114694601387512166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,7 +161,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114633254021558808}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -192,6 +174,21 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114915436447057466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032102359115586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b41a9790a77514dbdcccfabfed439b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: {fileID: 114807093566952422}
+  MissionNameText: {fileID: 114448316898659264}
+  FocusColor: {r: 1, g: 0.8901961, b: 0, a: 1}
+  NonFocusColor: {r: 0.27058825, g: 0.27058825, b: 0, a: 1}
 --- !u!222 &222377576754345422
 CanvasRenderer:
   m_ObjectHideFlags: 1

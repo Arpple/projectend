@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 114334140995579670}
   - component: {fileID: 95908870257810706}
   m_Layer: 5
-  m_Name: TurnList (Panel) 1
+  m_Name: Beta_TurnList (Panel) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
