@@ -11,6 +11,7 @@ namespace Test.WeatherTest
 		{
 			_setting = TestHelper.GetGameSetting().WeatherSetting;
 			_systems.Add(new RoundStartWeatherCreateSystem(_contexts, _setting));
+			_systems.Initialize();
 		}
 
 		[Test]

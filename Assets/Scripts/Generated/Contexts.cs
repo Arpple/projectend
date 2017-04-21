@@ -65,6 +65,8 @@ public partial class Contexts : Entitas.IContexts {
 public partial class Contexts {
 
     public const string Id = "Id";
+    public const string MainMission = "MainMission";
+    public const string PlayerMission = "PlayerMission";
     public const string MapPosition = "MapPosition";
     public const string Spawnpoint = "Spawnpoint";
 
@@ -74,18 +76,28 @@ public partial class Contexts {
             Id,
             tile.GetGroup(TileMatcher.Id),
             (e, c) => ((IdComponent)c).Id));
-        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
+        card.AddEntityIndex(new Entitas.EntityIndex<CardEntity, int>(
             Id,
-            game.GetGroup(GameMatcher.Id),
+            card.GetGroup(CardMatcher.Id),
             (e, c) => ((IdComponent)c).Id));
         unit.AddEntityIndex(new Entitas.EntityIndex<UnitEntity, int>(
             Id,
             unit.GetGroup(UnitMatcher.Id),
             (e, c) => ((IdComponent)c).Id));
-        card.AddEntityIndex(new Entitas.EntityIndex<CardEntity, int>(
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
             Id,
-            card.GetGroup(CardMatcher.Id),
+            game.GetGroup(GameMatcher.Id),
             (e, c) => ((IdComponent)c).Id));
+
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, MainMission>(
+            MainMission,
+            game.GetGroup(GameMatcher.MainMission),
+            (e, c) => ((MainMissionComponent)c).Type));
+
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, PlayerMission>(
+            PlayerMission,
+            game.GetGroup(GameMatcher.PlayerMission),
+            (e, c) => ((PlayerMissionComponent)c).MisisonType));
 
         tile.AddEntityIndex(new Entitas.EntityIndex<TileEntity, Position>(
             MapPosition,
@@ -109,16 +121,24 @@ public static class ContextsExtensions {
         return ((Entitas.EntityIndex<TileEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
-    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithId(this GameContext context, int Id) {
-        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
+    public static System.Collections.Generic.HashSet<CardEntity> GetEntitiesWithId(this CardContext context, int Id) {
+        return ((Entitas.EntityIndex<CardEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
     public static System.Collections.Generic.HashSet<UnitEntity> GetEntitiesWithId(this UnitContext context, int Id) {
         return ((Entitas.EntityIndex<UnitEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
     }
 
-    public static System.Collections.Generic.HashSet<CardEntity> GetEntitiesWithId(this CardContext context, int Id) {
-        return ((Entitas.EntityIndex<CardEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithId(this GameContext context, int Id) {
+        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntities(Id);
+    }
+
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithMainMission(this GameContext context, MainMission Type) {
+        return ((Entitas.EntityIndex<GameEntity, MainMission>)context.GetEntityIndex(Contexts.MainMission)).GetEntities(Type);
+    }
+
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithPlayerMission(this GameContext context, PlayerMission MisisonType) {
+        return ((Entitas.EntityIndex<GameEntity, PlayerMission>)context.GetEntityIndex(Contexts.PlayerMission)).GetEntities(MisisonType);
     }
 
     public static System.Collections.Generic.HashSet<TileEntity> GetEntitiesWithMapPosition(this TileContext context, Position Value) {
