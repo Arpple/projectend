@@ -1,19 +1,16 @@
 using System.Collections.Generic;
-using System.Linq;
 using Entitas;
 using Entitas.VisualDebugging.Unity;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Lounge;
 
-public class GameController : MonoBehaviour
+public abstract class GameController : MonoBehaviour
 {
 	public static GameController Instance;
 	public static bool IsTest;
 
 	[Header("Config")]
-	public bool IsOffline = false;
 	public SystemController SystemController;
 
 	[Header("Data")]
@@ -24,14 +21,16 @@ public class GameController : MonoBehaviour
 	public GameObject TileContainer;
 	public GameObject UnitContainer;
 
-	[HideInInspector] public List<Player> Players;
-	private Systems _systems;
-	private Contexts _contexts;
-	private bool _isInitialized;
-	private Player _localPlayer;
-	private PlayerLoader _playerLoader;
+	public abstract bool IsNetwork { get; }
 
-	void Awake()
+	[HideInInspector] public List<Player> Players;
+	protected Systems _systems;
+	protected Contexts _contexts;
+	protected bool _isInitialized;
+	protected Player _localPlayer;
+	protected PlayerLoader _playerLoader;
+
+	private void Awake()
 	{
 		Instance = this;
 		_isInitialized = false;
@@ -43,41 +42,38 @@ public class GameController : MonoBehaviour
 		UnitContainer = UnitContainer ?? new GameObject("Unit");
 	}
 
-	void Start()
+	private void Start()
 	{
 		Debug.Log("Start");
-		//clear old observer
+		ClearOldEntitySystem();
+		CreateEntitySystem();
+
+		SetupPlayers();
+	}
+
+	private void ClearOldEntitySystem()
+	{
 		foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
 		{
 			Destroy(observer.gameObject);
 		}
-
-		//create entitas system
-		_contexts = Contexts.sharedInstance;
-		new EntityIdGenerator(_contexts);
-
-		if (IsOffline)
-		{
-			Debug.Log("Offline Init");
-			SetupNetworkOffline();
-			Initialize();
-		}
-		else
-		{
-			SetupNetwork();
-		}
 	}
 
-	private void Initialize()
+	private void CreateEntitySystem()
+	{
+		_contexts = Contexts.sharedInstance;
+		new EntityIdGenerator(_contexts);
+	}
+
+	protected abstract void SetupPlayers();
+
+	protected void Initialize()
 	{
 		Debug.Log("Initialize");
 
 		_systems = CreateSystem(_contexts);
 		_systems.Initialize();
-		_isInitialized = true;
-
-		if (!IsOffline)
-			_localPlayer.CmdClientLoad();
+		_isInitialized = true;	
 	}
 
 	void Update()
@@ -111,51 +107,13 @@ public class GameController : MonoBehaviour
 			.Add(new WeatherSystems(contexts, Setting, GameUI.Instance));
 	}
 
-	#region Network
 
-	public void SetupNetwork()
-	{
-		var netCon = NetworkController.Instance;
-
-		foreach (var player in netCon.AllPlayers)
-		{
-			AddPlayer(player);
-		}
-
-		AddLocalPlayer(netCon.LocalPlayer);
-		netCon.ClientSceneChangedCallback = Initialize;
-
-		if (NetworkController.IsServer)
-		{
-			_playerLoader = new ServerPlayerLoader(netCon.AllPlayers.Count);
-		}
-		else
-		{
-			_playerLoader = new ClientPlayerLoader();
-		}
-	}
-
-	private void SetupNetworkOffline()
-	{
-		var players = PlayerContainer.GetComponentsInChildren<Player>(true);
-		AddLocalPlayer(players.First());
-		players.Length.Loop(i =>
-		{
-			players[i].PlayerId = (short)(i + 1);
-			AddPlayer(players[i]);
-		});
-
-		_playerLoader = new ClientPlayerLoader();
-		var pl = _playerLoader as ClientPlayerLoader;
-		pl.SetReady();
-	}
-
-	public void AddPlayer(Player player)
+	protected void AddPlayer(Player player)
 	{
 		Players.Add(player);
 	}
 
-	public void AddLocalPlayer(Player player)
+	protected void AddLocalPlayer(Player player)
 	{
 		_localPlayer = player;
 	}
@@ -181,5 +139,4 @@ public class GameController : MonoBehaviour
 			pl.SetReady();
 		}
 	}
-	#endregion
 }

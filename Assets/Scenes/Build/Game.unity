@@ -1410,17 +1410,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1223178548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ec3723244fc9a439aa2966c3fa94c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b80f618015cb7f44a708c4463f0064f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOffline: 0
-  SystemController:
-    AutoEndTurnForBoss: 1
-    AutoPassLocalFlag: 0
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
-  PlayerContainer: {fileID: 945831767}
-  TileContainer: {fileID: 757905345}
-  UnitContainer: {fileID: 100078705}
+  SystemController: {fileID: 0}
+  Setting: {fileID: 0}
+  PlayerContainer: {fileID: 0}
+  TileContainer: {fileID: 0}
+  UnitContainer: {fileID: 0}
   Players: []
 --- !u!4 &1223178550
 Transform:
@@ -4066,8 +4063,10 @@ MonoBehaviour:
     CancelButton: {fileID: 1474351613}
   CardDesc: {fileID: 1080691733}
   LocalPlayerStatus: {fileID: 1901031417}
+  WeatherStatus: {fileID: 0}
   TargetPlayerStatus: {fileID: 1246819136}
   TurnPanel: {fileID: 290748622}
+  MissionBookController: {fileID: 0}
   TurnNoti: {fileID: 743844004}
   DeckFactory: {fileID: 255292243}
   BoxFactory: {fileID: 255292244}

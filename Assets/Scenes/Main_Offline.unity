@@ -2589,8 +2589,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1234237937}
-  - component: {fileID: 1234237935}
   - component: {fileID: 1234237936}
+  - component: {fileID: 1234237938}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2598,24 +2598,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1234237935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234237934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ec3723244fc9a439aa2966c3fa94c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsOffline: 1
-  SystemController: {fileID: 1234237936}
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
-  PlayerContainer: {fileID: 2005555624}
-  TileContainer: {fileID: 132817912}
-  UnitContainer: {fileID: 238646442}
-  Players: []
 --- !u!114 &1234237936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2642,6 +2624,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1234237938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a60deff7c4de5540a9c66c38fa8d0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SystemController: {fileID: 1234237936}
+  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
+  PlayerContainer: {fileID: 2005555624}
+  TileContainer: {fileID: 132817912}
+  UnitContainer: {fileID: 238646442}
+  Players: []
 --- !u!1 &1240357652
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ namespace Test.UnitTest.BossTest
 
 			_noti = new GameObject().AddComponent<TurnNotification>();
 
-			_systems.Add(new BossActiveSkillUsingSystem(_contexts, _noti, new SystemController()));
+			_systems.Add(new BossActiveSkillUsingSystem(_contexts, _noti, TestHelper.CreateSystemController()));
 
 			_player = CreatePlayerEntity(-1);
 			_player.isBossPlayer = true;

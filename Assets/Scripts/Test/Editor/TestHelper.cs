@@ -63,6 +63,9 @@ namespace Test
 			return obj;
 		}
 
-		
+		public static SystemController CreateSystemController()
+		{
+			return new GameObject().AddComponent<SystemController>();
+		}
 	}
 }

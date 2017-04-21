@@ -9,7 +9,7 @@ public static class GameEvent
 	public static void CreateEvent<T>(params int[] args) where T : GameEventComponent
 	{
 		int componentId = GameEventComponentsLookup.componentTypes.ToList().IndexOf(typeof(T));
-		if (GameController.Instance != null && !GameController.Instance.IsOffline)
+		if (GameController.Instance != null && GameController.Instance.IsNetwork)
 		{
 			//Debug.Log("Create Online Event " + typeof(T).ToString());
 			Contexts.sharedInstance.game.localEntity.player.GetNetworkPlayer().CmdCreateEvent(componentId, args);
