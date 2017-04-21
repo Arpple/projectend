@@ -1574,7 +1574,7 @@ MonoBehaviour:
   WeatherStatus: {fileID: 867015763}
   TargetPlayerStatus: {fileID: 1812729849}
   TurnPanel: {fileID: 1819515088}
-  MissionBookController: {fileID: 1252334626}
+  MissionBookController: {fileID: 0}
   TurnNoti: {fileID: 1285569465}
   DeckFactory: {fileID: 1465027410}
   BoxFactory: {fileID: 1465027411}
@@ -2590,6 +2590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1234237937}
   - component: {fileID: 1234237935}
+  - component: {fileID: 1234237936}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2609,14 +2610,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOffline: 1
-  SystemController:
-    AutoEndTurnForBoss: 1
-    AutoPassLocalFlag: 1
+  SystemController: {fileID: 1234237936}
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}
   UnitContainer: {fileID: 238646442}
   Players: []
+--- !u!114 &1234237936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424f42ebdbf12dd4e9c28dce53a80e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoEndTurnForBoss: 0
+  AutoPassLocalFlag: 0
 --- !u!4 &1234237937
 Transform:
   m_ObjectHideFlags: 0
@@ -2704,12 +2716,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1240357652}
---- !u!114 &1252334626 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114232358267646630, guid: 1c3788d327c61954d8d625e42c7edce4,
-    type: 2}
-  m_PrefabInternal: {fileID: 520431200}
-  m_Script: {fileID: 11500000, guid: 8e4044b7dac2a69478e0fcad85d1b38e, type: 3}
 --- !u!1001 &1266561356
 Prefab:
   m_ObjectHideFlags: 0

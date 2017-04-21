@@ -1,7 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-
 namespace MapEditor
 {
 	[CustomEditor(typeof(MapEditorController))]

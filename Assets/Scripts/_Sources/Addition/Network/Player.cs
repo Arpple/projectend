@@ -30,6 +30,9 @@ namespace Network
 		[SyncVar(hook = "OnPlayerMissionTargetChanged")]
 		public int PlayerMissionTarget;
 
+		public bool MainMissionComplete;
+		public bool PlayerMissionComplete;
+
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
 
