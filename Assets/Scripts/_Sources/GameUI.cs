@@ -1,4 +1,5 @@
 ﻿
+using Lounge;
 using UI;
 
 using UnityEngine;
@@ -27,6 +28,7 @@ public class GameUI : MonoBehaviour
 	public WeatherStatusPanel WeatherStatus;
 	public PlayerUnitStatusPanel TargetPlayerStatus;
 	public TurnPanel TurnPanel;
+    public MissionBookController MissionBookController;
 
 	[Header("Notification")]
 	public TurnNotification TurnNoti;
