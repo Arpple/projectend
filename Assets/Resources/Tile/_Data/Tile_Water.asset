@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Tile_Water
   m_EditorClassIdentifier: 
   TileType: 3
-  Sprite: {fileID: 21300000, guid: 9bfb048d01e3e544782c84cd142582fd, type: 3}
+  Sprite: {fileID: 21300000, guid: 72adff9a1f6afe74cab98da3d1cfb97c, type: 3}
   IsWalkableOn: 0
   Resource: 2
-  EmptyResourceSprite: {fileID: 21300000, guid: 3fc97ed39d6148b4c86427889d8ef78f,
+  EmptyResourceSprite: {fileID: 21300000, guid: 664f2fca20b87a34fb3b1e00537f052f,
     type: 3}

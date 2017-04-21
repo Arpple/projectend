@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Tile_Snow
   m_EditorClassIdentifier: 
   TileType: 6
-  Sprite: {fileID: 21300000, guid: 03165db062164ee4789f71584d4e168f, type: 3}
+  Sprite: {fileID: 21300000, guid: b46bd8a3f2c37d940a9183b89f7b2cbb, type: 3}
   IsWalkableOn: 1
+  Resource: 0
+  EmptyResourceSprite: {fileID: 0}
