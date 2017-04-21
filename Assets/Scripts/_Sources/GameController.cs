@@ -5,6 +5,7 @@ using Entitas.VisualDebugging.Unity;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Lounge;
 
 public class GameController : MonoBehaviour
 {
@@ -107,7 +108,8 @@ public class GameController : MonoBehaviour
 			.Add(new UnitSystems(contexts, Setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
 			.Add(new CardSystems(contexts, Setting.CardSetting, GameUI.Instance))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
-			.Add(new WeatherSystems(contexts, Setting, GameUI.Instance));
+			.Add(new WeatherSystems(contexts, Setting, GameUI.Instance))
+            .Add(new MissionLoadingSystem(contexts,GameUI.Instance.MissionBookController, Setting.MissionSetting));
 	}
 
 	#region Network
