@@ -68,9 +68,11 @@ public class GameUI : MonoBehaviour
 		DeckFactory.Init();
 		BoxFactory.Init();
 		SkillFactory.Init();
-	}
 
-	private ActionGroup _currentGroup;
+        this.MissionBookController.LoadData(GameController.Instance.Setting.MissionSetting);
+    }
+
+    private ActionGroup _currentGroup;
 
 	public void OnCardClicked(CardObject card)
 	{
