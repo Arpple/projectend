@@ -13,6 +13,7 @@
 		{
 			base.AddComponents();
 			AddAbility();
+			AddAbilityEffect();
 		}
 
 		public void AddAbility()
@@ -25,6 +26,14 @@
 					(name) => (Ability)System.Reflection.Assembly.GetExecutingAssembly().CreateInstance(name)
 				)
 			);
+		}
+
+		public void AddAbilityEffect()
+		{
+			if(_data.Effect != null)
+			{
+				_entity.AddAbilityEffect(_data.Effect);
+			}
 		}
 	}
 }

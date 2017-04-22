@@ -22,6 +22,11 @@ public class EventUseCardOnTileSystem : EventSystem
 		var ability = (ActiveAbility<TileEntity>)cardEvent.CardEnttiy.ability.Ability;
 		ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEnttiy);
 
+		if (cardEvent.CardEnttiy.hasAbilityEffect)
+		{
+			cardEvent.CardEnttiy.abilityEffect.EffectObject.PlayAnimation();
+		}
+
 		if (cardEvent.CardEnttiy.hasDeckCard)
 			RemovePlayerCard(cardEvent.CardEnttiy);
 
