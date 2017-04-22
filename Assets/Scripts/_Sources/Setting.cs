@@ -16,6 +16,9 @@ public class Setting : ScriptableObject
 	public CardSetting CardSetting;
 
 	[Space(15)]
+	public BuffSetting BuffSetting;
+
+	[Space(15)]
 	public MissionSetting MissionSetting;
 
 	[Space(15)]
@@ -29,6 +32,7 @@ public class Setting : ScriptableObject
 		Assert.IsNotNull(TileSetting);
 		Assert.IsNotNull(UnitSetting);
 		Assert.IsNotNull(CardSetting);
+		Assert.IsNotNull(BuffSetting);
 		Assert.IsNotNull(WeatherSetting);
 		Assert.IsNotNull(PlayerIconSetting);
 	}

@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class BuffEntity {
 
-    public BuffDurationComponent buffDuration { get { return (BuffDurationComponent)GetComponent(BuffComponentsLookup.BuffDuration); } }
-    public bool hasBuffDuration { get { return HasComponent(BuffComponentsLookup.BuffDuration); } }
+    public DurationComponent duration { get { return (DurationComponent)GetComponent(BuffComponentsLookup.Duration); } }
+    public bool hasDuration { get { return HasComponent(BuffComponentsLookup.Duration); } }
 
-    public void AddBuffDuration(int newCount) {
-        var index = BuffComponentsLookup.BuffDuration;
-        var component = CreateComponent<BuffDurationComponent>(index);
+    public void AddDuration(int newCount) {
+        var index = BuffComponentsLookup.Duration;
+        var component = CreateComponent<DurationComponent>(index);
         component.Count = newCount;
         AddComponent(index, component);
     }
 
-    public void ReplaceBuffDuration(int newCount) {
-        var index = BuffComponentsLookup.BuffDuration;
-        var component = CreateComponent<BuffDurationComponent>(index);
+    public void ReplaceDuration(int newCount) {
+        var index = BuffComponentsLookup.Duration;
+        var component = CreateComponent<DurationComponent>(index);
         component.Count = newCount;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveBuffDuration() {
-        RemoveComponent(BuffComponentsLookup.BuffDuration);
+    public void RemoveDuration() {
+        RemoveComponent(BuffComponentsLookup.Duration);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class BuffEntity {
 //------------------------------------------------------------------------------
 public sealed partial class BuffMatcher {
 
-    static Entitas.IMatcher<BuffEntity> _matcherBuffDuration;
+    static Entitas.IMatcher<BuffEntity> _matcherDuration;
 
-    public static Entitas.IMatcher<BuffEntity> BuffDuration {
+    public static Entitas.IMatcher<BuffEntity> Duration {
         get {
-            if(_matcherBuffDuration == null) {
-                var matcher = (Entitas.Matcher<BuffEntity>)Entitas.Matcher<BuffEntity>.AllOf(BuffComponentsLookup.BuffDuration);
+            if(_matcherDuration == null) {
+                var matcher = (Entitas.Matcher<BuffEntity>)Entitas.Matcher<BuffEntity>.AllOf(BuffComponentsLookup.Duration);
                 matcher.componentNames = BuffComponentsLookup.componentNames;
-                _matcherBuffDuration = matcher;
+                _matcherDuration = matcher;
             }
 
-            return _matcherBuffDuration;
+            return _matcherDuration;
         }
     }
 }

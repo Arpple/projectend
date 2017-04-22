@@ -9,12 +9,12 @@ public class BuffExpireSystem : BuffReactiveSystem
 
 	protected override Collector<BuffEntity> GetTrigger(IContext<BuffEntity> context)
 	{
-		return context.CreateCollector(BuffMatcher.BuffDuration);
+		return context.CreateCollector(BuffMatcher.Duration);
 	}
 
 	protected override bool Filter(BuffEntity entity)
 	{
-		return entity.hasBuffDuration && entity.buffDuration.Count == 0;
+		return entity.hasDuration && entity.duration.Count == 0;
 	}
 
 	protected override void Execute(List<BuffEntity> entities)

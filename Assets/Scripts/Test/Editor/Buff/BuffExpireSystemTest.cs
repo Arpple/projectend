@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Test.BuffTest
 {
@@ -15,7 +14,7 @@ namespace Test.BuffTest
 		public void Execute_BuffDurationZero_BuffEntityRemoveFromUnitBuffList()
 		{
 			var buff = _contexts.buff.CreateEntity();
-			buff.AddBuffDuration(0);
+			buff.AddDuration(0);
 
 			var unit = _contexts.unit.CreateEntity();
 			unit.AddBuff(buff);

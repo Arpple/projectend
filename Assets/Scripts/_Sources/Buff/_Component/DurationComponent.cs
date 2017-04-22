@@ -1,7 +1,7 @@
 ﻿using Entitas;
 
 [Buff]
-public class BuffDurationComponent : IComponent
+public class DurationComponent : IComponent
 {
 	public int Count;
 }
