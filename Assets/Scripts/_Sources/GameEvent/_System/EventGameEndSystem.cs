@@ -37,6 +37,6 @@ public class EventGameEndSystem : EventReactiveSystem
 			p.PlayerMissionComplete = player.isPlayerMissionCompleted;
 		}
 
-		SceneManager.LoadScene(Scene.Result.ToString());
+		SceneManager.LoadScene(GameScene.Result.ToString());
 	}
 }

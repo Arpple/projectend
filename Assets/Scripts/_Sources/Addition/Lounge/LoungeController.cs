@@ -173,7 +173,7 @@ namespace Lounge
 		public void LoadGameScene()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.ServerChangeScene(Scene.Game.ToString());
+			netCon.ServerChangeScene(GameScene.Game.ToString());
 		}
 
 		public List<Player> GetAllPlayers()
