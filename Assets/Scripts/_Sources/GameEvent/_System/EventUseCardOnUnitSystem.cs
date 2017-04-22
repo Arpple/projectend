@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using UnityEngine;
 
 public class EventUseCardOnUnitSystem : EventSystem
 {
@@ -19,20 +20,26 @@ public class EventUseCardOnUnitSystem : EventSystem
 	protected override void Process(GameEventEntity entity)
 	{
 		var cardEvent = entity.eventUseCardOnUnit;
-		var ability = (ActiveAbility<UnitEntity>)cardEvent.CardEntity.ability.Ability;
+		var cardEntity = cardEvent.CardEntity;
+		var ability = (ActiveAbility<UnitEntity>)cardEntity.ability.Ability;
 		ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEntity);
 
-		if(cardEvent.CardEntity.hasAbilityEffect)
+		if (cardEntity.hasAbilityEffect)
 		{
-			cardEvent.CardEntity.abilityEffect.EffectObject.PlayAnimation();
+			var effect = Object.Instantiate(
+				cardEntity.abilityEffect.EffectObject,
+				cardEvent.TargetEntity.view.GameObject.transform, false
+			).GetComponent<AbilityEffect>();
+
+			effect.PlayAnimation();
 		}
 
-		if (cardEvent.CardEntity.hasDeckCard)
-			RemovePlayerCard(cardEvent.CardEntity);
+		if (cardEntity.hasDeckCard)
+			RemovePlayerCard(cardEntity);
 
 		var msg = string.Format("{0} use {1}",
 			cardEvent.UserEntity.owner.Entity.player,
-			cardEvent.CardEntity.cardDescription.Name
+			cardEntity.cardDescription.Name
 		);
 		
 		if(cardEvent.TargetEntity != cardEvent.UserEntity)

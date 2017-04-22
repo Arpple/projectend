@@ -5,8 +5,8 @@ using UnityEngine.Assertions;
 public class EventUseCardOnTile : GameEventComponent
 {
 	public UnitEntity UserEntity;
-	public CardEntity CardEnttiy;
-	public TileEntity TargetEnttiy;
+	public CardEntity CardEntity;
+	public TileEntity TargetEntity;
 
 	public static void Create(UnitEntity userEntity, CardEntity cardEntity, TileEntity tileEntity)
 	{
@@ -20,10 +20,10 @@ public class EventUseCardOnTile : GameEventComponent
 		UserEntity = Contexts.sharedInstance.unit.GetEntitiesWithId(userUnitId)
 			.First();
 
-		CardEnttiy = Contexts.sharedInstance.card.GetEntitiesWithId(cardId)
+		CardEntity = Contexts.sharedInstance.card.GetEntitiesWithId(cardId)
 			.First();
 
-		TargetEnttiy = Contexts.sharedInstance.tile.GetEntitiesWithMapPosition(new Position(x, y))
+		TargetEntity = Contexts.sharedInstance.tile.GetEntitiesWithMapPosition(new Position(x, y))
 			.First();
 	}
 }

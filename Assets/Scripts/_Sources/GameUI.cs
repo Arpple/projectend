@@ -1,5 +1,4 @@
-﻿
-using Lounge;
+﻿using Lounge;
 using UI;
 
 using UnityEngine;
