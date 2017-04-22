@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4298686471403764}
   - component: {fileID: 95847592041878632}
+  - component: {fileID: 114014824143064036}
   m_Layer: 0
   m_Name: Hit
   m_TagString: Untagged
@@ -94,8 +95,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812508183847432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4689922854232640}
@@ -147,6 +148,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114014824143064036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812508183847432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86eb4e625e76d03458a3bf22b6302f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 95847592041878632}
+  AnimationName: Play
 --- !u!212 &212236050189162356
 SpriteRenderer:
   m_ObjectHideFlags: 1
