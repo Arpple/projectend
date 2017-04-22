@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 
-[CreateAssetMenu(menuName = "End/Setting/Mission", fileName = "Setting.asset")]
-public class MissionSetting : ScriptableObject
+[Serializable]
+public class MissionSetting
 {
 	public MainMissionSetting MainMission;
 	public PlayerMissionSetting PlayerMission;

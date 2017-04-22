@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Entitas.Unity;
 using Network;
@@ -27,7 +27,11 @@ namespace Lounge
 		private Player _localPlayer;
 
         [Header("MissionBook")]
-        public MissionBookController MissionBookController;
+        public MissionBookController MissionBook;
+
+		[Header("Test")]
+		public bool IsOffline;
+		public Transform PlayerParent;
 
 		private NetworkController _networkController
 		{
@@ -50,19 +54,23 @@ namespace Lounge
 
 		void Start()
 		{
-			SetLocalPlayer(_networkController.LocalPlayer);
+			MissionBook.LoadData(Setting.MissionSetting);
+			UnitSkill.Initialize(Setting.CardSetting.SkillCardSetting);
 
-			CharacterSelectSlideMenu.OnFocusItemChangedCallback += FocusCharacterIcon;
-			_networkController.ServerSceneChangedCallback = _networkController.LocalPlayer.RpcResetReadyStatus;
-
-			foreach(var player in _networkController.AllPlayers)
+			foreach (var player in GetAllPlayers())
 			{
 				AddPlayer(player);
 			}
 
-			_networkController.OnAllPlayerReadyCallback += LoadGameScene;
+			SetLocalPlayer(GetLocalPLayer());
 
-			UnitSkill.Initialize(Setting.CardSetting.SkillCardSetting);
+			CharacterSelectSlideMenu.OnFocusItemChangedCallback += FocusCharacterIcon;
+
+			if(!IsOffline)
+			{
+				_networkController.ServerSceneChangedCallback = _networkController.LocalPlayer.RpcResetReadyStatus;
+				_networkController.OnAllPlayerReadyCallback += LoadGameScene;
+			}
 		}
 
 		private void FocusCharacterIcon(SlideItem characterIcon)
@@ -75,10 +83,13 @@ namespace Lounge
 
 		private void OnDestroy()
 		{
-			var netCon = NetworkController.Instance;
+			if(!IsOffline)
+			{
+				var netCon = NetworkController.Instance;
 
-			netCon.ServerSceneChangedCallback = null;
-			netCon.OnAllPlayerReadyCallback -= LoadGameScene;
+				netCon.ServerSceneChangedCallback = null;
+				netCon.OnAllPlayerReadyCallback -= LoadGameScene;
+			}
 		}
 
 		/// <summary>
@@ -104,12 +115,21 @@ namespace Lounge
 			charPlayer.SetPlayer(player);
 
 			player.OnSelectedCharacterChangedCallback += DisableCharacterIcon;
+			player.OnPlayerMissionChangedCallback = MissionBook.SetLocalPlayerMission;
+			player.OnPlayerMissionTargetIdChangedCallback = MissionBook.SetLocalPlayerTarget;
 		}
 
 		public void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
 			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
+
+			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
+			if(IsOffline)
+			{
+				MissionBook.SetLocalPlayerMission((PlayerMission)player.PlayerMissionId);
+				MissionBook.SetLocalPlayerTarget(player.PlayerMissionTarget);
+			}
 		}
 
 		/// <summary>
@@ -154,6 +174,20 @@ namespace Lounge
 		{
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(Scene.Game.ToString());
+		}
+
+		public List<Player> GetAllPlayers()
+		{
+			return IsOffline
+				? PlayerParent.GetComponentsInChildren<Player>(true).ToList()
+				: _networkController.AllPlayers;
+		}
+
+		public Player GetLocalPLayer()
+		{
+			return IsOffline
+				? PlayerParent.GetChild(0).GetComponent<Player>()
+				: _networkController.LocalPlayer;
 		}
 	}
 }

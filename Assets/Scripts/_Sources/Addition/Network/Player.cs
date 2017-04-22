@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -26,10 +25,13 @@ namespace Network
 		[SyncVar(hook = "OnMainMissionChanged")]
 		public int MainMissionId;
 
-		[SyncVar]
+		[SyncVar(hook = "OnPlayerMissionChanged")]
 		public int PlayerMissionId;
-		[SyncVar]
+		[SyncVar(hook = "OnPlayerMissionTargetChanged")]
 		public int PlayerMissionTarget;
+
+		public bool MainMissionComplete;
+		public bool PlayerMissionComplete;
 
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
@@ -45,6 +47,8 @@ namespace Network
 		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
 
 		public UnityAction<MainMission> OnMainMissionChangedCallback;
+		public UnityAction<PlayerMission> OnPlayerMissionChangedCallback;
+		public UnityAction<int> OnPlayerMissionTargetIdChangedCallback;
 		public UnityAction<int> OnRoundLimitChangedCallback;
 
 		public delegate void PlayerDisconnectCallback();
@@ -84,6 +88,20 @@ namespace Network
 			MainMissionId = mainMissionId;
 			if (OnMainMissionChangedCallback != null)
 				OnMainMissionChangedCallback((MainMission)mainMissionId);
+		}
+
+		public void OnPlayerMissionChanged(int missionId)
+		{
+			PlayerMissionId = missionId;
+			if (OnPlayerMissionChangedCallback != null)
+				OnPlayerMissionChangedCallback((PlayerMission)missionId);
+		}
+
+		public void OnPlayerMissionTargetChanged(int targetId)
+		{
+			PlayerMissionTarget = targetId;
+			if (OnPlayerMissionTargetIdChangedCallback != null)
+				OnPlayerMissionTargetIdChangedCallback(targetId);
 		}
 
 		public void OnRoundLimitChanged(int round)

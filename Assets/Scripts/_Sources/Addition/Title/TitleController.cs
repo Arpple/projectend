@@ -22,7 +22,7 @@ namespace Title
 		public PlayerIconSelector IconSelector;
 
 		[Header("Setting")]
-		public TitleSetting Setting;
+		public Setting Setting;
 
 		public NetworkController NetCon
 		{
@@ -52,7 +52,7 @@ namespace Title
 			}
 
 			//set profile
-			var playerIconImage = Setting.PlayerIconList.GetData(NetCon.LocalPlayerIconType).Icon;
+			var playerIconImage = Setting.PlayerIconSetting.GetData(NetCon.LocalPlayerIconType).Icon;
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
 			PlayerNameInputField.text = NetCon.LocalPlayerName;
 			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
@@ -75,7 +75,7 @@ namespace Title
 
 		private void CreatePlayerIconForSelector()
 		{
-			foreach (var iconData in Setting.PlayerIconList.DataList)
+			foreach (var iconData in Setting.PlayerIconSetting.DataList)
 			{
 				IconSelector.AddIcon(iconData);
 			}

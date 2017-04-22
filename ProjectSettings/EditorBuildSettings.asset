@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Build/Lounge.unity
   - enabled: 1
     path: Assets/Scenes/Build/Game.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Result.unity

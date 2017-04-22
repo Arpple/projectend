@@ -22,11 +22,6 @@ namespace Test
 			return Object.Instantiate(Resources.Load<Setting>("Setting"));
 		}
 
-		public static Title.TitleSetting GetTitleSetting()
-		{
-			return Object.Instantiate(Resources.Load<Title.TitleSetting>("Addition/Title/Setting"));
-		}
-
 		public static GameEntity CreatePlayerEntity(this GameContext context, int playerId)
 		{
 			var e = context.CreateEntity();
@@ -63,6 +58,9 @@ namespace Test
 			return obj;
 		}
 
-		
+		public static SystemController CreateSystemController()
+		{
+			return new GameObject().AddComponent<SystemController>();
+		}
 	}
 }

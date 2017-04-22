@@ -21,8 +21,7 @@ namespace Lobby
 		public RoundLimitDisplay RoundDisplay;
 
 		[Header("Setting")]
-		public Title.TitleSetting TitleSetting;
-		public MissionSetting MissionSetting;
+		public Setting Setting;
 
 		private Player _localPlayer;
 
@@ -35,8 +34,7 @@ namespace Lobby
 			Assert.IsNotNull(ReadyButton);
 			Assert.IsNotNull(WaitButton);
 			Assert.IsNotNull(LobbyPlayerPrefabs);
-			Assert.IsNotNull(TitleSetting);
-			Assert.IsNotNull(MissionSetting);
+			Assert.IsNotNull(Setting);
 			Assert.IsNotNull(MissionDisplay);
 			Assert.IsNotNull(RoundSelector);
 			Assert.IsNotNull(RoundDisplay);
@@ -78,7 +76,7 @@ namespace Lobby
 			lobbyPlayer.Init(this);
 			lobbyPlayer.transform.SetParent(PlayerContainer.transform, false);
 			lobbyPlayer.SetPlayer(player);
-			lobbyPlayer.SetIcon(GetPlayerIcon((Title.PlayerIcon)player.PlayerIconId));
+			lobbyPlayer.SetIcon(GetPlayerIcon((PlayerIcon)player.PlayerIconId));
 
 			player.OnPlayerDisconnectCallback += () => {
 				if (lobbyPlayer != null) Destroy(lobbyPlayer.gameObject);
@@ -141,15 +139,15 @@ namespace Lobby
 			netCon.StartGame();
 		}
 
-		public Sprite GetPlayerIcon(Title.PlayerIcon icon)
+		public Sprite GetPlayerIcon(PlayerIcon icon)
 		{
-			return TitleSetting.PlayerIconList.GetData(icon).Icon;
+			return Setting.PlayerIconSetting.GetData(icon).Icon;
 		}
 
 		#region Mission
 		private void CreateMissionSelection()
 		{
-			foreach(var data in MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
+			foreach(var data in Setting.MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
 			{
 				MissionSelector.AddMission(data.Type);
 			}
@@ -163,7 +161,7 @@ namespace Lobby
 
 		private MainMissionData GetMissionData(MainMission mission)
 		{
-			return MissionSetting.MainMission.GetData(mission);
+			return Setting.MissionSetting.MainMission.GetData(mission);
 		}
 
 		private MainMissionData GetMissionData(int mission)

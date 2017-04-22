@@ -74,7 +74,7 @@ namespace Lobby
 
 		public void SetIcon(int iconId)
 		{
-			PlayerIcon.SetImage(_controller.GetPlayerIcon((Title.PlayerIcon)iconId));
+			PlayerIcon.SetImage(_controller.GetPlayerIcon((PlayerIcon)iconId));
 		}
 
 		public void SetIcon(Sprite icon)

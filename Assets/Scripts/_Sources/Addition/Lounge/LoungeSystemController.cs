@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -54,19 +55,15 @@ namespace Lounge
 
 		Systems CreateSystems(Contexts contexts)
 		{
-			var players = NetworkController.Instance.AllPlayers;
+			var players = GetAllPlayers();
 
-            var systems = new Feature("Systems")
-                .Add(new PlayerCreatingSystem(contexts, players))
-                .Add(new LocalPlayerSetupSystem(contexts, NetworkController.Instance.LocalPlayer))
-                .Add(new CharacterLoadingSystems(contexts))
-                .Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
-                .Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
-                .Add(new ContextsResetSystem(contexts))
-                .Add(new MissionLoadingSystem(contexts
-                    ,LoungeController.Instance.MissionBookController
-                    ,LoungeController.Instance.Setting.MissionSetting))
-                ;
+			var systems = new Feature("Systems")
+				.Add(new PlayerCreatingSystem(contexts, players))
+				.Add(new LocalPlayerSetupSystem(contexts, LoungeController.Instance.GetLocalPLayer()))
+				.Add(new CharacterLoadingSystems(contexts))
+				.Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
+				.Add(new ContextsResetSystem(contexts));
 
 			if (IsServer())
 			{
@@ -79,6 +76,13 @@ namespace Lounge
 		private bool IsServer()
 		{
 			return (NetworkController.Instance != null && NetworkController.IsServer);
+		}
+
+		private List<Player> GetAllPlayers()
+		{
+			return LoungeController.Instance.IsOffline
+				? LoungeController.Instance.GetAllPlayers()
+				: NetworkController.Instance.AllPlayers;
 		}
 	}
 

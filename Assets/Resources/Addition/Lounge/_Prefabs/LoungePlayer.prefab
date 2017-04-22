@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1ca41319b1b3c49a80c04f3492bfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharactorIcon: {fileID: 0}
-  SignLockImage: {fileID: 0}
+  CharactorIcon: {fileID: 114485285829716844}
+  SignLockImage: {fileID: 114691333732679872}
 --- !u!114 &114436556721631670
 MonoBehaviour:
   m_ObjectHideFlags: 1

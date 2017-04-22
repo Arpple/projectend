@@ -1,124 +1,137 @@
-﻿using Entitas;
-using Network;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Entitas;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Lounge {
-    public class MissionBookController: MonoBehaviour {
-        [Header("Setting")]
-        public MissionSetting setting;
+namespace Lounge
+{
+	public class MissionBookController : MonoBehaviour
+	{
+		[Header("Controller")]
+		public MissionItem MissionItemPrefabs;
+		public Button MissionBookButton;
+		public MissionBookMainPage MainPage;
 
-        [Header("World Mission")]
-        public Text WorldMissionName;
-        public Text WorldMissionDescription;
-        public Text WorldMissionTarget;
+		[Header("World Page")]
+		public GameObject WorldMissionDetailPagePanel;
+		public Transform WorldMissionObjectParent;
+		public Text WorldMissionDetailPageNameText;
+		public Text WorldMissionDetailPageDescText;
+		public Text WorldMissionDetailPageTargetText;
 
-        [Header("Personal Mission")]
-        public Text MissionName;
-        public Text MissionDescription;
-        public Text MissionTarget;
-
-        [Header("Book List")]
-        public MissionListItem Item;
-        public GameObject content;
-        public GameObject SecondPage;
-        public Text SelectedMissionName;
-        public Text SelectedMissionTarget;
-        public Text SelectedMissionDescription;
-        private List<MissionListItem> Items = new List<MissionListItem>();
+		[Header("World Page")]
+		public GameObject PlayerMissionDetailPagePanel;
+		public Transform PlayerMissionObjectParent;
+		public Text PlayerMissionDetailPageNameText;
+		public Text PlayerMissionDetailPageDescText;
+		public Text PlayerMissionDetailPageTargetText;
 
 
-        public void Init(GameEntity playerEntity,MissionSetting setting) {
-            this.setting = setting;
-            CreateMissionItems();
+		private MissionBookDetailPage _worldMissionDetailPage;
+		private MissionBookDetailPage _playerMissionDetailPage;
 
-            MainMissionData worldMission = setting.MainMission.DataList.Find(
-                mission => (int)mission.Type == playerEntity.player.GetNetworkPlayer().MainMissionId
-                );
-            SetWorldMission(worldMission.Name
-                , worldMission.Description
-            );
+		private MissionSetting _setting;
 
-            try {
-                //TODO : Add target player Name.
-                PlayerMissionData playerMission = setting.PlayerMission.DataList.Find(
-                mission => (int)mission.Type == playerEntity.player.GetNetworkPlayer().PlayerMissionId
-                );
-                SetPersonalMission(playerMission.Name
-                    , playerMission.Description
-                    , NetworkController.Instance.AllPlayers.Find(player => player.PlayerId == playerEntity.player.GetNetworkPlayer().PlayerId).PlayerName
-                    //playerEntity.playerMissionTarget.TargetEntity.player.GetNetworkPlayer().PlayerName
-                );
-            } catch(NullReferenceException e) {
-                Debug.Log("Player or Player Mission is null" + e.ToString());
-            } catch(EntityDoesNotHaveComponentException e) {
-                Debug.Log(e.ToString());
-            }
-        }
+		private void Awake()
+		{
+			_worldMissionDetailPage = new MissionBookDetailPage(WorldMissionDetailPagePanel, WorldMissionDetailPageNameText, WorldMissionDetailPageTargetText, WorldMissionDetailPageDescText);
+			_playerMissionDetailPage = new MissionBookDetailPage(PlayerMissionDetailPagePanel, PlayerMissionDetailPageNameText, PlayerMissionDetailPageTargetText, PlayerMissionDetailPageDescText);
+		}
 
-        private void CreateMissionItems() {
-            //Create player mission
-            foreach(PlayerMissionData mission in setting.PlayerMission.DataList) {
-                Items.Add(
-                    InstanctiateItem(false,mission.Name,mission.Description,mission.RandomPlayer)
-                );
-            }
-            //Create world mission
-            foreach(MainMissionData mission in setting.MainMission.DataList) {
-                Items.Add(
-                    InstanctiateItem(true,mission.Name, mission.Description, true)
-                );
-            }
-        }
+		private void Start()
+		{
+			MissionBookButton.onClick.AddListener(ShowMainPage);
+			MainPage.WorldPageButton.onClick.AddListener(ShowWorldMissionPage);
+			MainPage.PlayerPageButton.onClick.AddListener(ShowPlayerMissionPage);
+		}
 
-        private MissionListItem InstanctiateItem(bool isWorldMission,string missionName,string missionDescription,bool hasTarget) {
-            MissionListItem item = Instantiate<MissionListItem>(Item,content.transform,false);
-            item.isWorldMission = isWorldMission;
-            item.missionName.text = missionName;
-            item.Description = missionDescription;
-            item.target = hasTarget ? "Yes" : "None" ;
-            item.ClickAction = SelectItem;
-            return item;
-        }
+		public void ShowMainPage()
+		{
+			_worldMissionDetailPage.HidePage();
+			_playerMissionDetailPage.HidePage();
 
-        public void SetWorldMission(string name,string description) {
-            this.WorldMissionName.text = name;
-            this.WorldMissionDescription.text = description;
-        }
+			MainPage.ShowPage();
+		}
 
-        public void SetPersonalMission(string name,string description,string target) {
-            this.MissionName.text = name;
-            this.MissionDescription.text = description;
-            this.MissionTarget.text = target;
-        }
+		public void ShowWorldMissionPage()
+		{
+			_playerMissionDetailPage.HidePage();
+			MainPage.HidePage();
 
-        public void ShowWorldMission() {
-            SecondPage.SetActive(true);
-            foreach(MissionListItem item in Items) {
-                item.gameObject.SetActive(item.isWorldMission);
-            }
-        }
+			_worldMissionDetailPage.ShowPage();
+		}
 
-        public void ShowPersonalMisison() {
-            SecondPage.SetActive(true);
-            foreach(MissionListItem item in Items) {
-                item.gameObject.SetActive(!item.isWorldMission);
-            }
-        }
+		public void ShowPlayerMissionPage()
+		{
+			_worldMissionDetailPage.HidePage();
+			MainPage.HidePage();
 
-        public void SelectItem(MissionListItem item) {
-            this.SelectedMissionName.text = item.missionName.text;
-            this.SelectedMissionDescription.text = item.Description;
-            this.SelectedMissionTarget.text = item.target;
-            
-            //Show Highlight
-            foreach(MissionListItem other in Items) {
-                other.OnUnfocus();
-            }
+			_playerMissionDetailPage.ShowPage();
+		}
 
-            item.OnFocus();
-        }
-    }
+		public void Close()
+		{
+			Debug.Log("Close");
+			_playerMissionDetailPage.HidePage();
+			_worldMissionDetailPage.HidePage();
+			MainPage.HidePage();
+		}
+
+		public void LoadData(MissionSetting setting)
+		{
+			_setting = setting;
+			CreatePlayerMissionItems(setting.PlayerMission.DataList);
+			CreateMainMissionItems(setting.MainMission.DataList);
+		}
+
+		public void SetLocalMainMission(MainMission mission)
+		{
+			MainPage.SetWorldMission(_setting.MainMission.GetData(mission));
+		}
+
+		public void SetLocalPlayerMission(PlayerMission mission)
+		{
+			MainPage.SetPlayerMission(_setting.PlayerMission.GetData(mission));
+		}
+
+		public void SetLocalPlayerTarget(int targetId)
+		{
+			var target = Contexts.sharedInstance.game.GetEntities(GameMatcher.Player)
+				.First(e => e.player.PlayerId == targetId);
+
+			MainPage.SetPlayerMissionTarget(target);
+		}
+
+		private void CreatePlayerMissionItems(List<PlayerMissionData> datas)
+		{
+			List<MissionItem> items = new List<MissionItem>();
+			foreach (var data in datas)
+			{
+				var item = CreateMissionItem(data);
+				item.transform.SetParent(PlayerMissionObjectParent, false);
+				items.Add(item);
+			}
+			_playerMissionDetailPage.SetPageItems(items);
+		}
+
+		private void CreateMainMissionItems(List<MainMissionData> datas)
+		{
+			List<MissionItem> items = new List<MissionItem>();
+			foreach(var data in datas)
+			{
+				var item = CreateMissionItem(data);
+				item.transform.SetParent(WorldMissionObjectParent, false);
+				items.Add(item);
+			}
+			_worldMissionDetailPage.SetPageItems(items);
+		}
+
+		private MissionItem CreateMissionItem(MissionData data)
+		{
+			var item = Instantiate(MissionItemPrefabs);
+			item.SetMissionData(data);
+			return item;
+		}
+	}
 }
