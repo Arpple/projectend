@@ -4,6 +4,7 @@ using UI;
 
 using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 public class GameUI : MonoBehaviour
 {
@@ -39,6 +40,13 @@ public class GameUI : MonoBehaviour
 	public PlayerSkillFactory SkillFactory;
 
 	private CardObject _activeCard;
+	private Setting _setting;
+
+	[Inject]
+	public void Construct(Setting setting)
+	{
+		_setting = setting;
+	}
 
 	private void Awake()
 	{
@@ -69,7 +77,7 @@ public class GameUI : MonoBehaviour
 		BoxFactory.Init();
 		SkillFactory.Init();
 
-        this.MissionBookController.LoadData(GameController.Instance.Setting.MissionSetting);
+        this.MissionBookController.LoadData(_setting.MissionSetting);
     }
 
     private ActionGroup _currentGroup;
