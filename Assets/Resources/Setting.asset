@@ -68,10 +68,21 @@ MonoBehaviour:
     SkillCardSetting:
       DataList:
       - {fileID: 11400000, guid: ede3541b273f4e24e8e33497e2c7a72d, type: 2}
-  MissionSetting: {fileID: 11400000, guid: 543ce6b7db736f349a4608b1c428b0aa, type: 2}
+  MissionSetting:
+    MainMission:
+      DataList:
+      - {fileID: 11400000, guid: 42975ed9761392147b584ba870168ff9, type: 2}
+      - {fileID: 11400000, guid: 565ce01337b628b43857053f6f6c62cd, type: 2}
+    PlayerMission:
+      DataList:
+      - {fileID: 11400000, guid: 7d16ce8ad5d9f1248abdb7c9bbf0b94e, type: 2}
   WeatherSetting:
     DataList:
     - {fileID: 11400000, guid: ab14a2042b8cce54fbdf5cf8268d05f4, type: 2}
     - {fileID: 11400000, guid: f7e546149adaf1940bbd878fcb996e5b, type: 2}
     - {fileID: 11400000, guid: bd064d6693a756346a21daa94325cf7b, type: 2}
     CostCountWeigthList: 0a000000280000001e0000000f00000005000000
+  PlayerIconSetting:
+    DataList:
+    - {fileID: 11400000, guid: a0a31a4248b57d34391e96366448bd4f, type: 2}
+    - {fileID: 11400000, guid: e3fadaa53539f8f4c838c7fe9cf361b0, type: 2}

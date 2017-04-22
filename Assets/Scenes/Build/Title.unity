@@ -9488,7 +9488,7 @@ MonoBehaviour:
   WarningDialog: {fileID: 1671464209}
   ConnectingDialog: {fileID: 44383626}
   IconSelector: {fileID: 839334136}
-  Setting: {fileID: 11400000, guid: 084cfe4398871d44d82180466f4e1de7, type: 2}
+  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
 --- !u!114 &1920416840
 MonoBehaviour:
   m_ObjectHideFlags: 0

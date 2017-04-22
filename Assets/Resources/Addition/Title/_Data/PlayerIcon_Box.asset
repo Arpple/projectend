@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8457f98017eaa144a8fbd8d2d4afeed, type: 3}
-  m_Name: IconBox
+  m_Script: {fileID: 11500000, guid: 6a1b94fdc4e67354bae8d54adbbd20ef, type: 3}
+  m_Name: PlayerIcon_Box
   m_EditorClassIdentifier: 
   Type: 0
   Icon: {fileID: 21300000, guid: a0379aaf62c590748b9f9ae2df53b6b2, type: 3}

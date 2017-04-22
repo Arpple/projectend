@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8457f98017eaa144a8fbd8d2d4afeed, type: 3}
-  m_Name: IconWood
+  m_Script: {fileID: 11500000, guid: 6a1b94fdc4e67354bae8d54adbbd20ef, type: 3}
+  m_Name: PlayerIcon_Wood
   m_EditorClassIdentifier: 
   Type: 1
   Icon: {fileID: 21300000, guid: 8db00395c3e1e2149a7b7cef1caf9539, type: 3}

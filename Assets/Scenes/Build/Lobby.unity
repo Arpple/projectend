@@ -1176,8 +1176,7 @@ MonoBehaviour:
   MissionDisplay: {fileID: 2044375489}
   RoundSelector: {fileID: 1835078713}
   RoundDisplay: {fileID: 1835078714}
-  TitleSetting: {fileID: 11400000, guid: 084cfe4398871d44d82180466f4e1de7, type: 2}
-  MissionSetting: {fileID: 11400000, guid: 543ce6b7db736f349a4608b1c428b0aa, type: 2}
+  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
 --- !u!114 &1240917381
 MonoBehaviour:
   m_ObjectHideFlags: 0

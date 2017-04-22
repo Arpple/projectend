@@ -21,11 +21,15 @@ public class Setting : ScriptableObject
 	[Space(15)]
 	public WeatherSetting WeatherSetting;
 
+	[Space(15)]
+	public PlayerIconSetting PlayerIconSetting;
+
 	public void OnEnable()
 	{
 		Assert.IsNotNull(TileSetting);
 		Assert.IsNotNull(UnitSetting);
 		Assert.IsNotNull(CardSetting);
 		Assert.IsNotNull(WeatherSetting);
+		Assert.IsNotNull(PlayerIconSetting);
 	}
 }
