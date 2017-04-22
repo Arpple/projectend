@@ -110,7 +110,8 @@ public abstract class GameController : MonoBehaviour
 			.Add(new UnitSystems(contexts, _setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
 			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
-			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance));
+			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
+			.Add(new BuffSystems(contexts));
 	}
 
 

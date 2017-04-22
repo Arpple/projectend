@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 public sealed partial class UnitEntity : Entitas.Entity
 {
@@ -10,5 +11,16 @@ public sealed partial class UnitEntity : Entitas.Entity
 		return isIncludeSelf
 			? entities.ToArray()
 			: entities.Where(e => e != this).ToArray();
+	}
+
+	public void AddBuff(BuffEntity buff)
+	{
+		if(!hasBuffList)
+		{
+			AddBuffList(new List<BuffEntity>());
+		}
+
+		buffList.List.Add(buff);
+		buff.AddBuffTarget(this);
 	}
 }
