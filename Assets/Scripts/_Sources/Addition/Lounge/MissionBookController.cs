@@ -52,7 +52,7 @@ namespace Lounge {
                     //playerEntity.playerMissionTarget.TargetEntity.player.GetNetworkPlayer().PlayerName
                 );
             } catch(NullReferenceException e) {
-                Debug.Log("Player or Player Mission is null");
+                Debug.Log("Player or Player Mission is null" + e.ToString());
             } catch(EntityDoesNotHaveComponentException e) {
                 Debug.Log(e.ToString());
             }
