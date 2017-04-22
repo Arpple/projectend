@@ -1,5 +1,4 @@
-﻿
-using Lounge;
+﻿using Lounge;
 using UI;
 
 using UnityEngine;
@@ -71,7 +70,7 @@ public class GameUI : MonoBehaviour
 
 	private void Start()
 	{
-		MainGroup.Init();
+		MainGroup.Init(_setting);
 		CardDesc.Init();
 		DeckFactory.Init();
 		BoxFactory.Init();

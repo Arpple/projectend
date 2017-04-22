@@ -7,6 +7,7 @@ public class SkillCardData : CardData, IIndexData<SkillCard>
 	public SkillCard Type;
 	[Space]
 	public string AbilityClassFullName;
+	public AbilityEffect Effect;
 
 	public SkillCard GetIndex()
 	{

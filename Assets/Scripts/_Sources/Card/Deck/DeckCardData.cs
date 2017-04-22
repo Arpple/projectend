@@ -7,6 +7,7 @@ public class DeckCardData : CardData, IIndexData<DeckCard>
 	public DeckCard Type;
 	[Space]
 	public string AbilityClassFullName;
+	public AbilityEffect Effect;
 
 	public DeckCard GetIndex()
 	{

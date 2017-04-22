@@ -10,12 +10,6 @@ public class MainActionGroup : CardActionGroup
 {
 	private Setting _setting;
 
-	[Inject]
-	public void Construct(Setting setting)
-	{
-		_setting = setting;
-	}
-
 	[Serializable]
 	public class PanelToggleButton
 	{
@@ -66,8 +60,9 @@ public class MainActionGroup : CardActionGroup
 
 	private PanelToggleButton[] _panelButtons;
 
-	public void Init()
+	public void Init(Setting setting)
 	{
+		_setting = setting;
 		Assert.IsNotNull(EndButton);
 		foreach (var button in PanelButtons)
 		{
