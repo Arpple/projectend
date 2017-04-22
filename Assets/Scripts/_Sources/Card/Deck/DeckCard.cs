@@ -4,4 +4,5 @@
 	Attack,
 	Potion,
 	Collect,
+	Exhaust,
 }

@@ -46,18 +46,21 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 5c9c482aacd992d41bd53db346a9861f, type: 2}
       - {fileID: 11400000, guid: cfa6c69379582664683700e62e560aae, type: 2}
       - {fileID: 11400000, guid: fc72877eab47e7f438ad1d71e3701c79, type: 2}
+      - {fileID: 11400000, guid: b6c6e9e18d32c134c90f7e52e4457637, type: 2}
       MaxHandCardCount: 10
       StartCardCount: 5
       StartTurnDrawCount: 2
       Deck:
         SettingList:
         - Type: 0
-          Count: 10
+          Count: 5
         - Type: 1
-          Count: 10
+          Count: 5
         - Type: 2
-          Count: 10
+          Count: 5
         - Type: 3
+          Count: 5
+        - Type: 4
           Count: 10
     ResourceCardSetting:
       DataList:
@@ -69,7 +72,8 @@ MonoBehaviour:
       DataList:
       - {fileID: 11400000, guid: ede3541b273f4e24e8e33497e2c7a72d, type: 2}
   BuffSetting:
-    DataList: []
+    DataList:
+    - {fileID: 11400000, guid: b6b4f0d295095274f93d5e2a395eb3e3, type: 2}
     ExhaustDamageReduceAmount: 1
   MissionSetting:
     MainMission:

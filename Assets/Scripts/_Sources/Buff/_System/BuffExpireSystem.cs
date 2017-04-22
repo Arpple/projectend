@@ -22,7 +22,7 @@ public class BuffExpireSystem : BuffReactiveSystem
 		foreach (var e in entities)
 		{
 			e.target.Entity.buffList.List.Remove(e);
-			e.Destroy();
+			_context.DestroyEntity(e);
 		}
 	}
 }

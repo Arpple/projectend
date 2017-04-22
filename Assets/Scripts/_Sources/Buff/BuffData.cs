@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "End/Buff", fileName = "buff.asset")]
 public class BuffData : EntityData, IIndexData<Buff>
 {
 	public Buff Type;

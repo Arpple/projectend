@@ -23,4 +23,11 @@ public abstract class ActiveAbility<TTarget> : Ability, IActiveAbility where TTa
 	/// <param name="caster">The caster.</param>
 	/// <param name="target">The target.</param>
 	public abstract void OnTargetSelected(UnitEntity caster, TTarget target);
+
+	protected UnitEntity GetEnemyUnitFromTile(UnitEntity caster, TileEntity tile)
+	{
+		var targetUnit = tile.GetUnitOnTile();
+		if (targetUnit == null) return null;
+		return targetUnit.owner.Entity != caster.owner.Entity ? targetUnit : null;
+	}
 }
