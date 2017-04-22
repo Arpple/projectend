@@ -35,8 +35,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4276447831941692}
-  - component: {fileID: 114668116952620024}
   - component: {fileID: 95828876523691150}
+  - component: {fileID: 114358279768370704}
   m_Layer: 0
   m_Name: Skill_JudgementLight
   m_TagString: Untagged
@@ -88,7 +88,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114668116952620024
+--- !u!114 &114358279768370704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,10 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1776997307882020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e5605898991ec4e8a0ad29ed0cfc1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 86eb4e625e76d03458a3bf22b6302f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 95828876523691150}
+  Animation: {fileID: 95828876523691150}
+  AnimationName: Play
 --- !u!212 &212177365194967828
 SpriteRenderer:
   m_ObjectHideFlags: 1
