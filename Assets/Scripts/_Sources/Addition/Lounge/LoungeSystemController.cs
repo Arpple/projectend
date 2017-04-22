@@ -3,6 +3,7 @@ using Entitas;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 namespace Lounge
 {
@@ -10,17 +11,22 @@ namespace Lounge
 	{
 		public static LoungeSystemController Instance;
 
-		public Setting Setting;
-
 		private Systems _systems;
 		private Contexts _contexts;
 		private bool _isInit;
+		private Setting _setting;
+
+		[Inject]
+		public void Construct(Setting setting)
+		{
+			_setting = setting;
+		}
 
 		private void Awake()
 		{
 			Instance = this;
 
-			Assert.IsNotNull(Setting);
+			Assert.IsNotNull(_setting);
 
 			_isInit = false;
 		}
@@ -61,13 +67,13 @@ namespace Lounge
 				.Add(new PlayerCreatingSystem(contexts, players))
 				.Add(new LocalPlayerSetupSystem(contexts, LoungeController.Instance.GetLocalPLayer()))
 				.Add(new CharacterLoadingSystems(contexts))
-				.Add(new CharacterDataLoadingSystem(contexts, Setting.UnitSetting.CharacterSetting))
+				.Add(new CharacterDataLoadingSystem(contexts, _setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
 				.Add(new ContextsResetSystem(contexts));
 
 			if (IsServer())
 			{
-				systems.Add(new PlayerMissionAssignSystem(contexts, Setting.MissionSetting.PlayerMission));
+				systems.Add(new PlayerMissionAssignSystem(contexts, _setting.MissionSetting.PlayerMission));
 			}
 
 			return systems;

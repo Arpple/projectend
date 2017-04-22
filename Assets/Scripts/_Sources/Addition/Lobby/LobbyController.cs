@@ -3,6 +3,7 @@ using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Lobby
 {
@@ -20,8 +21,13 @@ namespace Lobby
 		public RoundLimitSelector RoundSelector;
 		public RoundLimitDisplay RoundDisplay;
 
-		[Header("Setting")]
-		public Setting Setting;
+		private Setting _setting;
+
+		[Inject]
+		public void Construct(Setting setting)
+		{
+			_setting = setting;
+		}
 
 		private Player _localPlayer;
 
@@ -34,7 +40,6 @@ namespace Lobby
 			Assert.IsNotNull(ReadyButton);
 			Assert.IsNotNull(WaitButton);
 			Assert.IsNotNull(LobbyPlayerPrefabs);
-			Assert.IsNotNull(Setting);
 			Assert.IsNotNull(MissionDisplay);
 			Assert.IsNotNull(RoundSelector);
 			Assert.IsNotNull(RoundDisplay);
@@ -141,13 +146,13 @@ namespace Lobby
 
 		public Sprite GetPlayerIcon(PlayerIcon icon)
 		{
-			return Setting.PlayerIconSetting.GetData(icon).Icon;
+			return  _setting.PlayerIconSetting.GetData(icon).Icon;
 		}
 
 		#region Mission
 		private void CreateMissionSelection()
 		{
-			foreach(var data in Setting.MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
+			foreach(var data in _setting.MissionSetting.MainMission.DataList.OrderBy(d => (int)d.Type))
 			{
 				MissionSelector.AddMission(data.Type);
 			}
@@ -161,7 +166,7 @@ namespace Lobby
 
 		private MainMissionData GetMissionData(MainMission mission)
 		{
-			return Setting.MissionSetting.MainMission.GetData(mission);
+			return _setting.MissionSetting.MainMission.GetData(mission);
 		}
 
 		private MainMissionData GetMissionData(int mission)

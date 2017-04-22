@@ -4,6 +4,7 @@ using Entitas.VisualDebugging.Unity;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 public abstract class GameController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public abstract class GameController : MonoBehaviour
 	public SystemController SystemController;
 
 	[Header("Data")]
-	public Setting Setting;
+	private Setting _setting;
 
 	[Header("Object Container")]
 	public GameObject PlayerContainer;
@@ -30,13 +31,18 @@ public abstract class GameController : MonoBehaviour
 	protected Player _localPlayer;
 	protected PlayerLoader _playerLoader;
 
+	[Inject]
+	public void Construct(Setting setting)
+	{
+		_setting = setting;
+	}
+
 	private void Awake()
 	{
 		Instance = this;
 		_isInitialized = false;
 		Players = new List<Player>();
 
-		Assert.IsNotNull(Setting);
 		PlayerContainer = PlayerContainer ?? new GameObject("Player");
 		TileContainer = TileContainer ?? new GameObject("Tile");
 		UnitContainer = UnitContainer ?? new GameObject("Unit");
@@ -100,11 +106,11 @@ public abstract class GameController : MonoBehaviour
 			.Add(new InputSystems(contexts))
 			.Add(new GameEventSystems(contexts))
 			.Add(new GameSystems(contexts, Players, _localPlayer))
-			.Add(new TileSystems(contexts, Setting.TileSetting, TileContainer, GameUI.Instance))
-			.Add(new UnitSystems(contexts, Setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
-			.Add(new CardSystems(contexts, Setting.CardSetting, GameUI.Instance))
+			.Add(new TileSystems(contexts, _setting.TileSetting, TileContainer, GameUI.Instance))
+			.Add(new UnitSystems(contexts, _setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
+			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
-			.Add(new WeatherSystems(contexts, Setting, GameUI.Instance));
+			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance));
 	}
 
 

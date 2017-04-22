@@ -4403,6 +4403,7 @@ GameObject:
   - component: {fileID: 680448975}
   - component: {fileID: 680448974}
   - component: {fileID: 680448973}
+  - component: {fileID: 680448979}
   m_Layer: 5
   m_Name: CharacterSelection
   m_TagString: Untagged
@@ -4421,7 +4422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615b727ddd7321448b3b77d6c78b81f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
 --- !u!114 &680448974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4442,7 +4442,6 @@ MonoBehaviour:
   LockButton: {fileID: 11850234}
   CharacterSelectPlayerPrefabs: {fileID: 114336928755106530, guid: 23c3107ee3e277845b36dfde56505ae3,
     type: 2}
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   MissionBook: {fileID: 1357032186}
   IsOffline: 0
   PlayerParent: {fileID: 0}
@@ -4531,6 +4530,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &680448979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680448972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installers: []
+  _installerPrefabs: []
+  _scriptableObjectInstallers: []
+  _parentNewObjectsUnderRoot: 0
+  _contractNames: []
+  _parentContractName: 
+  _autoRun: 1
 --- !u!1 &684882515
 GameObject:
   m_ObjectHideFlags: 0

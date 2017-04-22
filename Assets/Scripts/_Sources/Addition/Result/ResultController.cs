@@ -3,14 +3,13 @@ using Entitas;
 using Entitas.VisualDebugging.Unity;
 using Network;
 using UnityEngine;
+using Zenject;
 
 namespace Result
 {
 	[RequireComponent(typeof(ResultUIController))]
 	public abstract class ResultController : MonoBehaviour
 	{
-		public Setting Setting;
-
 		[Header("Container")]
 		public Transform PlayerParent;
 
@@ -20,6 +19,13 @@ namespace Result
 		protected Player _localPlayer;
 		protected Contexts _contexts;
 		protected Systems _systems;
+		protected Setting _setting;
+
+		[Inject]
+		public void Construct(Setting setting)
+		{
+			_setting = setting;
+		}
 
 		private void Awake()
 		{
@@ -78,7 +84,7 @@ namespace Result
 			_systems = new Feature("Systems")
 				.Add(new PlayerCreatingSystem(_contexts, _players))
 				.Add(new LocalPlayerSetupSystem(_contexts, _localPlayer))
-				.Add(new PlayerResultObjectCreatingSystem(_contexts, Setting, _ui));
+				.Add(new PlayerResultObjectCreatingSystem(_contexts, _setting, _ui));
 
 			_systems.Initialize();
 		}

@@ -3,10 +3,19 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using Zenject;
 
 [Serializable]
 public class MainActionGroup : CardActionGroup
 {
+	private Setting _setting;
+
+	[Inject]
+	public void Construct(Setting setting)
+	{
+		_setting = setting;
+	}
+
 	[Serializable]
 	public class PanelToggleButton
 	{
@@ -126,9 +135,7 @@ public class MainActionGroup : CardActionGroup
 	private int GetOverMaxCardCount(GameEntity player)
 	{
 		var playerCards = Contexts.sharedInstance.card.GetPlayerDeckCards(player);
-		var setting = GameController.Instance.Setting.CardSetting.DeckSetting;
-
-		return playerCards.Length - setting.MaxHandCardCount;
+		return playerCards.Length - _setting.CardSetting.DeckSetting.MaxHandCardCount;
 	}
 
 	private void EndTurn()

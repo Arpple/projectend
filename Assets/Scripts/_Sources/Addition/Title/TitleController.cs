@@ -1,12 +1,12 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Assertions;
-using UI;
-using UnityEngine.Networking;
 using System;
-using System.Collections;
 using Entitas.VisualDebugging.Unity;
 using Network;
+using UI;
+using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.Networking;
+using UnityEngine.UI;
+using Zenject;
 
 namespace Title
 {
@@ -21,12 +21,17 @@ namespace Title
 		public Dialogue WarningDialog, ConnectingDialog;
 		public PlayerIconSelector IconSelector;
 
-		[Header("Setting")]
-		public Setting Setting;
-
 		public NetworkController NetCon
 		{
 			get { return NetworkController.Instance; }
+		}
+
+		private Setting _setting;
+
+		[Inject]
+		public void Construct(Setting setting)
+		{
+			_setting = setting;
 		}
 
 		private void Awake()
@@ -52,7 +57,7 @@ namespace Title
 			}
 
 			//set profile
-			var playerIconImage = Setting.PlayerIconSetting.GetData(NetCon.LocalPlayerIconType).Icon;
+			var playerIconImage = _setting.PlayerIconSetting.GetData(NetCon.LocalPlayerIconType).Icon;
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
 			PlayerNameInputField.text = NetCon.LocalPlayerName;
 			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
@@ -75,7 +80,7 @@ namespace Title
 
 		private void CreatePlayerIconForSelector()
 		{
-			foreach (var iconData in Setting.PlayerIconSetting.DataList)
+			foreach (var iconData in _setting.PlayerIconSetting.DataList)
 			{
 				IconSelector.AddIcon(iconData);
 			}

@@ -1,7 +1,8 @@
-﻿using Entitas;
-using System;
+﻿using System;
+using Entitas;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Zenject;
 
 namespace MapEditor
 {
@@ -26,13 +27,19 @@ namespace MapEditor
         public string MapName;
 		public MapInfo CreatingMap;
 
-		[Header("Setting")]
-		public Setting Setting;
+		
 		public GameObject SpawnpointPrefabs;
 		public GameObject BossSpawnpointPrefabs;
 
 		private Systems _systems;
 		private Contexts _contexts;
+		private Setting _setting;
+
+		[Inject]
+		public void Construct(Setting setting)
+		{
+			_setting = setting;
+		}
 
 		void Awake()
 		{
@@ -69,8 +76,8 @@ namespace MapEditor
 				.Add(new TileMapCreatingSystem(contexts, EdittingMap))
 				.Add(new TileGraphCreatingSystem(contexts))
 
-				.Add(new TileDataLoadingSystem(contexts, Setting.TileSetting))
-				.Add(new TileViewCreatingSystem(contexts, Setting.TileSetting, new GameObject("Tile")))
+				.Add(new TileDataLoadingSystem(contexts, _setting.TileSetting))
+				.Add(new TileViewCreatingSystem(contexts, _setting.TileSetting, new GameObject("Tile")))
 				.Add(new SpawnpointViewCreatingSystem(contexts, SpawnpointPrefabs, BossSpawnpointPrefabs))
 				.Add(new SpawnpointViewDestroySystem(contexts))
 				.Add(new TileSpriteUpdateSystem(contexts))

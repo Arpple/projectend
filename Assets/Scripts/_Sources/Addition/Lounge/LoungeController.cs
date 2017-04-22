@@ -6,6 +6,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Lounge
 {
@@ -21,11 +22,6 @@ namespace Lounge
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
 
-		public Setting Setting;
-
-		private Character _focusingCharacter;
-		private Player _localPlayer;
-
         [Header("MissionBook")]
         public MissionBookController MissionBook;
 
@@ -33,9 +29,19 @@ namespace Lounge
 		public bool IsOffline;
 		public Transform PlayerParent;
 
+		private Setting _setting;
+		private Character _focusingCharacter;
+		private Player _localPlayer;
+
 		private NetworkController _networkController
 		{
 			get { return NetworkController.Instance; }
+		}
+
+		[Inject]
+		public void Construct(Setting setting)
+		{
+			_setting = setting;	
 		}
 
 		private void Awake()
@@ -49,13 +55,13 @@ namespace Lounge
 			Assert.IsNotNull(CharacterSelectSlideMenu);
 			Assert.IsNotNull(LockButton);
 			Assert.IsNotNull(CharacterSelectPlayerPrefabs);
-			Assert.IsNotNull(Setting);
+			Assert.IsNotNull(_setting);
 		}
 
 		void Start()
 		{
-			MissionBook.LoadData(Setting.MissionSetting);
-			UnitSkill.Initialize(Setting.CardSetting.SkillCardSetting);
+			MissionBook.LoadData(_setting.MissionSetting);
+			UnitSkill.Initialize(_setting.CardSetting.SkillCardSetting);
 
 			foreach (var player in GetAllPlayers())
 			{

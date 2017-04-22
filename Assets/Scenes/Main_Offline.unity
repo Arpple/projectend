@@ -3319,6 +3319,7 @@ GameObject:
   - component: {fileID: 1234237937}
   - component: {fileID: 1234237936}
   - component: {fileID: 1234237938}
+  - component: {fileID: 1234237935}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -3326,6 +3327,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1234237935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installers: []
+  _installerPrefabs: []
+  _scriptableObjectInstallers: []
+  _parentNewObjectsUnderRoot: 0
+  _contractNames: []
+  _parentContractName: 
+  _autoRun: 1
 --- !u!114 &1234237936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,7 +3383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SystemController: {fileID: 1234237936}
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}
   UnitContainer: {fileID: 238646442}

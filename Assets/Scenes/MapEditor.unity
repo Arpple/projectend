@@ -1102,6 +1102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467225166}
   - component: {fileID: 467225165}
+  - component: {fileID: 467225167}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1127,7 +1128,6 @@ MonoBehaviour:
     Width: 35
     Heigth: 35
     DefaultTileType: 1
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   SpawnpointPrefabs: {fileID: 1524851852571594, guid: c7343d26601bd8449a3a3616c03d4740,
     type: 2}
   BossSpawnpointPrefabs: {fileID: 1524851852571594, guid: d766b57a2bd07ba448eefe3161e9ea7a,
@@ -1145,6 +1145,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &467225167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467225164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installers: []
+  _installerPrefabs: []
+  _scriptableObjectInstallers: []
+  _parentNewObjectsUnderRoot: 0
+  _contractNames: []
+  _parentContractName: 
+  _autoRun: 1
 --- !u!1 &526181262
 GameObject:
   m_ObjectHideFlags: 0

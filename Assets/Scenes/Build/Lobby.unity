@@ -1148,6 +1148,7 @@ GameObject:
   - component: {fileID: 1240917382}
   - component: {fileID: 1240917381}
   - component: {fileID: 1240917380}
+  - component: {fileID: 1240917385}
   m_Layer: 5
   m_Name: Lobby
   m_TagString: Untagged
@@ -1176,7 +1177,6 @@ MonoBehaviour:
   MissionDisplay: {fileID: 2044375489}
   RoundSelector: {fileID: 1835078713}
   RoundDisplay: {fileID: 1835078714}
-  Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
 --- !u!114 &1240917381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,6 +1255,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1240917385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1240917379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installers: []
+  _installerPrefabs: []
+  _scriptableObjectInstallers: []
+  _parentNewObjectsUnderRoot: 0
+  _contractNames: []
+  _parentContractName: 
+  _autoRun: 1
 --- !u!1 &1243415180
 GameObject:
   m_ObjectHideFlags: 0
