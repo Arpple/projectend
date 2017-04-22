@@ -27,8 +27,8 @@ namespace Test.UnitTest
 			unit.AddBuff(buff);
 
 			Assert.IsTrue(unit.buffList.List.Contains(buff));
-			Assert.IsTrue(buff.hasBuffTarget);
-			Assert.AreEqual(unit, buff.buffTarget.Entity);
+			Assert.IsTrue(buff.hasTarget);
+			Assert.AreEqual(unit, buff.target.Entity);
 		}
 	}
 }

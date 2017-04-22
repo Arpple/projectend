@@ -68,6 +68,9 @@ MonoBehaviour:
     SkillCardSetting:
       DataList:
       - {fileID: 11400000, guid: ede3541b273f4e24e8e33497e2c7a72d, type: 2}
+  BuffSetting:
+    DataList: []
+    ExhaustDamageReduceAmount: 1
   MissionSetting:
     MainMission:
       DataList:

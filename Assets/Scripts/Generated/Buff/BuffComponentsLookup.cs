@@ -9,23 +9,29 @@
 public static class BuffComponentsLookup {
 
     public const int Buff = 0;
-    public const int BuffTarget = 1;
+    public const int BuffExhaust = 1;
     public const int Duration = 2;
-    public const int Sprite = 3;
+    public const int IntData = 3;
+    public const int Sprite = 4;
+    public const int Target = 5;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
         "Buff",
-        "BuffTarget",
+        "BuffExhaust",
         "Duration",
-        "Sprite"
+        "IntData",
+        "Sprite",
+        "Target"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(BuffComponent),
-        typeof(BuffTargetComponent),
+        typeof(BuffExhaustComponent),
         typeof(DurationComponent),
-        typeof(SpriteComponent)
+        typeof(IntDataComponent),
+        typeof(SpriteComponent),
+        typeof(TargetComponent)
     };
 }

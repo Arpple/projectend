@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using Entitas;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Test.BuffTest
 {

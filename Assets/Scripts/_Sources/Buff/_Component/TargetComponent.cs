@@ -1,7 +1,7 @@
 ﻿using Entitas;
 
 [Buff]
-public class BuffTargetComponent : IComponent
+public class TargetComponent : IComponent
 {
 	public UnitEntity Entity;
 }

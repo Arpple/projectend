@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class BuffEntity {
 
-    public BuffTargetComponent buffTarget { get { return (BuffTargetComponent)GetComponent(BuffComponentsLookup.BuffTarget); } }
-    public bool hasBuffTarget { get { return HasComponent(BuffComponentsLookup.BuffTarget); } }
+    public TargetComponent target { get { return (TargetComponent)GetComponent(BuffComponentsLookup.Target); } }
+    public bool hasTarget { get { return HasComponent(BuffComponentsLookup.Target); } }
 
-    public void AddBuffTarget(UnitEntity newEntity) {
-        var index = BuffComponentsLookup.BuffTarget;
-        var component = CreateComponent<BuffTargetComponent>(index);
+    public void AddTarget(UnitEntity newEntity) {
+        var index = BuffComponentsLookup.Target;
+        var component = CreateComponent<TargetComponent>(index);
         component.Entity = newEntity;
         AddComponent(index, component);
     }
 
-    public void ReplaceBuffTarget(UnitEntity newEntity) {
-        var index = BuffComponentsLookup.BuffTarget;
-        var component = CreateComponent<BuffTargetComponent>(index);
+    public void ReplaceTarget(UnitEntity newEntity) {
+        var index = BuffComponentsLookup.Target;
+        var component = CreateComponent<TargetComponent>(index);
         component.Entity = newEntity;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveBuffTarget() {
-        RemoveComponent(BuffComponentsLookup.BuffTarget);
+    public void RemoveTarget() {
+        RemoveComponent(BuffComponentsLookup.Target);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class BuffEntity {
 //------------------------------------------------------------------------------
 public sealed partial class BuffMatcher {
 
-    static Entitas.IMatcher<BuffEntity> _matcherBuffTarget;
+    static Entitas.IMatcher<BuffEntity> _matcherTarget;
 
-    public static Entitas.IMatcher<BuffEntity> BuffTarget {
+    public static Entitas.IMatcher<BuffEntity> Target {
         get {
-            if(_matcherBuffTarget == null) {
-                var matcher = (Entitas.Matcher<BuffEntity>)Entitas.Matcher<BuffEntity>.AllOf(BuffComponentsLookup.BuffTarget);
+            if(_matcherTarget == null) {
+                var matcher = (Entitas.Matcher<BuffEntity>)Entitas.Matcher<BuffEntity>.AllOf(BuffComponentsLookup.Target);
                 matcher.componentNames = BuffComponentsLookup.componentNames;
-                _matcherBuffTarget = matcher;
+                _matcherTarget = matcher;
             }
 
-            return _matcherBuffTarget;
+            return _matcherTarget;
         }
     }
 }

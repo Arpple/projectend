@@ -21,6 +21,6 @@ public sealed partial class UnitEntity : Entitas.Entity
 		}
 
 		buffList.List.Add(buff);
-		buff.AddBuffTarget(this);
+		buff.AddTarget(this);
 	}
 }
