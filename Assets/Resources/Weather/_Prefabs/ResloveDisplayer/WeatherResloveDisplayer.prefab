@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 114280970752758130}
   - component: {fileID: 95316246291649690}
   m_Layer: 5
-  m_Name: Weather
+  m_Name: WeatherResloveDisplayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
