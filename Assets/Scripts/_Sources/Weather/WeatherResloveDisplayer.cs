@@ -16,6 +16,9 @@ public class WeatherResloveDisplayer : MonoBehaviour{
     public Text WaterValue;
     public Text CoalValue;
 
+    public Color ExtraColor;
+    public Color StraveColor;
+
     [Header("Animator")]
     private const float ANIMATION_TIME = 0.5f;
     private float _startTime;
@@ -73,9 +76,14 @@ public class WeatherResloveDisplayer : MonoBehaviour{
     }
 
     public void UpdateResourcesText(int wood,int water,int coal) {
-        this.WoodValue.text = (wood < 0 ? "+" : "") + Math.Abs(wood) ;
+        this.WoodValue.text = (wood < 0 ? "+" : "") + Math.Abs(wood);
+        this.WoodValue.color = wood <= 0 ? ExtraColor : StraveColor;
+
         this.WaterValue.text = (water < 0 ? "+" : "") + Math.Abs(water);
+        this.WaterValue.color = water <= 0 ? ExtraColor : StraveColor;
+
         this.CoalValue.text = (coal < 0 ? "+" : "") + Math.Abs(coal);
+        this.CoalValue.color = coal <= 0 ? ExtraColor : StraveColor;
     }
 
     private bool isClearWeather() {
