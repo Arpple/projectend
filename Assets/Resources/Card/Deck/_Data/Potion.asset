@@ -17,3 +17,4 @@ MonoBehaviour:
   PassiveDesc: 
   Type: 2
   AbilityClassFullName: AbilityRecover
+  Effect: {fileID: 114594017304363474, guid: 3bcee4cf26db5564585b7b79f7c77ef5, type: 2}
