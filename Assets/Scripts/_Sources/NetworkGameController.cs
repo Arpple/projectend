@@ -21,20 +21,12 @@ public class NetworkGameController : GameController
 
 		AddLocalPlayer(netCon.LocalPlayer);
 		netCon.ClientSceneChangedCallback = InitializeAndSetReady;
-
-		if (NetworkController.IsServer)
-		{
-			_playerLoader = new ServerPlayerLoader(netCon.AllPlayers.Count);
-		}
-		else
-		{
-			_playerLoader = new ClientPlayerLoader();
-		}
+		_localPlayer.OnAllPlayerSceneLoadedCallback = SetStatusReady;
 	}
 
 	protected void InitializeAndSetReady()
 	{
 		Initialize();
-		_localPlayer.CmdClientLoad();
+		_localPlayer.CmdSendMessageSceneLoaded();
 	}
 }

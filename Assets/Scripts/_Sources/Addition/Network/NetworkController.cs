@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
-using Title;
 
 namespace Network
 {
@@ -214,6 +213,14 @@ namespace Network
 		{
 			base.OnServerError(conn, errorCode);
 			if (OnServerErrorCallback != null) OnServerErrorCallback(errorCode);
+		}
+
+		public void ServerResetSceneReadyStatus()
+		{
+			foreach(var p in AllPlayers)
+			{
+				p.IsClientSceneLoaded = false;
+			}
 		}
 		#endregion
 	}

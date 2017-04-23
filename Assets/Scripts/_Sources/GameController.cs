@@ -29,7 +29,7 @@ public abstract class GameController : MonoBehaviour
 	protected Contexts _contexts;
 	protected bool _isInitialized;
 	protected Player _localPlayer;
-	protected PlayerLoader _playerLoader;
+	protected bool _isReady;
 
 	[Inject]
 	public void Construct(Setting setting)
@@ -42,6 +42,7 @@ public abstract class GameController : MonoBehaviour
 		Instance = this;
 		_isInitialized = false;
 		Players = new List<Player>();
+		_isReady = false;
 
 		PlayerContainer = PlayerContainer ?? new GameObject("Player");
 		TileContainer = TileContainer ?? new GameObject("Tile");
@@ -85,7 +86,7 @@ public abstract class GameController : MonoBehaviour
 	void Update()
 	{
 		if (!_isInitialized) return;
-		if (!_playerLoader.IsReady()) return;
+		if (!_isReady) return;
 		Assert.IsNotNull(_systems);
 
 		_systems.Execute();
@@ -111,7 +112,7 @@ public abstract class GameController : MonoBehaviour
 			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
 			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
-			.Add(new BuffSystems(contexts, _setting));
+			.Add(new BuffSystems(contexts, _setting, GameUI.Instance));
 	}
 
 
@@ -125,25 +126,8 @@ public abstract class GameController : MonoBehaviour
 		_localPlayer = player;
 	}
 
-	public void ServerLoadPlayer()
+	protected void SetStatusReady()
 	{
-		var pl = _playerLoader as ServerPlayerLoader;
-		if (pl != null)
-		{
-			pl.LoadPlayer();
-		}
-		if (_playerLoader.IsReady())
-		{
-			_localPlayer.RpcServerReady();
-		}
-	}
-
-	public void SetClientReady()
-	{
-		var pl = _playerLoader as ClientPlayerLoader;
-		if (pl != null)
-		{
-			pl.SetReady();
-		}
+		_isReady = true;
 	}
 }

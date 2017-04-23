@@ -21,10 +21,7 @@ public class OfflineGameController : GameController
 			AddPlayer(players[i]);
 		});
 
-		_playerLoader = new ClientPlayerLoader();
-		var pl = _playerLoader as ClientPlayerLoader;
-		pl.SetReady();
-
 		Initialize();
+		SetStatusReady();
 	}
 }

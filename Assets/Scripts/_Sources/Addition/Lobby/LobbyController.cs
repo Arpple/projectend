@@ -140,6 +140,7 @@ namespace Lobby
 		public void MoveToCharacterSelection()
 		{
 			var netCon = NetworkController.Instance;
+			netCon.ServerResetSceneReadyStatus();
 			netCon.ServerChangeScene(GameScene.Lounge.ToString());
 			netCon.StartGame();
 		}
