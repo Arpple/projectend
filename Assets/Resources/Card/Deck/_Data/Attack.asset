@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSprite: {fileID: 21300000, guid: 61850c105db8c15469ea844a16737d32, type: 3}
   Name: Attack
-  ActiveDesc: asdf
-  PassiveDesc: fdsa
+  ActiveDesc: Attack target!
+  PassiveDesc: 
   Type: 1
   AbilityClassFullName: AbilityAttack
   Effect: {fileID: 114014824143064036, guid: e43d5129316a11645922ed0923a49c9f, type: 2}

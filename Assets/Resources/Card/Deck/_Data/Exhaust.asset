@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSprite: {fileID: 21300000, guid: 77a8151606669ff4fbc2c778482afd6f, type: 3}
   Name: Exhaust
-  ActiveDesc: 
+  ActiveDesc: Decrease Attack power
   PassiveDesc: 
   Type: 4
-  AbilityClassFullName: 
-  Effect: {fileID: 0}
+  AbilityClassFullName: AbilityExhaust
+  Effect: {fileID: 114540134367377204, guid: 1eb8055c60dc1e842aa5335b748a03a1, type: 2}

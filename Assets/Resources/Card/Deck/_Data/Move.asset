@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSprite: {fileID: 21300000, guid: c6576dd23a4d14c48ac7760d8e0296a2, type: 3}
   Name: Move
-  ActiveDesc: 
+  ActiveDesc: Move to other position
   PassiveDesc: 
   Type: 0
   AbilityClassFullName: AbilityMove
+  Effect: {fileID: 0}

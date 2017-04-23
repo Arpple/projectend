@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSprite: {fileID: 21300000, guid: 71eb67dd57b01464fa07cc615f4fc812, type: 3}
   Name: Collect
-  ActiveDesc: 
+  ActiveDesc: Collect resource from field
   PassiveDesc: 
   Type: 3
   AbilityClassFullName: AbilityCollect
+  Effect: {fileID: 0}
