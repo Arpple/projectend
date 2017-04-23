@@ -17,10 +17,5 @@ namespace Network
 		{
 			return conn.Send(MsgGameStarted, new NormalMessage());
 		}
-
-		public class PlayerCountMessage : MessageBase
-		{
-			public int Count;
-		}
 	}
 }

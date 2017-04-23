@@ -36,6 +36,8 @@ namespace Network
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
 
+		public bool IsClientSceneLoaded;
+
 		public delegate void ChangeNameCallback(string name);
 		public delegate void ChangeIconCallback(int iconId);
 		public delegate void ChangeSelectedCharacterCallback(int charId);
@@ -50,6 +52,7 @@ namespace Network
 		public UnityAction<PlayerMission> OnPlayerMissionChangedCallback;
 		public UnityAction<int> OnPlayerMissionTargetIdChangedCallback;
 		public UnityAction<int> OnRoundLimitChangedCallback;
+		public UnityAction OnAllPlayerSceneLoadedCallback;
 
 		public delegate void PlayerDisconnectCallback();
 		public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
@@ -243,15 +246,22 @@ namespace Network
 		}
 
 		[Command]
-		public void CmdClientLoad()
+		public void CmdSendMessageSceneLoaded()
 		{
-			GameController.Instance.ServerLoadPlayer();
+			IsClientSceneLoaded = true;
+			if(NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsClientSceneLoaded))
+			{
+				RpcSceneReady();
+			}
 		}
 
 		[ClientRpc]
-		public void RpcServerReady()
+		public void RpcSceneReady()
 		{
-			GameController.Instance.SetClientReady();
+			if (OnAllPlayerSceneLoadedCallback != null)
+			{
+				OnAllPlayerSceneLoadedCallback();
+			}
 		}
 		#endregion
 

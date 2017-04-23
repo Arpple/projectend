@@ -13,18 +13,20 @@ namespace Lounge
 	public abstract class LoungeController : MonoBehaviour
 	{
 
-		public static LoungeController Instance;	
+		public static LoungeController Instance;
 
 		public UnitStatusPanel UnitStatus;
 		public UnitSkillPanel UnitSkill;
 
-		public GameObject CharacterContent,PlayerListContent;
+		public GameObject CharacterContent, PlayerListContent;
 		public SlideMenu CharacterSelectSlideMenu;
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
 
-        [Header("MissionBook")]
-        public MissionBookController MissionBook;
+		private bool _isReady;
+
+		[Header("MissionBook")]
+		public MissionBookController MissionBook;
 
 		protected Setting _setting;
 		protected Character _focusingCharacter;
@@ -33,7 +35,7 @@ namespace Lounge
 		[Inject]
 		public void Construct(Setting setting)
 		{
-			_setting = setting;	
+			_setting = setting;
 		}
 
 		protected void Awake()
@@ -47,6 +49,8 @@ namespace Lounge
 			Assert.IsNotNull(LockButton);
 			Assert.IsNotNull(CharacterSelectPlayerPrefabs);
 			Assert.IsNotNull(_setting);
+
+			_isReady = false;
 		}
 
 		public abstract List<Player> GetAllPlayers();
@@ -85,10 +89,9 @@ namespace Lounge
 			UnitSkill.SetUnit(unit);
 		}
 
-		
 		private void AddPlayer(Player player)
 		{
-			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs,PlayerListContent.transform,false);
+			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs, PlayerListContent.transform, false);
 			charPlayer.SetPlayer(player);
 
 			player.OnSelectedCharacterChangedCallback += DisableCharacterIcon;
@@ -145,7 +148,18 @@ namespace Lounge
 		public void LoadGameScene()
 		{
 			var netCon = NetworkController.Instance;
+			netCon.ServerResetSceneReadyStatus();
 			netCon.ServerChangeScene(GameScene.Game.ToString());
+		}
+
+		public void SetStatusReady()
+		{
+			_isReady = true;
+		}
+
+		public bool IsReady()
+		{
+			return _isReady;
 		}
 	}
 }

@@ -15,6 +15,7 @@ namespace Lounge
 			base.Start();
 			_networkController.ServerSceneChangedCallback = _networkController.LocalPlayer.RpcResetReadyStatus;
 			_networkController.OnAllPlayerReadyCallback += LoadGameScene;
+			_localPlayer.CmdSendMessageSceneLoaded();
 		}
 
 		private void OnDestroy()
@@ -23,6 +24,12 @@ namespace Lounge
 
 			netCon.ServerSceneChangedCallback = null;
 			netCon.OnAllPlayerReadyCallback -= LoadGameScene;
+		}
+
+		public override void SetLocalPlayer(Player player)
+		{
+			base.SetLocalPlayer(player);
+			player.OnAllPlayerSceneLoadedCallback = SetStatusReady;
 		}
 
 		public override List<Player> GetAllPlayers()

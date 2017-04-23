@@ -9,6 +9,12 @@ namespace Lounge
 	{
 		public Transform PlayerParent;
 
+		protected override void Start()
+		{
+			base.Start();
+			SetStatusReady();
+		}
+
 		public override List<Player> GetAllPlayers()
 		{
 			return PlayerParent.GetComponentsInChildren<Player>(true).ToList();

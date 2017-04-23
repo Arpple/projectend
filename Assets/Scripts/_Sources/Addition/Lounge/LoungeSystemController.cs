@@ -15,6 +15,7 @@ namespace Lounge
 		private Contexts _contexts;
 		private bool _isInit;
 		private Setting _setting;
+		protected PlayerLoader _playerLoader;
 
 		[Inject]
 		public void Construct(Setting setting)
@@ -48,6 +49,7 @@ namespace Lounge
 		private void Update()
 		{
 			if (!_isInit) return;
+			if (!LoungeController.Instance.IsReady()) return;
 
 			_systems.Execute();
 			_systems.Cleanup();
