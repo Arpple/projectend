@@ -30,6 +30,7 @@ namespace Lounge
 		public override void SetLocalPlayer(Player player)
 		{
 			base.SetLocalPlayer(player);
+			_localPlayer.OnAllPlayerSceneLoadedCallback = SetStatusReady;
 		}
 
 		public override List<Player> GetAllPlayers()
@@ -49,7 +50,7 @@ namespace Lounge
 
 		protected void SetServerCallback()
 		{
-			_localPlayer.OnAllPlayerSceneLoadedCallback = SetStatusReady;
+			
 		}
 
 		protected void SendSceneReady()

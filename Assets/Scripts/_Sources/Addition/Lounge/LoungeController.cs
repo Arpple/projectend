@@ -12,7 +12,6 @@ namespace Lounge
 {
 	public abstract class LoungeController : MonoBehaviour
 	{
-
 		public static LoungeController Instance;
 
 		public UnitStatusPanel UnitStatus;
@@ -155,6 +154,7 @@ namespace Lounge
 		public void SetStatusReady()
 		{
 			_isReady = true;
+			Debug.Log("rpc ready");
 		}
 
 		public bool IsReady()

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace Lounge
 {
-    public class FocusedPlayerStatusController : MonoBehaviour{
+	public class FocusedPlayerStatusController : MonoBehaviour{
 
         readonly Color Color_Yellow = new Color(1, 237f / 255, 0);
         readonly Color Color_Orange = new Color(1, 143 / 255f, 0);

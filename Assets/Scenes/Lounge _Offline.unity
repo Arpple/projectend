@@ -930,11 +930,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 842.9551
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1143.8949
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1348,9 +1348,9 @@ RectTransform:
   m_Father: {fileID: 1203121589}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -41}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 222.5, y: 0}
   m_SizeDelta: {x: 0, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &186559227
@@ -8117,11 +8117,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 842.9551
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1143.8949
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -11124,11 +11124,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 842.9551
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1143.8949
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4331625858643194, guid: 201e445ec06a8204d9d2811c00e95d7e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12652,9 +12652,10 @@ GameObject:
   - component: {fileID: 2138285442}
   - component: {fileID: 2138285441}
   - component: {fileID: 2138285440}
-  - component: {fileID: 2138285439}
   - component: {fileID: 2138285438}
-  - component: {fileID: 2138285444}
+  - component: {fileID: 2138285446}
+  - component: {fileID: 2138285445}
+  - component: {fileID: 2138285437}
   m_Layer: 5
   m_Name: CharacterSelection
   m_TagString: Untagged
@@ -12662,6 +12663,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2138285437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138285436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee19486e3b2b81a419c36344e511ccbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitStatus: {fileID: 186559231}
+  UnitSkill: {fileID: 1422669176}
+  CharacterContent: {fileID: 309235968}
+  PlayerListContent: {fileID: 1426450545}
+  CharacterSelectSlideMenu: {fileID: 1956133798}
+  LockButton: {fileID: 842307504}
+  CharacterSelectPlayerPrefabs: {fileID: 114336928755106530, guid: 23c3107ee3e277845b36dfde56505ae3,
+    type: 2}
+  MissionBook: {fileID: 1413758745}
 --- !u!114 &2138285438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12680,17 +12701,6 @@ MonoBehaviour:
   _contractNames: []
   _parentContractName: 
   _autoRun: 1
---- !u!114 &2138285439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2138285436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615b727ddd7321448b3b77d6c78b81f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2138285440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12776,7 +12786,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2138285444
+--- !u!114 &2138285445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -12784,16 +12794,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2138285436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d7b7fab22ec03e428e2b2087240180b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dd925555df0f65408d8c870040a940e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitStatus: {fileID: 186559231}
-  UnitSkill: {fileID: 1422669176}
-  CharacterContent: {fileID: 309235968}
-  PlayerListContent: {fileID: 1426450545}
-  CharacterSelectSlideMenu: {fileID: 1956133798}
-  LockButton: {fileID: 842307504}
-  CharacterSelectPlayerPrefabs: {fileID: 114336928755106530, guid: 23c3107ee3e277845b36dfde56505ae3,
-    type: 2}
-  MissionBook: {fileID: 1413758745}
-  PlayerParent: {fileID: 1841506518}
+--- !u!114 &2138285446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138285436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b88290a3dbe394ea20bd20f169785b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayersParent: {fileID: 1841506518}
