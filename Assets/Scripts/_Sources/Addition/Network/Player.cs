@@ -51,6 +51,20 @@ namespace Network
 		public UnityAction AllPlayerSceneLoadedAction;
 		public UnityAction DisconnectCallback;
 
+		public void ResetAction()
+		{
+			NameUpdateAction = null;
+			IconUpdateAction = null;
+			CharacterUdateAction = null;
+			ReadyStateUpdateAction = null;
+			MainMissionUpdateAction = null;
+			PlayerMissionUpdateAction = null;
+			MissionTargetUpdateAction = null;
+			RoundLimitUpdateAction = null;
+			AllPlayerSceneLoadedAction = null;
+			DisconnectCallback = null;
+		}
+
 		public void OnNameChanged(string name)
 		{
 			PlayerName = name;

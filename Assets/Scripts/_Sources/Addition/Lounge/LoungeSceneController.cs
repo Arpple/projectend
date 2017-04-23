@@ -102,7 +102,7 @@ namespace Lounge
 		{
 			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs, PlayerListContent.transform, false);
 			charPlayer.SetPlayer(player);
-
+			player.ResetAction();
 			player.CharacterUdateAction = DisableCharacterIcon;
 			player.PlayerMissionUpdateAction = MissionBook.SetLocalPlayerMission;
 			player.MissionTargetUpdateAction = MissionBook.SetLocalPlayerTarget;
