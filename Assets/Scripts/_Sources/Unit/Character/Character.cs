@@ -8,8 +8,15 @@ public enum Character
 	SharpShooter,
 	WhiteRabbit,
 	Mimic,
-	//CurseSword,
 	LastBoss,
+    TyrantKing,
+    PyroKing,
+    Alchemita,
+    Orshura,
+    BxBx,
+    Nidhogg,
+    PotatoKnight,
+    //CurseSword,
 }
 
 public sealed partial class UnitContext : Context<UnitEntity>

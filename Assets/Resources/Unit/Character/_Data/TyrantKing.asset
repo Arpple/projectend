@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d793a191f7a3664f9225282db9521df, type: 3}
+  m_Name: TyrantKing
+  m_EditorClassIdentifier: 
+  BodySprite: {fileID: 21300000, guid: 1f13dbf2d235a4b4181ff65b36bb3e35, type: 3}
+  IconSprite: {fileID: 21300000, guid: 08a964407ad2b99469e17e33bb1ad7a1, type: 3}
+  Name: Tyrant King
+  Description: 
+  HitPoint: 9
+  AttackPower: 1
+  AttackRange: 1
+  VisionRange: 3
+  MoveSpeed: 2
+  Type: 5
+  SkillCards: 

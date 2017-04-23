@@ -35,6 +35,13 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 975921bbf26dd694f8e44b8550c1d92b, type: 2}
       - {fileID: 11400000, guid: b5a78eab5f1b61e4889caff04227e661, type: 2}
       - {fileID: 11400000, guid: 80e3467feabab6947a1ee71c5a4bec5f, type: 2}
+      - {fileID: 11400000, guid: fd42d3c02b2698d49bf9347fa6a79945, type: 2}
+      - {fileID: 11400000, guid: c1b515e134439144b99fc5eb6e560840, type: 2}
+      - {fileID: 11400000, guid: 30129a99ddf40ee47a562058b3379c3a, type: 2}
+      - {fileID: 11400000, guid: 6a73223b49f0cff4b92990797ef18883, type: 2}
+      - {fileID: 11400000, guid: 3b4a370b3c257b649b2bfd5f24af98f1, type: 2}
+      - {fileID: 11400000, guid: a9ad89c3b4c2a8f46b19536ccd99f413, type: 2}
+      - {fileID: 11400000, guid: 90553f29e31caf14f81f1512a4b039f2, type: 2}
     BossSetting:
       DataList:
       - {fileID: 11400000, guid: d5585d467915bd84b8bdcd1f2b040fb8, type: 2}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d793a191f7a3664f9225282db9521df, type: 3}
+  m_Name: PyroKing
+  m_EditorClassIdentifier: 
+  BodySprite: {fileID: 21300000, guid: 4d071c96975ab4b45847ecf4623532cc, type: 3}
+  IconSprite: {fileID: 21300000, guid: a5ebc1d9dd1710c4387c09b6fd6823ca, type: 3}
+  Name: Pyro King
+  Description: 
+  HitPoint: 8
+  AttackPower: 2
+  AttackRange: 3
+  VisionRange: 3
+  MoveSpeed: 3
+  Type: 6
+  SkillCards: 
