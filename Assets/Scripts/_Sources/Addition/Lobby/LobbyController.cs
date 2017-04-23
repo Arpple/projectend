@@ -123,7 +123,6 @@ namespace Lobby
 		public void Back()
 		{
 			NetworkController.Instance.Stop();
-			UnityEngine.SceneManagement.SceneManager.LoadScene(GameScene.Title.ToString());
 		}
 
 		public void MoveToCharacterSelection()

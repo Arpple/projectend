@@ -10,7 +10,7 @@ namespace Network
 		{
 			if (Instance != null)
 			{
-				Destroy(Instance);
+				Destroy(Instance.gameObject);
 			}
 
 			Instance = this;

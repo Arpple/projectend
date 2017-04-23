@@ -188,10 +188,7 @@ namespace Network
 
 		public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 		{
-			if (SceneManager.GetActiveScene().name == GameScene.Lobby.ToString())
-			{
-				base.OnServerAddPlayer(conn, playerControllerId);
-			}
+			base.OnServerAddPlayer(conn, playerControllerId);
 		}
 
 		/// <summary>
