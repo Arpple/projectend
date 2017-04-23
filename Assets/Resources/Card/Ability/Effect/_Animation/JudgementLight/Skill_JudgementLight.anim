@@ -91,7 +91,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.5833333
-    functionName: DestroyAnimation
+    functionName: OnAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

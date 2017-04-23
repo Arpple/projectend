@@ -16,7 +16,6 @@ public class AbilityEffect : MonoBehaviour
 	public void PlayAnimation()
 	{
 		Animation.Play(AnimationName);
-		Debug.Log("TEst");
 	}
 
 	public void PlayAnimation(string animation)
@@ -36,12 +35,23 @@ public class AbilityEffect : MonoBehaviour
 		_onAnimationEndAction = animationEndCallback;
 	}
 
+    /// <summary>
+    /// Activate by Animation when Animation end
+    /// !Please don't renamed or remove this method because animation will not found ; - ; )
+    /// if do that please reset animation file (all file) 
+    /// </summary>
 	public void OnAnimationEnd()
 	{
 		if (_onAnimationEndAction != null)
 		{
 			_onAnimationEndAction();
 			_onAnimationEndAction = null;
-		}		
+		}
+
+        DestroyAnimation();
 	}
+
+    private void DestroyAnimation() {
+        Object.Destroy(this.gameObject);
+    }
 }
