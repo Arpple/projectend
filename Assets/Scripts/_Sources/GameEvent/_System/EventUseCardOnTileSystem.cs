@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Entitas;
-
 public class EventUseCardOnTileSystem : EventSystem
 {
 	public EventUseCardOnTileSystem(Contexts contexts) : base(contexts)
@@ -26,12 +25,20 @@ public class EventUseCardOnTileSystem : EventSystem
 
 		if (cardEntity.hasAbilityEffect)
 		{
-			var effect = Object.Instantiate(
-				cardEntity.abilityEffect.EffectObject, 
-				cardEvent.TargetEntity.view.GameObject.transform, false
-			).GetComponent<AbilityEffect>();
+            IAbilityAnimation animation = ability as IAbilityAnimation;
+            Debug.Log("animation = null ? "+(animation == null));
+            if(animation == null){
 
-			effect.PlayAnimation();
+                var effect = Object.Instantiate(
+                    cardEntity.abilityEffect.EffectObject,
+                    cardEvent.TargetEntity.view.GameObject.transform, false
+                ).GetComponent<AbilityEffect>();
+                effect.PlayAnimation();
+
+            } else {
+                var effect = cardEntity.abilityEffect.EffectObject;
+                animation.PlayAnimation(effect, cardEvent.UserEntity, cardEvent.TargetEntity.GetUnitOnTile());
+            }
 		}
 
 		if (cardEntity.hasDeckCard)

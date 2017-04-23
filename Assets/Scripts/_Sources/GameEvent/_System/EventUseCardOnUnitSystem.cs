@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
+using System.Linq;
 
 public class EventUseCardOnUnitSystem : EventSystem
 {
@@ -24,17 +25,34 @@ public class EventUseCardOnUnitSystem : EventSystem
 		var ability = (ActiveAbility<UnitEntity>)cardEntity.ability.Ability;
 		ability.OnTargetSelected(cardEvent.UserEntity, cardEvent.TargetEntity);
 
-		if (cardEntity.hasAbilityEffect)
-		{
-			var effect = Object.Instantiate(
-				cardEntity.abilityEffect.EffectObject,
-				cardEvent.TargetEntity.view.GameObject.transform, false
-			).GetComponent<AbilityEffect>();
+        if(cardEntity.hasAbilityEffect) {
+            IAbilityAnimation animation = ability as IAbilityAnimation;
+            Debug.Log("animation = null ? " + (animation == null));
+            if(animation == null) {
 
-			effect.PlayAnimation();
-		}
+                var effect = Object.Instantiate(
+                    cardEntity.abilityEffect.EffectObject,
+                    cardEvent.TargetEntity.view.GameObject.transform, false
+                ).GetComponent<AbilityEffect>();
+                effect.PlayAnimation();
 
-		if (cardEntity.hasDeckCard)
+            } else {
+                var effect = cardEntity.abilityEffect.EffectObject;
+                animation.PlayAnimation(effect, cardEvent.UserEntity, cardEvent.TargetEntity);
+            }
+        }
+        //if (cardEntity.hasAbilityEffect)
+        //{
+
+        //	var effect = Object.Instantiate(
+        //		cardEntity.abilityEffect.EffectObject,
+        //		cardEvent.TargetEntity.view.GameObject.transform, false
+        //	).GetComponent<AbilityEffect>();
+
+        //	effect.PlayAnimation();
+        //}
+
+        if (cardEntity.hasDeckCard)
 			RemovePlayerCard(cardEntity);
 
 		var msg = string.Format("{0} use {1}",

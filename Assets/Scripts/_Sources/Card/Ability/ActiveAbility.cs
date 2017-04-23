@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System;
+using Entitas;
 
 public abstract class ActiveAbility<TTarget> : Ability, IActiveAbility where TTarget : Entity
 {
@@ -30,4 +31,5 @@ public abstract class ActiveAbility<TTarget> : Ability, IActiveAbility where TTa
 		if (targetUnit == null) return null;
 		return targetUnit.owner.Entity != caster.owner.Entity ? targetUnit : null;
 	}
+
 }
