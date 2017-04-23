@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Winter
   m_EditorClassIdentifier: 
   Type: 0
+  Name: Winter
   Cost: 3
