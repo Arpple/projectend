@@ -25,7 +25,8 @@ public class UnitSystems : Feature
 		Add(new LocalCharacterStatusSetupSystem(contexts, ui.LocalPlayerStatus));
 		Add(new LocalCharacterStatusRenderingSystem(contexts, ui.LocalPlayerStatus));
 		Add(new TargetUnitStatusDisplaySystem(contexts, ui.TargetPlayerStatus));
-
+        Add(new RenderDeadSpriteSystem(contexts, setting));
+        Add(new RenderResurrectionSpriteSystem(contexts));
 		CreateBossSystems();
 	}
 

@@ -27,6 +27,7 @@ MonoBehaviour:
       type: 2}
     TileResourceChargeWeigth: 0a0000001400000028000000140000000a000000
   UnitSetting:
+    DeadSprite: {fileID: 21300000, guid: f2cf62f7f3950214c92c7e0f4fc188b2, type: 3}
     CharacterSetting:
       DataList:
       - {fileID: 11400000, guid: f66543694e2041d44bebba3453ce706f, type: 2}
@@ -47,6 +48,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: cfa6c69379582664683700e62e560aae, type: 2}
       - {fileID: 11400000, guid: fc72877eab47e7f438ad1d71e3701c79, type: 2}
       - {fileID: 11400000, guid: b6c6e9e18d32c134c90f7e52e4457637, type: 2}
+      - {fileID: 11400000, guid: 27e3a63e4e091e64f8545d0817dfe533, type: 2}
       MaxHandCardCount: 10
       StartCardCount: 5
       StartTurnDrawCount: 2
@@ -55,12 +57,14 @@ MonoBehaviour:
         - Type: 0
           Count: 5
         - Type: 1
-          Count: 5
+          Count: 10
         - Type: 2
           Count: 5
         - Type: 3
           Count: 5
         - Type: 4
+          Count: 3
+        - Type: 5
           Count: 10
     ResourceCardSetting:
       DataList:
