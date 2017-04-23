@@ -3601,6 +3601,7 @@ MonoBehaviour:
   TargetPlayerStatus: {fileID: 1812729849}
   TurnPanel: {fileID: 1267979034}
   MissionBookController: {fileID: 272956306}
+  Camera: {fileID: 1111501431}
   TurnNoti: {fileID: 1285569465}
   DeckFactory: {fileID: 1465027410}
   BoxFactory: {fileID: 1465027411}
@@ -5355,7 +5356,7 @@ Prefab:
     - target: {fileID: 224824269347636454, guid: 8aa11d0684cc58d449c8b2c14e5c44be,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 360
+      value: 366
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8aa11d0684cc58d449c8b2c14e5c44be, type: 2}
@@ -5646,8 +5647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424f42ebdbf12dd4e9c28dce53a80e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoEndTurnForBoss: 0
-  AutoPassLocalFlag: 0
+  AutoEndTurnForBoss: 1
+  AutoPassLocalFlag: 1
 --- !u!4 &1234237937
 Transform:
   m_ObjectHideFlags: 0

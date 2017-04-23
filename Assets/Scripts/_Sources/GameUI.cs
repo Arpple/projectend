@@ -29,6 +29,7 @@ public class GameUI : MonoBehaviour
 	public PlayerUnitStatusPanel TargetPlayerStatus;
 	public TurnPanel TurnPanel;
     public MissionBookController MissionBookController;
+    public Camera Camera;
 
 	[Header("Notification")]
 	public TurnNotification TurnNoti;
@@ -64,6 +65,7 @@ public class GameUI : MonoBehaviour
 		Assert.IsNotNull(TargetPlayerStatus);
 		Assert.IsNotNull(TurnPanel);
 		Assert.IsNotNull(TurnNoti);
+        Assert.IsNotNull(Camera);
 
 		_currentGroup = MainGroup;
 	}
@@ -77,6 +79,7 @@ public class GameUI : MonoBehaviour
 		SkillFactory.Init();
 
         this.MissionBookController.LoadData(_setting.MissionSetting);
+        Camera.backgroundColor = Color.black;
     }
 
     private ActionGroup _currentGroup;
