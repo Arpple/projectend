@@ -1,6 +1,7 @@
-﻿using UI;
+﻿using Network;
+using UI;
 using UnityEngine;
-using Network;
+using Zenject;
 
 namespace Title
 {
@@ -12,6 +13,13 @@ namespace Title
 		public PlayerIconSelectorObject IconPrefabs;
 
 		private PlayerIconSelectorObject _selectedObject;
+		private LocalData _data;
+
+		[Inject]
+		public void Construct(LocalData data)
+		{
+			_data = data;
+		}
 
 		public void AddIcon(PlayerIconData data)
 		{
@@ -26,7 +34,7 @@ namespace Title
 
 			UnselectedPreviousIcon();
 			PlayerIcon.SetImage(playerIcon.GetIcon());
-			NetworkController.Instance.LocalPlayerIconType = playerIcon.GetIconType();
+			_data.PlayerIcon = playerIcon.GetIconType();
 			_selectedObject = playerIcon;
 		}
 

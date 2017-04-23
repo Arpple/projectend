@@ -6,7 +6,7 @@ namespace Network
 	{
 		protected override void SetupLocalPlayer(Player player)
 		{
-			_localPlayer.OnAllPlayerSceneLoadedCallback = SetReady;
+			_localPlayer.AllPlayerSceneLoadedAction = SetReady;
 		}
 
 		protected override void OnSetupComplete()

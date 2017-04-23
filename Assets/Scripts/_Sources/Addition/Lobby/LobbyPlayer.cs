@@ -1,8 +1,8 @@
 ﻿using Network;
 using UI;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 namespace Lobby
 {
@@ -35,18 +35,18 @@ namespace Lobby
 		{
 			_player = player;
 
-			_player.OnNameChangedCallback += SetName;
-			_player.OnReadyStateChangedCallback += SetStatus;
-			_player.OnIconChangedCallback += SetIcon;
+			_player.NameUpdateAction = SetName;
+			_player.ReadyStateUpdateAction = SetStatus;
+			_player.IconUpdateAction = SetIcon;
 		}
 
 		private void OnDestroy()
 		{
 			if (_player == null) return;
 
-			_player.OnNameChangedCallback -= SetName;
-			_player.OnReadyStateChangedCallback -= SetStatus;
-			_player.OnIconChangedCallback -= SetIcon;
+			_player.NameUpdateAction -= SetName;
+			_player.ReadyStateUpdateAction -= SetStatus;
+			_player.IconUpdateAction -= SetIcon;
 		}
 
 		private void Update()
@@ -72,9 +72,9 @@ namespace Lobby
 			}
 		}
 
-		public void SetIcon(int iconId)
+		public void SetIcon(PlayerIcon iconId)
 		{
-			PlayerIcon.SetImage(_controller.GetPlayerIcon((PlayerIcon)iconId));
+			PlayerIcon.SetImage(_controller.GetPlayerIcon(iconId));
 		}
 
 		public void SetIcon(Sprite icon)

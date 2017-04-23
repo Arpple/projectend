@@ -93,15 +93,15 @@ namespace Lounge
 			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs, PlayerListContent.transform, false);
 			charPlayer.SetPlayer(player);
 
-			player.OnSelectedCharacterChangedCallback += DisableCharacterIcon;
-			player.OnPlayerMissionChangedCallback = MissionBook.SetLocalPlayerMission;
-			player.OnPlayerMissionTargetIdChangedCallback = MissionBook.SetLocalPlayerTarget;
+			player.CharacterUdateAction = DisableCharacterIcon;
+			player.PlayerMissionUpdateAction = MissionBook.SetLocalPlayerMission;
+			player.MissionTargetUpdateAction = MissionBook.SetLocalPlayerTarget;
 		}
 
 		public virtual void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
-			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
+			_localPlayer.CharacterUdateAction = OnLocalPlayerCharacterSelected;
 
 			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
 		}
@@ -110,7 +110,7 @@ namespace Lounge
 		/// Called when player is assigned character
 		/// </summary>
 		/// <param name="characterId">The character identifier.</param>
-		public void OnLocalPlayerCharacterSelected(int characterId)
+		public void OnLocalPlayerCharacterSelected(Character characterId)
 		{
 			StartCoroutine(Ready());
 			LockButton.interactable = false;
@@ -126,9 +126,8 @@ namespace Lounge
 		/// Disables the character selection icon.
 		/// </summary>
 		/// <param name="charId">The character identifier.</param>
-		public void DisableCharacterIcon(int charId)
+		public void DisableCharacterIcon(Character character)
 		{
-			var character = (Character)charId;
 			Assert.AreNotEqual(Character.None, character);
 
 			var item = CharacterSelectSlideMenu.SlideItems.First(i =>

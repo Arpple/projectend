@@ -103,14 +103,13 @@ namespace Lounge
 			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs, PlayerListContent.transform, false);
 			charPlayer.SetPlayer(player);
 
-			player.OnSelectedCharacterChangedCallback += DisableCharacterIcon;
-			player.OnPlayerMissionChangedCallback = MissionBook.SetLocalPlayerMission;
-			player.OnPlayerMissionTargetIdChangedCallback = MissionBook.SetLocalPlayerTarget;
+			player.CharacterUdateAction = DisableCharacterIcon;
+			player.PlayerMissionUpdateAction = MissionBook.SetLocalPlayerMission;
+			player.MissionTargetUpdateAction = MissionBook.SetLocalPlayerTarget;
 		}
 
-		private void DisableCharacterIcon(int charId)
+		private void DisableCharacterIcon(Character character)
 		{
-			var character = (Character)charId;
 			Assert.AreNotEqual(Character.None, character);
 
 			var item = CharacterSelectSlideMenu.SlideItems.First(i =>
@@ -125,11 +124,11 @@ namespace Lounge
 
 		protected virtual void SetupLocalPlayer(Player player)
 		{
-			player.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
+			player.CharacterUdateAction = OnLocalPlayerCharacterSelected;
 			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
 		}
 
-		private  void OnLocalPlayerCharacterSelected(int characterId)
+		private  void OnLocalPlayerCharacterSelected(Character characterId)
 		{
 			StartCoroutine(Ready());
 			LockButton.interactable = false;
