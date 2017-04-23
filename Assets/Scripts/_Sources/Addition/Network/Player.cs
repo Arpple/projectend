@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -207,6 +208,7 @@ namespace Network
 		public void CmdSetReadyStatus(bool ready)
 		{
 			IsReady = ready;
+			Debug.Log("set ready " + PlayerId);
 		}
 
 		[Command]
@@ -256,6 +258,7 @@ namespace Network
 		[Command]
 		public void CmdSendMessageSceneLoaded()
 		{
+			Debug.Log("scene ready " + PlayerId);
 			IsClientSceneLoaded = true;
 			if(NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsClientSceneLoaded))
 			{
