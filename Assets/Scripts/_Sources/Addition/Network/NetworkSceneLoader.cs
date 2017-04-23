@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 
 namespace Network
 {
@@ -9,9 +9,18 @@ namespace Network
 			_localPlayer.AllPlayerSceneLoadedAction = SetReady;
 		}
 
+		IEnumerator SendMessageSceneComplete()
+		{
+			while(!_localPlayer.IsClientSceneLoaded)
+			{
+				NetworkController.Instance.ClientSceneChangedCallback = _localPlayer.CmdSendMessageSceneLoaded;
+				yield return null;
+			}
+		}
+
 		protected override void OnSetupComplete()
 		{
-			NetworkController.Instance.ClientSceneChangedCallback = _localPlayer.CmdSendMessageSceneLoaded;
+			StartCoroutine(SendMessageSceneComplete());
 		}
 	} 
 }

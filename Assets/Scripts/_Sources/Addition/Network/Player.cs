@@ -33,6 +33,8 @@ namespace Network
 		public bool MainMissionComplete;
 		public bool PlayerMissionComplete;
 
+		[SyncVar] public bool IsServerReady;
+
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
 
@@ -255,6 +257,7 @@ namespace Network
 				AllPlayerSceneLoadedAction();
 			}
 		}
+
 		#endregion
 
 		public int GetId()
