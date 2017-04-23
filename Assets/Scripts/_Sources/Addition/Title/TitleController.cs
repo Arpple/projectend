@@ -27,11 +27,13 @@ namespace Title
 		}
 
 		private Setting _setting;
+		private LocalData _data;
 
 		[Inject]
-		public void Construct(Setting setting)
+		public void Construct(Setting setting, LocalData data)
 		{
 			_setting = setting;
+			_data = data;
 		}
 
 		private void Awake()
@@ -57,10 +59,10 @@ namespace Title
 			}
 
 			//set profile
-			var playerIconImage = _setting.PlayerIconSetting.GetData(NetCon.LocalPlayerIconType).Icon;
+			var playerIconImage = _setting.PlayerIconSetting.GetData(_data.PlayerIcon).Icon;
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);
-			PlayerNameInputField.text = NetCon.LocalPlayerName;
-			PlayerNameInputField.onEndEdit.AddListener((s) => NetCon.LocalPlayerName = PlayerNameInputField.text);
+			PlayerNameInputField.text = _data.PlayerName;
+			PlayerNameInputField.onEndEdit.AddListener((s) => _data.PlayerName = PlayerNameInputField.text);
 
 			//set dialogue event
 			SetMenuButtonVisible(true);

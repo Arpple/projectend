@@ -22,14 +22,15 @@ namespace Lobby
 		public RoundLimitDisplay RoundDisplay;
 
 		private Setting _setting;
+		private LocalData _data;
+		private Player _localPlayer;
 
 		[Inject]
-		public void Construct(Setting setting)
+		public void Construct(Setting setting, LocalData data)
 		{
 			_setting = setting;
+			_data = data;
 		}
-
-		private Player _localPlayer;
 
 		private void Awake()
 		{
@@ -47,32 +48,20 @@ namespace Lobby
 
 		private void Start()
 		{
-			ReadyButton.onClick.RemoveAllListeners();
-			WaitButton.onClick.RemoveAllListeners();
-			BackButton.onClick.RemoveAllListeners();
-
 			BackButton.onClick.AddListener(Back);
 
 			var netCon = NetworkController.Instance;
-			netCon.OnAllPlayerReadyCallback += MoveToCharacterSelection;
-			netCon.OnClientPlayerStartCallback += AddPlayer;
-			netCon.OnLocalPlayerStartCallback += SetLocalPlayer;
-
-			CreateMissionSelection();
+			netCon.OnAllPlayerReadyCallback = MoveToCharacterSelection;
+			netCon.ClientPlayerStartCallback = AddPlayer;
+			netCon.LocalPlayerStartCallback = SetLocalPlayer;
 			RoundSelector.OnRoundLimitChanged = SetRound;
+			CreateMissionSelection();
 		}
 
 		private void OnDestroy()
 		{
 			var netCon = NetworkController.Instance;
-			netCon.OnAllPlayerReadyCallback -= MoveToCharacterSelection;
-			netCon.OnClientPlayerStartCallback -= AddPlayer;
-			netCon.OnLocalPlayerStartCallback -= SetLocalPlayer;
-
-			_localPlayer.OnReadyStateChangedCallback -= UpdateMissionSelector;
-			_localPlayer.OnMainMissionChangedCallback = null;
-			_localPlayer.OnReadyStateChangedCallback -= UpdateRoundSelector;
-			_localPlayer.OnRoundLimitChangedCallback = null;
+			netCon.ResetCallback();
 		}
 
 		public void AddPlayer(Player player)
@@ -83,7 +72,7 @@ namespace Lobby
 			lobbyPlayer.SetPlayer(player);
 			lobbyPlayer.SetIcon(GetPlayerIcon((PlayerIcon)player.PlayerIconId));
 
-			player.OnPlayerDisconnectCallback += () => {
+			player.DisconnectCallback += () => {
 				if (lobbyPlayer != null) Destroy(lobbyPlayer.gameObject);
 			};
 
@@ -115,14 +104,14 @@ namespace Lobby
 				WaitButton.gameObject.SetActive(false);
 			});
 
-			player.CmdSetName(NetworkController.Instance.LocalPlayerName);
-			player.CmdSetIcon((int)NetworkController.Instance.LocalPlayerIconType);
+			player.CmdSetName(_data.PlayerName);
+			player.CmdSetIcon((int)_data.PlayerIcon);
 			
-			player.OnReadyStateChangedCallback += UpdateMissionSelector;
-			player.OnMainMissionChangedCallback = UpdateMissionDisplay;
+			player.ReadyStateUpdateAction = UpdateMissionSelector;
+			player.MainMissionUpdateAction = UpdateMissionDisplay;
 
-			player.OnReadyStateChangedCallback += UpdateRoundSelector;
-			player.OnRoundLimitChangedCallback = UpdateRoundDisplay;
+			player.ReadyStateUpdateAction = UpdateRoundSelector;
+			player.RoundLimitUpdateAction = UpdateRoundDisplay;
 
 			if (NetworkController.IsServer)
 			{

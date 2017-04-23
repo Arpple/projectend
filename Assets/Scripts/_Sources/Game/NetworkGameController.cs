@@ -21,7 +21,7 @@ public class NetworkGameController : GameController
 
 		AddLocalPlayer(netCon.LocalPlayer);
 		netCon.ClientSceneChangedCallback = InitializeAndSetReady;
-		_localPlayer.OnAllPlayerSceneLoadedCallback = SetStatusReady;
+		_localPlayer.AllPlayerSceneLoadedAction = SetStatusReady;
 	}
 
 	protected void InitializeAndSetReady()

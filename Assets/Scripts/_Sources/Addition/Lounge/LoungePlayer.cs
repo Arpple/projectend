@@ -1,11 +1,9 @@
-﻿using UI;
-using System;
+﻿using System.Linq;
+using Entitas;
+using Network;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
-
-using Entitas;
-using System.Linq;
-using Network;
 
 namespace Lounge
 {
@@ -22,29 +20,29 @@ namespace Lounge
 		public void SetPlayer(Player player)
 		{
 			_player = player;
-			_player.OnSelectedCharacterChangedCallback += SetCharacter;
+			_player.CharacterUdateAction = SetCharacter;
 		}
 
 		private void OnDestroy()
 		{
 			if (_player == null) return;
-			_player.OnSelectedCharacterChangedCallback -= SetCharacter;
+			_player.CharacterUdateAction -= SetCharacter;
 		}
 
 		/// <summary>
 		/// change display for player to selected character
 		/// </summary>
-		/// <param name="characterTypeId">The character identifier.</param>
-		public void SetCharacter(int characterTypeId)
+		/// <param name="type">The character identifier.</param>
+		public void SetCharacter(Character type)
 		{
-			var character = GetCharacterEntity(characterTypeId);
+			var character = GetCharacterEntity(type);
             this.CharactorIcon.SetImage(character.unitIcon.IconSprite);
             this.SignLockImage.color = Color.green;
         }
         
         public void OnPlayerFocus() {
 			//Debug.Log("Focus player with char ID "+_player.SelectedCharacterId);
-			var character = GetCharacterEntity(_player.SelectedCharacterId);
+			var character = GetCharacterEntity((Character)_player.SelectedCharacterId);
             LoungeController.Instance.ShowUnitInformationUnit(character);
 
             //TODO : need to fix show role. ?
@@ -55,10 +53,10 @@ namespace Lounge
 
         }
 
-		private UnitEntity GetCharacterEntity(int characterTypeId)
+		private UnitEntity GetCharacterEntity(Character character)
 		{
 			return Contexts.sharedInstance.unit.GetEntities(UnitMatcher.Character)
-				.Where(c => (int)c.character.Type == characterTypeId)
+				.Where(c => c.character.Type == character)
 				.First();
 		}
 	}
