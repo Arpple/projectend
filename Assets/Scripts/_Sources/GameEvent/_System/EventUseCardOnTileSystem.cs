@@ -26,7 +26,6 @@ public class EventUseCardOnTileSystem : EventSystem
 		if (cardEntity.hasAbilityEffect)
 		{
             IAbilityAnimation animation = ability as IAbilityAnimation;
-            Debug.Log("animation = null ? "+(animation == null));
             if(animation == null){
 
                 var effect = Object.Instantiate(
