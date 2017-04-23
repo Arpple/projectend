@@ -55,17 +55,17 @@ MonoBehaviour:
       Deck:
         SettingList:
         - Type: 0
-          Count: 5
+          Count: 20
         - Type: 1
           Count: 10
         - Type: 2
           Count: 5
         - Type: 3
-          Count: 5
+          Count: 10
         - Type: 4
           Count: 3
         - Type: 5
-          Count: 10
+          Count: 3
     ResourceCardSetting:
       DataList:
       - {fileID: 11400000, guid: 7ba0625830e8f2949a069229306d6a2e, type: 2}

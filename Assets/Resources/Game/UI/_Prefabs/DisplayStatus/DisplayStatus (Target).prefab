@@ -1014,6 +1014,7 @@ MonoBehaviour:
   MoveSpeedText: {fileID: 114755755439015742}
   VisionRangeText: {fileID: 114869658360029494}
   HpBar: {fileID: 114755696753185564}
+  BuffPanel: {fileID: 0}
   RoleText: {fileID: 114445375028625454}
   RoleImage: {fileID: 114479665981263228}
   AnimeCon: {fileID: 95102547582927830}
@@ -1098,7 +1099,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: ShowExtension
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1886873718216648}
         m_MethodName: SetActive
         m_Mode: 6
@@ -1109,7 +1110,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
       - m_Target: {fileID: 1923071875489822}
         m_MethodName: SetActive
         m_Mode: 6
@@ -1120,7 +1121,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 1
+        m_CallState: 0
+      - m_Target: {fileID: 95102547582927830}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HideDisplayStatus
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114191395156080204
