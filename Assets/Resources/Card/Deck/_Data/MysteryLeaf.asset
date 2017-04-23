@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4078e6e5d8c782140ab6e2659b20165c, type: 3}
+  m_Name: MysteryLeaf
+  m_EditorClassIdentifier: 
+  MainSprite: {fileID: 21300000, guid: f2f65aa3127da0a41adcb017b68ee640, type: 3}
+  Name: Mystery Leaf
+  ActiveDesc: 'Resurrection player from dead and recovery hp 1 point.
+
+    if player not dead Recovery player hp 3 point.'
+  PassiveDesc: 
+  Type: 5
+  AbilityClassFullName: AbilityMysteryLeaf
+  Effect: {fileID: 114594017304363474, guid: 3bcee4cf26db5564585b7b79f7c77ef5, type: 2}
