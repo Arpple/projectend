@@ -16,7 +16,6 @@ public class AbilityEffect : MonoBehaviour
 	public void PlayAnimation()
 	{
 		Animation.Play(AnimationName);
-		Debug.Log("TEst");
 	}
 
 	public void PlayAnimation(string animation)

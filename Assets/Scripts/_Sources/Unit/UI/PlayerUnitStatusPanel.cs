@@ -20,6 +20,7 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 	public Text MoveSpeedText;
 	public Text VisionRangeText;
 	public HpBar HpBar;
+	public BuffPanel BuffPanel;
 
 	[Header("Role")]
 	public Text RoleText;
