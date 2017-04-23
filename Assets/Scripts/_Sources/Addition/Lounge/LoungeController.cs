@@ -10,14 +10,15 @@ using Zenject;
 
 namespace Lounge
 {
-	public class LoungeController : MonoBehaviour{
+	public abstract class LoungeController : MonoBehaviour
+	{
 
 		public static LoungeController Instance;	
 
 		public UnitStatusPanel UnitStatus;
 		public UnitSkillPanel UnitSkill;
 
-		public GameObject RoleContent,CharacterContent,PlayerListContent;
+		public GameObject CharacterContent,PlayerListContent;
 		public SlideMenu CharacterSelectSlideMenu;
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
@@ -25,18 +26,9 @@ namespace Lounge
         [Header("MissionBook")]
         public MissionBookController MissionBook;
 
-		[Header("Test")]
-		public bool IsOffline;
-		public Transform PlayerParent;
-
-		private Setting _setting;
-		private Character _focusingCharacter;
-		private Player _localPlayer;
-
-		private NetworkController _networkController
-		{
-			get { return NetworkController.Instance; }
-		}
+		protected Setting _setting;
+		protected Character _focusingCharacter;
+		protected Player _localPlayer;
 
 		[Inject]
 		public void Construct(Setting setting)
@@ -44,13 +36,12 @@ namespace Lounge
 			_setting = setting;	
 		}
 
-		private void Awake()
+		protected void Awake()
 		{
 			Instance = this;
 
 			Assert.IsNotNull(UnitStatus);
 			Assert.IsNotNull(UnitSkill);
-			Assert.IsNotNull(RoleContent);
 			Assert.IsNotNull(CharacterContent);
 			Assert.IsNotNull(CharacterSelectSlideMenu);
 			Assert.IsNotNull(LockButton);
@@ -58,7 +49,11 @@ namespace Lounge
 			Assert.IsNotNull(_setting);
 		}
 
-		void Start()
+		public abstract List<Player> GetAllPlayers();
+		public abstract Player GetLocalPlayer();
+		protected abstract void LockFocusingCharacter();
+
+		protected virtual void Start()
 		{
 			MissionBook.LoadData(_setting.MissionSetting);
 			UnitSkill.Initialize(_setting.CardSetting.SkillCardSetting);
@@ -68,15 +63,10 @@ namespace Lounge
 				AddPlayer(player);
 			}
 
-			SetLocalPlayer(GetLocalPLayer());
+			SetLocalPlayer(GetLocalPlayer());
 
+			LockButton.onClick.AddListener(LockFocusingCharacter);
 			CharacterSelectSlideMenu.OnFocusItemChangedCallback += FocusCharacterIcon;
-
-			if(!IsOffline)
-			{
-				_networkController.ServerSceneChangedCallback = _networkController.LocalPlayer.RpcResetReadyStatus;
-				_networkController.OnAllPlayerReadyCallback += LoadGameScene;
-			}
 		}
 
 		private void FocusCharacterIcon(SlideItem characterIcon)
@@ -85,25 +75,6 @@ namespace Lounge
 			_focusingCharacter = entity.character.Type;
 
 			ShowUnitInformationUnit(entity);
-		}
-
-		private void OnDestroy()
-		{
-			if(!IsOffline)
-			{
-				var netCon = NetworkController.Instance;
-
-				netCon.ServerSceneChangedCallback = null;
-				netCon.OnAllPlayerReadyCallback -= LoadGameScene;
-			}
-		}
-
-		/// <summary>
-		/// Lock character selection
-		/// </summary>
-		public void Lock()
-		{
-			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
 		}
 
 		/// <summary>
@@ -125,17 +96,12 @@ namespace Lounge
 			player.OnPlayerMissionTargetIdChangedCallback = MissionBook.SetLocalPlayerTarget;
 		}
 
-		public void SetLocalPlayer(Player player)
+		public virtual void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
 			_localPlayer.OnSelectedCharacterChangedCallback += OnLocalPlayerCharacterSelected;
 
 			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
-			if(IsOffline)
-			{
-				MissionBook.SetLocalPlayerMission((PlayerMission)player.PlayerMissionId);
-				MissionBook.SetLocalPlayerTarget(player.PlayerMissionTarget);
-			}
 		}
 
 		/// <summary>
@@ -180,20 +146,6 @@ namespace Lounge
 		{
 			var netCon = NetworkController.Instance;
 			netCon.ServerChangeScene(GameScene.Game.ToString());
-		}
-
-		public List<Player> GetAllPlayers()
-		{
-			return IsOffline
-				? PlayerParent.GetComponentsInChildren<Player>(true).ToList()
-				: _networkController.AllPlayers;
-		}
-
-		public Player GetLocalPLayer()
-		{
-			return IsOffline
-				? PlayerParent.GetChild(0).GetComponent<Player>()
-				: _networkController.LocalPlayer;
 		}
 	}
 }

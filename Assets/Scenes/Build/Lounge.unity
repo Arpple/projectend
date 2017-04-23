@@ -262,7 +262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 680448974}
+      - m_Target: {fileID: 0}
         m_MethodName: Lock
         m_Mode: 1
         m_Arguments:
@@ -2955,7 +2955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 222.5, y: 0}
+  m_AnchoredPosition: {x: 220.40001, y: 0}
   m_SizeDelta: {x: 0, y: 82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &447233028
@@ -4401,9 +4401,9 @@ GameObject:
   - component: {fileID: 680448977}
   - component: {fileID: 680448976}
   - component: {fileID: 680448975}
-  - component: {fileID: 680448974}
   - component: {fileID: 680448973}
   - component: {fileID: 680448979}
+  - component: {fileID: 680448974}
   m_Layer: 5
   m_Name: CharacterSelection
   m_TagString: Untagged
@@ -4430,12 +4430,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 680448972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e101761754d9104980331dc538526fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 00319401a255a3542b3f3ab8e4e3e084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnitStatus: {fileID: 738372352}
   UnitSkill: {fileID: 1066263267}
-  RoleContent: {fileID: 1357032185}
   CharacterContent: {fileID: 1534316072}
   PlayerListContent: {fileID: 41122699}
   CharacterSelectSlideMenu: {fileID: 708060619}
@@ -4443,8 +4442,6 @@ MonoBehaviour:
   CharacterSelectPlayerPrefabs: {fileID: 114336928755106530, guid: 23c3107ee3e277845b36dfde56505ae3,
     type: 2}
   MissionBook: {fileID: 1357032186}
-  IsOffline: 0
-  PlayerParent: {fileID: 0}
 --- !u!114 &680448975
 MonoBehaviour:
   m_ObjectHideFlags: 0

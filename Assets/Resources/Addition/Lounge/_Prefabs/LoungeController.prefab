@@ -644,7 +644,6 @@ GameObject:
   - component: {fileID: 223087342517407858}
   - component: {fileID: 114736867819079452}
   - component: {fileID: 114088105180609826}
-  - component: {fileID: 114164669433684820}
   - component: {fileID: 114843588656063942}
   m_Layer: 5
   m_Name: LoungeController
@@ -1956,7 +1955,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114164669433684820}
+      - m_Target: {fileID: 0}
         m_MethodName: ApostleRole
         m_Mode: 1
         m_Arguments:
@@ -2516,28 +2515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
---- !u!114 &114164669433684820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1374629105160992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e101761754d9104980331dc538526fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitStatus: {fileID: 0}
-  UnitSkill: {fileID: 0}
-  RoleContent: {fileID: 0}
-  CharacterContent: {fileID: 0}
-  PlayerListContent: {fileID: 0}
-  CharacterSelectSlideMenu: {fileID: 0}
-  LockButton: {fileID: 0}
-  CharacterSelectPlayerPrefabs: {fileID: 0}
-  RoleTitle: {fileID: 0}
-  RoleDesciption: {fileID: 0}
-  RoleImage: {fileID: 0}
 --- !u!114 &114167480630889230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3533,7 +3510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114164669433684820}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleViewRole
         m_Mode: 1
         m_Arguments:
@@ -3817,7 +3794,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114164669433684820}
+      - m_Target: {fileID: 0}
         m_MethodName: Lock
         m_Mode: 1
         m_Arguments:
@@ -3869,7 +3846,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114164669433684820}
+      - m_Target: {fileID: 0}
         m_MethodName: PriestRole
         m_Mode: 1
         m_Arguments:
@@ -4734,7 +4711,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114164669433684820}
+      - m_Target: {fileID: 0}
         m_MethodName: GodRole
         m_Mode: 1
         m_Arguments:
@@ -4885,7 +4862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114164669433684820}
+      - m_Target: {fileID: 0}
         m_MethodName: AtheistRole
         m_Mode: 1
         m_Arguments:
@@ -5323,7 +5300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615b727ddd7321448b3b77d6c78b81f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Setting: {fileID: 0}
 --- !u!114 &114850593603575226
 MonoBehaviour:
   m_ObjectHideFlags: 1

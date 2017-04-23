@@ -65,7 +65,7 @@ namespace Lounge
 
 			var systems = new Feature("Systems")
 				.Add(new PlayerCreatingSystem(contexts, players))
-				.Add(new LocalPlayerSetupSystem(contexts, LoungeController.Instance.GetLocalPLayer()))
+				.Add(new LocalPlayerSetupSystem(contexts, LoungeController.Instance.GetLocalPlayer()))
 				.Add(new CharacterLoadingSystems(contexts))
 				.Add(new CharacterDataLoadingSystem(contexts, _setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconCreatingSystem(contexts, LoungeController.Instance.CharacterSelectSlideMenu))
@@ -86,9 +86,7 @@ namespace Lounge
 
 		private List<Player> GetAllPlayers()
 		{
-			return LoungeController.Instance.IsOffline
-				? LoungeController.Instance.GetAllPlayers()
-				: NetworkController.Instance.AllPlayers;
+			return LoungeController.Instance.GetAllPlayers();
 		}
 	}
 
