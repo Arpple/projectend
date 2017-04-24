@@ -55,6 +55,8 @@ MonoBehaviour:
   Setting: {fileID: 11400000, guid: 5aa3a1a20aeca5f48b0ed9a1982afd18, type: 2}
   LocalDataPrefabs: {fileID: 114482563232492548, guid: 246cc46813407214c89254848b553ffb,
     type: 2}
+  CrossSceneObject: {fileID: 114221556615799368, guid: 8148f0c2b80f20b4e821c30c1afac688,
+    type: 2}
 --- !u!114 &114808312759401970
 MonoBehaviour:
   m_ObjectHideFlags: 1

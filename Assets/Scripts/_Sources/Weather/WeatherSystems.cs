@@ -5,6 +5,7 @@
 		Add(new WeatherStatusPanelSetupSystem(contexts, setting.CardSetting.ResourceCardSetting, ui.WeatherStatus));
 		Add(new RoundEndWeatherResolveSystem(contexts));
 		Add(new RoundStartWeatherCreateSystem(contexts, setting.WeatherSetting));
+		Add(new EventCreateWeatherSystem(contexts));
 		Add(new WeatherStatusNameDisplaySystem(contexts, setting.WeatherSetting, ui.WeatherStatus));
 		Add(new WeatherStatusCostDisplaySystem(contexts, ui.WeatherStatus));
 	}

@@ -25,7 +25,7 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem, IInitializeSyst
 
 	protected override bool Filter(GameEntity entity)
 	{
-		return entity.hasRound;
+		return entity.hasRound && _context.localEntity.isPlaying;
 	}
 
 	protected override void Execute(List<GameEntity> entities)
@@ -34,6 +34,7 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem, IInitializeSyst
 		foreach(var e in entities)
 		{
 			_setter.CreateWeather();
+			EventCreateWeather.Create(_setter.GetWeahter(), _setter.GetCostMap());
 		}
 	}
 
@@ -43,6 +44,9 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem, IInitializeSyst
 		private GameContext _context;
 		private WeigthRandomizer<int> _costRandomizer;
 		private int _playerCount;
+
+		private Weather _weather;
+		private Dictionary<Resource, int> _costMap;
 
 		public WeatherSetter(GameContext context, WeatherSetting setting)
 		{
@@ -55,33 +59,36 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem, IInitializeSyst
 				.Count(e => !e.isBossPlayer);
 		}
 
-		public void CreateWeather()
+		public Weather GetWeahter()
 		{
-			var weather = GetRandomWeather();
-			var costType = _setting.GetData(weather).Cost;
-			CreateWeatherCost(costType);
+			return _weather;
+		}
 
-			_context.ReplaceWeather(weather);
+		public Dictionary<Resource, int> GetCostMap()
+		{
+			return _costMap;
 		}
 
 		private void InitRandom()
 		{
 			int i = 0;
-			foreach(var weigth in _setting.CostCountWeigthList)
+			foreach (var weigth in _setting.CostCountWeigthList)
 			{
 				_costRandomizer.AddItem(i + 1, weigth);
 				i++;
 			}
 		}
 
+		public void CreateWeather()
+		{
+			_weather = GetRandomWeather();
+			var costType = _setting.GetData(_weather).Cost;
+			CreateWeatherCost(costType);
+		}
+
 		private Weather GetRandomWeather()
 		{
 			return Enum.GetValues(typeof(Weather)).Cast<Weather>().ToArray().GetRandom();
-		}
-
-		private int GetRandomCost()
-		{
-			return _costRandomizer.GetRandomItem() * _playerCount;
 		}
 
 		private void CreateWeatherCost(Resource costType)
@@ -98,7 +105,12 @@ public class RoundStartWeatherCreateSystem : GameReactiveSystem, IInitializeSyst
 					costMap.Add(res, 0);
 				}
 			}
-			_context.ReplaceWeatherCost(costMap);
+			_costMap = costMap;
+		}
+
+		private int GetRandomCost()
+		{
+			return _costRandomizer.GetRandomItem() * _playerCount;
 		}
 	}
 }

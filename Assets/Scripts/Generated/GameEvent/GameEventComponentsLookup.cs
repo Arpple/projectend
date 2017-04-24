@@ -8,16 +8,18 @@
 //------------------------------------------------------------------------------
 public static class GameEventComponentsLookup {
 
-    public const int EventEndGame = 0;
-    public const int EventEndTurn = 1;
-    public const int EventMoveDeckCard = 2;
-    public const int EventSyncBoxCard = 3;
-    public const int EventUseCardOnTile = 4;
-    public const int EventUseCardOnUnit = 5;
+    public const int EventCreateWeather = 0;
+    public const int EventEndGame = 1;
+    public const int EventEndTurn = 2;
+    public const int EventMoveDeckCard = 3;
+    public const int EventSyncBoxCard = 4;
+    public const int EventUseCardOnTile = 5;
+    public const int EventUseCardOnUnit = 6;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 7;
 
     public static readonly string[] componentNames = {
+        "EventCreateWeather",
         "EventEndGame",
         "EventEndTurn",
         "EventMoveDeckCard",
@@ -27,6 +29,7 @@ public static class GameEventComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(EventCreateWeather),
         typeof(EventEndGame),
         typeof(EventEndTurn),
         typeof(EventMoveDeckCard),
