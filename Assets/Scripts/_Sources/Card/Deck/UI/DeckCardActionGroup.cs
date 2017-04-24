@@ -20,6 +20,8 @@ public class DeckCardActionGroup : ActiveCardActionGroup
 
 	public void MoveToBox(CardObject card)
 	{
+		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+
 		EventMoveDeckCard.MoveCardInToBox(card.Entity);
 		CloseAction();
 	}

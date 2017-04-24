@@ -30,18 +30,24 @@ public class BoxCardActionGroup : ActiveCardActionGroup
 
 	public void DiscardCard(CardObject card)
 	{
+		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+
 		EventMoveDeckCard.MoveCardToShareDeck(card.Entity);
 		CloseAction();
 	}
 
 	public void MoveToDeck(CardObject card)
 	{
+		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+
 		EventMoveDeckCard.MoveCardOutFromBox(card.Entity);
 		CloseAction();
 	}
 
 	public void MoveBoxCard(CardObject card, int direction)
 	{
+		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+
 		if (IsAtLeftMost(card))
 		{
 			card.transform.SetAsLastSibling();
