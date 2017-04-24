@@ -48,8 +48,8 @@ namespace Result
 		private void OnDestroy()
 		{
 			_systems.TearDown();
-			_systems.ClearReactiveSystems();
 			_systems.DeactivateReactiveSystems();
+			_systems.ClearReactiveSystems();
 			_contexts.Reset();
 		}
 

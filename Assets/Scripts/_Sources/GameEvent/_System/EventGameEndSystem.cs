@@ -2,15 +2,18 @@
 using System.Linq;
 using Entitas;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class EventGameEndSystem : EventReactiveSystem
 {
 	private GameContext _gameContext;
+	private UnityAction _gameEndAction;
 
-	public EventGameEndSystem(Contexts contexts) : base(contexts)
+	public EventGameEndSystem(Contexts contexts, UnityAction gameEndAction) : base(contexts)
 	{
 		_gameContext = contexts.game;
+		_gameEndAction = gameEndAction;
 	}
 
 	protected override Collector<GameEventEntity> GetTrigger(IContext<GameEventEntity> context)
@@ -30,13 +33,13 @@ public class EventGameEndSystem : EventReactiveSystem
 		var players = _gameContext.GetEntities(GameMatcher.Player)
 			.Where(e => !e.isBossPlayer);
 
-		foreach(var player in players)
+		foreach (var player in players)
 		{
 			var p = player.player.GetNetworkPlayer();
 			p.MainMissionComplete = player.isMainMissionCompleted;
 			p.PlayerMissionComplete = player.isPlayerMissionCompleted;
 		}
 
-		SceneManager.LoadScene(GameScene.Result.ToString());
+		_gameEndAction();
 	}
 }

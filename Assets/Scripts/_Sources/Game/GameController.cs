@@ -3,6 +3,7 @@ using Entitas;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class GameController : MonoBehaviour
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour
 	protected Systems _systems;
 	protected Contexts _contexts;
 	protected bool _isInitialized;
+	protected bool _isGameEnd;
 	protected IPlayerLoader _playerLoader;
 	protected SceneLoader _sceneLoader;
 
@@ -49,6 +51,7 @@ public class GameController : MonoBehaviour
 		Instance = this;
 
 		_isInitialized = false;
+		_isGameEnd = false;
 		_playerLoader = GetComponent<IPlayerLoader>();
 		_sceneLoader = GetComponent<SceneLoader>();
 
@@ -87,13 +90,18 @@ public class GameController : MonoBehaviour
 
 		_systems.Execute();
 		_systems.Cleanup();
+
+		if(_isGameEnd)
+		{
+			EndGame();
+		}
 	}
 
 	void OnDestroy()
 	{
 		_systems.TearDown();
-		_systems.ClearReactiveSystems();
 		_systems.DeactivateReactiveSystems();
+		_systems.ClearReactiveSystems();
 		_contexts.Reset();
 	}
 
@@ -108,7 +116,8 @@ public class GameController : MonoBehaviour
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
 			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
 			.Add(new BuffSystems(contexts, _setting, GameUI.Instance))
-			.Add(new GameEventSystems(contexts));
+			.Add(new GameEventSystems(contexts))
+			.Add(new EventGameEndSystem(contexts, SetGameEnd));
 	}
 
 	protected List<Player> GetAllPlayers()
@@ -119,5 +128,15 @@ public class GameController : MonoBehaviour
 	protected Player GetLocalPlayer()
 	{
 		return _playerLoader.GetLocalPlayer();
+	}
+
+	private void SetGameEnd()
+	{
+		_isGameEnd = true;
+	}
+
+	private void EndGame()
+	{
+		SceneManager.LoadScene(GameScene.Result.ToString());
 	}
 }
