@@ -84,7 +84,9 @@ namespace Result
 			_systems = new Feature("Systems")
 				.Add(new PlayerCreatingSystem(_contexts, _players))
 				.Add(new LocalPlayerSetupSystem(_contexts, _localPlayer))
-				.Add(new PlayerResultObjectCreatingSystem(_contexts, _setting, _ui));
+				.Add(new LocalPlayerResultLoadingSystem(_contexts))
+				.Add(new PlayerResultObjectCreatingSystem(_contexts, _setting, _ui))
+				.Add(new LocalPlayerResultSystem(_contexts, _ui));
 
 			_systems.Initialize();
 		}

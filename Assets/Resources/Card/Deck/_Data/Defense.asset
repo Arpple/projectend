@@ -16,5 +16,6 @@ MonoBehaviour:
   ActiveDesc: 
   PassiveDesc: Defense when appear in box
   Type: 6
+  CreateCount: 5
   AbilityClassFullName: AbilityDefense
   Effect: {fileID: 114432012776490668, guid: 8d3270525f54aef4e9b28060ae9ef9d1, type: 2}

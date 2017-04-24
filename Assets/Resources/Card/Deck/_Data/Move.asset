@@ -16,5 +16,6 @@ MonoBehaviour:
   ActiveDesc: Move to other position
   PassiveDesc: 
   Type: 0
+  CreateCount: 5
   AbilityClassFullName: AbilityMove
   Effect: {fileID: 0}

@@ -2,6 +2,7 @@
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -123,6 +124,7 @@ namespace Lobby
 		public void Back()
 		{
 			NetworkController.Instance.Stop();
+			SceneManager.LoadScene(GameScene.Title.ToString());
 		}
 
 		public void MoveToCharacterSelection()

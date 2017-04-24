@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Entitas;
+using NUnit.Framework;
 
 namespace Test.WeatherTest
 {
@@ -15,13 +16,28 @@ namespace Test.WeatherTest
 		}
 
 		[Test]
-		public void Execute_RandomWeatherWithRandomCostCreate()
+		public void Execute_LocalEntityIsPlaying_EventCreateWeatherCreated()
 		{
+			var p = CreatePlayerEntity(1);
+			p.isLocal = true;
+			p.isPlaying = true;
+
 			_contexts.game.SetRound(1);
 			_systems.Execute();
 
-			Assert.IsTrue(_contexts.game.hasWeather);
-			Assert.IsTrue(_contexts.game.hasWeatherCost);
+			Assert.AreEqual(1, _contexts.gameEvent.GetEntities(GameEventMatcher.EventCreateWeather).Length);
+		}
+
+		[Test]
+		public void Execute_LocalEntityIsNotPlaying_EventCreateWeatherNotCreated()
+		{
+			var p = CreatePlayerEntity(1);
+			p.isLocal = true;
+
+			_contexts.game.SetRound(1);
+			_systems.Execute();
+
+			Assert.AreEqual(0, _contexts.gameEvent.GetEntities(GameEventMatcher.EventCreateWeather).Length);
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Test
 		protected abstract IndexDataList<TIndex, TData>GetDataList();
 
 		[Test]
-		public void CheckData_DataIndexNotDupplicate()
+		public void CheckSetting_DataIndexNotDupplicate()
 		{
 			var count = _data.DataList.Count;
 			Assert.AreEqual(count, _data.DataList.Select(d => d.GetIndex()).Distinct().Count());

@@ -5,6 +5,7 @@ public class DeckCardData : CardData, IIndexData<DeckCard>
 {
 	[Header("DeckCard")]
 	public DeckCard Type;
+	public int CreateCount;
 	[Space]
 	public string AbilityClassFullName;
 	public AbilityEffect Effect;

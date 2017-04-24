@@ -6,7 +6,6 @@ namespace Network
 	{
 		public string PlayerName;
 		public PlayerIcon PlayerIcon;
-		public int PlayerId;
 
 		private void Start()
 		{
