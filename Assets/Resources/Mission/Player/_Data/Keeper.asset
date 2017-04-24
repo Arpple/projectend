@@ -8,9 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255d5614a526a784fbfbb150be2fdd35, type: 3}
-  m_Name: TestMission
+  m_Script: {fileID: 11500000, guid: c0a384417242d8942b7779de2c858fcf, type: 3}
+  m_Name: Keeper
   m_EditorClassIdentifier: 
-  Type: 1
-  Name: Test
-  Description: kill boss
+  Name: Keeper
+  Description: Clear all weather until end game.
+  TargetDescription: 
+  Type: 2
+  RandomPlayer: 0
+  Constant: 3

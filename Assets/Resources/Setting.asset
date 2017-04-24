@@ -22,7 +22,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fa8e332eaacdefe47b24b22486197e73, type: 2}
     - {fileID: 11400000, guid: 4b9aa73b9270d3a4aa155fcbdc8444e5, type: 2}
     - {fileID: 11400000, guid: 0db02708986578f438cb196ca0fd9973, type: 2}
-    GameMap: {fileID: 11400000, guid: c53b07a695967c746b76eed30880bfa6, type: 2}
+    GameMap: {fileID: 11400000, guid: 24550a357c935a84fbc4053d07c750f2, type: 2}
     TileControllerPrefabs: {fileID: 114797411345630064, guid: e7d98db282ccf124b8cdf87a1d62d60b,
       type: 2}
     TileResourceChargeWeigth: 0a0000001400000028000000140000000a000000
@@ -60,22 +60,6 @@ MonoBehaviour:
       MaxHandCardCount: 10
       StartCardCount: 5
       StartTurnDrawCount: 2
-      Deck:
-        SettingList:
-        - Type: 0
-          Count: 5
-        - Type: 1
-          Count: 10
-        - Type: 2
-          Count: 5
-        - Type: 3
-          Count: 10
-        - Type: 4
-          Count: 3
-        - Type: 5
-          Count: 3
-        - Type: 6
-          Count: 10
     ResourceCardSetting:
       DataList:
       - {fileID: 11400000, guid: 7ba0625830e8f2949a069229306d6a2e, type: 2}
@@ -97,6 +81,8 @@ MonoBehaviour:
     PlayerMission:
       DataList:
       - {fileID: 11400000, guid: 7d16ce8ad5d9f1248abdb7c9bbf0b94e, type: 2}
+      - {fileID: 11400000, guid: 5cd09ed03e1ff284a9a94ace471030fa, type: 2}
+      - {fileID: 11400000, guid: e88d4abfee6b09d4bbc80e221b42933d, type: 2}
   WeatherSetting:
     DataList:
     - {fileID: 11400000, guid: ab14a2042b8cce54fbdf5cf8268d05f4, type: 2}

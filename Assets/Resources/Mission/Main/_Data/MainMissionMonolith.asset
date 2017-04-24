@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255d5614a526a784fbfbb150be2fdd35, type: 3}
   m_Name: MainMissionMonolith
   m_EditorClassIdentifier: 
-  Type: 0
   Name: Defeat The Great Monolith
   Description: kill boss
+  TargetDescription: Monolith
+  Type: 0
