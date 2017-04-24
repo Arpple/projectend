@@ -57,6 +57,8 @@ MonoBehaviour:
     type: 2}
   CrossSceneObject: {fileID: 114221556615799368, guid: 8148f0c2b80f20b4e821c30c1afac688,
     type: 2}
+  LoadingScreen: {fileID: 114078257846713100, guid: 51eacfcf887a3a94690bae908a204f29,
+    type: 2}
 --- !u!114 &114808312759401970
 MonoBehaviour:
   m_ObjectHideFlags: 1
