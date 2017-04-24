@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using Zenject;
 
-public abstract class GameController : MonoBehaviour
+public class GameController : MonoBehaviour
 {
 	public static GameController Instance;
 	public static bool IsTest;
@@ -22,14 +22,16 @@ public abstract class GameController : MonoBehaviour
 	public GameObject TileContainer;
 	public GameObject UnitContainer;
 
-	public abstract bool IsNetwork { get; }
+	public bool IsNetwork
+	{
+		get { return _playerLoader.IsNetwork(); }
+	}
 
-	[HideInInspector] public List<Player> Players;
 	protected Systems _systems;
 	protected Contexts _contexts;
 	protected bool _isInitialized;
-	protected Player _localPlayer;
-	protected bool _isReady;
+	protected IPlayerLoader _playerLoader;
+	protected SceneLoader _sceneLoader;
 
 	[Inject]
 	public void Construct(Setting setting)
@@ -40,21 +42,21 @@ public abstract class GameController : MonoBehaviour
 	private void Awake()
 	{
 		Instance = this;
+
 		_isInitialized = false;
-		Players = new List<Player>();
-		_isReady = false;
+		_playerLoader = GetComponent<IPlayerLoader>();
+		_sceneLoader = GetComponent<SceneLoader>();
 
 		PlayerContainer = PlayerContainer ?? new GameObject("Player");
 		TileContainer = TileContainer ?? new GameObject("Tile");
 		UnitContainer = UnitContainer ?? new GameObject("Unit");
 	}
 
-	private void Start()
+	protected virtual void Start()
 	{
 		Debug.Log("Start");
 		ClearOldEntitySystem();
 		CreateEntitySystem();
-
 		SetupPlayers();
 	}
 
@@ -72,7 +74,8 @@ public abstract class GameController : MonoBehaviour
 		new EntityIdGenerator(_contexts);
 	}
 
-	protected abstract void SetupPlayers();
+	protected virtual void SetupPlayers()
+	{ }
 
 	protected void Initialize()
 	{
@@ -85,8 +88,11 @@ public abstract class GameController : MonoBehaviour
 
 	void Update()
 	{
-		if (!_isInitialized) return;
-		if (!_isReady) return;
+		if (!_sceneLoader.IsReady()) return;
+		if(!_isInitialized)
+		{
+			Initialize();
+		}
 		Assert.IsNotNull(_systems);
 
 		_systems.Execute();
@@ -106,7 +112,7 @@ public abstract class GameController : MonoBehaviour
 		return new Feature("Systems")
 			.Add(new InputSystems(contexts))
 			.Add(new GameEventSystems(contexts))
-			.Add(new GameSystems(contexts, Players, _localPlayer))
+			.Add(new GameSystems(contexts, GetAllPlayers(), GetLocalPlayer()))
 			.Add(new TileSystems(contexts, _setting.TileSetting, TileContainer, GameUI.Instance))
 			.Add(new UnitSystems(contexts, _setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
 			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
@@ -115,19 +121,13 @@ public abstract class GameController : MonoBehaviour
 			.Add(new BuffSystems(contexts, _setting, GameUI.Instance));
 	}
 
-
-	protected void AddPlayer(Player player)
+	protected List<Player> GetAllPlayers()
 	{
-		Players.Add(player);
+		return _playerLoader.GetAllPlayer();
 	}
 
-	protected void AddLocalPlayer(Player player)
+	protected Player GetLocalPlayer()
 	{
-		_localPlayer = player;
-	}
-
-	protected void SetStatusReady()
-	{
-		_isReady = true;
+		return _playerLoader.GetLocalPlayer();
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Network
 {
@@ -10,7 +11,14 @@ namespace Network
 		protected Player _localPlayer;
 		protected IPlayerLoader _playerLoader;
 
+		private LoadingScreen _loadingScreen;
 		private bool _isReady;
+
+		[Inject]
+		public void Construct(LoadingScreen loadingScreen)
+		{
+			_loadingScreen = loadingScreen;
+		}
 
 		public bool IsReady()
 		{
@@ -20,6 +28,7 @@ namespace Network
 		protected void SetReady()
 		{
 			_isReady = true;
+			_loadingScreen.Hide();
 		}
 
 		protected virtual void Awake()
@@ -30,6 +39,7 @@ namespace Network
 
 		protected virtual void Start()
 		{
+			_loadingScreen.Show();
 			LoadPlayer();
 			SetupPlayers();
 			OnSetupComplete();

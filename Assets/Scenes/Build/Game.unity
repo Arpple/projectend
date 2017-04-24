@@ -3544,6 +3544,7 @@ MonoBehaviour:
   TargetPlayerStatus: {fileID: 1812729849}
   TurnPanel: {fileID: 1267979034}
   MissionBookController: {fileID: 272956306}
+  Camera: {fileID: 1111501431}
   TurnNoti: {fileID: 1285569465}
   DeckFactory: {fileID: 1465027410}
   BoxFactory: {fileID: 1465027411}
@@ -5419,7 +5420,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1234237937}
   - component: {fileID: 1234237936}
+  - component: {fileID: 1234237938}
   - component: {fileID: 1234237935}
+  - component: {fileID: 1234237940}
   - component: {fileID: 1234237939}
   m_Layer: 0
   m_Name: GameController
@@ -5458,7 +5461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoEndTurnForBoss: 1
-  AutoPassLocalFlag: 0
+  AutoPassLocalFlag: 1
 --- !u!4 &1234237937
 Transform:
   m_ObjectHideFlags: 0
@@ -5473,6 +5476,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1234237938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ec3723244fc9a439aa2966c3fa94c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SystemController: {fileID: 1234237936}
+  PlayerContainer: {fileID: 2005555624}
+  TileContainer: {fileID: 132817912}
+  UnitContainer: {fileID: 238646442}
 --- !u!114 &1234237939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5481,14 +5499,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234237934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40721a46d4105b646bf025feb3ae5b63, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e731d2c1b4a9eb42a859fc0967a61c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SystemController: {fileID: 1234237936}
-  PlayerContainer: {fileID: 2005555624}
-  TileContainer: {fileID: 132817912}
-  UnitContainer: {fileID: 238646442}
-  Players: []
+--- !u!114 &1234237940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea78bb6d7a13a8445b3eb1417f30f372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1240357652
 GameObject:
   m_ObjectHideFlags: 0

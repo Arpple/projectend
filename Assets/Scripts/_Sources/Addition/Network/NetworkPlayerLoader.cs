@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Network
@@ -13,6 +14,11 @@ namespace Network
 		public Player GetLocalPlayer()
 		{
 			return NetworkController.Instance.LocalPlayer;
+		}
+
+		public bool IsNetwork()
+		{
+			return true;
 		}
 	} 
 }

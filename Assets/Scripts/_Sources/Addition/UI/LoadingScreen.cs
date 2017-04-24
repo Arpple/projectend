@@ -17,6 +17,7 @@ public class LoadingScreen : MonoBehaviour{
 	private void Start()
 	{
 		CrossSceneObject.AddObject(gameObject);
+		Hide();
 	}
 
 	public void Show()
