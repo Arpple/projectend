@@ -560,7 +560,7 @@ MonoBehaviour:
   ResultObjectPrefabs: {fileID: 114355948863298006, guid: 61f29470be4638d4392a9cfc6dff9188,
     type: 2}
   ResultObjectParent: {fileID: 954254264}
-  ResultText: {fileID: 0}
+  ResultText: {fileID: 439568090}
   VictoryTextColor: {r: 1, g: 0.9294118, b: 0, a: 0}
   DefeatTextColor: {r: 0.5588235, g: 0.52595156, b: 0.52595156, a: 0}
 --- !u!114 &1009273209
