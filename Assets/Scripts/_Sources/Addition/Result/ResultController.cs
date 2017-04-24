@@ -47,9 +47,9 @@ namespace Result
 
 		private void OnDestroy()
 		{
+			_systems.TearDown();
 			_systems.ClearReactiveSystems();
 			_systems.DeactivateReactiveSystems();
-			_systems.TearDown();
 			_contexts.Reset();
 		}
 

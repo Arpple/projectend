@@ -89,11 +89,11 @@ public class GameController : MonoBehaviour
 		_systems.Cleanup();
 	}
 
-	void OnDestory()
+	void OnDestroy()
 	{
+		_systems.TearDown();
 		_systems.ClearReactiveSystems();
 		_systems.DeactivateReactiveSystems();
-		_systems.TearDown();
 		_contexts.Reset();
 	}
 
