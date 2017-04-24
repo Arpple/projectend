@@ -17,4 +17,4 @@ MonoBehaviour:
   PassiveDesc: Defense when appear in box
   Type: 6
   AbilityClassFullName: AbilityDefense
-  Effect: {fileID: 114358279768370704, guid: d52d613f9c81b27488c2dba57a76372e, type: 2}
+  Effect: {fileID: 114432012776490668, guid: 8d3270525f54aef4e9b28060ae9ef9d1, type: 2}
