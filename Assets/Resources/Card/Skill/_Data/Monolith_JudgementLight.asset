@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Monolith_JudgementLight
   m_EditorClassIdentifier: 
   MainSprite: {fileID: 21300000, guid: 6919fbc1ab5cdea4da0a9a0ee632ea92, type: 3}
-  Name: 
-  ActiveDesc: 
+  Name: Judgement light
+  ActiveDesc: 'Deal 1 fatal-damage to all unit in 100 Range '
   PassiveDesc: 
   Type: 1
   AbilityClassFullName: Skill_Monolith_JudgementLight

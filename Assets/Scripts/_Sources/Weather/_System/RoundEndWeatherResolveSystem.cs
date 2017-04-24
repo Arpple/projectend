@@ -45,6 +45,9 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 
 			Debug.Log("pass : " + costMan.IsWeatherResolved()
                 +" MVP is -> " + costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName);
+            if(!costMan.IsWeatherResolved()) {
+                e.isWeatherResloveFail = true;
+            }
 		}
 	}
 	

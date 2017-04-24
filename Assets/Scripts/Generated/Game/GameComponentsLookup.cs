@@ -33,9 +33,10 @@ public static class GameComponentsLookup {
     public const int View = 22;
     public const int Weather = 23;
     public const int WeatherCost = 24;
-    public const int Winner = 25;
+    public const int WeatherResloveFail = 25;
+    public const int Winner = 26;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
         "AbilityAttack",
@@ -63,6 +64,7 @@ public static class GameComponentsLookup {
         "View",
         "Weather",
         "WeatherCost",
+        "WeatherResloveFail",
         "Winner"
     };
 
@@ -92,6 +94,7 @@ public static class GameComponentsLookup {
         typeof(ViewComponent),
         typeof(WeatherComponent),
         typeof(WeatherCostComponent),
+        typeof(WeatherResloveFailComponent),
         typeof(WinnerComponent)
     };
 }

@@ -1,5 +1,5 @@
 ﻿public enum MainMission
 {
 	BossMonolith,
-	Test,
+	DeadOrAlive,
 }
