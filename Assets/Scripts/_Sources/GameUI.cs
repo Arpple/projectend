@@ -29,6 +29,7 @@ public class GameUI : MonoBehaviour
 	public PlayerUnitStatusPanel TargetPlayerStatus;
 	public TurnPanel TurnPanel;
     public MissionBookController MissionBookController;
+    public WeatherResloveDisplayer WeatherResloveDisplayer;
     public Camera Camera;
 
 	[Header("Notification")]
@@ -62,6 +63,7 @@ public class GameUI : MonoBehaviour
 		Assert.IsNotNull(BoxFactory);
 		Assert.IsNotNull(LocalPlayerStatus);
 		Assert.IsNotNull(WeatherStatus);
+        Assert.IsNotNull(WeatherResloveDisplayer);
 		Assert.IsNotNull(TargetPlayerStatus);
 		Assert.IsNotNull(TurnPanel);
 		Assert.IsNotNull(TurnNoti);
