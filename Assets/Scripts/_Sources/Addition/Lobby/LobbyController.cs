@@ -107,11 +107,11 @@ namespace Lobby
 			player.CmdSetName(_data.PlayerName);
 			player.CmdSetIcon((int)_data.PlayerIcon);
 			
-			player.ReadyStateUpdateAction = UpdateMissionSelector;
-			player.MainMissionUpdateAction = UpdateMissionDisplay;
+			player.ReadyStateUpdateAction += UpdateMissionSelector;
+			player.MainMissionUpdateAction += UpdateMissionDisplay;
 
-			player.ReadyStateUpdateAction = UpdateRoundSelector;
-			player.RoundLimitUpdateAction = UpdateRoundDisplay;
+			player.ReadyStateUpdateAction += UpdateRoundSelector;
+			player.RoundLimitUpdateAction += UpdateRoundDisplay;
 
 			if (NetworkController.IsServer)
 			{

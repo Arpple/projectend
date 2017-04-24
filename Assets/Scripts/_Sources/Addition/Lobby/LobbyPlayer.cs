@@ -35,18 +35,9 @@ namespace Lobby
 		{
 			_player = player;
 
-			_player.NameUpdateAction = SetName;
-			_player.ReadyStateUpdateAction = SetStatus;
-			_player.IconUpdateAction = SetIcon;
-		}
-
-		private void OnDestroy()
-		{
-			if (_player == null) return;
-
-			_player.NameUpdateAction -= SetName;
-			_player.ReadyStateUpdateAction -= SetStatus;
-			_player.IconUpdateAction -= SetIcon;
+			_player.NameUpdateAction += SetName;
+			_player.ReadyStateUpdateAction += SetStatus;
+			_player.IconUpdateAction += SetIcon;
 		}
 
 		private void Update()
