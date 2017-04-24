@@ -5,10 +5,12 @@ public static class ContextsExtension
 {
 	public static void ResetContextObserver(this Contexts contexts)
 	{
-		foreach(var context in contexts.allContexts)
+#if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
+		foreach (var context in contexts.allContexts)
 		{
 			Object.Destroy(context.FindContextObserver().gameObject);
 		}
 		contexts.InitializeContexObservers();
+#endif
 	}
 }

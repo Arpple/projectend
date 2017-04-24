@@ -1,21 +1,18 @@
-﻿using System.Collections.Generic;
-using Entitas;
+﻿using Entitas;
 using Network;
 using UnityEngine;
 using Zenject;
 
 namespace Result
 {
-	[RequireComponent(typeof(ResultUIController))]
-	public abstract class ResultController : MonoBehaviour
+	[RequireComponent(typeof(ResultUIController), typeof(IPlayerLoader), typeof(SceneLoader))]
+	public class ResultController : MonoBehaviour
 	{
-		[Header("Container")]
-		public Transform PlayerParent;
-
 		ResultUIController _ui;
 
-		private List<Player> _players;
-		protected Player _localPlayer;
+		private SceneLoader _sceneLoader;
+		private IPlayerLoader _playerLoader;
+
 		protected Contexts _contexts;
 		protected Systems _systems;
 		protected Setting _setting;
@@ -30,12 +27,10 @@ namespace Result
 		private void Awake()
 		{
 			_ui = GetComponent<ResultUIController>();
-			_players = new List<Player>();
 		}
 
 		protected virtual void Start()
 		{
-			SetupPlayers();
 			Initialize();
 		}
 
@@ -53,25 +48,12 @@ namespace Result
 			_contexts.Reset();
 		}
 
-		protected abstract void SetupPlayers();
-
-		protected void AddPlayer(Player player)
-		{
-			_players.Add(player);
-			player.transform.SetParent(PlayerParent);
-		}
-
-		protected void SetLocalPlayer(Player player)
-		{
-			_localPlayer = player;
-		}
-
 		private void Initialize()
 		{
 			_contexts.ResetContextObserver();
 			_systems = new Feature("Systems")
-				.Add(new PlayerCreatingSystem(_contexts, _players))
-				.Add(new LocalPlayerSetupSystem(_contexts, _localPlayer))
+				.Add(new PlayerCreatingSystem(_contexts, _playerLoader.GetAllPlayer()))
+				.Add(new LocalPlayerSetupSystem(_contexts, _playerLoader.GetLocalPlayer()))
 				.Add(new LocalPlayerResultLoadingSystem(_contexts))
 				.Add(new PlayerResultObjectCreatingSystem(_contexts, _setting, _ui))
 				.Add(new LocalPlayerResultSystem(_contexts, _ui));
