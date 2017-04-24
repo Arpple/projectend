@@ -1,4 +1,5 @@
 ﻿using Network;
+using UnityEngine;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
@@ -9,6 +10,6 @@ public class GameInstaller : MonoInstaller
 	public override void InstallBindings()
 	{
 		Container.Bind<Setting>().FromInstance(Setting).AsSingle();
-		Container.Bind<LocalData>().FromComponentInNewPrefab(LocalDataPrefabs).AsSingle();
+		Container.Bind<LocalData>().FromInstance(Instantiate(LocalDataPrefabs)as LocalData).AsSingle();
 	}
 }

@@ -96,12 +96,6 @@ namespace Network
 		public override void OnClientSceneChanged(NetworkConnection conn)
 		{
 			base.OnClientSceneChanged(conn);
-
-			foreach (var player in AllPlayers)
-			{
-				player.IsReady = false;
-			}
-
 			if (ClientSceneChangedCallback != null) ClientSceneChangedCallback();
 		}
 		#endregion

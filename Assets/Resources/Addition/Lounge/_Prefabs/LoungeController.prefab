@@ -644,7 +644,6 @@ GameObject:
   - component: {fileID: 223087342517407858}
   - component: {fileID: 114736867819079452}
   - component: {fileID: 114088105180609826}
-  - component: {fileID: 114843588656063942}
   m_Layer: 5
   m_Name: LoungeController
   m_TagString: Untagged
@@ -5289,17 +5288,6 @@ MonoBehaviour:
   m_PreferredHeight: 350
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
---- !u!114 &114843588656063942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1374629105160992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615b727ddd7321448b3b77d6c78b81f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114850593603575226
 MonoBehaviour:
   m_ObjectHideFlags: 1

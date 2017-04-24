@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
+using Entitas;
 using Entitas.Unity;
 using Network;
 using UI;
@@ -10,6 +11,7 @@ using Zenject;
 
 namespace Lounge
 {
+	[RequireComponent(typeof(SceneLoader), typeof(IPlayerLoader))]
 	public abstract class LoungeController : MonoBehaviour
 	{
 		public static LoungeController Instance;
@@ -22,14 +24,18 @@ namespace Lounge
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
 
-		private bool _isReady;
-
 		[Header("MissionBook")]
 		public MissionBookController MissionBook;
 
 		protected Setting _setting;
 		protected Character _focusingCharacter;
 		protected Player _localPlayer;
+		protected SceneLoader _sceneLoader;
+
+		private IPlayerLoader _playerLoader;
+		private Systems _systems;
+		private Contexts _contexts;
+		private bool _isInit;
 
 		[Inject]
 		public void Construct(Setting setting)
@@ -37,40 +43,49 @@ namespace Lounge
 			_setting = setting;
 		}
 
-		protected void Awake()
+		private void Awake()
 		{
 			Instance = this;
 
-			Assert.IsNotNull(UnitStatus);
-			Assert.IsNotNull(UnitSkill);
-			Assert.IsNotNull(CharacterContent);
-			Assert.IsNotNull(CharacterSelectSlideMenu);
-			Assert.IsNotNull(LockButton);
-			Assert.IsNotNull(CharacterSelectPlayerPrefabs);
-			Assert.IsNotNull(_setting);
-
-			_isReady = false;
+			_playerLoader = GetComponent<IPlayerLoader>();
+			_sceneLoader = GetComponent<SceneLoader>();
 		}
-
-		public abstract List<Player> GetAllPlayers();
-		public abstract Player GetLocalPlayer();
-		protected abstract void LockFocusingCharacter();
 
 		protected virtual void Start()
 		{
+			_localPlayer = _playerLoader.GetLocalPlayer();
 			MissionBook.LoadData(_setting.MissionSetting);
 			UnitSkill.Initialize(_setting.CardSetting.SkillCardSetting);
-
-			foreach (var player in GetAllPlayers())
-			{
-				AddPlayer(player);
-			}
-
-			SetLocalPlayer(GetLocalPlayer());
-
 			LockButton.onClick.AddListener(LockFocusingCharacter);
 			CharacterSelectSlideMenu.OnFocusItemChangedCallback += FocusCharacterIcon;
+
+			SetupSystems();
+
+			foreach (var p in _playerLoader.GetAllPlayer())
+			{
+				p.ResetAction();
+				SetupPlayer(p);
+			}
+			
+			SetupLocalPlayer(_localPlayer);
 		}
+
+		private void Update()
+		{
+			if (!_isInit) return;
+			if (!_sceneLoader.IsReady()) return;
+
+			_systems.Execute();
+			_systems.Cleanup();
+		}
+
+		private void OnDestroy()
+		{
+			_systems.ClearReactiveSystems();
+			_systems.TearDown();
+		}
+
+		protected abstract void LockFocusingCharacter();
 
 		private void FocusCharacterIcon(SlideItem characterIcon)
 		{
@@ -80,53 +95,23 @@ namespace Lounge
 			ShowUnitInformationUnit(entity);
 		}
 
-		/// <summary>
-		/// Show Unit Info 
-		/// </summary>
-		public void ShowUnitInformationUnit(UnitEntity unit) {
+		public void ShowUnitInformationUnit(UnitEntity unit)
+		{
 			UnitStatus.SetUnit(unit);
 			UnitSkill.SetUnit(unit);
 		}
 
-		private void AddPlayer(Player player)
+		private void SetupPlayer(Player player)
 		{
 			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs, PlayerListContent.transform, false);
 			charPlayer.SetPlayer(player);
-
+			player.ResetAction();
 			player.CharacterUdateAction = DisableCharacterIcon;
 			player.PlayerMissionUpdateAction = MissionBook.SetLocalPlayerMission;
 			player.MissionTargetUpdateAction = MissionBook.SetLocalPlayerTarget;
 		}
 
-		public virtual void SetLocalPlayer(Player player)
-		{
-			_localPlayer = player;
-			_localPlayer.CharacterUdateAction = OnLocalPlayerCharacterSelected;
-
-			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
-		}
-
-		/// <summary>
-		/// Called when player is assigned character
-		/// </summary>
-		/// <param name="characterId">The character identifier.</param>
-		public void OnLocalPlayerCharacterSelected(Character characterId)
-		{
-			StartCoroutine(Ready());
-			LockButton.interactable = false;
-		}
-
-		System.Collections.IEnumerator Ready()
-		{
-			yield return new WaitForEndOfFrame();
-			_localPlayer.CmdSetReadyStatus(true);
-		}
-
-		/// <summary>
-		/// Disables the character selection icon.
-		/// </summary>
-		/// <param name="charId">The character identifier.</param>
-		public void DisableCharacterIcon(Character character)
+		private void DisableCharacterIcon(Character character)
 		{
 			Assert.AreNotEqual(Character.None, character);
 
@@ -140,25 +125,53 @@ namespace Lounge
 			Debug.Log("disable " + item);
 		}
 
-		/// <summary>
-		/// Moves to game. (Server)
-		/// </summary>
-		public void LoadGameScene()
+		protected virtual void SetupLocalPlayer(Player player)
 		{
-			var netCon = NetworkController.Instance;
-			netCon.ServerResetSceneReadyStatus();
-			netCon.ServerChangeScene(GameScene.Game.ToString());
+			player.CharacterUdateAction = OnLocalPlayerCharacterSelected;
+			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
 		}
 
-		public void SetStatusReady()
+		private  void OnLocalPlayerCharacterSelected(Character characterId)
 		{
-			_isReady = true;
-			Debug.Log("rpc ready");
+			StartCoroutine(Ready());
+			LockButton.interactable = false;
 		}
 
-		public bool IsReady()
+		IEnumerator Ready()
 		{
-			return _isReady;
+			yield return new WaitForEndOfFrame();
+			_localPlayer.CmdSetReadyStatus(true);
 		}
+
+		private void SetupSystems()
+		{
+			_contexts = Contexts.sharedInstance;
+			_systems = CreateSystems(_contexts);
+
+			_systems.Initialize();
+			_isInit = true;
+		}
+
+		Systems CreateSystems(Contexts contexts)
+		{
+			var players = _playerLoader.GetAllPlayer();
+
+			var systems = new Feature("Systems")
+				.Add(new PlayerCreatingSystem(contexts, players))
+				.Add(new LocalPlayerSetupSystem(contexts, _localPlayer))
+				.Add(new CharacterLoadingSystems(contexts))
+				.Add(new CharacterDataLoadingSystem(contexts, _setting.UnitSetting.CharacterSetting))
+				.Add(new CharacterIconCreatingSystem(contexts, CharacterSelectSlideMenu))
+				.Add(new ContextsResetSystem(contexts));
+
+			if (IsServer())
+			{
+				systems.Add(new PlayerMissionAssignSystem(contexts, _setting.MissionSetting.PlayerMission));
+			}
+
+			return systems;
+		}
+
+		protected abstract bool IsServer();
 	}
 }

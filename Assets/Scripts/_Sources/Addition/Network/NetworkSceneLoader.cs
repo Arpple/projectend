@@ -1,4 +1,7 @@
-﻿namespace Network
+﻿using System.Collections;
+using UnityEngine;
+
+namespace Network
 {
 	public class NetworkSceneLoader : SceneLoader
 	{
@@ -15,16 +18,18 @@
 			_localPlayer.AllPlayerSceneLoadedAction = SetReady;
 		}
 
-		private void Update()
+		IEnumerator SendSceneLoaded()
 		{
-			if (IsReady()) return;
-			if (!_isSetup) return;
-			_localPlayer.CmdSendMessageSceneLoaded();
+			while(!IsReady())
+			{
+				_localPlayer.CmdSendMessageSceneLoaded();
+				yield return new WaitForSeconds(1); 
+			}
 		}
 
 		protected override void OnSetupComplete()
 		{
-			_isSetup = true;
+			StartCoroutine(SendSceneLoaded());
 		}
 	} 
 }

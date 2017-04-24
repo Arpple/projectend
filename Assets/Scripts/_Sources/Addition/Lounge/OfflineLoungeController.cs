@@ -1,28 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Network;
-using UnityEngine;
+﻿using Network;
 
 namespace Lounge
 {
 	public class OfflineLoungeController : LoungeController
 	{
-		public Transform PlayerParent;
-
-		protected override void Start()
+		protected override bool IsServer()
 		{
-			base.Start();
-			SetStatusReady();
-		}
-
-		public override List<Player> GetAllPlayers()
-		{
-			return PlayerParent.GetComponentsInChildren<Player>(true).ToList();
-		}
-
-		public override Player GetLocalPlayer()
-		{
-			return PlayerParent.GetChild(0).GetComponent<Player>();
+			return false;
 		}
 
 		protected override void LockFocusingCharacter()
@@ -30,9 +14,9 @@ namespace Lounge
 			_localPlayer.SelectedCharacterId = (int)_focusingCharacter;
 		}
 
-		public override void SetLocalPlayer(Player player)
+		protected override void SetupLocalPlayer(Player player)
 		{
-			base.SetLocalPlayer(player);
+			base.SetupLocalPlayer(player);
 			MissionBook.SetLocalPlayerMission((PlayerMission)player.PlayerMissionId);
 			MissionBook.SetLocalPlayerTarget(player.PlayerMissionTarget);
 		}

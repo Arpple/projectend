@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using Network;
+﻿using Network;
 
 namespace Lounge
 {
 	public class NetworkLoungeController : LoungeController
 	{
-		private NetworkController _networkController
+		private NetworkController _netCon
 		{
 			get { return NetworkController.Instance; }
 		}
@@ -13,34 +12,7 @@ namespace Lounge
 		protected override void Start()
 		{
 			base.Start();
-			_networkController.ServerSceneChangedCallback = SetServerCallback;
-			_networkController.ClientSceneChangedCallback = SendSceneReady;
-			_networkController.OnAllPlayerReadyCallback += LoadGameScene;
-		}
-
-		private void OnDestroy()
-		{
-			var netCon = NetworkController.Instance;
-
-			netCon.ServerSceneChangedCallback = null;
-			netCon.ClientSceneChangedCallback = null;
-			netCon.OnAllPlayerReadyCallback -= LoadGameScene;
-		}
-
-		public override void SetLocalPlayer(Player player)
-		{
-			base.SetLocalPlayer(player);
-			_localPlayer.AllPlayerSceneLoadedAction = SetStatusReady;
-		}
-
-		public override List<Player> GetAllPlayers()
-		{
-			return _networkController.AllPlayers;
-		}
-
-		public override Player GetLocalPlayer()
-		{
-			return _networkController.LocalPlayer;
+			_netCon.OnAllPlayerReadyCallback = LoadGameScene;
 		}
 
 		protected override void LockFocusingCharacter()
@@ -48,14 +20,15 @@ namespace Lounge
 			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
 		}
 
-		protected void SetServerCallback()
+		private void LoadGameScene()
 		{
-			
+			_netCon.ServerResetSceneReadyStatus();
+			_netCon.ServerChangeScene(GameScene.Game.ToString());
 		}
 
-		protected void SendSceneReady()
+		protected override bool IsServer()
 		{
-			_localPlayer.CmdSendMessageSceneLoaded();
+			return NetworkController.IsServer;
 		}
 	}
 }

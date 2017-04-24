@@ -208,7 +208,6 @@ namespace Network
 		public void CmdSetReadyStatus(bool ready)
 		{
 			IsReady = ready;
-			Debug.Log("set ready " + PlayerId);
 		}
 
 		[Command]
@@ -249,12 +248,6 @@ namespace Network
 			GameEvent.CreateEventEntityAndDecode(componentId, args);
 		}
 
-		[ClientRpc]
-		public void RpcResetReadyStatus()
-		{
-			IsReady = false;
-		}
-
 		[Command]
 		public void CmdSendMessageSceneLoaded()
 		{
@@ -274,7 +267,6 @@ namespace Network
 				AllPlayerSceneLoadedAction();
 			}
 		}
-
 		#endregion
 
 		public int GetId()
