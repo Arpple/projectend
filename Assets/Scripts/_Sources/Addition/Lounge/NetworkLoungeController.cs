@@ -17,7 +17,7 @@ namespace Lounge
 
 		protected override void LockFocusingCharacter()
 		{
-			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
+			_localPlayer.CmdSelectCharacterId((int)_focusingCharacter);
 		}
 
 		private void LoadGameScene()

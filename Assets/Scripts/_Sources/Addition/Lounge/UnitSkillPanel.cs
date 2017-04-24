@@ -20,7 +20,7 @@ namespace Lounge
 			_skills = new List<UnitSkillObject>();
 		}
 
-		public void Initialize(SkillCardSetting setting)
+		public void LoadData(SkillCardSetting setting)
 		{
 			_setting = setting;
 		}

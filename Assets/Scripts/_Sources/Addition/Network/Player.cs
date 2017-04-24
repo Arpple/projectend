@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -43,7 +42,7 @@ namespace Network
 
 		public UnityAction<string> NameUpdateAction;
 		public UnityAction<PlayerIcon> IconUpdateAction;
-		public UnityAction<Character> CharacterUdateAction;
+		public UnityAction<Character> CharacterUpdateAction;
 		public UnityAction<bool> ReadyStateUpdateAction;
 		public UnityAction<MainMission> MainMissionUpdateAction;
 		public UnityAction<PlayerMission> PlayerMissionUpdateAction;
@@ -56,7 +55,7 @@ namespace Network
 		{
 			NameUpdateAction = null;
 			IconUpdateAction = null;
-			CharacterUdateAction = null;
+			CharacterUpdateAction = null;
 			ReadyStateUpdateAction = null;
 			MainMissionUpdateAction = null;
 			PlayerMissionUpdateAction = null;
@@ -81,7 +80,10 @@ namespace Network
 		public void OnCharacterIdChanged(int charId)
 		{
 			SelectedCharacterId = charId;
-			if (CharacterUdateAction != null) CharacterUdateAction((Character)charId);
+			if (CharacterUpdateAction != null)
+			{
+				CharacterUpdateAction((Character)charId);
+			}
 		}
 
 		public void OnReadyStateChanged(bool ready)
@@ -195,12 +197,18 @@ namespace Network
 		}
 
 		[Command]
-		public void CmdSetCharacterId(int charId)
+		public void CmdSelectCharacterId(int charId)
 		{
 			if (!_selectedCharacterIdList.Contains(charId) && charId != (int)Character.None)
 			{
 				_selectedCharacterIdList.Add(charId);
 				SelectedCharacterId = charId;
+
+				var netCon = NetworkController.Instance;
+				if (NetworkController.Instance.AllPlayers.TrueForAll(p => (Character)p.SelectedCharacterId != Character.None))
+				{
+					netCon.OnAllPlayerReadyCallback();
+				}
 			}
 		}
 

@@ -111,14 +111,14 @@ public class GameController : MonoBehaviour
 	{
 		return new Feature("Systems")
 			.Add(new InputSystems(contexts))
-			.Add(new GameEventSystems(contexts))
 			.Add(new GameSystems(contexts, GetAllPlayers(), GetLocalPlayer()))
 			.Add(new TileSystems(contexts, _setting.TileSetting, TileContainer, GameUI.Instance))
 			.Add(new UnitSystems(contexts, _setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
 			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
 			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
-			.Add(new BuffSystems(contexts, _setting, GameUI.Instance));
+			.Add(new BuffSystems(contexts, _setting, GameUI.Instance))
+			.Add(new GameEventSystems(contexts));
 	}
 
 	protected List<Player> GetAllPlayers()

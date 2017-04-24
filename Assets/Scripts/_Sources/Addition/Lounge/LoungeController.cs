@@ -18,13 +18,10 @@ namespace Lounge
 
 		public UnitStatusPanel UnitStatus;
 		public UnitSkillPanel UnitSkill;
-
 		public GameObject CharacterContent, PlayerListContent;
 		public SlideMenu CharacterSelectSlideMenu;
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
-
-		[Header("MissionBook")]
 		public MissionBookController MissionBook;
 
 		protected Setting _setting;
@@ -36,6 +33,8 @@ namespace Lounge
 		private Systems _systems;
 		private Contexts _contexts;
 		private bool _isInit;
+
+		protected abstract bool IsServer();
 
 		[Inject]
 		public void Construct(Setting setting)
@@ -55,7 +54,8 @@ namespace Lounge
 		{
 			_localPlayer = _playerLoader.GetLocalPlayer();
 			MissionBook.LoadData(_setting.MissionSetting);
-			UnitSkill.Initialize(_setting.CardSetting.SkillCardSetting);
+			UnitSkill.LoadData(_setting.CardSetting.SkillCardSetting);
+
 			LockButton.onClick.AddListener(LockFocusingCharacter);
 			CharacterSelectSlideMenu.OnFocusItemChangedCallback += FocusCharacterIcon;
 
@@ -105,44 +105,37 @@ namespace Lounge
 		{
 			LoungePlayer charPlayer = Instantiate(CharacterSelectPlayerPrefabs, PlayerListContent.transform, false);
 			charPlayer.SetPlayer(player);
-			player.ResetAction();
-			player.CharacterUdateAction = DisableCharacterIcon;
-			player.PlayerMissionUpdateAction = MissionBook.SetLocalPlayerMission;
-			player.MissionTargetUpdateAction = MissionBook.SetLocalPlayerTarget;
+			player.CharacterUpdateAction += DisableCharacterIcon;
+			player.PlayerMissionUpdateAction += MissionBook.SetLocalPlayerMission;
+			player.MissionTargetUpdateAction += MissionBook.SetLocalPlayerTarget;
 		}
 
 		private void DisableCharacterIcon(Character character)
 		{
 			Assert.AreNotEqual(Character.None, character);
 
-			var item = CharacterSelectSlideMenu.SlideItems.First(i =>
-			{
-				var entity = (UnitEntity)i.gameObject.GetEntityLink().entity;
-				return entity.character.Type == character;
-			});
+			//var item = CharacterSelectSlideMenu.SlideItems.First(i =>
+			//{
+			//	var entity = (UnitEntity)i.gameObject.GetEntityLink().entity;
+			//	return entity.character.Type == character;
+			//});
 
 			//TODO: disable 'item'
-			Debug.Log("disable " + item);
+			//Debug.Log("disable " + item);
 		}
 
 		protected virtual void SetupLocalPlayer(Player player)
 		{
-			player.CharacterUdateAction = OnLocalPlayerCharacterSelected;
+			player.CharacterUpdateAction += OnLocalPlayerCharacterSelected;
 			MissionBook.SetLocalMainMission((MainMission)player.MainMissionId);
 		}
 
 		private  void OnLocalPlayerCharacterSelected(Character characterId)
 		{
-			StartCoroutine(Ready());
 			LockButton.interactable = false;
 		}
 
-		IEnumerator Ready()
-		{
-			yield return new WaitForEndOfFrame();
-			_localPlayer.CmdSetReadyStatus(true);
-		}
-
+		#region System
 		private void SetupSystems()
 		{
 			_contexts = Contexts.sharedInstance;
@@ -171,7 +164,6 @@ namespace Lounge
 
 			return systems;
 		}
-
-		protected abstract bool IsServer();
+		#endregion
 	}
 }

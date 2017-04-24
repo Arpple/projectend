@@ -20,13 +20,7 @@ namespace Lounge
 		public void SetPlayer(Player player)
 		{
 			_player = player;
-			_player.CharacterUdateAction = SetCharacter;
-		}
-
-		private void OnDestroy()
-		{
-			if (_player == null) return;
-			_player.CharacterUdateAction -= SetCharacter;
+			_player.CharacterUpdateAction += SetCharacter;
 		}
 
 		/// <summary>
