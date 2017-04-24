@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using Entitas;
+﻿using Network;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
 {
 	public Setting Setting;
+	public LocalData LocalDataPrefabs;
 
 	public override void InstallBindings()
 	{
 		Container.Bind<Setting>().FromInstance(Setting).AsSingle();
+		Container.Bind<LocalData>().FromComponentInNewPrefab(LocalDataPrefabs).AsSingle();
 	}
 }

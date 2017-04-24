@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Summer
   m_EditorClassIdentifier: 
   Type: 1
+  Name: Summer
   Cost: 2

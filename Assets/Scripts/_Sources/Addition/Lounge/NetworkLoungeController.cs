@@ -13,9 +13,9 @@ namespace Lounge
 		protected override void Start()
 		{
 			base.Start();
-			_networkController.ServerSceneChangedCallback = _networkController.LocalPlayer.RpcResetReadyStatus;
+			_networkController.ServerSceneChangedCallback = SetServerCallback;
+			_networkController.ClientSceneChangedCallback = SendSceneReady;
 			_networkController.OnAllPlayerReadyCallback += LoadGameScene;
-			_localPlayer.CmdSendMessageSceneLoaded();
 		}
 
 		private void OnDestroy()
@@ -23,13 +23,14 @@ namespace Lounge
 			var netCon = NetworkController.Instance;
 
 			netCon.ServerSceneChangedCallback = null;
+			netCon.ClientSceneChangedCallback = null;
 			netCon.OnAllPlayerReadyCallback -= LoadGameScene;
 		}
 
 		public override void SetLocalPlayer(Player player)
 		{
 			base.SetLocalPlayer(player);
-			player.OnAllPlayerSceneLoadedCallback = SetStatusReady;
+			_localPlayer.AllPlayerSceneLoadedAction = SetStatusReady;
 		}
 
 		public override List<Player> GetAllPlayers()
@@ -45,6 +46,16 @@ namespace Lounge
 		protected override void LockFocusingCharacter()
 		{
 			_localPlayer.CmdSetCharacterId((int)_focusingCharacter);
+		}
+
+		protected void SetServerCallback()
+		{
+			
+		}
+
+		protected void SendSceneReady()
+		{
+			_localPlayer.CmdSendMessageSceneLoaded();
 		}
 	}
 }

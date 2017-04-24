@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -33,52 +34,60 @@ namespace Network
 		public bool MainMissionComplete;
 		public bool PlayerMissionComplete;
 
+		[SyncVar] public bool IsServerReady;
+
 		[SyncVar(hook = "OnRoundLimitChanged")]
 		public int RoundLimit;
 
 		public bool IsClientSceneLoaded;
 
-		public delegate void ChangeNameCallback(string name);
-		public delegate void ChangeIconCallback(int iconId);
-		public delegate void ChangeSelectedCharacterCallback(int charId);
-		public delegate void ChangeReadyStateCallback(bool ready);
+		public UnityAction<string> NameUpdateAction;
+		public UnityAction<PlayerIcon> IconUpdateAction;
+		public UnityAction<Character> CharacterUdateAction;
+		public UnityAction<bool> ReadyStateUpdateAction;
+		public UnityAction<MainMission> MainMissionUpdateAction;
+		public UnityAction<PlayerMission> PlayerMissionUpdateAction;
+		public UnityAction<int> MissionTargetUpdateAction;
+		public UnityAction<int> RoundLimitUpdateAction;
+		public UnityAction AllPlayerSceneLoadedAction;
+		public UnityAction DisconnectCallback;
 
-		public event ChangeNameCallback OnNameChangedCallback;
-		public event ChangeIconCallback OnIconChangedCallback;
-		public event ChangeSelectedCharacterCallback OnSelectedCharacterChangedCallback;
-		public event ChangeReadyStateCallback OnReadyStateChangedCallback;
-
-		public UnityAction<MainMission> OnMainMissionChangedCallback;
-		public UnityAction<PlayerMission> OnPlayerMissionChangedCallback;
-		public UnityAction<int> OnPlayerMissionTargetIdChangedCallback;
-		public UnityAction<int> OnRoundLimitChangedCallback;
-		public UnityAction OnAllPlayerSceneLoadedCallback;
-
-		public delegate void PlayerDisconnectCallback();
-		public event PlayerDisconnectCallback OnPlayerDisconnectCallback;
+		public void ResetAction()
+		{
+			NameUpdateAction = null;
+			IconUpdateAction = null;
+			CharacterUdateAction = null;
+			ReadyStateUpdateAction = null;
+			MainMissionUpdateAction = null;
+			PlayerMissionUpdateAction = null;
+			MissionTargetUpdateAction = null;
+			RoundLimitUpdateAction = null;
+			AllPlayerSceneLoadedAction = null;
+			DisconnectCallback = null;
+		}
 
 		public void OnNameChanged(string name)
 		{
 			PlayerName = name;
-			if (OnNameChangedCallback != null) OnNameChangedCallback(name);
+			if (NameUpdateAction != null) NameUpdateAction(name);
 		}
 
 		public void OnIconChanged(int iconId)
 		{
 			PlayerIconId = iconId;
-			if (OnIconChangedCallback != null) OnIconChangedCallback(iconId);
+			if (IconUpdateAction != null) IconUpdateAction((PlayerIcon)iconId);
 		}
 
 		public void OnCharacterIdChanged(int charId)
 		{
 			SelectedCharacterId = charId;
-			if (OnSelectedCharacterChangedCallback != null) OnSelectedCharacterChangedCallback(charId);
+			if (CharacterUdateAction != null) CharacterUdateAction((Character)charId);
 		}
 
 		public void OnReadyStateChanged(bool ready)
 		{
 			IsReady = ready;
-			if (OnReadyStateChangedCallback != null) OnReadyStateChangedCallback(ready);
+			if (ReadyStateUpdateAction != null) ReadyStateUpdateAction(ready);
 
 			if (isServer)
 			{
@@ -89,30 +98,30 @@ namespace Network
 		public void OnMainMissionChanged(int mainMissionId)
 		{
 			MainMissionId = mainMissionId;
-			if (OnMainMissionChangedCallback != null)
-				OnMainMissionChangedCallback((MainMission)mainMissionId);
+			if (MainMissionUpdateAction != null)
+				MainMissionUpdateAction((MainMission)mainMissionId);
 		}
 
 		public void OnPlayerMissionChanged(int missionId)
 		{
 			PlayerMissionId = missionId;
-			if (OnPlayerMissionChangedCallback != null)
-				OnPlayerMissionChangedCallback((PlayerMission)missionId);
+			if (PlayerMissionUpdateAction != null)
+				PlayerMissionUpdateAction((PlayerMission)missionId);
 		}
 
 		public void OnPlayerMissionTargetChanged(int targetId)
 		{
 			PlayerMissionTarget = targetId;
-			if (OnPlayerMissionTargetIdChangedCallback != null)
-				OnPlayerMissionTargetIdChangedCallback(targetId);
+			if (MissionTargetUpdateAction != null)
+				MissionTargetUpdateAction(targetId);
 		}
 
 		public void OnRoundLimitChanged(int round)
 		{
 			RoundLimit = round;
-			if (OnRoundLimitChangedCallback != null)
+			if (RoundLimitUpdateAction != null)
 			{
-				OnRoundLimitChangedCallback(round);
+				RoundLimitUpdateAction(round);
 			}
 		}
 		#endregion
@@ -124,7 +133,7 @@ namespace Network
 
 		private void OnDestroy()
 		{
-			if (OnPlayerDisconnectCallback != null) OnPlayerDisconnectCallback();
+			if (DisconnectCallback != null) DisconnectCallback();
 
 			if (NetworkController.Instance != null)
 				NetworkController.Instance.OnDisconnectPlayer(this);
@@ -199,6 +208,7 @@ namespace Network
 		public void CmdSetReadyStatus(bool ready)
 		{
 			IsReady = ready;
+			Debug.Log("set ready " + PlayerId);
 		}
 
 		[Command]
@@ -248,6 +258,7 @@ namespace Network
 		[Command]
 		public void CmdSendMessageSceneLoaded()
 		{
+			Debug.Log("scene ready " + PlayerId);
 			IsClientSceneLoaded = true;
 			if(NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsClientSceneLoaded))
 			{
@@ -258,11 +269,12 @@ namespace Network
 		[ClientRpc]
 		public void RpcSceneReady()
 		{
-			if (OnAllPlayerSceneLoadedCallback != null)
+			if (AllPlayerSceneLoadedAction != null)
 			{
-				OnAllPlayerSceneLoadedCallback();
+				AllPlayerSceneLoadedAction();
 			}
 		}
+
 		#endregion
 
 		public int GetId()

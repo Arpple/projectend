@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Storm
   m_EditorClassIdentifier: 
   Type: 2
+  Name: Storm
   Cost: 1

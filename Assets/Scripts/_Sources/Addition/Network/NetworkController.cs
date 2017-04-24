@@ -11,28 +11,18 @@ namespace Network
 	{
 		public static NetworkController Instance;
 
-		public delegate void AllPlayerReadyCallback();
-		public event AllPlayerReadyCallback OnAllPlayerReadyCallback;
-
-		public delegate void ClientErrorCallback(int errorCode);
-		public event ClientErrorCallback OnClientErrorCallback;
-
-		public delegate void ServerErrorCallback(int errorCode);
-		public event ServerErrorCallback OnServerErrorCallback;
-
-		public delegate void PlayerAction(Player player);
-		public event PlayerAction OnClientPlayerStartCallback;
-		public event PlayerAction OnLocalPlayerStartCallback;
-
+		public UnityAction OnAllPlayerReadyCallback;
+		public UnityAction<int> OnClientErrorCallback;
+		public UnityAction<int> OnServerErrorCallback;
+		public UnityAction<Player> ClientPlayerStartCallback;
+		public UnityAction<Player> LocalPlayerStartCallback;
 		public UnityAction ServerSceneChangedCallback;
 		public UnityAction ClientSceneChangedCallback;
 
 		[Header("Config")]
 		public int MaxPlayer;
 
-		[Header("Local Player")]
-		public string LocalPlayerName;
-		public PlayerIcon LocalPlayerIconType;
+		[Header("Local")]
 		public Player LocalPlayer;
 
 		public List<Player> AllPlayers;
@@ -53,6 +43,17 @@ namespace Network
 			CrossSceneObject.AddObject(gameObject);
 		}
 
+		public void ResetCallback()
+		{
+			OnAllPlayerReadyCallback = null;
+			OnClientErrorCallback = null;
+			OnServerErrorCallback = null;
+			ClientPlayerStartCallback = null;
+			LocalPlayerStartCallback = null;
+			ServerSceneChangedCallback = null;
+			ClientSceneChangedCallback = null;
+		}
+
 		public void Stop()
 		{
 			Shutdown();
@@ -61,12 +62,12 @@ namespace Network
 		public void OnStartClientPlayer(Player player)
 		{
 			AllPlayers.Add(player);
-			if (OnClientPlayerStartCallback != null) OnClientPlayerStartCallback(player);
+			if (ClientPlayerStartCallback != null) ClientPlayerStartCallback(player);
 		}
 
 		public void OnStartLocalPlayer(Player player)
 		{
-			if (OnLocalPlayerStartCallback != null) OnLocalPlayerStartCallback(player);
+			if (LocalPlayerStartCallback != null) LocalPlayerStartCallback(player);
 			LocalPlayer = player;
 		}
 
@@ -187,10 +188,7 @@ namespace Network
 
 		public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 		{
-			if (SceneManager.GetActiveScene().name == GameScene.Lobby.ToString())
-			{
-				base.OnServerAddPlayer(conn, playerControllerId);
-			}
+			base.OnServerAddPlayer(conn, playerControllerId);
 		}
 
 		/// <summary>

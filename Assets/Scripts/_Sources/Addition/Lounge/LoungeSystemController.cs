@@ -15,7 +15,6 @@ namespace Lounge
 		private Contexts _contexts;
 		private bool _isInit;
 		private Setting _setting;
-		protected PlayerLoader _playerLoader;
 
 		[Inject]
 		public void Construct(Setting setting)

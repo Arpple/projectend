@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Network
 {
@@ -12,7 +10,7 @@ namespace Network
 		{
 			if (Instance != null)
 			{
-				Destroy(Instance);
+				Destroy(Instance.gameObject);
 			}
 
 			Instance = this;
