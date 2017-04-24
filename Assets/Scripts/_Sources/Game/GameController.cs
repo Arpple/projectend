@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
 		Debug.Log("Initialize");
 		_isInitialized = true;
 		new EntityIdGenerator(_contexts);
+		_contexts.ResetContextObserver();
 		_systems = CreateSystem(_contexts);
 		_systems.Initialize();
 	}

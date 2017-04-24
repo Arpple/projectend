@@ -139,6 +139,7 @@ namespace Lounge
 		#region System
 		private void SetupSystems()
 		{
+			_contexts.ResetContextObserver();
 			_systems = CreateSystems(_contexts);
 			_systems.Initialize();
 			_isInit = true;

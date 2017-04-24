@@ -68,6 +68,7 @@ namespace Result
 
 		private void Initialize()
 		{
+			_contexts.ResetContextObserver();
 			_systems = new Feature("Systems")
 				.Add(new PlayerCreatingSystem(_contexts, _players))
 				.Add(new LocalPlayerSetupSystem(_contexts, _localPlayer))

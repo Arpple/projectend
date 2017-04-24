@@ -52,12 +52,6 @@ namespace Title
 		{
 			VersionText.text = "Version " + Application.version;
 
-			//clear old observer
-			foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
-			{
-				Destroy(observer.gameObject);
-			}
-
 			//set profile
 			var playerIconImage = _setting.PlayerIconSetting.GetData(_data.PlayerIcon).Icon;
 			if (playerIconImage != null) PlayerIcon.SetImage(playerIconImage);

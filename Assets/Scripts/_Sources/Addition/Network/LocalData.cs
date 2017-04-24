@@ -4,6 +4,7 @@ namespace Network
 {
 	public class LocalData : MonoBehaviour
 	{
+		[Header("Title")]
 		public string PlayerName;
 		public PlayerIcon PlayerIcon;
 
