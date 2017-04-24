@@ -251,7 +251,6 @@ namespace Network
 		[Command]
 		public void CmdSendMessageSceneLoaded()
 		{
-			Debug.Log("scene ready " + PlayerId);
 			IsClientSceneLoaded = true;
 			if(NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsClientSceneLoaded))
 			{
@@ -266,6 +265,12 @@ namespace Network
 			{
 				AllPlayerSceneLoadedAction();
 			}
+		}
+
+		[ClientRpc]
+		public void RpcSceneChanging()
+		{
+			LoadingScreen.Instance.Show();
 		}
 		#endregion
 
