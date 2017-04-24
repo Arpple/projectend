@@ -561,8 +561,8 @@ MonoBehaviour:
     type: 2}
   ResultObjectParent: {fileID: 954254264}
   ResultText: {fileID: 439568090}
-  VictoryTextColor: {r: 1, g: 0.9294118, b: 0, a: 0}
-  DefeatTextColor: {r: 0.5588235, g: 0.52595156, b: 0.52595156, a: 0}
+  VictoryTextColor: {r: 1, g: 0.9294118, b: 0, a: 1}
+  DefeatTextColor: {r: 0.5588235, g: 0.52595156, b: 0.52595156, a: 1}
 --- !u!114 &1009273209
 MonoBehaviour:
   m_ObjectHideFlags: 0
