@@ -26,28 +26,28 @@ public class WeatherResloveDisplayer : MonoBehaviour{
     public Animator Animator;
 
     [Header("Test Value")]
-    public int CostWood;
-    public int CostWater;
-    public int CostCoal;
+    private int _costWood;
+    private int _costWater;
+    private int _costCoal;
 
-    public int PayWood;
-    public int PayWater;
-    public int PayCoal;
+    private int _payWood;
+    private int _payWater;
+    private int _payCoal;
 
     private int _currentWood, _currentWater, _currentCoal; //! prevent alway re allocate in update
 
     void Update(){
         if(_isDecreaseValue) {
-            this._currentWood = CostWood - (int)(PayWood * ((Time.time - _startTime) / ANIMATION_TIME));
-            this._currentWater = CostWater - (int)(PayWater * ((Time.time - _startTime) / ANIMATION_TIME));
-            this._currentCoal = CostCoal - (int)(PayCoal * ((Time.time - _startTime) / ANIMATION_TIME));
+            this._currentWood = _costWood - (int)(_payWood * ((Time.time - _startTime) / ANIMATION_TIME));
+            this._currentWater = _costWater - (int)(_payWater * ((Time.time - _startTime) / ANIMATION_TIME));
+            this._currentCoal = _costCoal - (int)(_payCoal * ((Time.time - _startTime) / ANIMATION_TIME));
             UpdateResourcesText(this._currentWood, this._currentWater, this._currentCoal);
         }
     }
 
     public void ResloveWeather() {
-        ResloveWeather(this.CostWood,this.CostWater,this.CostCoal,
-            this.PayWood,this.PayWater,this.PayWood
+        ResloveWeather(this._costWood,this._costWater,this._costCoal,
+            this._payWood,this._payWater,this._payWood
             ,"TEST FUNCTION");
     }
 
@@ -59,18 +59,18 @@ public class WeatherResloveDisplayer : MonoBehaviour{
     public void ResloveWeather(int costWood, int costWater, int costCoal,
         int payWood, int payWater, int payCoal,
         string playerName) {
-        this.CostWood = costWood;
-        this.CostWater = costWater;
-        this.CostCoal = costCoal;
+        this._costWood = costWood;
+        this._costWater = costWater;
+        this._costCoal = costCoal;
 
-        this.PayWood = payWood;
-        this.PayWater = payWater;
-        this.PayCoal = payCoal;
+        this._payWood = payWood;
+        this._payWater = payWater;
+        this._payCoal = payCoal;
 
         this.WinnerName.text = playerName;
         this.LoserName.text = playerName;
 
-        Debug.Log("Result > "+isClearWeather().ToString());
+        //Debug.Log("Result > "+isClearWeather().ToString());
         Animator.SetBool("Win", isClearWeather());
         this.Animator.Play("ShowCostEstimate");
     }
@@ -87,7 +87,7 @@ public class WeatherResloveDisplayer : MonoBehaviour{
     }
 
     private bool isClearWeather() {
-        return PayWood >= CostWood && PayWater >= CostWater && PayCoal >= CostCoal;
+        return _payWood >= _costWood && _payWater >= _costWater && _payCoal >= _costCoal;
     }
 
     private void beginDecreaseCostValue() {
@@ -97,9 +97,9 @@ public class WeatherResloveDisplayer : MonoBehaviour{
 
     private void stopDecreaseCostValue() {
         _isDecreaseValue = false;
-        UpdateResourcesText(CostWood - PayWood
-            , CostWater - PayWater
-            , CostCoal - PayCoal
+        UpdateResourcesText(_costWood - _payWood
+            , _costWater - _payWater
+            , _costCoal - _payCoal
         );
     }
     

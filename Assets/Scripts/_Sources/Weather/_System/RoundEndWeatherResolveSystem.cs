@@ -6,10 +6,12 @@ using UnityEngine;
 public class RoundEndWeatherResolveSystem : GameReactiveSystem
 {
 	private Contexts _contexts;
+    private WeatherResloveDisplayer _weatherResolveDisplayer;
 
-	public RoundEndWeatherResolveSystem(Contexts contexts) : base(contexts)
+	public RoundEndWeatherResolveSystem(Contexts contexts,WeatherResloveDisplayer displayer) : base(contexts)
 	{
 		_contexts = contexts;
+        this._weatherResolveDisplayer = displayer;
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -28,7 +30,21 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 		{
 			var costMan = new WeatherCardCostManager(_contexts);
 			costMan.ResolveWeather();
-			Debug.Log("pass : " + costMan.IsWeatherResolved());
+            var pay = costMan.getPayResources();
+            var cost = costMan.getCostResources();
+
+            _weatherResolveDisplayer.ResloveWeather(
+                cost.ContainsKey(Resource.Wood) ? cost[Resource.Wood] : 0,
+                cost.ContainsKey(Resource.Water) ? cost[Resource.Water] : 0,
+                cost.ContainsKey(Resource.Coal) ? cost[Resource.Coal] : 0,
+                cost.ContainsKey(Resource.Wood) ? pay[Resource.Wood] : 0,
+                cost.ContainsKey(Resource.Water) ? pay[Resource.Water] : 0,
+                cost.ContainsKey(Resource.Coal) ? pay[Resource.Coal] : 0,
+                costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName
+            );
+
+			Debug.Log("pass : " + costMan.IsWeatherResolved()
+                +" MVP is -> " + costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName);
 		}
 	}
 	
@@ -39,6 +55,9 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 		private GameEntity[] _players;
 		private Dictionary<GameEntity, PlayerResource> _playersResources;
 		private bool _isPass;
+
+        private int _lowestPay, _hightestPay;
+        private GameEntity _lowestPayPlayer, _hightestPayPlayer;
 		
 		public WeatherCardCostManager(Contexts contexts)
 		{
@@ -51,6 +70,7 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 			_isPass = true;
 
 			InitPayResource();
+            InitMVPPlayer();
 		}
 
 		public void ResolveWeather()
@@ -66,6 +86,25 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 			return _isPass;
 		}
 
+        public Dictionary<Resource,int> getCostResources() {
+            return _costMap;
+        }
+
+        public Dictionary<Resource,int> getPayResources() {
+            Dictionary<Resource, int> pay = new Dictionary<Resource, int>();
+            foreach(var type in _costMap.Keys) {
+                pay.Add(type, 0);
+                foreach(var p in _players) {
+                    pay[type] += _playersResources[p].GetResourcePayCount(type);
+                }
+            }
+            return pay;
+        }
+
+        public GameEntity getMVPPlayer() {
+            return IsWeatherResolved() ? _hightestPayPlayer : _lowestPayPlayer;
+        }
+
 		private void InitPayResource()
 		{
 			_playersResources = new Dictionary<GameEntity, PlayerResource>();
@@ -76,13 +115,33 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 			}
 		}
 
+        private void InitMVPPlayer() {
+            this._hightestPayPlayer = _players[0];
+            this._lowestPayPlayer = _players[0];
+        }
+
 		private void PayResource(Resource type)
 		{
 			var paySum = 0;
+            var pay = 0;
+            bool firstPlayer = true;
 			foreach(var p in _players)
 			{
 				_playersResources[p].PayResources(type);
-				paySum += _playersResources[p].GetResourcePayCount(type);
+				pay = _playersResources[p].GetResourcePayCount(type);
+                paySum += pay;
+
+                //set low/hi pay player
+                if(pay > _hightestPay || firstPlayer) {
+                    _hightestPayPlayer = p;
+                    _hightestPay = pay;
+                    firstPlayer = false;
+                }
+                if(pay < _lowestPay || firstPlayer) {
+                    _lowestPayPlayer = p;
+                    _lowestPay = pay;
+                    firstPlayer = false;
+                }
 			}
 
 			var costRequire = _costMap[type];
