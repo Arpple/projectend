@@ -31,6 +31,8 @@ public class GameSystems : Feature
 		//player
 		{
 			Add(new PlayerMissionHunterCompletingSystem(contexts));
+            Add(new KeeperAddedSystem(contexts));
+            Add(new KeeperResloveMissionSystem(contexts));
 		}
 	}
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   Description: Clear all weather until end game.
   TargetDescription: 
   Type: 2
-  RandomPlayer: 0
+  RandomPlayer: 1
   Constant: 3
