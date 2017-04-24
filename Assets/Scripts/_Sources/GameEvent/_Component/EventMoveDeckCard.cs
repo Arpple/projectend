@@ -12,7 +12,6 @@ public class EventMoveDeckCard : GameEventComponent
 
 	private static void MoveCard(CardEntity cardEntity, GameEntity playerEntity, bool isMoveTobox)
 	{
-		Debug.Log("create event move card " + cardEntity.id.Id);
 		GameEvent.CreateEvent<EventMoveDeckCard>(
 			cardEntity.id.Id,
 			playerEntity != null
@@ -52,7 +51,6 @@ public class EventMoveDeckCard : GameEventComponent
 
 	public void Decode(int cardId, int playerId, int isInBox)
 	{
-		Debug.Log("decode event move card " + cardId);
 		CardEntity = Contexts.sharedInstance.card.GetEntities(CardMatcher.Id)
 			.First(c => c.id.Id == cardId);
 

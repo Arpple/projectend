@@ -22,9 +22,14 @@ public class GameController : MonoBehaviour
 	public GameObject TileContainer;
 	public GameObject UnitContainer;
 
-	public bool IsNetwork
+	public bool IsNetwork()
 	{
-		get { return _playerLoader.IsNetwork(); }
+		return _playerLoader.IsNetwork();
+	}
+
+	public bool IsServer()
+	{
+		return !IsNetwork() || NetworkController.IsServer;
 	}
 
 	protected Systems _systems;
@@ -99,7 +104,7 @@ public class GameController : MonoBehaviour
 			.Add(new GameSystems(contexts, GetAllPlayers(), GetLocalPlayer()))
 			.Add(new TileSystems(contexts, _setting.TileSetting, TileContainer, GameUI.Instance))
 			.Add(new UnitSystems(contexts, _setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
-			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
+			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance, IsServer()))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
 			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
 			.Add(new BuffSystems(contexts, _setting, GameUI.Instance))
