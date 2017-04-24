@@ -37,9 +37,10 @@ namespace Lounge
 		protected abstract bool IsServer();
 
 		[Inject]
-		public void Construct(Setting setting)
+		public void Construct(Setting setting, Contexts contexts)
 		{
 			_setting = setting;
+			_contexts = contexts;
 		}
 
 		private void Awake()
@@ -82,7 +83,9 @@ namespace Lounge
 		private void OnDestroy()
 		{
 			_systems.ClearReactiveSystems();
+			_systems.DeactivateReactiveSystems();
 			_systems.TearDown();
+			_contexts.Reset();
 		}
 
 		protected abstract void LockFocusingCharacter();
@@ -138,9 +141,7 @@ namespace Lounge
 		#region System
 		private void SetupSystems()
 		{
-			_contexts = Contexts.sharedInstance;
 			_systems = CreateSystems(_contexts);
-
 			_systems.Initialize();
 			_isInit = true;
 		}

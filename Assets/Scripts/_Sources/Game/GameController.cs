@@ -22,9 +22,14 @@ public class GameController : MonoBehaviour
 	public GameObject TileContainer;
 	public GameObject UnitContainer;
 
-	public bool IsNetwork
+	public bool IsNetwork()
 	{
-		get { return _playerLoader.IsNetwork(); }
+		return _playerLoader.IsNetwork();
+	}
+
+	public bool IsServer()
+	{
+		return !IsNetwork() || NetworkController.IsServer;
 	}
 
 	protected Systems _systems;
@@ -34,9 +39,10 @@ public class GameController : MonoBehaviour
 	protected SceneLoader _sceneLoader;
 
 	[Inject]
-	public void Construct(Setting setting)
+	public void Construct(Setting setting, Contexts contexts)
 	{
 		_setting = setting;
+		_contexts = contexts;
 	}
 
 	private void Awake()
@@ -55,23 +61,7 @@ public class GameController : MonoBehaviour
 	protected virtual void Start()
 	{
 		Debug.Log("Start");
-		ClearOldEntitySystem();
-		CreateEntitySystem();
 		SetupPlayers();
-	}
-
-	private void ClearOldEntitySystem()
-	{
-		foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
-		{
-			Destroy(observer.gameObject);
-		}
-	}
-
-	private void CreateEntitySystem()
-	{
-		_contexts = Contexts.sharedInstance;
-		new EntityIdGenerator(_contexts);
 	}
 
 	protected virtual void SetupPlayers()
@@ -80,10 +70,10 @@ public class GameController : MonoBehaviour
 	protected void Initialize()
 	{
 		Debug.Log("Initialize");
-
+		_isInitialized = true;
+		new EntityIdGenerator(_contexts);
 		_systems = CreateSystem(_contexts);
 		_systems.Initialize();
-		_isInitialized = true;	
 	}
 
 	void Update()
@@ -114,7 +104,7 @@ public class GameController : MonoBehaviour
 			.Add(new GameSystems(contexts, GetAllPlayers(), GetLocalPlayer()))
 			.Add(new TileSystems(contexts, _setting.TileSetting, TileContainer, GameUI.Instance))
 			.Add(new UnitSystems(contexts, _setting.UnitSetting, UnitContainer, GameUI.Instance, SystemController))
-			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance))
+			.Add(new CardSystems(contexts, _setting.CardSetting, GameUI.Instance, IsServer()))
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
 			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
 			.Add(new BuffSystems(contexts, _setting, GameUI.Instance))

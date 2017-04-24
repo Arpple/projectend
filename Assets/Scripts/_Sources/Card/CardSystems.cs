@@ -1,6 +1,6 @@
 ﻿public class CardSystems : Feature
 {
-	public CardSystems(Contexts contexts, CardSetting setting, GameUI ui) : base("Card System")
+	public CardSystems(Contexts contexts, CardSetting setting, GameUI ui, bool isServer) : base("Card System")
 	{
 		Add(new DeckCardCreatingSystem(contexts, setting.DeckSetting));
 		Add(new DeckCardDataLoadingSystem(contexts, setting.DeckSetting));
@@ -9,7 +9,7 @@
 		Add(new CardViewCreatingSystem(contexts, setting));
 		Add(new CardChargeRenderingSystem(contexts));
 
-		CreateDeckCardSystems(contexts, setting.DeckSetting, ui);
+		CreateDeckCardSystems(contexts, setting.DeckSetting, ui, isServer);
 		CreateBoxCardSystems(contexts, ui);
 		CreateSkillCardSystems(contexts, ui);
 		CreateResourceCardSystems(contexts, setting.ResourceCardSetting);
@@ -21,9 +21,9 @@
 
     }
     
-	private void CreateDeckCardSystems(Contexts contexts, DeckSetting setting, GameUI ui)
+	private void CreateDeckCardSystems(Contexts contexts, DeckSetting setting, GameUI ui, bool isServer)
 	{
-		Add(new StartDeckCardDrawingSystem(contexts, setting));
+		if(isServer) Add(new StartDeckCardDrawingSystem(contexts, setting));
 		Add(new StartTurnDrawSystem(contexts, setting));
 		Add(new PlayerDeckCreatingSystem(contexts, ui.DeckFactory));
 		Add(new PlayerDeckRenderingSystem(contexts));

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -7,37 +8,22 @@ namespace Network
 {
 	public class Player : NetworkBehaviour, IPlayer
 	{
+
+		[Header("Sync Property")]
 		[SyncVar] public int PlayerId;
-
-		#region SyncProperties
-		[SyncVar(hook = "OnNameChanged")]
-		public string PlayerName;
-
-		[SyncVar(hook = "OnIconChanged")]
-		public int PlayerIconId;
-
-		[SyncVar(hook = "OnCharacterIdChanged")]
-		public int SelectedCharacterId;
-
-		[SyncVar(hook = "OnReadyStateChanged")]
-		public bool IsReady;
-
-		[SyncVar(hook = "OnMainMissionChanged")]
-		public int MainMissionId;
-
-		[SyncVar(hook = "OnPlayerMissionChanged")]
-		public int PlayerMissionId;
-		[SyncVar(hook = "OnPlayerMissionTargetChanged")]
-		public int PlayerMissionTarget;
+		[SyncVar(hook = "OnNameChanged")] public string PlayerName;
+		[SyncVar(hook = "OnIconChanged")] public int PlayerIconId;
+		[SyncVar(hook = "OnCharacterIdChanged")] public int SelectedCharacterId;
+		[SyncVar(hook = "OnReadyStateChanged")] public bool IsReady;
+		[SyncVar(hook = "OnMainMissionChanged")] public int MainMissionId;
+		[SyncVar(hook = "OnPlayerMissionChanged")] public int PlayerMissionId;
+		[SyncVar(hook = "OnPlayerMissionTargetChanged")] public int PlayerMissionTarget;
+		[SyncVar(hook = "OnRoundLimitChanged")] public int RoundLimit;
 
 		public bool MainMissionComplete;
 		public bool PlayerMissionComplete;
 
-		[SyncVar] public bool IsServerReady;
-
-		[SyncVar(hook = "OnRoundLimitChanged")]
-		public int RoundLimit;
-
+		[Header("Scene Loading Sync")]
 		public bool IsClientSceneLoaded;
 
 		public UnityAction<string> NameUpdateAction;
@@ -126,7 +112,6 @@ namespace Network
 				RoundLimitUpdateAction(round);
 			}
 		}
-		#endregion
 
 		private void Start()
 		{
@@ -273,12 +258,6 @@ namespace Network
 			{
 				AllPlayerSceneLoadedAction();
 			}
-		}
-
-		[ClientRpc]
-		public void RpcSceneChanging()
-		{
-			LoadingScreen.Instance.Show();
 		}
 		#endregion
 
