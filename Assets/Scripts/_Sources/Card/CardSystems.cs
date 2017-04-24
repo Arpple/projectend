@@ -2,7 +2,7 @@
 {
 	public CardSystems(Contexts contexts, CardSetting setting, GameUI ui) : base("Card System")
 	{
-		Add(new DeckCardCreatingSystem(contexts, setting.DeckSetting.Deck));
+		Add(new DeckCardCreatingSystem(contexts, setting.DeckSetting));
 		Add(new DeckCardDataLoadingSystem(contexts, setting.DeckSetting));
 		Add(new ResourceCardDataLoadingSystem(contexts, setting.ResourceCardSetting));
 		Add(new SkillCardDataLoadingSystem(contexts, setting.SkillCardSetting));

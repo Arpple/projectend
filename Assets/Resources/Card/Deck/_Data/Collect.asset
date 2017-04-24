@@ -16,5 +16,6 @@ MonoBehaviour:
   ActiveDesc: Collect resource from field
   PassiveDesc: 
   Type: 3
+  CreateCount: 5
   AbilityClassFullName: AbilityCollect
   Effect: {fileID: 114610748093884130, guid: 02090fedb65f91540b8675206266ce83, type: 2}

@@ -7,22 +7,21 @@
 public class DeckCardCreatingSystem : IInitializeSystem
 {
 	readonly CardContext _context;
-	readonly DeckData _deck;
+	readonly DeckSetting _setting;
 
-	public DeckCardCreatingSystem(Contexts contexts, DeckData deck)
+	public DeckCardCreatingSystem(Contexts contexts, DeckSetting setting)
 	{
 		_context = contexts.card;
-		_deck = deck;
+		_setting = setting;
 	}
 
 	public void Initialize()
 	{
-		var cardSetList = _deck.SettingList;
-		foreach (var cardSet in cardSetList)
+		foreach (var data in _setting.DataList)
 		{
-			cardSet.Count.Loop(() =>
+			data.CreateCount.Loop(() =>
 			{
-				_context.CreateDeckCard(cardSet.Type);
+				_context.CreateDeckCard(data.Type);
 			});
 		}
 	}

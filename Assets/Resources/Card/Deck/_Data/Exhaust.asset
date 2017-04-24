@@ -16,5 +16,6 @@ MonoBehaviour:
   ActiveDesc: Decrease Attack power
   PassiveDesc: 
   Type: 4
+  CreateCount: 5
   AbilityClassFullName: AbilityExhaust
   Effect: {fileID: 114540134367377204, guid: 1eb8055c60dc1e842aa5335b748a03a1, type: 2}

@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
-
+﻿using System.Collections.Generic;
 using Entitas;
+using NUnit.Framework;
+using UnityEngine;
 
 namespace Test.CardTest.DeckTest
 {
@@ -9,12 +10,14 @@ namespace Test.CardTest.DeckTest
 		[Test]
 		public void CreatedEntityCount()
 		{
-			var deck = new DeckData();
-			deck.SettingList.Add(new DeckData.CardDeckCount()
+			var deck = new DeckSetting();
+			var deckData = ScriptableObject.CreateInstance<DeckCardData>();
+			deckData.Type = DeckCard.Move;
+			deckData.CreateCount = 2;
+			deck.DataList = new List<DeckCardData>
 			{
-				Type = DeckCard.Move,
-				Count = 2
-			});
+				deckData
+			};
 
 			var system = new DeckCardCreatingSystem(_contexts, deck);
 			system.Initialize();

@@ -26,10 +26,10 @@ namespace Test.CardTest.AbilityTest
 		}
 
 		[Test]
-		public void DealDamageToTarget()
+		public void OnTargetSelected_DamageComponentAddedToTarget()
 		{
 			_activeAbility.OnTargetSelected(_caster, _target);
-			Assert.AreEqual(8, _target.hitpoint.Value);
+			Assert.IsTrue(_target.hasAbilityAttack);
 		}
 	}
 }

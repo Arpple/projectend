@@ -1,18 +1,15 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Linq;
-
 
 namespace Test.CardTest.DeckTest
 {
 	public class DeckSettingTest : IndexDataListTest<DeckCard, DeckCardData>
 	{
-		private DeckSetting _setting;
-
 		protected override IndexDataList<DeckCard, DeckCardData> GetDataList()
 		{
 			return TestHelper.GetGameSetting().CardSetting.DeckSetting;
 		}
+
+		DeckSetting _setting;
 
 		[SetUp]
 		public void Init()
@@ -21,30 +18,14 @@ namespace Test.CardTest.DeckTest
 		}
 
 		[Test]
-		public void CheckSetting_DeckAdded()
+		public void CheckSetting_CardCreateCountIsMoreThanOrEqualZero()
 		{
-			Assert.IsNotNull(_setting.Deck);
-		}
-
-		[Test]
-		public void CheckSetting_CardInDeckIsNotDupplicate()
-		{
-			var setCount = _setting.Deck.SettingList.Count;
-			Assert.AreEqual(setCount, _setting.Deck.SettingList
-				.Select(set => set.Type)
-				.Distinct()
-				.Count()
-			);
-		}
-
-		[Test]
-		public void CheckSetting_AllDeckCardHaveData()
-		{
-			foreach(var set in _setting.Deck.SettingList)
+			foreach(var data in _setting.DataList)
 			{
-				Assert.IsNotNull(_setting.GetData(set.Type));
+				Assert.IsTrue(data.CreateCount >= 0);
 			}
 		}
+	
 	}
 }
 

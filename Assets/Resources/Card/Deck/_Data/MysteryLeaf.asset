@@ -18,5 +18,6 @@ MonoBehaviour:
     if player not dead Recovery player hp 3 point.'
   PassiveDesc: 
   Type: 5
+  CreateCount: 5
   AbilityClassFullName: AbilityMysteryLeaf
   Effect: {fileID: 114594017304363474, guid: 3bcee4cf26db5564585b7b79f7c77ef5, type: 2}

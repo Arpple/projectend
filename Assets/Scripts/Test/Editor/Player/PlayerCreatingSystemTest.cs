@@ -24,19 +24,6 @@ namespace Test.PlayerTest
 			Assert.AreEqual(1, playerEntities.Length);
 			Assert.AreEqual(player, playerEntity.player.PlayerObject);
 			Assert.AreEqual(player.PlayerId, playerEntity.player.PlayerId);
-			Assert.AreEqual(playerEntity, player.gameObject.GetEntityLink().entity);
-		}
-
-		[Test]
-		public void Teardown_PlayerObjectLinked_LinkDestroy()
-		{
-			var player = new GameObject().AddComponent<Player>();
-			var players = new List<Player> { player };
-			var system = new PlayerCreatingSystem(_contexts, players);
-			system.Initialize();
-			system.TearDown();
-
-			Assert.IsNull(player.gameObject.GetEntityLink().entity);
 		}
 	}
 }
