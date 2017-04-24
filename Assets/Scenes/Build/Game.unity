@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoEndTurnForBoss: 1
-  AutoPassLocalFlag: 1
+  AutoPassLocalFlag: 0
 --- !u!4 &1234237937
 Transform:
   m_ObjectHideFlags: 0
