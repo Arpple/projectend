@@ -5611,6 +5611,8 @@ GameObject:
   - component: {fileID: 1234237936}
   - component: {fileID: 1234237938}
   - component: {fileID: 1234237935}
+  - component: {fileID: 1234237940}
+  - component: {fileID: 1234237939}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -5671,14 +5673,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234237934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e604df1cfd4744fbaa0679d6edcaa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 17ec3723244fc9a439aa2966c3fa94c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SystemController: {fileID: 1234237936}
   PlayerContainer: {fileID: 2005555624}
   TileContainer: {fileID: 132817912}
   UnitContainer: {fileID: 238646442}
-  Players: []
+--- !u!114 &1234237939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd925555df0f65408d8c870040a940e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1234237940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234237934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b88290a3dbe394ea20bd20f169785b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayersParent: {fileID: 2005555625}
 --- !u!1 &1240357652
 GameObject:
   m_ObjectHideFlags: 0
