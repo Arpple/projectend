@@ -22,7 +22,7 @@ namespace Lounge
 
 		private void LoadGameScene()
 		{
-			_netCon.ServerResetSceneReadyStatus();
+			_netCon.ServerResetPlayerReadyStatus();
 			_netCon.ServerChangeScene(GameScene.Game.ToString());
 		}
 

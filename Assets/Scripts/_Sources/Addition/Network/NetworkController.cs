@@ -207,11 +207,12 @@ namespace Network
 			if (OnServerErrorCallback != null) OnServerErrorCallback(errorCode);
 		}
 
-		public void ServerResetSceneReadyStatus()
+		public void ServerResetPlayerReadyStatus()
 		{
 			foreach(var p in AllPlayers)
 			{
 				p.IsClientSceneLoaded = false;
+				p.IsReady = false;
 			}
 		}
 		#endregion
