@@ -23,6 +23,15 @@ public static class HitpointExtension
 		entity.ReplaceHitpoint(Mathf.Max(0, entity.hitpoint.Value - amount));
 	}
 
+    public static void TakeDamage(this UnitEntity entity, int amount,bool canDead=false) {
+        if(!entity.hasHitpoint) return;
+
+        if(canDead)
+            entity.TakeFatalDamage(amount);
+        else
+            entity.TakeDamage(amount);
+    }
+
 	public static void RecoverHitpoint(this UnitEntity entity, int amount)
 	{
 		if (!entity.hasHitpoint) return;

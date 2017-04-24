@@ -8,34 +8,38 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int BossPlayer = 0;
-    public const int Id = 1;
-    public const int Local = 2;
-    public const int MainMissionCompleted = 3;
-    public const int MainMission = 4;
-    public const int Owner = 5;
-    public const int PlayerBox = 6;
-    public const int Player = 7;
-    public const int PlayerDeck = 8;
-    public const int PlayerMissionCompleted = 9;
-    public const int PlayerMission = 10;
-    public const int PlayerMissionTarget = 11;
-    public const int Playing = 12;
-    public const int PlayingOrder = 13;
-    public const int Round = 14;
-    public const int RoundIndex = 15;
-    public const int RoundLimit = 16;
-    public const int SkillCardContainer = 17;
-    public const int Turn = 18;
-    public const int TurnNode = 19;
-    public const int View = 20;
-    public const int Weather = 21;
-    public const int WeatherCost = 22;
-    public const int Winner = 23;
+    public const int AbilityAttack = 0;
+    public const int AbilityDamage = 1;
+    public const int BossPlayer = 2;
+    public const int Id = 3;
+    public const int Local = 4;
+    public const int MainMissionCompleted = 5;
+    public const int MainMission = 6;
+    public const int Owner = 7;
+    public const int PlayerBox = 8;
+    public const int Player = 9;
+    public const int PlayerDeck = 10;
+    public const int PlayerMissionCompleted = 11;
+    public const int PlayerMission = 12;
+    public const int PlayerMissionTarget = 13;
+    public const int Playing = 14;
+    public const int PlayingOrder = 15;
+    public const int Round = 16;
+    public const int RoundIndex = 17;
+    public const int RoundLimit = 18;
+    public const int SkillCardContainer = 19;
+    public const int Turn = 20;
+    public const int TurnNode = 21;
+    public const int View = 22;
+    public const int Weather = 23;
+    public const int WeatherCost = 24;
+    public const int Winner = 25;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
+        "AbilityAttack",
+        "AbilityDamage",
         "BossPlayer",
         "Id",
         "Local",
@@ -63,6 +67,8 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AbilityAttackComponent),
+        typeof(AbilityDamageComponent),
         typeof(BossPlayerComponent),
         typeof(IdComponent),
         typeof(LocalComponent),

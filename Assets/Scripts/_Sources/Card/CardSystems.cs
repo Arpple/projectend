@@ -13,10 +13,14 @@
 		CreateBoxCardSystems(contexts, ui);
 		CreateSkillCardSystems(contexts, ui);
 		CreateResourceCardSystems(contexts, setting.ResourceCardSetting);
+        CreateAbilitySystem(contexts);
 
 		Add(new ResourceCardDestroySystem(contexts));
-	}
 
+        
+
+    }
+    
 	private void CreateDeckCardSystems(Contexts contexts, DeckSetting setting, GameUI ui)
 	{
 		Add(new StartDeckCardDrawingSystem(contexts, setting));
@@ -43,7 +47,12 @@
 		Add(new LocalSkillCardContainerRenderingSystem(contexts));
 	}
 
-	private void CreateResourceCardSystems(Contexts contexts, ResourceCardSetting setting)
+    private void CreateAbilitySystem(Contexts contexts) {
+        Add(new BlockAttackSystem(contexts));
+        Add(new DealDamageSystem(contexts));
+    }
+
+    private void CreateResourceCardSystems(Contexts contexts, ResourceCardSetting setting)
 	{
 		Add(new ResourceCardChargeRandomSystem(contexts, setting));
 	}

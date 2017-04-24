@@ -14,6 +14,7 @@
 
 	public override void OnTargetSelected(UnitEntity caster, UnitEntity target)
 	{
-		target.TakeFatalDamage(caster.unitStatus.AttackPower);
+        target.AddAbilityAttack(caster.unitStatus.AttackPower,1,true);
+		//target.TakeFatalDamage(caster.unitStatus.AttackPower);
 	}
 }

@@ -8,26 +8,30 @@
 //------------------------------------------------------------------------------
 public static class UnitComponentsLookup {
 
-    public const int BossUnit = 0;
-    public const int BuffList = 1;
-    public const int Character = 2;
-    public const int CharacterSkillsResource = 3;
-    public const int Dead = 4;
-    public const int Hitpoint = 5;
-    public const int Id = 6;
-    public const int Local = 7;
-    public const int MapPosition = 8;
-    public const int Owner = 9;
-    public const int Sprite = 10;
-    public const int UnitDetail = 11;
-    public const int UnitIcon = 12;
-    public const int UnitIconResource = 13;
-    public const int UnitStatus = 14;
-    public const int View = 15;
+    public const int AbilityAttack = 0;
+    public const int AbilityDamage = 1;
+    public const int BossUnit = 2;
+    public const int BuffList = 3;
+    public const int Character = 4;
+    public const int CharacterSkillsResource = 5;
+    public const int Dead = 6;
+    public const int Hitpoint = 7;
+    public const int Id = 8;
+    public const int Local = 9;
+    public const int MapPosition = 10;
+    public const int Owner = 11;
+    public const int Sprite = 12;
+    public const int UnitDetail = 13;
+    public const int UnitIcon = 14;
+    public const int UnitIconResource = 15;
+    public const int UnitStatus = 16;
+    public const int View = 17;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
+        "AbilityAttack",
+        "AbilityDamage",
         "BossUnit",
         "BuffList",
         "Character",
@@ -47,6 +51,8 @@ public static class UnitComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AbilityAttackComponent),
+        typeof(AbilityDamageComponent),
         typeof(BossUnitComponent),
         typeof(BuffListComponent),
         typeof(CharacterComponent),

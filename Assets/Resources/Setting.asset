@@ -56,13 +56,14 @@ MonoBehaviour:
       - {fileID: 11400000, guid: fc72877eab47e7f438ad1d71e3701c79, type: 2}
       - {fileID: 11400000, guid: b6c6e9e18d32c134c90f7e52e4457637, type: 2}
       - {fileID: 11400000, guid: 27e3a63e4e091e64f8545d0817dfe533, type: 2}
+      - {fileID: 11400000, guid: b038921685ce26a48b25e890b3f3ab45, type: 2}
       MaxHandCardCount: 10
       StartCardCount: 5
       StartTurnDrawCount: 2
       Deck:
         SettingList:
         - Type: 0
-          Count: 20
+          Count: 5
         - Type: 1
           Count: 10
         - Type: 2
@@ -73,6 +74,8 @@ MonoBehaviour:
           Count: 3
         - Type: 5
           Count: 3
+        - Type: 6
+          Count: 10
     ResourceCardSetting:
       DataList:
       - {fileID: 11400000, guid: 7ba0625830e8f2949a069229306d6a2e, type: 2}

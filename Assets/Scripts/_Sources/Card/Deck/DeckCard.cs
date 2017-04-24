@@ -6,5 +6,6 @@
 	Collect,
 	Exhaust,
     MysteryLeaf,
+    Defense,
 
 }
