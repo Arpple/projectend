@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Entitas;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 [GameEvent]
@@ -11,6 +12,7 @@ public class EventMoveDeckCard : GameEventComponent
 
 	private static void MoveCard(CardEntity cardEntity, GameEntity playerEntity, bool isMoveTobox)
 	{
+		Debug.Log("create event move card " + cardEntity.id.Id);
 		GameEvent.CreateEvent<EventMoveDeckCard>(
 			cardEntity.id.Id,
 			playerEntity != null
@@ -50,8 +52,9 @@ public class EventMoveDeckCard : GameEventComponent
 
 	public void Decode(int cardId, int playerId, int isInBox)
 	{
-		CardEntity = Contexts.sharedInstance.card.GetEntitiesWithId(cardId)
-			.First();
+		Debug.Log("decode event move card " + cardId);
+		CardEntity = Contexts.sharedInstance.card.GetEntities(CardMatcher.Id)
+			.First(c => c.id.Id == cardId);
 
 		TargetPlayerEntity = playerId == 0
 			? null

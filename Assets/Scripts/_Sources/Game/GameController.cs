@@ -34,9 +34,10 @@ public class GameController : MonoBehaviour
 	protected SceneLoader _sceneLoader;
 
 	[Inject]
-	public void Construct(Setting setting)
+	public void Construct(Setting setting, Contexts contexts)
 	{
 		_setting = setting;
+		_contexts = contexts;
 	}
 
 	private void Awake()
@@ -55,23 +56,7 @@ public class GameController : MonoBehaviour
 	protected virtual void Start()
 	{
 		Debug.Log("Start");
-		ClearOldEntitySystem();
-		CreateEntitySystem();
 		SetupPlayers();
-	}
-
-	private void ClearOldEntitySystem()
-	{
-		foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
-		{
-			Destroy(observer.gameObject);
-		}
-	}
-
-	private void CreateEntitySystem()
-	{
-		_contexts = Contexts.sharedInstance;
-		new EntityIdGenerator(_contexts);
 	}
 
 	protected virtual void SetupPlayers()
@@ -80,10 +65,10 @@ public class GameController : MonoBehaviour
 	protected void Initialize()
 	{
 		Debug.Log("Initialize");
-
+		_isInitialized = true;
+		new EntityIdGenerator(_contexts);
 		_systems = CreateSystem(_contexts);
 		_systems.Initialize();
-		_isInitialized = true;	
 	}
 
 	void Update()
