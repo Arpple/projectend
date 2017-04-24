@@ -270,6 +270,9 @@ MonoBehaviour:
   ResultObjectPrefabs: {fileID: 114355948863298006, guid: 61f29470be4638d4392a9cfc6dff9188,
     type: 2}
   ResultObjectParent: {fileID: 886676660}
+  ResultText: {fileID: 1648410950}
+  VictoryTextColor: {r: 1, g: 0.9294118, b: 0, a: 1}
+  DefeatTextColor: {r: 0.6544118, g: 0.63997626, b: 0.63997626, a: 1}
 --- !u!114 &616663108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,6 +661,11 @@ Prefab:
     - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
         type: 2}
       propertyPath: PlayerMissionComplete
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129095499384896, guid: 201e445ec06a8204d9d2811c00e95d7e,
+        type: 2}
+      propertyPath: MainMissionComplete
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
