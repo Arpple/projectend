@@ -40,7 +40,8 @@ public abstract class EntityViewCreatingSystem<TEntity> : ReactiveSystem<TEntity
 	{
 		foreach (var obj in _linkedObjects)
 		{
-			obj.Unlink();
+			if(obj != null)
+				obj.Unlink();
 		}
 	}
 }
