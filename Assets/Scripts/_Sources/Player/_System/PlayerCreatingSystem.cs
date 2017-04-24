@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using Entitas.Unity;
 using Network;
 using UnityEngine;
 
@@ -34,14 +33,9 @@ public class PlayerCreatingSystem : IInitializeSystem, ITearDownSystem
 
 	private void LinkPlayerObject(GameEntity entity, GameObject obj)
 	{
-		obj.Link(entity, _context);
 	}
 
 	public void TearDown()
 	{
-		foreach(var p in _players)
-		{
-			p.gameObject.Unlink();
-		}
 	}
 }
