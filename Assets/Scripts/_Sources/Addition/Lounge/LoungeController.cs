@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Linq;
-using Entitas;
+﻿using Entitas;
 using Entitas.Unity;
 using Network;
 using UI;

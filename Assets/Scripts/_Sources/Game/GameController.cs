@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Entitas;
-using Entitas.VisualDebugging.Unity;
 using Network;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -91,10 +90,10 @@ public class GameController : MonoBehaviour
 
 	void OnDestory()
 	{
-		Assert.IsNotNull(_systems);
-
 		_systems.ClearReactiveSystems();
+		_systems.DeactivateReactiveSystems();
 		_systems.TearDown();
+		_contexts.Reset();
 	}
 
 	public Systems CreateSystem(Contexts contexts)

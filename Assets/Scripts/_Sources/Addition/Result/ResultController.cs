@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Entitas;
-using Entitas.VisualDebugging.Unity;
 using Network;
 using UnityEngine;
 using Zenject;
@@ -22,9 +21,10 @@ namespace Result
 		protected Setting _setting;
 
 		[Inject]
-		public void Construct(Setting setting)
+		public void Construct(Setting setting, Contexts contexts)
 		{
 			_setting = setting;
+			_contexts = contexts;
 		}
 
 		private void Awake()
@@ -35,8 +35,6 @@ namespace Result
 
 		protected virtual void Start()
 		{
-			ClearOldEntitySystem();
-			CreateEntitySystem();
 			SetupPlayers();
 			Initialize();
 		}
@@ -49,7 +47,10 @@ namespace Result
 
 		private void OnDestroy()
 		{
+			_systems.ClearReactiveSystems();
+			_systems.DeactivateReactiveSystems();
 			_systems.TearDown();
+			_contexts.Reset();
 		}
 
 		protected abstract void SetupPlayers();
@@ -63,20 +64,6 @@ namespace Result
 		protected void SetLocalPlayer(Player player)
 		{
 			_localPlayer = player;
-		}
-
-		private void ClearOldEntitySystem()
-		{
-			foreach (var observer in FindObjectsOfType<ContextObserverBehaviour>())
-			{
-				Destroy(observer.gameObject);
-			}
-		}
-
-		private void CreateEntitySystem()
-		{
-			_contexts = Contexts.sharedInstance;
-			new EntityIdGenerator(_contexts);
 		}
 
 		private void Initialize()
