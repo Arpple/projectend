@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Entitas;
 using Network;
@@ -35,9 +36,12 @@ public class GameController : MonoBehaviour
 	protected Systems _systems;
 	protected Contexts _contexts;
 	protected bool _isInitialized;
+	protected bool _isStart;
 	protected bool _isGameEnd;
 	protected IPlayerLoader _playerLoader;
 	protected SceneLoader _sceneLoader;
+
+	private Player _localPlayer;
 
 	[Inject]
 	public void Construct(Setting setting, Contexts contexts)
@@ -52,6 +56,7 @@ public class GameController : MonoBehaviour
 
 		_isInitialized = false;
 		_isGameEnd = false;
+		_isStart = false;
 		_playerLoader = GetComponent<IPlayerLoader>();
 		_sceneLoader = GetComponent<SceneLoader>();
 
@@ -67,7 +72,10 @@ public class GameController : MonoBehaviour
 	}
 
 	protected virtual void SetupPlayers()
-	{ }
+	{
+		_localPlayer = _playerLoader.GetLocalPlayer();
+		_localPlayer.AllPlayerGameInitAction = StartGame;
+	}
 
 	protected void Initialize()
 	{
@@ -77,6 +85,7 @@ public class GameController : MonoBehaviour
 		_contexts.ResetContextObserver();
 		_systems = CreateSystem(_contexts);
 		_systems.Initialize();
+		FinishInit();
 	}
 
 	void Update()
@@ -87,6 +96,7 @@ public class GameController : MonoBehaviour
 			Initialize();
 			return;
 		}
+		if (!_isStart) return;
 		Assert.IsNotNull(_systems);
 
 		_systems.Execute();
@@ -132,6 +142,23 @@ public class GameController : MonoBehaviour
 		return _playerLoader.GetLocalPlayer();
 	}
 
+	private void FinishInit()
+	{
+		if(_playerLoader.IsNetwork())
+		{
+			StartCoroutine(SendGameInit());
+		}
+		else
+		{
+			StartGame();
+		}
+	}
+
+	private void StartGame()
+	{
+		_isStart = true;
+	}
+
 	private void SetGameEnd()
 	{
 		_isGameEnd = true;
@@ -140,5 +167,14 @@ public class GameController : MonoBehaviour
 	private void EndGame()
 	{
 		SceneManager.LoadScene(GameScene.Result.ToString());
+	}
+
+	IEnumerator SendGameInit()
+	{
+		while(!_isStart)
+		{
+			_localPlayer.CmdSendGameInit();
+			yield return new WaitForSeconds(0.5f);
+		}
 	}
 }
