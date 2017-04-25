@@ -3695,6 +3695,7 @@ GameObject:
   - component: {fileID: 588894115}
   - component: {fileID: 588894114}
   - component: {fileID: 588894113}
+  - component: {fileID: 588894116}
   m_Layer: 5
   m_Name: RoundLimit <Text>
   m_TagString: Untagged
@@ -3775,6 +3776,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588894111}
+--- !u!114 &588894116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588894111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7243b1b72eef72d4ca33a3829d3d60b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: {fileID: 588894114}
 --- !u!1 &589866216
 GameObject:
   m_ObjectHideFlags: 0
@@ -12454,6 +12467,7 @@ MonoBehaviour:
   CharacterSelectPlayerPrefabs: {fileID: 114336928755106530, guid: 23c3107ee3e277845b36dfde56505ae3,
     type: 2}
   MissionBook: {fileID: 1413758745}
+  RoundLimit: {fileID: 588894116}
 --- !u!114 &2138285440
 MonoBehaviour:
   m_ObjectHideFlags: 0

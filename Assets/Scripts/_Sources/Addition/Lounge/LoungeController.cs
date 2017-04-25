@@ -21,6 +21,7 @@ namespace Lounge
 		public Button LockButton;
 		public LoungePlayer CharacterSelectPlayerPrefabs;
 		public MissionBookController MissionBook;
+		public RoundDisplay RoundLimit;
 
 		protected Setting _setting;
 		protected Character _focusingCharacter;
@@ -152,6 +153,7 @@ namespace Lounge
 			var systems = new Feature("Systems")
 				.Add(new PlayerCreatingSystem(contexts, players))
 				.Add(new LocalPlayerSetupSystem(contexts, _localPlayer))
+				.Add(new RoundLimitDisplaySystem(contexts, RoundLimit))
 				.Add(new CharacterLoadingSystems(contexts))
 				.Add(new CharacterDataLoadingSystem(contexts, _setting.UnitSetting.CharacterSetting))
 				.Add(new CharacterIconCreatingSystem(contexts, CharacterSelectSlideMenu))
