@@ -13,8 +13,8 @@ public class Skill_GreedyTax: ActiveAbility<TileEntity> {
         int multiple = ReduceTileCharge(target);
         for(int i = 1; i <= multiple; i++) {
             var card = CreateResourceCard(target.tileResource.Type);
-            //card.AddOwner(caster.owner.Entity);
-            EventMoveDeckCard.MoveCardToPlayer(card, caster.owner.Entity);
+            card.AddOwner(caster.owner.Entity);
+            //EventMoveDeckCard.MoveCardToPlayer(card, caster.owner.Entity);
         }
     }
 

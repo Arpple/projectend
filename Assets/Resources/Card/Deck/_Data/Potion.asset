@@ -16,6 +16,6 @@ MonoBehaviour:
   ActiveDesc: Recovery player hp 1 point
   PassiveDesc: "Put it to Box. \nRevive yourself when you dead."
   Type: 2
-  CreateCount: 5
+  CreateCount: 0
   AbilityClassFullName: AbilityRecover
   Effect: {fileID: 114594017304363474, guid: 3bcee4cf26db5564585b7b79f7c77ef5, type: 2}
