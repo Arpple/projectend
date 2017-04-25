@@ -119,7 +119,9 @@ public class MainActionGroup : CardActionGroup
 		{
 			HideAllExcept(CardButton);
 			var disGroup = (CardDiscardGroup)ShowSubAction(GameUI.Instance.DiscardGroup);
-			disGroup.Setup(CardButton.Panel, overCount, EndTurn);
+			disGroup.Setup(CardButton.Panel, overCount, EndTurn,
+				string.Format("cards over capacity, discard {0} to end turn", overCount)
+			);
 		}
 		else
 		{

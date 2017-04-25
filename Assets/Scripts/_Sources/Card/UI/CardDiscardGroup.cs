@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [Serializable]
 public class CardDiscardGroup : CardActionGroup
 {
+	public CardSelectorDescription Description;
 	public Button ConfirmButton;
 	public Button CancelButton;
 
@@ -39,13 +40,14 @@ public class CardDiscardGroup : CardActionGroup
 		CardPanel.SetActive(true);
 	}
 
-	public void Setup(GameObject previousCardPanel, int discardCount, UnityAction onCardsDiscarded)
+	public void Setup(GameObject previousCardPanel, int discardCount, UnityAction onCardsDiscarded, string description)
 	{
 		_targetCount = discardCount;
 		_onCardsDiscarded = onCardsDiscarded;
 		_previousCardPanel = previousCardPanel;
 		if (_previousCardPanel != null && _previousCardPanel != CardPanel)
 			_previousCardPanel.SetActive(false);
+		Description.ShowDescription(description, discardCount);
 	}
 
 	protected override void Hide()
@@ -55,6 +57,7 @@ public class CardDiscardGroup : CardActionGroup
 		CardPanel.SetActive(false);
 		if(_previousCardPanel != null)
 			_previousCardPanel.SetActive(true);
+		Description.Hide();
 	}
 
 	public override void OnCardClick(CardObject card)
@@ -73,6 +76,7 @@ public class CardDiscardGroup : CardActionGroup
 	{
 		_discardingCards.Remove(card);
 		card.HideHighlight();
+		Description.RemoveSelectedCard();
 	}
 
 	private void AddToDiscardList(CardObject card)
@@ -81,6 +85,7 @@ public class CardDiscardGroup : CardActionGroup
 		{
 			_discardingCards.Add(card);
 			card.ShowHighlight();
+			Description.AddSelectedCard();
 		}
 	}
 

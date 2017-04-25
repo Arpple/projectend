@@ -54,7 +54,9 @@ public class CardAbilityCaller
 		if (disAbility != null)
 		{
 			var disGroup = (CardDiscardGroup)_callerGroup.ShowSubAction(GameUI.Instance.DiscardGroup);
-			disGroup.Setup(_callerGroup.CardPanel, disAbility.Count, onComplete);
+			disGroup.Setup(_callerGroup.CardPanel, disAbility.Count, onComplete, 
+				string.Format("discard {0} card(s) to activate", disAbility.Count)
+			);
 		}
 		else
 		{
