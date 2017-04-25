@@ -16,3 +16,4 @@ MonoBehaviour:
   Cost: 2
   WeatherEffect: {fileID: 114810292166980498, guid: f4a034c280f42b448bed1b8c0cbeef0d,
     type: 2}
+  WeatherAbility: WeatherSummer
