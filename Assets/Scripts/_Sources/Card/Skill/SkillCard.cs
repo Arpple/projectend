@@ -4,4 +4,6 @@
 
 	//Boss - Monolith
 	Monolith_JudgementLight,
+
+    RabbitFilch,
 }

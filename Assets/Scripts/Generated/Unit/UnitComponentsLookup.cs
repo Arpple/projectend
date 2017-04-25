@@ -8,28 +8,30 @@
 //------------------------------------------------------------------------------
 public static class UnitComponentsLookup {
 
-    public const int AbilityAttack = 0;
-    public const int AbilityDamage = 1;
-    public const int BossUnit = 2;
-    public const int BuffList = 3;
-    public const int Character = 4;
-    public const int CharacterSkillsResource = 5;
-    public const int Dead = 6;
-    public const int Hitpoint = 7;
-    public const int Id = 8;
-    public const int Local = 9;
-    public const int MapPosition = 10;
-    public const int Owner = 11;
-    public const int Sprite = 12;
-    public const int UnitDetail = 13;
-    public const int UnitIcon = 14;
-    public const int UnitIconResource = 15;
-    public const int UnitStatus = 16;
-    public const int View = 17;
+    public const int AbilityAggressiveEvent = 0;
+    public const int AbilityAttack = 1;
+    public const int AbilityDamage = 2;
+    public const int BossUnit = 3;
+    public const int BuffList = 4;
+    public const int Character = 5;
+    public const int CharacterSkillsResource = 6;
+    public const int Dead = 7;
+    public const int Hitpoint = 8;
+    public const int Id = 9;
+    public const int Local = 10;
+    public const int MapPosition = 11;
+    public const int Owner = 12;
+    public const int Sprite = 13;
+    public const int UnitDetail = 14;
+    public const int UnitIcon = 15;
+    public const int UnitIconResource = 16;
+    public const int UnitStatus = 17;
+    public const int View = 18;
 
-    public const int TotalComponents = 18;
+    public const int TotalComponents = 19;
 
     public static readonly string[] componentNames = {
+        "AbilityAggressiveEvent",
         "AbilityAttack",
         "AbilityDamage",
         "BossUnit",
@@ -51,6 +53,7 @@ public static class UnitComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AbilityAggressiveEventComponent),
         typeof(AbilityAttackComponent),
         typeof(AbilityDamageComponent),
         typeof(BossUnitComponent),
