@@ -7,14 +7,22 @@ public class WeatherEffectSystem: GameReactiveSystem {
     }
 
     protected override void Execute(List<GameEntity> entities) {
-        var weatherEffect = _context.GetEntities(GameMatcher.WeatherEffect);
-        //UnityEngine.Debug.Log("WeatherEffect = "+weatherEffect.Length);
-        foreach(var effect in weatherEffect) {
-            foreach(var weather in entities) {
-                effect.weatherEffect.Effect.gameObject.SetActive(effect.weatherEffect.Type == weather.weather.Type);
+        
+        var weatherEffectDic = _context.GetEntities(GameMatcher.WeatherEffectDictionary)[0];
+        var effects = _context.GetEntities(GameMatcher.WeatherEffect);
+
+        foreach(var weather in entities) {
+            foreach(var effect in effects) {
+                //Remove current
+                effect.weatherEffect.Effect.gameObject.SetActive(false);
+
+                //reset new :3
+                effect.weatherEffect.Type = weather.weather.Type;
+                effect.weatherEffect.Effect = weatherEffectDic.weatherEffectDictionary.DataSet[weather.weather.Type];
+                effect.weatherEffect.Effect.gameObject.SetActive(true);
             }
         }
-        
+
     }
 
     protected override bool Filter(GameEntity entity) {

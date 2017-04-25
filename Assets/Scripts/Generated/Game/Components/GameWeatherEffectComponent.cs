@@ -11,7 +11,7 @@ public partial class GameEntity {
     public WeatherEffectComponent weatherEffect { get { return (WeatherEffectComponent)GetComponent(GameComponentsLookup.WeatherEffect); } }
     public bool hasWeatherEffect { get { return HasComponent(GameComponentsLookup.WeatherEffect); } }
 
-    public void AddWeatherEffect(Weather newType, WeatherChangeEffect newEffect) {
+    public void AddWeatherEffect(Weather newType, WeatherDisplayEffect newEffect) {
         var index = GameComponentsLookup.WeatherEffect;
         var component = CreateComponent<WeatherEffectComponent>(index);
         component.Type = newType;
@@ -19,7 +19,7 @@ public partial class GameEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceWeatherEffect(Weather newType, WeatherChangeEffect newEffect) {
+    public void ReplaceWeatherEffect(Weather newType, WeatherDisplayEffect newEffect) {
         var index = GameComponentsLookup.WeatherEffect;
         var component = CreateComponent<WeatherEffectComponent>(index);
         component.Type = newType;

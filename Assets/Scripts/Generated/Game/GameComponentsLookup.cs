@@ -31,13 +31,15 @@ public static class GameComponentsLookup {
     public const int Turn = 20;
     public const int TurnNode = 21;
     public const int View = 22;
-    public const int Weather = 23;
-    public const int WeatherCost = 24;
-    public const int WeatherEffect = 25;
-    public const int WeatherResloveFail = 26;
-    public const int Winner = 27;
+    public const int WeatherAbility = 23;
+    public const int Weather = 24;
+    public const int WeatherCost = 25;
+    public const int WeatherEffect = 26;
+    public const int WeatherEffectDictionary = 27;
+    public const int WeatherResloveFail = 28;
+    public const int Winner = 29;
 
-    public const int TotalComponents = 28;
+    public const int TotalComponents = 30;
 
     public static readonly string[] componentNames = {
         "AbilityAttack",
@@ -63,9 +65,11 @@ public static class GameComponentsLookup {
         "Turn",
         "TurnNode",
         "View",
+        "WeatherAbility",
         "Weather",
         "WeatherCost",
         "WeatherEffect",
+        "WeatherEffectDictionary",
         "WeatherResloveFail",
         "Winner"
     };
@@ -94,9 +98,11 @@ public static class GameComponentsLookup {
         typeof(TurnComponent),
         typeof(TurnNodeComponent),
         typeof(ViewComponent),
+        typeof(WeatherAbilityComponent),
         typeof(WeatherComponent),
         typeof(WeatherCostComponent),
         typeof(WeatherEffectComponent),
+        typeof(WeatherEffectDictionaryComponent),
         typeof(WeatherResloveFailComponent),
         typeof(WinnerComponent)
     };
