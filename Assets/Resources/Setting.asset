@@ -57,6 +57,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: b6c6e9e18d32c134c90f7e52e4457637, type: 2}
       - {fileID: 11400000, guid: 27e3a63e4e091e64f8545d0817dfe533, type: 2}
       - {fileID: 11400000, guid: b038921685ce26a48b25e890b3f3ab45, type: 2}
+      - {fileID: 11400000, guid: fab7348bd98363a459f7244901049c4a, type: 2}
       MaxHandCardCount: 10
       StartCardCount: 5
       StartTurnDrawCount: 2
@@ -69,6 +70,7 @@ MonoBehaviour:
     SkillCardSetting:
       DataList:
       - {fileID: 11400000, guid: ede3541b273f4e24e8e33497e2c7a72d, type: 2}
+      - {fileID: 11400000, guid: 8389ebf636079b041989f8b0b99e6a75, type: 2}
   BuffSetting:
     DataList:
     - {fileID: 11400000, guid: b6b4f0d295095274f93d5e2a395eb3e3, type: 2}

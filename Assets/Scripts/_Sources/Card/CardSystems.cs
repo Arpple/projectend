@@ -48,6 +48,7 @@
 	}
 
     private void CreateAbilitySystem(Contexts contexts) {
+        Add(new BlockAggressiveEventSystem(contexts));
         Add(new BlockAttackSystem(contexts));
         Add(new DealDamageSystem(contexts));
     }

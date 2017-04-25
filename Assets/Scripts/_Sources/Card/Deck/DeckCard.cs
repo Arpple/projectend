@@ -7,5 +7,5 @@
 	Exhaust,
     MysteryLeaf,
     Defense,
-
+    Protection,
 }
