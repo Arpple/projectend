@@ -7,12 +7,12 @@ public class Skill_TwinDragon: ActiveAbility<UnitEntity> {
     }
 
     public override TileEntity[] GetTilesArea(UnitEntity caster) {
-        return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.unitStatus.VisionRange);
+        return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.unitStatus.VisionRange*3);
     }
 
     public override void OnTargetSelected(UnitEntity caster, UnitEntity target) {
         this._target = target;
-        target.AddAbilityAggressiveEvent(target, 1, twinDragon);
+        target.AddAbilityAggressiveEvent(target, 5, twinDragon);
     }
 
     private void twinDragon() {

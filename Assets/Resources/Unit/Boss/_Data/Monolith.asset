@@ -15,7 +15,7 @@ MonoBehaviour:
   IconSprite: {fileID: 21300000, guid: 99451e188f477954a89c1734e559c75a, type: 3}
   Name: The Great Monolith
   Description: 
-  HitPoint: 150
+  HitPoint: 20
   AttackPower: 1
   AttackRange: 1
   VisionRange: 1
