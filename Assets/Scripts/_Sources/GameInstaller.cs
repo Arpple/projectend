@@ -1,4 +1,5 @@
 ﻿using Network;
+using UnityEngine;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
@@ -15,6 +16,7 @@ public class GameInstaller : MonoInstaller
 		Container.Bind<CrossSceneObject>().FromInstance(Instantiate(CrossSceneObject) as CrossSceneObject).AsSingle();
 		Container.Bind<LoadingScreen>().FromInstance(Instantiate(LoadingScreen) as LoadingScreen).AsSingle();
 		Container.Bind<Contexts>().FromMethod(CreateContexts).AsSingle();
+		Container.Bind<Camera>().FromInstance(Camera.main).AsTransient();
 	}
 
 	Contexts CreateContexts(InjectContext context)
