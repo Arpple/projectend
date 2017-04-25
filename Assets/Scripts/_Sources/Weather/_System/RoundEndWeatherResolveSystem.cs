@@ -48,6 +48,8 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
             if(!costMan.IsWeatherResolved()) {
                 e.isWeatherResloveFail = true;
             }
+
+            //var weather
 		}
 	}
 	

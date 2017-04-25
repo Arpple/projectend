@@ -16,18 +16,24 @@ public class InitializeWeatherEffectSystem: IInitializeSystem {
     }
 
     public void Initialize() {
-        Dictionary<Weather, WeatherDisplayEffect> _weatherEffect = new Dictionary<Weather, WeatherDisplayEffect>();
+        Dictionary<Weather, WeatherDataComponent> _weatherDic = new Dictionary<Weather, WeatherDataComponent>();
         foreach(WeatherData data in _setting.DataList) {
             WeatherDisplayEffect effect = Object.Instantiate<WeatherDisplayEffect>(data.WeatherEffect, _camera, false);
             effect.gameObject.SetActive(false);
-            _weatherEffect.Add(data.Type,effect);
+
+            var dataCom = new WeatherDataComponent();
+            dataCom.ability = new WeatherAbilityComponent();
+            dataCom.effect = new WeatherEffectComponent();
+            dataCom.ability.Ability = System.Reflection.Assembly.GetExecutingAssembly().CreateInstance(data.WeatherAbility) as WeatherAbility;
+            dataCom.effect.Effect = effect;
+            _weatherDic.Add(data.Type,dataCom);
         }
 
         var entity = _gameContexts.CreateEntity();
 
         entity.AddWeatherEffect(Weather.Normal
-            ,_weatherEffect[Weather.Normal]);
-        entity.AddWeatherEffectDictionary(_weatherEffect);
+            ,_weatherDic[Weather.Normal].effect.Effect);
+        entity.AddWeatherDictionary(_weatherDic);
     }
 
 }

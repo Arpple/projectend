@@ -8,7 +8,7 @@ public class WeatherEffectSystem: GameReactiveSystem {
 
     protected override void Execute(List<GameEntity> entities) {
         
-        var weatherEffectDic = _context.GetEntities(GameMatcher.WeatherEffectDictionary)[0];
+        var weatherDic = _context.GetEntities(GameMatcher.WeatherDictionary)[0];
         var effects = _context.GetEntities(GameMatcher.WeatherEffect);
 
         foreach(var weather in entities) {
@@ -18,7 +18,7 @@ public class WeatherEffectSystem: GameReactiveSystem {
 
                 //reset new :3
                 effect.weatherEffect.Type = weather.weather.Type;
-                effect.weatherEffect.Effect = weatherEffectDic.weatherEffectDictionary.DataSet[weather.weather.Type];
+                effect.weatherEffect.Effect = weatherDic.weatherDictionary.DataSet[weather.weather.Type].effect.Effect;
                 effect.weatherEffect.Effect.gameObject.SetActive(true);
             }
         }
