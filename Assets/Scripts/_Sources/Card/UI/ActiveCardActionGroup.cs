@@ -75,7 +75,7 @@
 
 	protected void ShowCardTarget(CardObject card)
 	{
-		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+		if (!CanUseCard()) return;
 
 		var cardEntity = card.Entity;
 		if (cardEntity.hasAbility)
@@ -97,5 +97,13 @@
 				))
 					return;
 		}
+	}
+
+	protected bool CanUseCard()
+	{
+		var localPlayer = Contexts.sharedInstance.game.localEntity;
+		var localUnit = Contexts.sharedInstance.unit.localEntity;
+		return localPlayer.isPlaying
+			&& !localUnit.isDead;
 	}
 }
