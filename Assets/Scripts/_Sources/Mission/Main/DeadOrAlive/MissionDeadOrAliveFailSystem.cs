@@ -19,7 +19,7 @@ public class MissionDeadOrAliveFailSystem : GameReactiveSystem
 
 	protected override bool Filter(GameEntity entity)
 	{
-		return entity.isWeatherResloveFail;
+		return entity.isWeatherResloveFail && _context.mainMission.Type == MainMission.DeadOrAlive;
 	}
 
 	protected override void Execute(List<GameEntity> entities)
