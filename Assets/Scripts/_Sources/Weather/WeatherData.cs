@@ -6,6 +6,7 @@ public class WeatherData : ScriptableObject, IIndexData<Weather>
 	public Weather Type;
 	public string Name;
 	public Resource Cost;
+    public WeatherChangeEffect WeatherEffect;
 
 	public Weather GetIndex()
 	{

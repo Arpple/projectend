@@ -14,3 +14,5 @@ MonoBehaviour:
   Type: 0
   Name: Winter
   Cost: 3
+  WeatherEffect: {fileID: 114129977421265054, guid: e935a476fe7fb2842840e4265377cee5,
+    type: 2}
