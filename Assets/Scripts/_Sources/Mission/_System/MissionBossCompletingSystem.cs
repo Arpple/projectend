@@ -4,10 +4,12 @@ using Entitas;
 public abstract class MissionBossCompletingSystem : UnitReactiveSystem
 {
 	protected GameContext _gameContext;
+	protected GameEventContext _eventContext;
 
 	public MissionBossCompletingSystem(Contexts contexts) : base(contexts)
 	{
 		_gameContext = contexts.game;
+		_eventContext = contexts.gameEvent;
 	}
 
 	protected override Collector<UnitEntity> GetTrigger(IContext<UnitEntity> context)
@@ -27,5 +29,7 @@ public abstract class MissionBossCompletingSystem : UnitReactiveSystem
 	protected override void Execute(List<UnitEntity> entities)
 	{
 		_gameContext.isMainMissionCompleted = true;
+		var end = _eventContext.CreateEntity();
+		end.isEventEndGame = true;
 	}
 }

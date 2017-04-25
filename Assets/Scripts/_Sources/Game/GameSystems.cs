@@ -14,5 +14,6 @@ public class GameSystems : Feature
 	{
 		Add(new PlayerCreatingSystem(contexts, players));
 		Add(new LocalPlayerSetupSystem(contexts, localPlayer));
+		Add(new AllPlayerDeadGameEnd(contexts));
 	}
 }
