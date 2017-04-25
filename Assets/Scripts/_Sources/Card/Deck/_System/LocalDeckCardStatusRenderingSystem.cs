@@ -32,17 +32,19 @@ public class LocalDeckCardStatusRenderingSystem : ReactiveSystem<CardEntity>
 
 	protected override bool Filter(CardEntity entity)
 	{
-		return entity.hasDeckCard;
+        return (entity.hasDeckCard || entity.hasResourceCard);
 	}
 
 	protected override void Execute(List<CardEntity> entities)
 	{
 		var deckCardCount = _context.GetPlayerDeckCards(_gameContext.localEntity)
 			.Length;
-		var boxCardCount = _context.GetPlayerBoxCards(_gameContext.localEntity)
+        var resouceHandCount = _context.GetPlayerResourceCards(_gameContext.localEntity)
+            .Length;
+        var boxCardCount = _context.GetPlayerBoxCards(_gameContext.localEntity)
 			.Length;
-
-		_status.UpdateDeckCardCount(deckCardCount);
+        //UnityEngine.Debug.Log("Card > "+(deckCardCount+resouceHandCount)+","+boxCardCount);
+		_status.UpdateDeckCardCount(deckCardCount+resouceHandCount);
 		_status.UpdateBoxCardCount(boxCardCount);
 	}
 }

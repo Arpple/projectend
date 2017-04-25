@@ -18,7 +18,7 @@ public static class DeckCardExtension
 
 	public static CardEntity[] GetPlayerDeckCards(this CardContext context, GameEntity playerEntity)
 	{
-		return context.GetDeckCards()
+        return context.GetDeckCards()
 			.Where(c => c.hasOwner && c.owner.Entity == playerEntity && !c.hasInBox)
 			.ToArray();
 	}

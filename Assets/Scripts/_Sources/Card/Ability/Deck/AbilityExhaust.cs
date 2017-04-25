@@ -1,6 +1,6 @@
 ﻿public class AbilityExhaust : ActiveAbility<UnitEntity>
 {
-    private UnitEntity _caster, _target;
+    private UnitEntity  _target;
 	public override TileEntity[] GetTilesArea(UnitEntity caster)
 	{
 		return TileAreaSelector.GetAllInRange(caster.GetTileOfUnit(), caster.unitStatus.VisionRange);
@@ -13,7 +13,6 @@
 
 	public override void OnTargetSelected(UnitEntity caster, UnitEntity target)
 	{
-        this._caster = caster;
         this._target = target;
         target.AddAbilityAggressiveEvent(target, 1, CastExhaust);
 	}
