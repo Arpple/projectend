@@ -27,6 +27,9 @@ namespace Result
 		private void Awake()
 		{
 			_ui = GetComponent<ResultUIController>();
+
+			_playerLoader = GetComponent<IPlayerLoader>();
+			_sceneLoader = GetComponent<SceneLoader>();
 		}
 
 		protected virtual void Start()
