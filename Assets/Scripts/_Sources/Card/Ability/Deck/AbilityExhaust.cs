@@ -13,6 +13,8 @@
 
 	public override void OnTargetSelected(UnitEntity caster, UnitEntity target)
 	{
+        this._caster = caster;
+        this._target = target;
         target.AddAbilityAggressiveEvent(target, 1, CastExhaust);
 	}
     
