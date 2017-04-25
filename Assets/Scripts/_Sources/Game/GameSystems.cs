@@ -7,7 +7,6 @@ public class GameSystems : Feature
 		: base("Game System")
 	{
 		CreatePlayerSystems(contexts, players, localPlayer);
-		CreateMissionSystem(contexts);
 		Add(new WinSystem(contexts));
 	}
 
@@ -15,24 +14,5 @@ public class GameSystems : Feature
 	{
 		Add(new PlayerCreatingSystem(contexts, players));
 		Add(new LocalPlayerSetupSystem(contexts, localPlayer));
-	}
-
-	private void CreateMissionSystem(Contexts contexts)
-	{
-		Add(new MainMissionSetupSystem(contexts));
-		Add(new PlayerMissionSetupSystem(contexts));
-
-		//main-monolith
-		{
-			Add(new MissionBossMonolithSetupSystem(contexts));
-			Add(new MissionBossMonolithCompletingSystem(contexts));
-		}
-
-		//player
-		{
-			Add(new PlayerMissionHunterCompletingSystem(contexts));
-            Add(new KeeperAddedSystem(contexts));
-            Add(new KeeperResloveMissionSystem(contexts));
-		}
 	}
 }
