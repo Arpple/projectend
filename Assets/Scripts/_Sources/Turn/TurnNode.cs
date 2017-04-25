@@ -35,11 +35,7 @@ public class TurnNode : MonoBehaviour
 
 	public void FocusPlayer()
 	{
-		var camera = Camera.main;
-		Vector3 target = _unit.mapPosition.GetWorldPosition();
-		Vector3 current = camera.transform.position;
-
-		StartCoroutine(MoveCamera(camera.transform, current, target, 0.1f));
+		CameraController.Focus(_unit);
 	}
 
 	IEnumerator MoveCamera(Transform camera, Vector3 start, Vector3 end, float time)
