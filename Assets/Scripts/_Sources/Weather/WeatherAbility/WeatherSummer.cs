@@ -3,18 +3,24 @@
 public class WeatherSummer: WeatherAbility {
     public override void ActiveClearEffect(GameEntity[] allplayers, GameEntity MVPPlayer) {
         Debug.Log("Win weaher...");
+        UnitEntity p;
         foreach(var player in allplayers) {
-            //var playerStat = Contexts.sharedInstance.unit;
-            //player.ReplaceHitpoint(player.hitpoint.Value+1);
+            Debug.Log("Win weaher...");
+            p = Contexts.sharedInstance.unit.GetEntityOwnedBy(player);
+            p.RecoverHitpoint(1);
         }
-        //MVPPlayer.ReplaceHitpoint(MVPPlayer.hitpoint.Value+1) ;
+        p = Contexts.sharedInstance.unit.GetEntityOwnedBy(MVPPlayer);
+        p.RecoverHitpoint(1);
     }
 
     public override void ActiveFailEffect(GameEntity[] allplayers, GameEntity MVPPlayer) {
-        Debug.Log("Fail weaher...");
+        UnitEntity p;
         foreach(var player in allplayers) {
-        //    player.ReplaceHitpoint(player.hitpoint.Value - 1);
+            Debug.Log("Lost weaher...");
+            p = Contexts.sharedInstance.unit.GetEntityOwnedBy(player);
+            p.TakeFatalDamage(1);
         }
-        //MVPPlayer.ReplaceHitpoint(MVPPlayer.hitpoint.Value -1);
+        p = Contexts.sharedInstance.unit.GetEntityOwnedBy(MVPPlayer);
+        p.TakeFatalDamage(1);
     }
 }

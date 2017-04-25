@@ -32,15 +32,36 @@ public class BossActiveSkillUsingSystem : GameReactiveSystem
 
 	protected override void Execute(List<GameEntity> entities)
 	{
+        
 		foreach (var e in entities)
 		{
-			var cards = _cardContext.GetPlayerSkills<SelfActiveAbility>(e);
+            Debug.Log("Boss Prepare active");
+            var cards = _cardContext.GetPlayerSkills<ActiveAbility<UnitEntity>>(e);
 			var unit = _unitContext.GetEntityOwnedBy(e);
 			foreach (var card in cards)
 			{
-				var ability = card.ability.Ability as SelfActiveAbility;
+                Debug.Log("Boss Activeskill card");
+                var ability = card.ability.Ability as ActiveAbility<UnitEntity>;
+                Debug.Log("ability boss = "+(ability==null));
 				ability.OnTargetSelected(unit, unit);
-			}
+
+                if(card.hasAbilityEffect) {
+                    IAbilityAnimation animation = ability as IAbilityAnimation;
+                    if(animation == null) {
+
+                        var effect = Object.Instantiate(
+                            card.abilityEffect.EffectObject,
+                            unit.view.GameObject.transform 
+                            , false
+                        ).GetComponent<AbilityEffect>();
+                        effect.PlayAnimation();
+
+                    } else {
+                        var effect = card.abilityEffect.EffectObject;
+                        animation.PlayAnimation(effect,unit,unit);
+                    }
+                }
+            }
 		}
 
 		if(_syscon.AutoEndTurnForBoss)
