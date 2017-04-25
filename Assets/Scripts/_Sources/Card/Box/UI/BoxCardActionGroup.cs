@@ -30,7 +30,7 @@ public class BoxCardActionGroup : ActiveCardActionGroup
 
 	public void DiscardCard(CardObject card)
 	{
-		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+		if (!CanUseCard()) return;
 
 		EventMoveDeckCard.MoveCardToShareDeck(card.Entity);
 		CloseAction();
@@ -38,7 +38,7 @@ public class BoxCardActionGroup : ActiveCardActionGroup
 
 	public void MoveToDeck(CardObject card)
 	{
-		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+		if (!CanUseCard()) return;
 
 		EventMoveDeckCard.MoveCardOutFromBox(card.Entity);
 		CloseAction();
@@ -46,7 +46,7 @@ public class BoxCardActionGroup : ActiveCardActionGroup
 
 	public void MoveBoxCard(CardObject card, int direction)
 	{
-		if (!Contexts.sharedInstance.game.IsLocalPlayerTurn) return;
+		if (!CanUseCard()) return;
 
 		if (IsAtLeftMost(card))
 		{
