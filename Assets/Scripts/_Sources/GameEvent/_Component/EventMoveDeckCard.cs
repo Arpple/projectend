@@ -25,8 +25,7 @@ public class EventMoveDeckCard : GameEventComponent
 
 	public static void MoveCardToPlayer(CardEntity cardEntity, GameEntity playerEntity)
 	{
-		Assert.IsTrue(cardEntity.hasDeckCard);
-
+		Assert.IsTrue(cardEntity.hasDeckCard || cardEntity.hasResourceCard);
 		MoveCard(cardEntity, playerEntity, false);
 	}
 

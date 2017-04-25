@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3caeed58b1aa6b947b56b4be7063aa57, type: 3}
-  m_Name: RabbitFilch
+  m_Name: GreedyTax
   m_EditorClassIdentifier: 
-  MainSprite: {fileID: 21300000, guid: a8f7c2163a30a5b43bc803013b65c767, type: 3}
+  MainSprite: {fileID: 21300000, guid: ae18cff3c4373ea42840340cbd06a10c, type: 3}
   Name: Rabbit Filch
-  ActiveDesc: Steal 1 card from target
+  ActiveDesc: Collect all resource from 1 tile
   PassiveDesc: 
-  Type: 2
-  AbilityClassFullName: Skill_RabbitFilch
+  Type: 4
+  AbilityClassFullName: Skill_GreedyTax
   Effect: {fileID: 114610748093884130, guid: 02090fedb65f91540b8675206266ce83, type: 2}
