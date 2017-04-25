@@ -275,7 +275,7 @@ MonoBehaviour:
   ResultText: {fileID: 1648410950}
   VictoryTextColor: {r: 1, g: 0.9294118, b: 0, a: 1}
   DefeatTextColor: {r: 0.6544118, g: 0.63997626, b: 0.63997626, a: 1}
-  BackButton: {fileID: 0}
+  BackButton: {fileID: 1749227234}
 --- !u!114 &616663108
 MonoBehaviour:
   m_ObjectHideFlags: 0

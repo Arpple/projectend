@@ -25,6 +25,7 @@ namespace Network
 
 		[Header("Scene Loading Sync")]
 		public bool IsClientSceneLoaded;
+		public bool IsGameSceneInit;
 
 		public UnityAction<string> NameUpdateAction;
 		public UnityAction<PlayerIcon> IconUpdateAction;
@@ -35,7 +36,16 @@ namespace Network
 		public UnityAction<int> MissionTargetUpdateAction;
 		public UnityAction<int> RoundLimitUpdateAction;
 		public UnityAction AllPlayerSceneLoadedAction;
+		public UnityAction AllPlayerGameInitAction;
+
+		//non reset action
 		public UnityAction DisconnectCallback;
+
+		private void Awake()
+		{
+			IsClientSceneLoaded = false;
+			IsGameSceneInit = false;
+		}
 
 		public void ResetAction()
 		{
@@ -48,7 +58,6 @@ namespace Network
 			MissionTargetUpdateAction = null;
 			RoundLimitUpdateAction = null;
 			AllPlayerSceneLoadedAction = null;
-			DisconnectCallback = null;
 		}
 
 		public void OnNameChanged(string name)
@@ -257,6 +266,25 @@ namespace Network
 			if (AllPlayerSceneLoadedAction != null)
 			{
 				AllPlayerSceneLoadedAction();
+			}
+		}
+
+		[Command]
+		public void CmdSendGameInit()
+		{
+			IsGameSceneInit = true;
+			if (NetworkController.Instance.AllPlayers.TrueForAll(p => p.IsGameSceneInit))
+			{
+				RpcGameStart();
+			}
+		}
+
+		[ClientRpc]
+		public void RpcGameStart()
+		{
+			if(AllPlayerGameInitAction != null)
+			{
+				AllPlayerGameInitAction();
 			}
 		}
 		#endregion
