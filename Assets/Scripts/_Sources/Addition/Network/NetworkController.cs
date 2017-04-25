@@ -46,8 +46,8 @@ namespace Network
 		public void ResetCallback()
 		{
 			OnAllPlayerReadyCallback = null;
-			OnClientErrorCallback = null;
-			OnServerErrorCallback = null;
+			//OnClientErrorCallback = null;
+			//OnServerErrorCallback = null;
 			ClientPlayerStartCallback = null;
 			LocalPlayerStartCallback = null;
 			ServerSceneChangedCallback = null;
@@ -91,6 +91,13 @@ namespace Network
 		{
 			base.OnClientError(conn, errorCode);
 			if (OnClientErrorCallback != null) OnClientErrorCallback(errorCode);
+		}
+
+		public override void OnClientDisconnect(NetworkConnection conn)
+		{
+			base.OnClientDisconnect(conn);
+			Stop();
+			SceneManager.LoadScene(GameScene.Title.ToString());
 		}
 
 		public override void OnClientSceneChanged(NetworkConnection conn)
