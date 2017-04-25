@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3caeed58b1aa6b947b56b4be7063aa57, type: 3}
-  m_Name: RabbitFilch
+  m_Name: TwinDragon
   m_EditorClassIdentifier: 
-  MainSprite: {fileID: 21300000, guid: a8f7c2163a30a5b43bc803013b65c767, type: 3}
-  Name: Rabbit Filch
-  ActiveDesc: Steal 1 card from target
+  MainSprite: {fileID: 21300000, guid: a5ebc1d9dd1710c4387c09b6fd6823ca, type: 3}
+  Name: TwinDragon
+  ActiveDesc: 'Deal 1 fatal-damage to all unit in 100 Range '
   PassiveDesc: 
-  Type: 2
-  AbilityClassFullName: Skill_RabbitFilch
-  Effect: {fileID: 114610748093884130, guid: 02090fedb65f91540b8675206266ce83, type: 2}
+  Type: 3
+  AbilityClassFullName: Skill_TwinDragon
+  Effect: {fileID: 114358279768370704, guid: d52d613f9c81b27488c2dba57a76372e, type: 2}
