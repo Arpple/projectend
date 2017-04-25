@@ -27,6 +27,7 @@ public class InitializeWeatherEffectSystem: IInitializeSystem {
             dataCom.ability.Ability = System.Reflection.Assembly.GetExecutingAssembly().CreateInstance(data.WeatherAbility) as WeatherAbility;
             dataCom.effect.Effect = effect;
             _weatherDic.Add(data.Type,dataCom);
+
         }
 
         var entity = _gameContexts.CreateEntity();

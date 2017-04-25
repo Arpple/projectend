@@ -42,15 +42,22 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
                 cost.ContainsKey(Resource.Coal) ? pay[Resource.Coal] : 0,
                 costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName
             );
+            
+            //Reslove Weather
+            var weather = _context.GetEntities(GameMatcher.Weather)[0];
+            var weatherDic = _context.GetEntities(GameMatcher.WeatherDictionary)[0];
+            var weatherAbility = weatherDic.weatherDictionary.DataSet[weather.weather.Type].ability.Ability;
 
-			Debug.Log("pass : " + costMan.IsWeatherResolved()
-                +" MVP is -> " + costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName);
+            Debug.Log("pass : " + costMan.IsWeatherResolved()
+                + " MVP is -> " + costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName);
+
             if(!costMan.IsWeatherResolved()) {
                 e.isWeatherResloveFail = true;
+                weatherAbility.ActiveFailEffect(costMan.getPlayers(),costMan.getMVPPlayer());
+            } else {
+                weatherAbility.ActiveClearEffect(costMan.getPlayers(),costMan.getMVPPlayer());
             }
-
-            //var weather
-		}
+        }
 	}
 	
 	private class WeatherCardCostManager
@@ -90,6 +97,10 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 		{
 			return _isPass;
 		}
+
+        public GameEntity[] getPlayers() {
+            return this._players;
+        }
 
         public Dictionary<Resource,int> getCostResources() {
             return _costMap;

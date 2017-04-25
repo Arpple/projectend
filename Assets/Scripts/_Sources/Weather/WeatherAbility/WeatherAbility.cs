@@ -1,6 +1,6 @@
 ﻿using System;
 
 public abstract class WeatherAbility: IWeatherEffectActivate {
-    public abstract void ActiveClearEffect(UnitEntity[] allplayers, UnitEntity MVPPlayer);
-    public abstract void ActiveFailEffect(UnitEntity[] allplayers, UnitEntity MVPPlayer);
+    public abstract void ActiveClearEffect(GameEntity[] allplayers, GameEntity MVPPlayer);
+    public abstract void ActiveFailEffect(GameEntity[] allplayers, GameEntity MVPPlayer);
 }
