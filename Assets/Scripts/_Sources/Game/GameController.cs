@@ -85,6 +85,7 @@ public class GameController : MonoBehaviour
 		if(!_isInitialized)
 		{
 			Initialize();
+			return;
 		}
 		Assert.IsNotNull(_systems);
 

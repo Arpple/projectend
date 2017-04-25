@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 public class SkillCardContainerCreatingSystem : GameReactiveSystem
 {
@@ -22,7 +23,7 @@ public class SkillCardContainerCreatingSystem : GameReactiveSystem
 
 	protected override void Execute(List<GameEntity> entities)
 	{
-		foreach (var p in _context.GetEntities(GameMatcher.Player))
+		foreach (var p in entities)
 		{
 			var cont = _factory.CreateContainer(p.player.PlayerId);
 			p.AddSkillCardContainer(cont);
