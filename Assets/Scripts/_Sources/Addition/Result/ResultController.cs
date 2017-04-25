@@ -10,7 +10,6 @@ namespace Result
 	{
 		ResultUIController _ui;
 
-		private SceneLoader _sceneLoader;
 		private IPlayerLoader _playerLoader;
 
 		protected Contexts _contexts;
@@ -29,7 +28,6 @@ namespace Result
 			_ui = GetComponent<ResultUIController>();
 
 			_playerLoader = GetComponent<IPlayerLoader>();
-			_sceneLoader = GetComponent<SceneLoader>();
 		}
 
 		protected virtual void Start()

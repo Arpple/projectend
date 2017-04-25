@@ -167,13 +167,13 @@ namespace Lobby
 
 		private void UpdateMissionSelector(bool isPlayerReady)
 		{
-			if(isPlayerReady)
+			if (CanShowSelector(isPlayerReady))
 			{
-				MissionSelector.Hide();
+				MissionSelector.Show();
 			}
 			else
 			{
-				MissionSelector.Show();
+				MissionSelector.Hide();
 			}
 		}
 
@@ -185,13 +185,13 @@ namespace Lobby
 
 		public void UpdateRoundSelector(bool isPlayerReady)
 		{
-			if (isPlayerReady)
+			if (CanShowSelector(isPlayerReady))
 			{
-				RoundSelector.Hide();
+				RoundSelector.Show();
 			}
 			else
 			{
-				RoundSelector.Show();
+				RoundSelector.Hide();
 			}
 		}
 
@@ -203,6 +203,11 @@ namespace Lobby
 		public void SetRound(int round)
 		{
 			_localPlayer.CmdSetRound(round);
+		}
+
+		protected virtual bool CanShowSelector(bool isPlayerReady)
+		{
+			return !isPlayerReady && NetworkController.IsServer;
 		}
 	}
 }
