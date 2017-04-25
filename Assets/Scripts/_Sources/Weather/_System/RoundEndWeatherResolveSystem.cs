@@ -7,11 +7,13 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
 {
 	private Contexts _contexts;
     private WeatherResloveDisplayer _weatherResolveDisplayer;
+	private SystemController _sysCon;
 
-	public RoundEndWeatherResolveSystem(Contexts contexts,WeatherResloveDisplayer displayer) : base(contexts)
+	public RoundEndWeatherResolveSystem(Contexts contexts,WeatherResloveDisplayer displayer, SystemController sysCon) : base(contexts)
 	{
 		_contexts = contexts;
         this._weatherResolveDisplayer = displayer;
+		_sysCon = sysCon;
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -51,7 +53,7 @@ public class RoundEndWeatherResolveSystem : GameReactiveSystem
             Debug.Log("pass : " + costMan.IsWeatherResolved()
                 + " MVP is -> " + costMan.getMVPPlayer().player.GetNetworkPlayer().PlayerName);
 
-            if(!costMan.IsWeatherResolved()) {
+            if(!costMan.IsWeatherResolved() && !_sysCon.ForceWeatherClear) {
                 e.isWeatherResloveFail = true;
                 weatherAbility.ActiveFailEffect(costMan.getPlayers(),costMan.getMVPPlayer());
             } else {
