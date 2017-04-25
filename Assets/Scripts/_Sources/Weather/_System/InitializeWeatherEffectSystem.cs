@@ -14,8 +14,12 @@ public class InitializeWeatherEffectSystem: IInitializeSystem {
     public void Initialize() {
         foreach(WeatherData data in _setting.DataList) {
             var entity = _gameContexts.CreateEntity();
-            WeatherChangeEffect effect = Object.Instantiate<WeatherChangeEffect>(data.WeatherEffect, _camera, false);
-            GameObject view = effect.gameObject;
+            WeatherChangeEffect effect = null;
+            GameObject view;
+
+            effect = Object.Instantiate<WeatherChangeEffect>(data.WeatherEffect, _camera, false);
+            view = effect.gameObject;
+            view.name = data.Type + " effect ";
             view.SetActive(false);
             entity.AddWeatherEffect(data.Type,effect);
             entity.AddView(view);

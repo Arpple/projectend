@@ -88,6 +88,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ab14a2042b8cce54fbdf5cf8268d05f4, type: 2}
     - {fileID: 11400000, guid: f7e546149adaf1940bbd878fcb996e5b, type: 2}
     - {fileID: 11400000, guid: bd064d6693a756346a21daa94325cf7b, type: 2}
+    - {fileID: 11400000, guid: c26f9ce332fef3e4a96b393039d3452b, type: 2}
     CostCountWeigthList: 0a000000280000001e0000000f00000005000000
   PlayerIconSetting:
     DataList:

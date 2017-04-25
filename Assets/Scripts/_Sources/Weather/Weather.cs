@@ -3,4 +3,5 @@
 	Winter,
 	Summer,
 	Storm,
+    Normal,
 }
