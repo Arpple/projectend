@@ -7,11 +7,13 @@ public class StartTurnDrawSystem : ReactiveSystem<GameEntity>
 {
 	private CardContext _cardContext;
 	private DeckSetting _setting;
+	private GameEventContext _eventContext;
 
 	public StartTurnDrawSystem(Contexts contexts, DeckSetting setting) : base(contexts.game)
 	{
 		_cardContext = contexts.card;
 		_setting = setting;
+		_eventContext = contexts.gameEvent;
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -28,7 +30,13 @@ public class StartTurnDrawSystem : ReactiveSystem<GameEntity>
 	{
 		foreach (var e in entities)
 		{
-			var cards = _cardContext.GetShareDeckCards().Shuffle();
+			var movingCards = _eventContext.GetEntities(GameEventMatcher.EventMoveDeckCard)
+				.Select(ev => ev.eventMoveDeckCard.CardEntity);
+			var cards = _cardContext.GetEntities(CardMatcher.DeckCard)
+			.Except(movingCards)
+			.ToArray()
+			.Shuffle();
+
 			if (cards.Length > 0)
 			{
 				var drawCards = cards.Take(Math.Min(cards.Length, _setting.StartTurnDrawCount));

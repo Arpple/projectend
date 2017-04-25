@@ -18,6 +18,7 @@ namespace Test.CardTest.DeckTest
 		public void CreateCardForAllPlayer()
 		{
 			var system = new StartDeckCardDrawingSystem(_contexts, _setting);
+			_contexts.game.SetRound(1);
 
 			_setting.StartCardCount = 1;
 
@@ -28,7 +29,7 @@ namespace Test.CardTest.DeckTest
 				card.AddDeckCard(DeckCard.Move);
 			});
 
-			system.Initialize();
+			system.Execute();
 
 			foreach (var p in _contexts.game.GetEntities(GameMatcher.Player))
 			{
