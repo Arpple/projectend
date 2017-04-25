@@ -4,10 +4,12 @@ using Entitas;
 public class MissionDeadOrAliveFailSystem : GameReactiveSystem
 {
 	private GameEventContext _eventContext;
+	private WeatherResloveDisplayer _display;
 
-	public MissionDeadOrAliveFailSystem(Contexts contexts) : base(contexts)
+	public MissionDeadOrAliveFailSystem(Contexts contexts, WeatherResloveDisplayer weatherDisplay) : base(contexts)
 	{
 		_eventContext = contexts.gameEvent;
+		_display = weatherDisplay;
 	}
 
 	protected override Collector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -23,6 +25,11 @@ public class MissionDeadOrAliveFailSystem : GameReactiveSystem
 	protected override void Execute(List<GameEntity> entities)
 	{
 		_context.isMainMissionCompleted = false;
+		_display.AddOnResolveAction(EndGame);
+	}
+
+	private void EndGame()
+	{
 		var eventEntity = _eventContext.CreateEntity();
 		eventEntity.isEventEndGame = true;
 	}

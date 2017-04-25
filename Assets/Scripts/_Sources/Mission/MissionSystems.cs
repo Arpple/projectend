@@ -1,7 +1,11 @@
 ﻿public class MissionSystems : Feature
 {
-	public MissionSystems(Contexts contexts) : base("Mission System")
+	private GameUI _ui;
+
+	public MissionSystems(Contexts contexts, GameUI ui) : base("Mission System")
 	{
+		_ui = ui;
+
 		Add(new MainMissionSetupSystem(contexts));
 		Add(new PlayerMissionSetupSystem(contexts));
 
@@ -16,7 +20,7 @@
 	private void CreateMainMissionDeadOrAlive(Contexts contexts)
 	{
 		Add(new MissionDeadOrAliveSetupSystem(contexts));
-		Add(new MissionDeadOrAliveFailSystem(contexts));
+		Add(new MissionDeadOrAliveFailSystem(contexts, _ui.WeatherResloveDisplayer));
 	}
 
 	private void CreatePlayerMissionHunter(Contexts contexts)

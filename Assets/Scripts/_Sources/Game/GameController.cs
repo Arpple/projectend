@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
 			.Add(new TurnSystems(contexts, GameUI.Instance, SystemController))
 			.Add(new WeatherSystems(contexts, _setting, GameUI.Instance))
 			.Add(new BuffSystems(contexts, _setting, GameUI.Instance))
-			.Add(new MissionSystems(contexts))
+			.Add(new MissionSystems(contexts, GameUI.Instance))
 			.Add(new GameEventSystems(contexts))
 			.Add(new EventGameEndSystem(contexts, SetGameEnd));
 	}
