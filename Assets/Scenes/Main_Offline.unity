@@ -246,8 +246,9 @@ GameObject:
   - component: {fileID: 31644040}
   - component: {fileID: 31644042}
   - component: {fileID: 31644041}
+  - component: {fileID: 31644043}
   m_Layer: 5
-  m_Name: CardEventDescription
+  m_Name: CardSelectorDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,6 +306,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 31644039}
+--- !u!114 &31644043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 31644039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713dde29ba98598448ed510cb6b41f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DescriptionText: {fileID: 1628117928}
 --- !u!1001 &70129254
 Prefab:
   m_ObjectHideFlags: 0
@@ -2021,6 +2034,7 @@ MonoBehaviour:
     CancelButton: {fileID: 1332145776}
   DiscardGroup:
     CardPanel: {fileID: 1377177146}
+    Description: {fileID: 31644043}
     ConfirmButton: {fileID: 1995756712}
     CancelButton: {fileID: 780198717}
   CardDesc: {fileID: 1517447198}
@@ -2717,6 +2731,7 @@ GameObject:
   - component: {fileID: 1111501430}
   - component: {fileID: 1111501429}
   - component: {fileID: 1111501428}
+  - component: {fileID: 1111501433}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2792,6 +2807,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111501433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1111501427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abafd19efbf856408d024b1b640c6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1113668735
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,7 +4510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "discard attack card x2 for active skill \n[Last 'last]"
+  m_Text: 
 --- !u!222 &1628117929
 CanvasRenderer:
   m_ObjectHideFlags: 0
