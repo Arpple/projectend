@@ -56,11 +56,21 @@ public class PlayerUnitStatusPanel : MonoBehaviour
 		CharacterIcon.IconImage.sprite = entity.unitIcon.IconSprite;
 		UpdateUnitStatus(entity.unitStatus);
 		UpdateUnitHitpoint(entity.hitpoint);
+        UpdatePlayingTurn(entity.owner.Entity.isPlaying);
 
-		ShowingCharacter = entity;
 
-        //Show Crown when current Turn.
-        //CrownImage.gameObject.SetActive(entity.owner.Entity.isPlaying);
+        var playerBox = Contexts.sharedInstance.card.GetPlayerBoxCards(entity.owner.Entity);
+        var playerDeck = Contexts.sharedInstance.card.GetPlayerBoxCards(entity.owner.Entity);
+        var playerResouce = Contexts.sharedInstance.card.GetPlayerResourceCards(entity.owner.Entity);
+
+        UpdateBoxCardCount(playerBox != null ? playerBox.Length : 0);
+        UpdateDeckCardCount( (playerDeck != null ? playerDeck.Length : 0 )
+            + (playerResouce != null ? playerResouce.Length : 0)
+            );
+
+
+        ShowingCharacter = entity;
+
     }
 
 	public void UpdatePlayingTurn(bool isPlaying)

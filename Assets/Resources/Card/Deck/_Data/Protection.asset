@@ -16,6 +16,6 @@ MonoBehaviour:
   ActiveDesc: 
   PassiveDesc: Protect you from Aggressive event card.
   Type: 7
-  CreateCount: 20
+  CreateCount: 10
   AbilityClassFullName: AbilityProtection
   Effect: {fileID: 114594017304363474, guid: 3bcee4cf26db5564585b7b79f7c77ef5, type: 2}

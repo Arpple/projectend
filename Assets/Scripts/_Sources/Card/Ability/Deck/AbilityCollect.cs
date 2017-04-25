@@ -14,8 +14,8 @@
 	{
 		ReduceTileCharge(target);
 		var card = CreateResourceCard(target.tileResource.Type);
-		//card.AddOwner(caster.owner.Entity);
-        EventMoveDeckCard.MoveCardToPlayer(card,caster.owner.Entity);
+		card.AddOwner(caster.owner.Entity);
+        //EventMoveDeckCard.MoveCardToPlayer(card,caster.owner.Entity);
 	}
 
 	private void ReduceTileCharge(TileEntity tile)
