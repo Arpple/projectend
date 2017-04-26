@@ -17,20 +17,34 @@ public class BlockAggressiveEventSystem: ReactiveSystem<UnitEntity> {
     }
 
     protected override void Execute(List<UnitEntity> entities) {
-        UnityEngine.Debug.Log("Event AGG ADDED");
+        //UnityEngine.Debug.Log("Event AGG ADDED");
         foreach(var target in entities) {
             AbilityAggressiveEventComponent abilityEffect = target.abilityAggressiveEvent;
             var player = target.owner.Entity;
-            if(SearchBox(player, abilityEffect.blockCount)) {
-                UnityEngine.Debug.Log("Block Agg event");
+            if(SearchBox(player, abilityEffect.blockCount) || SearchSkill(player,abilityEffect.blockCount)) {
+                //UnityEngine.Debug.Log("Block Agg event");
                 removeUseCard(player, abilityEffect.blockCount);
                 target.RemoveAbilityAggressiveEvent();
             } else {
-                UnityEngine.Debug.Log("cannot block agg evet");
+                //UnityEngine.Debug.Log("cannot block agg evet");
                 abilityEffect.activeAbilityFunction();
                 target.RemoveAbilityAggressiveEvent();
             }
         }
+    }
+
+    private bool SearchSkill(GameEntity player,int needBlock) {
+        var playerSkills = Contexts.sharedInstance.card.GetPlayerSkills(player);
+        int blockCount = 0;
+        foreach(var card in playerSkills) {
+            IProtectAggressiveAbility b = card.ability.Ability as IProtectAggressiveAbility;
+            if(b is IProtectAggressiveAbility) {
+                blockCount++;
+                if(blockCount >= needBlock)
+                    return true;
+            }
+        }
+        return false;
     }
 
     private bool SearchBox(GameEntity player, int needBlock) {
