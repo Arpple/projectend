@@ -15,6 +15,7 @@
 
 		//player
 		CreatePlayerMissionHunter(contexts);
+		CreatePlayerMissionKeeper(contexts);
 	}
 
 	private void CreateMainMissionDeadOrAlive(Contexts contexts)
@@ -26,6 +27,11 @@
 	private void CreatePlayerMissionHunter(Contexts contexts)
 	{
 		Add(new PlayerMissionHunterCompletingSystem(contexts));
+		
+	}
+
+	private void CreatePlayerMissionKeeper(Contexts contexts)
+	{
 		Add(new KeeperAddedSystem(contexts));
 		Add(new KeeperResloveMissionSystem(contexts));
 	}
