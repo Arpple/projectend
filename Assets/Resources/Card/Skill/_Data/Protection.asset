@@ -8,14 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4078e6e5d8c782140ab6e2659b20165c, type: 3}
-  m_Name: Defense
+  m_Script: {fileID: 11500000, guid: 3caeed58b1aa6b947b56b4be7063aa57, type: 3}
+  m_Name: Protection
   m_EditorClassIdentifier: 
-  MainSprite: {fileID: 21300000, guid: f0c5cc94e9ff578419ccff1ec0c39f4d, type: 3}
-  Name: Defense
+  MainSprite: {fileID: 21300000, guid: 56c52e926b4f02c40a25455bfb8eabc4, type: 3}
+  Name: Protection
   ActiveDesc: 
-  PassiveDesc: Defense when appear in box
-  Type: 6
-  CreateCount: 15
-  AbilityClassFullName: AbilityDefense
+  PassiveDesc: Protect you from aggressive skill
+  Type: 8
+  AbilityClassFullName: Skill_Protection
   Effect: {fileID: 114432012776490668, guid: 8d3270525f54aef4e9b28060ae9ef9d1, type: 2}

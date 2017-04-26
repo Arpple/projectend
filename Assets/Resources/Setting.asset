@@ -73,6 +73,8 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8389ebf636079b041989f8b0b99e6a75, type: 2}
       - {fileID: 11400000, guid: b170305b662f8634e8a277e440384b9e, type: 2}
       - {fileID: 11400000, guid: fd5fd8ad7e9f2b74ea0ed165ecf42897, type: 2}
+      - {fileID: 11400000, guid: 403947c5a84238d41b038c11213da4d1, type: 2}
+      - {fileID: 11400000, guid: a419b13e6b938a34880a88c087b36fd2, type: 2}
   BuffSetting:
     DataList:
     - {fileID: 11400000, guid: b6b4f0d295095274f93d5e2a395eb3e3, type: 2}
