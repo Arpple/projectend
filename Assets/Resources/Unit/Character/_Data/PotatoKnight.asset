@@ -16,9 +16,9 @@ MonoBehaviour:
   Name: Potato Knight
   Description: 
   HitPoint: 10
-  AttackPower: 1
+  AttackPower: 2
   AttackRange: 2
   VisionRange: 3
-  MoveSpeed: 2
+  MoveSpeed: 3
   Type: 11
   SkillCards: 

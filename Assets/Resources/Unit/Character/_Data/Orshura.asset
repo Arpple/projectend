@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Orshura
   Description: 
   HitPoint: 10
-  AttackPower: 1
+  AttackPower: 3
   AttackRange: 2
   VisionRange: 2
   MoveSpeed: 3
