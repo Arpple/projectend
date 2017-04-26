@@ -16,9 +16,13 @@ public class Skill_Monolith_JudgementLight : ActiveAbility<UnitEntity> , IAbilit
 		var targets = caster.GetEntitiesInRange(100);
 		foreach(var t in targets)
 		{
-			t.TakeDamage(caster.unitStatus.AttackPower);
-		}
+            t.TakeDamage(caster.unitStatus.AttackPower);
+        }
 	}
+
+    private void dealDamage() {
+
+    }
 
     public void PlayAnimation(AbilityEffect effect, UnitEntity caster, UnitEntity target) {
         var targets = caster.GetEntitiesInRange(100);

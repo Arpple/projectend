@@ -15,9 +15,13 @@
     GreedyTax,
 
     //SharpShooter
+    FastMove,
     LegShot,
 
     //Elmys
     Alchemist,
+
+    //Nidhogg
+    Protection,
 
 }
