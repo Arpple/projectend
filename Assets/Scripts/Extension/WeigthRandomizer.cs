@@ -41,10 +41,10 @@ public class WeigthRandomizer<TItem>
 		foreach(var item in _items)
 		{
 			index += item.Weigth;
-			if (index >= randomIndex)
+			if (index > randomIndex)
 				return item.Item;
 		}
 
-		return _items.First().Item;
+		return default(TItem);
 	}
 }
